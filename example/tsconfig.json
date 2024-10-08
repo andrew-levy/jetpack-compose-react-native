@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "jetpack-compose-react-native": ["../src/index"],
+      "jetpack-compose-react-native/*": ["../src/*"]
+    }
+  }
+}
