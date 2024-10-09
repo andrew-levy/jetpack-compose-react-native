@@ -15,6 +15,9 @@ export default function App() {
         onClick={() => {
           setCount(count + 1);
         }}
+        modifier={Modifier.padding(10)
+          .backgroundColor({ color: "red" })
+          .border({ width: 1, color: "black" })}
       />
       <Switch
         checked={checked}
@@ -22,7 +25,9 @@ export default function App() {
           console.log("onCheckedChange", v);
           setChecked(v);
         }}
-        modifier={Modifier.padding(10)}
+        modifier={Modifier.padding(10)
+          .backgroundColor({ color: "red" })
+          .border({ width: 1, color: "black" })}
       />
       <Slider
         value={sliderValue}
