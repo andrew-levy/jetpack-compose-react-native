@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 export default function App() {
   const [count, setCount] = React.useState(0);
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
 
   return (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ export default function App() {
       <Switch
         checked={checked}
         onCheckedChange={() => setChecked(!checked)}
-        modifier={Modifier.padding(40)}
+        modifier={Modifier.padding(10)}
       />
     </View>
   );
