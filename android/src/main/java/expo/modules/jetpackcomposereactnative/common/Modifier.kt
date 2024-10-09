@@ -14,7 +14,7 @@ fun ModifierProp.toModifier(): Modifier {
             when (key) {
                 "padding" -> {
                     if (value is Number) {
-                        modifiers = modifiers.then(Modifier.padding(value.toDouble().dp))
+                        modifiers = Modifier.padding(value.toDouble().dp)
                     }
                 }
             }

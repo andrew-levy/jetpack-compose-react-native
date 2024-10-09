@@ -45,24 +45,24 @@ export default function App() {
 
 - [x] Button
 - [x] Switch
-- [] Slider
-- [] Floating Action Button
-- [] Text Field
-- [] Text
-- [] Chip
-- [] Card
-- [] Dialog
-- [] Bottom Sheet
-- [] Snackbar
-- [] Checkbox
-- [] Badge
-- [] Bottom Sheet
-- [] Time/Date Picker
-- [] Column (LazyColumn)
-- [] Row (LazyRow)
-- [] Grid (LazyGrid)
-- [] Box
-- [] Dividers
-- [] Spacer
-- [] Other types of [buttons](https://developer.android.com/develop/ui/compose/components/button)
-- [] More modifiers!
+- [x] Slider
+- [ ] Floating Action Button
+- [ ] Text Field
+- [ ] Text
+- [ ] Chip
+- [ ] Card
+- [ ] Dialog
+- [ ] Bottom Sheet
+- [ ] Snackbar
+- [ ] Checkbox
+- [ ] Badge
+- [ ] Bottom Sheet
+- [ ] Time/Date Picker
+- [ ] Column (LazyColumn)
+- [ ] Row (LazyRow)
+- [ ] Grid (LazyGrid)
+- [ ] Box
+- [ ] Dividers
+- [ ] Spacer
+- [ ] Other types of [buttons](https://developer.android.com/develop/ui/compose/components/button)
+- [ ] More modifiers!

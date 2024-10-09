@@ -1,22 +1,5 @@
-import { requireNativeViewManager } from "expo-modules-core";
-import * as React from "react";
-import { ViewStyle } from "react-native";
+import { ButtonProps } from "./Button.android";
 
-export type ButtonProps = {
-  text: string;
-  onClick?: () => void;
-  style?: ViewStyle;
-};
-
-const NativeView: React.ComponentType<ButtonProps & { onButtonClick }> =
-  requireNativeViewManager("ButtonView");
-
-export function Button({ onClick, style, ...rest }: ButtonProps) {
-  return (
-    <NativeView
-      {...rest}
-      onButtonClick={onClick}
-      style={{ height: 40, width: "100%", ...(style as any) }}
-    />
-  );
+export function Button(props: ButtonProps) {
+  return null;
 }

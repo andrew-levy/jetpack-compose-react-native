@@ -1,8 +1,8 @@
-package expo.modules.jetpackcomposereactnative.views.switch_
+package expo.modules.jetpackcomposereactnative.views.slider
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import androidx.compose.material3.Switch
+import androidx.compose.material3.Slider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
@@ -13,27 +13,27 @@ import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
 import expo.modules.kotlin.views.ExpoView
 
-data class SwitchProps(
-    var checked: Boolean = false,
+data class SliderProps(
+    var value: Float = 0f,
     var modifier: ModifierProp = emptyList()
 )
 
-class SwitchView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
-    private var props = mutableStateOf(SwitchProps())
-    private val onCheckedChange by EventDispatcher()
+class SliderView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+    private var props = mutableStateOf(SliderProps())
+    private val onValueChange by EventDispatcher()
 
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             it.setContent {
-                SwitchComposable(props = props.value, onCheckedChange = onCheckedChange)
+                SliderComposable(props = props.value, onValueChange = onValueChange)
             }
             addView(it)
         }
     }
 
-    fun updateChecked(checked: Boolean) {
-        props.value = props.value.copy(checked = checked)
+    fun updateValue(value: Float) {
+        props.value = props.value.copy(value = value)
     }
 
     fun updateModifier(modifier: ModifierProp) {
@@ -42,11 +42,11 @@ class SwitchView(context: Context, appContext: AppContext) : ExpoView(context, a
 }
 
 @Composable
-fun SwitchComposable(props: SwitchProps, onCheckedChange: ViewEventCallback<Map<String, Any>>) {
-    Switch(
-        checked = props.checked,
-        onCheckedChange = {
-            onCheckedChange(mapOf("checked" to it))
+fun SliderComposable(props: SliderProps, onValueChange: ViewEventCallback<Map<String, Any>>) {
+    Slider(
+        value = props.value,
+        onValueChange = {
+            onValueChange(mapOf("value" to it))
         },
         modifier = props.modifier.toModifier()
     )

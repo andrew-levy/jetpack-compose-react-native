@@ -3,7 +3,8 @@
   "android": {
     "modules": [
       "expo.modules.jetpackcomposereactnative.views.button.ButtonModule",
-      "expo.modules.jetpackcomposereactnative.views.switch_.SwitchModule"
+      "expo.modules.jetpackcomposereactnative.views.switch_.SwitchModule",
+      "expo.modules.jetpackcomposereactnative.views.slider.SliderModule"
     ]
   }
 }
