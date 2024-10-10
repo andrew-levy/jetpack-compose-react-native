@@ -1,6 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 
-import { Button, Switch, Modifier, Slider } from "jetpack-compose-react-native";
+import {
+  Button,
+  Switch,
+  Modifier,
+  Slider,
+  Column,
+} from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
 export default function App() {
@@ -15,6 +21,7 @@ export default function App() {
         onClick={() => {
           setCount(count + 1);
         }}
+        style={{ height: 80 }}
         modifier={Modifier.padding(10)
           .backgroundColor({ color: "red" })
           .border({ width: 1, color: "black" })}
@@ -37,6 +44,18 @@ export default function App() {
         }}
       />
       <Text>Slider value: {sliderValue}</Text>
+      <Column
+        style={{
+          backgroundColor: "pink",
+          width: 300,
+          height: 100,
+        }}
+      >
+        <Button text={"button text"} />
+        <Text>1</Text>
+        <Text>2</Text>
+        <Text>3</Text>
+      </Column>
     </View>
   );
 }

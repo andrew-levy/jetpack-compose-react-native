@@ -46,6 +46,7 @@ export default function App() {
 - [x] Button
 - [x] Switch
 - [x] Slider
+- [x] Column
 - [ ] Floating Action Button
 - [ ] Text Field
 - [ ] Text
@@ -58,9 +59,11 @@ export default function App() {
 - [ ] Badge
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
-- [ ] Column (LazyColumn)
-- [ ] Row (LazyRow)
-- [ ] Grid (LazyGrid)
+- [ ] LazyColumn
+- [ ] LazyRow
+- [ ] LazyGrid
+- [ ] Row
+- [ ] Grid
 - [ ] Box
 - [ ] Dividers
 - [ ] Spacer
