@@ -1,5 +1,7 @@
 # Jetpack Compose React Native
 
+_This project is in early development and is not yet ready for use._
+
 ## Getting started
 
 ```bash
