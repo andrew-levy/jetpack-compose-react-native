@@ -2,10 +2,11 @@ import { requireNativeViewManager } from "expo-modules-core";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
+import { MaterialIconName, MaterialIconTheme } from "./Icon.types";
 
 export type IconProps = {
-  name: string;
-  theme: string;
+  name: MaterialIconName;
+  theme: MaterialIconTheme;
   contentDescription?: string;
   style?: ViewStyle;
   modifier?: typeof Modifier;

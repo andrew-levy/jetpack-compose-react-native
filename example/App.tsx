@@ -6,6 +6,7 @@ import {
   Slider,
   Column,
   Icon,
+  ProgressIndicator,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -13,6 +14,7 @@ export default function App() {
   const [count, setCount] = React.useState(0);
   const [checked, setChecked] = React.useState(true);
   const [sliderValue, setSliderValue] = React.useState(0.5);
+  const [progress, setProgress] = React.useState(0.5);
 
   return (
     <ScrollView
@@ -93,17 +95,40 @@ export default function App() {
       <Text style={styles.header}>Icon</Text>
       <View style={{ flexDirection: "row" }}>
         <Icon
-          name="ShoppingCart"
-          theme="Rounded"
+          name="shopping_cart"
+          theme="round"
           contentDescription="home icon"
         />
-        <Icon name="Home" theme="Outlined" contentDescription="home icon" />
-        <Icon name="BugReport" theme="TwoTone" contentDescription="home icon" />
-        <Icon name="Favorite" theme="Sharp" contentDescription="home icon" />
-        <Icon name="Settings" theme="Filled" contentDescription="home icon" />
+        <Icon name="home" theme="outlined" contentDescription="home icon" />
+        <Icon
+          name="bug_report"
+          theme="two-tone"
+          contentDescription="home icon"
+        />
+        <Icon name="favorite" theme="sharp" contentDescription="home icon" />
+        <Icon name="settings" theme="filled" contentDescription="home icon" />
       </View>
 
       {/* Placeholder sections for unimplemented components */}
+      <Text style={styles.header}>Progress Indicator</Text>
+      <Button
+        text="Increment Progress"
+        onClick={() => {
+          setProgress(progress + 0.1);
+        }}
+      />
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          alignItems: "center",
+          marginVertical: 10,
+        }}
+      >
+        <ProgressIndicator progress={progress} />
+        <ProgressIndicator progress={progress} variant="linear" />
+      </View>
+
       <Text style={styles.header}>Floating Action Button</Text>
       <Text style={styles.header}>Text Field</Text>
       <Text style={styles.header}>Text</Text>

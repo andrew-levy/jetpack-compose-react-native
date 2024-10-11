@@ -50,6 +50,7 @@ export default function App() {
 - [x] Slider
 - [x] Column
 - [x] Icon
+- [x] Progress Indicator (Circular + Linear)
 - [ ] Floating Action Button
 - [ ] Text Field
 - [ ] Text

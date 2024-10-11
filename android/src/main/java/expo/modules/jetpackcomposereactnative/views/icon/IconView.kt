@@ -57,32 +57,29 @@ fun IconComposable(props: IconProps) {
     }
 }
 
-fun getIcon(
-    name: String,
-    theme: String,
-): ImageVector? =
+fun getIcon(name: String, theme: String): ImageVector? =
     try {
         val iconsPackage = "androidx.compose.material.icons."
+        val iconName = snakeToPascalCase(name)
+        val themeName = kebabToPascalCase(theme)
         val className = buildString {
             append(iconsPackage)
-            append(theme.lowercase())
+            append(themeName.lowercase())
             append('.')
-            append(name)
+            append(iconName)
             append("Kt")
         }
 
-        val typeName = "Icons.$theme"
-
-        val typeClass: Any = when (typeName) {
-            "Icons.Filled" -> Icons.Filled
-            "Icons.Outlined" -> Icons.Outlined
-            "Icons.Rounded" -> Icons.Rounded
-            "Icons.TwoTone" -> Icons.TwoTone
-            "Icons.Sharp" -> Icons.Sharp
+        val typeClass: Any = when (themeName) {
+            "Filled" -> Icons.Filled
+            "Outlined" -> Icons.Outlined
+            "Rounded" -> Icons.Rounded
+            "TwoTone" -> Icons.TwoTone
+            "Sharp" -> Icons.Sharp
             else -> Icons.Filled
         }
 
-        Class.forName(className).getDeclaredMethod("get$name", typeClass.javaClass).invoke(
+        Class.forName(className).getDeclaredMethod("get$iconName", typeClass.javaClass).invoke(
             null,
             typeClass
         ) as ImageVector
@@ -91,3 +88,18 @@ fun getIcon(
         null
     }
 
+fun snakeToPascalCase(input: String): String {
+    return input.split('_').joinToString("") { word ->
+        word.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+    }.let {
+        if (it.first().isDigit()) "_$it" else it
+    }
+}
+
+fun kebabToPascalCase(input: String): String {
+    return input.split('-').joinToString("") { word ->
+        word.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+    }.let {
+        if (it.first().isDigit()) "_$it" else it
+    }
+}
