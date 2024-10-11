@@ -47,6 +47,7 @@ export default function App() {
 - [x] Switch
 - [x] Slider
 - [x] Column
+- [x] Icon
 - [ ] Floating Action Button
 - [ ] Text Field
 - [ ] Text

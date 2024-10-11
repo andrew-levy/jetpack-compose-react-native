@@ -5,7 +5,8 @@
       "expo.modules.jetpackcomposereactnative.views.button.ButtonModule",
       "expo.modules.jetpackcomposereactnative.views.switch_.SwitchModule",
       "expo.modules.jetpackcomposereactnative.views.slider.SliderModule",
-      "expo.modules.jetpackcomposereactnative.views.column.ColumnModule"
+      "expo.modules.jetpackcomposereactnative.views.column.ColumnModule",
+      "expo.modules.jetpackcomposereactnative.views.icon.IconModule"
     ]
   }
 }

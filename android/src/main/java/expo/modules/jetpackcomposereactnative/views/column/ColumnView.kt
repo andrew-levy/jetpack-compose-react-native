@@ -54,7 +54,7 @@ class ColumnView(context: Context, appContext: AppContext) : ExpoView(context, a
 @Composable
 fun ColumnComposable(props: ColumnProps) {
     Column(modifier = props.modifier.toModifier()) {
-        props.children.mapIndexed { index, child ->
+        props.children.map { child ->
             AndroidView(
                 modifier = Modifier.fillMaxWidth(),
                 factory = { child },

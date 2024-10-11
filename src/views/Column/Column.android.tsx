@@ -6,6 +6,7 @@ import { Modifier } from "../../utils/modifier";
 export type ColumnProps = {
   style?: ViewStyle;
   modifier?: typeof Modifier;
+  children?: React.ReactNode;
 };
 
 type NativeColumnProps = Omit<ColumnProps, "onClick"> & {
