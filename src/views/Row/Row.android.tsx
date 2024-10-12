@@ -3,16 +3,16 @@ import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
 
-export type ColumnProps = {
+export type RowProps = {
   style?: ViewStyle;
   modifier?: typeof Modifier;
   children?: React.ReactNode;
 };
 
-const NativeView: React.ComponentType<ColumnProps> =
-  requireNativeViewManager("ColumnView");
+const NativeView: React.ComponentType<RowProps> =
+  requireNativeViewManager("RowView");
 
-export function Column({ style, ...rest }: ColumnProps) {
+export function Row({ style, ...rest }: RowProps) {
   return (
     <NativeView
       {...rest}

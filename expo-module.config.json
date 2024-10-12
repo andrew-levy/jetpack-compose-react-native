@@ -6,8 +6,10 @@
       "expo.modules.jetpackcomposereactnative.views.switch_.SwitchModule",
       "expo.modules.jetpackcomposereactnative.views.slider.SliderModule",
       "expo.modules.jetpackcomposereactnative.views.column.ColumnModule",
+      "expo.modules.jetpackcomposereactnative.views.row.RowModule",
       "expo.modules.jetpackcomposereactnative.views.icon.IconModule",
-      "expo.modules.jetpackcomposereactnative.views.progress_indicator.ProgressIndicatorModule"
+      "expo.modules.jetpackcomposereactnative.views.progress_indicator.ProgressIndicatorModule",
+      "expo.modules.jetpackcomposereactnative.views.checkbox.CheckboxModule"
     ]
   }
 }

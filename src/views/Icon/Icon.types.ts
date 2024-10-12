@@ -1,7 +1,7 @@
 export type MaterialIconTheme =
   | "filled"
   | "outlined"
-  | "round"
+  | "rounded"
   | "sharp"
   | "two-tone";
 
