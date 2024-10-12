@@ -3,26 +3,26 @@ import * as React from "react";
 import { NativeSyntheticEvent, ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
 
-export type SwitchProps = {
+export type CheckboxProps = {
   checked: boolean;
   onCheckedChange?: (checked: boolean) => void;
   style?: ViewStyle;
   modifier?: typeof Modifier;
 };
 
-type NativeSwitchProps = Omit<SwitchProps, "onCheckedChange"> & {
+type NativeCheckboxProps = Omit<CheckboxProps, "onCheckedChange"> & {
   onCheckedChange: (e: NativeSyntheticEvent<{ checked: boolean }>) => void;
 };
 
-const NativeView: React.ComponentType<NativeSwitchProps> =
-  requireNativeViewManager("SwitchView");
+const NativeView: React.ComponentType<NativeCheckboxProps> =
+  requireNativeViewManager("CheckboxView");
 
-export function Switch({
+export function Checkbox({
   style,
   modifier,
   onCheckedChange,
   ...rest
-}: SwitchProps) {
+}: CheckboxProps) {
   return (
     <NativeView
       {...rest}

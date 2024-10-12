@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 import {
   Button,
   Switch,
@@ -7,6 +7,8 @@ import {
   Column,
   Icon,
   ProgressIndicator,
+  Row,
+  Checkbox,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -36,16 +38,56 @@ export default function App() {
       </Text>
       {/* Button Section */}
       <Text style={styles.header}>Button</Text>
-      <Button
-        text={"button text " + count}
-        onClick={() => {
-          setCount(count + 1);
-        }}
-        style={{ height: 80 }}
-        modifier={Modifier.padding(10)
-          .backgroundColor({ color: "red" })
-          .border({ width: 1, color: "black" })}
-      />
+      <View style={{ flexDirection: "row" }}>
+        <View style={{ flex: 1, gap: 10 }}>
+          <Button
+            text="Default"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+          />
+          <Button
+            text="Outlined"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+            variant="outlined"
+          />
+          <Button
+            text="Text"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+            variant="text"
+          />
+        </View>
+        <View style={{ flex: 1, gap: 10 }}>
+          <Button
+            text="Elevated"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+            variant="elevated"
+          />
+          <Button
+            text="Floating Action"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+            variant="filled-tonal"
+          />
+
+          <Button
+            text="Floating Action"
+            onClick={() => {
+              setCount(count + 1);
+            }}
+            variant="floating-action"
+            modifier={Modifier.padding(5)}
+          />
+        </View>
+      </View>
+      <Text>Button clicked {count} times</Text>
 
       {/* Switch Section */}
       <Text style={styles.header}>Switch</Text>
@@ -73,38 +115,34 @@ export default function App() {
 
       {/* Column Section */}
       <Text style={styles.header}>Column</Text>
-      <Column
-        style={{
-          backgroundColor: "pink",
-          width: 300,
-          height: 100,
-        }}
-      >
-        <Button
-          text={"button text"}
-          onClick={() => {
-            console.log("button clicked");
-          }}
-        />
+      <Column>
         <Text>1</Text>
         <Text>2</Text>
         <Text>3</Text>
       </Column>
 
+      {/* Row Section */}
+      <Text style={styles.header}>Row</Text>
+      <Row>
+        <Text>1</Text>
+        <Text>2</Text>
+        <Text>3</Text>
+      </Row>
+
       {/* Icon Section */}
       <Text style={styles.header}>Icon</Text>
       <View style={{ flexDirection: "row" }}>
-        <Icon
-          name="shopping_cart"
-          theme="round"
-          contentDescription="home icon"
-        />
-        <Icon name="home" theme="outlined" contentDescription="home icon" />
         <Icon
           name="bug_report"
           theme="two-tone"
           contentDescription="home icon"
         />
+        <Icon
+          name="shopping_cart"
+          theme="rounded"
+          contentDescription="home icon"
+        />
+        <Icon name="home" theme="outlined" contentDescription="home icon" />
         <Icon name="favorite" theme="sharp" contentDescription="home icon" />
         <Icon name="settings" theme="filled" contentDescription="home icon" />
       </View>
@@ -114,20 +152,31 @@ export default function App() {
       <Button
         text="Increment Progress"
         onClick={() => {
+          if (progress > 1) {
+            setProgress(0);
+            return;
+          }
           setProgress(progress + 0.1);
         }}
       />
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
+          gap: 10,
           marginVertical: 10,
         }}
       >
         <ProgressIndicator progress={progress} />
         <ProgressIndicator progress={progress} variant="linear" />
       </View>
+
+      <Text style={styles.header}>Checkbox</Text>
+      <Checkbox
+        checked={checked}
+        onCheckedChange={(v) => {
+          console.log("onCheckedChange", v);
+          setChecked(v);
+        }}
+      />
 
       <Text style={styles.header}>Floating Action Button</Text>
       <Text style={styles.header}>Text Field</Text>
@@ -137,13 +186,11 @@ export default function App() {
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>
-      <Text style={styles.header}>Checkbox</Text>
       <Text style={styles.header}>Badge</Text>
       <Text style={styles.header}>Time/Date Picker</Text>
       <Text style={styles.header}>LazyColumn</Text>
       <Text style={styles.header}>LazyRow</Text>
       <Text style={styles.header}>LazyGrid</Text>
-      <Text style={styles.header}>Row</Text>
       <Text style={styles.header}>Grid</Text>
       <Text style={styles.header}>Box</Text>
       <Text style={styles.header}>Dividers</Text>
