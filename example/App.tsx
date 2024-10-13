@@ -9,6 +9,7 @@ import {
   ProgressIndicator,
   Row,
   Checkbox,
+  Card,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -123,7 +124,7 @@ export default function App() {
 
       {/* Row Section */}
       <Text style={styles.header}>Row</Text>
-      <Row>
+      <Row style={{ height: 50 }}>
         <Text>1</Text>
         <Text>2</Text>
         <Text>3</Text>
@@ -177,12 +178,43 @@ export default function App() {
           setChecked(v);
         }}
       />
+      <Text style={styles.header}>Card</Text>
+      <Card
+        variant="elevated"
+        modifier={Modifier.padding(10)}
+        style={{
+          width: 200,
+          height: 100,
+        }}
+      >
+        <Text>Elevated Card Content</Text>
+        <Button text="Click me" />
+      </Card>
+      <Card
+        variant="filled"
+        style={{
+          width: 200,
+          height: 100,
+        }}
+      >
+        <Text>Filled Card Content</Text>
+        <Button text="Click me" />
+      </Card>
+      <Card
+        variant="outlined"
+        style={{
+          width: 200,
+          height: 100,
+        }}
+      >
+        <Text>Outlined Card Content</Text>
+        <Button text="Click me" />
+      </Card>
 
       <Text style={styles.header}>Floating Action Button</Text>
       <Text style={styles.header}>Text Field</Text>
       <Text style={styles.header}>Text</Text>
       <Text style={styles.header}>Chip</Text>
-      <Text style={styles.header}>Card</Text>
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>

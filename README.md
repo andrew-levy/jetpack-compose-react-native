@@ -54,10 +54,10 @@ export default function App() {
 - [x] Progress Indicator (Circular + Linear)
 - [x] Checkbox
 - [x] Other types of [buttons](https://developer.android.com/develop/ui/compose/components/button)
+- [x] Card
 - [ ] Text Field
 - [ ] Text
 - [ ] Chip
-- [ ] Card
 - [ ] Dialog
 - [ ] Bottom Sheet
 - [ ] Snackbar
