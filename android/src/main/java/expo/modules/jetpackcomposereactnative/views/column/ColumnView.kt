@@ -28,9 +28,7 @@ class ColumnView(context: Context, appContext: AppContext) : ExpoView(context, a
             super.addView(child, index)
         } else {
             if (child != null) {
-                println("current size = ${props.value.children.size}")
                 props.value = props.value.copy(children = props.value.children + child)
-                println("new size = ${props.value.children.size}")
             }
         }
     }
