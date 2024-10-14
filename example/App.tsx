@@ -10,6 +10,7 @@ import {
   Row,
   Checkbox,
   Card,
+  Spacer,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -71,7 +72,7 @@ export default function App() {
             variant="elevated"
           />
           <Button
-            text="Floating Action"
+            text="Filled Tonal"
             onClick={() => {
               setCount(count + 1);
             }}
@@ -98,9 +99,16 @@ export default function App() {
           console.log("onCheckedChange", v);
           setChecked(v);
         }}
-        modifier={Modifier.padding(10)
-          .backgroundColor({ color: "red" })
-          .border({ width: 1, color: "black" })}
+        style={{
+          width: 200,
+          height: 100,
+        }}
+        modifier={Modifier.shadow({
+          ambientColor: "black",
+          elevation: 5,
+          shape: "rectangle",
+          spotColor: "black",
+        }).border({ width: 1, color: "green" })}
       />
 
       {/* Slider Section */}
@@ -211,7 +219,18 @@ export default function App() {
         <Button text="Click me" />
       </Card>
 
-      <Text style={styles.header}>Floating Action Button</Text>
+      <Text style={styles.header}>Spacer</Text>
+      <Row
+        modifier={Modifier.fillMaxWidth()}
+        style={{
+          width: "100%",
+        }}
+      >
+        <Text>Before Spacer</Text>
+        <Spacer modifier={Modifier.width(100)} />
+        <Text>After Spacer</Text>
+      </Row>
+
       <Text style={styles.header}>Text Field</Text>
       <Text style={styles.header}>Text</Text>
       <Text style={styles.header}>Chip</Text>
@@ -226,7 +245,6 @@ export default function App() {
       <Text style={styles.header}>Grid</Text>
       <Text style={styles.header}>Box</Text>
       <Text style={styles.header}>Dividers</Text>
-      <Text style={styles.header}>Spacer</Text>
     </ScrollView>
   );
 }

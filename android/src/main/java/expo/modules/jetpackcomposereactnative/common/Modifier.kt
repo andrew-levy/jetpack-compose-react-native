@@ -14,13 +14,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
+import androidx.core.graphics.toColorInt
 
 typealias ModifierProp = List<Map<String, Any>>
 
@@ -35,77 +33,93 @@ fun ModifierProp.toModifier(): Modifier {
                         modifiers = modifiers.then(Modifier.padding(value.toDouble().dp))
                     }
                 }
+
                 "width" -> {
                     if (value is Number) {
                         modifiers = modifiers.then(Modifier.width(value.toDouble().dp))
                     }
                 }
+
                 "height" -> {
                     if (value is Number) {
                         modifiers = modifiers.then(Modifier.height(value.toDouble().dp))
                     }
                 }
+
                 "size" -> {
                     if (value is Number) {
                         modifiers = modifiers.then(Modifier.size(value.toDouble().dp))
                     }
                 }
+
                 "fillMaxHeight" -> {
                     modifiers = modifiers.then(Modifier.fillMaxHeight())
                 }
+
                 "fillMaxWidth" -> {
                     modifiers = modifiers.then(Modifier.fillMaxWidth())
                 }
+
                 "fillMaxSize" -> {
                     modifiers = modifiers.then(Modifier.fillMaxSize())
                 }
+
                 "border" -> {
                     if (value is Map<*, *>) {
-                        val width = value["width"] as? Dp
-                        val brush = value["brush"] as? Brush
-                        val color = value["color"] as? Color
-                        val shape = value["shape"] as? Shape ?: RectangleShape
+                        val width = value["width"] as? Double ?: 1.0
+                        val color = value["color"] as? String ?: "#000"
 
-                        if (width != null && brush != null) {
-                            modifiers = modifiers.then(Modifier.border(width, brush, shape))
-                        } else if (width != null && color != null) {
-                            modifiers = modifiers.then(Modifier.border(width, color, shape))
-                        }
+                        modifiers = modifiers.then(
+                            Modifier.border(
+                                width = width.dp,
+                                color = Color(color.toColorInt()),
+                                shape = RectangleShape
+                            )
+                        )
                     }
                 }
+
                 "alpha" -> {
                     if (value is Float) {
                         modifiers = modifiers.then(Modifier.alpha(value))
                     }
                 }
+
                 "backgroundColor" -> {
                     if (value is Map<*, *>) {
-                        val color = value["color"] as? Color ?: Color.Transparent
-                        val shape = value["shape"] as? Shape ?: RectangleShape
-                        modifiers = modifiers.then(Modifier.background(color, shape))
+                        val color = value["color"] as? String ?: ""
+                        modifiers = modifiers.then(
+                            Modifier.background(
+                                Color(color.toColorInt()),
+                                RectangleShape
+                            )
+                        )
                     }
                 }
-                "backgroundBrush" -> {
-                    if (value is Map<*, *>) {
-                        val brush = value["brush"] as? Brush ?: SolidColor(Color.Transparent)
-                        val shape = value["shape"] as? Shape ?: RectangleShape
-                        val alpha = value["alpha"] as? Float ?: 1f
-                        modifiers = modifiers.then(Modifier.background(brush, shape, alpha))
-                    }
-                }
+
                 "clipToBounds" -> {
                     modifiers = modifiers.then(Modifier.clipToBounds())
                 }
+
                 "shadow" -> {
                     if (value is Map<*, *>) {
-                        val elevation = value["elevation"] as? Dp ?: 0.dp
+                        val elevation = value["elevation"] as? Double ?: 0.0
                         val shape = value["shape"] as? Shape ?: RectangleShape
                         val clip = value["clip"] as? Boolean ?: false
-                        val ambientColor = value["ambientColor"] as? Color ?: Color.Black
-                        val spotColor = value["spotColor"] as? Color ?: Color.Black
-                        modifiers = modifiers.then(Modifier.shadow(elevation, shape, clip, ambientColor, spotColor))
+                        val ambientColor = value["ambientColor"] as? String ?: "#000"
+                        val spotColor = value["spotColor"] as? String ?: "#000"
+                        modifiers = modifiers.then(
+                            Modifier.shadow(
+                                elevation.dp,
+                                shape,
+                                clip,
+                                Color(ambientColor.toColorInt()),
+                                Color(spotColor.toColorInt())
+                            )
+                        )
                     }
                 }
+
                 "zIndex" -> {
                     if (value is Number) {
                         modifiers = modifiers.then(Modifier.zIndex(value.toFloat()))

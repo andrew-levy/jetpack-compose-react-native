@@ -7,4 +7,5 @@ export { Row } from "./views/Row/Row";
 export { Icon } from "./views/Icon/Icon";
 export { ProgressIndicator } from "./views/ProgressIndicator/ProgressIndicator";
 export { Card } from "./views/Card/Card";
+export { Spacer } from "./views/Spacer/Spacer";
 export { Modifier } from "./utils/modifier";
