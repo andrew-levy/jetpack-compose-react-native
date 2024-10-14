@@ -55,6 +55,7 @@ export default function App() {
 - [x] Checkbox
 - [x] Other types of [buttons](https://developer.android.com/develop/ui/compose/components/button)
 - [x] Card
+- [x] Spacer
 - [ ] Text Field
 - [ ] Text
 - [ ] Chip
@@ -64,11 +65,9 @@ export default function App() {
 - [ ] Badge
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
-- [ ] LazyColumn
-- [ ] LazyRow
-- [ ] LazyGrid
+- [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components)
 - [ ] Grid
 - [ ] Box
-- [ ] Dividers
-- [ ] Spacer
+- [ ] Horizontal Divider
+- [ ] Vertical Divider
 - [ ] More modifiers!
