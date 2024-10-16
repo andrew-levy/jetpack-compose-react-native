@@ -11,6 +11,7 @@ import {
   Checkbox,
   Card,
   Spacer,
+  Chip,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -19,6 +20,8 @@ export default function App() {
   const [checked, setChecked] = React.useState(true);
   const [sliderValue, setSliderValue] = React.useState(0.5);
   const [progress, setProgress] = React.useState(0.5);
+  const [filterChipSelected, setFilterChipSelected] = React.useState(false);
+  const [inputChipSelected, setInputChipSelected] = React.useState(false);
 
   return (
     <ScrollView
@@ -230,10 +233,35 @@ export default function App() {
         <Spacer modifier={Modifier.width(100)} />
         <Text>After Spacer</Text>
       </Row>
+      <Text style={styles.header}>Chip</Text>
+      <Chip
+        variant="assist"
+        labelText="Assist"
+        leadingIcon="person"
+        trailingIcon="close"
+      />
+      <Chip
+        variant="input"
+        labelText="Input"
+        leadingIcon={inputChipSelected ? "check" : undefined}
+        selected={inputChipSelected}
+        onClick={() => {
+          setInputChipSelected(!inputChipSelected);
+        }}
+      />
+      <Chip
+        variant="filter"
+        labelText="Filter"
+        trailingIcon="box"
+        selected={filterChipSelected}
+        onClick={() => {
+          setFilterChipSelected(!filterChipSelected);
+        }}
+      />
+      <Chip variant="suggestion" labelText="Suggestion" />
 
       <Text style={styles.header}>Text Field</Text>
       <Text style={styles.header}>Text</Text>
-      <Text style={styles.header}>Chip</Text>
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>

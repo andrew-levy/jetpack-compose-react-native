@@ -11,7 +11,8 @@
       "expo.modules.jetpackcomposereactnative.views.progress_indicator.ProgressIndicatorModule",
       "expo.modules.jetpackcomposereactnative.views.checkbox.CheckboxModule",
       "expo.modules.jetpackcomposereactnative.views.card.CardModule",
-      "expo.modules.jetpackcomposereactnative.views.spacer.SpacerModule"
+      "expo.modules.jetpackcomposereactnative.views.spacer.SpacerModule",
+      "expo.modules.jetpackcomposereactnative.views.chip.ChipModule"
     ]
   }
 }
