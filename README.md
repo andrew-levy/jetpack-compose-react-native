@@ -56,9 +56,9 @@ export default function App() {
 - [x] Other types of [buttons](https://developer.android.com/develop/ui/compose/components/button)
 - [x] Card
 - [x] Spacer
+- [x] Chip
 - [ ] Text Field
 - [ ] Text
-- [ ] Chip
 - [ ] Dialog
 - [ ] Bottom Sheet
 - [ ] Snackbar
