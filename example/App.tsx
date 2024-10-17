@@ -12,6 +12,8 @@ import {
   Card,
   Spacer,
   Chip,
+  BadgedBox,
+  Badge,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -41,6 +43,7 @@ export default function App() {
       >
         Jetpack Compose React Native
       </Text>
+
       {/* Button Section */}
       <Text style={styles.header}>Button</Text>
       <View style={{ flexDirection: "row" }}>
@@ -131,6 +134,7 @@ export default function App() {
         <Text>1</Text>
         <Text>2</Text>
         <Text>3</Text>
+        <Text>4</Text>
       </Column>
 
       {/* Row Section */}
@@ -260,12 +264,23 @@ export default function App() {
       />
       <Chip variant="suggestion" labelText="Suggestion" />
 
+      <Text style={styles.header}>Badge</Text>
+      <BadgedBox
+        modifier={Modifier.width(40)}
+        badge={<Badge content="Hello" />}
+      >
+        <Icon
+          name="notifications"
+          theme="filled"
+          contentDescription="notifications icon"
+        />
+      </BadgedBox>
+
       <Text style={styles.header}>Text Field</Text>
       <Text style={styles.header}>Text</Text>
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>
-      <Text style={styles.header}>Badge</Text>
       <Text style={styles.header}>Time/Date Picker</Text>
       <Text style={styles.header}>LazyColumn</Text>
       <Text style={styles.header}>LazyRow</Text>
