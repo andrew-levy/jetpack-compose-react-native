@@ -14,6 +14,8 @@ import {
   Chip,
   BadgedBox,
   Badge,
+  HorizontalDivider,
+  VerticalDivider,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -276,6 +278,18 @@ export default function App() {
         />
       </BadgedBox>
 
+      <Text style={styles.header}>Dividers</Text>
+      <Column
+        style={{
+          height: 300,
+        }}
+      >
+        <Text>Item 1</Text>
+        <HorizontalDivider />
+        <Text>Item 2</Text>
+        <HorizontalDivider />
+      </Column>
+
       <Text style={styles.header}>Text Field</Text>
       <Text style={styles.header}>Text</Text>
       <Text style={styles.header}>Dialog</Text>
@@ -287,7 +301,6 @@ export default function App() {
       <Text style={styles.header}>LazyGrid</Text>
       <Text style={styles.header}>Grid</Text>
       <Text style={styles.header}>Box</Text>
-      <Text style={styles.header}>Dividers</Text>
     </ScrollView>
   );
 }

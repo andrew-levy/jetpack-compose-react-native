@@ -11,4 +11,5 @@ export { Spacer } from "./views/Spacer/Spacer";
 export { Chip } from "./views/Chip/Chip";
 export { Badge } from "./views/Badge/Badge";
 export { BadgedBox } from "./views/BadgedBox/BadgedBox";
+export { HorizontalDivider, VerticalDivider } from "./views/Divider/Divider";
 export { Modifier } from "./utils/modifier";

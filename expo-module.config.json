@@ -14,7 +14,8 @@
       "expo.modules.jetpackcomposereactnative.views.spacer.SpacerModule",
       "expo.modules.jetpackcomposereactnative.views.chip.ChipModule",
       "expo.modules.jetpackcomposereactnative.views.badged_box.BadgedBoxModule",
-      "expo.modules.jetpackcomposereactnative.views.badge.BadgeModule"
+      "expo.modules.jetpackcomposereactnative.views.badge.BadgeModule",
+      "expo.modules.jetpackcomposereactnative.views.divider.DividerModule"
     ]
   }
 }

@@ -57,17 +57,17 @@ export default function App() {
 - [x] Card
 - [x] Spacer
 - [x] Chip
+- [x] Badge
+- [x] Horizontal Divider
+- [x] Vertical Divider
 - [ ] Text Field
 - [ ] Text
 - [ ] Dialog
 - [ ] Bottom Sheet
-- [ ] Snackbar
-- [ ] Badge
+- [ ] Snackbarx
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
 - [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components)
 - [ ] Grid
 - [ ] Box
-- [ ] Horizontal Divider
-- [ ] Vertical Divider
 - [ ] More modifiers!
