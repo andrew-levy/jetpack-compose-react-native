@@ -9,4 +9,6 @@ export { ProgressIndicator } from "./views/ProgressIndicator/ProgressIndicator";
 export { Card } from "./views/Card/Card";
 export { Spacer } from "./views/Spacer/Spacer";
 export { Chip } from "./views/Chip/Chip";
+export { Badge } from "./views/Badge/Badge";
+export { BadgedBox } from "./views/BadgedBox/BadgedBox";
 export { Modifier } from "./utils/modifier";
