@@ -12,4 +12,5 @@ export { Chip } from "./views/Chip/Chip";
 export { Badge } from "./views/Badge/Badge";
 export { BadgedBox } from "./views/BadgedBox/BadgedBox";
 export { HorizontalDivider, VerticalDivider } from "./views/Divider/Divider";
+export { TextField } from "./views/TextField/TextField";
 export { Modifier } from "./utils/modifier";

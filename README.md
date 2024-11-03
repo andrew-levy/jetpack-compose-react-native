@@ -4,9 +4,9 @@ _This project is in early development and is not yet ready for use._
 
 ## Getting started
 
-```bash
+<!-- ```bash
 npx expo install jetpack-compose-react-native  # (coming soon)
-```
+``` -->
 
 Add the plugin to your `app.json`. This will allow your Android app to use Jetpack Compose.
 
@@ -60,11 +60,11 @@ export default function App() {
 - [x] Badge
 - [x] Horizontal Divider
 - [x] Vertical Divider
-- [ ] Text Field
+- [x] Text Field
 - [ ] Text
 - [ ] Dialog
 - [ ] Bottom Sheet
-- [ ] Snackbarx
+- [ ] Snackbar
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
 - [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components)
