@@ -13,4 +13,5 @@ export { Badge } from "./views/Badge/Badge";
 export { BadgedBox } from "./views/BadgedBox/BadgedBox";
 export { HorizontalDivider, VerticalDivider } from "./views/Divider/Divider";
 export { TextField } from "./views/TextField/TextField";
+export { ModalBottomSheet } from "./views/ModalBottomSheet/ModalBottomSheet";
 export { Modifier } from "./utils/modifier";

@@ -17,6 +17,7 @@ import {
   HorizontalDivider,
   VerticalDivider,
   TextField,
+  ModalBottomSheet,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -28,6 +29,8 @@ export default function App() {
   const [filterChipSelected, setFilterChipSelected] = React.useState(false);
   const [inputChipSelected, setInputChipSelected] = React.useState(false);
   const [text, setText] = React.useState("Hello");
+  const [modalBottomSheetVisible, setModalBottomSheetVisible] =
+    React.useState(false);
 
   return (
     <ScrollView
@@ -304,6 +307,23 @@ export default function App() {
       <Text style={styles.header}>Text</Text>
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
+      <Button
+        text="Show Modal Bottom Sheet"
+        onClick={() => {
+          setModalBottomSheetVisible(true);
+        }}
+      />
+      <ModalBottomSheet
+        isVisible={modalBottomSheetVisible}
+        onDismiss={() => {
+          setModalBottomSheetVisible(false);
+        }}
+      >
+        <Button
+          text="Dismiss"
+          onClick={() => setModalBottomSheetVisible(false)}
+        />
+      </ModalBottomSheet>
       <Text style={styles.header}>Snackbar</Text>
       <Text style={styles.header}>Time/Date Picker</Text>
       <Text style={styles.header}>LazyColumn</Text>
