@@ -16,6 +16,7 @@ import {
   Badge,
   HorizontalDivider,
   VerticalDivider,
+  TextField,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
 
@@ -26,6 +27,7 @@ export default function App() {
   const [progress, setProgress] = React.useState(0.5);
   const [filterChipSelected, setFilterChipSelected] = React.useState(false);
   const [inputChipSelected, setInputChipSelected] = React.useState(false);
+  const [text, setText] = React.useState("Hello");
 
   return (
     <ScrollView
@@ -291,6 +293,14 @@ export default function App() {
       </Column>
 
       <Text style={styles.header}>Text Field</Text>
+      <TextField
+        value={text}
+        onValueChange={(v) => {
+          console.log("new value", v);
+          setText(v);
+        }}
+        label="Enter text"
+      />
       <Text style={styles.header}>Text</Text>
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
