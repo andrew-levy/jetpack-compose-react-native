@@ -58,8 +58,21 @@ class BoxView(context: Context, appContext: AppContext): ExpoView(context, appCo
 
 @Composable
 fun BoxComposable(props: BoxProps) {
+    val alignment = when (props.contentAlignment) {
+        "topStart" -> Alignment.TopStart
+        "topCenter" -> Alignment.TopCenter
+        "topEnd" -> Alignment.TopEnd
+        "centerStart" -> Alignment.CenterStart
+        "center" -> Alignment.Center
+        "centerEnd" -> Alignment.CenterEnd
+        "bottomStart" -> Alignment.BottomStart
+        "bottomCenter" -> Alignment.BottomCenter
+        "bottomEnd" -> Alignment.BottomEnd
+        else -> Alignment.TopStart // Default if null
+    }
+
     Box(
-        contentAlignment = Alignment.Center,
+        contentAlignment = alignment,
         propagateMinConstraints = false,
         modifier = props.modifier.toModifier()
         ) {

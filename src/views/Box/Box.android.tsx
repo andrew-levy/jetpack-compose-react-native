@@ -6,19 +6,19 @@ import { Modifier } from "../../utils/modifier";
 export type BoxProps = {
   style?: ViewStyle;
   modifier?: typeof Modifier;
-  contentAlignment?: "start" | "center" | "end";
+  contentAlignment?: String;
   children?: React.ReactNode;
 };
 
 const NativeView: React.ComponentType<BoxProps> =
   requireNativeViewManager("RowView");
 
-export function Box({ style, ...rest }: BoxProps) {
+export function Box({ style, contentAlignment, ...rest }: BoxProps) {
   return (
     <NativeView
       {...rest}
-      contentAlignment={rest.contentAlignment}
-      style={{ height: "auto", width: "auto", ...(style as any) }}
+      contentAlignment={contentAlignment}
+      style={{ height: "auto", width: "100%", ...(style as any) }}
       modifier={(rest.modifier as any)?.build()}
     />
   );

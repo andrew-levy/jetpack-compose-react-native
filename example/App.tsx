@@ -313,13 +313,7 @@ export default function App() {
       <Text style={styles.header}>Grid</Text>
 
       <Text style={styles.header}>Box</Text>
-      <Box
-        contentAlignment="center"
-        modifier={Modifier.fillMaxWidth()}
-        style={{
-          width: "100%",
-        }}
-      >
+      <Box contentAlignment="topStart" modifier={Modifier.fillMaxWidth()}>
         <Icon
           name="home"
           theme="filled"

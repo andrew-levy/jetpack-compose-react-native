@@ -1,4 +1,4 @@
-package expo.modules.jetpackcomposereactnative.views.divider
+package expo.modules.jetpackcomposereactnative.views.box
 
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.modules.Module
@@ -12,7 +12,7 @@ class BoxModule : Module() {
             Prop("contentAlignment") { view: BoxView, prop: String ->
                 view.updateContentAlignment(prop)
             }
-            Prop("modifier") { view: DividerView, prop: ModifierProp ->
+            Prop("modifier") { view: BoxView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }
         }
