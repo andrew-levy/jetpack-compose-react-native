@@ -11,7 +11,7 @@ export type BoxProps = {
 };
 
 const NativeView: React.ComponentType<BoxProps> =
-  requireNativeViewManager("RowView");
+  requireNativeViewManager("BoxView");
 
 export function Box({ style, contentAlignment, ...rest }: BoxProps) {
   return (

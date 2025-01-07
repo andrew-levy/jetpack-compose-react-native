@@ -313,13 +313,12 @@ export default function App() {
       <Text style={styles.header}>Grid</Text>
 
       <Text style={styles.header}>Box</Text>
-      <Box contentAlignment="topStart" modifier={Modifier.fillMaxWidth()}>
+      <Box contentAlignment="center" modifier={Modifier.fillMaxWidth()}>
         <Icon
           name="home"
           theme="filled"
           contentDescription="notifications icon"
         />
-        <Text>Home</Text>
       </Box>
     </ScrollView>
   );
