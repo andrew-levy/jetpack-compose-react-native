@@ -38,7 +38,7 @@ class LazyColumnView(context: Context, appContext: AppContext) : ExpoView(contex
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
-                LazyColumnComposable(props = props.value)
+                LazyColumnFactory(props = props.value)
             }
             addView(it)
         }
@@ -72,5 +72,18 @@ fun <T: View> LazyColumnComposable(props: ColumnProps) {
                },
            )
        }
+    }
+}
+
+@Composable
+fun LazyColumnFactory(props: ColumnProps) {
+    LazyColumnComposable(
+        viewFactory = { context ->
+            TextView(context).apply {
+                text = "Custom TextView"
+            }
+        }
+    ) {
+        Text("A")
     }
 }
