@@ -1,5 +1,6 @@
 import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 import {
+  Box,
   Button,
   Switch,
   Modifier,
@@ -310,7 +311,22 @@ export default function App() {
       <Text style={styles.header}>LazyRow</Text>
       <Text style={styles.header}>LazyGrid</Text>
       <Text style={styles.header}>Grid</Text>
+
       <Text style={styles.header}>Box</Text>
+      <Box
+        contentAlignment="center"
+        modifier={Modifier.fillMaxWidth()}
+        style={{
+          width: "100%",
+        }}
+      >
+        <Icon
+          name="home"
+          theme="filled"
+          contentDescription="notifications icon"
+        />
+        <Text>Home</Text>
+      </Box>
     </ScrollView>
   );
 }
