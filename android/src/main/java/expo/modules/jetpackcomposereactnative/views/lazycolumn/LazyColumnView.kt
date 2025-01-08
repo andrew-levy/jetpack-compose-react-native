@@ -18,7 +18,7 @@ import expo.modules.kotlin.views.ExpoView
 
 data class LazyColumnProps(
     var children: List<View> = emptyList(),
-    var modifier: ModifierProp = emptyList()
+    var modifier: ModifierProp = emptyList(),
 )
 
 class LazyColumnView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
@@ -52,8 +52,10 @@ class LazyColumnView(context: Context, appContext: AppContext) : ExpoView(contex
 
 @Composable
 fun <T: View> LazyColumnComposable(props: ColumnProps) {
+    val totalItems = props.children.size
+
     LazyColumn(modifier = props.modifier.toModifier()) {
-        items(100) {
+        items(totalItems) {
            AndroidView(
                modifier = Modifier.fillMaxWidth(),
                factory = { context ->
