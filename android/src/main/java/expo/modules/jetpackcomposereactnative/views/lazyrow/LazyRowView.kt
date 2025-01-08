@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -16,13 +16,13 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
 
-data class LazyColumnProps(
+data class LazyRowProps(
     var children: List<View> = emptyList(),
     var modifier: ModifierProp = emptyList(),
 )
 
-class LazyColumnView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
-    private var props = mutableStateOf(LazyColumnProps())
+class LazyRowView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+    private var props = mutableStateOf(LazyRowProps())
 
     override fun addView(child: View?, index: Int) {
         if (child is ComposeView) {
@@ -38,7 +38,7 @@ class LazyColumnView(context: Context, appContext: AppContext) : ExpoView(contex
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
-                LazyColumnFactory(props = props.value)
+                LazyRowFactory(props = props.value)
             }
             addView(it)
         }
@@ -51,10 +51,10 @@ class LazyColumnView(context: Context, appContext: AppContext) : ExpoView(contex
 }
 
 @Composable
-fun <T: View> LazyColumnComposable(props: ColumnProps) {
+fun <T: View> LazyRowComposable(props: ColumnProps) {
     val totalItems = props.children.size
 
-    LazyColumn(modifier = props.modifier.toModifier()) {
+    LazyRow(modifier = props.modifier.toModifier()) {
         items(totalItems) {
            AndroidView(
                modifier = Modifier.fillMaxWidth(),
@@ -78,7 +78,7 @@ fun <T: View> LazyColumnComposable(props: ColumnProps) {
 }
 
 @Composable
-fun LazyColumnFactory(props: ColumnProps) {
+fun LazyRowFactory(props: ColumnProps) {
     LazyColumnComposable(
         viewFactory = { context ->
             TextView(context).apply {
