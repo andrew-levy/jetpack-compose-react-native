@@ -4,13 +4,9 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
@@ -24,7 +20,7 @@ data class BoxProps(
     var contentAlignment: String? = null
 )
 
-class BoxView(context: Context, appContext: AppContext): ExpoView(context, appContext) {
+class BoxView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(BoxProps())
 
     override fun addView(child: View?, index: Int) {
@@ -75,8 +71,8 @@ fun BoxComposable(props: BoxProps) {
         contentAlignment = alignment,
         propagateMinConstraints = false,
         modifier = props.modifier.toModifier()
-        ) {
-        props.children.map { child -> 
+    ) {
+        props.children.map { child ->
             AndroidView(
                 factory = { child },
             )

@@ -6,9 +6,20 @@ import { Modifier } from "../../utils/modifier";
 export type BoxProps = {
   style?: ViewStyle;
   modifier?: typeof Modifier;
-  contentAlignment?: String;
+  contentAlignment?: ContentAlignment;
   children?: React.ReactNode;
 };
+
+type ContentAlignment =
+  | "topStart"
+  | "topCenter"
+  | "topEnd"
+  | "centerStart"
+  | "center"
+  | "centerEnd"
+  | "bottomStart"
+  | "bottomCenter"
+  | "bottomEnd";
 
 const NativeView: React.ComponentType<BoxProps> =
   requireNativeViewManager("BoxView");
