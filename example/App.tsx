@@ -314,8 +314,14 @@ export default function App() {
           <Text key={index}>{index}</Text>
         ))}
       </Column>
-
+      
       <Text style={styles.header}>LazyRow</Text>
+      <Row lazy style={{ height: 50 }}>
+        {Array.from({ length: 100 }).map((_, index) => (
+          <Text key={index}>{index}</Text>
+        ))}
+      </Row>
+
       <Text style={styles.header}>LazyGrid</Text>
       <Text style={styles.header}>Grid</Text>
 
