@@ -19,6 +19,7 @@ import expo.modules.kotlin.views.ExpoView
 data class LazyRowProps(
     var children: List<View> = emptyList(),
     var modifier: ModifierProp = emptyList(),
+    var lastItem: List<View> = emptyList()
 )
 
 class LazyRowView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
@@ -51,41 +52,23 @@ class LazyRowView(context: Context, appContext: AppContext) : ExpoView(context, 
 }
 
 @Composable
-fun <T: View> LazyRowComposable(props: ColumnProps) {
+fun LazyRowComposable(props: ColumnProps) {
     val totalItems = props.children.size
 
     LazyRow(modifier = props.modifier.toModifier()) {
         items(totalItems) {
+           props.children.map { child ->
+            AndroidView(
+                modifier = Modifier.fillMaxWidth(),
+                factory = { child },
+            )
+        }
+       }
+       item {
            AndroidView(
                modifier = Modifier.fillMaxWidth(),
-               factory = { context ->
-                   FrameLayout(context).apply {
-                       addView(viewFactory(context))
-
-                       // Create a ComposeView and add it as a child
-                       val composeView = ComposeView(context)
-                       addView(composeView)
-
-                       // Compose the content into the ComposeView
-                       composeView.setContent {
-                           content()
-                       }
-                   }
-               },
+               factory = { props.lastItem },
            )
        }
-    }
-}
-
-@Composable
-fun LazyRowFactory(props: ColumnProps) {
-    LazyColumnComposable(
-        viewFactory = { context ->
-            TextView(context).apply {
-                text = "Custom TextView"
-            }
-        }
-    ) {
-        Text("A")
     }
 }

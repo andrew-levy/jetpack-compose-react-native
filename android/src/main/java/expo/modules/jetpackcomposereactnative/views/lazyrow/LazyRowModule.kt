@@ -9,6 +9,9 @@ class LazyColumnModule : Module() {
         Name("LazyColumnView")
 
         View(LazyColumnView::class) {
+            Prop("lastItem") { view: LazyColumnView, prop: List<View> ->
+                view.updateLastItem(prop)
+            }
             Prop("modifier") { view: LazyColumnView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }
