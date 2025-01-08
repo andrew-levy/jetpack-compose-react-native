@@ -5,6 +5,7 @@ import { Modifier } from "../../utils/modifier";
 
 export type RowProps = {
   style?: ViewStyle;
+  lazy?: boolean;
   modifier?: typeof Modifier;
   children?: React.ReactNode;
 };
@@ -16,6 +17,7 @@ export function Row({ style, ...rest }: RowProps) {
   return (
     <NativeView
       {...rest}
+      lazy={rest.lazy}
       style={{ height: 100, width: "100%", ...(style as any) }}
       modifier={(rest.modifier as any)?.build()}
     />

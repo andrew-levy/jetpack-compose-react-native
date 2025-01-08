@@ -5,7 +5,6 @@ export { Checkbox } from "./views/Checkbox/Checkbox";
 export { Slider } from "./views/Slider/Slider";
 export { Column } from "./views/Column/Column";
 export { Row } from "./views/Row/Row";
-export { LazyRow } from "./views/LazyRow/LazyRow";
 export { Icon } from "./views/Icon/Icon";
 export { ProgressIndicator } from "./views/ProgressIndicator/ProgressIndicator";
 export { Card } from "./views/Card/Card";
