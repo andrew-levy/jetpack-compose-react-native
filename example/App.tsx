@@ -307,7 +307,14 @@ export default function App() {
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>
       <Text style={styles.header}>Time/Date Picker</Text>
+
       <Text style={styles.header}>LazyColumn</Text>
+      <Column lazy style={{ height: "auto" }}>
+        {Array.from({ length: 20 }).map((_, index) => (
+          <Text key={index}>{index}</Text>
+        ))}
+      </Column>
+
       <Text style={styles.header}>LazyRow</Text>
       <Text style={styles.header}>LazyGrid</Text>
       <Text style={styles.header}>Grid</Text>

@@ -9,7 +9,7 @@ class ColumnModule : Module() {
         Name("ColumnView")
 
         View(ColumnView::class) {
-            Prop("lazy") { view: RowView, prop: Boolean ->
+            Prop("lazy") { view: ColumnView, prop: Boolean ->
                 view.updateLazy(prop)
             }
             Prop("modifier") { view: ColumnView, prop: ModifierProp ->

@@ -77,7 +77,7 @@ fun ColumnComposable(props: ColumnProps) {
 fun LazyColumnComposable(props: ColumnProps) {
     val totalItems = props.children.size
 
-    LazyRow(modifier = props.modifier.toModifier()) {
+    LazyColumn(modifier = props.modifier.toModifier()) {
         items(totalItems) { index ->
             AndroidView(
                 modifier = Modifier.fillMaxWidth(),
