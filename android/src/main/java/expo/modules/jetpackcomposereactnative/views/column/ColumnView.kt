@@ -2,8 +2,10 @@ package expo.modules.jetpackcomposereactnative.views.column
 
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -17,7 +19,9 @@ import expo.modules.kotlin.views.ExpoView
 
 data class ColumnProps(
     var children: List<View> = emptyList(),
-    var modifier: ModifierProp = emptyList()
+    var modifier: ModifierProp = emptyList(),
+    var lazy: Boolean = false,
+    var lastItem: View? = null,
 )
 
 class ColumnView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
@@ -37,10 +41,18 @@ class ColumnView(context: Context, appContext: AppContext) : ExpoView(context, a
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
-                ColumnComposable(props = props.value)
+                 if (props.value.lazy) {
+                    LazyColumnComposable(props = props.value)
+                } else {
+                    ColumnComposable(props = props.value)
+                }
             }
             addView(it)
         }
+    }
+
+    fun updateLazy(lazy: Boolean) {
+        props.value = props.value.copy(lazy = lazy)
     }
 
     fun updateModifier(modifier: ModifierProp) {
@@ -58,5 +70,25 @@ fun ColumnComposable(props: ColumnProps) {
                 factory = { child },
             )
         }
+    }
+}
+
+@Composable
+fun LazyColumnComposable(props: ColumnProps) {
+    val totalItems = props.children.size
+
+    LazyColumn(modifier = props.modifier.toModifier()) {
+        items(totalItems) { index ->
+            AndroidView(
+                modifier = Modifier.fillMaxWidth(),
+                factory = { context -> 
+                    props.children[index].apply {
+                        layoutParams = ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+                    }                    
+                },
+            )
+        }
+        // To be added soon...
+       item {}
     }
 }
