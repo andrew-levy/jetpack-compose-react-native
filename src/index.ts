@@ -1,3 +1,4 @@
+export { Box } from "./views/Box/Box";
 export { Button } from "./views/Button/Button";
 export { Switch } from "./views/Switch/Switch";
 export { Checkbox } from "./views/Checkbox/Checkbox";

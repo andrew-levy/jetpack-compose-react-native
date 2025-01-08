@@ -69,5 +69,5 @@ export default function App() {
 - [ ] Time/Date Picker
 - [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components)
 - [ ] Grid
-- [ ] Box
+- [x] Box
 - [ ] More modifiers!
