@@ -67,7 +67,7 @@ export default function App() {
 - [ ] Snackbar
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
-- [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components)
+- [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components) <h3>WIP<h3>
 - [ ] Grid
 - [x] Box
 - [ ] More modifiers!
