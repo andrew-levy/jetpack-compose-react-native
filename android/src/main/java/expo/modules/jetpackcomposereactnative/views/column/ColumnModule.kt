@@ -9,6 +9,9 @@ class ColumnModule : Module() {
         Name("ColumnView")
 
         View(ColumnView::class) {
+            Prop("lazy") { view: RowView, prop: Boolean ->
+                view.updateLazy(prop)
+            }
             Prop("modifier") { view: ColumnView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }
