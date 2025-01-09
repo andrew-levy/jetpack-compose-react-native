@@ -12,6 +12,18 @@ class VerticalGridModule : Module() {
             Prop("staggered") { view: VerticalGridView, prop: Boolean ->
                 view.updateStaggered(prop)
             }
+            Prop("gridCellsType") { view: VerticalGridView, prop: String ->
+                view.updateGridCellsType(prop)
+            }
+            Prop("size") { view: VerticalGridView, prop: Int ->
+                view.updateSize(prop)
+            }
+            Prop("verticalItemSpacing") { view: VerticalGridView, prop: Int ->
+                view.updateVerticalItemSpacing(prop)
+            }
+            Prop("horizontalArrangement") { view: VerticalGridView, prop: Int ->
+                view.updateHorizontalArrangement(prop)
+            }
             Prop("modifier") { view: VerticalGridView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }

@@ -26,6 +26,11 @@ data class VerticalGridProps (
     var children: List<View> = emptyList(),
     var modifier: ModifierProp = emptyList(),
     var staggered: Boolean = false,
+    var size: Int? = null,
+    var gridCellsType: String? = null,
+    var verticalItemSpacing: Int? = null,
+    var horizontalArrangement: Int? = null,
+    var lastItem: View? = null,
 )
 
 class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
@@ -59,6 +64,22 @@ class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(cont
         props.value = props.value.copy(staggered = staggered)
     }
 
+    fun updateGridCellsType(gridCellsType: String) {
+        props.value = props.value.copy(gridCellsType = gridCellsType)
+    }
+
+    fun updateSize(size: Int) {
+        props.value = props.value.copy(size = size)
+    }
+
+    fun updateVerticalItemSpacing(verticalItemSpacing: Int) {
+        props.value = props.value.copy(verticalItemSpacing = verticalItemSpacing)
+    }
+
+    fun updateHorizontalArrangement(horizontalArrangement: String) {
+        props.value = props.value.copy(horizontalArrangement = horizontalArrangement)
+    }
+
     fun updateModifier(modifier: ModifierProp) {
         props.value = props.value.copy(modifier = modifier)
     }
@@ -67,9 +88,15 @@ class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(cont
 @Composable
 fun VerticalGridComposable(props: VerticalGridProps) {
     val totalItems = props.children.size
+    val gridCellsType = when(props.gridCellsType) {
+        "fixed" -> GridCells.Fixed(props.size ?: 2)
+        "fixedSize" -> GridCells.FixedSize(props.size?.dp ?: 30.dp)
+        "adaptive" -> GridCells.Adaptive(props.size?.dp ?: 30.dp)
+        else -> GridCells.Adaptive(props.size?.dp ?: 30.dp)
+    }
 
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(minSize = 30.dp),
+        columns = gridCellsType,
         modifier = props.modifier.toModifier()
     ) {
         items(totalItems) { index -> 
@@ -90,11 +117,17 @@ fun VerticalGridComposable(props: VerticalGridProps) {
 @Composable
 fun VerticalStaggeredGridComposable(props: VerticalGridProps) {
     val totalItems = props.children.size
+    val gridCellsType = when(props.gridCellsType) {
+        "fixed" -> StaggeredGridCells.Fixed(props.size ?: 2)
+        "fixedSize" -> StaggeredGridCells.FixedSize(props.size?.dp ?: 30.dp)
+        "adaptive" -> StaggeredGridCells.Adaptive(props.size?.dp ?: 30.dp)
+        else -> StaggeredGridCells.Adaptive(props.size?.dp ?: 30.dp)
+    }
 
     LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Adaptive(minSize = 30.dp),
-        verticalItemSpacing = 4.dp,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        columns = gridCellsType,
+        verticalItemSpacing = props.verticalItemSpacing?.dp ?: 4.dp,
+        horizontalArrangement = Arrangement.spacedBy(props.horizontalArrangement?.dp ?: 4.dp),
         modifier = props.modifier.toModifier()
     ) {
         items(totalItems) { index -> 

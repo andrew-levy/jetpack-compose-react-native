@@ -7,6 +7,8 @@ export type VerticalGridProps = {
   style?: ViewStyle;
   staggered?: boolean;
   modifier?: typeof Modifier;
+  size?: number;
+  gridCellsType?: "fixed" | "fixedSize" | "adaptive";
   children?: React.ReactNode;
 };
 
