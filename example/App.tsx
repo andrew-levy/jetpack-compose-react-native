@@ -325,13 +325,13 @@ export default function App() {
 
       <Text style={styles.header}>LazyVerticalGrid</Text>
       <VerticalGrid gridCellsType="fixed" size={5} style={{ height: 250 }}>
-        {Array.from({ length: 100 }).map((_, index) => (
+        {Array.from({ length: 50 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}
       </VerticalGrid>
 
       <Text style={styles.header}>LazyVerticalStaggeredGrid</Text>
-      <VerticalGrid staggered style={{ height: 250 }}>
+      <VerticalGrid staggered spacedBy={20} style={{ height: 250 }}>
         {Array.from({ length: 100 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}

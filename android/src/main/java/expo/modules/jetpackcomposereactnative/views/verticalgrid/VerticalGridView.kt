@@ -29,7 +29,7 @@ data class VerticalGridProps (
     var size: Int? = null,
     var gridCellsType: String? = null,
     var verticalItemSpacing: Int? = null,
-    var horizontalArrangement: Int? = null,
+    var spacedBy: Int? = null,
     var lastItem: View? = null,
 )
 
@@ -76,8 +76,8 @@ class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(cont
         props.value = props.value.copy(verticalItemSpacing = verticalItemSpacing)
     }
 
-    fun updateHorizontalArrangement(horizontalArrangement: String) {
-        props.value = props.value.copy(horizontalArrangement = horizontalArrangement)
+    fun updateSpacedBy(spacedBy: Int) {
+        props.value = props.value.copy(spacedBy = spacedBy)
     }
 
     fun updateModifier(modifier: ModifierProp) {
@@ -127,7 +127,7 @@ fun VerticalStaggeredGridComposable(props: VerticalGridProps) {
     LazyVerticalStaggeredGrid(
         columns = gridCellsType,
         verticalItemSpacing = props.verticalItemSpacing?.dp ?: 4.dp,
-        horizontalArrangement = Arrangement.spacedBy(props.horizontalArrangement?.dp ?: 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(props.spacedBy?.dp ?: 4.dp),
         modifier = props.modifier.toModifier()
     ) {
         items(totalItems) { index -> 

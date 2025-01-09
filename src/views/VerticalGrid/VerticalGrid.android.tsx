@@ -9,6 +9,8 @@ export type VerticalGridProps = {
   modifier?: typeof Modifier;
   size?: number;
   gridCellsType?: "fixed" | "fixedSize" | "adaptive";
+  verticalItemSpacing?: number;
+  spacedBy?: number;
   children?: React.ReactNode;
 };
 

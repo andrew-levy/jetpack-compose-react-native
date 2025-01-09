@@ -21,8 +21,8 @@ class VerticalGridModule : Module() {
             Prop("verticalItemSpacing") { view: VerticalGridView, prop: Int ->
                 view.updateVerticalItemSpacing(prop)
             }
-            Prop("horizontalArrangement") { view: VerticalGridView, prop: Int ->
-                view.updateHorizontalArrangement(prop)
+            Prop("spacedBy") { view: VerticalGridView, prop: Int ->
+                view.updateSpacedBy(prop)
             }
             Prop("modifier") { view: VerticalGridView, prop: ModifierProp ->
                 view.updateModifier(prop)
