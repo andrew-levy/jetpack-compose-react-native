@@ -324,13 +324,21 @@ export default function App() {
       </Row>
 
       <Text style={styles.header}>LazyVerticalGrid</Text>
-      <VerticalGrid style={{ height: 200 }}>
+      <VerticalGrid style={{ height: 250 }}>
         {Array.from({ length: 100 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}
       </VerticalGrid>
 
-      <Text style={styles.header}>Grid</Text>
+      <Text style={styles.header}>LazyVerticalStaggeredGrid</Text>
+      <VerticalGrid staggered style={{ height: 250 }}>
+        {Array.from({ length: 100 }).map((_, index) => (
+          <Text key={index}>{index}</Text>
+        ))}
+      </VerticalGrid>
+
+      <Text style={styles.header}>LazyHorizontalGrid</Text>
+      <Text style={styles.header}>LazyHorizontalStaggeredGrid</Text>
 
       <Text style={styles.header}>Box</Text>
       <Box contentAlignment="bottomEnd" modifier={Modifier.fillMaxWidth()}>

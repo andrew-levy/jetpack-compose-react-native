@@ -55,6 +55,10 @@ class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(cont
         }
     }
 
+    fun updateStaggered(staggered: Boolean) {
+        props.value = props.value.copy(staggered = staggered)
+    }
+
     fun updateModifier(modifier: ModifierProp) {
         props.value = props.value.copy(modifier = modifier)
     }
@@ -88,7 +92,7 @@ fun VerticalStaggeredGridComposable(props: VerticalGridProps) {
     val totalItems = props.children.size
 
     LazyVerticalStaggeredGrid(
-        cells = StaggeredGridCells.Adaptive(minSize = 30.dp),
+        columns = StaggeredGridCells.Adaptive(minSize = 30.dp),
         verticalItemSpacing = 4.dp,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         modifier = props.modifier.toModifier()
