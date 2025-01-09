@@ -4,9 +4,11 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
@@ -86,7 +88,9 @@ fun VerticalStaggeredGridComposable(props: VerticalGridProps) {
     val totalItems = props.children.size
 
     LazyVerticalStaggeredGrid(
-        cells = GridCells.Adaptive(minSize = 30.dp),
+        cells = StaggeredGridCells.Adaptive(minSize = 30.dp),
+        verticalItemSpacing = 4.dp,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
         modifier = props.modifier.toModifier()
     ) {
         items(totalItems) { index -> 
