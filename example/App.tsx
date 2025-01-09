@@ -324,7 +324,7 @@ export default function App() {
       </Row>
 
       <Text style={styles.header}>LazyVerticalGrid</Text>
-      <VerticalGrid>
+      <VerticalGrid style={{ height: 200 }}>
         {Array.from({ length: 100 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}

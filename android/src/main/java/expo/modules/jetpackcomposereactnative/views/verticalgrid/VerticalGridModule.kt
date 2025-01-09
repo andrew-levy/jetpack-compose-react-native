@@ -9,6 +9,9 @@ class VerticalGridModule : Module() {
         Name("VerticalGridView")
 
         View(VerticalGridView::class) {
+            Prop("staggered") { view: VerticalGridView, prop: Boolean ->
+                view.updateStaggered(prop)
+            }
             Prop("modifier") { view: VerticalGridView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }

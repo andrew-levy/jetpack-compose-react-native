@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
@@ -21,7 +22,8 @@ import androidx.compose.material3.Text
 
 data class VerticalGridProps (
     var children: List<View> = emptyList(),
-    var modifier: ModifierProp = emptyList()
+    var modifier: ModifierProp = emptyList(),
+    var staggered: Boolean = false,
 )
 
 class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
@@ -41,7 +43,11 @@ class VerticalGridView(context: Context, appContext: AppContext) : ExpoView(cont
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
-                VerticalGridComposable(props = props.value)
+                if(props.value.staggered) {
+                    VerticalGridComposable(props = props.value)
+                } else {
+                    VerticalStaggeredGridComposable(props = props.value)
+                }
             }
             addView(it)
         }
@@ -58,6 +64,29 @@ fun VerticalGridComposable(props: VerticalGridProps) {
 
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 30.dp),
+        modifier = props.modifier.toModifier()
+    ) {
+        items(totalItems) { index -> 
+            AndroidView(
+                modifier = Modifier.fillMaxWidth(),
+                factory = { context -> 
+                    props.children[index].apply {
+                        layoutParams = ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+                    }                    
+                },
+            ) 
+        }
+        // To be added soon...
+        item {}
+    }
+}
+
+@Composable
+fun VerticalStaggeredGridComposable(props: VerticalGridProps) {
+    val totalItems = props.children.size
+
+    LazyVerticalStaggeredGrid(
+        cells = GridCells.Adaptive(minSize = 30.dp),
         modifier = props.modifier.toModifier()
     ) {
         items(totalItems) { index -> 
