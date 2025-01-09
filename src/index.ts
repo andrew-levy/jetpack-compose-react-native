@@ -14,4 +14,5 @@ export { Badge } from "./views/Badge/Badge";
 export { BadgedBox } from "./views/BadgedBox/BadgedBox";
 export { HorizontalDivider, VerticalDivider } from "./views/Divider/Divider";
 export { TextField } from "./views/TextField/TextField";
+export { VerticalGrid } from "./views/VerticalGrid/VerticalGrid";
 export { Modifier } from "./utils/modifier";

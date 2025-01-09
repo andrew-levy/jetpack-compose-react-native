@@ -1,10 +1,10 @@
-package expo.modules.jetpackcomposereactnative.views.lazyverticalgrid
+package expo.modules.jetpackcomposereactnative.views.verticalgrid
 
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
-class LazyVerticalGridModule : Module() {
+class VerticalGridModule : Module() {
     override fun definition() = ModuleDefinition {
         Name("VerticalGridView")
 

@@ -17,6 +17,7 @@ import {
   Badge,
   HorizontalDivider,
   VerticalDivider,
+  VerticalGrid,
   TextField,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
@@ -322,7 +323,13 @@ export default function App() {
         ))}
       </Row>
 
-      <Text style={styles.header}>LazyGrid</Text>
+      <Text style={styles.header}>LazyVerticalGrid</Text>
+      <VerticalGrid>
+        {Array.from({ length: 100 }).map((_, index) => (
+          <Text key={index}>{index}</Text>
+        ))}
+      </VerticalGrid>
+
       <Text style={styles.header}>Grid</Text>
 
       <Text style={styles.header}>Box</Text>
