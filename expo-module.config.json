@@ -8,6 +8,7 @@
       "expo.modules.jetpackcomposereactnative.views.slider.SliderModule",
       "expo.modules.jetpackcomposereactnative.views.column.ColumnModule",
       "expo.modules.jetpackcomposereactnative.views.row.RowModule",
+      "expo.modules.jetpackcomposereactnative.views.grid.GridModule",
       "expo.modules.jetpackcomposereactnative.views.icon.IconModule",
       "expo.modules.jetpackcomposereactnative.views.progress_indicator.ProgressIndicatorModule",
       "expo.modules.jetpackcomposereactnative.views.checkbox.CheckboxModule",
@@ -17,7 +18,6 @@
       "expo.modules.jetpackcomposereactnative.views.badged_box.BadgedBoxModule",
       "expo.modules.jetpackcomposereactnative.views.badge.BadgeModule",
       "expo.modules.jetpackcomposereactnative.views.divider.DividerModule",
-      "expo.modules.jetpackcomposereactnative.views.verticalgrid.VerticalGridModule",
       "expo.modules.jetpackcomposereactnative.views.textfield.TextFieldModule"
     ]
   }

@@ -1,14 +1,20 @@
-package expo.modules.jetpackcomposereactnative.views.verticalgrid
+package expo.modules.jetpackcomposereactnative.views.grid
 
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
-class VerticalGridModule : Module() {
+class GridModule : Module() {
     override fun definition() = ModuleDefinition {
-        Name("VerticalGridView")
+        Name("GridView")
 
-        View(VerticalGridView::class) {
+        View(GridView::class) {
+            Prop("vertical") { view: GridView, prop: Boolean ->
+                view.updateVertical(prop)
+            }
+            Prop("horizontal") { view: GridView, prop: Boolean ->
+                view.updateHorizontal(prop)
+            }
             Prop("staggered") { view: VerticalGridView, prop: Boolean ->
                 view.updateStaggered(prop)
             }
