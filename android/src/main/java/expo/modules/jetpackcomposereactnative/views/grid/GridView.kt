@@ -54,7 +54,7 @@ class GridView(context: Context, appContext: AppContext) : ExpoView(context, app
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
-                if(props.value.vertical) {
+                if(props.value.vertical == true) {
                     if(props.value.staggered) {
                         VerticalStaggeredGridComposable(props = props.value)
                     } else {
