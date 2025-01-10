@@ -9,6 +9,7 @@ import {
   Icon,
   ProgressIndicator,
   Row,
+  Grid,
   Checkbox,
   Card,
   Spacer,
@@ -17,7 +18,6 @@ import {
   Badge,
   HorizontalDivider,
   VerticalDivider,
-  VerticalGrid,
   TextField,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
@@ -318,29 +318,43 @@ export default function App() {
 
       <Text style={styles.header}>LazyRow</Text>
       <Row lazy style={{ height: 50 }}>
-        {Array.from({ length: 100 }).map((_, index) => (
+        {Array.from({ length: 50 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}
       </Row>
 
       <Text style={styles.header}>LazyVerticalGrid</Text>
-      <VerticalGrid gridCellsType="fixed" size={5} style={{ height: 250 }}>
-        {Array.from({ length: 50 }).map((_, index) => (
+      {/* vertical grid it's by default */}
+      <Grid gridCellsType="fixed" size={5}>
+        {Array.from({ length: 30 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}
-      </VerticalGrid>
+      </Grid>
 
       <Text style={styles.header}>LazyVerticalStaggeredGrid</Text>
-      <VerticalGrid staggered spacedBy={20} style={{ height: 250 }}>
-        {Array.from({ length: 100 }).map((_, index) => (
+      {/* vertical staggered grid it's by default */}
+      <Grid staggered spacedBy={20}>
+        {Array.from({ length: 30 }).map((_, index) => (
           <Text key={index}>{index}</Text>
         ))}
-      </VerticalGrid>
+      </Grid>
 
-      <Text style={styles.header}>Grid</Text>
+      <Text style={styles.header}>LazyHorizontalGrid</Text>
+      <Grid horizontal gridCellsType="adaptive">
+        {Array.from({ length: 30 }).map((_, index) => (
+          <Text key={index}>{index}</Text>
+        ))}
+      </Grid>
+
+      <Text style={styles.header}>LazyHorizontalStaggeredGrid</Text>
+      <Grid horizontal staggered spacedBy={30} style={{ height: 150 }}>
+        {Array.from({ length: 30 }).map((_, index) => (
+          <Text key={index}>{index}</Text>
+        ))}
+      </Grid>
 
       <Text style={styles.header}>Box</Text>
-      <Box contentAlignment="bottomEnd" modifier={Modifier.fillMaxWidth()}>
+      <Box contentAlignment="center" modifier={Modifier.fillMaxWidth()}>
         <Text>Centered Box</Text>
         <Icon
           name="home"

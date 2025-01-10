@@ -27,7 +27,7 @@ import androidx.compose.material3.Text
 data class GridProps (
     var children: List<View> = emptyList(),
     var modifier: ModifierProp = emptyList(),
-    var vertical: Boolean? = true,
+    var vertical: Boolean? = null,
     var horizontal: Boolean? = null,
     var staggered: Boolean = false,
     var size: Int? = null,
@@ -206,8 +206,8 @@ fun HorizontalStaggeredGridComposable(props: GridProps) {
 
     LazyHorizontalStaggeredGrid(
         rows = gridCellsType,
-        verticalItemSpacing = props.verticalItemSpacing?.dp ?: 4.dp,
-        horizontalArrangement = Arrangement.spacedBy(props.spacedBy?.dp ?: 4.dp),
+        horizontalItemSpacing = props.verticalItemSpacing?.dp ?: 4.dp,
+        verticalArrangement = Arrangement.spacedBy(props.spacedBy?.dp ?: 4.dp),
         modifier = props.modifier.toModifier()
     ) {
         items(totalItems) { index -> 

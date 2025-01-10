@@ -15,22 +15,22 @@ class GridModule : Module() {
             Prop("horizontal") { view: GridView, prop: Boolean ->
                 view.updateHorizontal(prop)
             }
-            Prop("staggered") { view: VerticalGridView, prop: Boolean ->
+            Prop("staggered") { view: GridView, prop: Boolean ->
                 view.updateStaggered(prop)
             }
-            Prop("gridCellsType") { view: VerticalGridView, prop: String ->
+            Prop("gridCellsType") { view: GridView, prop: String ->
                 view.updateGridCellsType(prop)
             }
-            Prop("size") { view: VerticalGridView, prop: Int ->
+            Prop("size") { view: GridView, prop: Int ->
                 view.updateSize(prop)
             }
-            Prop("verticalItemSpacing") { view: VerticalGridView, prop: Int ->
+            Prop("verticalItemSpacing") { view: GridView, prop: Int ->
                 view.updateVerticalItemSpacing(prop)
             }
-            Prop("spacedBy") { view: VerticalGridView, prop: Int ->
+            Prop("spacedBy") { view: GridView, prop: Int ->
                 view.updateSpacedBy(prop)
             }
-            Prop("modifier") { view: VerticalGridView, prop: ModifierProp ->
+            Prop("modifier") { view: GridView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }
         }
