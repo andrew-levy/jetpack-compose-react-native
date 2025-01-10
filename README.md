@@ -43,7 +43,7 @@ export default function App() {
 }
 ```
 
-## To Do
+## To Do (WIP)
 
 - [x] Button
 - [x] Switch
@@ -67,7 +67,8 @@ export default function App() {
 - [ ] Snackbar
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
-- [ ] LazyColumn/Row/Grid (just add a `lazy` prop to the existing components) <h3>WIP<h3>
-- [ ] Grid
+- [x] LazyColumn/Row (just add a `lazy` prop to the existing components)
+- [x] LazyGrid (vertical and horizontal props from the same component)
+- [x] LazyStaggeredGrid (vertical and horizontal props from the same component)
 - [x] Box
 - [ ] More modifiers!
