@@ -337,8 +337,7 @@ export default function App() {
         ))}
       </VerticalGrid>
 
-      <Text style={styles.header}>LazyHorizontalGrid</Text>
-      <Text style={styles.header}>LazyHorizontalStaggeredGrid</Text>
+      <Text style={styles.header}>Grid</Text>
 
       <Text style={styles.header}>Box</Text>
       <Box contentAlignment="bottomEnd" modifier={Modifier.fillMaxWidth()}>
