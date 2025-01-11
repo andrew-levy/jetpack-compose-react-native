@@ -45,7 +45,7 @@ export default function App() {
 
 ## Contributors
 
-- [Oliver Lopex](https://x.com/oliverloops)
+- [Oliver Lopez](https://x.com/oliverloops)
 
 ## To Do (WIP)
 
@@ -65,8 +65,8 @@ export default function App() {
 - [x] Horizontal Divider
 - [x] Vertical Divider
 - [x] Text Field
-- [ ] Text
-- [ ] Dialog
+- [x] Text
+- [x] Dialog
 - [ ] Bottom Sheet
 - [ ] Snackbar
 - [ ] Bottom Sheet

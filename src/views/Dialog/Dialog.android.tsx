@@ -12,7 +12,6 @@ export type DialogProps = {
   dismissText?: string;
   tonalElevation?: number;
   modifier?: typeof Modifier;
-  children?: React.ReactNode;
 };
 
 const NativeView: React.ComponentType<DialogProps> =
