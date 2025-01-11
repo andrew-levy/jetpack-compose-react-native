@@ -69,6 +69,14 @@ class DialogView(context: Context, appContext: AppContext) : ExpoView(context, a
         props.value = props.value.copy(tonalElevation = tonalElevation)
     }
 
+    fun updateConfirmText(confirmText: String) {
+        props.value = props.value.copy(confirmText = confirmText)
+    }
+
+    fun updateDismissText(dismissText: String) {
+        props.value = props.value.copy(dismissText = dismissText)
+    }
+
     fun updateModifier(modifier: ModifierProp) {
         props.value = props.value.copy(modifier = modifier)
     }
