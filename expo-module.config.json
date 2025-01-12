@@ -18,7 +18,8 @@
       "expo.modules.jetpackcomposereactnative.views.badged_box.BadgedBoxModule",
       "expo.modules.jetpackcomposereactnative.views.badge.BadgeModule",
       "expo.modules.jetpackcomposereactnative.views.divider.DividerModule",
-      "expo.modules.jetpackcomposereactnative.views.textfield.TextFieldModule"
+      "expo.modules.jetpackcomposereactnative.views.textfield.TextFieldModule",
+      "expo.modules.jetpackcomposereactnative.views.text.TextModule"
     ]
   }
 }

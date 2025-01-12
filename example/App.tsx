@@ -18,6 +18,7 @@ import {
   Badge,
   HorizontalDivider,
   VerticalDivider,
+  Text as JetpackText,
   TextField,
 } from "jetpack-compose-react-native";
 import React, { useEffect } from "react";
@@ -304,6 +305,16 @@ export default function App() {
         label="Enter text"
       />
       <Text style={styles.header}>Text</Text>
+      <JetpackText
+        color="blue"
+        fontWeight="bold"
+        textDecoration="lineThrough"
+        fontSize={20}
+        textAlign="right"
+        modifier={Modifier.alpha(1).border({ color: "red", width: 1 })}
+      >
+        {text}
+      </JetpackText>
       <Text style={styles.header}>Dialog</Text>
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>

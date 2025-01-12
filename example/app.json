@@ -2,6 +2,7 @@
   "expo": {
     "name": "jetpack-compose-react-native-example",
     "slug": "jetpack-compose-react-native-example",
+    "scheme": "jetpack-compose-react-native-example",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,7 +24,8 @@
       "package": "expo.modules.jetpackcomposereactnative.example"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bunder": "metro"
     },
     "plugins": [["../app.plugin.js"]]
   }

@@ -43,6 +43,10 @@ export default function App() {
 }
 ```
 
+## Contributors
+
+- [Oliver Lopex](https://x.com/oliverloops)
+
 ## To Do (WIP)
 
 - [x] Button
