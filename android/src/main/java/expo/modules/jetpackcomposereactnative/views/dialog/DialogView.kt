@@ -22,6 +22,7 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
 import expo.modules.kotlin.viewevent.EventDispatcher
+import expo.modules.kotlin.viewevent.ViewEventCallback
 
 data class DialogProps(
     var children: List<View> = emptyList(),
@@ -85,32 +86,32 @@ class DialogView(context: Context, appContext: AppContext) : ExpoView(context, a
 @Composable
 fun DialogComposable(
     props: DialogProps, 
-    onDismissRequest: () -> Unit, 
-    onConfirmation: () -> Unit
+    onDismissRequest: ViewEventCallback<Map<String, Any>>, 
+    onConfirmation: ViewEventCallback<Map<String, Any>>
     ) {
     val modifier: Modifier = props.modifier.toModifier()
 
     AlertDialog(
-        onDismissRequest = { onDismissRequest() },
+        onDismissRequest = { onDismissRequest(mapOf()) },
+        modifier = modifier,
         icon = {
             if (props.icon != null) {
                 Icon(Icons.Rounded.Favorite, null) 
             }
         },
-        title = { Text(text = props.title) },
-        text = { Text(text = props.text) },
+        title = { Text(props.title) },
+        text = { Text(props.text) },
         shape = AlertDialogDefaults.shape,
-        tonalElevation = props.tonalElevation.dp ?: AlertDialogDefaults.TonalElevation,
-                confirmButton = {
-            TextButton(onClick = { onConfirmation() }) {
+        tonalElevation = props.tonalElevation?.dp ?: AlertDialogDefaults.TonalElevation,
+        confirmButton = {
+            TextButton(onClick = { onConfirmation(mapOf()) }) {
                 Text(props.confirmText ?: "Confirm")
             }
         },
         dismissButton = {
-            TextButton(onClick = { onDismissRequest() }) {
+            TextButton(onClick = { onDismissRequest(mapOf()) }) {
                 Text(props.dismissText ?: "Dismiss")
             }
         }
-        modifier = modifier,
     )
 }
