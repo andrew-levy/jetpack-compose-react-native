@@ -9,7 +9,21 @@ export default function DialogsExample() {
     <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 20 }}>
       <Text style={styles.header}>Dialogs Example</Text>
       {dialogVisible && (
-        <Dialog title="Dialog Title" text="Dialog text description" />
+        <Dialog
+          title="Dialog Title"
+          text="Dialog text description"
+          icon="person"
+          confirmText="Confirm"
+          dismissText="Dismiss"
+          onConfirm={() => {
+            setDialogVisible(false);
+            console.log("Dialog confirmed");
+          }}
+          onDismiss={() => {
+            setDialogVisible(false);
+            console.log("Dialog dismissed");
+          }}
+        />
       )}
       <Button
         text="Show Dialog"

@@ -37,8 +37,8 @@ data class DialogProps(
 
 class DialogView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(DialogProps())
-    private val onDismiss by EventDispatcher()
     private val onConfirm by EventDispatcher()
+    private val onDismiss by EventDispatcher()
 
     init {
         ComposeView(context).also {
@@ -106,7 +106,6 @@ fun DialogComposable(
         confirmButton = {
             TextButton(onClick = { 
                 onConfirmation(mapOf())
-                println("Confirm button clicked") 
             }) {
                 Text(props.confirmText ?: "Confirm")
             }
@@ -114,7 +113,6 @@ fun DialogComposable(
         dismissButton = {
             TextButton(onClick = { 
                 onDismissRequest(mapOf()) 
-                println("Dismiss button clicked") 
             }) {
                 Text(props.dismissText ?: "Dismiss")
             }

@@ -9,8 +9,7 @@ class DialogModule : Module() {
         Name("DialogView")
 
         View(DialogView::class) {
-            Events("onConfirm")
-            Events("onDismiss")
+            Events("onConfirm", "onDismiss")
             Prop("title") { view: DialogView, prop: String ->
                 view.updateTitle(prop)
             }
