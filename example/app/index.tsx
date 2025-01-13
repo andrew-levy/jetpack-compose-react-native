@@ -19,6 +19,7 @@ const examples = [
   "texts",
   "grids",
   "boxes",
+  "dialogs",
 ];
 
 export default function Home() {

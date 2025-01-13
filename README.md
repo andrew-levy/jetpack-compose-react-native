@@ -67,7 +67,7 @@ export default function App() {
 - [x] Text Field
 - [ ] Text
 - [x] Dialog
-- [x] Text
+- [ ] Text
 - [ ] Bottom Sheet
 - [ ] Snackbar
 - [ ] Bottom Sheet
