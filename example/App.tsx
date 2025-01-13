@@ -16,21 +16,23 @@ import {
   Chip,
   BadgedBox,
   Badge,
+  Dialog,
   HorizontalDivider,
   VerticalDivider,
-  Text as JetpackText,
   TextField,
+  Text as JetpackText,
 } from "jetpack-compose-react-native";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
-  const [count, setCount] = React.useState(0);
-  const [checked, setChecked] = React.useState(true);
-  const [sliderValue, setSliderValue] = React.useState(0.5);
+  const [count, setCount] = useState(0);
+  const [checked, setChecked] = useState(true);
+  const [sliderValue, setSliderValue] = useState(0.5);
   const [progress, setProgress] = React.useState(0.5);
-  const [filterChipSelected, setFilterChipSelected] = React.useState(false);
-  const [inputChipSelected, setInputChipSelected] = React.useState(false);
-  const [text, setText] = React.useState("Hello");
+  const [filterChipSelected, setFilterChipSelected] = useState(false);
+  const [inputChipSelected, setInputChipSelected] = useState(false);
+  const [text, setText] = useState("Hello");
+  const [dialogVisible, setDialogVisible] = useState(false);
 
   return (
     <ScrollView
@@ -315,7 +317,18 @@ export default function App() {
       >
         {text}
       </JetpackText>
+
       <Text style={styles.header}>Dialog</Text>
+      {dialogVisible && (
+        <Dialog title="Dialog Title" text="Dialog text description" />
+      )}
+      <Button
+        text="Show Dialog"
+        onClick={() => {
+          setDialogVisible(true);
+        }}
+      />
+
       <Text style={styles.header}>Bottom Sheet</Text>
       <Text style={styles.header}>Snackbar</Text>
       <Text style={styles.header}>Time/Date Picker</Text>
