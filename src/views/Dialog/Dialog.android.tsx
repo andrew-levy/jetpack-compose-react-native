@@ -11,16 +11,20 @@ export type DialogProps = {
   confirmText?: string;
   dismissText?: string;
   tonalElevation?: number;
+  onDismiss?: () => void;
+  onConfirm?: () => void;
   modifier?: typeof Modifier;
 };
 
 const NativeView: React.ComponentType<DialogProps> =
   requireNativeViewManager("DialogView");
 
-export function Dialog({ style, ...rest }: DialogProps) {
+export function Dialog({ style, onDismiss, onConfirm, ...rest }: DialogProps) {
   return (
     <NativeView
       {...rest}
+      onConfirm={onConfirm}
+      onDismiss={onDismiss}
       style={{ height: "auto", width: "auto", ...(style as any) }}
       modifier={(rest.modifier as any)?.build()}
     />

@@ -104,12 +104,18 @@ fun DialogComposable(
         shape = AlertDialogDefaults.shape,
         tonalElevation = props.tonalElevation?.dp ?: AlertDialogDefaults.TonalElevation,
         confirmButton = {
-            TextButton(onClick = { onConfirmation(mapOf()) }) {
+            TextButton(onClick = { 
+                onConfirmation(mapOf())
+                println("Confirm button clicked") 
+            }) {
                 Text(props.confirmText ?: "Confirm")
             }
         },
         dismissButton = {
-            TextButton(onClick = { onDismissRequest(mapOf()) }) {
+            TextButton(onClick = { 
+                onDismissRequest(mapOf()) 
+                println("Dismiss button clicked") 
+            }) {
                 Text(props.dismissText ?: "Dismiss")
             }
         }
