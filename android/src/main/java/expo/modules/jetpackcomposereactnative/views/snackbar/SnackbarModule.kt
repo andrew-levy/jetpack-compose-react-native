@@ -9,9 +9,12 @@ class SnackbarModule : Module() {
         Name("SnackbarView")
 
         View(SnackbarView::class) {
-            Events("onAction", "onDismiss")
+            Events("onActionPerformed", "onDismissed")
             Prop("message") { view: SnackbarView, prop: String ->
                 view.updateMessage(prop)
+            }
+            Prop("show") { view: SnackbarView, prop: Boolean ->
+                view.updateShow(prop)
             }
             Prop("actionLabel") { view: SnackbarView, prop: String ->
                 view.updateActionLabel(prop)

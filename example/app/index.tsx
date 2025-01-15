@@ -1,5 +1,12 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { Link } from "expo-router";
+import { Column } from "jetpack-compose-react-native/views/Column/Column.android";
 
 const examples = [
   "buttons",

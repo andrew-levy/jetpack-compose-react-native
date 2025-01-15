@@ -7,26 +7,20 @@ export type SnackbarProps = {
   style?: ViewStyle;
   message: string;
   actionLabel?: string;
-  onAction?: () => void;
-  onDismiss: () => void;
+  onActionPerformed?: () => void;
+  onDismiss?: () => void;
+  show: boolean;
   modifier?: typeof Modifier;
 };
 
 const NativeView: React.ComponentType<SnackbarProps> =
   requireNativeViewManager("SnackbarView");
 
-export function Snackbar({
-  style,
-  onAction,
-  onDismiss,
-  ...rest
-}: SnackbarProps) {
+export function Snackbar({ style, ...rest }: SnackbarProps) {
   return (
     <NativeView
       {...rest}
-      onAction={onAction}
-      onDismiss={onDismiss}
-      style={{ height: "auto", width: "auto", ...(style as any) }}
+      style={{ height: 200, width: 300, ...(style as any) }}
       modifier={(rest.modifier as any)?.build()}
     />
   );
