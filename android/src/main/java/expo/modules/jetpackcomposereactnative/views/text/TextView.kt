@@ -6,7 +6,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -17,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
+import expo.modules.jetpackcomposereactnative.common.parseComposeColor
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
@@ -121,7 +121,7 @@ fun TextComposable(props: TextProps) {
     Text(
         text = props.text,
         modifier = props.modifier.toModifier(),
-        color = props.color?.let { parseColor(it) } ?: Color.Unspecified,
+        color = props.color?.let { parseComposeColor(it) } ?: Color.Unspecified,
         fontSize = props.fontSize?.sp ?: TextUnit.Unspecified,
         fontStyle = when (props.fontStyle) {
             "italic" -> FontStyle.Italic
@@ -163,10 +163,3 @@ fun TextComposable(props: TextProps) {
     )
 }
 
-private fun parseColor(colorString: String): Color {
-    return try {
-        Color(android.graphics.Color.parseColor(colorString))
-    } catch (e: Exception) {
-        Color.Unspecified
-    }
-}

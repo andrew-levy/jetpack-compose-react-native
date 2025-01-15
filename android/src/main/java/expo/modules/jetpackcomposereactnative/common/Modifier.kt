@@ -1,7 +1,5 @@
 package expo.modules.jetpackcomposereactnative.common
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
@@ -19,14 +17,11 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.zIndex
-import expo.modules.kotlin.types.ColorTypeConverter
 
 typealias ModifierProp = List<Map<String, Any>>
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun ModifierProp.toModifier(): Modifier {
     var modifiers: Modifier = Modifier
-    val colorTypeConverter = ColorTypeConverter(false)
 
     forEach { map ->
         map.forEach { (key, value) ->
@@ -75,7 +70,7 @@ fun ModifierProp.toModifier(): Modifier {
                         modifiers = modifiers.then(
                             Modifier.border(
                                 width = width.dp,
-                                color = colorTypeConverter.convertToComposeColor(color),
+                                color = parseComposeColor(color),
                                 shape = RectangleShape
                             )
                         )
@@ -93,7 +88,7 @@ fun ModifierProp.toModifier(): Modifier {
                         val color = value["color"] as? String ?: ""
                         modifiers = modifiers.then(
                             Modifier.background(
-                                colorTypeConverter.convertToComposeColor(color),
+                                parseComposeColor(color),
                                 RectangleShape
                             )
                         )
@@ -116,8 +111,8 @@ fun ModifierProp.toModifier(): Modifier {
                                 elevation.dp,
                                 shape,
                                 clip,
-                                colorTypeConverter.convertToComposeColor(ambientColor),
-                                colorTypeConverter.convertToComposeColor(spotColor)
+                                parseComposeColor(ambientColor),
+                                parseComposeColor(spotColor)
                             )
                         )
                     }

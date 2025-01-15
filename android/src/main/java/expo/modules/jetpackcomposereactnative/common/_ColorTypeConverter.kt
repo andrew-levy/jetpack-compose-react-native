@@ -6,6 +6,32 @@ import androidx.compose.ui.graphics.Color
 import expo.modules.kotlin.types.ColorTypeConverter
 import kotlin.math.abs
 
+fun parseComposeColor(color: Any): Color {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        return getColorTypeConverter()?.convertToComposeColor(color) ?: Color.Transparent
+    } else {
+        if (color is String) {
+            parseColorString(color)
+        } else Color.Transparent
+    }
+}
+
+private fun parseColorString(colorString: String): Color {
+    return try {
+        Color(android.graphics.Color.parseColor(colorString))
+    } catch (e: Exception) {
+        Color.Unspecified
+    }
+}
+
+fun getColorTypeConverter(): ColorTypeConverter? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        ColorTypeConverter(false)
+    } else {
+        null
+    }
+}
+
 /**
  * Converts input color to a Compose Color.
  * Handles css names, hex, rgb/a hsl/a
