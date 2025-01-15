@@ -9,9 +9,6 @@ class SnackbarModule : Module() {
         Name("SnackbarView")
 
         View(SnackbarView::class) {
-            Prop("contentAlignment") { view: SnackbarView, prop: String ->
-                view.updateContentAlignment(prop)
-            }
             Prop("modifier") { view: SnackbarView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }
