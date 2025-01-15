@@ -49,7 +49,15 @@ android {
 }
 
 dependencies {
-  def composeBom = platform('androidx.compose:compose-bom:2024.09.03')
+  def COIL_VERSION = "3.0.2"
+
+  implementation("io.coil-kt.coil3:coil:${COIL_VERSION}")
+  implementation("io.coil-kt.coil3:coil-network-okhttp:${COIL_VERSION}")
+  implementation("io.coil-kt.coil3:coil-svg:${COIL_VERSION}")
+
+  implementation 'com.facebook.react:react-android'
+  implementation 'androidx.compose.ui:ui-tooling-preview-android:1.7.6'
+    def composeBom = platform('androidx.compose:compose-bom:2024.09.03')
   implementation composeBom
   androidTestImplementation composeBom
 

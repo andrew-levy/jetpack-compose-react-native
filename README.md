@@ -65,9 +65,9 @@ export default function App() {
 - [x] Horizontal Divider
 - [x] Vertical Divider
 - [x] Text Field
-- [ ] Text
 - [x] Dialog
-- [ ] Text
+- [x] Text
+- [x] Carousel
 - [ ] Bottom Sheet
 - [ ] Snackbar
 - [ ] Bottom Sheet
