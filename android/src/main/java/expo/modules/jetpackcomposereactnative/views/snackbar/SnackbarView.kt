@@ -2,12 +2,16 @@ import expo.modules.jetpackcomposereactnative.views.snackbar
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
@@ -15,16 +19,18 @@ import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
 import expo.modules.kotlin.views.ExpoView
-import kotlinx.coroutines.launch
+import expo.modules.kotlin.viewevent.EventDispatcher
+import expo.modules.kotlin.viewevent.ViewEventCallback
 
 data class SnackbarProps(
-    var children: List<View> = emptyList(),
     var modifier: ModifierProp = emptyList(),
+    var message: String = "Sample text",
+    var actionLabel: String? = null,
 )
 
 class SnackbarView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(SnackbarProps())
-    private val onConfirm by EventDispatcher()
+    private val onAction by EventDispatcher()
     private val onDismiss by EventDispatcher()
 
     init {
@@ -33,12 +39,20 @@ class SnackbarView(context: Context, appContext: AppContext) : ExpoView(context,
             it.setContent {
                 SnackbarComposable(
                     props = props.value, 
-                    onDismissRequest = onDismiss,
-                    onConfirmation = onConfirm
+                    onDismiss = onDismiss,
+                    onAction = onAction
                 )
             }
             addView(it)
         }
+    }
+
+    fun updateMessage(message: String) {
+        props.value = props.value.copy(message = message)
+    }
+
+    fun updateActionLabel(actionLabel: String) {
+        props.value = props.value.copy(actionLabel = actionLabel)
     }
 
     fun updateModifier(modifier: ModifierProp) {
@@ -47,9 +61,39 @@ class SnackbarView(context: Context, appContext: AppContext) : ExpoView(context,
 }
 
 @Composable
-fun SnackbarComposable() {
-    val scope = rememberCoroutineScope()
-    val snackBarHostState = remember { SnackbarHostState() }
+fun SnackbarComposable(
+        props: SnackbarProps, 
+        onAction: ViewEventCallback<Map<String, Any>>,
+        onDismiss: ViewEventCallback<Map<String, Any>>
+    ) {
+    val modifier: Modifier = props.modifier.toModifier()
 
-    SnackbarHost(hostState = snackBarHostState)
+    Snackbar(
+        modifier = modifier,    
+        action = {
+            if(actionLabel != null) {
+                TextButton(
+                    onClick = { onAction(mapOf()) },
+                    colors = ButtonDefaults.textButtonColors(
+                        contentColor = MaterialTheme.colorScheme.inversePrimary
+                    )
+                ) {
+                    Text(props.actionLabel!!)
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
+            }
+        },
+        dismissAction = {
+            IconButton(
+                onClick = { onDismiss(mapOf()) }
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = "Dismiss",
+                )
+            }
+        }
+    ) {
+        Text(props.message)
+    }
 }
