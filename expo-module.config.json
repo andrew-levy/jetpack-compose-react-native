@@ -22,6 +22,7 @@
       "expo.modules.jetpackcomposereactnative.views.text.TextModule",
       "expo.modules.jetpackcomposereactnative.views.dialog.DialogModule",
       "expo.modules.jetpackcomposereactnative.views.textfield.TextFieldModule",
+      "expo.modules.jetpackcomposereactnative.views.snackbar.SnackbarModule",
       "expo.modules.jetpackcomposereactnative.views.image.ImageModule",
       "expo.modules.jetpackcomposereactnative.views.carousel.CarouselModule"
     ]

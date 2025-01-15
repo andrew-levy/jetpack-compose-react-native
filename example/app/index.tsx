@@ -20,6 +20,7 @@ const examples = [
   "grids",
   "boxes",
   "dialogs",
+  "snackbars",
   "images",
   "carousel",
 ];
