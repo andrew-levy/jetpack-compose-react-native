@@ -14,6 +14,8 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
+import expo.modules.jetpackcomposereactnative.views.carousel.CarouselProps
+import expo.modules.jetpackcomposereactnative.views.carousel.CarouselView
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
 
@@ -81,10 +83,10 @@ fun LazyColumnComposable(props: ColumnProps) {
         items(totalItems) { index ->
             AndroidView(
                 modifier = Modifier.fillMaxWidth(),
-                factory = { context -> 
+                factory = { context ->
                     props.children[index].apply {
                         layoutParams = ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-                    }                    
+                    }
                 },
             )
         }

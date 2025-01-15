@@ -20,6 +20,8 @@ const examples = [
   "grids",
   "boxes",
   "dialogs",
+  "images",
+  "carousel",
 ];
 
 export default function Home() {
