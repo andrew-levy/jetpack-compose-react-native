@@ -9,31 +9,40 @@ import {
 
 export default function ColumnsExample() {
   return (
-    <View style={styles.container}>
-      <Carousel style={{ height: 200, width: 400 }}>
-        {/* <Button text="Button 1" /> */}
-        <Image
-          source={require("../assets/gingerbread.webp")}
-          style={{ width: 100, height: 100 }}
-        />
-        <Image
-          source={require("../assets/eclair.jpg")}
-          style={{ width: 100, height: 100 }}
-        />
-        <Image
-          source={require("../assets/cupcake.jpg")}
-          style={{ width: 100, height: 100 }}
+    <Carousel
+      style={{ height: 200, width: 400 }}
+      items={[
+        require("../assets/gingerbread.webp"),
+        require("../assets/eclair.jpg"),
+        require("../assets/cupcake.jpg"),
+        // require("../assets/donut.jpeg"),
+      ]}
+    />
+    // <View style={styles.container}>
+    //   <Carousel style={{ height: 200, width: 400 }}>
+    //     {/* <Button text="Button 1" /> */}
+    //     <Image
+    //       source={require("../assets/gingerbread.webp")}
+    //       style={{ width: 100, height: 100 }}
+    //     />
+    //     <Image
+    //       source={require("../assets/eclair.jpg")}
+    //       style={{ width: 100, height: 100 }}
+    //     />
+    //     <Image
+    //       source={require("../assets/cupcake.jpg")}
+    //       style={{ width: 100, height: 100 }}
 
-          // modifier={Modifier.border({ width: 1, color: "red" })}
-        />
-        <Image
-          source={require("../assets/donut.jpeg")}
-          style={{ width: 100, height: 100 }}
+    //       // modifier={Modifier.border({ width: 1, color: "red" })}
+    //     />
+    //     <Image
+    //       source={require("../assets/donut.jpeg")}
+    //       style={{ width: 100, height: 100 }}
 
-          // modifier={Modifier.border({ width: 1, color: "blue" })}
-        />
-      </Carousel>
-    </View>
+    //       // modifier={Modifier.border({ width: 1, color: "blue" })}
+    //     />
+    //   </Carousel>
+    // </View>
   );
 }
 

@@ -15,7 +15,10 @@ export default function IconsExample() {
       />
       <Image
         source={require("../assets/cupcake.jpg")}
-        modifier={Modifier.border({ width: 1, color: "red" })}
+        modifier={Modifier.border({
+          width: 1,
+          color: "rgba(247, 12, 28, 0.5)",
+        })}
         style={{ width: 100, height: 100 }}
       />
       <Image

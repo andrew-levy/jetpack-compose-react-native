@@ -14,11 +14,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.zIndex
-import androidx.core.graphics.toColorInt
 
 typealias ModifierProp = List<Map<String, Any>>
 
@@ -67,12 +65,12 @@ fun ModifierProp.toModifier(): Modifier {
                 "border" -> {
                     if (value is Map<*, *>) {
                         val width = value["width"] as? Double ?: 1.0
-                        val color = value["color"] as? String ?: "#000"
+                        val color = value["color"] as? String ?: "black"
 
                         modifiers = modifiers.then(
                             Modifier.border(
                                 width = width.dp,
-                                color = Color(color.toColorInt()),
+                                color = parseComposeColor(color),
                                 shape = RectangleShape
                             )
                         )
@@ -90,7 +88,7 @@ fun ModifierProp.toModifier(): Modifier {
                         val color = value["color"] as? String ?: ""
                         modifiers = modifiers.then(
                             Modifier.background(
-                                Color(color.toColorInt()),
+                                parseComposeColor(color),
                                 RectangleShape
                             )
                         )
@@ -113,8 +111,8 @@ fun ModifierProp.toModifier(): Modifier {
                                 elevation.dp,
                                 shape,
                                 clip,
-                                Color(ambientColor.toColorInt()),
-                                Color(spotColor.toColorInt())
+                                parseComposeColor(ambientColor),
+                                parseComposeColor(spotColor)
                             )
                         )
                     }

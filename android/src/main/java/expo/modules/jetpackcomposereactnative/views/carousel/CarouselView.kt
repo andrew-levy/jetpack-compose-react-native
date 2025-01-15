@@ -1,52 +1,50 @@
 package expo.modules.jetpackcomposereactnative.views.carousel
 
 import android.content.Context
-import android.view.View
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.graphics.drawable.Drawable
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.carousel.HorizontalUncontainedCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
+import coil3.compose.rememberAsyncImagePainter
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
 
 data class CarouselProps(
-    val children: List<View> = emptyList(),
+    val items: List<String> = emptyList(),
+    val drawables: List<Drawable> = emptyList(),
     val modifier: ModifierProp = emptyList()
 )
 
 class CarouselView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(CarouselProps())
 
-    override fun addView(child: View?, index: Int) {
-        if (child is ComposeView) {
-            super.addView(child, index)
-        } else {
-            if (child != null) {
-                props.value = props.value.copy(children = props.value.children + child)
-            }
-        }
-    }
-
     init {
         ComposeView(context).also {
-            it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
+            it.layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT) // Allow the content to wrap
             it.setContent {
-                CarouselView(props = props.value, context)
+                CarouselView(props = props.value)
             }
             addView(it)
         }
+    }
+
+    fun updateItems(items: List<String>) {
+        props.value = props.value.copy(items = items)
     }
 
     fun updateModifier(modifier: ModifierProp) {
@@ -55,27 +53,29 @@ class CarouselView(context: Context, appContext: AppContext) : ExpoView(context,
 
 }
 
-
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CarouselView(props: CarouselProps, ctx: Context) {
-    HorizontalUncontainedCarousel(
-        state = rememberCarouselState { props.children.count() },
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(top = 16.dp, bottom = 16.dp),
-        itemWidth = 186.dp,
-        itemSpacing = 8.dp,
-        contentPadding = PaddingValues(start = 16.dp)
-    ) { i ->
-        val item = props.children[i]
-        AndroidView(
+fun CarouselView(props: CarouselProps) {
+    if (props.items.isNotEmpty()) {
+        HorizontalUncontainedCarousel(
+            state = rememberCarouselState { props.items.count() },
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(),
-            factory = { item },
-        )
+                .fillMaxHeight()
+                .padding(top = 16.dp, bottom = 16.dp),
+            itemWidth = 186.dp,
+            itemSpacing = 8.dp,
+            contentPadding = PaddingValues(start = 16.dp)
+        ) { i ->
+            val painter = rememberAsyncImagePainter(model = props.items[i] )
+            Image(painter = painter, contentDescription = null,
+                modifier = Modifier
+                .height(205.dp)
+                .maskClip(MaterialTheme.shapes.extraLarge),
+                contentScale = ContentScale.Crop
+            )
+        }
     }
 }
+
+
