@@ -1,5 +1,7 @@
 package expo.modules.jetpackcomposereactnative.common
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
@@ -14,16 +16,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.zIndex
-import androidx.core.graphics.toColorInt
+import expo.modules.kotlin.types.ColorTypeConverter
 
 typealias ModifierProp = List<Map<String, Any>>
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun ModifierProp.toModifier(): Modifier {
     var modifiers: Modifier = Modifier
+    val colorTypeConverter = ColorTypeConverter(false)
 
     forEach { map ->
         map.forEach { (key, value) ->
@@ -67,12 +70,12 @@ fun ModifierProp.toModifier(): Modifier {
                 "border" -> {
                     if (value is Map<*, *>) {
                         val width = value["width"] as? Double ?: 1.0
-                        val color = value["color"] as? String ?: "#000"
+                        val color = value["color"] as? String ?: "black"
 
                         modifiers = modifiers.then(
                             Modifier.border(
                                 width = width.dp,
-                                color = Color(color.toColorInt()),
+                                color = colorTypeConverter.convertToComposeColor(color),
                                 shape = RectangleShape
                             )
                         )
@@ -90,7 +93,7 @@ fun ModifierProp.toModifier(): Modifier {
                         val color = value["color"] as? String ?: ""
                         modifiers = modifiers.then(
                             Modifier.background(
-                                Color(color.toColorInt()),
+                                colorTypeConverter.convertToComposeColor(color),
                                 RectangleShape
                             )
                         )
@@ -113,8 +116,8 @@ fun ModifierProp.toModifier(): Modifier {
                                 elevation.dp,
                                 shape,
                                 clip,
-                                Color(ambientColor.toColorInt()),
-                                Color(spotColor.toColorInt())
+                                colorTypeConverter.convertToComposeColor(ambientColor),
+                                colorTypeConverter.convertToComposeColor(spotColor)
                             )
                         )
                     }

@@ -9,6 +9,9 @@ class CarouselModule : Module() {
         Name("CarouselView")
 
         View(CarouselView::class) {
+            Prop("items") { view: CarouselView, prop: List<String> ->
+                view.updateItems(prop)
+            }
             Prop("modifier") { view: CarouselView, prop: ModifierProp ->
                 view.updateModifier(prop)
             }
