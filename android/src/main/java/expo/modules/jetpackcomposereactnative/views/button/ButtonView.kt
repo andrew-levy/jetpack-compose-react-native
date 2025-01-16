@@ -3,6 +3,8 @@ package expo.modules.jetpackcomposereactnative.views.button
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
@@ -88,6 +90,12 @@ fun ButtonComposable(props: ButtonProps, onClick: ViewEventCallback<Map<String, 
         ) {
             Text(text = props.text)
         }
+        "extended-floating-action" -> ExtendedFloatingActionButton(
+            text = { Text(text = props.text) },
+            icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+            onClick = { onClick(mapOf()) },
+            modifier = modifier
+        )
         "default" ->  Button(
             onClick = { onClick(mapOf()) },
             modifier = modifier
