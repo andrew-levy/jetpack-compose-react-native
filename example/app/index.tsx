@@ -30,6 +30,7 @@ const examples = [
   "snackbars",
   "images",
   "carousel",
+  "scaffold",
 ];
 
 export default function Home() {
