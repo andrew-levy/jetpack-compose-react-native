@@ -17,6 +17,7 @@ export { Dialog } from "./views/Dialog/Dialog";
 export { HorizontalDivider, VerticalDivider } from "./views/Divider/Divider";
 export { TextField } from "./views/TextField/TextField";
 export { Text } from "./views/Text/Text";
+export { Snackbar } from "./views/Snackbar/Snackbar";
 export { Image } from "./views/Image/Image";
 export { Carousel } from "./views/Carousel/Carousel";
 export { Modifier } from "./utils/modifier";
