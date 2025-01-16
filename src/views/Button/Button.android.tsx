@@ -12,6 +12,7 @@ export type ButtonProps = {
     | "outlined"
     | "text"
     | "floating-action"
+    | "extended-floating-action"
     | "default";
   onClick?: () => void;
   style?: ViewStyle;
