@@ -24,7 +24,8 @@
       "expo.modules.jetpackcomposereactnative.views.textfield.TextFieldModule",
       "expo.modules.jetpackcomposereactnative.views.snackbar.SnackbarModule",
       "expo.modules.jetpackcomposereactnative.views.image.ImageModule",
-      "expo.modules.jetpackcomposereactnative.views.carousel.CarouselModule"
+      "expo.modules.jetpackcomposereactnative.views.carousel.CarouselModule",
+      "expo.modules.jetpackcomposereactnative.views.scaffold.ScaffoldModule"
     ]
   }
 }
