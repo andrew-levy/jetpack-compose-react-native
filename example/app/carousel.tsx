@@ -12,10 +12,12 @@ export default function ColumnsExample() {
     <Carousel
       style={{ height: 200, width: 400 }}
       items={[
+        require("../assets/jellybean.webp"),
+        require("../assets/icecream_sandwich.webp"),
         require("../assets/gingerbread.webp"),
         require("../assets/eclair.jpg"),
         require("../assets/cupcake.jpg"),
-        // require("../assets/donut.jpeg"),
+        require("../assets/donut.jpeg"),
       ]}
     />
     // <View style={styles.container}>

@@ -65,7 +65,7 @@ fun CarouselView(props: CarouselProps) {
                 .padding(top = 16.dp, bottom = 16.dp),
             itemWidth = 186.dp,
             itemSpacing = 8.dp,
-            contentPadding = PaddingValues(start = 16.dp)
+            contentPadding = PaddingValues(horizontal = 16.dp)
         ) { i ->
             val painter = rememberAsyncImagePainter(model = props.items[i] )
             Image(painter = painter, contentDescription = null,
