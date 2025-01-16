@@ -91,7 +91,7 @@ fun ButtonComposable(props: ButtonProps, onClick: ViewEventCallback<Map<String, 
             Text(text = props.text)
         }
         "extended-floating-action" -> ExtendedFloatingActionButton(
-            text = { Text(text = props.text)}
+            text = { Text(text = props.text) },
             icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
             onClick = { onClick(mapOf()) },
             modifier = modifier

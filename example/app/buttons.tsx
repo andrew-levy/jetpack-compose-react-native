@@ -40,10 +40,10 @@ export default function ButtonsExample() {
             modifier={Modifier.padding(5)}
           />
           <Button
+            style={{ height: 60 }}
             text="Extended Floating Action"
             onClick={() => setCount(count + 1)}
             variant="extended-floating-action"
-            modifier={Modifier.padding(5)}
           />
         </View>
       </View>
