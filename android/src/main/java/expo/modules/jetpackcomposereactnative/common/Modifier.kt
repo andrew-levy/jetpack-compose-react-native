@@ -29,8 +29,20 @@ fun ModifierProp.toModifier(): Modifier {
                 "padding" -> {
                     if (value is Number) {
                         modifiers = modifiers.then(Modifier.padding(value.toDouble().dp))
+                    } else if (value is Map<*, *>) {
+                        val horizontal = (value["horizontal"] as? Number)?.toDouble()?.dp ?: 0.dp
+                        val vertical = (value["vertical"] as? Number)?.toDouble()?.dp ?: 0.dp
+                        val top = (value["top"] as? Number)?.toDouble()?.dp ?: vertical
+                        val bottom = (value["bottom"] as? Number)?.toDouble()?.dp ?: vertical
+                        val start = (value["start"] as? Number)?.toDouble()?.dp ?: horizontal
+                        val end = (value["end"] as? Number)?.toDouble()?.dp ?: horizontal
+
+                        modifiers = modifiers.then(
+                            Modifier.padding(start, top, end, bottom)
+                        )
                     }
                 }
+
 
                 "width" -> {
                     if (value is Number) {
@@ -78,8 +90,9 @@ fun ModifierProp.toModifier(): Modifier {
                 }
 
                 "alpha" -> {
-                    if (value is Float) {
-                        modifiers = modifiers.then(Modifier.alpha(value))
+                    if (value is Number) {
+                        val float = value.toFloat()
+                        modifiers = modifiers.then(Modifier.alpha(float))
                     }
                 }
 

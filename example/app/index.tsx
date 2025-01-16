@@ -31,6 +31,7 @@ const examples = [
   "images",
   "carousel",
   "scaffold",
+  "modifiers",
 ];
 
 export default function Home() {

@@ -68,8 +68,7 @@ export default function App() {
 - [x] Dialog
 - [x] Text
 - [x] Carousel
-- [ ] Bottom Sheet
-- [ ] Snackbar
+- [x] Snackbar
 - [ ] Bottom Sheet
 - [ ] Time/Date Picker
 - [x] LazyColumn/Row (just add a `lazy` prop to the existing components)
