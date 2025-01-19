@@ -22,6 +22,8 @@ class SliderView(context: Context, appContext: AppContext) : ExpoView(context, a
     private var props = mutableStateOf(SliderProps())
     private val onValueChange by EventDispatcher()
 
+    override val shouldUseAndroidLayout = true
+
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)

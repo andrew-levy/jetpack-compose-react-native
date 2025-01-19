@@ -1,8 +1,10 @@
 package expo.modules.jetpackcomposereactnative.views.scaffold
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.compose.material.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -10,6 +12,8 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
+import expo.modules.jetpackcomposereactnative.views.icon.IconComposable
+import expo.modules.jetpackcomposereactnative.views.icon.IconProps
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
 
@@ -20,6 +24,8 @@ data class ScaffoldProps(
 
 class ScaffoldView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(ScaffoldProps())
+
+    override val shouldUseAndroidLayout = true
 
     override fun addView(child: View?, index: Int) {
         if (child is ComposeView) {
@@ -46,10 +52,18 @@ class ScaffoldView(context: Context, appContext: AppContext) : ExpoView(context,
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ScaffoldComposable(props: ScaffoldProps) {
     Scaffold(
-        modifier = props.modifier.toModifier()
+        modifier = props.modifier.toModifier(),
+        floatingActionButton = {
+            FloatingActionButton(onClick = { }) {
+                IconComposable(props = IconProps(
+                    name = "favorite"
+                ))
+            }
+        }
     ) {
         props.children.map { child ->
             AndroidView(

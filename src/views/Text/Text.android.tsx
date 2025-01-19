@@ -43,7 +43,7 @@ export function Text({ style, modifier, children, ...props }: TextProps) {
     <NativeView
       style={{
         height: 20,
-        width: 100,
+        width: "100%",
         ...(style as any),
       }}
       modifier={(modifier as any)?.build()}

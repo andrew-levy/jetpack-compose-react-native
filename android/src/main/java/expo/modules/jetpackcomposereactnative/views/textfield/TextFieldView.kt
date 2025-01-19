@@ -27,6 +27,8 @@ class TextFieldView(context: Context, appContext: AppContext) : ExpoView(context
     private var props = mutableStateOf(TextFieldProps())
     private val onValueChange by EventDispatcher()
 
+    override val shouldUseAndroidLayout = true
+
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)

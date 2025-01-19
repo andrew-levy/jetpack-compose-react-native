@@ -3,6 +3,7 @@ package expo.modules.jetpackcomposereactnative.views.carousel
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -33,9 +34,12 @@ data class CarouselProps(
 class CarouselView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(CarouselProps())
 
+    override val shouldUseAndroidLayout = true
+
+
     init {
         ComposeView(context).also {
-            it.layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT) // Allow the content to wrap
+            it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
                 CarouselView(props = props.value)
             }

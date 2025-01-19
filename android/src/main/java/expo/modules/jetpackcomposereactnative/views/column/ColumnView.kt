@@ -29,6 +29,8 @@ data class ColumnProps(
 class ColumnView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(ColumnProps())
 
+    override val shouldUseAndroidLayout = true
+
     override fun addView(child: View?, index: Int) {
         if (child is ComposeView) {
             super.addView(child, index)

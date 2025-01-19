@@ -28,6 +28,8 @@ class DividerView(context: Context, appContext: AppContext) : ExpoView(context, 
     private var props = mutableStateOf(DividerProps())
     private val onDividerClick by EventDispatcher()
 
+    override val shouldUseAndroidLayout = true
+
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap

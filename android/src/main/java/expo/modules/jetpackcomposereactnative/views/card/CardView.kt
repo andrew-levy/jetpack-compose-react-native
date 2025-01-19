@@ -26,6 +26,8 @@ data class CardProps(
 class CardView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(CardProps())
 
+    override val shouldUseAndroidLayout = true
+
     override fun addView(child: View?, index: Int) {
         if (child is ComposeView) {
             super.addView(child, index)

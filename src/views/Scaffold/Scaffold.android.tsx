@@ -1,6 +1,6 @@
 import { requireNativeViewManager } from "expo-modules-core";
 import * as React from "react";
-import { ViewStyle } from "react-native";
+import { ViewStyle, useWindowDimensions } from "react-native";
 import { Modifier } from "../../utils/modifier";
 
 export type ScaffoldProps = {

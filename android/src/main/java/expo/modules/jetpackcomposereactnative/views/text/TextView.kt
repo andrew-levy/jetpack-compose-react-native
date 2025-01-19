@@ -2,6 +2,7 @@ package expo.modules.jetpackcomposereactnative.views.text
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -44,9 +45,11 @@ class TextView(context: Context, appContext: AppContext) : ExpoView(context, app
     private var props = mutableStateOf(TextProps())
     private var composeView: ComposeView? = null
 
+    override val shouldUseAndroidLayout = true
+
     init {
         ComposeView(context).also {
-            it.layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT) // Allow the content to wrap
+            it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
             it.setContent {
                 TextComposable(props = props.value)
             }

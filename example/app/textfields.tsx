@@ -1,5 +1,9 @@
 import { ScrollView, StyleSheet, Text } from "react-native";
-import { TextField } from "jetpack-compose-react-native";
+import {
+  TextField,
+  Text as ComposeText,
+  Modifier,
+} from "jetpack-compose-react-native";
 import React from "react";
 
 export default function TextFieldsExample() {
@@ -16,6 +20,12 @@ export default function TextFieldsExample() {
         }}
         label="Enter text"
       />
+      <ComposeText
+        modifier={Modifier.alpha(0.7).padding(2).border({ width: 1 })}
+        style={{ fontSize: 100, height: 200 }}
+      >
+        {text}
+      </ComposeText>
     </ScrollView>
   );
 }

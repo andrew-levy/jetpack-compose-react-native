@@ -30,6 +30,8 @@ class ChipView(context: Context, appContext: AppContext) : ExpoView(context, app
     private var props = mutableStateOf(ChipProps())
     private val onChipClick by EventDispatcher()
 
+    override val shouldUseAndroidLayout = true
+
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap

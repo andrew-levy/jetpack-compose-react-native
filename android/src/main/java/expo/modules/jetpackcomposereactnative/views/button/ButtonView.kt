@@ -26,6 +26,8 @@ class ButtonView(context: Context, appContext: AppContext) : ExpoView(context, a
     private var props = mutableStateOf(ButtonProps())
     private val onButtonClick by EventDispatcher()
 
+    override val shouldUseAndroidLayout = true
+
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap
