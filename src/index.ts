@@ -22,4 +22,5 @@ export { Snackbar } from "./views/Snackbar/Snackbar";
 export { Image } from "./views/Image/Image";
 export { Carousel } from "./views/Carousel/Carousel";
 export { Scaffold } from "./views/Scaffold/Scaffold";
+export { BottomSheet } from "./views/BottomSheet/BottomSheet";
 export { Modifier } from "./utils/modifier";

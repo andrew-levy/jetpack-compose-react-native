@@ -20,7 +20,9 @@ export function Carousel({
   return (
     <NativeView
       {...rest}
-      items={itemRequires.map((item) => Image.resolveAssetSource(item).uri)}
+      items={itemRequires.map(
+        (item: any) => Image.resolveAssetSource(item).uri
+      )}
       style={{ height: 100, width: "100%", ...(style as any) }}
       modifier={(rest.modifier as any)?.build()}
     />

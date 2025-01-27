@@ -29,8 +29,6 @@ data class RowProps(
 class RowView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(RowProps())
 
-    override val shouldUseAndroidLayout = true
-
     override fun addView(child: View?, index: Int) {
         if (child is ComposeView) {
             super.addView(child, index)

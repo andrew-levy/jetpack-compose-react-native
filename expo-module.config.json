@@ -26,6 +26,7 @@
       "expo.modules.jetpackcomposereactnative.views.snackbar.SnackbarModule",
       "expo.modules.jetpackcomposereactnative.views.image.ImageModule",
       "expo.modules.jetpackcomposereactnative.views.carousel.CarouselModule",
+      "expo.modules.jetpackcomposereactnative.views.bottomsheet.BottomSheetModule",
       "expo.modules.jetpackcomposereactnative.views.scaffold.ScaffoldModule"
     ]
   }

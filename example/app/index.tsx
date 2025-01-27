@@ -32,6 +32,7 @@ const examples = [
   "images",
   "carousel",
   "scaffold",
+  "bottomsheet",
   "modifiers",
 ];
 

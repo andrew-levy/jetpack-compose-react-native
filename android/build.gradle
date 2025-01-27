@@ -17,6 +17,7 @@ if (useManagedAndroidSdkVersions) {
   useDefaultAndroidSdkVersions()
 } else {
   buildscript {
+    ext.kotlin_version = '1.9.24'
     // Simple helper that allows the root project to override versions declared by this library.
     ext.safeExtGet = { prop, fallback ->
       rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
@@ -37,7 +38,7 @@ android {
     compose true
   }
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.14"
+    kotlinCompilerExtensionVersion = "1.5.10"
   }
   defaultConfig {
     versionCode 1

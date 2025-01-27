@@ -20,8 +20,6 @@ class SpacerView(context: Context, appContext: AppContext) : ExpoView(context, a
     private var props = mutableStateOf(SpacerProps())
     private val onSpacerClick by EventDispatcher()
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap

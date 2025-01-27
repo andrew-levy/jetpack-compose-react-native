@@ -40,8 +40,6 @@ class DialogView(context: Context, appContext: AppContext) : ExpoView(context, a
     private val onConfirm by EventDispatcher()
     private val onDismiss by EventDispatcher()
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)

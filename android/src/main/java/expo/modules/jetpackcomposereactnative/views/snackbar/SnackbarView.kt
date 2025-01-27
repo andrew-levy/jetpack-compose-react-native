@@ -33,8 +33,6 @@ class SnackbarView(context: Context, appContext: AppContext) : ExpoView(context,
     private val onActionPerformed by EventDispatcher()
     private val onDismissed by EventDispatcher()
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)

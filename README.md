@@ -47,7 +47,7 @@ export default function App() {
 
 - [Oliver Lopez](https://x.com/oliverloops)
 
-## To Do (WIP)
+## To Do
 
 - [x] Button
 - [x] Switch
@@ -69,10 +69,17 @@ export default function App() {
 - [x] Text
 - [x] Carousel
 - [x] Snackbar
-- [ ] Bottom Sheet
+- [x] Bottom Sheet
 - [x] Time/Date Picker (WIP...)
 - [x] LazyColumn/Row (just add a `lazy` prop to the existing components)
 - [x] LazyGrid (vertical and horizontal props from the same component)
 - [x] LazyStaggeredGrid (vertical and horizontal props from the same component)
 - [x] Box
+
+- ### We're currently adding more (feel free to suggest new composables)
+
+- [ ] DropdownMenu
+- [ ] NavigationRail
+- [ ] SearchBar
+- [ ] LinearWavyProgressIndicator
 - [ ] More modifiers!

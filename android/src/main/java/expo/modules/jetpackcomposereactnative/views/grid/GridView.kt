@@ -40,8 +40,6 @@ data class GridProps (
 class GridView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(GridProps())
 
-    override val shouldUseAndroidLayout = true
-
     override fun addView(child: View?, index: Int) {
         if (child is ComposeView) {
             super.addView(child, index)
