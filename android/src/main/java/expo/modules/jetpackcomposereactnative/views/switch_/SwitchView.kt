@@ -22,8 +22,6 @@ class SwitchView(context: Context, appContext: AppContext) : ExpoView(context, a
     private var props = mutableStateOf(SwitchProps())
     private val onCheckedChange by EventDispatcher()
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)

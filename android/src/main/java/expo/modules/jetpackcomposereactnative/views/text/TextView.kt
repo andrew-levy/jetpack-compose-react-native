@@ -45,8 +45,6 @@ class TextView(context: Context, appContext: AppContext) : ExpoView(context, app
     private var props = mutableStateOf(TextProps())
     private var composeView: ComposeView? = null
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap

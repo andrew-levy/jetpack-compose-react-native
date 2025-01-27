@@ -22,9 +22,6 @@ class CheckboxView(context: Context, appContext: AppContext) : ExpoView(context,
     private var props = mutableStateOf(CheckboxProps())
     private val onCheckedChange by EventDispatcher()
 
-    override val shouldUseAndroidLayout = true
-
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)

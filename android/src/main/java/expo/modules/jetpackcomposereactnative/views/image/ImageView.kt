@@ -22,8 +22,6 @@ class ImageView(context: Context, appContext: AppContext) : ExpoView(context, ap
     private var props = mutableStateOf(ImageProps())
     private var composeView: ComposeView? = null
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(MATCH_PARENT, MATCH_PARENT)

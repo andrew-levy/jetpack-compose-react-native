@@ -22,8 +22,6 @@ data class ProgressIndicatorProps(
 class ProgressIndicatorView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(ProgressIndicatorProps())
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT) // Allow the content to wrap

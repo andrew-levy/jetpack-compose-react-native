@@ -23,8 +23,6 @@ data class IconProps(
 class IconView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     private var props = mutableStateOf(IconProps())
 
-    override val shouldUseAndroidLayout = true
-
     init {
         ComposeView(context).also {
             it.layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
