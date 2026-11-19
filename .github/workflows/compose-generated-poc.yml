@@ -27,6 +27,13 @@ jobs:
         run: node poc/generated-bridge/generate.mjs --check
       - name: Compile generated dispatcher against real Compose dependencies
         run: gradle -p poc/generated-bridge/android-smoke compileDebugKotlin compileDebugAndroidTestKotlin --stacktrace --no-daemon
+      - name: Generate TypeScript and Kotlin directly from KSP classpath discovery
+        run: |
+          MANIFEST=$(find poc/generated-bridge/android-smoke/build/generated/ksp -name compose-api-manifest.json -print -quit)
+          test -n "$MANIFEST"
+          COMPOSE_API_MANIFEST="$MANIFEST" COMPOSE_GENERATED_OUTPUT=/tmp/compose-discovered node poc/generated-bridge/generate.mjs
+          grep -q 'createComposableComponent<TextProps>' /tmp/compose-discovered/components.tsx
+          grep -q 'createComposableComponent<ButtonProps>' /tmp/compose-discovered/components.tsx
   emulator-compose-render:
     needs: compile-generated-compose
     runs-on: ubuntu-latest
