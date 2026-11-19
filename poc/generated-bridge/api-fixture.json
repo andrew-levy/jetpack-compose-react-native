@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "note": "Small manually verified INPUT FIXTURE. Replace with extracted AndroidX symbols; not proof of automatic SDK discovery.",
+  "components": [
+    {
+      "name": "Column",
+      "kotlinFunction": "androidx.compose.foundation.layout.Column",
+      "parameters": [
+        {
+          "name": "modifier",
+          "kind": "modifier",
+          "optional": true
+        }
+      ],
+      "children": true
+    },
+    {
+      "name": "Text",
+      "kotlinFunction": "androidx.compose.material3.Text",
+      "parameters": [
+        {
+          "name": "text",
+          "kind": "string",
+          "optional": false
+        },
+        {
+          "name": "modifier",
+          "kind": "modifier",
+          "optional": true
+        }
+      ],
+      "children": false
+    },
+    {
+      "name": "Button",
+      "kotlinFunction": "androidx.compose.material3.Button",
+      "parameters": [
+        {
+          "name": "onClick",
+          "kind": "event",
+          "optional": false
+        },
+        {
+          "name": "modifier",
+          "kind": "modifier",
+          "optional": true
+        },
+        {
+          "name": "enabled",
+          "kind": "boolean",
+          "optional": true,
+          "default": true
+        }
+      ],
+      "children": true
+    }
+  ]
+}
