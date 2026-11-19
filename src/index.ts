@@ -23,3 +23,9 @@ export { Image } from "./views/Image/Image";
 export { Carousel } from "./views/Carousel/Carousel";
 export { Scaffold } from "./views/Scaffold/Scaffold";
 export { Modifier } from "./utils/modifier";
+
+export * as Generated from "./generated/components";
+export { ComposeHost } from "./generated/runtime/ComposeHost";
+export { createComposableComponent } from "./generated/runtime/createComposableComponent";
+export type { ComposeModifier, ComposableDescription } from "./generated/runtime/createComposableComponent";
+export type { ComposeHostProps } from "./generated/runtime/shared";

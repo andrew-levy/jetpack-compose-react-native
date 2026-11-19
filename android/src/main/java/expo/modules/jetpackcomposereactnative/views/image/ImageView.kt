@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.ComposeView
 import coil3.compose.rememberAsyncImagePainter
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 import expo.modules.jetpackcomposereactnative.common.toModifier
 
 data class ImageProps(
@@ -18,7 +18,7 @@ data class ImageProps(
     var modifier: ModifierProp = emptyList(),
 )
 
-class ImageView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class ImageView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(ImageProps())
     private var composeView: ComposeView? = null
 

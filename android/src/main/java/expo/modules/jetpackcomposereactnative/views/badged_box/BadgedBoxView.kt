@@ -12,7 +12,7 @@ import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.jetpackcomposereactnative.views.badge.BadgeView
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class BadgedBoxProps(
     var children: List<View> = emptyList(),
@@ -20,7 +20,7 @@ data class BadgedBoxProps(
     var modifier: ModifierProp = emptyList()
 )
 
-class BadgedBoxView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class BadgedBoxView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(BadgedBoxProps())
 
     override fun addView(child: View?, index: Int) {

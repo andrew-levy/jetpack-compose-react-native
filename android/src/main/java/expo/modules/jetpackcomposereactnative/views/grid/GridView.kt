@@ -21,7 +21,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 import androidx.compose.material3.Text
 
 data class GridProps (
@@ -37,7 +37,7 @@ data class GridProps (
     var lastItem: View? = null,
 )
 
-class GridView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class GridView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(GridProps())
 
     override val shouldUseAndroidLayout = true

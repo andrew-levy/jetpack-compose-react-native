@@ -14,7 +14,7 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class ButtonProps(
     var text: String = "",
@@ -22,7 +22,7 @@ data class ButtonProps(
     var variant: String = "default"
 )
 
-class ButtonView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class ButtonView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(ButtonProps())
     private val onButtonClick by EventDispatcher()
 

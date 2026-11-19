@@ -12,7 +12,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class BoxProps(
     var children: List<View> = emptyList(),
@@ -20,7 +20,7 @@ data class BoxProps(
     var contentAlignment: String? = null
 )
 
-class BoxView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class BoxView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(BoxProps())
 
     override fun addView(child: View?, index: Int) {

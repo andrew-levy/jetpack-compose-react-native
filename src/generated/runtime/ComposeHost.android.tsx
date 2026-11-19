@@ -1,0 +1,35 @@
+import * as React from "react";
+import { requireNativeViewManager } from "expo-modules-core";
+import { StyleSheet } from "react-native";
+
+import { ComposeHostContext, type ComposeHostProps } from "./shared";
+
+type NativeProps = ComposeHostProps & {
+  onComposeSizeChange: (event: { nativeEvent: { height: number } }) => void;
+};
+let NativeHost: React.ComponentType<NativeProps> | undefined;
+
+const styles = StyleSheet.create({
+  fill: { flex: 1 },
+  measure: { alignSelf: "stretch" },
+});
+
+export function ComposeHost({ children, fitContent = false, style, testID }: ComposeHostProps) {
+  NativeHost ??= requireNativeViewManager<NativeProps>("GeneratedComposeHost");
+  const [height, setHeight] = React.useState(0);
+
+  return (
+    <ComposeHostContext.Provider value>
+      <NativeHost
+        fitContent={fitContent}
+        testID={testID}
+        style={[fitContent ? [styles.measure, { height }] : styles.fill, style]}
+        onComposeSizeChange={({ nativeEvent }) => {
+          if (fitContent) setHeight(nativeEvent.height);
+        }}
+      >
+        {children}
+      </NativeHost>
+    </ComposeHostContext.Provider>
+  );
+}

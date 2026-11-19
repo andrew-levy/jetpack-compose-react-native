@@ -16,7 +16,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.Modifier
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
 import kotlinx.coroutines.launch
@@ -28,7 +28,7 @@ data class SnackbarProps(
     var show: Boolean = false,
 )
 
-class SnackbarView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class SnackbarView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(SnackbarProps())
     private val onActionPerformed by EventDispatcher()
     private val onDismissed by EventDispatcher()

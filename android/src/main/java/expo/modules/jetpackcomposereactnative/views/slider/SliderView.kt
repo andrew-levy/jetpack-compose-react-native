@@ -11,14 +11,14 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class SliderProps(
     var value: Float = 0f,
     var modifier: ModifierProp = emptyList()
 )
 
-class SliderView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class SliderView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(SliderProps())
     private val onValueChange by EventDispatcher()
 

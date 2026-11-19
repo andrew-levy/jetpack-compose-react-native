@@ -1,44 +1,22 @@
-name: Compose Generated PoC
+name: Compose Generated Bridge
+
 on:
   push:
     branches: [poc/generated-compose-bridge]
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
-  compile-generated-compose:
+  verify-generated-bridge:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-node@v4
         with:
-          distribution: temurin
-          java-version: '17'
-      - name: Install Android SDK 35
-        env:
-          ANDROID_HOME: /usr/local/lib/android/sdk
-          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-        run: |
-          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.9'
-      - name: Verify generated outputs
-        run: node poc/generated-bridge/generate.mjs --check
-      - name: Compile generated dispatcher against real Compose dependencies
-        run: gradle -p poc/generated-bridge/android-smoke compileDebugKotlin compileDebugAndroidTestKotlin --stacktrace --no-daemon
-      - name: Generate TypeScript and Kotlin directly from KSP classpath discovery
-        run: |
-          MANIFEST=$(find poc/generated-bridge/android-smoke/build/generated/ksp -name compose-api-manifest.json -print -quit)
-          test -n "$MANIFEST"
-          COMPOSE_API_MANIFEST="$MANIFEST" COMPOSE_GENERATED_OUTPUT=/tmp/compose-discovered node poc/generated-bridge/generate.mjs
-          grep -q 'createComposableComponent<TextProps>' /tmp/compose-discovered/components.tsx
-          grep -q 'createComposableComponent<ButtonProps>' /tmp/compose-discovered/components.tsx
-  emulator-compose-render:
-    needs: compile-generated-compose
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+          node-version: '22'
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -46,11 +24,55 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Exercise nested generated Compose rendering on Android emulator
+      - name: Install Android build tools
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
+      - name: Verify sources generated from AndroidX Compose
+        run: |
+          gradle -p poc/generated-bridge/android-smoke kspDebugKotlin
+          node poc/generated-bridge/generate.mjs --check
+      - name: Discover a new composable without editing the generator
+        run: |
+          probe=poc/generated-bridge/android-smoke/src/debug/kotlin/DiscoveryProbe.kt
+          mkdir -p "$(dirname "$probe")"
+          trap 'rm -f "$probe"' EXIT
+          cat > "$probe" <<'KOTLIN'
+          package composepoc
+          import androidx.compose.runtime.Composable
+          @Composable
+          fun DiscoveryProbe(label: String) {}
+          KOTLIN
+          gradle -p poc/generated-bridge/android-smoke kspDebugKotlin -PcomposePackages=composepoc
+          COMPOSE_GENERATED_OUTPUT="$(mktemp -d)"
+          export COMPOSE_GENERATED_OUTPUT
+          node poc/generated-bridge/generate.mjs
+          grep -q 'export const DiscoveryProbe' "$COMPOSE_GENERATED_OUTPUT/components.tsx"
+          grep -q 'composepoc.DiscoveryProbe(' "$COMPOSE_GENERATED_OUTPUT/ComposableRegistry.kt"
+      - name: Build the library and the Fabric example
+        run: |
+          npm install --ignore-scripts --legacy-peer-deps --package-lock=false
+          npm --prefix example install --legacy-peer-deps --package-lock=false
+          ln -s ../example/node_modules/react-native node_modules/react-native
+          ln -s ../example/node_modules/react node_modules/react
+          npm run build
+          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64 -Pandroid.compileSdkVersion=35
+      - name: Enable Android emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify rendering, updates and JavaScript events on Android
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
           target: google_apis
           arch: x86_64
           disable-animations: true
-          script: gradle -p poc/generated-bridge/android-smoke connectedDebugAndroidTest --stacktrace --no-daemon
+          script: |
+            adb install example/android/app/build/outputs/apk/release/app-release.apk
+            python3 poc/generated-bridge/check-emulator.py || { adb logcat -d -s AndroidRuntime ReactNativeJS > compose-emulator.log; exit 1; }
+      - name: Save emulator diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compose-emulator-log
+          path: compose-emulator.log

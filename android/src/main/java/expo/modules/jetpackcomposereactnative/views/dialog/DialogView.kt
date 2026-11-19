@@ -20,7 +20,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
 
@@ -35,7 +35,7 @@ data class DialogProps(
     var dismissText: String? = null,
 )
 
-class DialogView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class DialogView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(DialogProps())
     private val onConfirm by EventDispatcher()
     private val onDismiss by EventDispatcher()

@@ -10,14 +10,14 @@ import androidx.compose.ui.platform.ComposeView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class BadgeProps(
     var content: String = "",
     var modifier: ModifierProp = emptyList()
 )
 
-class BadgeView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class BadgeView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(BadgeProps())
 
     override val shouldUseAndroidLayout = true

@@ -11,7 +11,7 @@ import androidx.compose.ui.platform.ComposeView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class IconProps(
     var name: String = "",
@@ -20,7 +20,7 @@ data class IconProps(
     var modifier: ModifierProp = emptyList()
 )
 
-class IconView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class IconView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(IconProps())
 
     override val shouldUseAndroidLayout = true

@@ -15,7 +15,7 @@ import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class DividerProps(
     var direction: String = "horizontal",
@@ -24,7 +24,7 @@ data class DividerProps(
     var modifier: ModifierProp = emptyList()
 )
 
-class DividerView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class DividerView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(DividerProps())
     private val onDividerClick by EventDispatcher()
 

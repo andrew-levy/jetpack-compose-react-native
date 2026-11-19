@@ -14,7 +14,7 @@ import expo.modules.jetpackcomposereactnative.views.icon.IconProps
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class ChipProps(
     var labelText: String = "",
@@ -26,7 +26,7 @@ data class ChipProps(
     var enabled: Boolean = true
 )
 
-class ChipView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class ChipView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(ChipProps())
     private val onChipClick by EventDispatcher()
 

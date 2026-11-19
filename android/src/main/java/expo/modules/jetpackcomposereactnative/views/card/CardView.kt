@@ -15,7 +15,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class CardProps(
     var children: List<View> = emptyList(),
@@ -23,7 +23,7 @@ data class CardProps(
     var modifier: ModifierProp = emptyList()
 )
 
-class CardView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class CardView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(CardProps())
 
     override val shouldUseAndroidLayout = true

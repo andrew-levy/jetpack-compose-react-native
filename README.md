@@ -76,3 +76,9 @@ export default function App() {
 - [x] LazyStaggeredGrid (vertical and horizontal props from the same component)
 - [x] Box
 - [ ] More modifiers!
+
+## Generated Compose API
+
+Use `ComposeHost` with components from the `Generated` namespace to render a
+shared Android Compose tree. See the [generated bridge guide](poc/generated-bridge/README.md)
+for usage and source generation.

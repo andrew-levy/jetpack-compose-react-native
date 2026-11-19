@@ -15,14 +15,14 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.jetpackcomposereactnative.views.icon.IconComposable
 import expo.modules.jetpackcomposereactnative.views.icon.IconProps
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class ScaffoldProps(
     var children: List<View> = emptyList(),
     var modifier: ModifierProp = emptyList()
 )
 
-class ScaffoldView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class ScaffoldView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(ScaffoldProps())
 
     override val shouldUseAndroidLayout = true

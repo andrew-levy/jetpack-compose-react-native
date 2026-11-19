@@ -1,15 +1,16 @@
 import { requireNativeViewManager } from "expo-modules-core";
 import * as React from "react";
-import { ViewStyle, Image } from "react-native";
+import { type ImageSourcePropType, type ViewStyle, Image } from "react-native";
 import { Modifier } from "../../utils/modifier";
 
 export type CarouselProps = {
   style?: ViewStyle;
   modifier?: typeof Modifier;
-  items: string[];
+  items: Array<string | ImageSourcePropType>;
 };
 
-const NativeView: React.ComponentType<CarouselProps> =
+type NativeCarouselProps = Omit<CarouselProps, "items"> & { items: string[] };
+const NativeView: React.ComponentType<NativeCarouselProps> =
   requireNativeViewManager("CarouselView");
 
 export function Carousel({
@@ -20,7 +21,7 @@ export function Carousel({
   return (
     <NativeView
       {...rest}
-      items={itemRequires.map((item) => Image.resolveAssetSource(item).uri)}
+      items={itemRequires.map((item) => typeof item === "string" ? item : Image.resolveAssetSource(item).uri)}
       style={{ height: 100, width: "100%", ...(style as any) }}
       modifier={(rest.modifier as any)?.build()}
     />

@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class CarouselProps(
     val items: List<String> = emptyList(),
@@ -31,7 +31,7 @@ data class CarouselProps(
     val modifier: ModifierProp = emptyList()
 )
 
-class CarouselView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class CarouselView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(CarouselProps())
 
     override val shouldUseAndroidLayout = true

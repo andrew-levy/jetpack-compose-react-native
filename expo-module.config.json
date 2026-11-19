@@ -2,6 +2,8 @@
   "platforms": ["android"],
   "android": {
     "modules": [
+      "expo.modules.jetpackcomposereactnative.generated.GeneratedComposeHostModule",
+      "expo.modules.jetpackcomposereactnative.generated.GeneratedComposeNodeModule",
       "expo.modules.jetpackcomposereactnative.views.box.BoxModule",
       "expo.modules.jetpackcomposereactnative.views.button.ButtonModule",
       "expo.modules.jetpackcomposereactnative.views.switch_.SwitchModule",

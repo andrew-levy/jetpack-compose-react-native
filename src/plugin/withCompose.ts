@@ -16,7 +16,7 @@ const withCompose: ConfigPlugin = (config) => {
 
 const mergeBuildGradle = (contents: string) => {
   const dependency = [
-    `      classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10"`,
+    `      classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24"`,
   ];
   return mergeContents({
     src: contents,

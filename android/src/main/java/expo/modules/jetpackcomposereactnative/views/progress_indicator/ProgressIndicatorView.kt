@@ -11,7 +11,7 @@ import androidx.compose.ui.platform.ComposeView
 import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class ProgressIndicatorProps(
     var progress: Float = 0f,
@@ -19,7 +19,7 @@ data class ProgressIndicatorProps(
     var modifier: ModifierProp = emptyList()
 )
 
-class ProgressIndicatorView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class ProgressIndicatorView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(ProgressIndicatorProps())
 
     override val shouldUseAndroidLayout = true

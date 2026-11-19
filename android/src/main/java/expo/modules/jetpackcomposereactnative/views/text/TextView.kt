@@ -20,7 +20,7 @@ import expo.modules.jetpackcomposereactnative.common.ModifierProp
 import expo.modules.jetpackcomposereactnative.common.parseComposeColor
 import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 import java.util.Locale
 
 data class TextProps(
@@ -41,7 +41,7 @@ data class TextProps(
     val minLines: Int? = null
 )
 
-class TextView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class TextView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(TextProps())
     private var composeView: ComposeView? = null
 

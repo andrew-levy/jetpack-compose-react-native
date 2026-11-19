@@ -17,7 +17,7 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.jetpackcomposereactnative.views.carousel.CarouselProps
 import expo.modules.jetpackcomposereactnative.views.carousel.CarouselView
 import expo.modules.kotlin.AppContext
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class ColumnProps(
     var children: List<View> = emptyList(),
@@ -26,7 +26,7 @@ data class ColumnProps(
     var lastItem: View? = null,
 )
 
-class ColumnView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class ColumnView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(ColumnProps())
 
     override val shouldUseAndroidLayout = true

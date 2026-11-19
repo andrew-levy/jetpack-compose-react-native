@@ -11,14 +11,14 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.viewevent.ViewEventCallback
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 
 data class SwitchProps(
     var checked: Boolean = false,
     var modifier: ModifierProp = emptyList()
 )
 
-class SwitchView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class SwitchView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(SwitchProps())
     private val onCheckedChange by EventDispatcher()
 

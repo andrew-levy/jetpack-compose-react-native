@@ -6,7 +6,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.mutableStateOf
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.viewevent.EventDispatcher
-import expo.modules.kotlin.views.ExpoView
+import expo.modules.jetpackcomposereactnative.common.ComposeExpoView
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,7 +23,7 @@ data class TextFieldProps(
     var modifier: ModifierProp = emptyList()
 )
 
-class TextFieldView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+class TextFieldView(context: Context, appContext: AppContext) : ComposeExpoView(context, appContext) {
     private var props = mutableStateOf(TextFieldProps())
     private val onValueChange by EventDispatcher()
 

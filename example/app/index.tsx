@@ -9,6 +9,7 @@ import { Link } from "expo-router";
 import { Column } from "jetpack-compose-react-native/views/Column/Column.android";
 
 const examples = [
+  "generated-compose",
   "buttons",
   "switches",
   "sliders",
