@@ -15,7 +15,12 @@ def wait_for(*labels, absent=(), layout_ready=lambda nodes: True):
         try:
             adb("shell", "uiautomator", "dump", "/sdcard/compose-bridge.xml")
             contents = adb("shell", "cat", "/sdcard/compose-bridge.xml")
-            nodes = {node.get("text"): node for node in ET.fromstring(contents).iter("node")}
+            nodes = {
+                label: node
+                for node in ET.fromstring(contents).iter("node")
+                for label in (node.get("text"), node.get("content-desc"))
+                if label
+            }
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired, ET.ParseError):
             time.sleep(1)
             continue
@@ -38,9 +43,8 @@ def tap(node):
     adb("shell", "input", "tap", str((left + right) // 2), str((top + bottom) // 2))
 
 
-adb("shell", "am", "start", "-W", "-a", "android.intent.action.VIEW", "-d",
-    "jetpack-compose-react-native-example:///generated-compose",
-    "expo.modules.jetpackcomposereactnative.example")
+print(adb("shell", "am", "start", "-W", "-n",
+          "expo.modules.jetpackcomposereactnative.example/.MainActivity"))
 def following_view_top(nodes):
     return bounds(nodes["Below Compose"])[1]
 

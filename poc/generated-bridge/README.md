@@ -57,5 +57,6 @@ node poc/generated-bridge/generate.mjs --check
 
 The `generated-compose` route in the example app exercises nested generated JSX,
 a React child component, modifiers, height measurement, updates and tap events.
-The workflow builds the example with Fabric enabled and runs
-`poc/generated-bridge/check-emulator.py` against it on Android.
+The workflow builds the example with Fabric enabled and launches the same screen
+through its standalone smoke-test entry point. It runs
+`poc/generated-bridge/check-emulator.py` against the installed app on Android.

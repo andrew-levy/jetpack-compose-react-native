@@ -56,7 +56,7 @@ jobs:
           ln -s ../example/node_modules/react-native node_modules/react-native
           ln -s ../example/node_modules/react node_modules/react
           npm run build
-          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64
+          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64 -PcomposeSmoke
       - name: Enable Android emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -71,10 +71,10 @@ jobs:
           disable-animations: true
           script: |
             adb install example/android/app/build/outputs/apk/release/app-release.apk
-            python3 poc/generated-bridge/check-emulator.py || { adb logcat -d -s AndroidRuntime ReactNativeJS > compose-emulator.log; exit 1; }
+            python3 poc/generated-bridge/check-emulator.py || { adb logcat -d > compose-emulator.log; adb exec-out screencap -p > compose-emulator.png; adb pull /sdcard/compose-bridge.xml compose-emulator.xml || true; exit 1; }
       - name: Save emulator diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: compose-emulator-log
-          path: compose-emulator.log
+          path: compose-emulator.*
