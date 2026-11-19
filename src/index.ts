@@ -1,4 +1,6 @@
-export { Modifier } from "./utils/modifier";
+export { Modifier } from "./generated/modifiers";
+export type * from "./generated/values";
+export type { ComposeBrush, ComposeShape } from "./utils/modifier";
 
 export * from "./generated/components";
 export { ComposeHost } from "./generated/runtime/ComposeHost";

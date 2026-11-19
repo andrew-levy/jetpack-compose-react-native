@@ -25,6 +25,10 @@ ksp {
   arg("composePackages", providers.gradleProperty("composePackages").getOrElse(
     "androidx.compose.foundation.layout,androidx.compose.material3"
   ).replace(',', ';'))
+  arg("modifierPackages", providers.gradleProperty("modifierPackages").getOrElse(
+    "androidx.compose.foundation,androidx.compose.foundation.layout,androidx.compose.foundation.selection," +
+      "androidx.compose.ui,androidx.compose.ui.draw,androidx.compose.ui.graphics,androidx.compose.ui.layout,androidx.compose.ui.platform"
+  ).replace(',', ';'))
 }
 
 dependencies {

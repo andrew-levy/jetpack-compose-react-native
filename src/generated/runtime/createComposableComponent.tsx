@@ -1,11 +1,25 @@
 import * as React from "react";
 
-import type { Modifier } from "../../utils/modifier";
+import type { Modifier } from "../modifiers";
 import { AutomaticComposeHost } from "./ComposeHost";
-import { ComposeHostContext, type ComposableViewProps, type ModifierData } from "./shared";
+import { ComposeHostContext, type ComposableViewProps } from "./shared";
 import { RenderComposeNode, type ComposeEventValue } from "./RenderComposeNode";
 
 export type ComposeModifier = typeof Modifier;
+
+type ComposeCallback = (value?: ComposeEventValue) => void;
+
+function serializeModifier(modifier: ComposeModifier, callbacks: Map<string, ComposeCallback>) {
+  return modifier.build().map((call, index) => {
+    const args = Object.fromEntries(Object.entries(call.args).map(([name, value]) => {
+      if (typeof value !== "function") return [name, value];
+      const event = `modifier.${index}.${name}`;
+      callbacks.set(event, value as ComposeCallback);
+      return [name, event];
+    }));
+    return { ...call, args };
+  });
+}
 
 export interface ComposableDescription {
   name: string;
@@ -22,7 +36,8 @@ export function createComposableComponent<P extends object>(
   function Generated(props: P & ComposableViewProps & { children?: React.ReactNode }) {
     const hasHost = React.useContext(ComposeHostContext);
 
-    const values: Record<string, string | number | boolean | ModifierData | null> = {};
+    const values: Record<string, unknown> = {};
+    const modifierCallbacks = new Map<string, ComposeCallback>();
     const input = props as Record<string, unknown>;
     for (const name of description.props) {
       const value = input[name];
@@ -32,7 +47,7 @@ export function createComposableComponent<P extends object>(
         continue;
       }
       if (name === "modifier") {
-        values[name] = (value as { build(): ModifierData }).build();
+        values[name] = serializeModifier(value as ComposeModifier, modifierCallbacks);
       } else if (typeof value === "string" || typeof value === "boolean" || typeof value === "number") {
         values[name] = value;
       }
@@ -54,8 +69,9 @@ export function createComposableComponent<P extends object>(
         componentName={description.name}
         values={JSON.stringify(values)}
         onComposeEvent={({ nativeEvent: { name, value } }) => {
-          if (!eventNames.has(name)) return;
-          const callback = input[name] as ((value?: ComposeEventValue) => void) | undefined;
+          const callback = eventNames.has(name)
+            ? input[name] as ComposeCallback | undefined
+            : modifierCallbacks.get(name);
           if (value === undefined) callback?.();
           else callback?.(value);
         }}

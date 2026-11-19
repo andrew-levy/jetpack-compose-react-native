@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { modifierKinds, modifierOutputs } from "./modifiers.mjs";
+import { valueOutputs } from "./values.mjs";
 
 const repo = fileURLToPath(new URL("../../", import.meta.url));
 const input = process.env.COMPOSE_API_MANIFEST ??
@@ -11,6 +13,7 @@ const check = process.argv.includes("--check");
 const quote = JSON.stringify;
 
 const kinds = {
+  ...modifierKinds,
   string: { type: "string", expression: (key) => `node.string(${key})` },
   boolean: { type: "boolean", expression: (key) => `node.boolean(${key})` },
   int: { type: "number", expression: (key) => `node.number(${key}).toInt()` },
@@ -19,23 +22,28 @@ const kinds = {
   dp: { type: "number", expression: (key) => `node.number(${key}).dp` },
   sp: { type: "number", expression: (key) => `node.number(${key}).sp` },
   color: { type: "string", expression: (key) => `node.color(${key})` },
-  modifier: { type: "ComposeModifier", expression: (key) => `node.modifier(${key})` },
-  event: { type: "() => void", expression: (key) => `{ node.emit(${key}) }` },
-  eventString: { type: "(value: string) => void", expression: emitValue("String") },
-  eventBoolean: { type: "(value: boolean) => void", expression: emitValue("Boolean") },
-  eventFloat: { type: "(value: number) => void", expression: emitValue("Float") },
-  eventDouble: { type: "(value: number) => void", expression: emitValue("Double") },
-  eventInt: { type: "(value: number) => void", expression: emitValue("Int") },
+  modifier: { type: "ComposeModifier", expression: (key) => `node.modifier(${key}, scope)` },
+  event: { type: "() => void", input: "function", expression: (key) => `{ node.emit(${key}) }` },
+  eventString: { type: "(value: string) => void", input: "function", expression: emitValue("String") },
+  eventBoolean: { type: "(value: boolean) => void", input: "function", expression: emitValue("Boolean") },
+  eventFloat: { type: "(value: number) => void", input: "function", expression: emitValue("Float") },
+  eventDouble: { type: "(value: number) => void", input: "function", expression: emitValue("Double") },
+  eventInt: { type: "(value: number) => void", input: "function", expression: emitValue("Int") },
   slot: { type: "ReactNode", expression: (key) => `{ RenderComposeChildren(node.slot(${key})) }` },
 };
+
+for (const { name } of manifest.values ?? []) {
+  kinds[name] = { type: name, input: "string", expression: (key) => `to${name}(node.string(${key}))` };
+}
 
 function emitValue(type) {
   return (key) => `{ value: ${type} -> node.emit(${key}, value) }`;
 }
 
-function validate({ schemaVersion, components }) {
-  if (schemaVersion !== 1 || !Array.isArray(components) || !components.length) {
-    throw Error("Expected a nonempty Compose API manifest with schema version 1.");
+function validate({ schemaVersion, components, modifiers, values }) {
+  if (schemaVersion !== 2 || !Array.isArray(components) || !components.length ||
+      !Array.isArray(modifiers) || !Array.isArray(values)) {
+    throw Error("Expected a nonempty Compose API manifest with schema version 2.");
   }
   const names = new Set();
   for (const { name, kotlinFunction, parameters, children } of components) {
@@ -55,7 +63,9 @@ function validate({ schemaVersion, components }) {
   }
 }
 
-function typeScript({ components }) {
+function typeScript({ components, values }) {
+  const usedKinds = new Set(components.flatMap(({ parameters }) => parameters.map(({ kind }) => kind)));
+  const types = values.map(({ name }) => name).filter((name) => usedKinds.has(name));
   const declarations = components.map(({ name, parameters, children }) => {
     const fields = parameters.map(({ name, optional, kind, nullable }) => {
       const type = kinds[kind].type;
@@ -83,25 +93,31 @@ function typeScript({ components }) {
     "// Generated from Compose declarations by generate.mjs.",
     'import type { ReactNode } from "react";',
     'import { createComposableComponent, type ComposeModifier } from "./runtime/createComposableComponent";',
+    ...(types.length ? [`import type { ${types.join(", ")} } from "./values";`] : []),
     "",
     ...declarations.flatMap((declaration) => [declaration, ""]),
   ].join("\n");
 }
 
 function kotlin({ components }) {
-  const dispatch = components.map(({ name }) => `    ${quote(name)} -> render${name}(node)`);
-  const functions = components.map(({ name, kotlinFunction, parameters, children }) => {
+  const dispatch = components.map(({ name, parameters }) =>
+    `    ${quote(name)} -> render${name}(node${parameters.some(({ kind }) => kind === "modifier") ? ", scope" : ""})`
+  );
+  const functions = components.map(({ name, kotlinFunction, parameters, children, childrenScope }) => {
+    const modifierScope = parameters.some(({ kind }) => kind === "modifier") ? ", scope: Any?" : "";
     const optionals = parameters.filter(({ optional, kind }) => optional && kind !== "modifier");
     const bits = new Map(optionals.map(({ name }, index) => [name, 1 << index]));
     const call = (mask, indent) => {
       const args = parameters.filter(({ name }) => !bits.has(name) || (mask & bits.get(name)))
-        .map(({ name, kind, nullable }) => {
+        .map(({ name, kind, nullable, scope }) => {
           const key = quote(name);
-          const value = kinds[kind].expression(key);
+          const value = kind === "slot" && scope
+            ? `{ RenderComposeChildren(node.slot(${key}), this) }`
+            : kinds[kind].expression(key);
           const expression = nullable ? `if (node.isNull(${key})) null else (${value})` : value;
           return `\`${name}\` = ${expression}`;
         });
-      if (children) args.push("content = { RenderComposeChildren(node.children) }");
+      if (children) args.push(`content = { RenderComposeChildren(node.children${childrenScope ? ", this" : ""}) }`);
       return args.length ? [
         `${kotlinFunction}(`,
         ...args.map((arg) => `${indent}  ${arg},`),
@@ -119,7 +135,7 @@ function kotlin({ components }) {
       }),
       "  }",
     ];
-    return ["@Composable", `private fun render${name}(node: ComposeNode) {`, ...body, "}", ""].join("\n");
+    return ["@Composable", `private fun render${name}(node: ComposeNode${modifierScope}) {`, ...body, "}", ""].join("\n");
   });
 
   return [
@@ -131,7 +147,7 @@ function kotlin({ components }) {
     "import androidx.compose.ui.unit.sp",
     "",
     "@Composable",
-    "internal fun RenderComposable(node: ComposeNode) {",
+    "internal fun RenderComposable(node: ComposeNode, scope: Any?) {",
     "  when (node.name) {",
     ...dispatch,
     '    else -> error("Unknown generated Compose component: " + node.name)',
@@ -143,9 +159,16 @@ function kotlin({ components }) {
 }
 
 validate(manifest);
+const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers, kinds);
+const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
+const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
 const files = [
   ["src/generated/components.tsx", typeScript(manifest)],
-  ["android/src/main/java/com/jetpackcomposereactnative/generated/ComposableRegistry.kt", kotlin(manifest)],
+  ["src/generated/modifiers.ts", modifierTypeScript],
+  ["src/generated/values.ts", valueTypeScript],
+  [`${android}/ComposableRegistry.kt`, kotlin(manifest)],
+  [`${android}/ModifierRegistry.kt`, modifierKotlin],
+  [`${android}/ComposeValues.kt`, valueKotlin],
 ];
 
 for (const [relative, content] of files) {
@@ -157,4 +180,4 @@ for (const [relative, content] of files) {
     fs.writeFileSync(destination, content);
   }
 }
-console.log(`${check ? "Verified" : "Generated"} TypeScript and Kotlin for ${manifest.components.length} composables`);
+console.log(`${check ? "Verified" : "Generated"} TypeScript and Kotlin for ${manifest.components.length} composables and ${manifest.modifiers.length} modifier overloads`);

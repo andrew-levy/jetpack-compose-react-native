@@ -5,12 +5,11 @@ import android.view.View
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.jetpackcomposereactnative.common.parseComposeColor
-import com.jetpackcomposereactnative.common.toModifier
+import androidx.compose.ui.Modifier
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
-import org.json.JSONArray
+import com.jetpackcomposereactnative.common.parseComposeColor
 import org.json.JSONObject
 
 internal class ComposeNodeManager : ComposeContainerManager<GeneratedComposeNodeView>() {
@@ -60,10 +59,22 @@ internal class GeneratedComposeNodeView(context: Context) :
   override fun number(name: String): Double = values.getDouble(name)
   override fun color(name: String) = parseComposeColor(string(name))
 
-  override fun modifier(name: String) =
-    (values.optJSONArray(name)?.toList().orEmpty()).map { entry ->
-      requireNotNull(entry as? JSONObject).toMap()
-    }.toModifier()
+  override fun modifier(name: String, scope: Any?): Modifier {
+    val steps = values.optJSONArray(name) ?: return Modifier
+    var modifier: Modifier = Modifier
+    for (i in 0 until steps.length()) {
+      val step = steps.getJSONObject(i)
+      val arguments = ComposeModifierArguments(step.getJSONObject("args"), ::emit)
+      val candidates = step.getJSONArray("ids")
+      val applied = (0 until candidates.length()).firstNotNullOfOrNull { candidate ->
+        applyComposeModifier(candidates.getInt(candidate), modifier, arguments, scope)
+      }
+      modifier = checkNotNull(applied) {
+        "${step.getString("name")} is unavailable in the current Compose layout scope"
+      }
+    }
+    return modifier
+  }
 
   override fun emit(name: String, value: Any?) {
     val payload = JSONObject().put("name", name).put("value", value).toString()
@@ -77,14 +88,4 @@ internal class GeneratedComposeNodeView(context: Context) :
   }
 
   override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) = Unit
-}
-
-private fun JSONArray.toList(): List<Any> = List(length()) { index -> get(index) }
-
-private fun JSONObject.toMap(): Map<String, Any> = keys().asSequence().associateWith { key ->
-  when (val value = get(key)) {
-    is JSONObject -> value.toMap()
-    is Number -> value.toDouble()
-    else -> value
-  }
 }

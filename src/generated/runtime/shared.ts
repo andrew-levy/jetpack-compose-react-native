@@ -11,5 +11,4 @@ export interface ComposeHostProps extends ComposableViewProps {
   fitContent?: boolean;
 }
 
-export type ModifierData = readonly Record<string, unknown>[];
 export const ComposeHostContext = React.createContext(false);

@@ -39,8 +39,9 @@ npm run android
 
 The command builds, installs, and opens the example for the selected device's
 ABI. Tap **Tap Compose**, then **Tap React Native**. The counter reaches
-**Tapped 2** and **Below Compose** returns to
-its original position.
+**Tapped 2** and **Below Compose** returns to its original position. Tap
+**Tapped 2** to verify the generated clickable modifier changes it to
+**Tapped 3**.
 
 ### Agent checklist
 
@@ -60,8 +61,8 @@ npm run android:verify
 
 With Python 3 installed, the verification command builds and installs the app,
 opens the demo, taps both buttons, and checks that Fabric resizes the Compose
-root as the React Native child is added and removed. A successful run prints
-`Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.`
+root as the React Native child is added and removed. A successful run verifies the Compose button, the React Native button, and
+the generated clickable modifier.
 
 ## Use it in a React Native app
 

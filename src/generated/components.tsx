@@ -1,6 +1,7 @@
 // Generated from Compose declarations by generate.mjs.
 import type { ReactNode } from "react";
 import { createComposableComponent, type ComposeModifier } from "./runtime/createComposableComponent";
+import type { ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight } from "./values";
 
 export interface AlertDialogProps {
   onDismissRequest: () => void;
@@ -63,11 +64,12 @@ export const BadgedBox = createComposableComponent<BadgedBoxProps>({
 export interface BoxProps {
   modifier?: ComposeModifier;
   propagateMinConstraints?: boolean;
+  contentAlignment?: ComposeAlignment;
   children?: ReactNode;
 }
 export const Box = createComposableComponent<BoxProps>({
   name: "Box",
-  props: ["modifier","propagateMinConstraints"],
+  props: ["modifier","propagateMinConstraints","contentAlignment"],
   children: true,
 });
 
@@ -121,11 +123,13 @@ export const CircularProgressIndicator = createComposableComponent<CircularProgr
 
 export interface ColumnProps {
   modifier?: ComposeModifier;
+  verticalArrangement?: ComposeVerticalArrangement;
+  horizontalAlignment?: ComposeHorizontalAlignment;
   children?: ReactNode;
 }
 export const Column = createComposableComponent<ColumnProps>({
   name: "Column",
-  props: ["modifier"],
+  props: ["modifier","verticalArrangement","horizontalAlignment"],
   children: true,
 });
 
@@ -688,11 +692,13 @@ export const RadioButton = createComposableComponent<RadioButtonProps>({
 
 export interface RowProps {
   modifier?: ComposeModifier;
+  horizontalArrangement?: ComposeHorizontalArrangement;
+  verticalAlignment?: ComposeVerticalAlignment;
   children?: ReactNode;
 }
 export const Row = createComposableComponent<RowProps>({
   name: "Row",
-  props: ["modifier"],
+  props: ["modifier","horizontalArrangement","verticalAlignment"],
   children: true,
 });
 
@@ -833,10 +839,13 @@ export interface TextProps {
   fontSize?: number;
   letterSpacing?: number;
   lineHeight?: number;
+  fontWeight?: ComposeFontWeight | null;
+  textAlign?: ComposeTextAlign | null;
+  overflow?: ComposeTextOverflow;
 }
 export const Text = createComposableComponent<TextProps>({
   name: "Text",
-  props: ["text","modifier","color","fontSize","letterSpacing","lineHeight"],
+  props: ["text","modifier","color","fontSize","letterSpacing","lineHeight","fontWeight","textAlign","overflow"],
   children: false,
 });
 

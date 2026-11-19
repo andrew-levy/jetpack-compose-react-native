@@ -67,4 +67,8 @@ tap(nodes["Tap React Native"])
 nodes = wait_for("Tapped 2", "Even click count", "Below Compose",
                  absent=("Tapped 1", "Odd click count", "Added by React"),
          layout_ready=lambda nodes: following_view_top(nodes) == original_foot)
-print("Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.")
+tap(nodes["Tapped 2"])
+wait_for("Tapped 3", "Odd click count", "Added by React", "Below Compose",
+         absent=("Tapped 2", "Even click count"),
+         layout_ready=lambda nodes: following_view_top(nodes) > original_foot)
+print("Verified mixed layout, Compose and React Native callbacks, generated clickable, and child insertion and removal.")

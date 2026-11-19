@@ -1,11 +1,11 @@
-# Generated Compose components
+# Generated Compose APIs
 
 Import components by name from the package root.
 
 ```tsx
 import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
 
-<Column modifier={Modifier.padding(16)}>
+<Column horizontalAlignment="start" modifier={Modifier.padding(16).fillMaxWidth()}>
   <Text text="Hello Compose" />
   <Button onClick={() => console.log("Clicked")}>
     <Text text="Tap me" />
@@ -43,20 +43,40 @@ gradle -p tools/compose-codegen kspDebugKotlin
 node tools/compose-codegen/generate.mjs
 ```
 
-KSP discovers public composables in the Foundation Layout and Material 3 packages
-on the pinned AndroidX classpath. Pass `-PcomposePackages=package1,package2` to
-change the package search. The generator consumes the manifest emitted by KSP and
-writes the TypeScript wrappers and Kotlin dispatcher used by the package. Generated
-source is checked in so consumers can build the library without running the extractor.
+KSP discovers public composables and public `Modifier` extensions on the
+pinned AndroidX classpath, including extensions for supported layout scopes. Use
+`-PcomposePackages=package1,package2` or
+`-PmodifierPackages=package1,package2` to change the package searches. The
+generator uses the discovered declarations to emit TypeScript components and
+modifier overloads, native Kotlin dispatch, and string unions and converters
+for supported Compose values such as `Alignment` and `Arrangement`. Consumers
+build the checked-in output without running the extractor.
 
-The type mapping covers strings, booleans, numbers, Dp, Sp, colors, the package's
-`Modifier` builder, and callbacks with zero or one primitive argument. Supported
-`content` lambdas map to JSX children. Supported named composable slots take React elements as props. For optional scalar props, the generated
-Kotlin applies the original Compose default when callers omit the prop. Discovery
-selects one supported, unambiguous overload per name and omits signatures with
-unsupported required parameters. It exposes up to four optional values per
-overload in addition to the modifier. Native Android-only output can contain
-generated components and React components that render them.
+The component bridge supports primitives, supported Compose values, colors,
+modifiers, callbacks with zero or one primitive argument, JSX children, and
+named composable slots. It selects one supported, unambiguous overload per name
+and skips signatures with unsupported required parameters. It exposes up to
+four optional props with the original bridge types, plus discovered value
+props up to a total of seven. The
+`modifier` prop has its own slot and counts toward neither limit. The generated
+calls omit unused parameters so Kotlin applies the AndroidX defaults.
+
+Modifiers are applied in chain order. Use a scalar shorthand when a call has
+one matching scalar argument, or use named options to select an overload. Scoped
+modifiers such as `weight` need a native parent such as `Row` or `Column`.
+Supported modifier callbacks such as `clickable` use the same event bridge
+as composable callbacks.
+
+```tsx
+Modifier.background({ color: "#f3f4f6", shape: { radius: 12 } })
+  .padding({ horizontal: 16, vertical: 8 })
+  .fillMaxWidth(0.9)
+```
+
+The shared bridge still owns hosting, prop serialization, callback delivery,
+and React Native children. The extractor defines which Kotlin types can
+cross the bridge. The runtime has small adapters for shape and brush values
+and preserves the existing `backgroundColor` and `backgroundBrush` aliases.
 
 ## Verify
 

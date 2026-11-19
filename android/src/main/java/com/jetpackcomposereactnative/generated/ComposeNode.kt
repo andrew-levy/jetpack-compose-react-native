@@ -14,7 +14,7 @@ internal interface ComposeNode : ComposeChild {
   fun string(name: String): String
   fun boolean(name: String): Boolean
   fun number(name: String): Double
-  fun modifier(name: String): Modifier
+  fun modifier(name: String, scope: Any?): Modifier
   fun color(name: String): Color
   fun emit(name: String, value: Any? = null)
 }

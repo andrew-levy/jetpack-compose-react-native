@@ -33,27 +33,38 @@ jobs:
         run: |
           gradle -p tools/compose-codegen kspDebugKotlin
           node tools/compose-codegen/generate.mjs --check
-      - name: Discover a new composable without editing the generator
+      - name: Discover a composable and modifier without editing the generator
         run: |
           probe=tools/compose-codegen/src/debug/kotlin/DiscoveryProbe.kt
           mkdir -p "$(dirname "$probe")"
           trap 'rm -f "$probe"' EXIT
           cat > "$probe" <<'KOTLIN'
           package com.jetpackcomposereactnative.codegen
+          import androidx.compose.foundation.layout.padding
           import androidx.compose.runtime.Composable
+          import androidx.compose.ui.Modifier
+          import androidx.compose.ui.unit.Dp
+          import androidx.compose.ui.unit.dp
           @Composable
           fun DiscoveryProbe(label: String) {}
+
+          fun Modifier.discoveryProbe(inset: Dp = 2.dp): Modifier = padding(inset)
           KOTLIN
-          gradle -p tools/compose-codegen kspDebugKotlin -PcomposePackages=com.jetpackcomposereactnative.codegen
+          gradle -p tools/compose-codegen kspDebugKotlin \
+            -PcomposePackages=com.jetpackcomposereactnative.codegen \
+            -PmodifierPackages=com.jetpackcomposereactnative.codegen
           COMPOSE_GENERATED_OUTPUT="$(mktemp -d)"
           export COMPOSE_GENERATED_OUTPUT
           node tools/compose-codegen/generate.mjs
           grep -q 'export const DiscoveryProbe' "$COMPOSE_GENERATED_OUTPUT/components.tsx"
           grep -q 'com.jetpackcomposereactnative.codegen.DiscoveryProbe(' "$COMPOSE_GENERATED_OUTPUT/ComposableRegistry.kt"
+          grep -q 'discoveryProbe(inset: number)' "$COMPOSE_GENERATED_OUTPUT/modifiers.ts"
+          grep -q 'import com.jetpackcomposereactnative.codegen.discoveryProbe as ' "$COMPOSE_GENERATED_OUTPUT/ModifierRegistry.kt"
       - name: Build the library and the Fabric example
         run: |
           npm ci
           npm run build
+          npm exec -- tsc -p example/tsconfig.json
           example/android/gradlew -p example/android :app:assembleRelease -PreactNativeArchitectures=x86_64
       - name: Enable Android emulator acceleration
         run: |
