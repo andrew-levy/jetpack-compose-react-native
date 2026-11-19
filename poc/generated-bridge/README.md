@@ -27,20 +27,26 @@ kotlinc poc/generated-bridge/generated/ComposableRegistry.kt poc/generated-bridg
 java -jar /tmp/compose-poc.jar
 ```
 
+## Verified with real AndroidX artifacts (GitHub Actions)
+
+- [Generated Kotlin explicitly compiled against Compose](https://github.com/andrew-levy/jetpack-compose-react-native/actions/runs/44447893766) — **PASS** using Kotlin 2.0.21 + Compose compiler + AndroidX Foundation and Material 3.
+- [KSP extractor + Compose compile](https://github.com/andrew-levy/jetpack-compose-react-native/actions/runs/44448882425) — **PASS**. Extractor enumerated **5 @Composable Text/Button overloads** from the Material 3 dependency classpath, including parameter names/types and default-argument presence, then ran real Kotlin compilation.
+- **Important separation:** The downstream `generate.mjs` still consumes a **manual fixture**, not KSP output. Automatic extraction-to-TS/Kotlin end-to-end and Fabric runtime are **not proven**.
+
 ## Explicitly NOT verified yet
 
-1. Reading complete Compose declarations from AndroidX artifacts. **Next: Kotlin Analysis API or KSP + source archives**, preserving overloads, default expressions, receivers, value types and version constraints.
-2. Compiling generated code against **real AndroidX Compose dependencies and the Compose compiler**. Stub-based testing is not proof.
+1. Generalized **KSP/Analysis extraction-to-manifest pipeline** beyond 5 Material 3 overloads, with source JARs for default expressions/KDoc, receivers, value types, overload resolution and version constraints. The limited classpath extraction test passed.
+2. Runtime/execution correctness (a compile test does not prove UI behavior).
 3. Native **Fabric** host registration, node reconciliation, per-node identity, child mount/unmount behavior, layout measurement, Compose recomposition, Android activity lifecycle, and event routing to JavaScript.
 4. Modifier decoding (the Kotlin `ComposeNode` contract in this experiment is supplied by stubs), value conversion, state, bindings, lists and dynamic composable slots.
 5. Nitro Modules setup on Android (Nitrogen is for auxiliary HybridObjects, not source API discovery).
 
 ## Proposed next experiments
 
-**A.** Add an Android Gradle test module and real Compose dependencies; compile `ComposableRegistry.kt` using the Compose compiler, retaining a minimal non-stub `ComposeNode` decoder.
+**A.** **Completed (compile-level):** Android Gradle project compiles generated Kotlin against real Compose libraries. **Next:** replace minimal `ComposeNode` contract with stateful decoding and run Android device tests.
 
 **B.** Implement one Android Fabric host and measure how nested/generated React nodes can be assembled into one stable Compose composition. Compare with v7's per-component Fabric descriptors. Do not decide one-root vs per-component Fabric without measuring mount correctness and layout.
 
-**C.** Implement AndroidX API extraction and regenerate the manifest rather than maintaining it by hand. Reject source declarations that the Kotlin code emitter cannot compile.
+**C.** **Partially validated:** KSP can see published AndroidX Material 3 declarations. Integrate KSP extraction output directly with `generate.mjs` and build comprehensive overload/default/scope handling. Reject source declarations that the Kotlin code emitter cannot compile.
 
 This proof-of-concept intentionally has a narrow, honest success criterion. No claim of a working Android React Native library is made here.

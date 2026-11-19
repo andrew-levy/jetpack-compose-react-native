@@ -74,9 +74,9 @@ Reference: [swiftui-react-native v7-public-beta](https://github.com/andrew-levy/
 ## D. Validation gates
 
 - **Gate 1 (local):** Same manifest generates TS + Kotlin; Kotlin dispatch compiles against test stubs and runs child/event smoke. **Passed locally.**
-- **Gate 2 (GitHub CI):** Generated Kotlin compiles against real AndroidX Compose and the Kotlin Compose plugin. **See CI for latest status.**
+- **Gate 2 (GitHub CI):** Generated Kotlin compiles against real AndroidX Compose and the Kotlin Compose plugin. **PASSED** ([build](https://github.com/andrew-levy/jetpack-compose-react-native/actions/runs/44447893766)).
 - **Gate 3:** React/Fabric node mounting, nesting, updates and unmounting link into one Compose composition. **Not built/tested yet.**
 - **Gate 4:** Real Android layout + events + state/recomposition test in emulator, including non-Compose React Native children. **Not built/tested yet.**
-- **Gate 5:** Automatic source API discovery, overloads, defaults, scope-specific modifiers, native availability and version matrix. **Not built/tested yet.**
+- **Gate 5:** **PARTIALLY VALIDATED.** KSP discovered 5 Material 3 Text/Button @Composable overloads and their parameter signatures from published dependencies ([build](https://github.com/andrew-levy/jetpack-compose-react-native/actions/runs/44448882425)). **NOT DONE:** KSP-to-manifest linkage, source-level default expressions, general overloads, receiver scopes, version matrix and complete API-surface coverage.
 
 Do not merge into `main` until Gates 2-4 pass. Gate 5 is necessary before claiming automated API-surface coverage.
