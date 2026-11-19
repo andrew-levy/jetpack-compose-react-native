@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    "rootDir": ".",
+    "rootDir": "..",
     "paths": {
       "jetpack-compose-react-native": [
         "../src/index"
@@ -13,7 +13,6 @@
     }
   },
   "include": [
-    "app",
     "App.tsx"
   ]
 }

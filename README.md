@@ -38,8 +38,8 @@ npm run android
 ```
 
 The command builds, installs, and opens the example for the selected device's
-ABI. Open **Generated-compose**, tap **Tap Compose**, then tap **Tap React
-Native**. The counter reaches **Tapped 2** and **Below Compose** returns to
+ABI. Tap **Tap Compose**, then **Tap React Native**. The counter reaches
+**Tapped 2** and **Below Compose** returns to
 its original position.
 
 ### Agent checklist
@@ -60,9 +60,7 @@ npm run android:verify
 
 With Python 3 installed, the verification command builds and installs the app,
 opens the demo, taps both buttons, and checks that Fabric resizes the Compose
-root as the React Native child is added and removed. It also checks the legacy
-button callback and navigation through a nested legacy layout. A successful
-run prints
+root as the React Native child is added and removed. A successful run prints
 `Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.`
 
 ## Use it in a React Native app
@@ -72,8 +70,8 @@ Install the package or a checkout of this repository and rebuild the Android
 app. React Native autolinking registers its view managers and Fabric
 descriptors.
 
-The [generated bridge guide](poc/generated-bridge/README.md) covers sizing,
-compatibility wrappers, and regeneration from AndroidX Compose.
+The [code generation guide](tools/compose-codegen/README.md) covers layout and
+regenerating the components from AndroidX Compose.
 
 ## Contributors
 

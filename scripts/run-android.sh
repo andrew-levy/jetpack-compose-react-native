@@ -22,7 +22,7 @@ example/android/gradlew -p example/android :app:assembleRelease "-PreactNativeAr
 adb install -r example/android/app/build/outputs/apk/release/app-release.apk
 
 if [[ "${1:-}" == "--verify" ]]; then
-  python3 poc/generated-bridge/check-emulator.py
+  python3 scripts/check-emulator.py
 else
   adb shell am start -n com.jetpackcomposereactnative.example/.MainActivity
 fi
