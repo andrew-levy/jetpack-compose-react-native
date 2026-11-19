@@ -60,7 +60,9 @@ npm run android:verify
 
 With Python 3 installed, the verification command builds and installs the app,
 opens the demo, taps both buttons, and checks that Fabric resizes the Compose
-root as the React Native child is added and removed. A successful run prints
+root as the React Native child is added and removed. It also checks the legacy
+button callback and navigation through a nested legacy layout. A successful
+run prints
 `Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.`
 
 ## Use it in a React Native app

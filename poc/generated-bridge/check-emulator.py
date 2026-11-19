@@ -43,12 +43,13 @@ def tap(node):
     adb("shell", "input", "tap", str((left + right) // 2), str((top + bottom) // 2))
 
 
-package = "com.jetpackcomposereactnative.example"
-adb("shell", "am", "force-stop", package)
-print(adb("shell", "am", "start", "-W", "-n", f"{package}/.MainActivity"))
 def following_view_top(nodes):
     return bounds(nodes["Below Compose"])[1]
 
+
+package = "com.jetpackcomposereactnative.example"
+adb("shell", "am", "force-stop", package)
+print(adb("shell", "am", "start", "-W", "-n", f"{package}/.MainActivity"))
 
 menu = wait_for("Generated-compose")
 tap(menu["Generated-compose"])
@@ -70,3 +71,17 @@ nodes = wait_for("Tapped 2", "Even click count", "Below Compose",
                  absent=("Tapped 1", "Odd click count", "Added by React"),
          layout_ready=lambda nodes: following_view_top(nodes) == original_foot)
 print("Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.")
+
+tap(wait_for("Examples")["Examples"])
+tap(wait_for("Buttons")["Buttons"])
+legacy = wait_for("Default", "Button clicked 0 times")
+tap(legacy["Default"])
+wait_for("Button clicked 1 times")
+print("Verified the legacy button and its callback in the bare React Native app.")
+
+tap(wait_for("Examples")["Examples"])
+tap(wait_for("Columns")["Columns"])
+wait_for("Column Example", "Button 1", "Button 2")
+tap(wait_for("Examples")["Examples"])
+wait_for("Generated-compose")
+print("Verified nested legacy views and navigation.")
