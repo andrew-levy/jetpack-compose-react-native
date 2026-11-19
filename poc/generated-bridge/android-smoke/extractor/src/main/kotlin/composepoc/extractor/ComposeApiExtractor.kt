@@ -1,5 +1,6 @@
 package composepoc.extractor
 
+import com.google.devtools.ksp.KspExperimental
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.google.devtools.ksp.processing.Dependencies
 import com.google.devtools.ksp.processing.KSPLogger
@@ -18,6 +19,7 @@ class ComposeApiExtractorProvider : SymbolProcessorProvider {
 class ComposeApiExtractor(private val generator: CodeGenerator, private val log: KSPLogger) : SymbolProcessor {
   private var visited = false
 
+  @OptIn(KspExperimental::class)
   override fun process(resolver: Resolver): List<KSAnnotated> {
     if (visited) return emptyList()
     visited = true
