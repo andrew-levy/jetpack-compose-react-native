@@ -2,6 +2,7 @@ plugins {
   id("com.android.library") version "8.7.3"
   id("org.jetbrains.kotlin.android") version "2.0.21"
   id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
+  id("com.google.devtools.ksp") version "2.0.21-1.0.28"
 }
 
 android {
@@ -16,6 +17,7 @@ android {
   sourceSets.getByName("main").java.srcDir("../generated")
 }
 dependencies {
+  ksp(project(":extractor"))
   implementation(platform("androidx.compose:compose-bom:2024.09.03"))
   implementation("androidx.compose.ui:ui")
   implementation("androidx.compose.foundation:foundation-layout")
