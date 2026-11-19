@@ -72,7 +72,7 @@ function typeScript(overloads, kinds) {
     .filter((kind) => kind.startsWith("Compose")).sort();
   return [
     "// Generated from Compose declarations by generate.mjs.",
-    'import { createModifierFactory, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
+    'import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
     ...(valueTypes.length ? [`import type { ${valueTypes.join(", ")} } from "./values";`] : []),
     "",
     "interface GeneratedModifiers {",
@@ -81,22 +81,15 @@ function typeScript(overloads, kinds) {
     "",
     "export type ComposeChain = GeneratedModifiers & ModifierCompatibility<ComposeChain> & ModifierPayload;",
     "",
-    "const createChain = createModifierFactory({",
+    "export type Modifier = ComposeChain;",
+    "",
+    "export const Modifier = createModifier({",
     ...Object.entries(metadata).map(([name, options]) => `  ${quote(name)}: [\n${options
       .sort((left, right) => Number(left.primary === "brush") - Number(right.primary === "brush"))
       .map(({ id, forms, primary, labels }) =>
         `    { id: ${id}, ${primary ? `primary: ${quote(primary)}, ` : ""}${labels ? `labels: ${quote(labels)}, ` : ""}forms: ${quote(forms)} },`
       ).join("\n")}\n  ],`),
-    "});",
-    "",
-    "export function compose(): ComposeChain {",
-    "  return createChain() as ComposeChain;",
-    "}",
-    "",
-    "/** @deprecated Start a modifier chain with compose(). */",
-    "export type Modifier = ComposeChain;",
-    "/** @deprecated Start a modifier chain with compose(). */",
-    "export const Modifier = compose();",
+    "}) as Modifier;",
     "",
   ].join("\n");
 }

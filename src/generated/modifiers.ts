@@ -1,5 +1,5 @@
 // Generated from Compose declarations by generate.mjs.
-import { createModifierFactory, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";
+import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";
 import type { ComposeAlignment, ComposeHorizontalAlignment, ComposeRole, ComposeVerticalAlignment } from "./values";
 
 interface GeneratedModifiers {
@@ -354,7 +354,9 @@ interface GeneratedModifiers {
 
 export type ComposeChain = GeneratedModifiers & ModifierCompatibility<ComposeChain> & ModifierPayload;
 
-const createChain = createModifierFactory({
+export type Modifier = ComposeChain;
+
+export const Modifier = createModifier({
   "background": [
     { id: 1, primary: "color", labels: {"shape":"in"}, forms: [[["color","string",false]],[["color","string",false],["shape","shape",false]]] },
     { id: 0, primary: "brush", labels: {"shape":"in"}, forms: [[["brush","brush",false]],[["brush","brush",false],["shape","shape",false]],[["brush","brush",false],["alpha","number",false]],[["brush","brush",false],["shape","shape",false],["alpha","number",false]]] },
@@ -560,13 +562,4 @@ const createChain = createModifierFactory({
   "zIndex": [
     { id: 76, primary: "zIndex", forms: [[["zIndex","number",false]]] },
   ],
-});
-
-export function compose(): ComposeChain {
-  return createChain() as ComposeChain;
-}
-
-/** @deprecated Start a modifier chain with compose(). */
-export type Modifier = ComposeChain;
-/** @deprecated Start a modifier chain with compose(). */
-export const Modifier = compose();
+}) as Modifier;

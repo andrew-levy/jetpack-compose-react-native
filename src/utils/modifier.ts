@@ -167,7 +167,7 @@ function resolve(name: string, overloads: readonly Overload[], values: readonly 
   throw new TypeError(`No Compose modifier overload matches ${name}()`);
 }
 
-export function createModifierFactory(methods: Record<string, readonly Overload[]>): () => ModifierPayload {
+export function createModifier(methods: Record<string, readonly Overload[]>): ModifierPayload {
   class ModifierChain {
     constructor(private readonly calls: readonly ModifierCall[] = []) {}
 
@@ -191,5 +191,5 @@ export function createModifierFactory(methods: Record<string, readonly Overload[
       },
     });
   }
-  return () => new ModifierChain();
+  return new ModifierChain();
 }

@@ -6,11 +6,11 @@ its subtree automatically.
 
 ```tsx
 import { Pressable, Text as RNText } from "react-native";
-import { Button, Column, Text, compose } from "jetpack-compose-react-native";
+import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
 
 export function Greeting() {
   return (
-    <Column modifiers={compose().padding(16)}>
+    <Column modifiers={Modifier.padding(16)}>
       <Text text="Hello Compose" />
       <Button onClick={() => console.log("Compose clicked")}>
         <Text text="Compose button" />

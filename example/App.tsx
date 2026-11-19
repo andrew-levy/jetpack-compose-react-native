@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Pressable, StyleSheet, Text as ReactNativeText, View } from "react-native";
-import { Button, Column, Row, Text, compose } from "jetpack-compose-react-native";
+import { Button, Column, Modifier, Row, Text } from "jetpack-compose-react-native";
 
 function Status({ clicks, onClick }: { clicks: number; onClick: () => void }) {
-  return <Text text={clicks ? `Tapped ${clicks}` : "Ready"} modifiers={compose().clickable(onClick)} />;
+  return <Text text={clicks ? `Tapped ${clicks}` : "Ready"} modifiers={Modifier.clickable(onClick)} />;
 }
 
 export default function App() {
@@ -14,13 +14,13 @@ export default function App() {
     <View style={styles.screen}>
       <Column
         horizontalAlignment="start"
-        modifiers={compose()
+        modifiers={Modifier
           .background("#f3f4f6", { in: { rect: { cornerRadius: 12 } } })
           .padding("all", 16)}
       >
         <Status clicks={clicks} onClick={onClick} />
         <Row>
-          <Button modifiers={compose().align("centerVertically")} onClick={onClick}>
+          <Button modifiers={Modifier.align("centerVertically")} onClick={onClick}>
             <Text text="Tap Compose" />
           </Button>
           <View style={styles.reactChild}>
