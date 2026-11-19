@@ -8,7 +8,10 @@ plugins {
 android {
   namespace = "expo.modules.jetpackcomposereactnative.poc"
   compileSdk = 35
-  defaultConfig { minSdk = 24 }
+  defaultConfig {
+    minSdk = 24
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
   buildFeatures { compose = true }
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -19,7 +22,12 @@ android {
 dependencies {
   ksp(project(":extractor"))
   implementation(platform("androidx.compose:compose-bom:2024.09.03"))
+  implementation("androidx.activity:activity:1.9.3")
   implementation("androidx.compose.ui:ui")
   implementation("androidx.compose.foundation:foundation-layout")
   implementation("androidx.compose.material3:material3")
+  androidTestImplementation("androidx.test:runner:1.6.2")
+  androidTestImplementation("androidx.test.ext:junit:1.2.1")
+  androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+  debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

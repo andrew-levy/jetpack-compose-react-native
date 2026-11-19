@@ -26,4 +26,24 @@ jobs:
       - name: Verify generated outputs
         run: node poc/generated-bridge/generate.mjs --check
       - name: Compile generated dispatcher against real Compose dependencies
-        run: gradle -p poc/generated-bridge/android-smoke compileDebugKotlin --stacktrace --no-daemon
+        run: gradle -p poc/generated-bridge/android-smoke compileDebugKotlin compileDebugAndroidTestKotlin --stacktrace --no-daemon
+  emulator-compose-render:
+    needs: compile-generated-compose
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Exercise nested generated Compose rendering on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: gradle -p poc/generated-bridge/android-smoke connectedDebugAndroidTest --stacktrace --no-daemon
