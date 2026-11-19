@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle, useWindowDimensions } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -10,7 +10,7 @@ export type ScaffoldProps = {
 };
 
 const NativeView: React.ComponentType<ScaffoldProps> =
-  requireNativeViewManager("ScaffoldView");
+  requireNativeComponent("ScaffoldView");
 
 export function Scaffold({ style, ...rest }: ScaffoldProps) {
   return (

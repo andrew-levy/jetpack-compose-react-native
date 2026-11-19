@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -14,7 +14,7 @@ export type SnackbarProps = {
 };
 
 const NativeView: React.ComponentType<SnackbarProps> =
-  requireNativeViewManager("SnackbarView");
+  requireNativeComponent("SnackbarView");
 
 export function Snackbar({ style, ...rest }: SnackbarProps) {
   return (

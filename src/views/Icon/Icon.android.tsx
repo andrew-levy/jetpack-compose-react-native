@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -13,7 +13,7 @@ export type IconProps = {
 };
 
 const NativeView: React.ComponentType<IconProps> =
-  requireNativeViewManager("IconView");
+  requireNativeComponent("IconView");
 
 export function Icon({ style, modifier, ...rest }: IconProps) {
   return (

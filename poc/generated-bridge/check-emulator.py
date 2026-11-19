@@ -43,7 +43,7 @@ def tap(node):
     adb("shell", "input", "tap", str((left + right) // 2), str((top + bottom) // 2))
 
 
-package = "expo.modules.jetpackcomposereactnative.example"
+package = "com.jetpackcomposereactnative.example"
 adb("shell", "am", "force-stop", package)
 print(adb("shell", "am", "start", "-W", "-n", f"{package}/.MainActivity"))
 def following_view_top(nodes):
@@ -53,15 +53,20 @@ def following_view_top(nodes):
 menu = wait_for("Generated-compose")
 tap(menu["Generated-compose"])
 
-nodes = wait_for("Ready", "Tap Compose", "Even click count", "Below Compose", "Fixed height Compose",
-                 layout_ready=lambda nodes: following_view_top(nodes) >= bounds(nodes["Even click count"])[3])
+nodes = wait_for(
+    "Ready", "Tap Compose", "Tap React Native", "Even click count", "Below Compose", "Fixed height Compose",
+    layout_ready=lambda nodes: (
+        following_view_top(nodes) >= bounds(nodes["Even click count"])[3]
+        and bounds(nodes["Tap React Native"])[0] >= bounds(nodes["Tap Compose"])[2]
+    ),
+)
 original_foot = following_view_top(nodes)
 tap(nodes["Tap Compose"])
-nodes = wait_for("Tapped 1", "Tap Compose", "Odd click count", "Added by React", "Below Compose",
+nodes = wait_for("Tapped 1", "Tap Compose", "Tap React Native", "Odd click count", "Added by React", "Below Compose",
                  absent=("Ready", "Even click count"),
                  layout_ready=lambda nodes: following_view_top(nodes) > original_foot)
-tap(nodes["Tap Compose"])
+tap(nodes["Tap React Native"])
 nodes = wait_for("Tapped 2", "Even click count", "Below Compose",
                  absent=("Tapped 1", "Odd click count", "Added by React"),
          layout_ready=lambda nodes: following_view_top(nodes) == original_foot)
-print("Compose mounted through React Native, updated props and children, and dispatched both clicks.")
+print("Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.")

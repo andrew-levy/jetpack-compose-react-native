@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -17,7 +17,7 @@ export type GridProps = {
 };
 
 const NativeView: React.ComponentType<GridProps> =
-  requireNativeViewManager("GridView");
+  requireNativeComponent("GridView");
 
 export function Grid({ style, ...rest }: GridProps) {
   return (

@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -9,7 +9,7 @@ export type SpacerProps = {
 };
 
 const NativeView: React.ComponentType<SpacerProps> =
-  requireNativeViewManager("SpacerView");
+  requireNativeComponent("SpacerView");
 
 export function Spacer({ style, ...rest }: SpacerProps) {
   return (

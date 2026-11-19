@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -17,7 +17,7 @@ export type DialogProps = {
 };
 
 const NativeView: React.ComponentType<DialogProps> =
-  requireNativeViewManager("DialogView");
+  requireNativeComponent("DialogView");
 
 export function Dialog({ style, onDismiss, onConfirm, ...rest }: DialogProps) {
   return (

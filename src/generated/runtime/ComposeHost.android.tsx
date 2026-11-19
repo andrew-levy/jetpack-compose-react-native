@@ -1,13 +1,8 @@
 import * as React from "react";
-import { requireNativeViewManager } from "expo-modules-core";
 import { StyleSheet } from "react-native";
 
+import NativeHost from "../../specs/JpcComposeHostNativeComponent";
 import { ComposeHostContext, type ComposeHostProps } from "./shared";
-
-type NativeProps = ComposeHostProps & {
-  onComposeSizeChange: (event: { nativeEvent: { height: number } }) => void;
-};
-let NativeHost: React.ComponentType<NativeProps> | undefined;
 
 const styles = StyleSheet.create({
   fill: { flex: 1 },
@@ -27,18 +22,13 @@ export function AutomaticComposeHost(props: Omit<ComposeHostProps, "fitContent">
 }
 
 export function ComposeHost({ children, fitContent = false, style, testID }: ComposeHostProps) {
-  NativeHost ??= requireNativeViewManager<NativeProps>("GeneratedComposeHost");
-  const [height, setHeight] = React.useState(1);
-
   return (
     <ComposeHostContext.Provider value>
       <NativeHost
         fitContent={fitContent}
         testID={testID}
-        style={[fitContent ? [styles.measure, { height: Math.max(1, height) }] : styles.fill, style]}
-        onComposeSizeChange={({ nativeEvent }) => {
-          if (fitContent) setHeight(nativeEvent.height);
-        }}
+        collapsable={false}
+        style={[fitContent ? styles.measure : styles.fill, style]}
       >
         {children}
       </NativeHost>

@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle, Image as RNImage } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -14,7 +14,7 @@ type NativeImageProps = Omit<ImageProps, "source"> & {
 };
 
 const NativeView: React.ComponentType<NativeImageProps> =
-  requireNativeViewManager("ComposeImageView");
+  requireNativeComponent("ComposeImageView");
 
 export function Image({ source: src, style, ...rest }: ImageProps) {
   return (

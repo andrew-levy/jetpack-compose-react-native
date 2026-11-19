@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { type ImageSourcePropType, type ViewStyle, Image } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -11,7 +11,7 @@ export type CarouselProps = {
 
 type NativeCarouselProps = Omit<CarouselProps, "items"> & { items: string[] };
 const NativeView: React.ComponentType<NativeCarouselProps> =
-  requireNativeViewManager("CarouselView");
+  requireNativeComponent("CarouselView");
 
 export function Carousel({
   style,

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "expo.modules.jetpackcomposereactnative.poc"
+  namespace = "com.jetpackcomposereactnative.poc"
   compileSdk = 35
   defaultConfig {
     minSdk = 24

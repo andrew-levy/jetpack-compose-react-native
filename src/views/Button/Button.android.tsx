@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -24,7 +24,7 @@ type NativeButtonProps = Omit<ButtonProps, "onClick"> & {
 };
 
 const NativeView: React.ComponentType<NativeButtonProps> =
-  requireNativeViewManager("ButtonView");
+  requireNativeComponent("ButtonView");
 
 export function Button({
   onClick,

@@ -11,7 +11,8 @@ export { Scaffold } from "./views/Scaffold/Scaffold";
 export { Modifier } from "./utils/modifier";
 
 export * from "./generated/components";
-export * as Legacy from "./legacy";
+import * as Legacy from "./legacy";
+export { Legacy };
 export { ComposeHost } from "./generated/runtime/ComposeHost";
 export { createComposableComponent } from "./generated/runtime/createComposableComponent";
 export type { ComposeModifier, ComposableDescription } from "./generated/runtime/createComposableComponent";

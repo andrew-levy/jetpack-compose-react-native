@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -15,7 +15,7 @@ export type DatePickerProps = {
 };
 
 const NativeView: React.ComponentType<DatePickerProps> =
-  requireNativeViewManager("DatePickerView");
+  requireNativeComponent("DatePickerView");
 
 export function DatePicker({
   style,

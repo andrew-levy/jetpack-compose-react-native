@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -22,7 +22,7 @@ type ContentAlignment =
   | "bottomEnd";
 
 const NativeView: React.ComponentType<BoxProps> =
-  requireNativeViewManager("BoxView");
+  requireNativeComponent("BoxView");
 
 export function Box({ style, contentAlignment, ...rest }: BoxProps) {
   return (

@@ -1,78 +1,67 @@
 # Jetpack Compose React Native
 
-_This project is in early development and is not yet ready for use._
-
-## Getting started
-
-<!-- ```bash
-npx expo install jetpack-compose-react-native  # (coming soon)
-``` -->
-
-Add the plugin to your `app.json`. This will allow your Android app to use Jetpack Compose.
-
-```json
-{
-  "plugins": ["jetpack-compose-react-native"]
-}
-```
-
-Next, prebuild your app.
-
-```bash
-npx expo prebuild -p android --clean
-```
-
-## Usage
+Render native Jetpack Compose components in a React Native Fabric app. Import
+components by name. A top-level Compose component creates the native host for
+its subtree automatically.
 
 ```tsx
+import { Pressable, Text as RNText } from "react-native";
 import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
 
 export function Greeting() {
   return (
     <Column modifier={Modifier.padding(16)}>
       <Text text="Hello Compose" />
-      <Button onClick={() => console.log("Clicked")}>
-        <Text text="Tap me" />
+      <Button onClick={() => console.log("Compose clicked")}>
+        <Text text="Compose button" />
       </Button>
+      <Pressable onPress={() => console.log("React Native clicked")}>
+        <RNText>React Native button</RNText>
+      </Pressable>
     </Column>
   );
 }
 ```
 
-The root component creates a native Compose host automatically. See the
-[generated bridge guide](poc/generated-bridge/README.md) for the example app,
-source generation, and migration from the original wrappers.
+## Run the example
+
+1. Use Node 22 and JDK 17. In Android Studio, install Android SDK Platform 34,
+   Build-Tools 34.0.0, Platform-Tools, NDK 26.1.10909125, and CMake 3.22.1.
+2. Set `ANDROID_HOME` to that SDK and start an Android emulator. If multiple
+   devices are attached, set `ANDROID_SERIAL` to the one you want to use.
+3. From a fresh checkout, run the following.
+
+```sh
+npm ci
+npm run android
+```
+
+The command builds, installs, and opens the example for the selected device's
+ABI. Open **Generated-compose**, tap **Tap Compose**, then tap **Tap React
+Native**. The counter reaches **Tapped 2** and **Below Compose** returns to
+its original position.
+
+### Agent checklist
+
+- Check that `node --version` is 22.x and `java -version` reports JDK 17.
+- Start one Android emulator and confirm it is online with `adb devices`.
+- Run `npm ci`, then `npm run build`.
+- Run `npm run android:verify` with Python 3 installed. It builds and installs
+  the app, opens the demo, taps both types of button, and checks the measured
+  layout after a React Native child is added and removed.
+- A successful run prints `Verified mixed Compose and React Native layout,
+  both callbacks, and child insertion and removal.`
+
+## Use it in a React Native app
+
+The bridge targets React Native 0.74.5 with the New Architecture enabled.
+Install the package or a checkout of this repository and rebuild the Android
+app. React Native autolinking registers its view managers and Fabric
+descriptors.
+
+The [generated bridge guide](poc/generated-bridge/README.md) covers sizing,
+compatibility wrappers, and regeneration from AndroidX Compose.
 
 ## Contributors
 
 - [Oliver Lopez](https://x.com/oliverloops)
-
-## To Do (WIP)
-
-- [x] Button
-- [x] Switch
-- [x] Slider
-- [x] Column
-- [x] Row
-- [x] Icon
-- [x] Progress Indicator (Circular + Linear)
-- [x] Checkbox
-- [x] Other types of [buttons](https://developer.android.com/develop/ui/compose/components/button)
-- [x] Card
-- [x] Spacer
-- [x] Chip
-- [x] Badge
-- [x] Horizontal Divider
-- [x] Vertical Divider
-- [x] Text Field
-- [x] Dialog
-- [x] Text
-- [x] Carousel
-- [x] Snackbar
-- [ ] Bottom Sheet
-- [x] Time/Date Picker (WIP...)
-- [x] LazyColumn/Row (just add a `lazy` prop to the existing components)
-- [x] LazyGrid (vertical and horizontal props from the same component)
-- [x] LazyStaggeredGrid (vertical and horizontal props from the same component)
-- [x] Box
-- [ ] More modifiers!

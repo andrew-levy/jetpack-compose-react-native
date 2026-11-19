@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -21,7 +21,7 @@ type NativeChipProps = Omit<ChipProps, "onClick"> & {
 };
 
 const NativeView: React.ComponentType<NativeChipProps> =
-  requireNativeViewManager("ChipView");
+  requireNativeComponent("ChipView");
 
 export function Chip({
   onClick,

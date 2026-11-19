@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { NativeSyntheticEvent, ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -15,7 +15,7 @@ type NativeCheckboxProps = Omit<CheckboxProps, "onCheckedChange"> & {
 };
 
 const NativeView: React.ComponentType<NativeCheckboxProps> =
-  requireNativeViewManager("CheckboxView");
+  requireNativeComponent("CheckboxView");
 
 export function Checkbox({
   style,

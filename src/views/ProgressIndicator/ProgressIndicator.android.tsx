@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { StyleSheet, ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -11,7 +11,7 @@ export type ProgressIndicatorProps = {
 };
 
 const NativeView: React.ComponentType<ProgressIndicatorProps> =
-  requireNativeViewManager("ProgressIndicatorView");
+  requireNativeComponent("ProgressIndicatorView");
 
 export function ProgressIndicator({
   style,

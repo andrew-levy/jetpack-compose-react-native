@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -36,7 +36,7 @@ type NativeTextProps = BaseTextProps & {
 };
 
 const NativeView: React.ComponentType<NativeTextProps> =
-  requireNativeViewManager("TextView");
+  requireNativeComponent("TextView");
 
 export function Text({ style, modifier, children, ...props }: TextProps) {
   return (

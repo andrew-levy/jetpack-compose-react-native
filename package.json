@@ -5,19 +5,14 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
-    "lint": "expo-module lint",
-    "test": "expo-module test",
-    "prepare": "expo-module prepare",
-    "prepublishOnly": "expo-module prepublishOnly",
-    "expo-module": "expo-module",
-    "open:ios": "xed example/ios",
-    "open:android": "open -a \"Android Studio\" example/android"
+    "build": "tsc -p tsconfig.json",
+    "android": "bash scripts/run-android.sh",
+    "android:verify": "bash scripts/run-android.sh --verify",
+    "start": "npm --workspace example run start",
+    "prepack": "npm run build"
   },
   "keywords": [
     "react-native",
-    "expo",
     "jetpack-compose-react-native",
     "JetpackComposeReactNative"
   ],
@@ -28,15 +23,34 @@
   "author": "andrew-levy <alevy97@gmail.com> (https://github.com/andrew-levy)",
   "license": "MIT",
   "homepage": "https://github.com/andrew-levy/jetpack-compose-react-native#readme",
-  "dependencies": {},
   "devDependencies": {
-    "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.5.2",
-    "expo-modules-core": "^1.12.24"
+    "@types/react": "^18.2.79",
+    "react": "18.2.0",
+    "react-native": "0.74.5",
+    "typescript": "~5.4.5"
   },
   "peerDependencies": {
-    "expo": "*",
     "react": "*",
-    "react-native": "*"
-  }
+    "react-native": ">=0.74.5 <0.75"
+  },
+  "react-native": "src/index.ts",
+  "workspaces": [
+    "example"
+  ],
+  "codegenConfig": {
+    "name": "JpcSpec",
+    "type": "components",
+    "jsSrcsDir": "src/specs",
+    "android": {
+      "javaPackageName": "com.jetpackcomposereactnative"
+    }
+  },
+  "files": [
+    "android",
+    "src",
+    "build",
+    "react-native.config.js",
+    "!android/build",
+    "!android/.cxx"
+  ]
 }

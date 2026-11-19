@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -14,7 +14,7 @@ export type BadgedBoxProps = {
 type NativeBadgedBoxProps = Omit<BadgedBoxProps, "badge">;
 
 const NativeView: React.ComponentType<NativeBadgedBoxProps> =
-  requireNativeViewManager("BadgedBoxView");
+  requireNativeComponent("BadgedBoxView");
 
 export function BadgedBox({ style, children, badge, ...rest }: BadgedBoxProps) {
   return (

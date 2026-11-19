@@ -124,7 +124,7 @@ function kotlin({ components }) {
 
   return [
     "// Generated from Compose declarations by generate.mjs.",
-    "package expo.modules.jetpackcomposereactnative.generated",
+    "package com.jetpackcomposereactnative.generated",
     "",
     "import androidx.compose.runtime.Composable",
     "import androidx.compose.ui.unit.dp",
@@ -145,7 +145,7 @@ function kotlin({ components }) {
 validate(manifest);
 const files = [
   ["src/generated/components.tsx", typeScript(manifest)],
-  ["android/src/main/java/expo/modules/jetpackcomposereactnative/generated/ComposableRegistry.kt", kotlin(manifest)],
+  ["android/src/main/java/com/jetpackcomposereactnative/generated/ComposableRegistry.kt", kotlin(manifest)],
 ];
 
 for (const [relative, content] of files) {

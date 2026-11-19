@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from "expo-modules-core";
+import { requireNativeComponent } from "react-native";
 import * as React from "react";
 import { NativeSyntheticEvent, ViewStyle } from "react-native";
 import { Modifier } from "../../utils/modifier";
@@ -16,7 +16,7 @@ type NativeTextFieldProps = Omit<TextFieldProps, "onValueChange"> & {
 };
 
 const NativeView: React.ComponentType<NativeTextFieldProps> =
-  requireNativeViewManager("TextFieldView");
+  requireNativeComponent("TextFieldView");
 
 export function TextField({
   style,

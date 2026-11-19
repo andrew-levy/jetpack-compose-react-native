@@ -25,41 +25,17 @@ For the original component props, import `Legacy` from the package root and use
 components such as `Legacy.Button` and `Legacy.Text`. Names exclusive to the
 original API, such as `Grid` and `Slider`, are also available as named imports.
 
-## Run the Android example
+## Mixed children and layout
 
-Use Node 22, JDK 17, and an Android emulator. In Android Studio's SDK Manager,
-install Android SDK Platform 34, Build-Tools 34.0.0, Platform-Tools,
-NDK 26.1.10909125, and CMake 3.22.1. Set `ANDROID_HOME` to your Android SDK
-directory, add its `platform-tools` directory to `PATH`, and start one emulator.
+Fabric measures the Compose root using native measurement state. Compose
+places embedded React Native views, and Fabric measures each React Native
+subtree at the size proposed by Compose. A React component can return a
+generated Compose view or an ordinary React Native view. Use
+`<View collapsable={false}>` to make a group of React Native views one Compose
+child.
 
-From a fresh checkout of the branch, run:
-
-```sh
-git clone --branch poc/generated-compose-bridge https://github.com/andrew-levy/jetpack-compose-react-native.git
-cd jetpack-compose-react-native
-
-npm install --ignore-scripts --legacy-peer-deps --package-lock=false
-npm --prefix example install --legacy-peer-deps --package-lock=false
-ln -s ../example/node_modules/react-native node_modules/react-native
-ln -s ../example/node_modules/react node_modules/react
-npm run build
-
-abi="$(adb shell getprop ro.product.cpu.abi | tr -d '\r')"
-example/android/gradlew -p example/android :app:assembleRelease \
-  -PnewArchEnabled=true -PreactNativeArchitectures="$abi"
-adb install -r example/android/app/build/outputs/apk/release/app-release.apk
-```
-
-Open the example app, select **Generated-compose**, and tap **Tap Compose**
-twice. The label advances from **Ready** to **Tapped 1** and **Tapped 2**. A
-child appears after the first tap and is removed after the second. The
-**Below Compose** label moves down and back as the native content height changes.
-
-Run the same automated check as CI with the emulator still running:
-
-```sh
-python3 poc/generated-bridge/check-emulator.py
-```
+The [root README](../../README.md#run-the-example) shows how to build and
+verify the demo from a fresh checkout.
 
 ## Generate
 
