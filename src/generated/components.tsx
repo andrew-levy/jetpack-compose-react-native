@@ -6,6 +6,8 @@ import type { ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlign
 export interface AlertDialogProps {
   onDismissRequest: () => void;
   confirmButton: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   dismissButton?: ReactNode;
   icon?: ReactNode;
@@ -23,6 +25,8 @@ export const AlertDialog = createComposableComponent<AlertDialogProps>({
 export interface AssistChipProps {
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   leadingIcon?: ReactNode;
@@ -37,6 +41,8 @@ export const AssistChip = createComposableComponent<AssistChipProps>({
 });
 
 export interface BadgeProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -51,6 +57,8 @@ export const Badge = createComposableComponent<BadgeProps>({
 
 export interface BadgedBoxProps {
   badge: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   children?: ReactNode;
 }
@@ -62,6 +70,8 @@ export const BadgedBox = createComposableComponent<BadgedBoxProps>({
 });
 
 export interface BoxProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   propagateMinConstraints?: boolean;
   contentAlignment?: ComposeAlignment;
@@ -75,6 +85,8 @@ export const Box = createComposableComponent<BoxProps>({
 
 export interface ButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -87,6 +99,8 @@ export const Button = createComposableComponent<ButtonProps>({
 });
 
 export interface CardProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   children?: ReactNode;
 }
@@ -99,6 +113,8 @@ export const Card = createComposableComponent<CardProps>({
 export interface CheckboxProps {
   checked: boolean;
   onCheckedChange: ((value: boolean) => void) | null;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
 }
@@ -110,6 +126,8 @@ export const Checkbox = createComposableComponent<CheckboxProps>({
 });
 
 export interface CircularProgressIndicatorProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   color?: string;
   strokeWidth?: number;
@@ -122,6 +140,8 @@ export const CircularProgressIndicator = createComposableComponent<CircularProgr
 });
 
 export interface ColumnProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   verticalArrangement?: ComposeVerticalArrangement;
   horizontalAlignment?: ComposeHorizontalAlignment;
@@ -134,6 +154,8 @@ export const Column = createComposableComponent<ColumnProps>({
 });
 
 export interface DismissibleDrawerSheetProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   drawerContainerColor?: string;
   drawerContentColor?: string;
@@ -148,6 +170,8 @@ export const DismissibleDrawerSheet = createComposableComponent<DismissibleDrawe
 
 export interface DismissibleNavigationDrawerProps {
   drawerContent: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   gesturesEnabled?: boolean;
   children?: ReactNode;
@@ -162,6 +186,8 @@ export const DismissibleNavigationDrawer = createComposableComponent<Dismissible
 export interface DropdownMenuProps {
   expanded: boolean;
   onDismissRequest: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   tonalElevation?: number;
@@ -178,6 +204,8 @@ export const DropdownMenu = createComposableComponent<DropdownMenuProps>({
 export interface DropdownMenuItemProps {
   text: ReactNode;
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
@@ -194,6 +222,8 @@ export const DropdownMenuItem = createComposableComponent<DropdownMenuItemProps>
 export interface ElevatedAssistChipProps {
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   leadingIcon?: ReactNode;
@@ -209,6 +239,8 @@ export const ElevatedAssistChip = createComposableComponent<ElevatedAssistChipPr
 
 export interface ElevatedButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -221,6 +253,8 @@ export const ElevatedButton = createComposableComponent<ElevatedButtonProps>({
 });
 
 export interface ElevatedCardProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   children?: ReactNode;
 }
@@ -234,6 +268,8 @@ export interface ElevatedFilterChipProps {
   selected: boolean;
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   leadingIcon?: ReactNode;
@@ -250,6 +286,8 @@ export const ElevatedFilterChip = createComposableComponent<ElevatedFilterChipPr
 export interface ElevatedSuggestionChipProps {
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   icon?: ReactNode;
@@ -264,6 +302,8 @@ export const ElevatedSuggestionChip = createComposableComponent<ElevatedSuggesti
 
 export interface ExtendedFloatingActionButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -278,6 +318,8 @@ export const ExtendedFloatingActionButton = createComposableComponent<ExtendedFl
 
 export interface FilledIconButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -292,6 +334,8 @@ export const FilledIconButton = createComposableComponent<FilledIconButtonProps>
 export interface FilledIconToggleButtonProps {
   checked: boolean;
   onCheckedChange: (value: boolean) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -305,6 +349,8 @@ export const FilledIconToggleButton = createComposableComponent<FilledIconToggle
 
 export interface FilledTonalButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -318,6 +364,8 @@ export const FilledTonalButton = createComposableComponent<FilledTonalButtonProp
 
 export interface FilledTonalIconButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -332,6 +380,8 @@ export const FilledTonalIconButton = createComposableComponent<FilledTonalIconBu
 export interface FilledTonalIconToggleButtonProps {
   checked: boolean;
   onCheckedChange: (value: boolean) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -347,6 +397,8 @@ export interface FilterChipProps {
   selected: boolean;
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   leadingIcon?: ReactNode;
@@ -362,6 +414,8 @@ export const FilterChip = createComposableComponent<FilterChipProps>({
 
 export interface FloatingActionButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -375,6 +429,8 @@ export const FloatingActionButton = createComposableComponent<FloatingActionButt
 });
 
 export interface HorizontalDividerProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   thickness?: number;
   color?: string;
@@ -387,6 +443,8 @@ export const HorizontalDivider = createComposableComponent<HorizontalDividerProp
 
 export interface IconButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -401,6 +459,8 @@ export const IconButton = createComposableComponent<IconButtonProps>({
 export interface IconToggleButtonProps {
   checked: boolean;
   onCheckedChange: (value: boolean) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -416,6 +476,8 @@ export interface InputChipProps {
   selected: boolean;
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   leadingIcon?: ReactNode;
@@ -432,6 +494,8 @@ export const InputChip = createComposableComponent<InputChipProps>({
 
 export interface LargeFloatingActionButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -449,6 +513,8 @@ export interface LeadingIconTabProps {
   onClick: () => void;
   text: ReactNode;
   icon: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   selectedContentColor?: string;
@@ -463,6 +529,8 @@ export const LeadingIconTab = createComposableComponent<LeadingIconTabProps>({
 });
 
 export interface LinearProgressIndicatorProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   color?: string;
   trackColor?: string;
@@ -476,6 +544,8 @@ export const LinearProgressIndicator = createComposableComponent<LinearProgressI
 
 export interface ListItemProps {
   headlineContent: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   overlineContent?: ReactNode;
   supportingContent?: ReactNode;
@@ -499,6 +569,8 @@ export const MaterialTheme = createComposableComponent<MaterialThemeProps>({
 });
 
 export interface ModalDrawerSheetProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   drawerContainerColor?: string;
   drawerContentColor?: string;
@@ -513,6 +585,8 @@ export const ModalDrawerSheet = createComposableComponent<ModalDrawerSheetProps>
 
 export interface ModalNavigationDrawerProps {
   drawerContent: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   gesturesEnabled?: boolean;
   scrimColor?: string;
@@ -526,6 +600,8 @@ export const ModalNavigationDrawer = createComposableComponent<ModalNavigationDr
 });
 
 export interface NavigationBarProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -542,6 +618,8 @@ export interface NavigationDrawerItemProps {
   label: ReactNode;
   selected: boolean;
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   icon?: ReactNode;
   badge?: ReactNode;
@@ -555,6 +633,8 @@ export const NavigationDrawerItem = createComposableComponent<NavigationDrawerIt
 });
 
 export interface NavigationRailProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -572,6 +652,8 @@ export interface NavigationRailItemProps {
   selected: boolean;
   onClick: () => void;
   icon: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   label?: ReactNode;
@@ -587,6 +669,8 @@ export const NavigationRailItem = createComposableComponent<NavigationRailItemPr
 
 export interface OutlinedButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -599,6 +683,8 @@ export const OutlinedButton = createComposableComponent<OutlinedButtonProps>({
 });
 
 export interface OutlinedCardProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   children?: ReactNode;
 }
@@ -610,6 +696,8 @@ export const OutlinedCard = createComposableComponent<OutlinedCardProps>({
 
 export interface OutlinedIconButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -624,6 +712,8 @@ export const OutlinedIconButton = createComposableComponent<OutlinedIconButtonPr
 export interface OutlinedIconToggleButtonProps {
   checked: boolean;
   onCheckedChange: (value: boolean) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -638,6 +728,8 @@ export const OutlinedIconToggleButton = createComposableComponent<OutlinedIconTo
 export interface OutlinedTextFieldProps {
   value: string;
   onValueChange: (value: string) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   readOnly?: boolean;
@@ -653,6 +745,8 @@ export const OutlinedTextField = createComposableComponent<OutlinedTextFieldProp
 });
 
 export interface PermanentDrawerSheetProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   drawerContainerColor?: string;
   drawerContentColor?: string;
@@ -667,6 +761,8 @@ export const PermanentDrawerSheet = createComposableComponent<PermanentDrawerShe
 
 export interface PermanentNavigationDrawerProps {
   drawerContent: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   children?: ReactNode;
 }
@@ -680,6 +776,8 @@ export const PermanentNavigationDrawer = createComposableComponent<PermanentNavi
 export interface RadioButtonProps {
   selected: boolean;
   onClick: (() => void) | null;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
 }
@@ -691,6 +789,8 @@ export const RadioButton = createComposableComponent<RadioButtonProps>({
 });
 
 export interface RowProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   horizontalArrangement?: ComposeHorizontalArrangement;
   verticalAlignment?: ComposeVerticalAlignment;
@@ -704,6 +804,8 @@ export const Row = createComposableComponent<RowProps>({
 
 export interface ScrollableTabRowProps {
   selectedTabIndex: number;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -720,6 +822,8 @@ export const ScrollableTabRow = createComposableComponent<ScrollableTabRowProps>
 
 export interface SmallFloatingActionButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -733,6 +837,8 @@ export const SmallFloatingActionButton = createComposableComponent<SmallFloating
 });
 
 export interface SnackbarProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   action?: ReactNode;
   dismissAction?: ReactNode;
@@ -748,7 +854,9 @@ export const Snackbar = createComposableComponent<SnackbarProps>({
 });
 
 export interface SpacerProps {
-  modifier: ComposeModifier;
+  modifiers: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
 }
 export const Spacer = createComposableComponent<SpacerProps>({
   name: "Spacer",
@@ -759,6 +867,8 @@ export const Spacer = createComposableComponent<SpacerProps>({
 export interface SuggestionChipProps {
   onClick: () => void;
   label: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   icon?: ReactNode;
@@ -772,6 +882,8 @@ export const SuggestionChip = createComposableComponent<SuggestionChipProps>({
 });
 
 export interface SurfaceProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   color?: string;
   contentColor?: string;
@@ -788,6 +900,8 @@ export const Surface = createComposableComponent<SurfaceProps>({
 export interface SwitchProps {
   checked: boolean;
   onCheckedChange: ((value: boolean) => void) | null;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   thumbContent?: ReactNode;
   enabled?: boolean;
@@ -803,6 +917,8 @@ export const Switch = createComposableComponent<SwitchProps>({
 export interface TabProps {
   selected: boolean;
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   text?: ReactNode;
@@ -819,6 +935,8 @@ export const Tab = createComposableComponent<TabProps>({
 
 export interface TabRowProps {
   selectedTabIndex: number;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   containerColor?: string;
   contentColor?: string;
@@ -834,6 +952,8 @@ export const TabRow = createComposableComponent<TabRowProps>({
 
 export interface TextProps {
   text: string;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   color?: string;
   fontSize?: number;
@@ -851,6 +971,8 @@ export const Text = createComposableComponent<TextProps>({
 
 export interface TextButtonProps {
   onClick: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   children?: ReactNode;
@@ -865,6 +987,8 @@ export const TextButton = createComposableComponent<TextButtonProps>({
 export interface TextFieldProps {
   value: string;
   onValueChange: (value: string) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
   readOnly?: boolean;
@@ -880,6 +1004,8 @@ export const TextField = createComposableComponent<TextFieldProps>({
 });
 
 export interface VerticalDividerProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   thickness?: number;
   color?: string;

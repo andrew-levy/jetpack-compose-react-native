@@ -70,7 +70,15 @@ function typeScript({ components, values }) {
     const fields = parameters.map(({ name, optional, kind, nullable }) => {
       const type = kinds[kind].type;
       const value = nullable && kind.startsWith("event") ? `(${type})` : type;
-      return `  ${name}${optional ? "?" : ""}: ${value}${nullable && kind !== "slot" ? " | null" : ""};`;
+      const annotation = `${value}${nullable && kind !== "slot" ? " | null" : ""}`;
+      if (kind === "modifier") {
+        return [
+          `  modifiers${optional ? "?" : ""}: ${annotation};`,
+          "  /** @deprecated Use the modifiers prop. */",
+          `  modifier?: ${annotation};`,
+        ].join("\n");
+      }
+      return `  ${name}${optional ? "?" : ""}: ${annotation};`;
     });
     if (children) fields.push("  children?: ReactNode;");
     const props = parameters.filter(({ kind }) => kind !== "slot" && !kind.startsWith("event")).map(({ name }) => name);

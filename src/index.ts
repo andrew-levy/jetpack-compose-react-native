@@ -1,4 +1,4 @@
-export { Modifier } from "./generated/modifiers";
+export { compose, Modifier, type ComposeChain } from "./generated/modifiers";
 export type * from "./generated/values";
 export type { ComposeBrush, ComposeShape } from "./utils/modifier";
 

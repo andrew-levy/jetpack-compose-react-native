@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import type { Modifier } from "../modifiers";
+import type { ComposeChain } from "../modifiers";
 import { AutomaticComposeHost } from "./ComposeHost";
 import { ComposeHostContext, type ComposableViewProps } from "./shared";
 import { RenderComposeNode, type ComposeEventValue } from "./RenderComposeNode";
 
-export type ComposeModifier = typeof Modifier;
+export type ComposeModifier = ComposeChain;
 
 type ComposeCallback = (value?: ComposeEventValue) => void;
 
@@ -40,7 +40,7 @@ export function createComposableComponent<P extends object>(
     const modifierCallbacks = new Map<string, ComposeCallback>();
     const input = props as Record<string, unknown>;
     for (const name of description.props) {
-      const value = input[name];
+      const value = name === "modifier" && input.modifiers !== undefined ? input.modifiers : input[name];
       if (value === undefined) continue;
       if (value === null) {
         values[name] = null;

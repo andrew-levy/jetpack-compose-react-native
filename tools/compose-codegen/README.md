@@ -3,9 +3,9 @@
 Import components by name from the package root.
 
 ```tsx
-import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
+import { Button, Column, Text, compose } from "jetpack-compose-react-native";
 
-<Column horizontalAlignment="start" modifier={Modifier.padding(16).fillMaxWidth()}>
+<Column horizontalAlignment="start" modifiers={compose().padding(16).fillMaxWidth()}>
   <Text text="Hello Compose" />
   <Button onClick={() => console.log("Clicked")}>
     <Text text="Tap me" />
@@ -58,25 +58,29 @@ named composable slots. It selects one supported, unambiguous overload per name
 and skips signatures with unsupported required parameters. It exposes up to
 four optional props with the original bridge types, plus discovered value
 props up to a total of seven. The
-`modifier` prop has its own slot and counts toward neither limit. The generated
+`modifiers` prop has its own slot and counts toward neither limit. The generated
 calls omit unused parameters so Kotlin applies the AndroidX defaults.
 
-Modifiers are applied in chain order. Use a scalar shorthand when a call has
-one matching scalar argument, or use named options to select an overload. Scoped
-modifiers such as `weight` need a native parent such as `Row` or `Column`.
+Start a chain with `compose()` and pass it through the `modifiers` prop.
+Modifiers apply in chain order. Pass the primary value first and additional
+settings in an options object. You can also pass a named arguments object to
+select a Compose overload. Scoped modifiers such as `weight` need a native
+parent such as `Row` or `Column`.
 Supported modifier callbacks such as `clickable` use the same event bridge
 as composable callbacks.
 
 ```tsx
-Modifier.background({ color: "#f3f4f6", shape: { radius: 12 } })
-  .padding({ horizontal: 16, vertical: 8 })
+compose()
+  .background("#f3f4f6", { in: { rect: { cornerRadius: 12 } } })
+  .padding("horizontal", 16)
   .fillMaxWidth(0.9)
 ```
 
 The shared bridge still owns hosting, prop serialization, callback delivery,
 and React Native children. The extractor defines which Kotlin types can
 cross the bridge. The runtime has small adapters for shape and brush values
-and preserves the existing `backgroundColor` and `backgroundBrush` aliases.
+and preserves the existing `backgroundColor` and `backgroundBrush` aliases. The
+`Modifier` singleton and `modifier` prop remain available for existing callers.
 
 ## Verify
 

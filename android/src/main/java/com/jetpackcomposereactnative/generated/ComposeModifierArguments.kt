@@ -23,7 +23,10 @@ internal class ComposeModifierArguments(
   fun emit(name: String, value: Any? = null) = emitEvent(string(name), value)
 
   fun shape(name: String): Shape = when (val value = values.get(name)) {
-    is JSONObject -> RoundedCornerShape(value.getDouble("radius").dp)
+    is JSONObject -> {
+      val radius = value.optJSONObject("rect")?.getDouble("cornerRadius") ?: value.getDouble("radius")
+      RoundedCornerShape(radius.dp)
+    }
     "circle", "CircleShape" -> CircleShape
     else -> RectangleShape
   }

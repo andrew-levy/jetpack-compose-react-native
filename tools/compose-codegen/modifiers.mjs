@@ -1,8 +1,19 @@
 const quote = JSON.stringify;
 
+const styleNames = { background: "style", border: "content" };
+const backgroundLabels = { shape: "in" };
+
+function positionalKey(name, parameters) {
+  if (Object.hasOwn(styleNames, name)) {
+    return parameters.find(({ kind }) => kind === "color" || kind === "brush")?.name;
+  }
+  const required = parameters.filter(({ optional }) => !optional);
+  return required.length === 1 ? required[0].name : undefined;
+}
+
 export const modifierKinds = {
-  shape: { type: "ComposeShape", expression: (key) => `args.shape(${key})`, input: "stringOrObject" },
-  brush: { type: "ComposeBrush", expression: (key) => `args.brush(${key})`, input: "stringOrObject" },
+  shape: { type: "ComposeShape", expression: (key) => `args.shape(${key})`, input: "shape" },
+  brush: { type: "ComposeBrush", expression: (key) => `args.brush(${key})`, input: "brush" },
 };
 
 export function modifierOutputs(modifiers, kinds) {
@@ -19,26 +30,36 @@ export function modifierOutputs(modifiers, kinds) {
 function typeScript(overloads, kinds) {
   const methods = new Map();
   const metadata = Object.create(null);
-  for (const { id, name, argumentLists } of overloads) {
+  for (const { id, name, parameters: allParameters, argumentLists } of overloads) {
+    const primary = positionalKey(name, allParameters);
+    const labels = name === "background" ? backgroundLabels : undefined;
     const signatures = methods.get(name) ?? new Set();
     for (const parameters of argumentLists) {
       if (!parameters.length) {
-        signatures.add(`  ${name}(): Modifier;`);
+        signatures.add(`  ${name}(): ComposeChain;`);
       } else {
         const fields = parameters.map((parameter) => `${parameter.name}: ${typeOf(parameter, kinds)}`);
-        signatures.add(`  ${name}(options: { ${fields.join("; ")} }): Modifier;`);
-        if (parameters.length === 1) {
-          const [parameter] = parameters;
-          const type = typeOf(parameter, kinds);
-          if (parameter.kind !== "shape" && parameter.kind !== "brush") {
-            signatures.add(`  ${name}(${parameter.name}: ${type}): Modifier;`);
-          }
+        signatures.add(`  ${name}(options: { ${fields.join("; ")} }): ComposeChain;`);
+        const first = primary
+          ? parameters.find((parameter) => parameter.name === primary)
+          : parameters.length === 1 ? parameters[0] : undefined;
+        if (first) {
+          const trailing = parameters.filter((parameter) => parameter !== first);
+          const options = trailing.map((parameter) => {
+            const field = labels?.[parameter.name] ?? parameter.name;
+            const optional = name === "border" && (field === "width" || (first.kind === "brush" && field === "shape"));
+            return { text: `${field}${optional ? "?" : ""}: ${typeOf(parameter, kinds)}`, optional };
+          });
+          const suffix = trailing.length
+            ? `, options${options.every(({ optional }) => optional) ? "?" : ""}: { ${options.map(({ text }) => text).join("; ")} }`
+            : "";
+          signatures.add(`  ${name}(${styleNames[name] ?? first.name}: ${typeOf(first, kinds)}${suffix}): ComposeChain;`);
         }
       }
     }
     methods.set(name, signatures);
     (metadata[name] ??= []).push({
-      id,
+      id, primary, labels,
       forms: argumentLists.map((parameters) => parameters.map(({ name, kind, nullable }) =>
         [name, kinds[kind].input ?? kinds[kind].type, nullable]
       )),
@@ -51,20 +72,31 @@ function typeScript(overloads, kinds) {
     .filter((kind) => kind.startsWith("Compose")).sort();
   return [
     "// Generated from Compose declarations by generate.mjs.",
-    'import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
+    'import { createModifierFactory, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
     ...(valueTypes.length ? [`import type { ${valueTypes.join(", ")} } from "./values";`] : []),
     "",
     "interface GeneratedModifiers {",
     ...methodDeclarations,
     "}",
     "",
-    "export type Modifier = GeneratedModifiers & ModifierCompatibility<Modifier> & ModifierPayload;",
+    "export type ComposeChain = GeneratedModifiers & ModifierCompatibility<ComposeChain> & ModifierPayload;",
     "",
-    "export const Modifier = createModifier({",
-    ...Object.entries(metadata).map(([name, options]) => `  ${quote(name)}: [\n${options.map(({ id, forms }) =>
-      `    { id: ${id}, forms: ${quote(forms)} },`
-    ).join("\n")}\n  ],`),
-    "}) as Modifier;",
+    "const createChain = createModifierFactory({",
+    ...Object.entries(metadata).map(([name, options]) => `  ${quote(name)}: [\n${options
+      .sort((left, right) => Number(left.primary === "brush") - Number(right.primary === "brush"))
+      .map(({ id, forms, primary, labels }) =>
+        `    { id: ${id}, ${primary ? `primary: ${quote(primary)}, ` : ""}${labels ? `labels: ${quote(labels)}, ` : ""}forms: ${quote(forms)} },`
+      ).join("\n")}\n  ],`),
+    "});",
+    "",
+    "export function compose(): ComposeChain {",
+    "  return createChain() as ComposeChain;",
+    "}",
+    "",
+    "/** @deprecated Start a modifier chain with compose(). */",
+    "export type Modifier = ComposeChain;",
+    "/** @deprecated Start a modifier chain with compose(). */",
+    "export const Modifier = compose();",
     "",
   ].join("\n");
 }
