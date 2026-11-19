@@ -14,3 +14,8 @@ interface ComposeNode {
   fun modifier(name: String): Modifier
   fun emit(name: String)
 }
+
+@androidx.compose.runtime.Composable
+fun compileGeneratedRegistryReference(node: ComposeNode) {
+  expo.modules.jetpackcomposereactnative.poc.generated.renderComposable(node)
+}
