@@ -4,17 +4,34 @@ import time
 import xml.etree.ElementTree as ET
 
 
+PACKAGE = "com.jetpackcomposereactnative.example"
+
+
+class ActivityRecreated(RuntimeError):
+    pass
+
+
 def adb(*args):
     return subprocess.check_output(["adb", *args], text=True, timeout=40)
 
 
-def wait_for(*labels, absent=(), layout_ready=lambda nodes: True):
+def activity_window():
+    windows = adb("shell", "dumpsys", "window", "windows")
+    focus = re.search(r"mCurrentFocus=Window\{(\S+) .* " + re.escape(PACKAGE) + r"/[^}]+\}", windows)
+    return focus.group(1) if focus else None
+
+
+def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None):
     deadline = time.monotonic() + 90
     nodes = {}
     while time.monotonic() < deadline:
         try:
             adb("shell", "uiautomator", "dump", "/sdcard/compose-bridge.xml")
             contents = adb("shell", "cat", "/sdcard/compose-bridge.xml")
+            if window is not None:
+                focused = activity_window()
+                if focused is not None and focused != window:
+                    raise ActivityRecreated("Android recreated the demo activity during verification")
             nodes = {
                 label: node
                 for node in ET.fromstring(contents).iter("node")
@@ -47,28 +64,43 @@ def following_view_top(nodes):
     return bounds(nodes["Below Compose"])[1]
 
 
-package = "com.jetpackcomposereactnative.example"
-adb("shell", "am", "force-stop", package)
-print(adb("shell", "am", "start", "-W", "-n", f"{package}/.MainActivity"))
+def verify():
+    adb("shell", "am", "force-stop", PACKAGE)
+    print(adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity"), flush=True)
 
-nodes = wait_for(
-    "Ready", "Tap Compose", "Tap React Native", "Even click count", "Below Compose", "Fixed height Compose",
-    layout_ready=lambda nodes: (
-        following_view_top(nodes) >= bounds(nodes["Even click count"])[3]
-        and bounds(nodes["Tap React Native"])[0] >= bounds(nodes["Tap Compose"])[2]
-    ),
-)
-original_foot = following_view_top(nodes)
-tap(nodes["Tap Compose"])
-nodes = wait_for("Tapped 1", "Tap Compose", "Tap React Native", "Odd click count", "Added by React", "Below Compose",
-                 absent=("Ready", "Even click count"),
-                 layout_ready=lambda nodes: following_view_top(nodes) > original_foot)
-tap(nodes["Tap React Native"])
-nodes = wait_for("Tapped 2", "Even click count", "Below Compose",
-                 absent=("Tapped 1", "Odd click count", "Added by React"),
-         layout_ready=lambda nodes: following_view_top(nodes) == original_foot)
-tap(nodes["Tapped 2"])
-wait_for("Tapped 3", "Odd click count", "Added by React", "Below Compose",
-         absent=("Tapped 2", "Even click count"),
-         layout_ready=lambda nodes: following_view_top(nodes) > original_foot)
+    nodes = wait_for(
+        "Ready", "Tap Compose", "Tap React Native", "Even click count", "Below Compose", "Fixed height Compose",
+        layout_ready=lambda nodes: (
+            following_view_top(nodes) >= bounds(nodes["Even click count"])[3]
+            and bounds(nodes["Tap React Native"])[0] >= bounds(nodes["Tap Compose"])[2]
+        ),
+    )
+    window = activity_window()
+    original_foot = following_view_top(nodes)
+    tap(nodes["Tap Compose"])
+    nodes = wait_for(
+        "Tapped 1", "Tap Compose", "Tap React Native", "Odd click count", "Added by React", "Below Compose",
+        absent=("Ready", "Even click count"), window=window,
+        layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
+    )
+    tap(nodes["Tap React Native"])
+    nodes = wait_for(
+        "Tapped 2", "Even click count", "Below Compose",
+        absent=("Tapped 1", "Odd click count", "Added by React"), window=window,
+        layout_ready=lambda nodes: following_view_top(nodes) == original_foot,
+    )
+    tap(nodes["Tapped 2"])
+    wait_for(
+        "Tapped 3", "Odd click count", "Added by React", "Below Compose",
+        absent=("Tapped 2", "Even click count"), window=window,
+        layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
+    )
+
+
+try:
+    verify()
+except ActivityRecreated as error:
+    print(f"{error}. Restarting the tap sequence.", flush=True)
+    verify()
+
 print("Verified mixed layout, Compose and React Native callbacks, generated clickable, and child insertion and removal.")
