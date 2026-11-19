@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
-#include <unordered_map>
 #include <type_traits>
+#include <unordered_map>
 
 #include <folly/dynamic.h>
 #include <react/renderer/components/JpcSpec/EventEmitters.h>
@@ -92,7 +92,8 @@ class JpcComposeShadowNode final
       if (!dynamic_cast<const YogaLayoutableShadowNode *>(child.get())) {
         continue;
       }
-      auto clone = child->clone({});
+      // Compose must place each direct React child with its complete native subtree.
+      auto clone = cloneForPlacement(*child);
       auto &layoutable = static_cast<YogaLayoutableShadowNode &>(*clone);
       const auto props = dynamic_cast<const YogaStylableProps *>(child->getProps().get());
       if (props && props->yogaStyle.display() == yoga::Display::None) {
@@ -109,12 +110,32 @@ class JpcComposeShadowNode final
         constraints.maximumSize = maximum;
         constraints.layoutDirection = this->getLayoutMetrics().layoutDirection;
         layoutable.layoutTree(context, constraints);
+        auto metrics = layoutable.getLayoutMetrics();
+        metrics.frame.origin = {};
+        layoutable.setLayoutMetrics(metrics);
       }
       if (context.affectedNodes) {
         context.affectedNodes->push_back(&layoutable);
       }
       this->replaceChild(*child, clone, index);
     }
+  }
+
+ private:
+  static ShadowNode::Unshared cloneForPlacement(const ShadowNode &child) {
+    if (child.getTraits().check(ShadowNodeTraits::Trait::FormsStackingContext)) {
+      return child.clone({});
+    }
+
+    const auto &descriptor = child.getComponentDescriptor();
+    PropsParserContext context{child.getSurfaceId(), *descriptor.getContextContainer()};
+    auto rawProps = child.getProps()->rawProps;
+    if (!rawProps.isObject()) {
+      rawProps = folly::dynamic::object();
+    }
+    rawProps["collapsable"] = false;
+    auto props = descriptor.cloneProps(context, child.getProps(), RawProps(std::move(rawProps)));
+    return child.clone({.props = props});
   }
 };
 

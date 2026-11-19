@@ -17,7 +17,7 @@ export default function GeneratedComposeScreen() {
           <Button onClick={() => setClicks(clicks + 1)}>
             <Text text="Tap Compose" />
           </Button>
-          <View collapsable={false} style={styles.reactChild}>
+          <View style={styles.reactChild}>
             <Pressable accessibilityRole="button" onPress={() => setClicks(clicks + 1)}>
               <ReactNativeText>Tap React Native</ReactNativeText>
             </Pressable>

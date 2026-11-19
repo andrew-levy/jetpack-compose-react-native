@@ -30,9 +30,9 @@ original API, such as `Grid` and `Slider`, are also available as named imports.
 Fabric measures the Compose root using native measurement state. Compose
 places embedded React Native views, and Fabric measures each React Native
 subtree at the size proposed by Compose. A React component can return a
-generated Compose view or an ordinary React Native view. Use
-`<View collapsable={false}>` to make a group of React Native views one Compose
-child.
+generated Compose view or an ordinary React Native view. A React Native
+`View` groups its subtree into one Compose child, including when Fabric would
+otherwise flatten the group.
 
 The [root README](../../README.md#run-the-example) shows how to build and
 verify the demo from a fresh checkout.
