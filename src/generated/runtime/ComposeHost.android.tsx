@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
 
 export function ComposeHost({ children, fitContent = false, style, testID }: ComposeHostProps) {
   NativeHost ??= requireNativeViewManager<NativeProps>("GeneratedComposeHost");
-  const [height, setHeight] = React.useState(0);
+  const [height, setHeight] = React.useState(1);
 
   return (
     <ComposeHostContext.Provider value>
       <NativeHost
         fitContent={fitContent}
         testID={testID}
-        style={[fitContent ? [styles.measure, { height }] : styles.fill, style]}
+        style={[fitContent ? [styles.measure, { height: Math.max(1, height) }] : styles.fill, style]}
         onComposeSizeChange={({ nativeEvent }) => {
           if (fitContent) setHeight(nativeEvent.height);
         }}

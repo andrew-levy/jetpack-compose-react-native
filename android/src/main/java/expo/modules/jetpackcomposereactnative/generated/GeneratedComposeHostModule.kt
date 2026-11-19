@@ -5,17 +5,12 @@ import android.view.View.MeasureSpec
 import android.widget.LinearLayout
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import com.facebook.react.bridge.Arguments
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import expo.modules.kotlin.viewevent.EventDispatcher
 
 class GeneratedComposeHostModule : Module() {
   override fun definition() = ModuleDefinition {
@@ -31,20 +26,14 @@ class GeneratedComposeHostModule : Module() {
 
 internal class GeneratedComposeHostView(context: Context, appContext: AppContext) :
   ComposeContainerView(context, appContext) {
-  private val onComposeSizeChange by EventDispatcher()
-  private var fitContent by mutableStateOf(false)
+  private var fitContent = false
+  private var intrinsicHeight: Int? = null
   private var layoutPending = false
   private val composeView = ComposeView(context).apply {
     setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindowOrReleasedFromPool)
     setContent {
       MaterialTheme {
-        Box(
-          if (fitContent) Modifier.onSizeChanged {
-            onComposeSizeChange(mapOf("height" to it.height / resources.displayMetrics.density))
-          } else Modifier
-        ) {
-          RenderComposeChildren(composeChildren)
-        }
+        Box { RenderComposeChildren(composeChildren) }
       }
     }
   }
@@ -56,16 +45,30 @@ internal class GeneratedComposeHostView(context: Context, appContext: AppContext
   internal fun setFitContent(enabled: Boolean) {
     if (fitContent == enabled) return
     fitContent = enabled
+    intrinsicHeight = null
     requestLayout()
   }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     val composeHeight = if (fitContent) MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED) else heightMeasureSpec
     composeView.measure(widthMeasureSpec, composeHeight)
+    if (fitContent) reportHeight(composeView.measuredHeight)
     setMeasuredDimension(
       resolveSize(composeView.measuredWidth, widthMeasureSpec),
       resolveSize(composeView.measuredHeight, heightMeasureSpec)
     )
+  }
+
+  private fun reportHeight(height: Int) {
+    if (intrinsicHeight == height) return
+    intrinsicHeight = height
+    post {
+      if (fitContent && isAttachedToWindow && intrinsicHeight == height) {
+        dispatchComposeEvent("topComposeSizeChange", Arguments.createMap().apply {
+          putDouble("height", height.toDouble() / resources.displayMetrics.density)
+        })
+      }
+    }
   }
 
   override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {

@@ -10,7 +10,7 @@ import expo.modules.jetpackcomposereactnative.common.toModifier
 import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import expo.modules.kotlin.viewevent.EventDispatcher
+import com.facebook.react.bridge.Arguments
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -30,7 +30,6 @@ class GeneratedComposeNodeModule : Module() {
 
 internal class GeneratedComposeNodeView(context: Context, appContext: AppContext) :
   ComposeContainerView(context, appContext), ComposeNode {
-  private val onComposeEvent by EventDispatcher()
   private var values by mutableStateOf(JSONObject())
   override var name by mutableStateOf("")
   internal var slotName by mutableStateOf<String?>(null)
@@ -61,8 +60,14 @@ internal class GeneratedComposeNodeView(context: Context, appContext: AppContext
     }.toModifier()
 
   override fun emit(name: String, value: Any?) {
-    val event = if (value == null) mapOf("name" to name) else mapOf("name" to name, "value" to value)
-    onComposeEvent(event)
+    dispatchComposeEvent("topComposeEvent", Arguments.createMap().apply {
+      putString("name", name)
+      when (value) {
+        is String -> putString("value", value)
+        is Boolean -> putBoolean("value", value)
+        is Number -> putDouble("value", value.toDouble())
+      }
+    })
   }
 }
 

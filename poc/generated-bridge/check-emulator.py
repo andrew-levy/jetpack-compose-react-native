@@ -49,7 +49,7 @@ def following_view_top(nodes):
     return bounds(nodes["Below Compose"])[1]
 
 
-nodes = wait_for("Ready", "Tap Compose", "Even click count", "Below Compose",
+nodes = wait_for("Ready", "Tap Compose", "Even click count", "Below Compose", "Fixed height Compose",
                  layout_ready=lambda nodes: following_view_top(nodes) >= bounds(nodes["Even click count"])[3])
 original_foot = following_view_top(nodes)
 tap(nodes["Tap Compose"])

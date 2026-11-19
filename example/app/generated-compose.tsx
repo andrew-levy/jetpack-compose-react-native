@@ -28,10 +28,14 @@ export default function GeneratedComposeScreen() {
         </Generated.Column>
       </ComposeHost>
       <Text>Below Compose</Text>
+      <ComposeHost style={styles.fixedHost}>
+        <Generated.Text text="Fixed height Compose" />
+      </ComposeHost>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: "#fff" },
+  fixedHost: { height: 48, flex: 0 },
 });
