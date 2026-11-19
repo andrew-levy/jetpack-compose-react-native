@@ -27,7 +27,7 @@ jobs:
       - name: Install Android build tools
         run: |
           sdk_root="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-          "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
+          "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-34' 'build-tools;34.0.0' 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
       - name: Verify sources generated from AndroidX Compose
         run: |
           gradle -p poc/generated-bridge/android-smoke kspDebugKotlin
@@ -56,7 +56,7 @@ jobs:
           ln -s ../example/node_modules/react-native node_modules/react-native
           ln -s ../example/node_modules/react node_modules/react
           npm run build
-          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64 -Pandroid.compileSdkVersion=35
+          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64
       - name: Enable Android emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules

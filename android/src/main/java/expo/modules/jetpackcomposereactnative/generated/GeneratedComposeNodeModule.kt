@@ -69,6 +69,9 @@ internal class GeneratedComposeNodeView(context: Context, appContext: AppContext
 private fun JSONArray.toList(): List<Any> = List(length()) { index -> get(index) }
 
 private fun JSONObject.toMap(): Map<String, Any> = keys().asSequence().associateWith { key ->
-  val value = get(key)
-  if (value is JSONObject) value.toMap() else value
+  when (val value = get(key)) {
+    is JSONObject -> value.toMap()
+    is Number -> value.toDouble()
+    else -> value
+  }
 }
