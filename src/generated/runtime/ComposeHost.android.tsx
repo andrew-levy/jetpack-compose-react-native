@@ -11,17 +11,19 @@ let NativeHost: React.ComponentType<NativeProps> | undefined;
 
 const styles = StyleSheet.create({
   fill: { flex: 1 },
+  fixed: { flex: 0 },
   measure: { alignSelf: "stretch" },
 });
 
 export function AutomaticComposeHost(props: Omit<ComposeHostProps, "fitContent">) {
-  const style = StyleSheet.flatten(props.style);
-  const hasBoundedHeight =
-    (style?.height != null && style.height !== "auto") ||
-    (style?.flex ?? 0) > 0 ||
-    (style?.flexGrow ?? 0) > 0;
-
-  return <ComposeHost {...props} fitContent={!hasBoundedHeight} />;
+  const { height, ...intrinsicStyle } = StyleSheet.flatten(props.style) ?? {};
+  if ((intrinsicStyle.flex ?? 0) > 0 || (intrinsicStyle.flexGrow ?? 0) > 0) {
+    return <ComposeHost {...props} fitContent={false} />;
+  }
+  if (height != null && height !== "auto") {
+    return <ComposeHost {...props} style={[styles.fixed, props.style]} fitContent={false} />;
+  }
+  return <ComposeHost {...props} style={intrinsicStyle} fitContent />;
 }
 
 export function ComposeHost({ children, fitContent = false, style, testID }: ComposeHostProps) {
