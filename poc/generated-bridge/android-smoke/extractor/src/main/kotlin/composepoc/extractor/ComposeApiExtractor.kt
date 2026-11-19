@@ -66,12 +66,13 @@ class ComposeApiExtractor(private val generator: CodeGenerator, private val log:
       return emptyList()
     }
     val manifest = buildString {
-      appendLine("{\\"schemaVersion\\":1,\\"components\\":[")
+      append("""{"schemaVersion":1,"components":[""")
       supported.forEachIndexed { index, fn ->
-        if (index > 0) appendLine(",")
+        if (index > 0) append(",")
         val name = fn.simpleName.asString()
-        append("{\\"name\\":\\"").append(name).append("\\",\\"kotlinFunction\\":\\"")
-          .append(fn.qualifiedName!!.asString()).append("\\",\\"parameters\\":[")
+        append("""{"name":"""").append('"').append(name).append('"')
+        append(""","kotlinFunction":"""").append('"').append(fn.qualifiedName!!.asString()).append('"')
+        append(""","parameters":[""")
         val params = fn.parameters.mapNotNull { p ->
           val paramName = p.name?.asString() ?: return@mapNotNull null
           val kind = when (paramName) {
@@ -81,15 +82,14 @@ class ComposeApiExtractor(private val generator: CodeGenerator, private val log:
             "enabled" -> "boolean"
             else -> null
           } ?: return@mapNotNull null
-          if (kind == "boolean")
-            "{\\"name\\":\\"$paramName\\",\\"kind\\":\\"$kind\\",\\"optional\\":true,\\"default\\":true}"
-          else
-            "{\\"name\\":\\"$paramName\\",\\"kind\\":\\"$kind\\",\\"optional\\":${p.hasDefault}}"
+          val optional = p.hasDefault
+          val defaultField = if (kind == "boolean") ""","default":true""" else ""
+          """{"name":"$paramName","kind":"$kind","optional":$optional$defaultField}"""
         }
         append(params.joinToString(","))
-        append("],\\"children\\":").append(name == "Button").append("}")
+        append("""],"children":""").append(name == "Button").append("}")
       }
-      appendLine("]}")
+      append("]}")
     }
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
       .bufferedWriter().use { it.write(manifest) }
