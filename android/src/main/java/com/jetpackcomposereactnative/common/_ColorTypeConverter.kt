@@ -10,52 +10,50 @@ fun parseComposeColor(color: Any): Color = when (color) {
 }
 
 private fun parseColorString(color: String): Color {
-    if (color is String) {
-        // hex
-        if (color.startsWith("#")) {
-            val cleaned = if (color.startsWith("#")) color.substring(1) else color
-            val hex = if (cleaned.length == 6) {
-                "#FF$cleaned"
-            } else if (cleaned.length == 8) {
-                "#$cleaned"
-            } else {
-                "#000000"
-            }
-            val parsed = android.graphics.Color.parseColor(hex)
-            return Color(parsed)
+    // hex
+    if (color.startsWith("#")) {
+        val cleaned = color.substring(1)
+        val hex = if (cleaned.length == 6) {
+            "#FF$cleaned"
+        } else if (cleaned.length == 8) {
+            "#$cleaned"
+        } else {
+            "#000000"
         }
+        val parsed = android.graphics.Color.parseColor(hex)
+        return Color(parsed)
+    }
 
-        // hsla
-        if (color.startsWith("hsl")) {
-            val hsla = color.substringAfter("(").substringBefore(")").split(",").map { it.trim() }
-            val h = hsla[0].toFloat()
-            val s = hsla[1].removeSuffix("%").toFloat() / 100
-            val l = hsla[2].removeSuffix("%").toFloat() / 100
-            val a = hsla.getOrNull(3)?.toFloat() ?: 1f
-            val parsed = hslaToColor(h, s, l, a)
-            return Color(parsed)
-        }
+    // hsla
+    if (color.startsWith("hsl")) {
+        val hsla = color.substringAfter("(").substringBefore(")").split(",").map { it.trim() }
+        val h = hsla[0].toFloat()
+        val s = hsla[1].removeSuffix("%").toFloat() / 100
+        val l = hsla[2].removeSuffix("%").toFloat() / 100
+        val a = hsla.getOrNull(3)?.toFloat() ?: 1f
+        val parsed = hslaToColor(h, s, l, a)
+        return Color(parsed)
+    }
 
-        // rgba
-        if (color.startsWith("rgba")) {
-            val rgba = color.substringAfter("(").substringBefore(")").split(",").map { it.trim() }
-            val r = rgba[0].toInt()
-            val g = rgba[1].toInt()
-            val b = rgba[2].toInt()
-            val a = rgba.getOrNull(3)?.toFloat() ?: 1f
-            val parsed = android.graphics.Color.argb((a * 255).toInt(), r, g, b)
-            return Color(parsed)
-        }
+    // rgba
+    if (color.startsWith("rgba")) {
+        val rgba = color.substringAfter("(").substringBefore(")").split(",").map { it.trim() }
+        val r = rgba[0].toInt()
+        val g = rgba[1].toInt()
+        val b = rgba[2].toInt()
+        val a = rgba.getOrNull(3)?.toFloat() ?: 1f
+        val parsed = android.graphics.Color.argb((a * 255).toInt(), r, g, b)
+        return Color(parsed)
+    }
 
-        // rgb
-        if (color.startsWith("rgb")) {
-            val rgb = color.substringAfter("(").substringBefore(")").split(",").map { it.trim() }
-            val r = rgb[0].toInt()
-            val g = rgb[1].toInt()
-            val b = rgb[2].toInt()
-            val parsed = android.graphics.Color.rgb(r, g, b)
-            return Color(parsed)
-        }
+    // rgb
+    if (color.startsWith("rgb")) {
+        val rgb = color.substringAfter("(").substringBefore(")").split(",").map { it.trim() }
+        val r = rgb[0].toInt()
+        val g = rgb[1].toInt()
+        val b = rgb[2].toInt()
+        val parsed = android.graphics.Color.rgb(r, g, b)
+        return Color(parsed)
     }
 
     return Color(android.graphics.Color.parseColor(color))

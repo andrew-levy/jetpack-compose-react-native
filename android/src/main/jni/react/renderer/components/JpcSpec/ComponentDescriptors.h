@@ -11,6 +11,8 @@
 #include <react/renderer/components/JpcSpec/Props.h>
 #include <react/renderer/components/view/ConcreteViewShadowNode.h>
 #include <react/renderer/core/ConcreteComponentDescriptor.h>
+#include <react/renderer/core/LayoutConstraints.h>
+#include <react/renderer/core/LayoutContext.h>
 #include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
 #include <react/renderer/mapbuffer/MapBufferBuilder.h>
 

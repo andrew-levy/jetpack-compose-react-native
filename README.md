@@ -27,6 +27,7 @@ export function Greeting() {
 
 1. Use Node 22 and JDK 17. In Android Studio, install Android SDK Platform 34,
    Build-Tools 34.0.0, Platform-Tools, NDK 26.1.10909125, and CMake 3.22.1.
+   Create an Android virtual device with an API 34 system image.
 2. Set `ANDROID_HOME` to that SDK and start an Android emulator. If multiple
    devices are attached, set `ANDROID_SERIAL` to the one you want to use.
 3. From a fresh checkout, run the following.
@@ -43,14 +44,24 @@ its original position.
 
 ### Agent checklist
 
-- Check that `node --version` is 22.x and `java -version` reports JDK 17.
-- Start one Android emulator and confirm it is online with `adb devices`.
-- Run `npm ci`, then `npm run build`.
-- Run `npm run android:verify` with Python 3 installed. It builds and installs
-  the app, opens the demo, taps both types of button, and checks the measured
-  layout after a React Native child is added and removed.
-- A successful run prints `Verified mixed Compose and React Native layout,
-  both callbacks, and child insertion and removal.`
+On a machine with the prerequisites above, boot the emulator and run these
+commands. Select an online device with `ANDROID_SERIAL` if needed.
+
+```sh
+git clone --branch poc/generated-compose-bridge https://github.com/andrew-levy/jetpack-compose-react-native.git
+cd jetpack-compose-react-native
+node --version
+java -version
+adb devices
+npm ci
+npm run build
+npm run android:verify
+```
+
+With Python 3 installed, the verification command builds and installs the app,
+opens the demo, taps both buttons, and checks that Fabric resizes the Compose
+root as the React Native child is added and removed. A successful run prints
+`Verified mixed Compose and React Native layout, both callbacks, and child insertion and removal.`
 
 ## Use it in a React Native app
 
