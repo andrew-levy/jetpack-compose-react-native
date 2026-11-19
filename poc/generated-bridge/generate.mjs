@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 // EXPERIMENT: This is the downstream generator only. A source/KSP extractor
 // must replace api-fixture.json before production codegen is possible.
 const root = path.dirname(fileURLToPath(import.meta.url));
-const manifest = JSON.parse(fs.readFileSync(path.join(root, 'api-fixture.json'), 'utf8'));
+const manifestPath = process.env.COMPOSE_API_MANIFEST || path.join(root, 'api-fixture.json');
+const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const kinds = {
   string: {
     ts: 'string',
