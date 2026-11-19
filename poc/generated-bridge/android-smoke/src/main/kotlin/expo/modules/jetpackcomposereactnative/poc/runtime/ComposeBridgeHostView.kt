@@ -65,6 +65,6 @@ private class RuntimeComposeNode(
   override fun modifier(name: String): Modifier = Modifier
 
   override fun emit(name: String) {
-    events(this.name, name)
+    events(props.optString("__nodeId", this.name), name)
   }
 }

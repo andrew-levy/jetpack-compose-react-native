@@ -44,7 +44,7 @@ function makeTypeScript(schema) {
     const fields = c.parameters.map((p) => '  ' + p.name + (p.optional ? '?' : '') + ': ' + kinds[p.kind].ts + ';').join('\n');
     return 'export interface ' + c.name + 'Props {\n' + fields +
       (c.children ? '\n  children?: React.ReactNode;' : '') +
-      '\n}\n\nexport const ' + c.name + ' = createComposable<' + c.name +
+      '\n}\n\nexport const ' + c.name + ' = createComposableComponent<' + c.name +
       'Props>({ name: "' + c.name + '", props: [' +
       c.parameters.map((p) => '"' + p.name + '"').join(', ') +
       '], children: ' + c.children + ' });';
