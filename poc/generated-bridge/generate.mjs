@@ -71,7 +71,7 @@ function makeKotlin(schema) {
     '\n    else -> error("Unknown composable: " + node.name)\n  }\n}\n';
 }
 validate(manifest);
-const output = path.join(root, 'generated');
+const output = process.env.COMPOSE_GENERATED_OUTPUT || path.join(root, 'generated');
 fs.mkdirSync(output, { recursive: true });
 const files = {
   'components.tsx': makeTypeScript(manifest),
