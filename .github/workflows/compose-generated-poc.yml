@@ -25,7 +25,9 @@ jobs:
         with:
           gradle-version: '8.9'
       - name: Install Android build tools
-        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
+        run: |
+          sdk_root="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
       - name: Verify sources generated from AndroidX Compose
         run: |
           gradle -p poc/generated-bridge/android-smoke kspDebugKotlin
