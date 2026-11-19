@@ -14,11 +14,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      # Hosted Ubuntu runners already include Android SDK cmdline tools.
-      # android-actions/setup-android@v3 currently tries installing the removed "tools" package.
       - name: Install Android SDK 35
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: |
-          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
