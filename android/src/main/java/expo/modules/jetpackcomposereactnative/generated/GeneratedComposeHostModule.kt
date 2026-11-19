@@ -49,7 +49,21 @@ internal class GeneratedComposeHostView(context: Context, appContext: AppContext
     requestLayout()
   }
 
+  override fun onAttachedToWindow() {
+    super.onAttachedToWindow()
+    intrinsicHeight = null
+    requestLayout()
+  }
+
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+    // Fabric may assign bounds while a navigator is still mounting the screen.
+    if (!composeView.isAttachedToWindow) {
+      setMeasuredDimension(
+        resolveSize(suggestedMinimumWidth, widthMeasureSpec),
+        resolveSize(suggestedMinimumHeight, heightMeasureSpec)
+      )
+      return
+    }
     val composeHeight = if (fitContent) MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED) else heightMeasureSpec
     composeView.measure(widthMeasureSpec, composeHeight)
     if (fitContent) reportHeight(composeView.measuredHeight)
@@ -72,7 +86,9 @@ internal class GeneratedComposeHostView(context: Context, appContext: AppContext
   }
 
   override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
-    composeView.layout(0, 0, composeView.measuredWidth, composeView.measuredHeight)
+    if (composeView.isAttachedToWindow) {
+      composeView.layout(0, 0, composeView.measuredWidth, composeView.measuredHeight)
+    }
   }
 
   override fun requestLayout() {

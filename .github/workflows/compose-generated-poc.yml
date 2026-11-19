@@ -56,7 +56,7 @@ jobs:
           ln -s ../example/node_modules/react-native node_modules/react-native
           ln -s ../example/node_modules/react node_modules/react
           npm run build
-          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64 -PcomposeSmoke
+          example/android/gradlew -p example/android :app:assembleRelease -PnewArchEnabled=true -PreactNativeArchitectures=x86_64
       - name: Enable Android emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
