@@ -43,8 +43,9 @@ def tap(node):
     adb("shell", "input", "tap", str((left + right) // 2), str((top + bottom) // 2))
 
 
-print(adb("shell", "am", "start", "-W", "-n",
-          "expo.modules.jetpackcomposereactnative.example/.MainActivity"))
+package = "expo.modules.jetpackcomposereactnative.example"
+adb("shell", "am", "force-stop", package)
+print(adb("shell", "am", "start", "-W", "-n", f"{package}/.MainActivity"))
 def following_view_top(nodes):
     return bounds(nodes["Below Compose"])[1]
 

@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import { ProgressIndicator, Button } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import { useState } from "react";
+
+const { ProgressIndicator, Button } = Legacy;
 
 export default function ProgressExample() {
   const [progress, setProgress] = useState(0.5);

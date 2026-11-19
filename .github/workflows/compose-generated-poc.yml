@@ -72,6 +72,11 @@ jobs:
           script: |
             adb install example/android/app/build/outputs/apk/release/app-release.apk
             python3 poc/generated-bridge/check-emulator.py || { adb logcat -d > compose-emulator.log; adb exec-out screencap -p > compose-emulator.png; adb pull /sdcard/compose-bridge.xml compose-emulator.xml || true; exit 1; }
+      - name: Save the verified Android APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: compose-bridge-android-x86_64
+          path: example/android/app/build/outputs/apk/release/app-release.apk
       - name: Save emulator diagnostics
         if: failure()
         uses: actions/upload-artifact@v4

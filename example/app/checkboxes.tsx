@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Checkbox } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import { useState } from "react";
+
+const { Checkbox } = Legacy;
 
 export default function CheckboxesExample() {
   const [checked, setChecked] = useState(true);

@@ -1,5 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { HorizontalDivider, Column } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { HorizontalDivider, Column } = Legacy;
 
 export default function DividersExample() {
   return (

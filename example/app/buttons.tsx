@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Button, Modifier } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import { useState } from "react";
+
+const { Button, Modifier } = Legacy;
 
 export default function ButtonsExample() {
   const [count, setCount] = useState(0);

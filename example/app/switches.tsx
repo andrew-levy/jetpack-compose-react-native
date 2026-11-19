@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Switch, Modifier } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import { useState } from "react";
+
+const { Switch, Modifier } = Legacy;
 
 export default function SwitchesExample() {
   const [checked, setChecked] = useState(true);

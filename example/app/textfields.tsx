@@ -1,10 +1,8 @@
 import { ScrollView, StyleSheet, Text } from "react-native";
-import {
-  TextField,
-  Text as ComposeText,
-  Modifier,
-} from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import React from "react";
+
+const { TextField, Text: ComposeText, Modifier } = Legacy;
 
 export default function TextFieldsExample() {
   const [text, setText] = React.useState("Hello");

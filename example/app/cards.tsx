@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Card, Button } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Card, Button } = Legacy;
 
 export default function CardsExample() {
   return (

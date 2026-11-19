@@ -1,11 +1,14 @@
 import * as React from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 
-export interface ComposeHostProps {
-  children?: React.ReactNode;
+export interface ComposableViewProps {
   style?: StyleProp<ViewStyle>;
-  fitContent?: boolean;
   testID?: string;
+}
+
+export interface ComposeHostProps extends ComposableViewProps {
+  children?: React.ReactNode;
+  fitContent?: boolean;
 }
 
 export type ModifierData = readonly Record<string, unknown>[];

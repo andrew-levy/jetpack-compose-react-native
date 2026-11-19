@@ -25,23 +25,23 @@ npx expo prebuild -p android --clean
 ## Usage
 
 ```tsx
-import { Button, Switch, Column, Text } from "jetpack-compose-react-native";
-import { useState } from "react";
+import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
 
-export default function App() {
-  const [checked, setChecked] = useState(false);
+export function Greeting() {
   return (
-    <Column>
-      <Text>Use Jetpack Compose views in your RN app!</Text>
-      <Button title="Press me" onClick={() => console.log("Button pressed")} />
-      <Switch
-        checked={checked}
-        onCheckedChange={(isChecked) => setChecked(isChecked)}
-      />
+    <Column modifier={Modifier.padding(16)}>
+      <Text text="Hello Compose" />
+      <Button onClick={() => console.log("Clicked")}>
+        <Text text="Tap me" />
+      </Button>
     </Column>
   );
 }
 ```
+
+The root component creates a native Compose host automatically. See the
+[generated bridge guide](poc/generated-bridge/README.md) for the example app,
+source generation, and migration from the original wrappers.
 
 ## Contributors
 
@@ -76,9 +76,3 @@ export default function App() {
 - [x] LazyStaggeredGrid (vertical and horizontal props from the same component)
 - [x] Box
 - [ ] More modifiers!
-
-## Generated Compose API
-
-Use `ComposeHost` with components from the `Generated` namespace to render a
-shared Android Compose tree. See the [generated bridge guide](poc/generated-bridge/README.md)
-for usage and source generation.

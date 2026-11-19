@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text } from "react-native";
-import { Text as JetpackText, Modifier } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import React from "react";
+
+const { Text: JetpackText, Modifier } = Legacy;
 
 export default function TextsExample() {
   const [text, setText] = React.useState("Hello");

@@ -1,28 +1,65 @@
 # Generated Compose components
 
-On Android, render generated Jetpack Compose components in a shared composition. The
-`Generated` namespace exposes the generated API on the existing package entry point.
+Import components by name from the package root.
 
 ```tsx
-import { ComposeHost, Generated, Modifier } from "jetpack-compose-react-native";
+import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
 
-<ComposeHost fitContent>
-  <Generated.Column modifier={Modifier.padding(16)}>
-    <Generated.Text text="Hello Compose" />
-    <Generated.Button onClick={() => console.log("Clicked")}>
-      <Generated.Text text="Tap me" />
-    </Generated.Button>
-  </Generated.Column>
-</ComposeHost>
+<Column modifier={Modifier.padding(16)}>
+  <Text text="Hello Compose" />
+  <Button onClick={() => console.log("Clicked")}>
+    <Text text="Tap me" />
+  </Button>
+</Column>
 ```
 
-React reconciles the JSX and mounts native nodes through the Expo view managers. The
-host owns one `ComposeView`. It renders the mounted tree with the generated Kotlin
-dispatcher. React keys preserve nodes through updates, and native callbacks dispatch
-through the corresponding React Native view. Use `fitContent` to report native
-content height back to Yoga. By default the host fills the space allocated by Yoga,
-and the `style` prop controls the outer React Native view. A bounded host width is
-required when fitting content.
+Each top-level generated component creates one Android `ComposeView`. Generated
+descendants, including those returned by React components, render in that same
+composition. The root fits its native content height at the available React
+Native width. An explicit height or growing flex style on the root lets React
+Native allocate its height. Use a Compose `modifier` for layout inside the
+composition. The optional `ComposeHost` export can group multiple roots in one
+composition.
+
+For the original component props, import `Legacy` from the package root and use
+components such as `Legacy.Button` and `Legacy.Text`. Names exclusive to the
+original API, such as `Grid` and `Slider`, are also available as named imports.
+
+## Run the Android example
+
+Use Node 22, JDK 17, and an Android emulator. In Android Studio's SDK Manager,
+install Android SDK Platform 34, Build-Tools 34.0.0, Platform-Tools,
+NDK 26.1.10909125, and CMake 3.22.1. Set `ANDROID_HOME` to your Android SDK
+directory, add its `platform-tools` directory to `PATH`, and start one emulator.
+
+From a fresh checkout of the branch, run:
+
+```sh
+git clone --branch poc/generated-compose-bridge https://github.com/andrew-levy/jetpack-compose-react-native.git
+cd jetpack-compose-react-native
+
+npm install --ignore-scripts --legacy-peer-deps --package-lock=false
+npm --prefix example install --legacy-peer-deps --package-lock=false
+ln -s ../example/node_modules/react-native node_modules/react-native
+ln -s ../example/node_modules/react node_modules/react
+npm run build
+
+abi="$(adb shell getprop ro.product.cpu.abi | tr -d '\r')"
+example/android/gradlew -p example/android :app:assembleRelease \
+  -PnewArchEnabled=true -PreactNativeArchitectures="$abi"
+adb install -r example/android/app/build/outputs/apk/release/app-release.apk
+```
+
+Open the example app, select **Generated-compose**, and tap **Tap Compose**
+twice. The label advances from **Ready** to **Tapped 1** and **Tapped 2**. A
+child appears after the first tap and is removed after the second. The
+**Below Compose** label moves down and back as the native content height changes.
+
+Run the same automated check as CI with the emulator still running:
+
+```sh
+python3 poc/generated-bridge/check-emulator.py
+```
 
 ## Generate
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { ComposeHost, Generated, Modifier } from "jetpack-compose-react-native";
+import { StyleSheet, Text as ReactNativeText, View } from "react-native";
+import { Button, Column, Modifier, Row, Text } from "jetpack-compose-react-native";
 
 function Status({ clicks }: { clicks: number }) {
-  return <Generated.Text text={clicks ? `Tapped ${clicks}` : "Ready"} />;
+  return <Text text={clicks ? `Tapped ${clicks}` : "Ready"} />;
 }
 
 export default function GeneratedComposeScreen() {
@@ -11,31 +11,27 @@ export default function GeneratedComposeScreen() {
 
   return (
     <View style={styles.screen}>
-      <ComposeHost fitContent>
-        <Generated.Column modifier={Modifier.padding(16)}>
-          <Status clicks={clicks} />
-          <Generated.Row>
-            <Generated.Button onClick={() => setClicks(clicks + 1)}>
-              <Generated.Text text="Tap Compose" />
-            </Generated.Button>
-          </Generated.Row>
-          {clicks % 2 === 0 ? (
-            <Generated.Text key="first" text="Even click count" />
-          ) : (
-            <Generated.Text key="second" text="Odd click count" />
-          )}
-          {clicks % 2 === 1 && <Generated.Text text="Added by React" />}
-        </Generated.Column>
-      </ComposeHost>
-      <Text>Below Compose</Text>
-      <ComposeHost style={styles.fixedHost}>
-        <Generated.Text text="Fixed height Compose" />
-      </ComposeHost>
+      <Column modifier={Modifier.padding(16)}>
+        <Status clicks={clicks} />
+        <Row>
+          <Button onClick={() => setClicks(clicks + 1)}>
+            <Text text="Tap Compose" />
+          </Button>
+        </Row>
+        {clicks % 2 === 0 ? (
+          <Text key="first" text="Even click count" />
+        ) : (
+          <Text key="second" text="Odd click count" />
+        )}
+        {clicks % 2 === 1 && <Text text="Added by React" />}
+      </Column>
+      <ReactNativeText>Below Compose</ReactNativeText>
+      <Text text="Fixed height Compose" style={styles.fixedRoot} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: "#fff" },
-  fixedHost: { height: 48, flex: 0 },
+  fixedRoot: { height: 48 },
 });

@@ -1,5 +1,7 @@
 import { View, Text as RNText, ScrollView } from "react-native";
-import { Text, Modifier } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Text, Modifier } = Legacy;
 
 export default function Modifiers() {
   return (

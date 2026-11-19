@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Image, Column, Button, Modifier } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Image, Column, Button, Modifier } = Legacy;
 
 export default function ColumnsExample() {
   return (

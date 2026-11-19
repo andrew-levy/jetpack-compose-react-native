@@ -1,11 +1,7 @@
 import { View, Text, StyleSheet, Image } from "react-native";
-import {
-  Card,
-  Column,
-  Button,
-  Carousel,
-  Modifier,
-} from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Card, Column, Button, Carousel, Modifier } = Legacy;
 
 export default function ColumnsExample() {
   return (

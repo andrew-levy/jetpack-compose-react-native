@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Row, Spacer } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Row, Spacer } = Legacy;
 
 export default function SpacersExample() {
   return (

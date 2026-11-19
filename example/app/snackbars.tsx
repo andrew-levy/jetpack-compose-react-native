@@ -5,8 +5,10 @@ import {
   Text,
   useWindowDimensions,
 } from "react-native";
-import { Snackbar, Button } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
 import { useState } from "react";
+
+const { Snackbar, Button } = Legacy;
 
 export default function SnackbarsExample() {
   const [show, setShow] = useState(false);

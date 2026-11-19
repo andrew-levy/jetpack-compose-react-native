@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Row } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Row } = Legacy;
 
 export default function RowsExample() {
   return (

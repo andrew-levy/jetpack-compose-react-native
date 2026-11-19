@@ -1,6 +1,8 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text } from "react-native";
-import { Button, DatePicker } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Button, DatePicker } = Legacy;
 
 export default function DialogsExample() {
   const [datePickerVisible, setDatePickerVisible] = React.useState(false);

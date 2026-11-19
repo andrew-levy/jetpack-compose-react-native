@@ -14,6 +14,16 @@ const styles = StyleSheet.create({
   measure: { alignSelf: "stretch" },
 });
 
+export function AutomaticComposeHost(props: Omit<ComposeHostProps, "fitContent">) {
+  const style = StyleSheet.flatten(props.style);
+  const hasBoundedHeight =
+    (style?.height != null && style.height !== "auto") ||
+    (style?.flex ?? 0) > 0 ||
+    (style?.flexGrow ?? 0) > 0;
+
+  return <ComposeHost {...props} fitContent={!hasBoundedHeight} />;
+}
+
 export function ComposeHost({ children, fitContent = false, style, testID }: ComposeHostProps) {
   NativeHost ??= requireNativeViewManager<NativeProps>("GeneratedComposeHost");
   const [height, setHeight] = React.useState(1);

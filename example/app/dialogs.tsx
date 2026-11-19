@@ -1,6 +1,8 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text } from "react-native";
-import { Button, Dialog } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { Button, Dialog } = Legacy;
 
 export default function DialogsExample() {
   const [dialogVisible, setDialogVisible] = React.useState(false);

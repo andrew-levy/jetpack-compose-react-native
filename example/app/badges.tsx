@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
-import { BadgedBox, Badge, Icon } from "jetpack-compose-react-native";
+import { Legacy } from "jetpack-compose-react-native";
+
+const { BadgedBox, Badge, Icon } = Legacy;
 
 export default function BadgesExample() {
   return (

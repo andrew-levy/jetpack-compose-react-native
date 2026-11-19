@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import type { Modifier } from "../../utils/modifier";
-import { ComposeHostContext, type ModifierData } from "./shared";
+import { AutomaticComposeHost } from "./ComposeHost";
+import { ComposeHostContext, type ComposableViewProps, type ModifierData } from "./shared";
 import { RenderComposeNode, type ComposeEventValue } from "./RenderComposeNode";
 
 export type ComposeModifier = typeof Modifier;
@@ -16,12 +17,10 @@ export interface ComposableDescription {
 
 export function createComposableComponent<P extends object>(
   description: ComposableDescription,
-): React.ComponentType<P> {
+): React.ComponentType<P & ComposableViewProps> {
   const eventNames = new Set(description.events);
-  function Generated(props: P & { children?: React.ReactNode }) {
-    if (!React.useContext(ComposeHostContext)) {
-      throw new Error(`Generated.${description.name} must be rendered inside a ComposeHost.`);
-    }
+  function Generated(props: P & ComposableViewProps & { children?: React.ReactNode }) {
+    const hasHost = React.useContext(ComposeHostContext);
 
     const values: Record<string, string | number | boolean | ModifierData | null> = {};
     const input = props as Record<string, unknown>;
@@ -50,7 +49,7 @@ export function createComposableComponent<P extends object>(
       return <RenderComposeNode key={name} slotName={name}>{child}</RenderComposeNode>;
     });
 
-    return (
+    const node = (
       <RenderComposeNode
         componentName={description.name}
         values={JSON.stringify(values)}
@@ -64,6 +63,12 @@ export function createComposableComponent<P extends object>(
         {description.children ? props.children : null}
         {slots}
       </RenderComposeNode>
+    );
+
+    return hasHost ? node : (
+      <AutomaticComposeHost style={props.style} testID={props.testID}>
+        {node}
+      </AutomaticComposeHost>
     );
   }
 
