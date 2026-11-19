@@ -50,3 +50,14 @@ java -jar /tmp/compose-poc.jar
 **C.** **Partially validated:** KSP can see published AndroidX Material 3 declarations. Integrate KSP extraction output directly with `generate.mjs` and build comprehensive overload/default/scope handling. Reject source declarations that the Kotlin code emitter cannot compile.
 
 This proof-of-concept intentionally has a narrow, honest success criterion. No claim of a working Android React Native library is made here.
+
+## Implementation slice: createComposableComponent
+
+The generated TS factory is now named `createComposableComponent`. The branch also contains:
+
+- `runtime/createComposableComponent.tsx`: generated-component metadata and factory.
+- `runtime/tree.ts`: bootstrap serialization of generated element trees and callback IDs.
+- `runtime/ComposeHost.android.tsx`: Expo native-view entry point (requires a registered `GeneratedComposeHost` native view, **not wired yet**).
+- `android-smoke/.../ComposeBridgeHostView.kt`: isolated Compose renderer accepting JSON trees and dispatching node events.
+
+**Current limitations:** The bootstrap serializer is not a Fabric reconciler: it cannot yet mount arbitrary React components, handle modifier values, preserve stable node IDs across updates, or register the host with Expo/React Native. The actual Fabric child-mount and Yoga integration remains to be implemented. The Android instrumentation workflow is independent of this JS adapter. Do not treat the JS host as production-ready.
