@@ -1,3 +1,5 @@
+import argparse
+from pathlib import Path
 import re
 import subprocess
 import time
@@ -5,6 +7,17 @@ import xml.etree.ElementTree as ET
 
 
 PACKAGE = "com.jetpackcomposereactnative.example"
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--preview-dir", type=Path)
+preview_dir = parser.parse_args().preview_dir
+
+
+def capture(name):
+    if preview_dir is not None:
+        preview_dir.mkdir(parents=True, exist_ok=True)
+        image = subprocess.check_output(["adb", "exec-out", "screencap", "-p"], timeout=40)
+        (preview_dir / f"{name}.png").write_bytes(image)
 
 
 class ActivityRecreated(RuntimeError):
@@ -68,14 +81,33 @@ def verify():
     adb("shell", "am", "force-stop", PACKAGE)
     print(adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity"), flush=True)
 
+    nodes = wait_for("Material 3 components", "Buttons", "Filled", "Button presses: 0", "Modifiers")
+    window = activity_window()
+    capture("01-components")
+    tap(nodes["Filled"])
+    nodes = wait_for("Button presses: 1", "Modifiers", window=window)
+    tap(nodes["Modifiers"])
+    nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)
+    capture("02-modifiers")
+    tap(nodes["Swap order"])
+    nodes = wait_for("Padding → background", "Show source code", window=window)
+    tap(nodes["Show source code"])
+    nodes = wait_for(
+        "Padding → background", "Interop", "Show source code", window=window,
+        layout_ready=lambda labels: any("Modifier.padding(20)" in label for label in labels),
+    )
+    capture("03-source")
+    tap(nodes["Show source code"])
+    tap(nodes["Interop"])
+
     nodes = wait_for(
         "Ready", "Tap Compose", "Tap React Native", "Even click count", "Below Compose", "Fixed height Compose",
         layout_ready=lambda nodes: (
             following_view_top(nodes) >= bounds(nodes["Even click count"])[3]
             and bounds(nodes["Tap React Native"])[0] >= bounds(nodes["Tap Compose"])[2]
         ),
+        window=window,
     )
-    window = activity_window()
     original_foot = following_view_top(nodes)
     tap(nodes["Tap Compose"])
     nodes = wait_for(
@@ -83,6 +115,7 @@ def verify():
         absent=("Ready", "Even click count"), window=window,
         layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
     )
+    capture("04-interop")
     tap(nodes["Tap React Native"])
     nodes = wait_for(
         "Tapped 2", "Even click count", "Below Compose",
@@ -103,4 +136,4 @@ except ActivityRecreated as error:
     print(f"{error}. Restarting the tap sequence.", flush=True)
     verify()
 
-print("Verified mixed layout, Compose and React Native callbacks, generated clickable, and child insertion and removal.")
+print("Verified the gallery, live modifier changes, source snippets, and mixed Compose and React Native layout and events.")

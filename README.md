@@ -1,8 +1,14 @@
 # Jetpack Compose React Native
 
-Render native Jetpack Compose components in a React Native Fabric app. Import
-components by name. A top-level Compose component creates the native host for
-its subtree automatically.
+Use native Jetpack Compose and Material 3 components from TypeScript in your
+React Native Android app. The library generates component and modifier bindings
+from AndroidX, and a top-level Compose component hosts its subtree automatically.
+
+## Quick start
+
+Install the package or a checkout of this repository in a React Native 0.74.5
+app with the New Architecture enabled, then rebuild Android. React Native
+autolinks the view managers and Fabric descriptors.
 
 ```tsx
 import { Pressable, Text as RNText } from "react-native";
@@ -10,8 +16,12 @@ import { Button, Column, Modifier, Text } from "jetpack-compose-react-native";
 
 export function Greeting() {
   return (
-    <Column modifiers={Modifier.padding(16)}>
-      <Text text="Hello Compose" />
+    <Column
+      modifiers={Modifier
+        .background("#ede5fc", { in: { rect: { cornerRadius: 16 } } })
+        .padding("all", 16)}
+    >
+      <Text text="Hello from Compose" />
       <Button onClick={() => console.log("Compose clicked")}>
         <Text text="Compose button" />
       </Button>
@@ -23,57 +33,44 @@ export function Greeting() {
 }
 ```
 
-## Run the example
+Generated components accept the `modifiers` prop, and chains start with
+`Modifier`. Modifier order matters. For example, putting `background` before
+`padding` paints the padded area. See the [code generation guide](tools/compose-codegen/README.md)
+for package discovery, supported argument types, and regeneration.
 
-1. Use Node 22 and JDK 17. In Android Studio, install Android SDK Platform 34,
-   Build-Tools 34.0.0, Platform-Tools, NDK 26.1.10909125, and CMake 3.22.1.
-   Create an Android virtual device with an API 34 system image.
-2. Set `ANDROID_HOME` to that SDK and start an Android emulator. If multiple
-   devices are attached, set `ANDROID_SERIAL` to the one you want to use.
-3. From a fresh checkout, run the following.
+## Compose Gallery
+
+The [example app](example/App.tsx) has three tabs:
+
+| Tab | What to try |
+| --- | --- |
+| **Components** | Compare button variants, change switches and selection controls, type into a field, and open a native alert dialog. |
+| **Modifiers** | Reverse the padding and background chain. Compare gradients, borders, clipping, shadows, and weighted row children. |
+| **Interop** | Tap the Compose button, the React Native button, or the count itself. Odd counts insert a React Native child inside Compose and push the view below it down. |
+
+Tap **Code** to show the TypeScript used in each demo.
+
+### Run the gallery
+
+Use Node 22, JDK 17, and an API 34 emulator or Android device. With the Android
+SDK command-line tools installed and `ANDROID_HOME` set, install the required
+packages:
 
 ```sh
+sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" \
+  "ndk;26.1.10909125" "cmake;3.22.1"
+```
+
+Start the emulator or connect a device, then run these commands from the
+repository root:
+
+```sh
+adb devices
 npm ci
 npm run android
 ```
 
-The command builds, installs, and opens the example for the selected device's
-ABI. Tap **Tap Compose**, then **Tap React Native**. The counter reaches
-**Tapped 2** and **Below Compose** returns to its original position. Tap
-**Tapped 2** to verify the generated clickable modifier changes it to
-**Tapped 3**.
-
-### Agent checklist
-
-On a machine with the prerequisites above, boot the emulator and run these
-commands. Select an online device with `ANDROID_SERIAL` if needed.
-
-```sh
-git clone --branch poc/generated-compose-bridge https://github.com/andrew-levy/jetpack-compose-react-native.git
-cd jetpack-compose-react-native
-node --version
-java -version
-adb devices
-npm ci
-npm run build
-npm run android:verify
-```
-
-With Python 3 installed, the verification command builds and installs the app,
-opens the demo, taps both buttons, and checks that Fabric resizes the Compose
-root as the React Native child is added and removed. A successful run verifies the Compose button, the React Native button, and
-the generated clickable modifier.
-
-## Use it in a React Native app
-
-The bridge targets React Native 0.74.5 with the New Architecture enabled.
-Install the package or a checkout of this repository and rebuild the Android
-app. React Native autolinking registers its view managers and Fabric
-descriptors.
-
-The [code generation guide](tools/compose-codegen/README.md) covers layout and
-regenerating the components from AndroidX Compose.
-
-## Contributors
-
-- [Oliver Lopez](https://x.com/oliverloops)
+The command builds, installs, and launches the gallery. Set `ANDROID_SERIAL`
+when multiple devices are connected. With Python 3 installed,
+`npm run android:verify` also checks gallery navigation, modifier order, and
+mixed Compose and React Native interactions on the device.
