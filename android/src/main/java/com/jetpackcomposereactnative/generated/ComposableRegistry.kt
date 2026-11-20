@@ -12,6 +12,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "AssistChip" -> renderAssistChip(node, scope)
     "Badge" -> renderBadge(node, scope)
     "BadgedBox" -> renderBadgedBox(node, scope)
+    "BottomAppBar" -> renderBottomAppBar(node, scope)
     "Box" -> renderBox(node, scope)
     "Button" -> renderButton(node, scope)
     "Card" -> renderCard(node, scope)
@@ -35,6 +36,8 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "FilledTonalIconToggleButton" -> renderFilledTonalIconToggleButton(node, scope)
     "FilterChip" -> renderFilterChip(node, scope)
     "FloatingActionButton" -> renderFloatingActionButton(node, scope)
+    "FlowColumn" -> renderFlowColumn(node, scope)
+    "FlowRow" -> renderFlowRow(node, scope)
     "HorizontalDivider" -> renderHorizontalDivider(node, scope)
     "IconButton" -> renderIconButton(node, scope)
     "IconToggleButton" -> renderIconToggleButton(node, scope)
@@ -43,6 +46,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "LeadingIconTab" -> renderLeadingIconTab(node, scope)
     "LinearProgressIndicator" -> renderLinearProgressIndicator(node, scope)
     "ListItem" -> renderListItem(node, scope)
+    "MaterialExpressiveTheme" -> renderMaterialExpressiveTheme(node)
     "MaterialTheme" -> renderMaterialTheme(node)
     "ModalDrawerSheet" -> renderModalDrawerSheet(node, scope)
     "ModalNavigationDrawer" -> renderModalNavigationDrawer(node, scope)
@@ -57,9 +61,14 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "OutlinedTextField" -> renderOutlinedTextField(node, scope)
     "PermanentDrawerSheet" -> renderPermanentDrawerSheet(node, scope)
     "PermanentNavigationDrawer" -> renderPermanentNavigationDrawer(node, scope)
+    "PrimaryScrollableTabRow" -> renderPrimaryScrollableTabRow(node, scope)
+    "PrimaryTabRow" -> renderPrimaryTabRow(node, scope)
     "RadioButton" -> renderRadioButton(node, scope)
     "Row" -> renderRow(node, scope)
     "ScrollableTabRow" -> renderScrollableTabRow(node, scope)
+    "SecondaryScrollableTabRow" -> renderSecondaryScrollableTabRow(node, scope)
+    "SecondaryTabRow" -> renderSecondaryTabRow(node, scope)
+    "Slider" -> renderSlider(node, scope)
     "SmallFloatingActionButton" -> renderSmallFloatingActionButton(node, scope)
     "Snackbar" -> renderSnackbar(node, scope)
     "Spacer" -> renderSpacer(node, scope)
@@ -71,7 +80,9 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "Text" -> renderText(node, scope)
     "TextButton" -> renderTextButton(node, scope)
     "TextField" -> renderTextField(node, scope)
+    "TimePickerDialog" -> renderTimePickerDialog(node, scope)
     "VerticalDivider" -> renderVerticalDivider(node, scope)
+    "VerticalDragHandle" -> renderVerticalDragHandle(node, scope)
     else -> error("Unknown generated Compose component: " + node.name)
   }
 }
@@ -314,6 +325,59 @@ private fun renderBadgedBox(node: ComposeNode, scope: Any?) {
 }
 
 @Composable
+private fun renderBottomAppBar(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("containerColor")) 1 else 0) +
+    (if (node.has("contentColor")) 2 else 0) +
+    (if (node.has("tonalElevation")) 4 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    1 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    2 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    3 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    4 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `tonalElevation` = node.number("tonalElevation").dp,
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    5 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `tonalElevation` = node.number("tonalElevation").dp,
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    6 -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `tonalElevation` = node.number("tonalElevation").dp,
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    else -> androidx.compose.material3.BottomAppBar(
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `tonalElevation` = node.number("tonalElevation").dp,
+      content = { RenderComposeChildren(node.children, this) },
+    )
+  }
+}
+
+@Composable
 private fun renderBox(node: ComposeNode, scope: Any?) {
   val mask = (if (node.has("propagateMinConstraints")) 1 else 0) +
     (if (node.has("contentAlignment")) 2 else 0)
@@ -389,7 +453,8 @@ private fun renderCheckbox(node: ComposeNode, scope: Any?) {
 private fun renderCircularProgressIndicator(node: ComposeNode, scope: Any?) {
   val mask = (if (node.has("color")) 1 else 0) +
     (if (node.has("strokeWidth")) 2 else 0) +
-    (if (node.has("trackColor")) 4 else 0)
+    (if (node.has("trackColor")) 4 else 0) +
+    (if (node.has("gapSize")) 8 else 0)
   when (mask) {
     0 -> androidx.compose.material3.CircularProgressIndicator(
       `modifier` = node.modifier("modifier", scope),
@@ -421,11 +486,55 @@ private fun renderCircularProgressIndicator(node: ComposeNode, scope: Any?) {
       `strokeWidth` = node.number("strokeWidth").dp,
       `trackColor` = node.color("trackColor"),
     )
+    7 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `color` = node.color("color"),
+      `strokeWidth` = node.number("strokeWidth").dp,
+      `trackColor` = node.color("trackColor"),
+    )
+    8 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `gapSize` = node.number("gapSize").dp,
+    )
+    9 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `color` = node.color("color"),
+      `gapSize` = node.number("gapSize").dp,
+    )
+    10 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `strokeWidth` = node.number("strokeWidth").dp,
+      `gapSize` = node.number("gapSize").dp,
+    )
+    11 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `color` = node.color("color"),
+      `strokeWidth` = node.number("strokeWidth").dp,
+      `gapSize` = node.number("gapSize").dp,
+    )
+    12 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `trackColor` = node.color("trackColor"),
+      `gapSize` = node.number("gapSize").dp,
+    )
+    13 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `color` = node.color("color"),
+      `trackColor` = node.color("trackColor"),
+      `gapSize` = node.number("gapSize").dp,
+    )
+    14 -> androidx.compose.material3.CircularProgressIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `strokeWidth` = node.number("strokeWidth").dp,
+      `trackColor` = node.color("trackColor"),
+      `gapSize` = node.number("gapSize").dp,
+    )
     else -> androidx.compose.material3.CircularProgressIndicator(
       `modifier` = node.modifier("modifier", scope),
       `color` = node.color("color"),
       `strokeWidth` = node.number("strokeWidth").dp,
       `trackColor` = node.color("trackColor"),
+      `gapSize` = node.number("gapSize").dp,
     )
   }
 }
@@ -1075,6 +1184,444 @@ private fun renderFloatingActionButton(node: ComposeNode, scope: Any?) {
 }
 
 @Composable
+private fun renderFlowColumn(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("maxItemsInEachColumn")) 1 else 0) +
+    (if (node.has("maxLines")) 2 else 0) +
+    (if (node.has("verticalArrangement")) 4 else 0) +
+    (if (node.has("horizontalArrangement")) 8 else 0) +
+    (if (node.has("itemHorizontalAlignment")) 16 else 0)
+  when (mask) {
+    0 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    1 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    2 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    3 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    4 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    5 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    6 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    7 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    8 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    9 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    10 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    11 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    12 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    13 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    14 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    15 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    16 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    17 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    18 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    19 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    20 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    21 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    22 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    23 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    24 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    25 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    26 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    27 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    28 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    29 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    30 -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    else -> androidx.compose.foundation.layout.FlowColumn(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachColumn` = node.number("maxItemsInEachColumn").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemHorizontalAlignment` = toComposeHorizontalAlignment(node.string("itemHorizontalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+  }
+}
+
+@Composable
+private fun renderFlowRow(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("maxItemsInEachRow")) 1 else 0) +
+    (if (node.has("maxLines")) 2 else 0) +
+    (if (node.has("horizontalArrangement")) 4 else 0) +
+    (if (node.has("verticalArrangement")) 8 else 0) +
+    (if (node.has("itemVerticalAlignment")) 16 else 0)
+  when (mask) {
+    0 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    1 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    2 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    3 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    4 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    5 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    6 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    7 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    8 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    9 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    10 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    11 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    12 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    13 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    14 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    15 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    16 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    17 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    18 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    19 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    20 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    21 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    22 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    23 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    24 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    25 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    26 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    27 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    28 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    29 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    30 -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    else -> androidx.compose.foundation.layout.FlowRow(
+      `modifier` = node.modifier("modifier", scope),
+      `maxItemsInEachRow` = node.number("maxItemsInEachRow").toInt(),
+      `maxLines` = node.number("maxLines").toInt(),
+      `horizontalArrangement` = toComposeHorizontalArrangement(node.string("horizontalArrangement")),
+      `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+      `itemVerticalAlignment` = toComposeVerticalAlignment(node.string("itemVerticalAlignment")),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+  }
+}
+
+@Composable
 private fun renderHorizontalDivider(node: ComposeNode, scope: Any?) {
   val mask = (if (node.has("thickness")) 1 else 0) +
     (if (node.has("color")) 2 else 0)
@@ -1530,6 +2077,21 @@ private fun renderListItem(node: ComposeNode, scope: Any?) {
       `supportingContent` = if (node.isNull("supportingContent")) null else ({ RenderComposeChildren(node.slot("supportingContent")) }),
       `leadingContent` = if (node.isNull("leadingContent")) null else ({ RenderComposeChildren(node.slot("leadingContent")) }),
       `trailingContent` = if (node.isNull("trailingContent")) null else ({ RenderComposeChildren(node.slot("trailingContent")) }),
+    )
+  }
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun renderMaterialExpressiveTheme(node: ComposeNode) {
+  val mask = (if (node.has("colorScheme")) 1 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.MaterialExpressiveTheme(
+      content = { RenderComposeChildren(node.children) },
+    )
+    else -> androidx.compose.material3.MaterialExpressiveTheme(
+      `colorScheme` = if (node.isNull("colorScheme")) null else (node.colorScheme("colorScheme")),
+      content = { RenderComposeChildren(node.children) },
     )
   }
 }
@@ -2093,6 +2655,189 @@ private fun renderPermanentNavigationDrawer(node: ComposeNode, scope: Any?) {
 }
 
 @Composable
+private fun renderPrimaryScrollableTabRow(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("containerColor")) 1 else 0) +
+    (if (node.has("contentColor")) 2 else 0) +
+    (if (node.has("edgePadding")) 4 else 0) +
+    (if (node.has("divider")) 8 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    1 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    2 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    3 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    4 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    5 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    6 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    7 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    8 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    9 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    10 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    11 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    12 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    13 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    14 -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    else -> androidx.compose.material3.PrimaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+  }
+}
+
+@Composable
+private fun renderPrimaryTabRow(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("containerColor")) 1 else 0) +
+    (if (node.has("contentColor")) 2 else 0) +
+    (if (node.has("divider")) 4 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    1 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    2 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    3 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    4 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    5 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    6 -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    else -> androidx.compose.material3.PrimaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+  }
+}
+
+@Composable
 private fun renderRadioButton(node: ComposeNode, scope: Any?) {
   val mask = (if (node.has("enabled")) 1 else 0)
   when (mask) {
@@ -2256,6 +3001,250 @@ private fun renderScrollableTabRow(node: ComposeNode, scope: Any?) {
       `edgePadding` = node.number("edgePadding").dp,
       `divider` = { RenderComposeChildren(node.slot("divider")) },
       `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+  }
+}
+
+@Composable
+private fun renderSecondaryScrollableTabRow(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("containerColor")) 1 else 0) +
+    (if (node.has("contentColor")) 2 else 0) +
+    (if (node.has("edgePadding")) 4 else 0) +
+    (if (node.has("divider")) 8 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    1 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    2 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    3 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    4 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    5 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    6 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    7 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    8 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    9 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    10 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    11 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    12 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    13 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    14 -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    else -> androidx.compose.material3.SecondaryScrollableTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `edgePadding` = node.number("edgePadding").dp,
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+  }
+}
+
+@Composable
+private fun renderSecondaryTabRow(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("containerColor")) 1 else 0) +
+    (if (node.has("contentColor")) 2 else 0) +
+    (if (node.has("divider")) 4 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    1 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    2 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    3 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    4 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    5 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    6 -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+    else -> androidx.compose.material3.SecondaryTabRow(
+      `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      `contentColor` = node.color("contentColor"),
+      `divider` = { RenderComposeChildren(node.slot("divider")) },
+      `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+    )
+  }
+}
+
+@Composable
+private fun renderSlider(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("enabled")) 1 else 0) +
+    (if (node.has("steps")) 2 else 0) +
+    (if (node.has("onValueChangeFinished")) 4 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+    )
+    1 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `enabled` = node.boolean("enabled"),
+    )
+    2 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `steps` = node.number("steps").toInt(),
+    )
+    3 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `enabled` = node.boolean("enabled"),
+      `steps` = node.number("steps").toInt(),
+    )
+    4 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `onValueChangeFinished` = if (node.isNull("onValueChangeFinished")) null else ({ node.emit("onValueChangeFinished") }),
+    )
+    5 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `enabled` = node.boolean("enabled"),
+      `onValueChangeFinished` = if (node.isNull("onValueChangeFinished")) null else ({ node.emit("onValueChangeFinished") }),
+    )
+    6 -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `steps` = node.number("steps").toInt(),
+      `onValueChangeFinished` = if (node.isNull("onValueChangeFinished")) null else ({ node.emit("onValueChangeFinished") }),
+    )
+    else -> androidx.compose.material3.Slider(
+      `value` = node.number("value").toFloat(),
+      `onValueChange` = { value: Float -> node.emit("onValueChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      `enabled` = node.boolean("enabled"),
+      `steps` = node.number("steps").toInt(),
+      `onValueChangeFinished` = if (node.isNull("onValueChangeFinished")) null else ({ node.emit("onValueChangeFinished") }),
     )
   }
 }
@@ -3872,6 +4861,83 @@ private fun renderTextField(node: ComposeNode, scope: Any?) {
 }
 
 @Composable
+private fun renderTimePickerDialog(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("modeToggleButton")) 1 else 0) +
+    (if (node.has("dismissButton")) 2 else 0) +
+    (if (node.has("containerColor")) 4 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    1 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `modeToggleButton` = if (node.isNull("modeToggleButton")) null else ({ RenderComposeChildren(node.slot("modeToggleButton")) }),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    2 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    3 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `modeToggleButton` = if (node.isNull("modeToggleButton")) null else ({ RenderComposeChildren(node.slot("modeToggleButton")) }),
+      `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    4 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `containerColor` = node.color("containerColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    5 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `modeToggleButton` = if (node.isNull("modeToggleButton")) null else ({ RenderComposeChildren(node.slot("modeToggleButton")) }),
+      `containerColor` = node.color("containerColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    6 -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+      `containerColor` = node.color("containerColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+    else -> androidx.compose.material3.TimePickerDialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+      `title` = { RenderComposeChildren(node.slot("title")) },
+      `modifier` = node.modifier("modifier", scope),
+      `modeToggleButton` = if (node.isNull("modeToggleButton")) null else ({ RenderComposeChildren(node.slot("modeToggleButton")) }),
+      `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+      `containerColor` = node.color("containerColor"),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+  }
+}
+
+@Composable
 private fun renderVerticalDivider(node: ComposeNode, scope: Any?) {
   val mask = (if (node.has("thickness")) 1 else 0) +
     (if (node.has("color")) 2 else 0)
@@ -3893,4 +4959,11 @@ private fun renderVerticalDivider(node: ComposeNode, scope: Any?) {
       `color` = node.color("color"),
     )
   }
+}
+
+@Composable
+private fun renderVerticalDragHandle(node: ComposeNode, scope: Any?) {
+  androidx.compose.material3.VerticalDragHandle(
+    `modifier` = node.modifier("modifier", scope),
+  )
 }

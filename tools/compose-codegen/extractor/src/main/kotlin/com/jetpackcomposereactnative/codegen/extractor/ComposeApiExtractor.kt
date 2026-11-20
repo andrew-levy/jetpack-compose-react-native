@@ -79,7 +79,16 @@ private class ComposeApiExtractor(
 
   private fun describe(fn: KSFunctionDeclaration): Candidate? {
     val annotations = fn.annotations.mapNotNull { it.annotationType.resolve().name }.toList()
-    if (annotations.any { it == "kotlin.Deprecated" || it.substringAfterLast('.').startsWith("Experimental") }) return null
+    val function = fn.qualifiedName!!.asString()
+    val optIn = when (function) {
+      "androidx.compose.material3.MaterialExpressiveTheme" ->
+        "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi"
+      else -> null
+    }?.takeIf(annotations::contains)
+    if (annotations.any {
+        (it == "kotlin.Deprecated" && function !in compatibleDeprecatedComponents) ||
+          (it != optIn && it.substringAfterLast('.').startsWith("Experimental"))
+      }) return null
     if (fn.returnType?.resolve()?.name != "kotlin.Unit") return null
 
     val parameters = mutableListOf<Parameter>()
@@ -121,8 +130,7 @@ private class ComposeApiExtractor(
 
     // Preserve the existing scalar props when adding reusable Compose value types.
     parameters += extraValues.take(MAX_COMPONENT_OPTIONALS - optionalValues.coerceAtMost(MAX_OPTIONAL_VALUES))
-    val function = fn.qualifiedName!!.asString()
-    val component = Component(fn.simpleName.asString(), function, parameters, children, childrenScope)
+    val component = Component(fn.simpleName.asString(), function, parameters, children, childrenScope, optIn)
     val signature = fn.parameters.joinToString { it.type.resolve().toString() }
     return Candidate(fn, component, passed, signature)
   }
@@ -215,6 +223,8 @@ private class ComposeApiExtractor(
     }.toMap()
 
   private fun conflicts(candidate: Candidate, other: KSFunctionDeclaration): Boolean {
+    // Kotlin prefers an otherwise matching overload that uses fewer default arguments.
+    if (other.parameters.size > candidate.declaration.parameters.size) return false
     if (other.annotations.any { it.annotationType.resolve().name == "kotlin.Deprecated" }) return false
     val otherParameters = other.parameters.associateBy { it.name?.asString() }
     if (otherParameters.values.any { !it.hasDefault && it.name?.asString() !in candidate.passed }) return false
@@ -290,6 +300,11 @@ private val scopes = setOf(
   "androidx.compose.foundation.layout.FlowRowScope",
   "androidx.compose.foundation.layout.FlowColumnScope"
 )
+// Material 3 still supports these names, which older versions of the bridge exported.
+private val compatibleDeprecatedComponents = setOf(
+  "androidx.compose.material3.ScrollableTabRow",
+  "androidx.compose.material3.TabRow"
+)
 private val componentValueKinds = mapOf("androidx.compose.material3.ColorScheme" to "colorScheme")
 private val valueKinds = mapOf(
   "kotlin.String" to "string",
@@ -320,7 +335,7 @@ private data class ValueType(val name: String, val kotlinType: String, val cases
 private data class ValueCase(val name: String, val expression: String)
 private data class Component(
   val name: String, val kotlinFunction: String, val parameters: List<Parameter>,
-  val children: Boolean, val childrenScope: String?
+  val children: Boolean, val childrenScope: String?, val optIn: String?
 )
 private data class Parameter(
   val name: String, val kind: String, val optional: Boolean, val nullable: Boolean, val scope: String? = null

@@ -62,6 +62,8 @@ internal fun toComposeTextAlign(value: String): androidx.compose.ui.text.style.T
 internal fun toComposeTextOverflow(value: String): androidx.compose.ui.text.style.TextOverflow = when (value) {
   "clip" -> androidx.compose.ui.text.style.TextOverflow.Clip
   "ellipsis" -> androidx.compose.ui.text.style.TextOverflow.Ellipsis
+  "middleEllipsis" -> androidx.compose.ui.text.style.TextOverflow.MiddleEllipsis
+  "startEllipsis" -> androidx.compose.ui.text.style.TextOverflow.StartEllipsis
   "visible" -> androidx.compose.ui.text.style.TextOverflow.Visible
   else -> error("Unknown ComposeTextOverflow: " + value)
 }
@@ -90,11 +92,13 @@ internal fun toComposeFontWeight(value: String): androidx.compose.ui.text.font.F
 
 internal fun toComposeRole(value: String): androidx.compose.ui.semantics.Role = when (value) {
   "button" -> androidx.compose.ui.semantics.Role.Button
+  "carousel" -> androidx.compose.ui.semantics.Role.Carousel
   "checkbox" -> androidx.compose.ui.semantics.Role.Checkbox
   "dropdownList" -> androidx.compose.ui.semantics.Role.DropdownList
   "image" -> androidx.compose.ui.semantics.Role.Image
   "radioButton" -> androidx.compose.ui.semantics.Role.RadioButton
   "switch" -> androidx.compose.ui.semantics.Role.Switch
   "tab" -> androidx.compose.ui.semantics.Role.Tab
+  "valuePicker" -> androidx.compose.ui.semantics.Role.ValuePicker
   else -> error("Unknown ComposeRole: " + value)
 }

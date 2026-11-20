@@ -70,6 +70,21 @@ export const BadgedBox = createComposableComponent<BadgedBoxProps>({
   children: true,
 });
 
+export interface BottomAppBarProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  containerColor?: string;
+  contentColor?: string;
+  tonalElevation?: number;
+  children?: ReactNode;
+}
+export const BottomAppBar = createComposableComponent<BottomAppBarProps>({
+  name: "BottomAppBar",
+  props: ["modifier","containerColor","contentColor","tonalElevation"],
+  children: true,
+});
+
 export interface BoxProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
@@ -133,10 +148,11 @@ export interface CircularProgressIndicatorProps {
   color?: string;
   strokeWidth?: number;
   trackColor?: string;
+  gapSize?: number;
 }
 export const CircularProgressIndicator = createComposableComponent<CircularProgressIndicatorProps>({
   name: "CircularProgressIndicator",
-  props: ["modifier","color","strokeWidth","trackColor"],
+  props: ["modifier","color","strokeWidth","trackColor","gapSize"],
   children: false,
 });
 
@@ -429,6 +445,40 @@ export const FloatingActionButton = createComposableComponent<FloatingActionButt
   children: true,
 });
 
+export interface FlowColumnProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  maxItemsInEachColumn?: number;
+  maxLines?: number;
+  verticalArrangement?: ComposeVerticalArrangement;
+  horizontalArrangement?: ComposeHorizontalArrangement;
+  itemHorizontalAlignment?: ComposeHorizontalAlignment;
+  children?: ReactNode;
+}
+export const FlowColumn = createComposableComponent<FlowColumnProps>({
+  name: "FlowColumn",
+  props: ["modifier","maxItemsInEachColumn","maxLines","verticalArrangement","horizontalArrangement","itemHorizontalAlignment"],
+  children: true,
+});
+
+export interface FlowRowProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  maxItemsInEachRow?: number;
+  maxLines?: number;
+  horizontalArrangement?: ComposeHorizontalArrangement;
+  verticalArrangement?: ComposeVerticalArrangement;
+  itemVerticalAlignment?: ComposeVerticalAlignment;
+  children?: ReactNode;
+}
+export const FlowRow = createComposableComponent<FlowRowProps>({
+  name: "FlowRow",
+  props: ["modifier","maxItemsInEachRow","maxLines","horizontalArrangement","verticalArrangement","itemVerticalAlignment"],
+  children: true,
+});
+
 export interface HorizontalDividerProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
@@ -558,6 +608,17 @@ export const ListItem = createComposableComponent<ListItemProps>({
   props: ["modifier"],
   slots: ["headlineContent","overlineContent","supportingContent","leadingContent","trailingContent"],
   children: false,
+});
+
+export interface MaterialExpressiveThemeProps {
+  colorScheme?: ColorScheme | null;
+  children?: ReactNode;
+}
+export const MaterialExpressiveTheme = createComposableComponent<MaterialExpressiveThemeProps>({
+  name: "MaterialExpressiveTheme",
+  props: ["colorScheme"],
+  objectProps: ["colorScheme"],
+  children: true,
 });
 
 export interface MaterialThemeProps {
@@ -776,6 +837,41 @@ export const PermanentNavigationDrawer = createComposableComponent<PermanentNavi
   children: true,
 });
 
+export interface PrimaryScrollableTabRowProps {
+  selectedTabIndex: number;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  containerColor?: string;
+  contentColor?: string;
+  edgePadding?: number;
+  divider?: ReactNode;
+  tabs: ReactNode;
+}
+export const PrimaryScrollableTabRow = createComposableComponent<PrimaryScrollableTabRowProps>({
+  name: "PrimaryScrollableTabRow",
+  props: ["selectedTabIndex","modifier","containerColor","contentColor","edgePadding"],
+  slots: ["divider","tabs"],
+  children: false,
+});
+
+export interface PrimaryTabRowProps {
+  selectedTabIndex: number;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  containerColor?: string;
+  contentColor?: string;
+  divider?: ReactNode;
+  tabs: ReactNode;
+}
+export const PrimaryTabRow = createComposableComponent<PrimaryTabRowProps>({
+  name: "PrimaryTabRow",
+  props: ["selectedTabIndex","modifier","containerColor","contentColor"],
+  slots: ["divider","tabs"],
+  children: false,
+});
+
 export interface RadioButtonProps {
   selected: boolean;
   onClick: (() => void) | null;
@@ -820,6 +916,58 @@ export const ScrollableTabRow = createComposableComponent<ScrollableTabRowProps>
   name: "ScrollableTabRow",
   props: ["selectedTabIndex","modifier","containerColor","contentColor","edgePadding"],
   slots: ["divider","tabs"],
+  children: false,
+});
+
+export interface SecondaryScrollableTabRowProps {
+  selectedTabIndex: number;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  containerColor?: string;
+  contentColor?: string;
+  edgePadding?: number;
+  divider?: ReactNode;
+  tabs: ReactNode;
+}
+export const SecondaryScrollableTabRow = createComposableComponent<SecondaryScrollableTabRowProps>({
+  name: "SecondaryScrollableTabRow",
+  props: ["selectedTabIndex","modifier","containerColor","contentColor","edgePadding"],
+  slots: ["divider","tabs"],
+  children: false,
+});
+
+export interface SecondaryTabRowProps {
+  selectedTabIndex: number;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  containerColor?: string;
+  contentColor?: string;
+  divider?: ReactNode;
+  tabs: ReactNode;
+}
+export const SecondaryTabRow = createComposableComponent<SecondaryTabRowProps>({
+  name: "SecondaryTabRow",
+  props: ["selectedTabIndex","modifier","containerColor","contentColor"],
+  slots: ["divider","tabs"],
+  children: false,
+});
+
+export interface SliderProps {
+  value: number;
+  onValueChange: (value: number) => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  enabled?: boolean;
+  steps?: number;
+  onValueChangeFinished?: (() => void) | null;
+}
+export const Slider = createComposableComponent<SliderProps>({
+  name: "Slider",
+  props: ["value","modifier","enabled","steps"],
+  events: ["onValueChange","onValueChangeFinished"],
   children: false,
 });
 
@@ -1006,6 +1154,26 @@ export const TextField = createComposableComponent<TextFieldProps>({
   children: false,
 });
 
+export interface TimePickerDialogProps {
+  onDismissRequest: () => void;
+  confirmButton: ReactNode;
+  title: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  modeToggleButton?: ReactNode;
+  dismissButton?: ReactNode;
+  containerColor?: string;
+  children?: ReactNode;
+}
+export const TimePickerDialog = createComposableComponent<TimePickerDialogProps>({
+  name: "TimePickerDialog",
+  props: ["modifier","containerColor"],
+  slots: ["confirmButton","title","modeToggleButton","dismissButton"],
+  events: ["onDismissRequest"],
+  children: true,
+});
+
 export interface VerticalDividerProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
@@ -1016,5 +1184,16 @@ export interface VerticalDividerProps {
 export const VerticalDivider = createComposableComponent<VerticalDividerProps>({
   name: "VerticalDivider",
   props: ["modifier","thickness","color"],
+  children: false,
+});
+
+export interface VerticalDragHandleProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+}
+export const VerticalDragHandle = createComposableComponent<VerticalDragHandleProps>({
+  name: "VerticalDragHandle",
+  props: ["modifier"],
   children: false,
 });

@@ -115,7 +115,7 @@ function kotlin({ components }) {
   const dispatch = components.map(({ name, parameters }) =>
     `    ${quote(name)} -> render${name}(node${parameters.some(({ kind }) => kind === "modifier") ? ", scope" : ""})`
   );
-  const functions = components.map(({ name, kotlinFunction, parameters, children, childrenScope }) => {
+  const functions = components.map(({ name, kotlinFunction, parameters, children, childrenScope, optIn }) => {
     const modifierScope = parameters.some(({ kind }) => kind === "modifier") ? ", scope: Any?" : "";
     const optionals = parameters.filter(({ optional, kind }) => optional && kind !== "modifier");
     const bits = new Map(optionals.map(({ name }, index) => [name, 1 << index]));
@@ -147,7 +147,14 @@ function kotlin({ components }) {
       }),
       "  }",
     ];
-    return ["@Composable", `private fun render${name}(node: ComposeNode${modifierScope}) {`, ...body, "}", ""].join("\n");
+    return [
+      ...(optIn ? [`@OptIn(${optIn}::class)`] : []),
+      "@Composable",
+      `private fun render${name}(node: ComposeNode${modifierScope}) {`,
+      ...body,
+      "}",
+      "",
+    ].join("\n");
   });
 
   return [

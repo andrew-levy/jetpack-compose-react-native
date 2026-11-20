@@ -33,8 +33,9 @@ ksp {
 
 dependencies {
   ksp(project(":extractor"))
-  implementation(platform("androidx.compose:compose-bom:2024.09.03"))
+  implementation(platform("androidx.compose:compose-bom:2025.05.01"))
   implementation("androidx.compose.ui:ui")
   implementation("androidx.compose.foundation:foundation-layout")
-  implementation("androidx.compose.material3:material3")
+  // This release exposes MaterialExpressiveTheme publicly.
+  implementation("androidx.compose.material3:material3:1.4.0-alpha15")
 }

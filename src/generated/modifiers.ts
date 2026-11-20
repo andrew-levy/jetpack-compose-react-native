@@ -103,6 +103,38 @@ interface GeneratedModifiers {
   clip(options: { shape: ComposeShape }): ComposeChain;
   clip(shape: ComposeShape): ComposeChain;
   clipToBounds(): ComposeChain;
+  combinedClickable(options: { onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void): ComposeChain;
+  combinedClickable(options: { enabled: boolean; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean }): ComposeChain;
+  combinedClickable(options: { onClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { onClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; onClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; onClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { role: ComposeRole | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { role: ComposeRole | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; role: ComposeRole | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; role: ComposeRole | null }): ComposeChain;
+  combinedClickable(options: { onClickLabel: string | null; role: ComposeRole | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { onClickLabel: string | null; role: ComposeRole | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; onClickLabel: string | null; role: ComposeRole | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; onClickLabel: string | null; role: ComposeRole | null }): ComposeChain;
+  combinedClickable(options: { onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { onClickLabel: string | null; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { onClickLabel: string | null; onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; onClickLabel: string | null; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; onClickLabel: string | null; onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { role: ComposeRole | null; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { role: ComposeRole | null; onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; role: ComposeRole | null; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; role: ComposeRole | null; onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { onClickLabel: string | null; role: ComposeRole | null; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { onClickLabel: string | null; role: ComposeRole | null; onLongClickLabel: string | null }): ComposeChain;
+  combinedClickable(options: { enabled: boolean; onClickLabel: string | null; role: ComposeRole | null; onLongClickLabel: string | null; onClick: () => void }): ComposeChain;
+  combinedClickable(onClick: () => void, options: { enabled: boolean; onClickLabel: string | null; role: ComposeRole | null; onLongClickLabel: string | null }): ComposeChain;
   defaultMinSize(): ComposeChain;
   defaultMinSize(options: { minWidth: number }): ComposeChain;
   defaultMinSize(minWidth: number): ComposeChain;
@@ -199,6 +231,7 @@ interface GeneratedModifiers {
   progressSemantics(value: number): ComposeChain;
   progressSemantics(options: { value: number; steps: number }): ComposeChain;
   progressSemantics(value: number, options: { steps: number }): ComposeChain;
+  recalculateWindowInsets(): ComposeChain;
   requiredHeight(options: { height: number }): ComposeChain;
   requiredHeight(height: number): ComposeChain;
   requiredHeightIn(): ComposeChain;
@@ -251,6 +284,9 @@ interface GeneratedModifiers {
   selectable(options: { selected: boolean; role: ComposeRole | null; onClick: () => void }): ComposeChain;
   selectable(options: { selected: boolean; enabled: boolean; role: ComposeRole | null; onClick: () => void }): ComposeChain;
   selectableGroup(): ComposeChain;
+  sensitiveContent(): ComposeChain;
+  sensitiveContent(options: { isContentSensitive: boolean }): ComposeChain;
+  sensitiveContent(isContentSensitive: boolean): ComposeChain;
   shadow(options: { elevation: number }): ComposeChain;
   shadow(elevation: number): ComposeChain;
   shadow(options: { elevation: number; shape: ComposeShape }): ComposeChain;
@@ -371,195 +407,204 @@ export const Modifier = createModifier({
   "clickable": [
     { id: 5, primary: "onClick", forms: [[["onClick","function",false]],[["enabled","boolean",false],["onClick","function",false]],[["onClickLabel","string",true],["onClick","function",false]],[["enabled","boolean",false],["onClickLabel","string",true],["onClick","function",false]],[["role","string",true],["onClick","function",false]],[["enabled","boolean",false],["role","string",true],["onClick","function",false]],[["onClickLabel","string",true],["role","string",true],["onClick","function",false]],[["enabled","boolean",false],["onClickLabel","string",true],["role","string",true],["onClick","function",false]]] },
   ],
+  "combinedClickable": [
+    { id: 6, primary: "onClick", forms: [[["onClick","function",false]],[["enabled","boolean",false],["onClick","function",false]],[["onClickLabel","string",true],["onClick","function",false]],[["enabled","boolean",false],["onClickLabel","string",true],["onClick","function",false]],[["role","string",true],["onClick","function",false]],[["enabled","boolean",false],["role","string",true],["onClick","function",false]],[["onClickLabel","string",true],["role","string",true],["onClick","function",false]],[["enabled","boolean",false],["onClickLabel","string",true],["role","string",true],["onClick","function",false]],[["onLongClickLabel","string",true],["onClick","function",false]],[["enabled","boolean",false],["onLongClickLabel","string",true],["onClick","function",false]],[["onClickLabel","string",true],["onLongClickLabel","string",true],["onClick","function",false]],[["enabled","boolean",false],["onClickLabel","string",true],["onLongClickLabel","string",true],["onClick","function",false]],[["role","string",true],["onLongClickLabel","string",true],["onClick","function",false]],[["enabled","boolean",false],["role","string",true],["onLongClickLabel","string",true],["onClick","function",false]],[["onClickLabel","string",true],["role","string",true],["onLongClickLabel","string",true],["onClick","function",false]],[["enabled","boolean",false],["onClickLabel","string",true],["role","string",true],["onLongClickLabel","string",true],["onClick","function",false]]] },
+  ],
   "focusGroup": [
-    { id: 6, forms: [[]] },
+    { id: 7, forms: [[]] },
   ],
   "focusable": [
-    { id: 7, forms: [[],[["enabled","boolean",false]]] },
+    { id: 8, forms: [[],[["enabled","boolean",false]]] },
   ],
   "align": [
-    { id: 8, primary: "alignment", forms: [[["alignment","string",false]]] },
-    { id: 10, primary: "alignment", forms: [[["alignment","string",false]]] },
-    { id: 12, primary: "alignment", forms: [[["alignment","string",false]]] },
+    { id: 9, primary: "alignment", forms: [[["alignment","string",false]]] },
+    { id: 11, primary: "alignment", forms: [[["alignment","string",false]]] },
+    { id: 13, primary: "alignment", forms: [[["alignment","string",false]]] },
   ],
   "matchParentSize": [
-    { id: 9, forms: [[]] },
+    { id: 10, forms: [[]] },
   ],
   "weight": [
-    { id: 11, primary: "weight", forms: [[["weight","number",false]],[["weight","number",false],["fill","boolean",false]]] },
-    { id: 14, primary: "weight", forms: [[["weight","number",false]],[["weight","number",false],["fill","boolean",false]]] },
+    { id: 12, primary: "weight", forms: [[["weight","number",false]],[["weight","number",false],["fill","boolean",false]]] },
+    { id: 15, primary: "weight", forms: [[["weight","number",false]],[["weight","number",false],["fill","boolean",false]]] },
   ],
   "alignByBaseline": [
-    { id: 13, forms: [[]] },
+    { id: 14, forms: [[]] },
   ],
   "absoluteOffset": [
-    { id: 15, forms: [[],[["x","number",false]],[["y","number",false]],[["x","number",false],["y","number",false]]] },
+    { id: 16, forms: [[],[["x","number",false]],[["y","number",false]],[["x","number",false],["y","number",false]]] },
   ],
   "absolutePadding": [
-    { id: 16, forms: [[],[["left","number",false]],[["top","number",false]],[["left","number",false],["top","number",false]],[["right","number",false]],[["left","number",false],["right","number",false]],[["top","number",false],["right","number",false]],[["left","number",false],["top","number",false],["right","number",false]],[["bottom","number",false]],[["left","number",false],["bottom","number",false]],[["top","number",false],["bottom","number",false]],[["left","number",false],["top","number",false],["bottom","number",false]],[["right","number",false],["bottom","number",false]],[["left","number",false],["right","number",false],["bottom","number",false]],[["top","number",false],["right","number",false],["bottom","number",false]],[["left","number",false],["top","number",false],["right","number",false],["bottom","number",false]]] },
+    { id: 17, forms: [[],[["left","number",false]],[["top","number",false]],[["left","number",false],["top","number",false]],[["right","number",false]],[["left","number",false],["right","number",false]],[["top","number",false],["right","number",false]],[["left","number",false],["top","number",false],["right","number",false]],[["bottom","number",false]],[["left","number",false],["bottom","number",false]],[["top","number",false],["bottom","number",false]],[["left","number",false],["top","number",false],["bottom","number",false]],[["right","number",false],["bottom","number",false]],[["left","number",false],["right","number",false],["bottom","number",false]],[["top","number",false],["right","number",false],["bottom","number",false]],[["left","number",false],["top","number",false],["right","number",false],["bottom","number",false]]] },
   ],
   "aspectRatio": [
-    { id: 17, primary: "ratio", forms: [[["ratio","number",false]],[["ratio","number",false],["matchHeightConstraintsFirst","boolean",false]]] },
+    { id: 18, primary: "ratio", forms: [[["ratio","number",false]],[["ratio","number",false],["matchHeightConstraintsFirst","boolean",false]]] },
   ],
   "captionBarPadding": [
-    { id: 18, forms: [[]] },
+    { id: 19, forms: [[]] },
   ],
   "defaultMinSize": [
-    { id: 19, forms: [[],[["minWidth","number",false]],[["minHeight","number",false]],[["minWidth","number",false],["minHeight","number",false]]] },
+    { id: 20, forms: [[],[["minWidth","number",false]],[["minHeight","number",false]],[["minWidth","number",false],["minHeight","number",false]]] },
   ],
   "displayCutoutPadding": [
-    { id: 20, forms: [[]] },
+    { id: 21, forms: [[]] },
   ],
   "fillMaxHeight": [
-    { id: 21, forms: [[],[["fraction","number",false]]] },
-  ],
-  "fillMaxSize": [
     { id: 22, forms: [[],[["fraction","number",false]]] },
   ],
-  "fillMaxWidth": [
+  "fillMaxSize": [
     { id: 23, forms: [[],[["fraction","number",false]]] },
   ],
+  "fillMaxWidth": [
+    { id: 24, forms: [[],[["fraction","number",false]]] },
+  ],
   "height": [
-    { id: 24, primary: "height", forms: [[["height","number",false]]] },
+    { id: 25, primary: "height", forms: [[["height","number",false]]] },
   ],
   "heightIn": [
-    { id: 25, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
+    { id: 26, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
   ],
   "imePadding": [
-    { id: 26, forms: [[]] },
-  ],
-  "mandatorySystemGesturesPadding": [
     { id: 27, forms: [[]] },
   ],
-  "navigationBarsPadding": [
+  "mandatorySystemGesturesPadding": [
     { id: 28, forms: [[]] },
   ],
+  "navigationBarsPadding": [
+    { id: 29, forms: [[]] },
+  ],
   "offset": [
-    { id: 29, forms: [[],[["x","number",false]],[["y","number",false]],[["x","number",false],["y","number",false]]] },
+    { id: 30, forms: [[],[["x","number",false]],[["y","number",false]],[["x","number",false],["y","number",false]]] },
   ],
   "padding": [
-    { id: 30, primary: "all", forms: [[["all","number",false]]] },
-    { id: 31, forms: [[],[["horizontal","number",false]],[["vertical","number",false]],[["horizontal","number",false],["vertical","number",false]]] },
-    { id: 32, forms: [[["start","number",false]],[["top","number",false]],[["start","number",false],["top","number",false]],[["end","number",false]],[["start","number",false],["end","number",false]],[["top","number",false],["end","number",false]],[["start","number",false],["top","number",false],["end","number",false]],[["bottom","number",false]],[["start","number",false],["bottom","number",false]],[["top","number",false],["bottom","number",false]],[["start","number",false],["top","number",false],["bottom","number",false]],[["end","number",false],["bottom","number",false]],[["start","number",false],["end","number",false],["bottom","number",false]],[["top","number",false],["end","number",false],["bottom","number",false]],[["start","number",false],["top","number",false],["end","number",false],["bottom","number",false]]] },
+    { id: 31, primary: "all", forms: [[["all","number",false]]] },
+    { id: 32, forms: [[],[["horizontal","number",false]],[["vertical","number",false]],[["horizontal","number",false],["vertical","number",false]]] },
+    { id: 33, forms: [[["start","number",false]],[["top","number",false]],[["start","number",false],["top","number",false]],[["end","number",false]],[["start","number",false],["end","number",false]],[["top","number",false],["end","number",false]],[["start","number",false],["top","number",false],["end","number",false]],[["bottom","number",false]],[["start","number",false],["bottom","number",false]],[["top","number",false],["bottom","number",false]],[["start","number",false],["top","number",false],["bottom","number",false]],[["end","number",false],["bottom","number",false]],[["start","number",false],["end","number",false],["bottom","number",false]],[["top","number",false],["end","number",false],["bottom","number",false]],[["start","number",false],["top","number",false],["end","number",false],["bottom","number",false]]] },
   ],
   "paddingFromBaseline": [
-    { id: 33, forms: [[["top","number",false]],[["bottom","number",false]],[["top","number",false],["bottom","number",false]]] },
     { id: 34, forms: [[["top","number",false]],[["bottom","number",false]],[["top","number",false],["bottom","number",false]]] },
+    { id: 35, forms: [[["top","number",false]],[["bottom","number",false]],[["top","number",false],["bottom","number",false]]] },
+  ],
+  "recalculateWindowInsets": [
+    { id: 36, forms: [[]] },
   ],
   "requiredHeight": [
-    { id: 35, primary: "height", forms: [[["height","number",false]]] },
+    { id: 37, primary: "height", forms: [[["height","number",false]]] },
   ],
   "requiredHeightIn": [
-    { id: 36, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
+    { id: 38, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
   ],
   "requiredSize": [
-    { id: 37, primary: "size", forms: [[["size","number",false]]] },
-    { id: 38, forms: [[["width","number",false],["height","number",false]]] },
+    { id: 39, primary: "size", forms: [[["size","number",false]]] },
+    { id: 40, forms: [[["width","number",false],["height","number",false]]] },
   ],
   "requiredSizeIn": [
-    { id: 39, forms: [[],[["minWidth","number",false]],[["minHeight","number",false]],[["minWidth","number",false],["minHeight","number",false]],[["maxWidth","number",false]],[["minWidth","number",false],["maxWidth","number",false]],[["minHeight","number",false],["maxWidth","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false]],[["maxHeight","number",false]],[["minWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxHeight","number",false]],[["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]]] },
+    { id: 41, forms: [[],[["minWidth","number",false]],[["minHeight","number",false]],[["minWidth","number",false],["minHeight","number",false]],[["maxWidth","number",false]],[["minWidth","number",false],["maxWidth","number",false]],[["minHeight","number",false],["maxWidth","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false]],[["maxHeight","number",false]],[["minWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxHeight","number",false]],[["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]]] },
   ],
   "requiredWidth": [
-    { id: 40, primary: "width", forms: [[["width","number",false]]] },
+    { id: 42, primary: "width", forms: [[["width","number",false]]] },
   ],
   "requiredWidthIn": [
-    { id: 41, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
+    { id: 43, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
   ],
   "safeContentPadding": [
-    { id: 42, forms: [[]] },
-  ],
-  "safeDrawingPadding": [
-    { id: 43, forms: [[]] },
-  ],
-  "safeGesturesPadding": [
     { id: 44, forms: [[]] },
   ],
+  "safeDrawingPadding": [
+    { id: 45, forms: [[]] },
+  ],
+  "safeGesturesPadding": [
+    { id: 46, forms: [[]] },
+  ],
   "size": [
-    { id: 45, primary: "size", forms: [[["size","number",false]]] },
-    { id: 46, forms: [[["width","number",false],["height","number",false]]] },
+    { id: 47, primary: "size", forms: [[["size","number",false]]] },
+    { id: 48, forms: [[["width","number",false],["height","number",false]]] },
   ],
   "sizeIn": [
-    { id: 47, forms: [[],[["minWidth","number",false]],[["minHeight","number",false]],[["minWidth","number",false],["minHeight","number",false]],[["maxWidth","number",false]],[["minWidth","number",false],["maxWidth","number",false]],[["minHeight","number",false],["maxWidth","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false]],[["maxHeight","number",false]],[["minWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxHeight","number",false]],[["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]]] },
+    { id: 49, forms: [[],[["minWidth","number",false]],[["minHeight","number",false]],[["minWidth","number",false],["minHeight","number",false]],[["maxWidth","number",false]],[["minWidth","number",false],["maxWidth","number",false]],[["minHeight","number",false],["maxWidth","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false]],[["maxHeight","number",false]],[["minWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxHeight","number",false]],[["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]],[["minWidth","number",false],["minHeight","number",false],["maxWidth","number",false],["maxHeight","number",false]]] },
   ],
   "statusBarsPadding": [
-    { id: 48, forms: [[]] },
-  ],
-  "systemBarsPadding": [
-    { id: 49, forms: [[]] },
-  ],
-  "systemGesturesPadding": [
     { id: 50, forms: [[]] },
   ],
-  "waterfallPadding": [
+  "systemBarsPadding": [
     { id: 51, forms: [[]] },
   ],
+  "systemGesturesPadding": [
+    { id: 52, forms: [[]] },
+  ],
+  "waterfallPadding": [
+    { id: 53, forms: [[]] },
+  ],
   "width": [
-    { id: 52, primary: "width", forms: [[["width","number",false]]] },
+    { id: 54, primary: "width", forms: [[["width","number",false]]] },
   ],
   "widthIn": [
-    { id: 53, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
+    { id: 55, forms: [[],[["min","number",false]],[["max","number",false]],[["min","number",false],["max","number",false]]] },
   ],
   "wrapContentHeight": [
-    { id: 54, forms: [[],[["align","string",false]],[["unbounded","boolean",false]],[["align","string",false],["unbounded","boolean",false]]] },
-  ],
-  "wrapContentSize": [
-    { id: 55, forms: [[],[["align","string",false]],[["unbounded","boolean",false]],[["align","string",false],["unbounded","boolean",false]]] },
-  ],
-  "wrapContentWidth": [
     { id: 56, forms: [[],[["align","string",false]],[["unbounded","boolean",false]],[["align","string",false],["unbounded","boolean",false]]] },
   ],
+  "wrapContentSize": [
+    { id: 57, forms: [[],[["align","string",false]],[["unbounded","boolean",false]],[["align","string",false],["unbounded","boolean",false]]] },
+  ],
+  "wrapContentWidth": [
+    { id: 58, forms: [[],[["align","string",false]],[["unbounded","boolean",false]],[["align","string",false],["unbounded","boolean",false]]] },
+  ],
   "preferKeepClear": [
-    { id: 57, forms: [[]] },
+    { id: 59, forms: [[]] },
   ],
   "progressSemantics": [
-    { id: 58, forms: [[]] },
-    { id: 59, primary: "value", forms: [[["value","number",false]],[["value","number",false],["steps","number",false]]] },
+    { id: 60, forms: [[]] },
+    { id: 61, primary: "value", forms: [[["value","number",false]],[["value","number",false],["steps","number",false]]] },
   ],
   "selectable": [
-    { id: 60, forms: [[["selected","boolean",false],["onClick","function",false]],[["selected","boolean",false],["enabled","boolean",false],["onClick","function",false]],[["selected","boolean",false],["role","string",true],["onClick","function",false]],[["selected","boolean",false],["enabled","boolean",false],["role","string",true],["onClick","function",false]]] },
+    { id: 62, forms: [[["selected","boolean",false],["onClick","function",false]],[["selected","boolean",false],["enabled","boolean",false],["onClick","function",false]],[["selected","boolean",false],["role","string",true],["onClick","function",false]],[["selected","boolean",false],["enabled","boolean",false],["role","string",true],["onClick","function",false]]] },
   ],
   "selectableGroup": [
-    { id: 61, forms: [[]] },
-  ],
-  "toggleable": [
-    { id: 62, forms: [[["value","boolean",false],["onValueChange","function",false]],[["value","boolean",false],["enabled","boolean",false],["onValueChange","function",false]],[["value","boolean",false],["role","string",true],["onValueChange","function",false]],[["value","boolean",false],["enabled","boolean",false],["role","string",true],["onValueChange","function",false]]] },
-  ],
-  "systemGestureExclusion": [
     { id: 63, forms: [[]] },
   ],
+  "toggleable": [
+    { id: 64, forms: [[["value","boolean",false],["onValueChange","function",false]],[["value","boolean",false],["enabled","boolean",false],["onValueChange","function",false]],[["value","boolean",false],["role","string",true],["onValueChange","function",false]],[["value","boolean",false],["enabled","boolean",false],["role","string",true],["onValueChange","function",false]]] },
+  ],
+  "systemGestureExclusion": [
+    { id: 65, forms: [[]] },
+  ],
   "alpha": [
-    { id: 64, primary: "alpha", forms: [[["alpha","number",false]]] },
+    { id: 66, primary: "alpha", forms: [[["alpha","number",false]]] },
   ],
   "blur": [
-    { id: 65, primary: "radius", forms: [[["radius","number",false]]] },
-    { id: 66, forms: [[["radiusX","number",false],["radiusY","number",false]]] },
+    { id: 67, primary: "radius", forms: [[["radius","number",false]]] },
+    { id: 68, forms: [[["radiusX","number",false],["radiusY","number",false]]] },
   ],
   "clip": [
-    { id: 67, primary: "shape", forms: [[["shape","shape",false]]] },
+    { id: 69, primary: "shape", forms: [[["shape","shape",false]]] },
   ],
   "clipToBounds": [
-    { id: 68, forms: [[]] },
+    { id: 70, forms: [[]] },
   ],
   "rotate": [
-    { id: 69, primary: "degrees", forms: [[["degrees","number",false]]] },
+    { id: 71, primary: "degrees", forms: [[["degrees","number",false]]] },
   ],
   "scale": [
-    { id: 70, primary: "scale", forms: [[["scale","number",false]]] },
-    { id: 71, forms: [[["scaleX","number",false],["scaleY","number",false]]] },
+    { id: 72, primary: "scale", forms: [[["scale","number",false]]] },
+    { id: 73, forms: [[["scaleX","number",false],["scaleY","number",false]]] },
   ],
   "shadow": [
-    { id: 72, primary: "elevation", forms: [[["elevation","number",false]],[["elevation","number",false],["shape","shape",false]],[["elevation","number",false],["clip","boolean",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false]],[["elevation","number",false],["ambientColor","string",false]],[["elevation","number",false],["shape","shape",false],["ambientColor","string",false]],[["elevation","number",false],["clip","boolean",false],["ambientColor","string",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false],["ambientColor","string",false]],[["elevation","number",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["spotColor","string",false]],[["elevation","number",false],["clip","boolean",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false],["spotColor","string",false]],[["elevation","number",false],["ambientColor","string",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["ambientColor","string",false],["spotColor","string",false]],[["elevation","number",false],["clip","boolean",false],["ambientColor","string",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false],["ambientColor","string",false],["spotColor","string",false]]] },
+    { id: 74, primary: "elevation", forms: [[["elevation","number",false]],[["elevation","number",false],["shape","shape",false]],[["elevation","number",false],["clip","boolean",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false]],[["elevation","number",false],["ambientColor","string",false]],[["elevation","number",false],["shape","shape",false],["ambientColor","string",false]],[["elevation","number",false],["clip","boolean",false],["ambientColor","string",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false],["ambientColor","string",false]],[["elevation","number",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["spotColor","string",false]],[["elevation","number",false],["clip","boolean",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false],["spotColor","string",false]],[["elevation","number",false],["ambientColor","string",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["ambientColor","string",false],["spotColor","string",false]],[["elevation","number",false],["clip","boolean",false],["ambientColor","string",false],["spotColor","string",false]],[["elevation","number",false],["shape","shape",false],["clip","boolean",false],["ambientColor","string",false],["spotColor","string",false]]] },
   ],
   "graphicsLayer": [
-    { id: 73, forms: [[],[["scaleX","number",false]],[["scaleY","number",false]],[["scaleX","number",false],["scaleY","number",false]],[["alpha","number",false]],[["scaleX","number",false],["alpha","number",false]],[["scaleY","number",false],["alpha","number",false]],[["scaleX","number",false],["scaleY","number",false],["alpha","number",false]],[["translationX","number",false]],[["scaleX","number",false],["translationX","number",false]],[["scaleY","number",false],["translationX","number",false]],[["scaleX","number",false],["scaleY","number",false],["translationX","number",false]],[["alpha","number",false],["translationX","number",false]],[["scaleX","number",false],["alpha","number",false],["translationX","number",false]],[["scaleY","number",false],["alpha","number",false],["translationX","number",false]],[["scaleX","number",false],["scaleY","number",false],["alpha","number",false],["translationX","number",false]]] },
+    { id: 75, forms: [[],[["scaleX","number",false]],[["scaleY","number",false]],[["scaleX","number",false],["scaleY","number",false]],[["alpha","number",false]],[["scaleX","number",false],["alpha","number",false]],[["scaleY","number",false],["alpha","number",false]],[["scaleX","number",false],["scaleY","number",false],["alpha","number",false]],[["translationX","number",false]],[["scaleX","number",false],["translationX","number",false]],[["scaleY","number",false],["translationX","number",false]],[["scaleX","number",false],["scaleY","number",false],["translationX","number",false]],[["alpha","number",false],["translationX","number",false]],[["scaleX","number",false],["alpha","number",false],["translationX","number",false]],[["scaleY","number",false],["alpha","number",false],["translationX","number",false]],[["scaleX","number",false],["scaleY","number",false],["alpha","number",false],["translationX","number",false]]] },
   ],
   "toolingGraphicsLayer": [
-    { id: 74, forms: [[]] },
+    { id: 76, forms: [[]] },
   ],
   "testTag": [
-    { id: 75, primary: "tag", forms: [[["tag","string",false]]] },
+    { id: 77, primary: "tag", forms: [[["tag","string",false]]] },
+  ],
+  "sensitiveContent": [
+    { id: 78, forms: [[],[["isContentSensitive","boolean",false]]] },
   ],
   "zIndex": [
-    { id: 76, primary: "zIndex", forms: [[["zIndex","number",false]]] },
+    { id: 79, primary: "zIndex", forms: [[["zIndex","number",false]]] },
   ],
 }) as Modifier;
