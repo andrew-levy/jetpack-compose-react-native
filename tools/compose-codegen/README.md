@@ -18,8 +18,8 @@ descendants, including those returned by React components, render in that same
 composition. The root fits its native content height at the available React
 Native width. An explicit height or growing flex style on the root lets React
 Native allocate its height. Use a Compose `modifier` for layout inside the
-composition. The optional `ComposeHost` export can group multiple roots in one
-composition.
+composition. To group siblings into one composition, put them under a Compose
+layout such as `Column` or `Row`. Hosting happens automatically.
 
 ## Mixed children and layout
 
@@ -35,7 +35,7 @@ verify the demo from a fresh checkout.
 
 ## Generate
 
-With Android SDK 35, JDK 17, Gradle 8.9, and Node installed, run these commands
+With Android SDK 35, JDK 17, Gradle 8.9, and Node 22 installed, run these commands
 from the repository root.
 
 ```sh
@@ -48,18 +48,26 @@ pinned AndroidX classpath, including extensions for supported layout scopes. Use
 `-PcomposePackages=package1,package2` or
 `-PmodifierPackages=package1,package2` to change the package searches. The
 generator uses the discovered declarations to emit TypeScript components and
-modifier overloads, native Kotlin dispatch, and string unions and converters
-for supported Compose values such as `Alignment` and `Arrangement`. Consumers
+modifier overloads, native Kotlin dispatch, string unions and converters for values such as
+`Alignment` and `Arrangement`, and bindings for Material color scheme factories.
+KSP reads the Kotlin opt-in markers on declarations and signature types so the
+generated functions can opt in to experimental APIs automatically. Consumers
 build the checked-in output without running the extractor.
 
-The component bridge supports primitives, supported Compose values, colors,
-modifiers, callbacks with zero or one primitive argument, JSX children, and
-named composable slots. It selects one supported, unambiguous overload per name
-and skips signatures with unsupported required parameters. It exposes up to
-four optional props with the original bridge types, plus discovered value
-props up to a total of seven. The
-`modifiers` prop has its own slot and counts toward neither limit. The generated
-calls omit unused parameters so Kotlin applies the AndroidX defaults.
+The component bridge supports primitives, shape and brush values, float ranges
+as pairs, modifiers, callbacks, JSX children, and named composable slots.
+Overloads share a component name and use the supplied props to select a
+Kotlin call. For example, `<CircularProgressIndicator />` renders indeterminate
+progress and `<CircularProgressIndicator progress={0.5} />` renders determinate
+progress. Progress parameters that Kotlin reads through a float supplier
+receive the current React prop as a native lambda.
+
+Kotlin supplies library defaults for omitted arguments. The generator budgets
+128 call forms per overload, which allows seven independently optional props
+in addition to the modifier. The [coverage report](coverage.json) records every
+public top-level composable in the configured packages by Kotlin signature,
+including omitted props and ambiguous or shadowed call forms. It gives the
+reason for each skipped or unsupported declaration.
 
 Start a chain on `Modifier` and pass it through the `modifiers` prop.
 Modifiers apply in chain order. Pass the primary value first and additional
@@ -87,6 +95,12 @@ and preserves the existing `backgroundColor` and `backgroundBrush` aliases. The
 ```sh
 node tools/compose-codegen/generate.mjs --check
 ```
+
+CI also compares the pinned Material 3 release with a newer version using
+`-PcomposeMaterial3Version`. It reports API additions, removals, and status
+changes and checks for JSX call forms lost beyond documented upstream changes. A Kotlin
+fixture checks discovery of new overloads, public opt-in markers, and unsupported
+parameter reporting.
 
 The example app exercises nested Compose JSX, React Native children, modifiers,
 height measurement, updates, and tap events. Run `npm run android:verify` from

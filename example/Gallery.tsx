@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Pressable, ScrollView, StyleSheet, Text as RNText, View } from "react-native";
 import {
-  AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox, ComposeHost,
+  AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ElevatedButton, FilterChip,
   FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
@@ -53,28 +53,26 @@ export function Expressive({ showCode }: GalleryProps) {
         showCode={showCode}
         source={'<MaterialTheme>\n  <CircularProgressIndicator />\n</MaterialTheme>\n\n<MaterialExpressiveTheme>\n  <LoadingIndicator />\n</MaterialExpressiveTheme>'}
       >
-        <ComposeHost fitContent>
-          <Row modifiers={fullWidth} horizontalArrangement="spaceEvenly">
-            <MaterialTheme>
-              <Column horizontalAlignment="centerHorizontally">
-                <Text text="Standard" />
-                <Spacer modifiers={Modifier.height(8)} />
-                <Box modifiers={Modifier.size(56)} contentAlignment="center">
-                  <CircularProgressIndicator />
-                </Box>
-              </Column>
-            </MaterialTheme>
-            <MaterialExpressiveTheme>
-              <Column horizontalAlignment="centerHorizontally">
-                <Text text="Expressive morph" />
-                <Spacer modifiers={Modifier.height(8)} />
-                <Box modifiers={Modifier.size(56)} contentAlignment="center">
-                  <LoadingIndicator />
-                </Box>
-              </Column>
-            </MaterialExpressiveTheme>
-          </Row>
-        </ComposeHost>
+        <Row modifiers={fullWidth} horizontalArrangement="spaceEvenly">
+          <MaterialTheme>
+            <Column horizontalAlignment="centerHorizontally">
+              <Text text="Standard" />
+              <Spacer modifiers={Modifier.height(8)} />
+              <Box modifiers={Modifier.size(56)} contentAlignment="center">
+                <CircularProgressIndicator />
+              </Box>
+            </Column>
+          </MaterialTheme>
+          <MaterialExpressiveTheme>
+            <Column horizontalAlignment="centerHorizontally">
+              <Text text="Expressive morph" />
+              <Spacer modifiers={Modifier.height(8)} />
+              <Box modifiers={Modifier.size(56)} contentAlignment="center">
+                <LoadingIndicator />
+              </Box>
+            </Column>
+          </MaterialExpressiveTheme>
+        </Row>
       </Demo>
     </>
   );

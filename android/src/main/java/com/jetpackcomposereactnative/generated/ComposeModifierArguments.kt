@@ -19,6 +19,10 @@ internal class ComposeModifierArguments(
   fun string(name: String): String = values.getString(name)
   fun boolean(name: String): Boolean = values.getBoolean(name)
   fun number(name: String): Double = values.getDouble(name)
+  fun floatRange(name: String): ClosedFloatingPointRange<Float> {
+    val range = values.getJSONArray(name)
+    return range.getDouble(0).toFloat()..range.getDouble(1).toFloat()
+  }
   fun color(name: String) = parseComposeColor(string(name))
   fun emit(name: String, value: Any? = null) = emitEvent(string(name), value)
 

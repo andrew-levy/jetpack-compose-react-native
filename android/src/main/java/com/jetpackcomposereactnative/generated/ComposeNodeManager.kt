@@ -18,7 +18,7 @@ internal class ComposeNodeManager : ComposeContainerManager<GeneratedComposeNode
     GeneratedComposeNodeView(context)
 
   @ReactProp(name = "componentName")
-  fun setName(view: GeneratedComposeNodeView, name: String?) { view.name = name.orEmpty() }
+  fun setName(view: GeneratedComposeNodeView, name: String?) { view.componentName = name.orEmpty() }
 
   @ReactProp(name = "slotName")
   fun setSlot(view: GeneratedComposeNodeView, name: String?) { view.slotName = name }
@@ -33,7 +33,8 @@ internal class ComposeNodeManager : ComposeContainerManager<GeneratedComposeNode
 internal class GeneratedComposeNodeView(context: Context) :
   ComposeContainerView(context), ComposeNode {
   private var values by mutableStateOf(JSONObject())
-  override var name by mutableStateOf("")
+  internal var componentName by mutableStateOf("")
+  override val name: String get() = values.optString("\$overload", componentName)
   internal var slotName by mutableStateOf<String?>(null)
   override val children: List<ComposeChild>
     get() = composeChildren.filter { (it as? GeneratedComposeNodeView)?.slotName == null }
@@ -58,7 +59,8 @@ internal class GeneratedComposeNodeView(context: Context) :
   override fun boolean(name: String): Boolean = values.getBoolean(name)
   override fun number(name: String): Double = values.getDouble(name)
   override fun color(name: String) = parseComposeColor(string(name))
-  override fun colorScheme(name: String) = values.getJSONObject(name).toColorScheme()
+  override fun jsonObject(name: String): JSONObject = values.getJSONObject(name)
+  override fun arguments() = ComposeModifierArguments(values) { name, value -> emit(name, value) }
 
   override fun modifier(name: String, scope: Any?): Modifier {
     val steps = values.optJSONArray(name) ?: return Modifier

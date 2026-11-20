@@ -21,6 +21,17 @@ function serializeModifier(modifier: ComposeModifier, callbacks: Map<string, Com
   });
 }
 
+type OverloadParameter = readonly [
+  name: string, kind: string, optional: boolean, nullable: boolean,
+];
+
+interface ComposableOverload {
+  id: string;
+  children: boolean;
+  parameters: readonly OverloadParameter[];
+  masks: readonly number[];
+}
+
 export interface ComposableDescription {
   name: string;
   props: readonly string[];
@@ -28,6 +39,44 @@ export interface ComposableDescription {
   events?: readonly string[];
   slots?: readonly string[];
   children: boolean;
+  overloads?: readonly ComposableOverload[];
+}
+
+function propValue(props: Record<string, unknown>, name: string) {
+  return name === "modifier" && props.modifiers !== undefined ? props.modifiers : props[name];
+}
+
+function matchesType(value: unknown, kind: string, nullable: boolean) {
+  if (kind === "ReactNode") return true;
+  if (value === null) return nullable;
+  if (kind === "ComposeModifier") return typeof (value as ComposeModifier)?.build === "function";
+  if (kind === "brush" || kind === "shape") return typeof value === "string" || typeof value === "object";
+  return typeof value === kind;
+}
+
+function selectOverload(
+  description: ComposableDescription,
+  names: ReadonlySet<string>,
+  props: Record<string, unknown>,
+) {
+  const passed = [...names].filter((name) => propValue(props, name) !== undefined);
+  const overload = description.overloads?.find(({ children, parameters, masks }) => {
+    if (!children && props.children !== undefined) return false;
+    if (passed.some((name) => !parameters.some(([parameter]) => parameter === name))) return false;
+    let mask = 0;
+    let bit = 0;
+    for (const [name, kind, optional, nullable] of parameters) {
+      const value = propValue(props, name);
+      if (value === undefined ? !optional : !matchesType(value, kind, nullable)) return false;
+      if (optional && name !== "modifier") {
+        if (value !== undefined) mask |= 1 << bit;
+        bit++;
+      }
+    }
+    return masks.includes(mask);
+  });
+  if (!overload) throw new Error(`No Compose ${description.name} overload accepts ${passed.join(", ")}`);
+  return overload;
 }
 
 export function createComposableComponent<P extends object>(
@@ -35,14 +84,19 @@ export function createComposableComponent<P extends object>(
 ): React.ComponentType<P & ComposableViewProps> {
   const eventNames = new Set(description.events);
   const objectProps = new Set(description.objectProps);
+  const allNames = new Set([...description.props, ...eventNames, ...(description.slots ?? [])]);
   function Generated(props: P & ComposableViewProps & { children?: React.ReactNode }) {
     const hasHost = React.useContext(ComposeHostContext);
 
     const values: Record<string, unknown> = {};
     const modifierCallbacks = new Map<string, ComposeCallback>();
     const input = props as Record<string, unknown>;
+    const overload = description.overloads && selectOverload(description, allNames, input);
+    if (overload) values.$overload = overload.id;
+    const selectedKinds = overload && new Map(overload.parameters.map(([name, kind]) => [name, kind]));
     for (const name of description.props) {
-      const value = name === "modifier" && input.modifiers !== undefined ? input.modifiers : input[name];
+      if (selectedKinds?.get(name) === "function" || selectedKinds?.get(name) === "ReactNode") continue;
+      const value = propValue(input, name);
       if (value === undefined) continue;
       if (value === null) {
         values[name] = null;
@@ -58,9 +112,11 @@ export function createComposableComponent<P extends object>(
     }
 
     for (const name of eventNames) {
+      if (selectedKinds && selectedKinds.get(name) !== "function") continue;
       if (input[name] !== undefined) values[name] = input[name] === null ? null : true;
     }
     const slots = description.slots?.map((name) => {
+      if (selectedKinds && selectedKinds.get(name) !== "ReactNode") return null;
       const child = input[name] as React.ReactNode;
       if (child === undefined) return null;
       values[name] = child === null ? null : true;
@@ -80,7 +136,7 @@ export function createComposableComponent<P extends object>(
           else callback?.(value);
         }}
       >
-        {description.children ? props.children : null}
+        {(overload?.children ?? description.children) ? props.children : null}
         {slots}
       </RenderComposeNode>
     );

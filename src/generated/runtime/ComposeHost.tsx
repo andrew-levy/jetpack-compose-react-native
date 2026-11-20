@@ -1,7 +1,5 @@
 import type { ComposeHostProps } from "./shared";
 
-export function ComposeHost(_props: ComposeHostProps) {
+export function AutomaticComposeHost(_props: Omit<ComposeHostProps, "fitContent">) {
   return null;
 }
-
-export const AutomaticComposeHost = ComposeHost;

@@ -1,3 +1,5 @@
+// Generated from Compose declarations by generate.mjs.
+
 export interface ColorSchemeColors {
   primary?: string;
   onPrimary?: string;
@@ -35,17 +37,33 @@ export interface ColorSchemeColors {
   surfaceContainerLow?: string;
   surfaceContainerLowest?: string;
   surfaceDim?: string;
+  primaryFixed?: string;
+  primaryFixedDim?: string;
+  onPrimaryFixed?: string;
+  onPrimaryFixedVariant?: string;
+  secondaryFixed?: string;
+  secondaryFixedDim?: string;
+  onSecondaryFixed?: string;
+  onSecondaryFixedVariant?: string;
+  tertiaryFixed?: string;
+  tertiaryFixedDim?: string;
+  onTertiaryFixed?: string;
+  onTertiaryFixedVariant?: string;
 }
 
 export interface ColorScheme {
-  readonly palette: "light" | "dark";
+  readonly palette: "dark" | "expressiveLight" | "light";
   readonly colors: Readonly<ColorSchemeColors>;
-}
-
-export function lightColorScheme(colors: ColorSchemeColors = {}): ColorScheme {
-  return { palette: "light", colors: { ...colors } };
 }
 
 export function darkColorScheme(colors: ColorSchemeColors = {}): ColorScheme {
   return { palette: "dark", colors: { ...colors } };
+}
+
+export function expressiveLightColorScheme(): ColorScheme {
+  return { palette: "expressiveLight", colors: {} };
+}
+
+export function lightColorScheme(colors: ColorSchemeColors = {}): ColorScheme {
+  return { palette: "light", colors: { ...colors } };
 }

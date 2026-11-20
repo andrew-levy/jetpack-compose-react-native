@@ -24,52 +24,54 @@ import androidx.compose.foundation.layout.fillMaxSize as composeModifier14
 import androidx.compose.foundation.layout.fillMaxWidth as composeModifier15
 import androidx.compose.foundation.layout.height as composeModifier16
 import androidx.compose.foundation.layout.heightIn as composeModifier17
-import androidx.compose.foundation.layout.imePadding as composeModifier18
-import androidx.compose.foundation.layout.mandatorySystemGesturesPadding as composeModifier19
-import androidx.compose.foundation.layout.navigationBarsPadding as composeModifier20
-import androidx.compose.foundation.layout.offset as composeModifier21
-import androidx.compose.foundation.layout.padding as composeModifier22
-import androidx.compose.foundation.layout.paddingFromBaseline as composeModifier23
-import androidx.compose.foundation.layout.recalculateWindowInsets as composeModifier24
-import androidx.compose.foundation.layout.requiredHeight as composeModifier25
-import androidx.compose.foundation.layout.requiredHeightIn as composeModifier26
-import androidx.compose.foundation.layout.requiredSize as composeModifier27
-import androidx.compose.foundation.layout.requiredSizeIn as composeModifier28
-import androidx.compose.foundation.layout.requiredWidth as composeModifier29
-import androidx.compose.foundation.layout.requiredWidthIn as composeModifier30
-import androidx.compose.foundation.layout.safeContentPadding as composeModifier31
-import androidx.compose.foundation.layout.safeDrawingPadding as composeModifier32
-import androidx.compose.foundation.layout.safeGesturesPadding as composeModifier33
-import androidx.compose.foundation.layout.size as composeModifier34
-import androidx.compose.foundation.layout.sizeIn as composeModifier35
-import androidx.compose.foundation.layout.statusBarsPadding as composeModifier36
-import androidx.compose.foundation.layout.systemBarsPadding as composeModifier37
-import androidx.compose.foundation.layout.systemGesturesPadding as composeModifier38
-import androidx.compose.foundation.layout.waterfallPadding as composeModifier39
-import androidx.compose.foundation.layout.width as composeModifier40
-import androidx.compose.foundation.layout.widthIn as composeModifier41
-import androidx.compose.foundation.layout.wrapContentHeight as composeModifier42
-import androidx.compose.foundation.layout.wrapContentSize as composeModifier43
-import androidx.compose.foundation.layout.wrapContentWidth as composeModifier44
-import androidx.compose.foundation.preferKeepClear as composeModifier45
-import androidx.compose.foundation.progressSemantics as composeModifier46
-import androidx.compose.foundation.selection.selectable as composeModifier47
-import androidx.compose.foundation.selection.selectableGroup as composeModifier48
-import androidx.compose.foundation.selection.toggleable as composeModifier49
-import androidx.compose.foundation.systemGestureExclusion as composeModifier50
-import androidx.compose.ui.draw.alpha as composeModifier51
-import androidx.compose.ui.draw.blur as composeModifier52
-import androidx.compose.ui.draw.clip as composeModifier53
-import androidx.compose.ui.draw.clipToBounds as composeModifier54
-import androidx.compose.ui.draw.rotate as composeModifier55
-import androidx.compose.ui.draw.scale as composeModifier56
-import androidx.compose.ui.draw.shadow as composeModifier57
-import androidx.compose.ui.graphics.graphicsLayer as composeModifier58
-import androidx.compose.ui.graphics.toolingGraphicsLayer as composeModifier59
-import androidx.compose.ui.platform.testTag as composeModifier60
-import androidx.compose.ui.sensitiveContent as composeModifier61
-import androidx.compose.ui.zIndex as composeModifier62
+import androidx.compose.foundation.layout.imeNestedScroll as composeModifier18
+import androidx.compose.foundation.layout.imePadding as composeModifier19
+import androidx.compose.foundation.layout.mandatorySystemGesturesPadding as composeModifier20
+import androidx.compose.foundation.layout.navigationBarsPadding as composeModifier21
+import androidx.compose.foundation.layout.offset as composeModifier22
+import androidx.compose.foundation.layout.padding as composeModifier23
+import androidx.compose.foundation.layout.paddingFromBaseline as composeModifier24
+import androidx.compose.foundation.layout.recalculateWindowInsets as composeModifier25
+import androidx.compose.foundation.layout.requiredHeight as composeModifier26
+import androidx.compose.foundation.layout.requiredHeightIn as composeModifier27
+import androidx.compose.foundation.layout.requiredSize as composeModifier28
+import androidx.compose.foundation.layout.requiredSizeIn as composeModifier29
+import androidx.compose.foundation.layout.requiredWidth as composeModifier30
+import androidx.compose.foundation.layout.requiredWidthIn as composeModifier31
+import androidx.compose.foundation.layout.safeContentPadding as composeModifier32
+import androidx.compose.foundation.layout.safeDrawingPadding as composeModifier33
+import androidx.compose.foundation.layout.safeGesturesPadding as composeModifier34
+import androidx.compose.foundation.layout.size as composeModifier35
+import androidx.compose.foundation.layout.sizeIn as composeModifier36
+import androidx.compose.foundation.layout.statusBarsPadding as composeModifier37
+import androidx.compose.foundation.layout.systemBarsPadding as composeModifier38
+import androidx.compose.foundation.layout.systemGesturesPadding as composeModifier39
+import androidx.compose.foundation.layout.waterfallPadding as composeModifier40
+import androidx.compose.foundation.layout.width as composeModifier41
+import androidx.compose.foundation.layout.widthIn as composeModifier42
+import androidx.compose.foundation.layout.wrapContentHeight as composeModifier43
+import androidx.compose.foundation.layout.wrapContentSize as composeModifier44
+import androidx.compose.foundation.layout.wrapContentWidth as composeModifier45
+import androidx.compose.foundation.preferKeepClear as composeModifier46
+import androidx.compose.foundation.progressSemantics as composeModifier47
+import androidx.compose.foundation.selection.selectable as composeModifier48
+import androidx.compose.foundation.selection.selectableGroup as composeModifier49
+import androidx.compose.foundation.selection.toggleable as composeModifier50
+import androidx.compose.foundation.systemGestureExclusion as composeModifier51
+import androidx.compose.ui.draw.alpha as composeModifier52
+import androidx.compose.ui.draw.blur as composeModifier53
+import androidx.compose.ui.draw.clip as composeModifier54
+import androidx.compose.ui.draw.clipToBounds as composeModifier55
+import androidx.compose.ui.draw.rotate as composeModifier56
+import androidx.compose.ui.draw.scale as composeModifier57
+import androidx.compose.ui.draw.shadow as composeModifier58
+import androidx.compose.ui.graphics.graphicsLayer as composeModifier59
+import androidx.compose.ui.graphics.toolingGraphicsLayer as composeModifier60
+import androidx.compose.ui.platform.testTag as composeModifier61
+import androidx.compose.ui.sensitiveContent as composeModifier62
+import androidx.compose.ui.zIndex as composeModifier63
 
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModifierArguments, scope: Any?): Modifier? = when (id) {
   0 -> apply0(modifier, args)
   1 -> apply1(modifier, args)
@@ -84,11 +86,11 @@ internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModi
   10 -> if (scope is androidx.compose.foundation.layout.BoxScope) apply10(modifier, args, scope) else null
   11 -> if (scope is androidx.compose.foundation.layout.ColumnScope) apply11(modifier, args, scope) else null
   12 -> if (scope is androidx.compose.foundation.layout.ColumnScope) apply12(modifier, args, scope) else null
-  13 -> if (scope is androidx.compose.foundation.layout.RowScope) apply13(modifier, args, scope) else null
-  14 -> if (scope is androidx.compose.foundation.layout.RowScope) apply14(modifier, args, scope) else null
+  13 -> if (scope is androidx.compose.foundation.layout.FlowColumnScope) apply13(modifier, args, scope) else null
+  14 -> if (scope is androidx.compose.foundation.layout.FlowRowScope) apply14(modifier, args, scope) else null
   15 -> if (scope is androidx.compose.foundation.layout.RowScope) apply15(modifier, args, scope) else null
-  16 -> apply16(modifier, args)
-  17 -> apply17(modifier, args)
+  16 -> if (scope is androidx.compose.foundation.layout.RowScope) apply16(modifier, args, scope) else null
+  17 -> if (scope is androidx.compose.foundation.layout.RowScope) apply17(modifier, args, scope) else null
   18 -> apply18(modifier, args)
   19 -> apply19(modifier, args)
   20 -> apply20(modifier, args)
@@ -151,6 +153,9 @@ internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModi
   77 -> apply77(modifier, args)
   78 -> apply78(modifier, args)
   79 -> apply79(modifier, args)
+  80 -> apply80(modifier, args)
+  81 -> apply81(modifier, args)
+  82 -> apply82(modifier, args)
   else -> error("Unknown generated Compose modifier: " + id)
 }
 
@@ -286,13 +291,33 @@ private fun apply12(modifier: Modifier, args: ComposeModifierArguments, scope: a
   }
 }
 
-private fun apply13(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.RowScope): Modifier =
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+private fun apply13(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.FlowColumnScope): Modifier {
+  val mask = (if (args.has("fraction")) 1 else 0)
+  return when (mask) {
+    0 -> with(scope) { modifier.fillMaxColumnWidth() }
+    1 -> with(scope) { modifier.fillMaxColumnWidth(`fraction` = args.number("fraction").toFloat()) }
+    else -> error("Invalid generated modifier arguments: " + args)
+  }
+}
+
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+private fun apply14(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.FlowRowScope): Modifier {
+  val mask = (if (args.has("fraction")) 1 else 0)
+  return when (mask) {
+    0 -> with(scope) { modifier.fillMaxRowHeight() }
+    1 -> with(scope) { modifier.fillMaxRowHeight(`fraction` = args.number("fraction").toFloat()) }
+    else -> error("Invalid generated modifier arguments: " + args)
+  }
+}
+
+private fun apply15(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.RowScope): Modifier =
   with(scope) { modifier.align(`alignment` = toComposeVerticalAlignment(args.string("alignment"))) }
 
-private fun apply14(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.RowScope): Modifier =
+private fun apply16(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.RowScope): Modifier =
   with(scope) { modifier.alignByBaseline() }
 
-private fun apply15(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.RowScope): Modifier {
+private fun apply17(modifier: Modifier, args: ComposeModifierArguments, scope: androidx.compose.foundation.layout.RowScope): Modifier {
   val mask = (if (args.has("fill")) 1 else 0)
   return when (mask) {
     0 -> with(scope) { modifier.weight(`weight` = args.number("weight").toFloat()) }
@@ -301,7 +326,7 @@ private fun apply15(modifier: Modifier, args: ComposeModifierArguments, scope: a
   }
 }
 
-private fun apply16(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply18(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("x")) 1 else 0) +
     (if (args.has("y")) 2 else 0)
   return when (mask) {
@@ -313,7 +338,7 @@ private fun apply16(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply17(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply19(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("left")) 1 else 0) +
     (if (args.has("top")) 2 else 0) +
     (if (args.has("right")) 4 else 0) +
@@ -339,7 +364,7 @@ private fun apply17(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply18(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply20(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("matchHeightConstraintsFirst")) 1 else 0)
   return when (mask) {
     0 -> modifier.composeModifier9(`ratio` = args.number("ratio").toFloat())
@@ -348,10 +373,10 @@ private fun apply18(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply19(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+private fun apply21(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier10()
 
-private fun apply20(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply22(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("minWidth")) 1 else 0) +
     (if (args.has("minHeight")) 2 else 0)
   return when (mask) {
@@ -363,10 +388,10 @@ private fun apply20(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply21(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+private fun apply23(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier12()
 
-private fun apply22(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply24(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("fraction")) 1 else 0)
   return when (mask) {
     0 -> modifier.composeModifier13()
@@ -375,7 +400,7 @@ private fun apply22(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply23(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply25(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("fraction")) 1 else 0)
   return when (mask) {
     0 -> modifier.composeModifier14()
@@ -384,7 +409,7 @@ private fun apply23(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply24(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply26(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("fraction")) 1 else 0)
   return when (mask) {
     0 -> modifier.composeModifier15()
@@ -393,10 +418,10 @@ private fun apply24(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply25(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+private fun apply27(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier16(`height` = args.number("height").dp)
 
-private fun apply26(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply28(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("min")) 1 else 0) +
     (if (args.has("max")) 2 else 0)
   return when (mask) {
@@ -408,393 +433,397 @@ private fun apply26(modifier: Modifier, args: ComposeModifierArguments): Modifie
   }
 }
 
-private fun apply27(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+private fun apply29(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier18()
 
-private fun apply28(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+private fun apply30(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier19()
 
-private fun apply29(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+private fun apply31(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier20()
 
-private fun apply30(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply32(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier21()
+
+private fun apply33(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("x")) 1 else 0) +
     (if (args.has("y")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier21()
-    1 -> modifier.composeModifier21(`x` = args.number("x").dp)
-    2 -> modifier.composeModifier21(`y` = args.number("y").dp)
-    3 -> modifier.composeModifier21(`x` = args.number("x").dp, `y` = args.number("y").dp)
+    0 -> modifier.composeModifier22()
+    1 -> modifier.composeModifier22(`x` = args.number("x").dp)
+    2 -> modifier.composeModifier22(`y` = args.number("y").dp)
+    3 -> modifier.composeModifier22(`x` = args.number("x").dp, `y` = args.number("y").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply31(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier22(`all` = args.number("all").dp)
+private fun apply34(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier23(`all` = args.number("all").dp)
 
-private fun apply32(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply35(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("horizontal")) 1 else 0) +
     (if (args.has("vertical")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier22()
-    1 -> modifier.composeModifier22(`horizontal` = args.number("horizontal").dp)
-    2 -> modifier.composeModifier22(`vertical` = args.number("vertical").dp)
-    3 -> modifier.composeModifier22(`horizontal` = args.number("horizontal").dp, `vertical` = args.number("vertical").dp)
+    0 -> modifier.composeModifier23()
+    1 -> modifier.composeModifier23(`horizontal` = args.number("horizontal").dp)
+    2 -> modifier.composeModifier23(`vertical` = args.number("vertical").dp)
+    3 -> modifier.composeModifier23(`horizontal` = args.number("horizontal").dp, `vertical` = args.number("vertical").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply33(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply36(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("start")) 1 else 0) +
     (if (args.has("top")) 2 else 0) +
     (if (args.has("end")) 4 else 0) +
     (if (args.has("bottom")) 8 else 0)
   return when (mask) {
-    1 -> modifier.composeModifier22(`start` = args.number("start").dp)
-    2 -> modifier.composeModifier22(`top` = args.number("top").dp)
-    3 -> modifier.composeModifier22(`start` = args.number("start").dp, `top` = args.number("top").dp)
-    4 -> modifier.composeModifier22(`end` = args.number("end").dp)
-    5 -> modifier.composeModifier22(`start` = args.number("start").dp, `end` = args.number("end").dp)
-    6 -> modifier.composeModifier22(`top` = args.number("top").dp, `end` = args.number("end").dp)
-    7 -> modifier.composeModifier22(`start` = args.number("start").dp, `top` = args.number("top").dp, `end` = args.number("end").dp)
-    8 -> modifier.composeModifier22(`bottom` = args.number("bottom").dp)
-    9 -> modifier.composeModifier22(`start` = args.number("start").dp, `bottom` = args.number("bottom").dp)
-    10 -> modifier.composeModifier22(`top` = args.number("top").dp, `bottom` = args.number("bottom").dp)
-    11 -> modifier.composeModifier22(`start` = args.number("start").dp, `top` = args.number("top").dp, `bottom` = args.number("bottom").dp)
-    12 -> modifier.composeModifier22(`end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
-    13 -> modifier.composeModifier22(`start` = args.number("start").dp, `end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
-    14 -> modifier.composeModifier22(`top` = args.number("top").dp, `end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
-    15 -> modifier.composeModifier22(`start` = args.number("start").dp, `top` = args.number("top").dp, `end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
+    1 -> modifier.composeModifier23(`start` = args.number("start").dp)
+    2 -> modifier.composeModifier23(`top` = args.number("top").dp)
+    3 -> modifier.composeModifier23(`start` = args.number("start").dp, `top` = args.number("top").dp)
+    4 -> modifier.composeModifier23(`end` = args.number("end").dp)
+    5 -> modifier.composeModifier23(`start` = args.number("start").dp, `end` = args.number("end").dp)
+    6 -> modifier.composeModifier23(`top` = args.number("top").dp, `end` = args.number("end").dp)
+    7 -> modifier.composeModifier23(`start` = args.number("start").dp, `top` = args.number("top").dp, `end` = args.number("end").dp)
+    8 -> modifier.composeModifier23(`bottom` = args.number("bottom").dp)
+    9 -> modifier.composeModifier23(`start` = args.number("start").dp, `bottom` = args.number("bottom").dp)
+    10 -> modifier.composeModifier23(`top` = args.number("top").dp, `bottom` = args.number("bottom").dp)
+    11 -> modifier.composeModifier23(`start` = args.number("start").dp, `top` = args.number("top").dp, `bottom` = args.number("bottom").dp)
+    12 -> modifier.composeModifier23(`end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
+    13 -> modifier.composeModifier23(`start` = args.number("start").dp, `end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
+    14 -> modifier.composeModifier23(`top` = args.number("top").dp, `end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
+    15 -> modifier.composeModifier23(`start` = args.number("start").dp, `top` = args.number("top").dp, `end` = args.number("end").dp, `bottom` = args.number("bottom").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply34(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply37(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("top")) 1 else 0) +
     (if (args.has("bottom")) 2 else 0)
   return when (mask) {
-    1 -> modifier.composeModifier23(`top` = args.number("top").dp)
-    2 -> modifier.composeModifier23(`bottom` = args.number("bottom").dp)
-    3 -> modifier.composeModifier23(`top` = args.number("top").dp, `bottom` = args.number("bottom").dp)
+    1 -> modifier.composeModifier24(`top` = args.number("top").dp)
+    2 -> modifier.composeModifier24(`bottom` = args.number("bottom").dp)
+    3 -> modifier.composeModifier24(`top` = args.number("top").dp, `bottom` = args.number("bottom").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
-
-private fun apply35(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("top")) 1 else 0) +
-    (if (args.has("bottom")) 2 else 0)
-  return when (mask) {
-    1 -> modifier.composeModifier23(`top` = args.number("top").sp)
-    2 -> modifier.composeModifier23(`bottom` = args.number("bottom").sp)
-    3 -> modifier.composeModifier23(`top` = args.number("top").sp, `bottom` = args.number("bottom").sp)
-    else -> error("Invalid generated modifier arguments: " + args)
-  }
-}
-
-private fun apply36(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier24()
-
-private fun apply37(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier25(`height` = args.number("height").dp)
 
 private fun apply38(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("min")) 1 else 0) +
-    (if (args.has("max")) 2 else 0)
+  val mask = (if (args.has("top")) 1 else 0) +
+    (if (args.has("bottom")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier26()
-    1 -> modifier.composeModifier26(`min` = args.number("min").dp)
-    2 -> modifier.composeModifier26(`max` = args.number("max").dp)
-    3 -> modifier.composeModifier26(`min` = args.number("min").dp, `max` = args.number("max").dp)
+    1 -> modifier.composeModifier24(`top` = args.number("top").sp)
+    2 -> modifier.composeModifier24(`bottom` = args.number("bottom").sp)
+    3 -> modifier.composeModifier24(`top` = args.number("top").sp, `bottom` = args.number("bottom").sp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 private fun apply39(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier27(`size` = args.number("size").dp)
+  modifier.composeModifier25()
 
 private fun apply40(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier27(`width` = args.number("width").dp, `height` = args.number("height").dp)
+  modifier.composeModifier26(`height` = args.number("height").dp)
 
 private fun apply41(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("minWidth")) 1 else 0) +
-    (if (args.has("minHeight")) 2 else 0) +
-    (if (args.has("maxWidth")) 4 else 0) +
-    (if (args.has("maxHeight")) 8 else 0)
+  val mask = (if (args.has("min")) 1 else 0) +
+    (if (args.has("max")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier28()
-    1 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp)
-    2 -> modifier.composeModifier28(`minHeight` = args.number("minHeight").dp)
-    3 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp)
-    4 -> modifier.composeModifier28(`maxWidth` = args.number("maxWidth").dp)
-    5 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp)
-    6 -> modifier.composeModifier28(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
-    7 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
-    8 -> modifier.composeModifier28(`maxHeight` = args.number("maxHeight").dp)
-    9 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    10 -> modifier.composeModifier28(`minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
-    11 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
-    12 -> modifier.composeModifier28(`maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    13 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    14 -> modifier.composeModifier28(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    15 -> modifier.composeModifier28(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    0 -> modifier.composeModifier27()
+    1 -> modifier.composeModifier27(`min` = args.number("min").dp)
+    2 -> modifier.composeModifier27(`max` = args.number("max").dp)
+    3 -> modifier.composeModifier27(`min` = args.number("min").dp, `max` = args.number("max").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 private fun apply42(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier29(`width` = args.number("width").dp)
+  modifier.composeModifier28(`size` = args.number("size").dp)
 
-private fun apply43(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("min")) 1 else 0) +
-    (if (args.has("max")) 2 else 0)
-  return when (mask) {
-    0 -> modifier.composeModifier30()
-    1 -> modifier.composeModifier30(`min` = args.number("min").dp)
-    2 -> modifier.composeModifier30(`max` = args.number("max").dp)
-    3 -> modifier.composeModifier30(`min` = args.number("min").dp, `max` = args.number("max").dp)
-    else -> error("Invalid generated modifier arguments: " + args)
-  }
-}
+private fun apply43(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier28(`width` = args.number("width").dp, `height` = args.number("height").dp)
 
-private fun apply44(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier31()
-
-private fun apply45(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier32()
-
-private fun apply46(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier33()
-
-private fun apply47(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier34(`size` = args.number("size").dp)
-
-private fun apply48(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier34(`width` = args.number("width").dp, `height` = args.number("height").dp)
-
-private fun apply49(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply44(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("minWidth")) 1 else 0) +
     (if (args.has("minHeight")) 2 else 0) +
     (if (args.has("maxWidth")) 4 else 0) +
     (if (args.has("maxHeight")) 8 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier35()
-    1 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp)
-    2 -> modifier.composeModifier35(`minHeight` = args.number("minHeight").dp)
-    3 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp)
-    4 -> modifier.composeModifier35(`maxWidth` = args.number("maxWidth").dp)
-    5 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp)
-    6 -> modifier.composeModifier35(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
-    7 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
-    8 -> modifier.composeModifier35(`maxHeight` = args.number("maxHeight").dp)
-    9 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    10 -> modifier.composeModifier35(`minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
-    11 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
-    12 -> modifier.composeModifier35(`maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    13 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    14 -> modifier.composeModifier35(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
-    15 -> modifier.composeModifier35(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    0 -> modifier.composeModifier29()
+    1 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp)
+    2 -> modifier.composeModifier29(`minHeight` = args.number("minHeight").dp)
+    3 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp)
+    4 -> modifier.composeModifier29(`maxWidth` = args.number("maxWidth").dp)
+    5 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp)
+    6 -> modifier.composeModifier29(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
+    7 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
+    8 -> modifier.composeModifier29(`maxHeight` = args.number("maxHeight").dp)
+    9 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    10 -> modifier.composeModifier29(`minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
+    11 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
+    12 -> modifier.composeModifier29(`maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    13 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    14 -> modifier.composeModifier29(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    15 -> modifier.composeModifier29(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply50(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier36()
+private fun apply45(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier30(`width` = args.number("width").dp)
 
-private fun apply51(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier37()
-
-private fun apply52(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier38()
-
-private fun apply53(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier39()
-
-private fun apply54(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier40(`width` = args.number("width").dp)
-
-private fun apply55(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply46(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("min")) 1 else 0) +
     (if (args.has("max")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier41()
-    1 -> modifier.composeModifier41(`min` = args.number("min").dp)
-    2 -> modifier.composeModifier41(`max` = args.number("max").dp)
-    3 -> modifier.composeModifier41(`min` = args.number("min").dp, `max` = args.number("max").dp)
+    0 -> modifier.composeModifier31()
+    1 -> modifier.composeModifier31(`min` = args.number("min").dp)
+    2 -> modifier.composeModifier31(`max` = args.number("max").dp)
+    3 -> modifier.composeModifier31(`min` = args.number("min").dp, `max` = args.number("max").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply56(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("align")) 1 else 0) +
-    (if (args.has("unbounded")) 2 else 0)
+private fun apply47(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier32()
+
+private fun apply48(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier33()
+
+private fun apply49(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier34()
+
+private fun apply50(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier35(`size` = args.number("size").dp)
+
+private fun apply51(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier35(`width` = args.number("width").dp, `height` = args.number("height").dp)
+
+private fun apply52(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+  val mask = (if (args.has("minWidth")) 1 else 0) +
+    (if (args.has("minHeight")) 2 else 0) +
+    (if (args.has("maxWidth")) 4 else 0) +
+    (if (args.has("maxHeight")) 8 else 0)
+  return when (mask) {
+    0 -> modifier.composeModifier36()
+    1 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp)
+    2 -> modifier.composeModifier36(`minHeight` = args.number("minHeight").dp)
+    3 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp)
+    4 -> modifier.composeModifier36(`maxWidth` = args.number("maxWidth").dp)
+    5 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp)
+    6 -> modifier.composeModifier36(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
+    7 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp)
+    8 -> modifier.composeModifier36(`maxHeight` = args.number("maxHeight").dp)
+    9 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    10 -> modifier.composeModifier36(`minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
+    11 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxHeight` = args.number("maxHeight").dp)
+    12 -> modifier.composeModifier36(`maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    13 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    14 -> modifier.composeModifier36(`minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    15 -> modifier.composeModifier36(`minWidth` = args.number("minWidth").dp, `minHeight` = args.number("minHeight").dp, `maxWidth` = args.number("maxWidth").dp, `maxHeight` = args.number("maxHeight").dp)
+    else -> error("Invalid generated modifier arguments: " + args)
+  }
+}
+
+private fun apply53(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier37()
+
+private fun apply54(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier38()
+
+private fun apply55(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier39()
+
+private fun apply56(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier40()
+
+private fun apply57(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier41(`width` = args.number("width").dp)
+
+private fun apply58(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+  val mask = (if (args.has("min")) 1 else 0) +
+    (if (args.has("max")) 2 else 0)
   return when (mask) {
     0 -> modifier.composeModifier42()
-    1 -> modifier.composeModifier42(`align` = toComposeVerticalAlignment(args.string("align")))
-    2 -> modifier.composeModifier42(`unbounded` = args.boolean("unbounded"))
-    3 -> modifier.composeModifier42(`align` = toComposeVerticalAlignment(args.string("align")), `unbounded` = args.boolean("unbounded"))
+    1 -> modifier.composeModifier42(`min` = args.number("min").dp)
+    2 -> modifier.composeModifier42(`max` = args.number("max").dp)
+    3 -> modifier.composeModifier42(`min` = args.number("min").dp, `max` = args.number("max").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply57(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply59(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("align")) 1 else 0) +
     (if (args.has("unbounded")) 2 else 0)
   return when (mask) {
     0 -> modifier.composeModifier43()
-    1 -> modifier.composeModifier43(`align` = toComposeAlignment(args.string("align")))
+    1 -> modifier.composeModifier43(`align` = toComposeVerticalAlignment(args.string("align")))
     2 -> modifier.composeModifier43(`unbounded` = args.boolean("unbounded"))
-    3 -> modifier.composeModifier43(`align` = toComposeAlignment(args.string("align")), `unbounded` = args.boolean("unbounded"))
+    3 -> modifier.composeModifier43(`align` = toComposeVerticalAlignment(args.string("align")), `unbounded` = args.boolean("unbounded"))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply58(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply60(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("align")) 1 else 0) +
     (if (args.has("unbounded")) 2 else 0)
   return when (mask) {
     0 -> modifier.composeModifier44()
-    1 -> modifier.composeModifier44(`align` = toComposeHorizontalAlignment(args.string("align")))
+    1 -> modifier.composeModifier44(`align` = toComposeAlignment(args.string("align")))
     2 -> modifier.composeModifier44(`unbounded` = args.boolean("unbounded"))
-    3 -> modifier.composeModifier44(`align` = toComposeHorizontalAlignment(args.string("align")), `unbounded` = args.boolean("unbounded"))
+    3 -> modifier.composeModifier44(`align` = toComposeAlignment(args.string("align")), `unbounded` = args.boolean("unbounded"))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
-
-private fun apply59(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier45()
-
-private fun apply60(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier46()
 
 private fun apply61(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("steps")) 1 else 0)
+  val mask = (if (args.has("align")) 1 else 0) +
+    (if (args.has("unbounded")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier46(`value` = args.number("value").toFloat())
-    1 -> modifier.composeModifier46(`value` = args.number("value").toFloat(), `steps` = args.number("steps").toInt())
+    0 -> modifier.composeModifier45()
+    1 -> modifier.composeModifier45(`align` = toComposeHorizontalAlignment(args.string("align")))
+    2 -> modifier.composeModifier45(`unbounded` = args.boolean("unbounded"))
+    3 -> modifier.composeModifier45(`align` = toComposeHorizontalAlignment(args.string("align")), `unbounded` = args.boolean("unbounded"))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply62(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("enabled")) 1 else 0) +
-    (if (args.has("role")) 2 else 0)
-  return when (mask) {
-    0 -> modifier.composeModifier47(`selected` = args.boolean("selected"), `onClick` = { args.emit("onClick") })
-    1 -> modifier.composeModifier47(`selected` = args.boolean("selected"), `enabled` = args.boolean("enabled"), `onClick` = { args.emit("onClick") })
-    2 -> modifier.composeModifier47(`selected` = args.boolean("selected"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onClick` = { args.emit("onClick") })
-    3 -> modifier.composeModifier47(`selected` = args.boolean("selected"), `enabled` = args.boolean("enabled"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onClick` = { args.emit("onClick") })
-    else -> error("Invalid generated modifier arguments: " + args)
-  }
-}
+private fun apply62(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier46()
 
 private fun apply63(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier48()
+  modifier.composeModifier47()
 
 private fun apply64(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("enabled")) 1 else 0) +
-    (if (args.has("role")) 2 else 0)
+  val mask = (if (args.has("steps")) 1 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier49(`value` = args.boolean("value"), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
-    1 -> modifier.composeModifier49(`value` = args.boolean("value"), `enabled` = args.boolean("enabled"), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
-    2 -> modifier.composeModifier49(`value` = args.boolean("value"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
-    3 -> modifier.composeModifier49(`value` = args.boolean("value"), `enabled` = args.boolean("enabled"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
+    0 -> modifier.composeModifier47(`value` = args.number("value").toFloat())
+    1 -> modifier.composeModifier47(`value` = args.number("value").toFloat(), `steps` = args.number("steps").toInt())
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply65(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier50()
+private fun apply65(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+  val mask = (if (args.has("enabled")) 1 else 0) +
+    (if (args.has("role")) 2 else 0)
+  return when (mask) {
+    0 -> modifier.composeModifier48(`selected` = args.boolean("selected"), `onClick` = { args.emit("onClick") })
+    1 -> modifier.composeModifier48(`selected` = args.boolean("selected"), `enabled` = args.boolean("enabled"), `onClick` = { args.emit("onClick") })
+    2 -> modifier.composeModifier48(`selected` = args.boolean("selected"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onClick` = { args.emit("onClick") })
+    3 -> modifier.composeModifier48(`selected` = args.boolean("selected"), `enabled` = args.boolean("enabled"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onClick` = { args.emit("onClick") })
+    else -> error("Invalid generated modifier arguments: " + args)
+  }
+}
 
 private fun apply66(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier51(`alpha` = args.number("alpha").toFloat())
+  modifier.composeModifier49()
 
-private fun apply67(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier52(`radius` = args.number("radius").dp)
+private fun apply67(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+  val mask = (if (args.has("enabled")) 1 else 0) +
+    (if (args.has("role")) 2 else 0)
+  return when (mask) {
+    0 -> modifier.composeModifier50(`value` = args.boolean("value"), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
+    1 -> modifier.composeModifier50(`value` = args.boolean("value"), `enabled` = args.boolean("enabled"), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
+    2 -> modifier.composeModifier50(`value` = args.boolean("value"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
+    3 -> modifier.composeModifier50(`value` = args.boolean("value"), `enabled` = args.boolean("enabled"), `role` = if (args.isNull("role")) null else toComposeRole(args.string("role")), `onValueChange` = { value: Boolean -> args.emit("onValueChange", value) })
+    else -> error("Invalid generated modifier arguments: " + args)
+  }
+}
 
 private fun apply68(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier52(`radiusX` = args.number("radiusX").dp, `radiusY` = args.number("radiusY").dp)
+  modifier.composeModifier51()
 
 private fun apply69(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier53(`shape` = args.shape("shape"))
+  modifier.composeModifier52(`alpha` = args.number("alpha").toFloat())
 
 private fun apply70(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier54()
+  modifier.composeModifier53(`radius` = args.number("radius").dp)
 
 private fun apply71(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier55(`degrees` = args.number("degrees").toFloat())
+  modifier.composeModifier53(`radiusX` = args.number("radiusX").dp, `radiusY` = args.number("radiusY").dp)
 
 private fun apply72(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier56(`scale` = args.number("scale").toFloat())
+  modifier.composeModifier54(`shape` = args.shape("shape"))
 
 private fun apply73(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier56(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat())
+  modifier.composeModifier55()
 
-private fun apply74(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply74(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier56(`degrees` = args.number("degrees").toFloat())
+
+private fun apply75(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier57(`scale` = args.number("scale").toFloat())
+
+private fun apply76(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier57(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat())
+
+private fun apply77(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("shape")) 1 else 0) +
     (if (args.has("clip")) 2 else 0) +
     (if (args.has("ambientColor")) 4 else 0) +
     (if (args.has("spotColor")) 8 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp)
-    1 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"))
-    2 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"))
-    3 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"))
-    4 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `ambientColor` = args.color("ambientColor"))
-    5 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `ambientColor` = args.color("ambientColor"))
-    6 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"))
-    7 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"))
-    8 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `spotColor` = args.color("spotColor"))
-    9 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `spotColor` = args.color("spotColor"))
-    10 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"), `spotColor` = args.color("spotColor"))
-    11 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"), `spotColor` = args.color("spotColor"))
-    12 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
-    13 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
-    14 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
-    15 -> modifier.composeModifier57(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
+    0 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp)
+    1 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"))
+    2 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"))
+    3 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"))
+    4 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `ambientColor` = args.color("ambientColor"))
+    5 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `ambientColor` = args.color("ambientColor"))
+    6 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"))
+    7 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"))
+    8 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `spotColor` = args.color("spotColor"))
+    9 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `spotColor` = args.color("spotColor"))
+    10 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"), `spotColor` = args.color("spotColor"))
+    11 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"), `spotColor` = args.color("spotColor"))
+    12 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
+    13 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
+    14 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
+    15 -> modifier.composeModifier58(`elevation` = args.number("elevation").dp, `shape` = args.shape("shape"), `clip` = args.boolean("clip"), `ambientColor` = args.color("ambientColor"), `spotColor` = args.color("spotColor"))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-private fun apply75(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply78(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("scaleX")) 1 else 0) +
     (if (args.has("scaleY")) 2 else 0) +
     (if (args.has("alpha")) 4 else 0) +
     (if (args.has("translationX")) 8 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier58()
-    1 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat())
-    2 -> modifier.composeModifier58(`scaleY` = args.number("scaleY").toFloat())
-    3 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat())
-    4 -> modifier.composeModifier58(`alpha` = args.number("alpha").toFloat())
-    5 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `alpha` = args.number("alpha").toFloat())
-    6 -> modifier.composeModifier58(`scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat())
-    7 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat())
-    8 -> modifier.composeModifier58(`translationX` = args.number("translationX").toFloat())
-    9 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `translationX` = args.number("translationX").toFloat())
-    10 -> modifier.composeModifier58(`scaleY` = args.number("scaleY").toFloat(), `translationX` = args.number("translationX").toFloat())
-    11 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat(), `translationX` = args.number("translationX").toFloat())
-    12 -> modifier.composeModifier58(`alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
-    13 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
-    14 -> modifier.composeModifier58(`scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
-    15 -> modifier.composeModifier58(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
-    else -> error("Invalid generated modifier arguments: " + args)
-  }
-}
-
-private fun apply76(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier59()
-
-private fun apply77(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier60(`tag` = args.string("tag"))
-
-private fun apply78(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("isContentSensitive")) 1 else 0)
-  return when (mask) {
-    0 -> modifier.composeModifier61()
-    1 -> modifier.composeModifier61(`isContentSensitive` = args.boolean("isContentSensitive"))
+    0 -> modifier.composeModifier59()
+    1 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat())
+    2 -> modifier.composeModifier59(`scaleY` = args.number("scaleY").toFloat())
+    3 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat())
+    4 -> modifier.composeModifier59(`alpha` = args.number("alpha").toFloat())
+    5 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `alpha` = args.number("alpha").toFloat())
+    6 -> modifier.composeModifier59(`scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat())
+    7 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat())
+    8 -> modifier.composeModifier59(`translationX` = args.number("translationX").toFloat())
+    9 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `translationX` = args.number("translationX").toFloat())
+    10 -> modifier.composeModifier59(`scaleY` = args.number("scaleY").toFloat(), `translationX` = args.number("translationX").toFloat())
+    11 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat(), `translationX` = args.number("translationX").toFloat())
+    12 -> modifier.composeModifier59(`alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
+    13 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
+    14 -> modifier.composeModifier59(`scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
+    15 -> modifier.composeModifier59(`scaleX` = args.number("scaleX").toFloat(), `scaleY` = args.number("scaleY").toFloat(), `alpha` = args.number("alpha").toFloat(), `translationX` = args.number("translationX").toFloat())
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 private fun apply79(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier62(`zIndex` = args.number("zIndex").toFloat())
+  modifier.composeModifier60()
+
+private fun apply80(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier61(`tag` = args.string("tag"))
+
+private fun apply81(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+  val mask = (if (args.has("isContentSensitive")) 1 else 0)
+  return when (mask) {
+    0 -> modifier.composeModifier62()
+    1 -> modifier.composeModifier62(`isContentSensitive` = args.boolean("isContentSensitive"))
+    else -> error("Invalid generated modifier arguments: " + args)
+  }
+}
+
+private fun apply82(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier63(`zIndex` = args.number("zIndex").toFloat())

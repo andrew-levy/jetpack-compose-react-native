@@ -37,5 +37,6 @@ dependencies {
   implementation("androidx.compose.ui:ui")
   implementation("androidx.compose.foundation:foundation-layout")
   // This release exposes MaterialExpressiveTheme publicly.
-  implementation("androidx.compose.material3:material3:1.4.0-alpha15")
+  val material3Version = providers.gradleProperty("composeMaterial3Version").getOrElse("1.4.0-alpha15")
+  implementation("androidx.compose.material3:material3:$material3Version")
 }

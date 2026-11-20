@@ -105,7 +105,8 @@ function kotlin(overloads, kinds) {
   for (const { kotlinFunction, scope } of overloads) {
     if (!scope && !imports.has(kotlinFunction)) imports.set(kotlinFunction, `composeModifier${imports.size}`);
   }
-  const functions = overloads.flatMap(({ id, name, kotlinFunction, parameters, argumentLists, scope }) => {
+  const functions = overloads.flatMap(({ id, name, kotlinFunction, parameters, argumentLists, scope, optIns }) => {
+    const annotations = optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : [];
     const signature = `private fun apply${id}(modifier: Modifier, args: ComposeModifierArguments${scope ? `, scope: ${scope}` : ""}): Modifier`;
     const render = (passed) => {
       const args = passed.map(({ name, kind, nullable }) => {
@@ -119,6 +120,7 @@ function kotlin(overloads, kinds) {
     if (argumentLists.length === 1) {
       const [passed] = argumentLists;
       return [
+        ...annotations,
         `${signature} =`,
         `  ${render(passed)}`,
         "",
@@ -127,6 +129,7 @@ function kotlin(overloads, kinds) {
     const optional = parameters.filter(({ optional }) => optional);
     const mask = optional.map(({ name }, index) => `(if (args.has(${quote(name)})) ${1 << index} else 0)`);
     return [
+      ...annotations,
       `${signature} {`,
       `  val mask = ${mask.join(" +\n    ")}`,
       "  return when (mask) {",
@@ -152,6 +155,8 @@ function kotlin(overloads, kinds) {
     "import androidx.compose.ui.unit.sp",
     ...[...imports].map(([name, alias]) => `import ${name} as ${alias}`),
     "",
+    ...([...new Set(overloads.flatMap(({ optIns }) => optIns))].sort().length
+      ? [`@OptIn(${[...new Set(overloads.flatMap(({ optIns }) => optIns))].sort().map((marker) => `${marker}::class`).join(", ")})`] : []),
     "internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModifierArguments, scope: Any?): Modifier? = when (id) {",
     ...overloads.map(({ id, scope }) => scope
       ? `  ${id} -> if (scope is ${scope}) apply${id}(modifier, args, scope) else null`
