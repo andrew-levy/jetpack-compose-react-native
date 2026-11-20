@@ -24,6 +24,10 @@ class ActivityRecreated(RuntimeError):
     pass
 
 
+class MissingUiUpdate(RuntimeError):
+    pass
+
+
 def adb(*args):
     return subprocess.check_output(["adb", *args], text=True, timeout=40)
 
@@ -34,8 +38,8 @@ def activity_window():
     return focus.group(1) if focus else None
 
 
-def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None):
-    deadline = time.monotonic() + 90
+def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, timeout=90):
+    deadline = time.monotonic() + timeout
     nodes = {}
     while time.monotonic() < deadline:
         try:
@@ -61,7 +65,7 @@ def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None):
         ):
             return nodes
         time.sleep(1)
-    raise RuntimeError(f"Missing UI update {labels}, found {list(nodes)}")
+    raise MissingUiUpdate(f"Missing UI update {labels}, found {list(nodes)}")
 
 
 def bounds(node):
@@ -77,12 +81,25 @@ def following_view_top(nodes):
     return bounds(nodes["Below Compose"])[1]
 
 
-def verify():
-    adb("shell", "am", "force-stop", PACKAGE)
-    print(adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity"), flush=True)
+def start_gallery():
+    for attempt in range(2):
+        adb("shell", "am", "force-stop", PACKAGE)
+        print(adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity"), flush=True)
+        window = activity_window()
+        try:
+            nodes = wait_for(
+                "Material 3 components", "Buttons", "Filled", "Button presses: 0", "Modifiers",
+                window=window, timeout=35 if attempt == 0 else 90,
+            )
+            return nodes, window or activity_window()
+        except (ActivityRecreated, MissingUiUpdate) as error:
+            if attempt == 1:
+                raise
+            print(f"{error}. Relaunching the gallery after startup.", flush=True)
 
-    nodes = wait_for("Material 3 components", "Buttons", "Filled", "Button presses: 0", "Modifiers")
-    window = activity_window()
+
+def verify():
+    nodes, window = start_gallery()
     capture("01-components")
     tap(nodes["Filled"])
     nodes = wait_for("Button presses: 1", "Try teal accent", window=window)
@@ -148,4 +165,4 @@ except ActivityRecreated as error:
     print(f"{error}. Restarting the tap sequence.", flush=True)
     verify()
 
-print("Verified the gallery, live modifier changes, source snippets, and mixed Compose and React Native layout and events.")
+print("Verified standard and Expressive themes, live modifier changes, source snippets, and mixed Compose and React Native layout and events.")
