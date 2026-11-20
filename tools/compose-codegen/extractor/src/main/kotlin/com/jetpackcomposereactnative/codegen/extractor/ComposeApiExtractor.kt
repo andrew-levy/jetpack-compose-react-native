@@ -86,7 +86,8 @@ private class ComposeApiExtractor(
       else -> null
     }?.takeIf(annotations::contains)
     if (annotations.any {
-        it == "kotlin.Deprecated" || (it != optIn && it.substringAfterLast('.').startsWith("Experimental"))
+        (it == "kotlin.Deprecated" && function !in compatibleDeprecatedComponents) ||
+          (it != optIn && it.substringAfterLast('.').startsWith("Experimental"))
       }) return null
     if (fn.returnType?.resolve()?.name != "kotlin.Unit") return null
 
@@ -298,6 +299,11 @@ private val scopes = setOf(
   "androidx.compose.foundation.layout.BoxScope",
   "androidx.compose.foundation.layout.FlowRowScope",
   "androidx.compose.foundation.layout.FlowColumnScope"
+)
+// Material 3 still supports these names, which older versions of the bridge exported.
+private val compatibleDeprecatedComponents = setOf(
+  "androidx.compose.material3.ScrollableTabRow",
+  "androidx.compose.material3.TabRow"
 )
 private val componentValueKinds = mapOf("androidx.compose.material3.ColorScheme" to "colorScheme")
 private val valueKinds = mapOf(
