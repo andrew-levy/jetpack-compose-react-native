@@ -57,7 +57,13 @@ export default function App() {
             onPress={() => selectScreen(index)}
             style={[styles.tab, screen === index && styles.selectedTab]}
           >
-            <Text style={[styles.tabLabel, screen === index && styles.selectedLabel]}>{title}</Text>
+            <Text
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              style={[styles.tabLabel, screen === index && styles.selectedLabel]}
+            >
+              {title}
+            </Text>
           </Pressable>
         ))}
       </View>

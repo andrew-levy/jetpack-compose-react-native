@@ -84,6 +84,10 @@ import { Button, MaterialExpressiveTheme, Text } from "jetpack-compose-react-nat
 
 ## Compose Gallery
 
+<img src="docs/compose-expressive.gif" alt="Animated Android comparison with the standard spinner on the left and the Material 3 Expressive morphing indicator on the right" width="320" />
+
+Open the **Expressive** tab to see both native indicators side by side.
+
 <img src="docs/compose-gallery.gif" alt="Android emulator showing Material 3 controls, modifier order, source snippets, and React Native interop" width="320" />
 
 Use the tabs in the [example app](example/App.tsx) to explore the bridge.
