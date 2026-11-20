@@ -7,7 +7,7 @@ from AndroidX, and a top-level Compose component hosts its subtree automatically
 ## Quick start
 
 Install the package or a checkout of this repository in a React Native 0.74.5
-app with the New Architecture enabled, Android compile SDK 35, AGP 8.7.3,
+app with the New Architecture enabled, Android compile SDK 35, AGP 8.6.1,
 and Kotlin 2.0.21 with the matching Compose compiler Gradle plugin. Add
 `org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.21` to the root
 Android buildscript classpath, then rebuild Android. React Native
