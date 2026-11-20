@@ -610,6 +610,18 @@ export const ListItem = createComposableComponent<ListItemProps>({
   children: false,
 });
 
+export interface LoadingIndicatorProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  color?: string;
+}
+export const LoadingIndicator = createComposableComponent<LoadingIndicatorProps>({
+  name: "LoadingIndicator",
+  props: ["modifier","color"],
+  children: false,
+});
+
 export interface MaterialExpressiveThemeProps {
   colorScheme?: ColorScheme | null;
   children?: ReactNode;

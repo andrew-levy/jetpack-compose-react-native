@@ -91,7 +91,7 @@ jobs:
         if: always()
         with:
           name: compose-gallery-previews
-          path: compose-gallery/*.png
+          path: compose-gallery
           if-no-files-found: ignore
       - name: Save emulator diagnostics
         if: failure()

@@ -3,7 +3,7 @@ import { Pressable, ScrollView, StyleSheet, Text as RNText, View } from "react-n
 import {
   AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox, ComposeHost,
   CircularProgressIndicator, Column, ElevatedButton, FilterChip,
-  FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem,
+  FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
   Switch, Text, TextButton, lightColorScheme, type ComposeChain,
 } from "jetpack-compose-react-native";
@@ -41,6 +41,42 @@ function Demo({ title, source, showCode, children }: GalleryProps & {
         </ScrollView>
       )}
     </View>
+  );
+}
+
+export function Expressive({ showCode }: GalleryProps) {
+  return (
+    <>
+      <Intro title="Material 3 Expressive">Compare two native indeterminate loading indicators.</Intro>
+      <Demo
+        title="Loading indicators"
+        showCode={showCode}
+        source={'<MaterialTheme>\n  <CircularProgressIndicator />\n</MaterialTheme>\n\n<MaterialExpressiveTheme>\n  <LoadingIndicator />\n</MaterialExpressiveTheme>'}
+      >
+        <ComposeHost fitContent>
+          <Row modifiers={fullWidth} horizontalArrangement="spaceEvenly">
+            <MaterialTheme>
+              <Column horizontalAlignment="centerHorizontally">
+                <Text text="Standard" />
+                <Spacer modifiers={Modifier.height(8)} />
+                <Box modifiers={Modifier.size(56)} contentAlignment="center">
+                  <CircularProgressIndicator />
+                </Box>
+              </Column>
+            </MaterialTheme>
+            <MaterialExpressiveTheme>
+              <Column horizontalAlignment="centerHorizontally">
+                <Text text="Expressive morph" />
+                <Spacer modifiers={Modifier.height(8)} />
+                <Box modifiers={Modifier.size(56)} contentAlignment="center">
+                  <LoadingIndicator />
+                </Box>
+              </Column>
+            </MaterialExpressiveTheme>
+          </Row>
+        </ComposeHost>
+      </Demo>
+    </>
   );
 }
 

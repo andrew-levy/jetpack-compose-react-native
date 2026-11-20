@@ -20,6 +20,18 @@ def capture(name):
         (preview_dir / f"{name}.png").write_bytes(image)
 
 
+def capture_expressive():
+    if preview_dir is None:
+        return
+    frames = preview_dir / "expressive"
+    frames.mkdir(parents=True, exist_ok=True)
+    for frame in range(60):
+        started = time.monotonic()
+        image = subprocess.check_output(["adb", "exec-out", "screencap", "-p"], timeout=40)
+        (frames / f"{frame:03d}.png").write_bytes(image)
+        time.sleep(max(0, 0.1 - (time.monotonic() - started)))
+
+
 class ActivityRecreated(RuntimeError):
     pass
 
@@ -152,11 +164,25 @@ def verify():
         layout_ready=lambda nodes: following_view_top(nodes) == original_foot,
     )
     tap(nodes["Tapped 2"])
-    wait_for(
+    nodes = wait_for(
         "Tapped 3", "Odd click count", "Added by React", "Below Compose",
         absent=("Tapped 2", "Even click count"), window=window,
         layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
     )
+
+    if preview_dir is not None:
+        animation_scale = adb("shell", "settings", "get", "global", "animator_duration_scale").strip()
+        adb("shell", "settings", "put", "global", "animator_duration_scale", "1")
+    try:
+        tap(nodes["Expressive"])
+        wait_for("Material 3 Expressive", "Loading indicators", "Standard", "Expressive morph", window=window)
+        capture_expressive()
+    finally:
+        if preview_dir is not None:
+            if animation_scale == "null":
+                adb("shell", "settings", "delete", "global", "animator_duration_scale")
+            else:
+                adb("shell", "settings", "put", "global", "animator_duration_scale", animation_scale)
 
 
 try:

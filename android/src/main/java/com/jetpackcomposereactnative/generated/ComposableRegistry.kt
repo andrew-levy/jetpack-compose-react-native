@@ -46,6 +46,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "LeadingIconTab" -> renderLeadingIconTab(node, scope)
     "LinearProgressIndicator" -> renderLinearProgressIndicator(node, scope)
     "ListItem" -> renderListItem(node, scope)
+    "LoadingIndicator" -> renderLoadingIndicator(node, scope)
     "MaterialExpressiveTheme" -> renderMaterialExpressiveTheme(node)
     "MaterialTheme" -> renderMaterialTheme(node)
     "ModalDrawerSheet" -> renderModalDrawerSheet(node, scope)
@@ -2077,6 +2078,21 @@ private fun renderListItem(node: ComposeNode, scope: Any?) {
       `supportingContent` = if (node.isNull("supportingContent")) null else ({ RenderComposeChildren(node.slot("supportingContent")) }),
       `leadingContent` = if (node.isNull("leadingContent")) null else ({ RenderComposeChildren(node.slot("leadingContent")) }),
       `trailingContent` = if (node.isNull("trailingContent")) null else ({ RenderComposeChildren(node.slot("trailingContent")) }),
+    )
+  }
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun renderLoadingIndicator(node: ComposeNode, scope: Any?) {
+  val mask = (if (node.has("color")) 1 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.LoadingIndicator(
+      `modifier` = node.modifier("modifier", scope),
+    )
+    else -> androidx.compose.material3.LoadingIndicator(
+      `modifier` = node.modifier("modifier", scope),
+      `color` = node.color("color"),
     )
   }
 }

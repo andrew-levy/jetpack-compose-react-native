@@ -81,6 +81,7 @@ private class ComposeApiExtractor(
     val annotations = fn.annotations.mapNotNull { it.annotationType.resolve().name }.toList()
     val function = fn.qualifiedName!!.asString()
     val optIn = when (function) {
+      "androidx.compose.material3.LoadingIndicator",
       "androidx.compose.material3.MaterialExpressiveTheme" ->
         "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi"
       else -> null
