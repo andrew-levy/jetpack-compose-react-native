@@ -2,33 +2,17 @@ package com.jetpackcomposereactnative.generated
 
 import android.content.Context
 import android.view.ViewGroup.LayoutParams
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.IntSize
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
-import com.jetpackcomposereactnative.common.parseComposeColor
-import org.json.JSONObject
 
 internal class ComposeHostManager : ComposeContainerManager<GeneratedComposeHostView>() {
     override fun getName(): String = "JpcComposeHost"
     override fun createViewInstance(context: ThemedReactContext): GeneratedComposeHostView =
         GeneratedComposeHostView(context)
-
-    @ReactProp(name = "theme")
-    fun setTheme(view: GeneratedComposeHostView, value: String?) {
-        view.theme = value?.let(::JSONObject)
-    }
 
     @ReactProp(name = "fitContent")
     fun setFitContent(view: GeneratedComposeHostView, enabled: Boolean) {
@@ -37,23 +21,12 @@ internal class ComposeHostManager : ComposeContainerManager<GeneratedComposeHost
 }
 
 internal class GeneratedComposeHostView(context: Context) : ComposeContainerView(context) {
-    var theme by mutableStateOf<JSONObject?>(null)
     private var fitContent = false
     private var layoutPending = false
     private val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindowOrReleasedFromPool)
         setContent {
-            val options = theme
-            val dark = when (options?.optString("appearance")) {
-                "dark" -> true
-                "system" -> isSystemInDarkTheme()
-                else -> false
-            }
-            val defaultColors = if (dark) darkColorScheme() else lightColorScheme()
-            val colors = options?.optJSONObject("colors")
-            MaterialTheme(colorScheme = colors?.applyTo(defaultColors) ?: defaultColors) {
-                Box { RenderComposeChildren(composeChildren) }
-            }
+            Box { RenderComposeChildren(composeChildren) }
         }
     }
 
@@ -112,31 +85,4 @@ internal class GeneratedComposeHostView(context: Context) : ComposeContainerView
             layoutPending = false
         }
     }
-}
-
-private fun JSONObject.applyTo(base: ColorScheme): ColorScheme = base.copy(
-    primary = color("primary", base.primary),
-    onPrimary = color("onPrimary", base.onPrimary),
-    primaryContainer = color("primaryContainer", base.primaryContainer),
-    onPrimaryContainer = color("onPrimaryContainer", base.onPrimaryContainer),
-    secondary = color("secondary", base.secondary),
-    onSecondary = color("onSecondary", base.onSecondary),
-    secondaryContainer = color("secondaryContainer", base.secondaryContainer),
-    onSecondaryContainer = color("onSecondaryContainer", base.onSecondaryContainer),
-    tertiary = color("tertiary", base.tertiary),
-    onTertiary = color("onTertiary", base.onTertiary),
-    tertiaryContainer = color("tertiaryContainer", base.tertiaryContainer),
-    onTertiaryContainer = color("onTertiaryContainer", base.onTertiaryContainer),
-    surface = color("surface", base.surface),
-    onSurface = color("onSurface", base.onSurface),
-    surfaceVariant = color("surfaceVariant", base.surfaceVariant),
-    onSurfaceVariant = color("onSurfaceVariant", base.onSurfaceVariant),
-    outline = color("outline", base.outline),
-    error = color("error", base.error),
-    onError = color("onError", base.onError),
-)
-
-private fun JSONObject.color(role: String, fallback: Color): Color {
-    return (opt(role) as? String)?.let(::parseComposeColor)?.takeUnless { it == Color.Unspecified }
-        ?: fallback
 }

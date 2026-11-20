@@ -101,7 +101,8 @@ private class ComposeApiExtractor(
       val kind = when {
         parameter.isVararg -> null
         isSlot -> "slot"
-        else -> valueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
+        else -> valueKinds[type.name] ?: componentValueKinds[type.name]
+          ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
       }
       if (kind == null) {
         if (!parameter.hasDefault) return null
@@ -289,6 +290,7 @@ private val scopes = setOf(
   "androidx.compose.foundation.layout.FlowRowScope",
   "androidx.compose.foundation.layout.FlowColumnScope"
 )
+private val componentValueKinds = mapOf("androidx.compose.material3.ColorScheme" to "colorScheme")
 private val valueKinds = mapOf(
   "kotlin.String" to "string",
   "kotlin.Boolean" to "boolean",

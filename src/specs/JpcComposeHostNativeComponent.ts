@@ -4,7 +4,6 @@ import codegenNativeComponent from "react-native/Libraries/Utilities/codegenNati
 
 interface NativeProps extends ViewProps {
   fitContent?: WithDefault<boolean, false>;
-  theme?: string;
 }
 
 export default codegenNativeComponent<NativeProps>("JpcComposeHost", {

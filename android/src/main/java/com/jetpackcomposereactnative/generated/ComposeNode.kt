@@ -1,5 +1,6 @@
 package com.jetpackcomposereactnative.generated
 
+import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
@@ -16,5 +17,6 @@ internal interface ComposeNode : ComposeChild {
   fun number(name: String): Double
   fun modifier(name: String, scope: Any?): Modifier
   fun color(name: String): Color
+  fun colorScheme(name: String): ColorScheme
   fun emit(name: String, value: Any? = null)
 }

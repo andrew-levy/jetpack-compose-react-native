@@ -40,27 +40,30 @@ for package discovery, supported argument types, and regeneration.
 
 ## Customize the theme
 
-Wrap a Compose subtree in `ComposeHost` to set its Material 3 colors and
-appearance. Use `fitContent` when the host should size itself to its children.
+Wrap a Compose subtree in `MaterialTheme` and pass a Material 3 color scheme.
+Theme values apply to Material components inside that subtree.
 
 ```tsx
-import { Button, ComposeHost, Text } from "jetpack-compose-react-native";
+import { useColorScheme } from "react-native";
+import { Button, MaterialTheme, Text, darkColorScheme, lightColorScheme } from "jetpack-compose-react-native";
 
-<ComposeHost
-  fitContent
-  theme={{
-    appearance: "system",
-    colors: { primary: "#005e54", onPrimary: "#ffffff" },
-  }}
->
-  <Button onClick={() => console.log("Continue")}>
-    <Text text="Continue" />
-  </Button>
-</ComposeHost>
+const light = lightColorScheme({ primary: "#005e54", onPrimary: "#ffffff" });
+const dark = darkColorScheme({ primary: "#80d5c6", onPrimary: "#003730" });
+
+function ThemedButton() {
+  const colors = useColorScheme() === "dark" ? dark : light;
+  return (
+    <MaterialTheme colorScheme={colors}>
+      <Button onClick={() => console.log("Continue")}>
+        <Text text="Continue" />
+      </Button>
+    </MaterialTheme>
+  );
+}
 ```
 
-Choose `"light"`, `"dark"`, or `"system"`. Color overrides apply to the
-chosen palette. Use `theme` on each host you want to style.
+`MaterialTheme` can be the root of a Compose subtree or nested inside one.
+Omit `colorScheme` to inherit the parent palette or use the native defaults.
 
 ## Compose Gallery
 

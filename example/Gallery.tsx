@@ -4,8 +4,8 @@ import {
   AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox, ComposeHost,
   CircularProgressIndicator, Column, ElevatedButton, FilterChip,
   FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem,
-  Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
-  Switch, Text, TextButton, type ComposeChain,
+  MaterialTheme, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
+  Switch, Text, TextButton, lightColorScheme, type ComposeChain,
 } from "jetpack-compose-react-native";
 
 interface GalleryProps {
@@ -14,6 +14,8 @@ interface GalleryProps {
 
 const rounded = { rect: { cornerRadius: 14 } };
 const fullWidth = Modifier.fillMaxWidth();
+const defaultColors = lightColorScheme();
+const tealColors = lightColorScheme({ primary: "#005e54", onPrimary: "#ffffff" });
 
 function Intro({ title, children }: { title: string; children: string }) {
   return (
@@ -50,11 +52,8 @@ function Buttons({ showCode }: GalleryProps) {
   }
 
   return (
-    <Demo title="Buttons" showCode={showCode} source={'<ComposeHost fitContent theme={{\n  colors: { primary: "#005e54", onPrimary: "#ffffff" },\n}}>\n  <Button onClick={increment}><Text text="Filled" /></Button>\n</ComposeHost>'}>
-      <ComposeHost
-        fitContent
-        theme={customAccent ? { colors: { primary: "#005e54", onPrimary: "#ffffff" } } : undefined}
-      >
+    <Demo title="Buttons" showCode={showCode} source={'<MaterialTheme colorScheme={lightColorScheme({\n  primary: "#005e54", onPrimary: "#ffffff",\n})}>\n  <Button onClick={increment}><Text text="Filled" /></Button>\n</MaterialTheme>'}>
+      <MaterialTheme colorScheme={customAccent ? tealColors : defaultColors}>
         <Column modifiers={fullWidth}>
           <Row>
             <Button onClick={increment}><Text text="Filled" /></Button>
@@ -74,7 +73,7 @@ function Buttons({ showCode }: GalleryProps) {
             <Text text={customAccent ? "Reset accent" : "Try teal accent"} />
           </TextButton>
         </Column>
-      </ComposeHost>
+      </MaterialTheme>
     </Demo>
   );
 }

@@ -1536,9 +1536,16 @@ private fun renderListItem(node: ComposeNode, scope: Any?) {
 
 @Composable
 private fun renderMaterialTheme(node: ComposeNode) {
-  androidx.compose.material3.MaterialTheme(
-    content = { RenderComposeChildren(node.children) },
-  )
+  val mask = (if (node.has("colorScheme")) 1 else 0)
+  when (mask) {
+    0 -> androidx.compose.material3.MaterialTheme(
+      content = { RenderComposeChildren(node.children) },
+    )
+    else -> androidx.compose.material3.MaterialTheme(
+      `colorScheme` = node.colorScheme("colorScheme"),
+      content = { RenderComposeChildren(node.children) },
+    )
+  }
 }
 
 @Composable

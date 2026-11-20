@@ -1,6 +1,7 @@
 // Generated from Compose declarations by generate.mjs.
 import type { ReactNode } from "react";
 import { createComposableComponent, type ComposeModifier } from "./runtime/createComposableComponent";
+import type { ColorScheme } from "../utils/colorScheme";
 import type { ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight } from "./values";
 
 export interface AlertDialogProps {
@@ -560,11 +561,13 @@ export const ListItem = createComposableComponent<ListItemProps>({
 });
 
 export interface MaterialThemeProps {
+  colorScheme?: ColorScheme;
   children?: ReactNode;
 }
 export const MaterialTheme = createComposableComponent<MaterialThemeProps>({
   name: "MaterialTheme",
-  props: [],
+  props: ["colorScheme"],
+  objectProps: ["colorScheme"],
   children: true,
 });
 

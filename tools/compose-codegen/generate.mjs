@@ -21,6 +21,7 @@ const kinds = {
   double: { type: "number", expression: (key) => `node.number(${key})` },
   dp: { type: "number", expression: (key) => `node.number(${key}).dp` },
   sp: { type: "number", expression: (key) => `node.number(${key}).sp` },
+  colorScheme: { type: "ColorScheme", input: "object", expression: (key) => `node.colorScheme(${key})` },
   color: { type: "string", expression: (key) => `node.color(${key})` },
   modifier: { type: "ComposeModifier", expression: (key) => `node.modifier(${key}, scope)` },
   event: { type: "() => void", input: "function", expression: (key) => `{ node.emit(${key}) }` },
@@ -82,6 +83,7 @@ function typeScript({ components, values }) {
     });
     if (children) fields.push("  children?: ReactNode;");
     const props = parameters.filter(({ kind }) => kind !== "slot" && !kind.startsWith("event")).map(({ name }) => name);
+    const objectProps = parameters.filter(({ kind }) => kinds[kind].input === "object").map(({ name }) => name);
     const events = parameters.filter(({ kind }) => kind.startsWith("event")).map(({ name }) => name);
     const slots = parameters.filter(({ kind }) => kind === "slot").map(({ name }) => name);
     return [
@@ -91,6 +93,7 @@ function typeScript({ components, values }) {
       `export const ${name} = createComposableComponent<${name}Props>({`,
       `  name: ${quote(name)},`,
       `  props: ${quote(props)},`,
+      ...(objectProps.length ? [`  objectProps: ${quote(objectProps)},`] : []),
       ...(slots.length ? [`  slots: ${quote(slots)},`] : []),
       ...(events.length ? [`  events: ${quote(events)},`] : []),
       `  children: ${children},`,
@@ -101,6 +104,7 @@ function typeScript({ components, values }) {
     "// Generated from Compose declarations by generate.mjs.",
     'import type { ReactNode } from "react";',
     'import { createComposableComponent, type ComposeModifier } from "./runtime/createComposableComponent";',
+    ...(usedKinds.has("colorScheme") ? ['import type { ColorScheme } from "../utils/colorScheme";'] : []),
     ...(types.length ? [`import type { ${types.join(", ")} } from "./values";`] : []),
     "",
     ...declarations.flatMap((declaration) => [declaration, ""]),

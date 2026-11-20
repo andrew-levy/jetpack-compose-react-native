@@ -58,6 +58,7 @@ internal class GeneratedComposeNodeView(context: Context) :
   override fun boolean(name: String): Boolean = values.getBoolean(name)
   override fun number(name: String): Double = values.getDouble(name)
   override fun color(name: String) = parseComposeColor(string(name))
+  override fun colorScheme(name: String) = values.getJSONObject(name).toColorScheme()
 
   override fun modifier(name: String, scope: Any?): Modifier {
     val steps = values.optJSONArray(name) ?: return Modifier

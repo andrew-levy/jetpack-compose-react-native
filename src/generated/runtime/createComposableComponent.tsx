@@ -24,6 +24,7 @@ function serializeModifier(modifier: ComposeModifier, callbacks: Map<string, Com
 export interface ComposableDescription {
   name: string;
   props: readonly string[];
+  objectProps?: readonly string[];
   events?: readonly string[];
   slots?: readonly string[];
   children: boolean;
@@ -33,6 +34,7 @@ export function createComposableComponent<P extends object>(
   description: ComposableDescription,
 ): React.ComponentType<P & ComposableViewProps> {
   const eventNames = new Set(description.events);
+  const objectProps = new Set(description.objectProps);
   function Generated(props: P & ComposableViewProps & { children?: React.ReactNode }) {
     const hasHost = React.useContext(ComposeHostContext);
 
@@ -48,6 +50,8 @@ export function createComposableComponent<P extends object>(
       }
       if (name === "modifier") {
         values[name] = serializeModifier(value as ComposeModifier, modifierCallbacks);
+      } else if (objectProps.has(name) && typeof value === "object") {
+        values[name] = value;
       } else if (typeof value === "string" || typeof value === "boolean" || typeof value === "number") {
         values[name] = value;
       }
