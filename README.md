@@ -68,6 +68,20 @@ function ThemedButton() {
 `MaterialTheme` can be the root of a Compose subtree or nested inside one.
 Omit `colorScheme` to inherit the parent palette or use the native defaults.
 
+Use `MaterialExpressiveTheme` to apply the native Material 3 Expressive palette
+and motion defaults to the same components. The wrapper opts into the
+experimental Material 3 API on Android.
+
+```tsx
+import { Button, MaterialExpressiveTheme, Text } from "jetpack-compose-react-native";
+
+<MaterialExpressiveTheme>
+  <Button onClick={() => console.log("Continue")}>
+    <Text text="Continue" />
+  </Button>
+</MaterialExpressiveTheme>
+```
+
 ## Compose Gallery
 
 <img src="docs/compose-gallery.gif" alt="Android emulator showing Material 3 controls, modifier order, source snippets, and React Native interop" width="320" />
@@ -76,7 +90,7 @@ Use the three tabs in the [example app](example/App.tsx) to explore the bridge.
 
 | Tab | What to try |
 | --- | --- |
-| **Components** | Compare button variants, change switches and selection controls, type into a field, and open a native alert dialog. |
+| **Components** | Compare standard and Expressive themes and button variants, change switches and selection controls, type into a field, and open a native alert dialog. |
 | **Modifiers** | Reverse the padding and background chain. Compare gradients, borders, clipping, shadows, and weighted row children. |
 | **Interop** | Tap the Compose button, the React Native button, or the count itself. Odd counts insert a React Native child inside Compose and push the view below it down. |
 

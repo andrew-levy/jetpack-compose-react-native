@@ -222,6 +222,8 @@ private class ComposeApiExtractor(
     }.toMap()
 
   private fun conflicts(candidate: Candidate, other: KSFunctionDeclaration): Boolean {
+    // Kotlin prefers an otherwise matching overload that uses fewer default arguments.
+    if (other.parameters.size > candidate.declaration.parameters.size) return false
     if (other.annotations.any { it.annotationType.resolve().name == "kotlin.Deprecated" }) return false
     val otherParameters = other.parameters.associateBy { it.name?.asString() }
     if (otherParameters.values.any { !it.hasDefault && it.name?.asString() !in candidate.passed }) return false
