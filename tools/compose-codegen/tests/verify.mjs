@@ -74,6 +74,9 @@ if (mode === "upgrade") {
   assert.match(ts, /export const DiscoveryProbe/);
   assert.match(ts, /label: string/);
   assert.match(ts, /count: number/);
+  assert.match(ts, /scheme\??: ColorScheme \| null/);
+  assert.match(readOutput("factories.ts"), /export function lightColorScheme/);
+  assert.match(readOutput("ComposeFactories.kt"), /internal fun JSONObject.toColorScheme/);
   assert.doesNotMatch(ts, /export const UnsupportedProbe/);
   assert.ok(kt.includes(`@OptIn(${name}.BridgeLayoutPreview::class, ${name}.BridgePreview::class)`));
   assert.ok(kt.includes(`${name}.DiscoveryProbe(`));

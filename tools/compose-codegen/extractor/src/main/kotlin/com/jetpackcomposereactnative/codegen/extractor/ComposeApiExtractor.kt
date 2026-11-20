@@ -91,7 +91,7 @@ private class ComposeApiExtractor(
     }
 
     val modifiers = discoverModifiers(resolver)
-    val factories = discoverFactories(resolver, functions)
+    val factories = discoverFactories(resolver)
     val manifest = Manifest(3, components, modifiers, valueTypes.values.toList(), factories, coverage.sortedBy { it.signature })
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
       .bufferedWriter().use { Gson().toJson(manifest, it) }
@@ -182,7 +182,8 @@ private class ComposeApiExtractor(
     return Candidate(fn, component, masks, blocked, omitted)
   }
 
-  private fun discoverFactories(resolver: Resolver, functions: List<KSFunctionDeclaration>): List<ValueFactory> =
+  @OptIn(KspExperimental::class)
+  private fun discoverFactories(resolver: Resolver): List<ValueFactory> =
     factoryTypes.flatMap { type ->
       val declaration = resolver.getClassDeclarationByName(resolver.getKSNameFromString(type)) ?: return@flatMap emptyList()
       val properties = declaration.getAllProperties()
@@ -192,6 +193,8 @@ private class ComposeApiExtractor(
         .filter { it.simpleName.asString() == "copy" && it.getVisibility() == Visibility.PUBLIC && !it.isDeprecated() }
         .map { copy -> copy.parameters.mapNotNull { it.name?.asString() }.toSet() }
         .firstOrNull { it == properties } ?: return@flatMap emptyList()
+      val functions = resolver.getDeclarationsFromPackage(declaration.packageName.asString())
+        .filterIsInstance<KSFunctionDeclaration>()
       functions.filter { fn ->
         fn.getVisibility() == Visibility.PUBLIC && fn.returnType?.resolve()?.name == type &&
           fn.extensionReceiver == null && !fn.isDeprecated() &&
@@ -235,7 +238,8 @@ private class ComposeApiExtractor(
             val name = parameter.name?.asString() ?: return@mapNotNull null
             val type = parameter.type.resolve()
             val kind = if (parameter.isVararg) null else
-              modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name ?: parameter.eventKind(type)
+              modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
+                ?: parameter.eventKind(type)?.takeUnless { it == "eventFloatRange" }
             if (kind == null || kind == "modifier") {
               if (!parameter.hasDefault) return@mapNotNull null
             } else if (!parameter.hasDefault || parameters.count { it.optional } < MAX_OPTIONAL_VALUES) {
