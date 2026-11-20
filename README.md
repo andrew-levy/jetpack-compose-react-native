@@ -38,6 +38,30 @@ Generated components accept the `modifiers` prop, and chains start with
 `padding` paints the padded area. See the [code generation guide](tools/compose-codegen/README.md)
 for package discovery, supported argument types, and regeneration.
 
+## Customize the theme
+
+Wrap a Compose subtree in `ComposeHost` to set its Material 3 colors and
+appearance. Use `fitContent` when the host should size itself to its children.
+
+```tsx
+import { Button, ComposeHost, Text } from "jetpack-compose-react-native";
+
+<ComposeHost
+  fitContent
+  theme={{
+    appearance: "system",
+    colors: { primary: "#005e54", onPrimary: "#ffffff" },
+  }}
+>
+  <Button onClick={() => console.log("Continue")}>
+    <Text text="Continue" />
+  </Button>
+</ComposeHost>
+```
+
+Choose `"light"`, `"dark"`, or `"system"`. Color overrides apply to the
+chosen palette. Use `theme` on each host you want to style.
+
 ## Compose Gallery
 
 <img src="docs/compose-gallery.gif" alt="Android emulator showing Material 3 controls, modifier order, source snippets, and React Native interop" width="320" />

@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Pressable, ScrollView, StyleSheet, Text as RNText, View } from "react-native";
 import {
-  AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox,
+  AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox, ComposeHost,
   CircularProgressIndicator, Column, ElevatedButton, FilterChip,
   FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem,
   Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
@@ -44,28 +44,37 @@ function Demo({ title, source, showCode, children }: GalleryProps & {
 
 function Buttons({ showCode }: GalleryProps) {
   const [count, setCount] = useState(0);
+  const [customAccent, setCustomAccent] = useState(false);
   function increment() {
     setCount((value) => value + 1);
   }
 
   return (
-    <Demo title="Buttons" showCode={showCode} source={'<Button onClick={increment}>\n  <Text text="Filled" />\n</Button>'}>
-      <Column modifiers={fullWidth}>
-        <Row>
-          <Button onClick={increment}><Text text="Filled" /></Button>
-          <Spacer modifiers={Modifier.width(8)} />
-          <OutlinedButton onClick={increment}><Text text="Outlined" /></OutlinedButton>
-        </Row>
-        <Row>
-          <FilledTonalButton onClick={increment}><Text text="Tonal" /></FilledTonalButton>
-          <Spacer modifiers={Modifier.width(8)} />
-          <ElevatedButton onClick={increment}><Text text="Elevated" /></ElevatedButton>
-        </Row>
-        <Row verticalAlignment="centerVertically">
-          <TextButton enabled={count > 0} onClick={() => setCount(0)}><Text text="Reset" /></TextButton>
-          <Text text={`Button presses: ${count}`} color="#5d4b73" />
-        </Row>
-      </Column>
+    <Demo title="Buttons" showCode={showCode} source={'<ComposeHost fitContent theme={{\n  colors: { primary: "#005e54", onPrimary: "#ffffff" },\n}}>\n  <Button onClick={increment}><Text text="Filled" /></Button>\n</ComposeHost>'}>
+      <ComposeHost
+        fitContent
+        theme={customAccent ? { colors: { primary: "#005e54", onPrimary: "#ffffff" } } : undefined}
+      >
+        <Column modifiers={fullWidth}>
+          <Row>
+            <Button onClick={increment}><Text text="Filled" /></Button>
+            <Spacer modifiers={Modifier.width(8)} />
+            <OutlinedButton onClick={increment}><Text text="Outlined" /></OutlinedButton>
+          </Row>
+          <Row>
+            <FilledTonalButton onClick={increment}><Text text="Tonal" /></FilledTonalButton>
+            <Spacer modifiers={Modifier.width(8)} />
+            <ElevatedButton onClick={increment}><Text text="Elevated" /></ElevatedButton>
+          </Row>
+          <Row verticalAlignment="centerVertically">
+            <TextButton enabled={count > 0} onClick={() => setCount(0)}><Text text="Reset" /></TextButton>
+            <Text text={`Button presses: ${count}`} color="#5d4b73" />
+          </Row>
+          <TextButton onClick={() => setCustomAccent(!customAccent)}>
+            <Text text={customAccent ? "Reset accent" : "Try teal accent"} />
+          </TextButton>
+        </Column>
+      </ComposeHost>
     </Demo>
   );
 }

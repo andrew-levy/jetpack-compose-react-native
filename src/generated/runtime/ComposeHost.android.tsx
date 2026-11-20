@@ -21,11 +21,12 @@ export function AutomaticComposeHost(props: Omit<ComposeHostProps, "fitContent">
   return <ComposeHost {...props} style={intrinsicStyle} fitContent />;
 }
 
-export function ComposeHost({ children, fitContent = false, style, testID }: ComposeHostProps) {
+export function ComposeHost({ children, fitContent = false, style, testID, theme }: ComposeHostProps) {
   return (
     <ComposeHostContext.Provider value>
       <NativeHost
         fitContent={fitContent}
+        theme={theme && JSON.stringify(theme)}
         testID={testID}
         collapsable={false}
         style={[fitContent ? styles.measure : styles.fill, style]}
