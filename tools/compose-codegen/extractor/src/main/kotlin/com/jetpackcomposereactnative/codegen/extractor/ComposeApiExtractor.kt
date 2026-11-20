@@ -79,7 +79,15 @@ private class ComposeApiExtractor(
 
   private fun describe(fn: KSFunctionDeclaration): Candidate? {
     val annotations = fn.annotations.mapNotNull { it.annotationType.resolve().name }.toList()
-    if (annotations.any { it == "kotlin.Deprecated" || it.substringAfterLast('.').startsWith("Experimental") }) return null
+    val function = fn.qualifiedName!!.asString()
+    val optIn = when (function) {
+      "androidx.compose.material3.MaterialExpressiveTheme" ->
+        "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi"
+      else -> null
+    }?.takeIf(annotations::contains)
+    if (annotations.any {
+        it == "kotlin.Deprecated" || (it != optIn && it.substringAfterLast('.').startsWith("Experimental"))
+      }) return null
     if (fn.returnType?.resolve()?.name != "kotlin.Unit") return null
 
     val parameters = mutableListOf<Parameter>()
@@ -121,8 +129,7 @@ private class ComposeApiExtractor(
 
     // Preserve the existing scalar props when adding reusable Compose value types.
     parameters += extraValues.take(MAX_COMPONENT_OPTIONALS - optionalValues.coerceAtMost(MAX_OPTIONAL_VALUES))
-    val function = fn.qualifiedName!!.asString()
-    val component = Component(fn.simpleName.asString(), function, parameters, children, childrenScope)
+    val component = Component(fn.simpleName.asString(), function, parameters, children, childrenScope, optIn)
     val signature = fn.parameters.joinToString { it.type.resolve().toString() }
     return Candidate(fn, component, passed, signature)
   }
@@ -320,7 +327,7 @@ private data class ValueType(val name: String, val kotlinType: String, val cases
 private data class ValueCase(val name: String, val expression: String)
 private data class Component(
   val name: String, val kotlinFunction: String, val parameters: List<Parameter>,
-  val children: Boolean, val childrenScope: String?
+  val children: Boolean, val childrenScope: String?, val optIn: String?
 )
 private data class Parameter(
   val name: String, val kind: String, val optional: Boolean, val nullable: Boolean, val scope: String? = null

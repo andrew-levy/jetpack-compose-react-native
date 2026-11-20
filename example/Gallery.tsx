@@ -4,7 +4,7 @@ import {
   AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox, ComposeHost,
   CircularProgressIndicator, Column, ElevatedButton, FilterChip,
   FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem,
-  MaterialTheme, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
+  MaterialExpressiveTheme, MaterialTheme, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
   Switch, Text, TextButton, lightColorScheme, type ComposeChain,
 } from "jetpack-compose-react-native";
 
@@ -47,13 +47,20 @@ function Demo({ title, source, showCode, children }: GalleryProps & {
 function Buttons({ showCode }: GalleryProps) {
   const [count, setCount] = useState(0);
   const [customAccent, setCustomAccent] = useState(false);
+  const [expressive, setExpressive] = useState(false);
   function increment() {
     setCount((value) => value + 1);
   }
 
+  const Theme = expressive ? MaterialExpressiveTheme : MaterialTheme;
+  const colors = customAccent ? tealColors : expressive ? undefined : defaultColors;
+  const source = expressive
+    ? '<MaterialExpressiveTheme>\n  <Button onClick={increment}><Text text="Filled" /></Button>\n</MaterialExpressiveTheme>'
+    : '<MaterialTheme colorScheme={lightColorScheme({\n  primary: "#005e54", onPrimary: "#ffffff",\n})}>\n  <Button onClick={increment}><Text text="Filled" /></Button>\n</MaterialTheme>';
+
   return (
-    <Demo title="Buttons" showCode={showCode} source={'<MaterialTheme colorScheme={lightColorScheme({\n  primary: "#005e54", onPrimary: "#ffffff",\n})}>\n  <Button onClick={increment}><Text text="Filled" /></Button>\n</MaterialTheme>'}>
-      <MaterialTheme colorScheme={customAccent ? tealColors : defaultColors}>
+    <Demo title="Buttons" showCode={showCode} source={source}>
+      <Theme colorScheme={colors}>
         <Column modifiers={fullWidth}>
           <Row>
             <Button onClick={increment}><Text text="Filled" /></Button>
@@ -72,8 +79,11 @@ function Buttons({ showCode }: GalleryProps) {
           <TextButton onClick={() => setCustomAccent(!customAccent)}>
             <Text text={customAccent ? "Reset accent" : "Try teal accent"} />
           </TextButton>
+          <TextButton onClick={() => setExpressive(!expressive)}>
+            <Text text={expressive ? "Use standard theme" : "Try Expressive theme"} />
+          </TextButton>
         </Column>
-      </MaterialTheme>
+      </Theme>
     </Demo>
   );
 }

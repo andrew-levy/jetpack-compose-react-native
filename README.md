@@ -7,7 +7,10 @@ from AndroidX, and a top-level Compose component hosts its subtree automatically
 ## Quick start
 
 Install the package or a checkout of this repository in a React Native 0.74.5
-app with the New Architecture enabled, then rebuild Android. React Native
+app with the New Architecture enabled, Android compile SDK 35, AGP 8.7.3,
+and Kotlin 2.0.21 with the matching Compose compiler Gradle plugin. Add
+`org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.21` to the root
+Android buildscript classpath, then rebuild Android. React Native
 autolinks the view managers and Fabric descriptors.
 
 ```tsx
@@ -86,7 +89,7 @@ SDK command-line tools installed and `ANDROID_HOME` set, install the required
 packages.
 
 ```sh
-sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" \
+sdkmanager "platform-tools" "platforms;android-35" "build-tools;34.0.0" "build-tools;35.0.0" \
   "ndk;26.1.10909125" "cmake;3.22.1"
 ```
 
