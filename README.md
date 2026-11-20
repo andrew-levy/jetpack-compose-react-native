@@ -40,7 +40,9 @@ for package discovery, supported argument types, and regeneration.
 
 ## Compose Gallery
 
-The [example app](example/App.tsx) has three tabs:
+<img src="docs/compose-gallery.gif" alt="Android emulator showing Material 3 controls, modifier order, source snippets, and React Native interop" width="320" />
+
+Use the three tabs in the [example app](example/App.tsx) to explore the bridge.
 
 | Tab | What to try |
 | --- | --- |
@@ -54,7 +56,7 @@ Tap **Code** to show the TypeScript used in each demo.
 
 Use Node 22, JDK 17, and an API 34 emulator or Android device. With the Android
 SDK command-line tools installed and `ANDROID_HOME` set, install the required
-packages:
+packages.
 
 ```sh
 sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" \
@@ -62,7 +64,7 @@ sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" \
 ```
 
 Start the emulator or connect a device, then run these commands from the
-repository root:
+repository root.
 
 ```sh
 adb devices
