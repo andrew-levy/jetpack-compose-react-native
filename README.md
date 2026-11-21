@@ -84,22 +84,18 @@ import { Button, MaterialExpressiveTheme, Text } from "jetpack-compose-react-nat
 
 ## Compose Gallery
 
-<img src="docs/compose-expressive.gif" alt="Animated Android comparison with the standard spinner on the left and the Material 3 Expressive morphing indicator on the right" width="320" />
-
-Open the **Expressive** tab to see both native indicators side by side.
-
-<img src="docs/compose-gallery.gif" alt="Android emulator showing Material 3 controls, modifier order, source snippets, and React Native interop" width="320" />
-
-Use the tabs in the [example app](example/App.tsx) to explore the bridge.
+Use the tabs in the [example app](example/App.tsx) to spot-check generated bindings.
 
 | Tab | What to try |
 | --- | --- |
-| **Components** | Compare standard and Expressive themes and button variants, change switches and selection controls, type into a field, and open a native alert dialog. |
-| **Expressive** | Watch the standard circular spinner and the morphing Material 3 Expressive loading indicator side by side. |
-| **Modifiers** | Reverse the padding and background chain. Compare gradients, borders, clipping, shadows, and weighted row children. |
-| **Interop** | Tap the Compose button, the React Native button, or the count itself. Odd counts insert a React Native child inside Compose and push the view below it down. |
+| **Components** | Switch between buttons, inputs, surfaces, and progress. Try the two slider thumbs, tabs, chips, and both text field styles. |
+| **Modifiers** | Swap chain order and compare gradients, borders, clipping, shadows, size, offset, layering, and scoped weight. |
+| **Overlays** | Open the bottom sheet or alert dialog. Choose a dropdown action, then undo it in the snackbar. |
+| **Interop** | Tap either button to insert or remove a React Native child in a Compose layout. |
+| **Expressive** | Compare the standard spinner and Expressive morphing indicator side by side. |
 
-Tap **Code** to show the TypeScript used in each demo.
+The **Compose Bridge** workflow publishes screenshots and individual GIFs in the
+`compose-gallery-previews` artifact. [Gallery workflow](https://github.com/andrew-levy/jetpack-compose-react-native/actions/workflows/compose-bridge.yml)
 
 ### Run the gallery
 

@@ -1,7 +1,10 @@
 import argparse
+from contextlib import contextmanager
 from pathlib import Path
 import re
 import subprocess
+import tempfile
+import threading
 import time
 import xml.etree.ElementTree as ET
 
@@ -20,16 +23,46 @@ def capture(name):
         (preview_dir / f"{name}.png").write_bytes(image)
 
 
-def capture_expressive():
+@contextmanager
+def record(name):
     if preview_dir is None:
+        yield
         return
-    frames = preview_dir / "expressive"
-    frames.mkdir(parents=True, exist_ok=True)
-    for frame in range(60):
-        started = time.monotonic()
-        image = subprocess.check_output(["adb", "exec-out", "screencap", "-p"], timeout=40)
-        (frames / f"{frame:03d}.png").write_bytes(image)
-        time.sleep(max(0, 0.1 - (time.monotonic() - started)))
+
+    preview_dir.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as directory:
+        frames = Path(directory)
+        stop = threading.Event()
+        failures = []
+
+        def sample():
+            try:
+                for index in range(96):
+                    started = time.monotonic()
+                    image = subprocess.check_output(["adb", "exec-out", "screencap", "-p"], timeout=15)
+                    (frames / f"{index:03d}.png").write_bytes(image)
+                    if stop.wait(max(0, 0.125 - (time.monotonic() - started))):
+                        break
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
+                failures.append(error)
+
+        thread = threading.Thread(target=sample)
+        thread.start()
+        try:
+            time.sleep(0.45)
+            yield
+            time.sleep(0.65)
+        finally:
+            stop.set()
+            thread.join()
+        if failures:
+            raise failures[0]
+        subprocess.run([
+            "ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-framerate", "8",
+            "-i", str(frames / "%03d.png"), "-filter_complex_threads", "1",
+            "-filter_complex", "scale=400:-2:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse",
+            "-loop", "0", str(preview_dir / f"{name}.gif"),
+        ], check=True, timeout=45)
 
 
 class ActivityRecreated(RuntimeError):
@@ -100,7 +133,7 @@ def start_gallery():
         window = activity_window()
         try:
             nodes = wait_for(
-                "Material 3 components", "Buttons", "Filled", "Button presses: 0", "Modifiers",
+                "Compose Gallery", "Buttons", "Filled", "Button presses: 0", "Modifiers",
                 window=window, timeout=35 if attempt == 0 else 90,
             )
             return nodes, window or activity_window()
@@ -113,32 +146,47 @@ def start_gallery():
 def verify():
     nodes, window = start_gallery()
     capture("01-components")
-    tap(nodes["Filled"])
-    nodes = wait_for("Button presses: 1", "Try teal accent", window=window)
-    tap(nodes["Try teal accent"])
-    nodes = wait_for("Button presses: 1", "Reset accent", "Modifiers", window=window)
-    capture("05-custom-theme")
+    with record("buttons"):
+        tap(nodes["Filled"])
+        nodes = wait_for("Button presses: 1", "Try teal accent", window=window)
+        tap(nodes["Try teal accent"])
+        nodes = wait_for("Button presses: 1", "Reset accent", "Modifiers", window=window)
+    capture("02-accent")
     tap(nodes["Reset accent"])
     nodes = wait_for("Button presses: 1", "Try teal accent", "Try Expressive theme", window=window)
     tap(nodes["Try Expressive theme"])
     nodes = wait_for("Button presses: 1", "Use standard theme", "Filled", window=window)
-    capture("06-expressive-theme")
+    capture("03-expressive-theme")
     tap(nodes["Filled"])
     nodes = wait_for("Button presses: 2", "Use standard theme", window=window)
     tap(nodes["Use standard theme"])
-    nodes = wait_for("Button presses: 2", "Try Expressive theme", "Modifiers", window=window)
+    nodes = wait_for("Button presses: 2", "Show inputs", window=window)
+
+    tap(nodes["Show inputs"])
+    nodes = wait_for("Notifications off", "Save to favorites", "Slider 35%", "Show surfaces", window=window)
+    capture("04-inputs")
+    with record("inputs"):
+        tap(nodes["Try weekly"])
+        tap(nodes["Alerts"])
+        nodes = wait_for("Notifications on", "Show surfaces", window=window)
+    tap(nodes["Show surfaces"])
+    nodes = wait_for("New messages", "Archive", "Outlined card", window=window)
+    with record("cards-and-tabs"):
+        tap(nodes["Archive"])
+        nodes = wait_for("Archived messages", "Show progress", window=window)
+    capture("05-cards-and-tabs")
+    tap(nodes["Show progress"])
+    nodes = wait_for("Determinate linear", "Determinate circular", "Contained loading indicator", "Modifiers", window=window)
+    capture("06-progress")
+    with record("progress"):
+        time.sleep(1.75)
+
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)
-    capture("02-modifiers")
-    tap(nodes["Swap order"])
-    nodes = wait_for("Padding → background", "Show source code", window=window)
-    tap(nodes["Show source code"])
-    nodes = wait_for(
-        "Padding → background", "Interop", "Show source code", window=window,
-        layout_ready=lambda labels: any("Modifier.padding(20)" in label for label in labels),
-    )
-    capture("03-source")
-    tap(nodes["Show source code"])
+    capture("07-modifiers")
+    with record("modifier-order"):
+        tap(nodes["Swap order"])
+        nodes = wait_for("Padding → background", "Interop", window=window)
     tap(nodes["Interop"])
 
     nodes = wait_for(
@@ -150,19 +198,20 @@ def verify():
         window=window,
     )
     original_foot = following_view_top(nodes)
-    tap(nodes["Tap Compose"])
-    nodes = wait_for(
-        "Tapped 1", "Tap Compose", "Tap React Native", "Odd click count", "Added by React", "Below Compose",
-        absent=("Ready", "Even click count"), window=window,
-        layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
-    )
-    capture("04-interop")
-    tap(nodes["Tap React Native"])
-    nodes = wait_for(
-        "Tapped 2", "Even click count", "Below Compose",
-        absent=("Tapped 1", "Odd click count", "Added by React"), window=window,
-        layout_ready=lambda nodes: following_view_top(nodes) == original_foot,
-    )
+    with record("mixed-children"):
+        tap(nodes["Tap Compose"])
+        nodes = wait_for(
+            "Tapped 1", "Tap Compose", "Tap React Native", "Odd click count", "Added by React", "Below Compose",
+            absent=("Ready", "Even click count"), window=window,
+            layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
+        )
+        capture("08-interop")
+        tap(nodes["Tap React Native"])
+        nodes = wait_for(
+            "Tapped 2", "Even click count", "Below Compose",
+            absent=("Tapped 1", "Odd click count", "Added by React"), window=window,
+            layout_ready=lambda nodes: following_view_top(nodes) == original_foot,
+        )
     tap(nodes["Tapped 2"])
     nodes = wait_for(
         "Tapped 3", "Odd click count", "Added by React", "Below Compose",
@@ -170,33 +219,57 @@ def verify():
         layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
     )
 
+    tap(nodes["Expressive"])
+    nodes = wait_for("Loading indicators", "Standard", "Expressive morph", "Overlays", window=window)
+    capture("09-expressive")
+    with record("expressive-loading"):
+        time.sleep(2.0)
+
+    tap(nodes["Overlays"])
+    nodes = wait_for("React Native inside Compose", "Open generated sheet", window=window)
+    capture("10-overlays")
+    with record("bottom-sheet"):
+        tap(nodes["Open generated sheet"])
+        nodes = wait_for("Native sheet state", "React Native content in the sheet", "Close generated sheet")
+        capture("11-bottom-sheet")
+        tap(nodes["Close generated sheet"])
+        nodes = wait_for("Open dialog", "Open generated sheet", absent=("Native sheet state",), window=window)
+
+    with record("alert-dialog"):
+        tap(nodes["Open dialog"])
+        nodes = wait_for("Publish draft?", "Publish")
+        capture("12-dialog")
+        tap(nodes["Publish"])
+        nodes = wait_for("Draft published", "Open menu", window=window)
+
+    with record("menu-and-snackbar"):
+        tap(nodes["Open menu"])
+        nodes = wait_for("Archive item")
+        tap(nodes["Archive item"])
+        nodes = wait_for("Change saved", "Undo", window=window)
+        capture("13-snackbar")
+        tap(nodes["Undo"])
+        wait_for("Open menu", absent=("Change saved",), window=window)
+
+
+def main():
+    animation_scale = None
     if preview_dir is not None:
         animation_scale = adb("shell", "settings", "get", "global", "animator_duration_scale").strip()
         adb("shell", "settings", "put", "global", "animator_duration_scale", "1")
     try:
-        tap(nodes["Expressive"])
-        wait_for("Material 3 Expressive", "Loading indicators", "Standard", "Expressive morph", window=window)
-        capture_expressive()
+        try:
+            verify()
+        except ActivityRecreated as error:
+            print(f"{error}. Restarting the tap sequence.", flush=True)
+            verify()
     finally:
-        if preview_dir is not None:
-            if animation_scale == "null":
-                adb("shell", "settings", "delete", "global", "animator_duration_scale")
-            else:
-                adb("shell", "settings", "put", "global", "animator_duration_scale", animation_scale)
-
-    nodes = wait_for("Bindings", window=window)
-    tap(nodes["Bindings"])
-    nodes = wait_for("React Native inside Compose", "Open generated sheet", window=window)
-    tap(nodes["Open generated sheet"])
-    nodes = wait_for("Native sheet state", "Close generated sheet")
-    tap(nodes["Close generated sheet"])
-    wait_for("React Native inside Compose", "Open generated sheet", absent=("Native sheet state",), window=window)
+        if animation_scale == "null":
+            adb("shell", "settings", "delete", "global", "animator_duration_scale")
+        elif animation_scale is not None:
+            adb("shell", "settings", "put", "global", "animator_duration_scale", animation_scale)
+    print("Verified themes, controls, tabs, modifier order, mixed children, and native overlays.")
 
 
-try:
-    verify()
-except ActivityRecreated as error:
-    print(f"{error}. Restarting the tap sequence.", flush=True)
-    verify()
-
-print("Verified standard and Expressive themes, live modifier changes, source snippets, and mixed children, insets, and native sheet state.")
+if __name__ == "__main__":
+    main()

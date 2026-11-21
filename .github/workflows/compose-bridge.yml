@@ -73,6 +73,12 @@ jobs:
           npm run build
           npm exec -- tsc -p example/tsconfig.json
           example/android/gradlew -p example/android :app:assembleRelease -PreactNativeArchitectures=x86_64
+      - name: Ensure FFmpeg is available for gallery previews
+        run: |
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
       - name: Enable Android emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
