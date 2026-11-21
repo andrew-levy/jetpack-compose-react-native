@@ -46,6 +46,7 @@ private class ComposeApiExtractor(
 ) : SymbolProcessor {
   private var generated = false
   private var valueTypes = emptyMap<String, ValueType>()
+  private var recordTypes: Map<String, RecordValue> = emptyMap()
 
   @OptIn(KspExperimental::class)
   override fun process(resolver: Resolver): List<KSAnnotated> {
@@ -53,6 +54,7 @@ private class ComposeApiExtractor(
     generated = true
 
     valueTypes = discoverValues(resolver)
+    recordTypes = discoverRecords(resolver)
     val functions = declarationsInPackages(resolver, packages)
     val declarations = functions
       .filter { it.qualifiedName != null && it.getVisibility() == Visibility.PUBLIC }
@@ -100,13 +102,57 @@ private class ComposeApiExtractor(
 
     val modifiers = discoverModifiers(modifierDeclarations, coverage)
     val factories = discoverFactories(resolver)
-    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList(), factories,
+    val usedKinds = (components.flatMap { it.parameters } + modifiers.flatMap { it.parameters }).map { it.kind }.toSet()
+    val records = recordTypes.values.filter { "record:" + it.name in usedKinds }
+    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList(), factories, records,
       discovered.sortedWith(compareBy({ it.kind }, { it.signature })),
       coverage.sortedWith(compareBy({ it.kind }, { it.signature })))
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
       .bufferedWriter().use { Gson().toJson(manifest, it) }
     logger.info("Discovered ${components.size} composable overloads and ${modifiers.size} modifier overloads")
     return emptyList()
+  }
+
+  @OptIn(KspExperimental::class)
+  private fun discoverRecords(resolver: Resolver): Map<String, RecordValue> {
+    val declarations = recordPackages.flatMap { resolver.getDeclarationsFromPackage(it).toList() }
+    val factories = declarations.filterIsInstance<KSFunctionDeclaration>()
+      .filter { fn ->
+        fn.extensionReceiver == null && fn.qualifiedName?.asString() == fn.returnType?.resolve()?.name
+      }
+      .mapNotNull { fn ->
+        val fullName = fn.qualifiedName?.asString() ?: return@mapNotNull null
+        recordValue(fn, fullName)
+      }
+    val constructors = declarations.filterIsInstance<KSClassDeclaration>().mapNotNull { type ->
+      val fullName = type.qualifiedName?.asString() ?: return@mapNotNull null
+      if (type.getVisibility() != Visibility.PUBLIC || type.classKind != ClassKind.CLASS ||
+        type.typeParameters.isNotEmpty() || type.modifiers.any { it.name == "ABSTRACT" }) return@mapNotNull null
+      val constructor = type.primaryConstructor ?: return@mapNotNull null
+      val properties = type.getAllProperties().filter { !it.isMutable && it.getVisibility() == Visibility.PUBLIC }
+        .map { it.simpleName.asString() }.toSet()
+      if (constructor.parameters.any { it.name?.asString() !in properties }) return@mapNotNull null
+      recordValue(constructor, fullName)
+    }
+    val candidates = (factories + constructors).filter { it.kotlinType !in valueKinds && it.kotlinType !in componentValueKinds }
+    return candidates.groupBy { it.kotlinType }.toSortedMap().mapNotNull { (type, options) ->
+      val width = options.maxOf { it.fields.size }
+      val binding = options.filter { it.fields.size == width }.distinct().singleOrNull()
+      binding?.let { type to it }
+    }.toMap()
+  }
+
+  private fun recordValue(fn: KSFunctionDeclaration, type: String): RecordValue? {
+    if (fn.getVisibility() != Visibility.PUBLIC || fn.isDeprecated() || fn.typeParameters.isNotEmpty() ||
+      fn.parameters.isEmpty() || fn.optInMarkers().isNotEmpty()) return null
+    val fields = fn.parameters.map { parameter ->
+      val label = parameter.name?.asString() ?: return null
+      val resolved = parameter.type.resolve()
+      if (parameter.hasDefault || parameter.isVararg || resolved.isMarkedNullable) return null
+      val kind = valueKinds[resolved.name]?.takeIf { it in recordFieldKinds } ?: return null
+      Parameter(label, kind, optional = false, nullable = false)
+    }
+    return RecordValue("Compose" + type.substringAfterLast('.'), type, fields)
   }
 
   private fun describe(
@@ -159,12 +205,17 @@ private class ComposeApiExtractor(
         childrenScope = type.contentScope()
         continue
       }
+      val publicName = when {
+        name == "style" && type.name == "androidx.compose.ui.text.TextStyle" -> "composeTextStyle"
+        name == "style" && type.name == "androidx.compose.foundation.style.Style" -> "composeStyle"
+        else -> name
+      }
       val kind = when {
-        parameter.isVararg || name in reservedProps -> null
+        parameter.isVararg || publicName in reservedProps -> null
         isSlot -> "slot"
         else -> valueKinds[type.name] ?: componentValueKinds[type.name]
           ?: drawingValueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
-          ?: type.rangeKind() ?: parameter.producerKind(type)
+          ?: type.recordKind() ?: type.rangeKind() ?: parameter.producerKind(type)
       }
       if (kind == null) {
         omitted += OmittedParameter(name, type.signatureName(), when {
@@ -174,8 +225,8 @@ private class ComposeApiExtractor(
         }, !parameter.hasDefault && !parameter.isVararg)
         continue
       }
-      supported += Parameter(name, kind, parameter.hasDefault, type.nullability == Nullability.NULLABLE,
-        scope = if (isSlot) type.contentScope() else null)
+      supported += Parameter(publicName, kind, parameter.hasDefault, type.nullability == Nullability.NULLABLE,
+        scope = if (isSlot) type.contentScope() else null, nativeName = name.takeIf { it != publicName })
     }
     if (omitted.any { it.required }) return omit("adapterRequired", "Required parameter cannot cross the bridge", omitted)
 
@@ -190,7 +241,10 @@ private class ComposeApiExtractor(
       childrenScope == PADDING_VALUES || childrenScope in lazyBuilderScopes
     val forms = callForms(optional, newlyBridgeable)
     val (masks, blocked) = forms.masks.partition { mask ->
-      val passed = component.passed(mask).associate { it.name to types.getValue(it.name) }.toMutableMap()
+      val passed = component.passed(mask).associate { parameter ->
+        val name = parameter.nativeName ?: parameter.name
+        name to types.getValue(name)
+      }.toMutableMap()
       childrenParameter?.let { passed[it] = types.getValue(it) }
       overloads.none { other ->
         other != fn && !other.isDeprecated() && other.extensionReceiver?.resolve()?.name == receiver &&
@@ -276,7 +330,7 @@ private class ComposeApiExtractor(
             parameter.isVararg -> null
             qualifiedName == "androidx.compose.ui.layout.layoutId" && name == "layoutId" && type.name == "kotlin.Any" -> "string"
             else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
-              ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
+              ?: type.recordKind() ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
           }
           if (kind == null || kind == "modifier") {
             val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
@@ -317,6 +371,26 @@ private class ComposeApiExtractor(
   )
 
   private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
+    val added = optional.filter { it.kind in capabilityBridgeKinds || it.kind.startsWith("record:") || it.nativeName != null }
+    if (added.isEmpty()) return previousCallForms(optional, newlyBridgeable)
+    val old = optional - added.toSet()
+    val previous = previousCallForms(old, newlyBridgeable)
+    require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
+    val total = 1 shl optional.size
+    if (total <= 1024) return CallForms((0 until total).toList(), 0)
+
+    fun bit(parameter: Parameter) = 1 shl optional.indexOf(parameter)
+    val previousMasks = previous.masks.map { mask ->
+      old.filterIndexed { index, _ -> mask and (1 shl index) != 0 }.sumOf(::bit)
+    }
+    val core = (old.filter { it.kind in preferredComponentKinds }.take(4).toSet() + old).take(6)
+    val coreMasks = core.fold(listOf(0)) { masks, parameter -> masks + masks.map { it or bit(parameter) } }
+    val newMasks = added.flatMap { parameter -> coreMasks.map { it or bit(parameter) } }
+    val considered = (previousMasks + newMasks + (total - 1)).distinct().sorted()
+    return CallForms(considered, total - considered.size)
+  }
+
+  private fun previousCallForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
     require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
     val total = 1 shl optional.size
     if (total <= if (newlyBridgeable) 128 else 1024) return CallForms((0 until total).toList(), 0)
@@ -454,6 +528,8 @@ private class ComposeApiExtractor(
     }
   }
 
+  private fun KSType.recordKind(): String? = recordTypes[name]?.let { "record:" + it.name }
+
   private fun KSType.rangeKind(): String? =
     if (name == "kotlin.ranges.ClosedFloatingPointRange" &&
       arguments.singleOrNull()?.type?.resolve()?.name == "kotlin.Float") "floatRange" else null
@@ -488,6 +564,7 @@ private class ComposeApiExtractor(
         "androidx.compose.ui.layout.LayoutCoordinates" ->
           if (argument.isMarkedNullable) "eventNullableLayoutPosition" else "eventLayoutPosition"
         "androidx.compose.ui.focus.FocusState" -> "eventFocusState"
+        "androidx.compose.ui.text.input.TextFieldValue" -> "eventTextFieldValue"
         else -> if (argument?.rangeKind() == "floatRange") "eventFloatRange" else null
       }
       else -> null
@@ -495,8 +572,12 @@ private class ComposeApiExtractor(
   }
 
   private fun KSType.modifierReceiverKind(): String? {
-    if (name != "kotlin.Function1" || arguments.last().type?.resolve()?.name != "kotlin.Unit") return null
-    return when (arguments.first().type?.resolve()?.name) {
+    if (name != "kotlin.Function1") return null
+    val argument = arguments.first().type?.resolve()?.name
+    val result = arguments.last().type?.resolve()?.name
+    if (argument == "androidx.compose.ui.input.key.KeyEvent" && result == "kotlin.Boolean") return "keyPolicy"
+    if (result != "kotlin.Unit") return null
+    return when (argument) {
       "androidx.compose.ui.focus.FocusProperties" -> "focusProperties"
       "androidx.compose.ui.semantics.SemanticsPropertyReceiver" -> "semantics"
       else -> null
@@ -520,7 +601,8 @@ private fun String.inputType(): String = when {
   this == "color" || startsWith("Compose") -> "string"
   this == "floatRange" -> "tuple"
   this == "alignmentLine" -> "string"
-  this in objectKinds -> "object"
+  startsWith("record:") -> "object"
+  this in objectKinds || this in capabilityBridgeKinds && !startsWith("event") -> "object"
   startsWith("event") -> "function"
   else -> this
 }
@@ -530,6 +612,9 @@ private val objectKinds = setOf("colorScheme", "paddingValues", "windowInsets", 
   "timePickerState", "swipeToDismissState", "bottomSheetScaffoldState", "scrollState", "gridCells", "staggeredGridCells",
   "lazyListState", "lazyGridState", "lazyStaggeredGridState", "pagerState", "textFieldState", "focusProperties", "semantics", "searchBarState", "basicTooltipState", "tooltipState",
   "popupPosition", "dateFormatter", "snackbarHostState")
+
+private val recordPackages = listOf("androidx.compose.ui.geometry", "androidx.compose.ui.graphics", "androidx.compose.ui.unit")
+private val recordFieldKinds = setOf("float", "double", "int", "dp", "sp", "boolean")
 
 private const val COLOR = "androidx.compose.ui.graphics.Color"
 private val factoryTypes = setOf("androidx.compose.material3.ColorScheme")
@@ -541,6 +626,10 @@ private val expandedBridgeKinds = setOf(
   "alignmentLine", "focusProperties", "semantics", "ComposePointerIcon", "ComposeDisplayMode", "long",
   "eventLayoutSize", "eventLayoutBounds", "eventLayoutPosition", "eventNullableLayoutPosition", "eventFocusState",
   "ComposeToggleableState", "ComposeOrientation", "ComposeIntrinsicSize", "ComposeContentScale"
+)
+private val capabilityBridgeKinds = setOf(
+  "animationSpec", "enterTransition", "exitTransition", "focusRequester", "bringIntoViewRequester",
+  "nestedScrollConnection", "keyPolicy", "textFieldValue", "eventTextFieldValue", "foundationStyle"
 )
 private val preferredComponentKinds = setOf("int", "float", "double", "dp", "sp", "string", "boolean", "color",
   "colorScheme", "slot", "event", "eventString", "eventBoolean", "eventInt", "eventDouble")
@@ -560,6 +649,7 @@ private val drawingValueKinds = mapOf(
 )
 private val modifierValueKinds = drawingValueKinds + mapOf(
   "androidx.compose.foundation.ScrollState" to "scrollState",
+  "androidx.compose.foundation.relocation.BringIntoViewRequester" to "bringIntoViewRequester",
   "androidx.compose.ui.layout.AlignmentLine" to "alignmentLine",
   "androidx.compose.ui.layout.HorizontalAlignmentLine" to "alignmentLine"
 )
@@ -643,6 +733,13 @@ private val valueKinds = mapOf(
   "androidx.compose.foundation.layout.WindowInsets" to "windowInsets",
   "androidx.compose.ui.text.AnnotatedString" to "annotatedString",
   "androidx.compose.ui.text.TextStyle" to "textStyle",
+  "androidx.compose.ui.text.input.TextFieldValue" to "textFieldValue",
+  "androidx.compose.ui.focus.FocusRequester" to "focusRequester",
+  "androidx.compose.ui.input.nestedscroll.NestedScrollConnection" to "nestedScrollConnection",
+  "androidx.compose.animation.core.AnimationSpec" to "animationSpec",
+  "androidx.compose.animation.core.FiniteAnimationSpec" to "animationSpec",
+  "androidx.compose.animation.EnterTransition" to "enterTransition",
+  "androidx.compose.animation.ExitTransition" to "exitTransition",
   "androidx.compose.ui.graphics.painter.Painter" to "painter",
   "androidx.compose.ui.unit.TextUnit" to "sp",
   COLOR to "color"
@@ -653,6 +750,7 @@ private data class Manifest(
   val modifiers: List<ModifierOverload>,
   val values: List<ValueType>,
   val factories: List<ValueFactory>,
+  val records: List<RecordValue>,
   val discovered: List<Discovery>,
   val coverage: List<Coverage>
 )
@@ -667,6 +765,7 @@ private data class ModifierOverload(
 )
 private data class ValueSource(val name: String, val owners: List<String>)
 private data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>, val optIns: List<String>)
+private data class RecordValue(val name: String, val kotlinType: String, val fields: List<Parameter>)
 private data class ValueCase(val name: String, val expression: String)
 private data class Component(
   val signature: String,
@@ -680,7 +779,8 @@ private data class Component(
   }
 }
 private data class Parameter(
-  val name: String, val kind: String, val optional: Boolean, val nullable: Boolean, val scope: String? = null
+  val name: String, val kind: String, val optional: Boolean, val nullable: Boolean, val scope: String? = null,
+  val nativeName: String? = null
 )
 private data class Candidate(
   val declaration: KSFunctionDeclaration,

@@ -1,0 +1,79 @@
+package com.jetpackcomposereactnative.generated
+
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.focus.FocusRequester
+import java.lang.ref.WeakReference
+import org.json.JSONObject
+
+internal class ComposeNativeHandles {
+  private val entries = mutableMapOf<Pair<String, String>, WeakReference<Entry<*>>>()
+
+  internal class Entry<T : Any>(val value: T) {
+    private var revision = 0L
+
+    fun claim(next: Long): Boolean {
+      if (next <= revision) return false
+      revision = next
+      return true
+    }
+  }
+
+  @Suppress("UNCHECKED_CAST")
+  fun <T : Any> resolve(kind: String, token: String, factory: () -> T): Entry<T> {
+    entries.entries.removeAll { it.value.get() == null }
+    val key = kind to token
+    val existing = entries[key]?.get()
+    if (existing != null) return existing as Entry<T>
+    return Entry(factory()).also { entries[key] = WeakReference(it) }
+  }
+}
+
+internal val LocalComposeNativeHandles = staticCompositionLocalOf<ComposeNativeHandles> {
+  error("Compose native handles must be used inside a Compose host")
+}
+
+@Composable
+private fun <T : Any> JSONObject.rememberHandle(
+  kind: String,
+  factory: () -> T,
+  execute: suspend (T, String) -> Unit,
+): T {
+  require(getString("kind") == kind) { "Expected Compose handle of kind $kind" }
+  val token = getString("token")
+  val store = LocalComposeNativeHandles.current
+  val entry = remember(store, kind, token) { store.resolve(kind, token, factory) }
+  val command = optJSONObject("command")
+  val revision = command?.getLong("revision")
+  val operation = command?.getString("operation")
+  LaunchedEffect(entry, revision) {
+    if (revision != null && operation != null) {
+      // Wait until modifier nodes from the same commit are attached.
+      withFrameNanos { }
+      if (entry.claim(revision)) execute(entry.value, operation)
+    }
+  }
+  return entry.value
+}
+
+@Composable
+internal fun JSONObject.rememberComposeFocusRequester(): FocusRequester =
+  rememberHandle("focusRequester", { FocusRequester() }) { requester, operation ->
+    when (operation) {
+      "request" -> requester.requestFocus()
+      "capture" -> requester.captureFocus()
+      "free" -> requester.freeFocus()
+    }
+  }
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+internal fun JSONObject.rememberComposeBringIntoViewRequester(): BringIntoViewRequester =
+  rememberHandle("bringIntoViewRequester", { BringIntoViewRequester() }) { requester, operation ->
+    if (operation == "bringIntoView") requester.bringIntoView()
+  }

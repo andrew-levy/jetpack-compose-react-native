@@ -62,3 +62,40 @@ export type ComposeSearchBarState = { initiallyExpanded?: boolean };
 export type ComposeTooltipState = { initiallyVisible?: boolean; persistent?: boolean };
 export type ComposePopupPosition = { spacing?: number };
 export type ComposeSnackbarHostState = { message?: string };
+
+/** Fractions of the available delta or velocity consumed natively, from zero to one. */
+export type ComposeAxisConsumption = { x?: number; y?: number };
+export type ComposeNestedScrollConnection = {
+  preScroll?: ComposeAxisConsumption;
+  postScroll?: ComposeAxisConsumption;
+  preFling?: ComposeAxisConsumption;
+  postFling?: ComposeAxisConsumption;
+  userInputOnly?: boolean;
+};
+
+/** Android key codes consumed synchronously by this modifier. */
+export type ComposeKeyPolicy = { keyCodes: readonly number[]; event?: "down" | "up" | "both" };
+
+export type ComposeEasing = "linear" | "fastOutSlowIn" | "linearOutSlowIn" | "fastOutLinearIn"
+  | readonly [x1: number, y1: number, x2: number, y2: number];
+
+export type ComposeAnimationSpec =
+  | { type: "spring"; dampingRatio?: number; stiffness?: number }
+  | { type: "tween"; durationMillis?: number; delayMillis?: number; easing?: ComposeEasing }
+  | { type: "snap"; delayMillis?: number };
+
+export type ComposeVisibilityTransition =
+  | { type: "none" }
+  | { type: "fade"; alpha?: number; animationSpec?: ComposeAnimationSpec };
+
+export type ComposeTextRange = { start: number; end: number };
+export type ComposeTextFieldValue = {
+  text: string;
+  selection?: ComposeTextRange;
+  composition?: ComposeTextRange | null;
+};
+export type ComposeTextFieldSnapshot = {
+  text: string;
+  selection: ComposeTextRange;
+  composition: ComposeTextRange | null;
+};

@@ -8,6 +8,1901 @@ import androidx.compose.material3.PlainTooltip as composeScoped0
 import androidx.compose.material3.RichTooltip as composeScoped1
 import androidx.compose.material3.SegmentedButton as composeScoped2
 
+// androidx.compose.material3.CenterAlignedTopAppBar(title: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, navigationIcon: kotlin.Function0<kotlin.Unit>, actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, expandedHeight: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, colors: androidx.compose.material3.TopAppBarColors, scrollBehavior: androidx.compose.material3.TopAppBarScrollBehavior?)
+internal object RendererCenterAlignedTopAppBar {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("navigationIcon")) 1 else 0) +
+      (if (node.has("actions")) 2 else 0) +
+      (if (node.has("expandedHeight")) 4 else 0) +
+      (if (node.has("windowInsets")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+      )
+      2 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+      )
+      3 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+      )
+      4 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `expandedHeight` = node.number("expandedHeight").dp,
+      )
+      5 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `expandedHeight` = node.number("expandedHeight").dp,
+      )
+      6 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+        `expandedHeight` = node.number("expandedHeight").dp,
+      )
+      7 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+        `expandedHeight` = node.number("expandedHeight").dp,
+      )
+      8 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      9 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      10 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      11 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      12 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `expandedHeight` = node.number("expandedHeight").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      13 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `expandedHeight` = node.number("expandedHeight").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      14 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+        `expandedHeight` = node.number("expandedHeight").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      15 -> androidx.compose.material3.CenterAlignedTopAppBar(
+        `title` = { RenderComposeChildren(node.slot("title")) },
+        `modifier` = node.modifier("modifier", scope),
+        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
+        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
+        `expandedHeight` = node.number("expandedHeight").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Checkbox(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>?, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.CheckboxColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
+internal object RendererCheckbox {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.Checkbox(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.Checkbox(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.CircularProgressIndicator(modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, strokeWidth: androidx.compose.ui.unit.Dp, trackColor: androidx.compose.ui.graphics.Color, strokeCap: androidx.compose.ui.graphics.StrokeCap, gapSize: androidx.compose.ui.unit.Dp)
+internal object RendererCircularProgressIndicator {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("color")) 1 else 0) +
+      (if (node.has("strokeWidth")) 2 else 0) +
+      (if (node.has("trackColor")) 4 else 0) +
+      (if (node.has("gapSize")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+      )
+      2 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+      )
+      3 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+      )
+      4 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+      )
+      5 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+      )
+      6 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+      )
+      7 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+      )
+      8 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      9 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      10 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `gapSize` = node.number("gapSize").dp,
+      )
+      11 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `gapSize` = node.number("gapSize").dp,
+      )
+      12 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      13 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      14 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      15 -> androidx.compose.material3.CircularProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.CircularProgressIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, strokeWidth: androidx.compose.ui.unit.Dp, trackColor: androidx.compose.ui.graphics.Color, strokeCap: androidx.compose.ui.graphics.StrokeCap, gapSize: androidx.compose.ui.unit.Dp)
+internal object RendererCircularProgressIndicator_1 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("color")) 1 else 0) +
+      (if (node.has("strokeWidth")) 2 else 0) +
+      (if (node.has("trackColor")) 4 else 0) +
+      (if (node.has("gapSize")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+      )
+      2 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+      )
+      3 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+      )
+      4 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+      )
+      5 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+      )
+      6 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+      )
+      7 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+      )
+      8 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      9 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      10 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `gapSize` = node.number("gapSize").dp,
+      )
+      11 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `gapSize` = node.number("gapSize").dp,
+      )
+      12 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      13 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      14 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      15 -> androidx.compose.material3.CircularProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `strokeWidth` = node.number("strokeWidth").dp,
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.CircularWavyProgressIndicator(modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, trackColor: androidx.compose.ui.graphics.Color, stroke: androidx.compose.ui.graphics.drawscope.Stroke, trackStroke: androidx.compose.ui.graphics.drawscope.Stroke, gapSize: androidx.compose.ui.unit.Dp, amplitude: kotlin.Float, wavelength: androidx.compose.ui.unit.Dp, waveSpeed: androidx.compose.ui.unit.Dp)
+internal object RendererCircularWavyProgressIndicator {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("color")) 1 else 0) +
+      (if (node.has("trackColor")) 2 else 0) +
+      (if (node.has("gapSize")) 4 else 0) +
+      (if (node.has("amplitude")) 8 else 0) +
+      (if (node.has("wavelength")) 16 else 0) +
+      (if (node.has("waveSpeed")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderCircularWavyProgressIndicatorGroup0(node, scope, mask)
+      1 -> renderCircularWavyProgressIndicatorGroup1(node, scope, mask)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  private fun renderCircularWavyProgressIndicatorGroup0(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      0 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+      )
+      2 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+      )
+      3 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+      )
+      4 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      5 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      6 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      7 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      8 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      9 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      10 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      11 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      12 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      13 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      14 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      15 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+      )
+      16 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      17 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      18 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      19 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      20 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      21 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      22 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      23 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      24 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      25 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      26 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      27 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      28 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      29 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      30 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      31 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  private fun renderCircularWavyProgressIndicatorGroup1(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      32 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      33 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      34 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      35 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      36 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      37 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      38 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      39 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      40 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      41 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      42 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      43 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      44 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      45 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      46 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      47 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      48 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      49 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      50 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      51 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      52 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      53 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      54 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      55 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      56 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      57 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      58 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      59 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      60 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      61 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      62 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      63 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `amplitude` = node.number("amplitude").toFloat(),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.CircularWavyProgressIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, trackColor: androidx.compose.ui.graphics.Color, stroke: androidx.compose.ui.graphics.drawscope.Stroke, trackStroke: androidx.compose.ui.graphics.drawscope.Stroke, gapSize: androidx.compose.ui.unit.Dp, amplitude: kotlin.Function1<kotlin.Float, kotlin.Float>, wavelength: androidx.compose.ui.unit.Dp, waveSpeed: androidx.compose.ui.unit.Dp)
+internal object RendererCircularWavyProgressIndicator_1 {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("color")) 1 else 0) +
+      (if (node.has("trackColor")) 2 else 0) +
+      (if (node.has("gapSize")) 4 else 0) +
+      (if (node.has("wavelength")) 8 else 0) +
+      (if (node.has("waveSpeed")) 16 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+      )
+      2 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+      )
+      3 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+      )
+      4 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      5 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      6 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      7 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+      )
+      8 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      9 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      10 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      11 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+      )
+      12 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      13 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      14 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      15 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+      )
+      16 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      17 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      18 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      19 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      20 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      21 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      22 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      23 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      24 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      25 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      26 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      27 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      28 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      29 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      30 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      31 -> androidx.compose.material3.CircularWavyProgressIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `color` = node.color("color"),
+        `trackColor` = node.color("trackColor"),
+        `gapSize` = node.number("gapSize").dp,
+        `wavelength` = node.number("wavelength").dp,
+        `waveSpeed` = node.number("waveSpeed").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.foundation.text.ClickableText(text: androidx.compose.ui.text.AnnotatedString, modifier: androidx.compose.ui.Modifier, style: androidx.compose.ui.text.TextStyle, softWrap: kotlin.Boolean, overflow: androidx.compose.ui.text.style.TextOverflow, maxLines: kotlin.Int, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, onClick: kotlin.Function1<kotlin.Int, kotlin.Unit>)
+internal object RendererClickableText {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("composeTextStyle")) 1 else 0) +
+      (if (node.has("softWrap")) 2 else 0) +
+      (if (node.has("overflow")) 4 else 0) +
+      (if (node.has("maxLines")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      1 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      2 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      3 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      4 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      5 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      6 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      7 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      8 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      9 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      10 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      11 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      12 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      13 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      14 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      15 -> androidx.compose.foundation.text.ClickableText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
+        `onClick` = { value: Int -> node.emit("onClick", value) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.foundation.layout.Column(modifier: androidx.compose.ui.Modifier, verticalArrangement: androidx.compose.foundation.layout.Arrangement.Vertical, horizontalAlignment: androidx.compose.ui.Alignment.Horizontal, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererColumn {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("verticalArrangement")) 1 else 0) +
+      (if (node.has("horizontalAlignment")) 2 else 0)
+    when (mask) {
+      0 -> androidx.compose.foundation.layout.Column(
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.foundation.layout.Column(
+        `modifier` = node.modifier("modifier", scope),
+        `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.foundation.layout.Column(
+        `modifier` = node.modifier("modifier", scope),
+        `horizontalAlignment` = toComposeHorizontalAlignment(node.string("horizontalAlignment")),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.foundation.layout.Column(
+        `modifier` = node.modifier("modifier", scope),
+        `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
+        `horizontalAlignment` = toComposeHorizontalAlignment(node.string("horizontalAlignment")),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.runtime.CompositionLocalProvider(vararg values: androidx.compose.runtime.ProvidedValue<*>, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererCompositionLocalProvider {
+  @Composable
+  fun render(node: ComposeNode) {
+    androidx.compose.runtime.CompositionLocalProvider(
+      content = { RenderComposeChildren(node.children) },
+    )
+  }
+}
+
+// androidx.compose.material3.ContainedLoadingIndicator(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, indicatorColor: androidx.compose.ui.graphics.Color, containerShape: androidx.compose.ui.graphics.Shape, polygons: kotlin.collections.List<androidx.graphics.shapes.RoundedPolygon>)
+internal object RendererContainedLoadingIndicator {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("containerColor")) 1 else 0) +
+      (if (node.has("indicatorColor")) 2 else 0) +
+      (if (node.has("containerShape")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+      )
+      2 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      3 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      4 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      5 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      6 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      7 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.ContainedLoadingIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, indicatorColor: androidx.compose.ui.graphics.Color, containerShape: androidx.compose.ui.graphics.Shape, polygons: kotlin.collections.List<androidx.graphics.shapes.RoundedPolygon>)
+internal object RendererContainedLoadingIndicator_1 {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("containerColor")) 1 else 0) +
+      (if (node.has("indicatorColor")) 2 else 0) +
+      (if (node.has("containerShape")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+      )
+      2 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      3 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      4 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      5 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      6 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      7 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePicker(state: androidx.compose.material3.DatePickerState, modifier: androidx.compose.ui.Modifier, dateFormatter: androidx.compose.material3.DatePickerFormatter, colors: androidx.compose.material3.DatePickerColors, title: kotlin.Function0<kotlin.Unit>?, headline: kotlin.Function0<kotlin.Unit>?, showModeToggle: kotlin.Boolean, focusRequester: androidx.compose.ui.focus.FocusRequester?)
+internal object RendererDatePicker {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeDatePickerState() else null
+    val mask = (if (node.has("dateFormatter")) 1 else 0) +
+      (if (node.has("title")) 2 else 0) +
+      (if (node.has("headline")) 4 else 0) +
+      (if (node.has("showModeToggle")) 8 else 0) +
+      (if (node.has("focusRequester")) 16 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+      )
+      2 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+      )
+      3 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+      )
+      4 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      5 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      6 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      7 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      8 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      9 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      10 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      11 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      12 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      13 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      14 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      15 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      16 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      17 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      18 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      19 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      20 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      21 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      22 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      23 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      24 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      25 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      26 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      27 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      28 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      29 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      30 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      31 -> androidx.compose.material3.DatePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePickerDialog(onDismissRequest: kotlin.Function0<kotlin.Unit>, confirmButton: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, dismissButton: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, tonalElevation: androidx.compose.ui.unit.Dp, colors: androidx.compose.material3.DatePickerColors, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererDatePickerDialog {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("dismissButton")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("tonalElevation")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(selectedDateMillis: kotlin.Long?, displayMode: androidx.compose.material3.DisplayMode, dateFormatter: androidx.compose.material3.DatePickerFormatter, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDatePickerHeadline {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(
+        `selectedDateMillis` = if (node.isNull("selectedDateMillis")) null else (node.number("selectedDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(
+        `selectedDateMillis` = if (node.isNull("selectedDateMillis")) null else (node.number("selectedDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePickerDefaults.DatePickerTitle(displayMode: androidx.compose.material3.DisplayMode, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDatePickerTitle {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePickerDefaults.DatePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DatePickerDefaults.DatePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DateRangePicker(state: androidx.compose.material3.DateRangePickerState, modifier: androidx.compose.ui.Modifier, dateFormatter: androidx.compose.material3.DatePickerFormatter, colors: androidx.compose.material3.DatePickerColors, title: kotlin.Function0<kotlin.Unit>?, headline: kotlin.Function0<kotlin.Unit>?, showModeToggle: kotlin.Boolean, focusRequester: androidx.compose.ui.focus.FocusRequester?)
+internal object RendererDateRangePicker {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeDateRangePickerState() else null
+    val mask = (if (node.has("dateFormatter")) 1 else 0) +
+      (if (node.has("title")) 2 else 0) +
+      (if (node.has("headline")) 4 else 0) +
+      (if (node.has("showModeToggle")) 8 else 0) +
+      (if (node.has("focusRequester")) 16 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+      )
+      2 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+      )
+      3 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+      )
+      4 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      5 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      6 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      7 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+      )
+      8 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      9 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      10 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      11 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      12 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      13 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      14 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      15 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+      )
+      16 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      17 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      18 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      19 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      20 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      21 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      22 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      23 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      24 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      25 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      26 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      27 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      28 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      29 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      30 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      31 -> androidx.compose.material3.DateRangePicker(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
+        `showModeToggle` = node.boolean("showModeToggle"),
+        `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(selectedStartDateMillis: kotlin.Long?, selectedEndDateMillis: kotlin.Long?, displayMode: androidx.compose.material3.DisplayMode, dateFormatter: androidx.compose.material3.DatePickerFormatter, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDateRangePickerHeadline {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(
+        `selectedStartDateMillis` = if (node.isNull("selectedStartDateMillis")) null else (node.number("selectedStartDateMillis").toLong()),
+        `selectedEndDateMillis` = if (node.isNull("selectedEndDateMillis")) null else (node.number("selectedEndDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(
+        `selectedStartDateMillis` = if (node.isNull("selectedStartDateMillis")) null else (node.number("selectedStartDateMillis").toLong()),
+        `selectedEndDateMillis` = if (node.isNull("selectedEndDateMillis")) null else (node.number("selectedEndDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(displayMode: androidx.compose.material3.DisplayMode, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDateRangePickerTitle {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.ui.window.Dialog(onDismissRequest: kotlin.Function0<kotlin.Unit>, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererDialog {
+  @Composable
+  fun render(node: ComposeNode) {
+    androidx.compose.ui.window.Dialog(
+      `onDismissRequest` = { node.emit("onDismissRequest") },
+      content = { RenderComposeChildren(node.children) },
+    )
+  }
+}
+
+// androidx.compose.foundation.text.selection.DisableSelection(content: kotlin.Function0<kotlin.Unit>)
+internal object RendererDisableSelection {
+  @Composable
+  fun render(node: ComposeNode) {
+    androidx.compose.foundation.text.selection.DisableSelection(
+      content = { RenderComposeChildren(node.children) },
+    )
+  }
+}
+
 // androidx.compose.material3.DismissibleDrawerSheet(modifier: androidx.compose.ui.Modifier, drawerShape: androidx.compose.ui.graphics.Shape, drawerContainerColor: androidx.compose.ui.graphics.Color, drawerContentColor: androidx.compose.ui.graphics.Color, drawerTonalElevation: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
 internal object RendererDismissibleDrawerSheet {
   @Composable
@@ -462,10 +2357,11 @@ internal object RendererDragHandle {
 internal object RendererDropdownMenu {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("shape")) 1 else 0) +
-      (if (node.has("containerColor")) 2 else 0) +
-      (if (node.has("tonalElevation")) 4 else 0) +
-      (if (node.has("shadowElevation")) 8 else 0)
+    val mask = (if (node.has("offset")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("containerColor")) 4 else 0) +
+      (if (node.has("tonalElevation")) 8 else 0) +
+      (if (node.has("shadowElevation")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
@@ -477,97 +2373,210 @@ internal object RendererDropdownMenu {
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
         content = { RenderComposeChildren(node.children, this) },
       )
       2 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
+        `shape` = node.arguments().shape("shape"),
         content = { RenderComposeChildren(node.children, this) },
       )
       3 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
         `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
         content = { RenderComposeChildren(node.children, this) },
       )
       4 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
+        `containerColor` = node.color("containerColor"),
         content = { RenderComposeChildren(node.children, this) },
       )
       5 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `containerColor` = node.color("containerColor"),
         content = { RenderComposeChildren(node.children, this) },
       )
       6 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
         `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       7 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
         `shape` = node.arguments().shape("shape"),
         `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       8 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `shadowElevation` = node.number("shadowElevation").dp,
+        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       9 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `shadowElevation` = node.number("shadowElevation").dp,
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       10 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `shadowElevation` = node.number("shadowElevation").dp,
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       11 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
         `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `shadowElevation` = node.number("shadowElevation").dp,
+        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       12 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      16 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      17 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      18 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      19 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      20 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      21 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      22 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      23 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      24 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
-      13 -> androidx.compose.material3.DropdownMenu(
+      25 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      26 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
@@ -576,7 +2585,17 @@ internal object RendererDropdownMenu {
         `shadowElevation` = node.number("shadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
-      14 -> androidx.compose.material3.DropdownMenu(
+      27 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      28 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
@@ -585,10 +2604,31 @@ internal object RendererDropdownMenu {
         `shadowElevation` = node.number("shadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
-      15 -> androidx.compose.material3.DropdownMenu(
+      29 -> androidx.compose.material3.DropdownMenu(
         `expanded` = node.boolean("expanded"),
         `onDismissRequest` = { node.emit("onDismissRequest") },
         `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      30 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      31 -> androidx.compose.material3.DropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `offset` = node.jsonObject("offset").decodeComposeDpOffset(),
         `shape` = node.arguments().shape("shape"),
         `containerColor` = node.color("containerColor"),
         `tonalElevation` = node.number("tonalElevation").dp,
@@ -3987,8 +6027,9 @@ internal object RendererHorizontalFloatingToolbar_1 {
   fun render(node: ComposeNode, scope: Any?) {
     val mask = (if (node.has("contentPadding")) 1 else 0) +
       (if (node.has("shape")) 2 else 0) +
-      (if (node.has("expandedShadowElevation")) 4 else 0) +
-      (if (node.has("collapsedShadowElevation")) 8 else 0)
+      (if (node.has("animationSpec")) 4 else 0) +
+      (if (node.has("expandedShadowElevation")) 8 else 0) +
+      (if (node.has("collapsedShadowElevation")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.material3.HorizontalFloatingToolbar(
         `expanded` = node.boolean("expanded"),
@@ -4022,7 +6063,7 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `expanded` = node.boolean("expanded"),
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
-        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         content = { RenderComposeChildren(node.children, this) },
       )
       5 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4030,7 +6071,7 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         content = { RenderComposeChildren(node.children, this) },
       )
       6 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4038,7 +6079,7 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
-        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         content = { RenderComposeChildren(node.children, this) },
       )
       7 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4047,14 +6088,14 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `modifier` = node.modifier("modifier", scope),
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `shape` = node.arguments().shape("shape"),
-        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         content = { RenderComposeChildren(node.children, this) },
       )
       8 -> androidx.compose.material3.HorizontalFloatingToolbar(
         `expanded` = node.boolean("expanded"),
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       9 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4062,7 +6103,7 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       10 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4070,7 +6111,7 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       11 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4079,15 +6120,15 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `modifier` = node.modifier("modifier", scope),
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `shape` = node.arguments().shape("shape"),
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       12 -> androidx.compose.material3.HorizontalFloatingToolbar(
         `expanded` = node.boolean("expanded"),
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       13 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4095,8 +6136,8 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       14 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4104,8 +6145,8 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
-        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       15 -> androidx.compose.material3.HorizontalFloatingToolbar(
@@ -4114,6 +6155,150 @@ internal object RendererHorizontalFloatingToolbar_1 {
         `modifier` = node.modifier("modifier", scope),
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      16 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      17 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      18 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      19 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      20 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      21 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      22 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      23 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      24 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      25 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      26 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      27 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      28 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      29 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      30 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      31 -> androidx.compose.material3.HorizontalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
         `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
         `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
@@ -4133,10 +6318,13 @@ internal object RendererHorizontalPager {
       (if (node.has("pageSpacing")) 4 else 0) +
       (if (node.has("verticalAlignment")) 8 else 0) +
       (if (node.has("userScrollEnabled")) 16 else 0) +
-      (if (node.has("reverseLayout")) 32 else 0)
+      (if (node.has("reverseLayout")) 32 else 0) +
+      (if (node.has("pageNestedScrollConnection")) 64 else 0)
     when (mask / 32) {
       0 -> renderHorizontalPagerGroup0(node, scope, mask, stateValue)
       1 -> renderHorizontalPagerGroup1(node, scope, mask, stateValue)
+      2 -> renderHorizontalPagerGroup2(node, scope, mask, stateValue)
+      3 -> renderHorizontalPagerGroup3(node, scope, mask, stateValue)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -4661,6 +6849,596 @@ internal object RendererHorizontalPager {
         `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
         `userScrollEnabled` = node.boolean("userScrollEnabled"),
         `reverseLayout` = node.boolean("reverseLayout"),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderHorizontalPagerGroup2(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.pager.PagerState?) {
+    when (mask) {
+      64 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      65 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      66 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      67 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      68 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      69 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      70 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      71 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      72 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      73 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      74 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      75 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      76 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      77 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      78 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      79 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      80 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      81 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      82 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      83 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      84 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      85 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      86 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      87 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      88 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      89 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      90 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      91 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      92 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      93 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      94 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      95 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderHorizontalPagerGroup3(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.pager.PagerState?) {
+    when (mask) {
+      96 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      97 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      98 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      99 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      100 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      101 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      102 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      103 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      104 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      105 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      106 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      107 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      108 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      109 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      110 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      111 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      112 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      113 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      114 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      115 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      116 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      117 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      118 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      119 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      120 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      121 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      122 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      123 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      124 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      125 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      126 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
+        pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      127 -> androidx.compose.foundation.pager.HorizontalPager(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `beyondViewportPageCount` = node.number("beyondViewportPageCount").toInt(),
+        `pageSpacing` = node.number("pageSpacing").dp,
+        `verticalAlignment` = toComposeVerticalAlignment(node.string("verticalAlignment")),
+        `userScrollEnabled` = node.boolean("userScrollEnabled"),
+        `reverseLayout` = node.boolean("reverseLayout"),
+        `pageNestedScrollConnection` = node.jsonObject("pageNestedScrollConnection").toComposeNestedScrollConnection(),
         pageContent = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
       )
       else -> error("Invalid generated arguments for " + node.name)
@@ -13896,1310 +16674,6 @@ internal object RendererMediumExtendedFloatingActionButton_1 {
         `shape` = node.arguments().shape("shape"),
         `containerColor` = node.color("containerColor"),
         `contentColor` = node.color("contentColor"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.MediumFlexibleTopAppBar(title: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, subtitle: kotlin.Function0<kotlin.Unit>?, navigationIcon: kotlin.Function0<kotlin.Unit>, actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, titleHorizontalAlignment: androidx.compose.ui.Alignment.Horizontal, collapsedHeight: androidx.compose.ui.unit.Dp, expandedHeight: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, colors: androidx.compose.material3.TopAppBarColors, scrollBehavior: androidx.compose.material3.TopAppBarScrollBehavior?)
-internal object RendererMediumFlexibleTopAppBar {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("subtitle")) 1 else 0) +
-      (if (node.has("navigationIcon")) 2 else 0) +
-      (if (node.has("actions")) 4 else 0) +
-      (if (node.has("titleHorizontalAlignment")) 8 else 0) +
-      (if (node.has("collapsedHeight")) 16 else 0) +
-      (if (node.has("expandedHeight")) 32 else 0) +
-      (if (node.has("windowInsets")) 64 else 0)
-    when (mask / 32) {
-      0 -> renderMediumFlexibleTopAppBarGroup0(node, scope, mask)
-      1 -> renderMediumFlexibleTopAppBarGroup1(node, scope, mask)
-      2 -> renderMediumFlexibleTopAppBarGroup2(node, scope, mask)
-      3 -> renderMediumFlexibleTopAppBarGroup3(node, scope, mask)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  private fun renderMediumFlexibleTopAppBarGroup0(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      0 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-      )
-      2 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-      )
-      3 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-      )
-      4 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      5 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      6 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      7 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      8 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      9 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      10 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      11 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      12 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      13 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      14 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      15 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-      )
-      16 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      17 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      18 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      19 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      20 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      21 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      22 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      23 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      24 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      25 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      26 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      27 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      28 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      29 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      30 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      31 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  private fun renderMediumFlexibleTopAppBarGroup1(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      32 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      33 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      34 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      35 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      36 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      37 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      38 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      39 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      40 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      41 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      42 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      43 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      44 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      45 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      46 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      47 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      48 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      49 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      50 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      51 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      52 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      53 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      54 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      55 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      56 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      57 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      58 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      59 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      60 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      61 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      62 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      63 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  private fun renderMediumFlexibleTopAppBarGroup2(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      64 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      65 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      66 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      67 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      68 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      69 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      70 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      71 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      72 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      73 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      74 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      75 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      76 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      77 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      78 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      79 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      80 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      81 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      82 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      83 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      84 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      85 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      86 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      87 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      88 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      89 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      90 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      91 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      92 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      93 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      94 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      95 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  private fun renderMediumFlexibleTopAppBarGroup3(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      96 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      97 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      98 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      99 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      100 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      101 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      102 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      103 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      104 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      105 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      106 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      107 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      108 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      109 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      110 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      111 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      112 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      113 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      114 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      115 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      116 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      117 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      118 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      119 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      120 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      121 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      122 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      123 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      124 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      125 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      126 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      127 -> androidx.compose.material3.MediumFlexibleTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `subtitle` = if (node.isNull("subtitle")) null else ({ RenderComposeChildren(node.slot("subtitle")) }),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `titleHorizontalAlignment` = toComposeHorizontalAlignment(node.string("titleHorizontalAlignment")),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.MediumFloatingActionButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, elevation: androidx.compose.material3.FloatingActionButtonElevation, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererMediumFloatingActionButton {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("shape")) 1 else 0) +
-      (if (node.has("containerColor")) 2 else 0) +
-      (if (node.has("contentColor")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children) },
-      )
-      1 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      2 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      3 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      4 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      5 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      6 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      7 -> androidx.compose.material3.MediumFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.MediumTopAppBar(title: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, navigationIcon: kotlin.Function0<kotlin.Unit>, actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, collapsedHeight: androidx.compose.ui.unit.Dp, expandedHeight: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, colors: androidx.compose.material3.TopAppBarColors, scrollBehavior: androidx.compose.material3.TopAppBarScrollBehavior?)
-internal object RendererMediumTopAppBar {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("navigationIcon")) 1 else 0) +
-      (if (node.has("actions")) 2 else 0) +
-      (if (node.has("collapsedHeight")) 4 else 0) +
-      (if (node.has("expandedHeight")) 8 else 0) +
-      (if (node.has("windowInsets")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-      )
-      2 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      3 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      4 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      5 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      6 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      7 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-      )
-      8 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      9 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      10 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      11 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      12 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      13 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      14 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      15 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      16 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      17 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      18 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      19 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      20 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      21 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      22 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      23 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      24 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      25 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      26 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      27 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      28 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      29 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      30 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      31 -> androidx.compose.material3.MediumTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `collapsedHeight` = node.number("collapsedHeight").dp,
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }

@@ -25,7 +25,10 @@ if (candidateDir.isPresent) {
     source(fileTree(native) {
       include(
         "common/_ColorTypeConverter.kt",
+        "generated/ComposeAnimationValues.kt",
         "generated/ComposeBridgeValues.kt",
+        "generated/ComposeInputPolicies.kt",
+        "generated/ComposeNativeHandles.kt",
         "generated/ComposeModifierArguments.kt",
         "generated/ComposeNode.kt",
         "generated/RenderComposeChildren.kt"

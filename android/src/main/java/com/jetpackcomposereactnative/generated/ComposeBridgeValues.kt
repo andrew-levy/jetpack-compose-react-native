@@ -68,6 +68,8 @@ import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
@@ -285,3 +287,18 @@ internal fun JSONObject.rememberComposeSnackbarHostState(): SnackbarHostState {
   }
   return state
 }
+
+internal fun JSONObject.toComposeTextFieldValue(): TextFieldValue = TextFieldValue(
+  text = getString("text"),
+  selection = optJSONObject("selection")?.toComposeTextRange() ?: TextRange.Zero,
+  composition = optJSONObject("composition")?.toComposeTextRange(),
+)
+
+private fun JSONObject.toComposeTextRange() = TextRange(getInt("start"), getInt("end"))
+
+internal fun TextFieldValue.toComposeSnapshot(): JSONObject = JSONObject()
+  .put("text", text)
+  .put("selection", selection.toComposeSnapshot())
+  .put("composition", composition?.toComposeSnapshot() ?: JSONObject.NULL)
+
+private fun TextRange.toComposeSnapshot() = JSONObject().put("start", start).put("end", end)

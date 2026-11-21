@@ -60,6 +60,22 @@ if (mode === "audit") {
     name === "ExposedDropdownMenu" && ownerScope?.endsWith(".ExposedDropdownMenuBoxScope")));
   assert.ok(manifest.modifiers.some(({ name, parameters }) =>
     name === "onSizeChanged" && parameters.some(({ kind }) => kind === "eventLayoutSize")));
+  for (const [name, kind] of [
+    ["focusRequester", "focusRequester"],
+    ["bringIntoViewRequester", "bringIntoViewRequester"],
+    ["nestedScroll", "nestedScrollConnection"],
+    ["onKeyEvent", "keyPolicy"],
+    ["animateContentSize", "animationSpec"],
+    ["animateItem", "animationSpec"],
+  ]) {
+    assert.ok(manifest.modifiers.some(modifier => modifier.name === name &&
+      modifier.parameters.some(parameter => parameter.kind === kind)), name + " must use the shared adapter");
+  }
+  assert.ok(manifest.components.some(component => component.name === "TextField" &&
+    component.parameters.some(parameter => parameter.kind === "eventTextFieldValue")));
+  assert.ok(manifest.components.some(component => component.name === "Text" &&
+    component.parameters.some(parameter => parameter.name === "composeTextStyle" && parameter.nativeName === "style")));
+  assert.ok(manifest.records.some(record => record.name === "ComposeTransformOrigin"));
 } else if (mode === "surface") {
   const baseline = callForms(read(first));
   const actual = callForms(read(second));

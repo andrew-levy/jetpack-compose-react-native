@@ -3,6 +3,8 @@ package com.jetpackcomposereactnative.generated
 import android.content.Context
 import android.view.ViewGroup.LayoutParams
 import androidx.compose.foundation.layout.Box
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.IntSize
@@ -26,7 +28,10 @@ internal class GeneratedComposeHostView(context: Context) : ComposeContainerView
     private val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindowOrReleasedFromPool)
         setContent {
-            Box { RenderComposeChildren(composeChildren) }
+            val handles = remember { ComposeNativeHandles() }
+            CompositionLocalProvider(LocalComposeNativeHandles provides handles) {
+                Box { RenderComposeChildren(composeChildren) }
+            }
         }
     }
 

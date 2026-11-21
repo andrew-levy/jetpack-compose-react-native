@@ -1,11 +1,11 @@
 import { useState, type ReactNode } from "react";
 import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
-  AlertDialog, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
+  AlertDialog, AnimatedVisibility, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
-  DatePicker, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
+  DatePicker, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
-  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, type ComposeChain, type ComposeFloatRange,
+  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, type ComposeChain, type ComposeFloatRange, type ComposeTextFieldValue,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -195,7 +195,7 @@ function Dialogs() {
   );
 }
 
-const componentGroups = ["Buttons", "Inputs", "Surfaces", "Progress", "Collections"] as const;
+const componentGroups = ["Buttons", "Inputs", "Surfaces", "Progress", "Collections", "Bridge"] as const;
 
 export function Components() {
   const [group, setGroup] = useState<(typeof componentGroups)[number]>("Buttons");
@@ -220,6 +220,52 @@ export function Components() {
       {group === "Surfaces" && <Surfaces />}
       {group === "Progress" && <Progress />}
       {group === "Collections" && <Collections />}
+      {group === "Bridge" && <BridgeCapabilities />}
+    </>
+  );
+}
+
+function BridgeCapabilities() {
+  const requester = useFocusRequester();
+  const [focused, setFocused] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState<ComposeTextFieldValue>({ text: "Compose selection", selection: { start: 0, end: 7 } });
+  return (
+    <>
+      <Demo title="Native handles and input policy">
+        <Column modifiers={fullWidth}>
+          <Button onClick={requester.requestFocus}><Text text="Request native focus" /></Button>
+          <Box modifiers={Modifier.focusRequester(requester).onFocusChanged(event => setFocused(event.isFocused)).focusable()}>
+            <Text text={focused ? "Native target focused" : "Native target idle"} />
+          </Box>
+          <Button onClick={() => setScrollLocked(!scrollLocked)}>
+            <Text text={scrollLocked ? "Allow native scroll" : "Block native scroll"} />
+          </Button>
+          <LazyRow modifiers={fullWidth.height(48).nestedScroll(scrollLocked ? {
+            preScroll: { x: 1 }, preFling: { x: 1 },
+          } : {})}>
+            {Array.from({ length: 8 }, (_, index) => (
+              <Box key={index} modifiers={Modifier.width(88).height(48)} contentAlignment="center">
+                <Text text={"Scroll card " + (index + 1)} />
+              </Box>
+            ))}
+          </LazyRow>
+        </Column>
+      </Demo>
+      <Demo title="Animation specs and structured values">
+        <Column modifiers={fullWidth}>
+          <Button onClick={() => setVisible(!visible)}><Text text={visible ? "Hide animation" : "Run animation"} /></Button>
+          <AnimatedVisibility
+            visible={visible}
+            enter={{ type: "fade", animationSpec: { type: "tween", durationMillis: 280, easing: "linear" } }}
+            exit={{ type: "fade", animationSpec: { type: "spring" } }}
+          >
+            <Text text="Native animation complete" />
+          </AnimatedVisibility>
+          <TextField value={value} onValueChange={setValue} />
+        </Column>
+      </Demo>
     </>
   );
 }

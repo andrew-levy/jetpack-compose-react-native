@@ -58,20 +58,7 @@
   {
     "signature": "androidx.compose.animation.AnimatedVisibility(visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "enter",
-        "kotlinType": "androidx.compose.animation.EnterTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "exit",
-        "kotlinType": "androidx.compose.animation.ExitTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
@@ -85,18 +72,6 @@
         "kotlinType": "androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>",
         "reason": "Unsupported bridge type",
         "required": true
-      },
-      {
-        "name": "enter",
-        "kotlinType": "androidx.compose.animation.EnterTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "exit",
-        "kotlinType": "androidx.compose.animation.ExitTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
       }
     ],
     "omittedForms": [],
@@ -522,12 +497,6 @@
     "reason": "Required parameter cannot cross the bridge",
     "omittedParameters": [
       {
-        "name": "surfaceSize",
-        "kotlinType": "androidx.compose.ui.unit.IntSize",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "transform",
         "kotlinType": "androidx.compose.ui.graphics.Matrix?",
         "reason": "Unsupported bridge type",
@@ -548,12 +517,6 @@
     "status": "adapterRequired",
     "reason": "Required parameter cannot cross the bridge",
     "omittedParameters": [
-      {
-        "name": "surfaceSize",
-        "kotlinType": "androidx.compose.ui.unit.IntSize",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
       {
         "name": "zOrder",
         "kotlinType": "androidx.compose.foundation.AndroidExternalSurfaceZOrder",
@@ -1278,12 +1241,6 @@
         "required": false
       },
       {
-        "name": "pageNestedScrollConnection",
-        "kotlinType": "androidx.compose.ui.input.nestedscroll.NestedScrollConnection",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "snapPosition",
         "kotlinType": "androidx.compose.foundation.gestures.snapping.SnapPosition",
         "reason": "Unsupported bridge type",
@@ -1343,12 +1300,6 @@
         "name": "key",
         "kotlinType": "kotlin.Function1<kotlin.Int, kotlin.Any>?",
         "reason": "Reserved React prop",
-        "required": false
-      },
-      {
-        "name": "pageNestedScrollConnection",
-        "kotlinType": "androidx.compose.ui.input.nestedscroll.NestedScrollConnection",
-        "reason": "Unsupported bridge type",
         "required": false
       },
       {
@@ -1508,12 +1459,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "style",
-        "kotlinType": "androidx.compose.ui.text.TextStyle",
-        "reason": "Reserved React prop",
-        "required": false
-      },
-      {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?",
         "reason": "Unsupported bridge type",
@@ -1569,12 +1514,6 @@
     "signature": "androidx.compose.foundation.text.BasicText(text: kotlin.String, modifier: androidx.compose.ui.Modifier, style: androidx.compose.ui.text.TextStyle, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?, overflow: androidx.compose.ui.text.style.TextOverflow, softWrap: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, color: androidx.compose.ui.graphics.ColorProducer?, autoSize: androidx.compose.foundation.text.TextAutoSize?)",
     "status": "generated",
     "omittedParameters": [
-      {
-        "name": "style",
-        "kotlinType": "androidx.compose.ui.text.TextStyle",
-        "reason": "Reserved React prop",
-        "required": false
-      },
       {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?",
@@ -1661,21 +1600,8 @@
   },
   {
     "signature": "androidx.compose.foundation.text.BasicTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
+    "status": "generated",
     "omittedParameters": [
-      {
-        "name": "value",
-        "kotlinType": "androidx.compose.ui.text.input.TextFieldValue",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
-      {
-        "name": "onValueChange",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
       {
         "name": "keyboardOptions",
         "kotlinType": "androidx.compose.foundation.text.KeyboardOptions",
@@ -1780,12 +1706,6 @@
     "signature": "androidx.compose.foundation.text.ClickableText(text: androidx.compose.ui.text.AnnotatedString, modifier: androidx.compose.ui.Modifier, style: androidx.compose.ui.text.TextStyle, softWrap: kotlin.Boolean, overflow: androidx.compose.ui.text.style.TextOverflow, maxLines: kotlin.Int, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, onClick: kotlin.Function1<kotlin.Int, kotlin.Unit>)",
     "status": "generated",
     "omittedParameters": [
-      {
-        "name": "style",
-        "kotlinType": "androidx.compose.ui.text.TextStyle",
-        "reason": "Reserved React prop",
-        "required": false
-      },
       {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>",
@@ -2782,12 +2702,6 @@
         "kotlinType": "androidx.compose.material3.DatePickerColors",
         "reason": "Unsupported bridge type",
         "required": false
-      },
-      {
-        "name": "focusRequester",
-        "kotlinType": "androidx.compose.ui.focus.FocusRequester?",
-        "reason": "Unsupported bridge type",
-        "required": false
       }
     ],
     "omittedForms": [],
@@ -2874,12 +2788,6 @@
       {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.DatePickerColors",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "focusRequester",
-        "kotlinType": "androidx.compose.ui.focus.FocusRequester?",
         "reason": "Unsupported bridge type",
         "required": false
       }
@@ -3050,12 +2958,6 @@
     "signature": "androidx.compose.material3.DropdownMenu(expanded: kotlin.Boolean, onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, offset: androidx.compose.ui.unit.DpOffset, scrollState: androidx.compose.foundation.ScrollState, properties: androidx.compose.ui.window.PopupProperties, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)",
     "status": "generated",
     "omittedParameters": [
-      {
-        "name": "offset",
-        "kotlinType": "androidx.compose.ui.unit.DpOffset",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
       {
         "name": "scrollState",
         "kotlinType": "androidx.compose.foundation.ScrollState",
@@ -4097,12 +3999,6 @@
       {
         "name": "floatingActionButtonPosition",
         "kotlinType": "androidx.compose.material3.FloatingToolbarHorizontalFabPosition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "animationSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>",
         "reason": "Unsupported bridge type",
         "required": false
       }
@@ -5781,21 +5677,8 @@
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
+    "status": "generated",
     "omittedParameters": [
-      {
-        "name": "value",
-        "kotlinType": "androidx.compose.ui.text.input.TextFieldValue",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
-      {
-        "name": "onValueChange",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
       {
         "name": "visualTransformation",
         "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
@@ -5828,7 +5711,8 @@
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 31614
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
@@ -7934,17 +7818,11 @@
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>",
         "reason": "Unsupported bridge type",
         "required": false
-      },
-      {
-        "name": "style",
-        "kotlinType": "androidx.compose.ui.text.TextStyle",
-        "reason": "Reserved React prop",
-        "required": false
       }
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 911
+    "budgetOmittedForms": 1870
   },
   {
     "signature": "androidx.compose.material3.Text(text: androidx.compose.ui.text.AnnotatedString, modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, fontSize: androidx.compose.ui.unit.TextUnit, fontStyle: androidx.compose.ui.text.font.FontStyle?, fontWeight: androidx.compose.ui.text.font.FontWeight?, fontFamily: androidx.compose.ui.text.font.FontFamily?, letterSpacing: androidx.compose.ui.unit.TextUnit, textDecoration: androidx.compose.ui.text.style.TextDecoration?, textAlign: androidx.compose.ui.text.style.TextAlign?, lineHeight: androidx.compose.ui.unit.TextUnit, overflow: androidx.compose.ui.text.style.TextOverflow, softWrap: kotlin.Boolean, maxLines: kotlin.Int, inlineContent: kotlin.collections.Map<kotlin.String, androidx.compose.foundation.text.InlineTextContent>, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, style: androidx.compose.ui.text.TextStyle)",
@@ -7995,16 +7873,11 @@
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?",
         "reason": "Unsupported bridge type",
         "required": false
-      },
-      {
-        "name": "style",
-        "kotlinType": "androidx.compose.ui.text.TextStyle",
-        "reason": "Reserved React prop",
-        "required": false
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 959
   },
   {
     "signature": "androidx.compose.material3.Text(text: kotlin.String, modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, fontSize: androidx.compose.ui.unit.TextUnit, fontStyle: androidx.compose.ui.text.font.FontStyle?, fontWeight: androidx.compose.ui.text.font.FontWeight?, fontFamily: androidx.compose.ui.text.font.FontFamily?, letterSpacing: androidx.compose.ui.unit.TextUnit, textDecoration: androidx.compose.ui.text.style.TextDecoration?, textAlign: androidx.compose.ui.text.style.TextAlign?, lineHeight: androidx.compose.ui.unit.TextUnit, overflow: androidx.compose.ui.text.style.TextOverflow, softWrap: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?, style: androidx.compose.ui.text.TextStyle)",
@@ -8170,21 +8043,8 @@
   },
   {
     "signature": "androidx.compose.material3.TextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
+    "status": "generated",
     "omittedParameters": [
-      {
-        "name": "value",
-        "kotlinType": "androidx.compose.ui.text.input.TextFieldValue",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
-      {
-        "name": "onValueChange",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
       {
         "name": "visualTransformation",
         "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
@@ -8217,7 +8077,8 @@
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 31614
   },
   {
     "signature": "androidx.compose.material3.TextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
@@ -9078,12 +8939,6 @@
       {
         "name": "floatingActionButtonPosition",
         "kotlinType": "androidx.compose.material3.FloatingToolbarVerticalFabPosition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "animationSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>",
         "reason": "Unsupported bridge type",
         "required": false
       }
@@ -10465,12 +10320,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "offset",
-        "kotlinType": "androidx.compose.ui.unit.IntOffset",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "properties",
         "kotlinType": "androidx.compose.ui.window.PopupProperties",
         "reason": "Unsupported bridge type",
@@ -10497,20 +10346,7 @@
   {
     "signature": "androidx.compose.animation.AnimatedVisibilityScope.animateEnterExit [receiver: androidx.compose.ui.Modifier](enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "enter",
-        "kotlinType": "androidx.compose.animation.EnterTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "exit",
-        "kotlinType": "androidx.compose.animation.ExitTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
@@ -10550,18 +10386,6 @@
         "kotlinType": "androidx.compose.animation.AnimatedVisibilityScope",
         "reason": "Unsupported bridge type",
         "required": true
-      },
-      {
-        "name": "enter",
-        "kotlinType": "androidx.compose.animation.EnterTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "exit",
-        "kotlinType": "androidx.compose.animation.ExitTransition",
-        "reason": "Unsupported bridge type",
-        "required": false
       },
       {
         "name": "boundsTransform",
@@ -10702,12 +10526,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "animationSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "finishedListener",
         "kotlinType": "kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?",
         "reason": "Unsupported bridge type",
@@ -10718,6 +10536,12 @@
       {
         "props": [],
         "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "animationSpec"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
       }
     ],
     "kind": "modifier"
@@ -10726,12 +10550,6 @@
     "signature": "androidx.compose.animation.animateContentSize [receiver: androidx.compose.ui.Modifier](animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>, finishedListener: kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?)",
     "status": "generated",
     "omittedParameters": [
-      {
-        "name": "animationSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
       {
         "name": "finishedListener",
         "kotlinType": "kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?",
@@ -11908,26 +11726,7 @@
   {
     "signature": "androidx.compose.foundation.lazy.LazyItemScope.animateItem [receiver: androidx.compose.ui.Modifier](fadeInSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?, placementSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntOffset>?, fadeOutSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "fadeInSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "placementSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntOffset>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "fadeOutSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
@@ -11955,52 +11754,14 @@
   {
     "signature": "androidx.compose.foundation.lazy.grid.LazyGridItemScope.animateItem [receiver: androidx.compose.ui.Modifier](fadeInSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?, placementSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntOffset>?, fadeOutSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "fadeInSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "placementSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntOffset>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "fadeOutSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
   {
     "signature": "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemScope.animateItem [receiver: androidx.compose.ui.Modifier](fadeInSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?, placementSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntOffset>?, fadeOutSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "fadeInSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "placementSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntOffset>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "fadeOutSpec",
-        "kotlinType": "androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
@@ -12091,16 +11852,8 @@
   },
   {
     "signature": "androidx.compose.foundation.relocation.bringIntoViewRequester [receiver: androidx.compose.ui.Modifier](bringIntoViewRequester: androidx.compose.foundation.relocation.BringIntoViewRequester)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "bringIntoViewRequester",
-        "kotlinType": "androidx.compose.foundation.relocation.BringIntoViewRequester",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
@@ -12419,20 +12172,7 @@
   {
     "signature": "androidx.compose.material3.animateFloatingActionButton [receiver: androidx.compose.ui.Modifier](visible: kotlin.Boolean, alignment: androidx.compose.ui.Alignment, targetScale: kotlin.Float, scaleAnimationSpec: androidx.compose.animation.core.AnimationSpec<kotlin.Float>?, alphaAnimationSpec: androidx.compose.animation.core.AnimationSpec<kotlin.Float>?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "scaleAnimationSpec",
-        "kotlinType": "androidx.compose.animation.core.AnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "alphaAnimationSpec",
-        "kotlinType": "androidx.compose.animation.core.AnimationSpec<kotlin.Float>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
@@ -12806,30 +12546,15 @@
   },
   {
     "signature": "androidx.compose.ui.focus.focusRequester [receiver: androidx.compose.ui.Modifier](focusRequester: androidx.compose.ui.focus.FocusRequester)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "focusRequester",
-        "kotlinType": "androidx.compose.ui.focus.FocusRequester",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
   {
     "signature": "androidx.compose.ui.focus.focusRestorer [receiver: androidx.compose.ui.Modifier](fallback: androidx.compose.ui.focus.FocusRequester)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "fallback",
-        "kotlinType": "androidx.compose.ui.focus.FocusRequester",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
@@ -12906,12 +12631,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "transformOrigin",
-        "kotlinType": "androidx.compose.ui.graphics.TransformOrigin",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "renderEffect",
         "kotlinType": "androidx.compose.ui.graphics.RenderEffect?",
         "reason": "Unsupported bridge type",
@@ -12926,7 +12645,7 @@
     ],
     "omittedForms": [],
     "kind": "modifier",
-    "budgetOmittedForms": 15359
+    "budgetOmittedForms": 31678
   },
   {
     "signature": "androidx.compose.ui.graphics.toolingGraphicsLayer [receiver: androidx.compose.ui.Modifier]()",
@@ -12937,75 +12656,36 @@
   },
   {
     "signature": "androidx.compose.ui.input.key.onInterceptKeyBeforeSoftKeyboard [receiver: androidx.compose.ui.Modifier](onInterceptKeyBeforeSoftKeyboard: kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "onInterceptKeyBeforeSoftKeyboard",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
   {
     "signature": "androidx.compose.ui.input.key.onKeyEvent [receiver: androidx.compose.ui.Modifier](onKeyEvent: kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "onKeyEvent",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
   {
     "signature": "androidx.compose.ui.input.key.onPreInterceptKeyBeforeSoftKeyboard [receiver: androidx.compose.ui.Modifier](onPreInterceptKeyBeforeSoftKeyboard: kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "onPreInterceptKeyBeforeSoftKeyboard",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
   {
     "signature": "androidx.compose.ui.input.key.onPreviewKeyEvent [receiver: androidx.compose.ui.Modifier](onPreviewKeyEvent: kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "onPreviewKeyEvent",
-        "kotlinType": "kotlin.Function1<androidx.compose.ui.input.key.KeyEvent, kotlin.Boolean>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },
   {
     "signature": "androidx.compose.ui.input.nestedscroll.nestedScroll [receiver: androidx.compose.ui.Modifier](connection: androidx.compose.ui.input.nestedscroll.NestedScrollConnection, dispatcher: androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher?)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
+    "status": "generated",
     "omittedParameters": [
-      {
-        "name": "connection",
-        "kotlinType": "androidx.compose.ui.input.nestedscroll.NestedScrollConnection",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
       {
         "name": "dispatcher",
         "kotlinType": "androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher?",

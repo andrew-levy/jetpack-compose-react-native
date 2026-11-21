@@ -10536,7 +10536,9 @@ internal object RendererAlertDialog {
 internal object RendererAnimatedVisibility {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("label")) 1 else 0)
+    val mask = (if (node.has("enter")) 1 else 0) +
+      (if (node.has("exit")) 2 else 0) +
+      (if (node.has("label")) 4 else 0)
     when (mask) {
       0 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
@@ -10546,6 +10548,47 @@ internal object RendererAnimatedVisibility {
       1 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
+        `enter` = node.jsonObject("enter").toComposeEnterTransition(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.animation.AnimatedVisibility(
+        `visible` = node.boolean("visible"),
+        `modifier` = node.modifier("modifier", scope),
+        `exit` = node.jsonObject("exit").toComposeExitTransition(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.animation.AnimatedVisibility(
+        `visible` = node.boolean("visible"),
+        `modifier` = node.modifier("modifier", scope),
+        `enter` = node.jsonObject("enter").toComposeEnterTransition(),
+        `exit` = node.jsonObject("exit").toComposeExitTransition(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.animation.AnimatedVisibility(
+        `visible` = node.boolean("visible"),
+        `modifier` = node.modifier("modifier", scope),
+        `label` = node.string("label"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.animation.AnimatedVisibility(
+        `visible` = node.boolean("visible"),
+        `modifier` = node.modifier("modifier", scope),
+        `enter` = node.jsonObject("enter").toComposeEnterTransition(),
+        `label` = node.string("label"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.animation.AnimatedVisibility(
+        `visible` = node.boolean("visible"),
+        `modifier` = node.modifier("modifier", scope),
+        `exit` = node.jsonObject("exit").toComposeExitTransition(),
+        `label` = node.string("label"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.animation.AnimatedVisibility(
+        `visible` = node.boolean("visible"),
+        `modifier` = node.modifier("modifier", scope),
+        `enter` = node.jsonObject("enter").toComposeEnterTransition(),
+        `exit` = node.jsonObject("exit").toComposeExitTransition(),
         `label` = node.string("label"),
         content = { RenderComposeChildren(node.children, this) },
       )
@@ -10869,10 +10912,11 @@ internal object RendererBasicSecureTextField {
 internal object RendererBasicText {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("overflow")) 1 else 0) +
-      (if (node.has("softWrap")) 2 else 0) +
-      (if (node.has("maxLines")) 4 else 0) +
-      (if (node.has("minLines")) 8 else 0)
+    val mask = (if (node.has("composeTextStyle")) 1 else 0) +
+      (if (node.has("overflow")) 2 else 0) +
+      (if (node.has("softWrap")) 4 else 0) +
+      (if (node.has("maxLines")) 8 else 0) +
+      (if (node.has("minLines")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
@@ -10881,90 +10925,202 @@ internal object RendererBasicText {
       1 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
       )
       2 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
       )
       3 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `softWrap` = node.boolean("softWrap"),
       )
       4 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
+        `softWrap` = node.boolean("softWrap"),
       )
       5 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `maxLines` = node.number("maxLines").toInt(),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
       )
       6 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
         `softWrap` = node.boolean("softWrap"),
-        `maxLines` = node.number("maxLines").toInt(),
       )
       7 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
         `softWrap` = node.boolean("softWrap"),
-        `maxLines` = node.number("maxLines").toInt(),
       )
       8 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       9 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `minLines` = node.number("minLines").toInt(),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       10 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
-        `minLines` = node.number("minLines").toInt(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       11 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `softWrap` = node.boolean("softWrap"),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       12 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      13 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      14 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      15 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      16 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      17 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      18 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      19 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      20 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      21 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      22 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      23 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      24 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
       )
-      13 -> androidx.compose.foundation.text.BasicText(
+      25 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      26 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
       )
-      14 -> androidx.compose.foundation.text.BasicText(
+      27 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      28 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
         `softWrap` = node.boolean("softWrap"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
       )
-      15 -> androidx.compose.foundation.text.BasicText(
+      29 -> androidx.compose.foundation.text.BasicText(
         `text` = node.string("text"),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      30 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      31 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.string("text"),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
         `softWrap` = node.boolean("softWrap"),
         `maxLines` = node.number("maxLines").toInt(),
@@ -10979,10 +11135,11 @@ internal object RendererBasicText {
 internal object RendererBasicText_1 {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("overflow")) 1 else 0) +
-      (if (node.has("softWrap")) 2 else 0) +
-      (if (node.has("maxLines")) 4 else 0) +
-      (if (node.has("minLines")) 8 else 0)
+    val mask = (if (node.has("composeTextStyle")) 1 else 0) +
+      (if (node.has("overflow")) 2 else 0) +
+      (if (node.has("softWrap")) 4 else 0) +
+      (if (node.has("maxLines")) 8 else 0) +
+      (if (node.has("minLines")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
@@ -10991,90 +11148,202 @@ internal object RendererBasicText_1 {
       1 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
       )
       2 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
       )
       3 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `softWrap` = node.boolean("softWrap"),
       )
       4 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
+        `softWrap` = node.boolean("softWrap"),
       )
       5 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `maxLines` = node.number("maxLines").toInt(),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
       )
       6 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
         `softWrap` = node.boolean("softWrap"),
-        `maxLines` = node.number("maxLines").toInt(),
       )
       7 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
         `softWrap` = node.boolean("softWrap"),
-        `maxLines` = node.number("maxLines").toInt(),
       )
       8 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       9 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `minLines` = node.number("minLines").toInt(),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       10 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
-        `minLines` = node.number("minLines").toInt(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       11 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `softWrap` = node.boolean("softWrap"),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       12 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      13 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      14 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      15 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      16 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      17 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      18 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      19 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      20 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      21 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      22 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      23 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      24 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
       )
-      13 -> androidx.compose.foundation.text.BasicText(
+      25 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      26 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
       )
-      14 -> androidx.compose.foundation.text.BasicText(
+      27 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      28 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
         `softWrap` = node.boolean("softWrap"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
       )
-      15 -> androidx.compose.foundation.text.BasicText(
+      29 -> androidx.compose.foundation.text.BasicText(
         `text` = node.jsonObject("text").toAnnotatedString(),
         `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      30 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `overflow` = toComposeTextOverflow(node.string("overflow")),
+        `softWrap` = node.boolean("softWrap"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      31 -> androidx.compose.foundation.text.BasicText(
+        `text` = node.jsonObject("text").toAnnotatedString(),
+        `modifier` = node.modifier("modifier", scope),
+        `style` = node.jsonObject("composeTextStyle").toTextStyle(),
         `overflow` = toComposeTextOverflow(node.string("overflow")),
         `softWrap` = node.boolean("softWrap"),
         `maxLines` = node.number("maxLines").toInt(),
@@ -11196,7 +11465,7 @@ internal object RendererBasicTextField {
   }
 }
 
-// androidx.compose.foundation.text.BasicTextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)
+// androidx.compose.foundation.text.BasicTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)
 internal object RendererBasicTextField_1 {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
@@ -11218,6 +11487,1143 @@ internal object RendererBasicTextField_1 {
 
   @Composable
   private fun renderBasicTextField_1Group0(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      0 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+      )
+      2 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+      )
+      3 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+      )
+      4 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+      )
+      5 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+      )
+      6 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+      )
+      7 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+      )
+      8 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      9 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      10 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      11 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      12 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      13 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      14 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      15 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      16 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      17 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      18 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      19 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      20 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      21 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      22 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      23 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      24 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      25 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      26 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      27 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      28 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      29 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      30 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      31 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextField_1Group1(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      32 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      33 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      34 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      35 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      36 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      37 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      38 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      39 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      40 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      41 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      42 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      43 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      44 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      45 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      46 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      47 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      48 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      49 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      50 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      51 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      52 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      53 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      54 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      55 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      56 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      57 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      58 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      59 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      60 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      61 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      62 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      63 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextField_1Group2(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      64 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      65 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      66 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      67 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      68 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      69 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      70 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      71 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      72 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      73 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      74 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      75 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      76 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      77 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      78 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      79 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      80 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      81 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      82 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      83 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      84 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      85 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      86 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      87 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      88 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      89 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      90 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      91 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      92 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      93 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      94 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      95 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextField_1Group3(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      96 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      97 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      98 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      99 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      100 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      101 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      102 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      103 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      104 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      105 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      106 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      107 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      108 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      109 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      110 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      111 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      112 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      113 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      114 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      115 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      116 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      117 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      118 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      119 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      120 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      121 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      122 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      123 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      124 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      125 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      126 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      127 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.foundation.text.BasicTextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)
+internal object RendererBasicTextField_2 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("readOnly")) 2 else 0) +
+      (if (node.has("textStyle")) 4 else 0) +
+      (if (node.has("singleLine")) 8 else 0) +
+      (if (node.has("maxLines")) 16 else 0) +
+      (if (node.has("minLines")) 32 else 0) +
+      (if (node.has("cursorBrush")) 64 else 0)
+    when (mask / 32) {
+      0 -> renderBasicTextField_2Group0(node, scope, mask)
+      1 -> renderBasicTextField_2Group1(node, scope, mask)
+      2 -> renderBasicTextField_2Group2(node, scope, mask)
+      3 -> renderBasicTextField_2Group3(node, scope, mask)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextField_2Group0(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
       0 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.string("value"),
@@ -11464,7 +12870,7 @@ internal object RendererBasicTextField_1 {
   }
 
   @Composable
-  private fun renderBasicTextField_1Group1(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_2Group1(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
       32 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.string("value"),
@@ -11743,7 +13149,7 @@ internal object RendererBasicTextField_1 {
   }
 
   @Composable
-  private fun renderBasicTextField_1Group2(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_2Group2(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
       64 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.string("value"),
@@ -12022,7 +13428,7 @@ internal object RendererBasicTextField_1 {
   }
 
   @Composable
-  private fun renderBasicTextField_1Group3(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_2Group3(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
       96 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.string("value"),
@@ -14725,1613 +16131,5 @@ internal object RendererCard_1 {
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
-  }
-}
-
-// androidx.compose.material3.CenterAlignedTopAppBar(title: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, navigationIcon: kotlin.Function0<kotlin.Unit>, actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, expandedHeight: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, colors: androidx.compose.material3.TopAppBarColors, scrollBehavior: androidx.compose.material3.TopAppBarScrollBehavior?)
-internal object RendererCenterAlignedTopAppBar {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("navigationIcon")) 1 else 0) +
-      (if (node.has("actions")) 2 else 0) +
-      (if (node.has("expandedHeight")) 4 else 0) +
-      (if (node.has("windowInsets")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-      )
-      2 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      3 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-      )
-      4 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      5 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      6 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      7 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-      )
-      8 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      9 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      10 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      11 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      12 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      13 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      14 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      15 -> androidx.compose.material3.CenterAlignedTopAppBar(
-        `title` = { RenderComposeChildren(node.slot("title")) },
-        `modifier` = node.modifier("modifier", scope),
-        `navigationIcon` = { RenderComposeChildren(node.slot("navigationIcon")) },
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `expandedHeight` = node.number("expandedHeight").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.Checkbox(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>?, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.CheckboxColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererCheckbox {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.Checkbox(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.Checkbox(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.CircularProgressIndicator(modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, strokeWidth: androidx.compose.ui.unit.Dp, trackColor: androidx.compose.ui.graphics.Color, strokeCap: androidx.compose.ui.graphics.StrokeCap, gapSize: androidx.compose.ui.unit.Dp)
-internal object RendererCircularProgressIndicator {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("color")) 1 else 0) +
-      (if (node.has("strokeWidth")) 2 else 0) +
-      (if (node.has("trackColor")) 4 else 0) +
-      (if (node.has("gapSize")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-      )
-      2 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-      )
-      3 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-      )
-      4 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-      )
-      5 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-      )
-      6 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-      )
-      7 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-      )
-      8 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      9 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      10 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `gapSize` = node.number("gapSize").dp,
-      )
-      11 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `gapSize` = node.number("gapSize").dp,
-      )
-      12 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      13 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      14 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      15 -> androidx.compose.material3.CircularProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.CircularProgressIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, strokeWidth: androidx.compose.ui.unit.Dp, trackColor: androidx.compose.ui.graphics.Color, strokeCap: androidx.compose.ui.graphics.StrokeCap, gapSize: androidx.compose.ui.unit.Dp)
-internal object RendererCircularProgressIndicator_1 {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("color")) 1 else 0) +
-      (if (node.has("strokeWidth")) 2 else 0) +
-      (if (node.has("trackColor")) 4 else 0) +
-      (if (node.has("gapSize")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-      )
-      2 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-      )
-      3 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-      )
-      4 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-      )
-      5 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-      )
-      6 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-      )
-      7 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-      )
-      8 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      9 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      10 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `gapSize` = node.number("gapSize").dp,
-      )
-      11 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `gapSize` = node.number("gapSize").dp,
-      )
-      12 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      13 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      14 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      15 -> androidx.compose.material3.CircularProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `strokeWidth` = node.number("strokeWidth").dp,
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.CircularWavyProgressIndicator(modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, trackColor: androidx.compose.ui.graphics.Color, stroke: androidx.compose.ui.graphics.drawscope.Stroke, trackStroke: androidx.compose.ui.graphics.drawscope.Stroke, gapSize: androidx.compose.ui.unit.Dp, amplitude: kotlin.Float, wavelength: androidx.compose.ui.unit.Dp, waveSpeed: androidx.compose.ui.unit.Dp)
-internal object RendererCircularWavyProgressIndicator {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("color")) 1 else 0) +
-      (if (node.has("trackColor")) 2 else 0) +
-      (if (node.has("gapSize")) 4 else 0) +
-      (if (node.has("amplitude")) 8 else 0) +
-      (if (node.has("wavelength")) 16 else 0) +
-      (if (node.has("waveSpeed")) 32 else 0)
-    when (mask / 32) {
-      0 -> renderCircularWavyProgressIndicatorGroup0(node, scope, mask)
-      1 -> renderCircularWavyProgressIndicatorGroup1(node, scope, mask)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  private fun renderCircularWavyProgressIndicatorGroup0(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      0 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-      )
-      2 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-      )
-      3 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-      )
-      4 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      5 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      6 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      7 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      8 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      9 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      10 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      11 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      12 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      13 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      14 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      15 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-      )
-      16 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      17 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      18 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      19 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      20 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      21 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      22 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      23 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      24 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      25 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      26 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      27 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      28 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      29 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      30 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      31 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  private fun renderCircularWavyProgressIndicatorGroup1(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      32 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      33 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      34 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      35 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      36 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      37 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      38 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      39 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      40 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      41 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      42 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      43 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      44 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      45 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      46 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      47 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      48 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      49 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      50 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      51 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      52 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      53 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      54 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      55 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      56 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      57 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      58 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      59 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      60 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      61 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      62 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      63 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `amplitude` = node.number("amplitude").toFloat(),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.CircularWavyProgressIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, color: androidx.compose.ui.graphics.Color, trackColor: androidx.compose.ui.graphics.Color, stroke: androidx.compose.ui.graphics.drawscope.Stroke, trackStroke: androidx.compose.ui.graphics.drawscope.Stroke, gapSize: androidx.compose.ui.unit.Dp, amplitude: kotlin.Function1<kotlin.Float, kotlin.Float>, wavelength: androidx.compose.ui.unit.Dp, waveSpeed: androidx.compose.ui.unit.Dp)
-internal object RendererCircularWavyProgressIndicator_1 {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("color")) 1 else 0) +
-      (if (node.has("trackColor")) 2 else 0) +
-      (if (node.has("gapSize")) 4 else 0) +
-      (if (node.has("wavelength")) 8 else 0) +
-      (if (node.has("waveSpeed")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-      )
-      2 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-      )
-      3 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-      )
-      4 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      5 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      6 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      7 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-      )
-      8 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      9 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      10 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      11 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-      )
-      12 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      13 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      14 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      15 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-      )
-      16 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      17 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      18 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      19 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      20 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      21 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      22 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      23 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      24 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      25 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      26 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      27 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      28 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      29 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      30 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      31 -> androidx.compose.material3.CircularWavyProgressIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `color` = node.color("color"),
-        `trackColor` = node.color("trackColor"),
-        `gapSize` = node.number("gapSize").dp,
-        `wavelength` = node.number("wavelength").dp,
-        `waveSpeed` = node.number("waveSpeed").dp,
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.foundation.text.ClickableText(text: androidx.compose.ui.text.AnnotatedString, modifier: androidx.compose.ui.Modifier, style: androidx.compose.ui.text.TextStyle, softWrap: kotlin.Boolean, overflow: androidx.compose.ui.text.style.TextOverflow, maxLines: kotlin.Int, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, onClick: kotlin.Function1<kotlin.Int, kotlin.Unit>)
-internal object RendererClickableText {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("softWrap")) 1 else 0) +
-      (if (node.has("overflow")) 2 else 0) +
-      (if (node.has("maxLines")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      1 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      2 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      3 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      4 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      5 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      6 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `maxLines` = node.number("maxLines").toInt(),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      7 -> androidx.compose.foundation.text.ClickableText(
-        `text` = node.jsonObject("text").toAnnotatedString(),
-        `modifier` = node.modifier("modifier", scope),
-        `softWrap` = node.boolean("softWrap"),
-        `overflow` = toComposeTextOverflow(node.string("overflow")),
-        `maxLines` = node.number("maxLines").toInt(),
-        `onClick` = { value: Int -> node.emit("onClick", value) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.foundation.layout.Column(modifier: androidx.compose.ui.Modifier, verticalArrangement: androidx.compose.foundation.layout.Arrangement.Vertical, horizontalAlignment: androidx.compose.ui.Alignment.Horizontal, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererColumn {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("verticalArrangement")) 1 else 0) +
-      (if (node.has("horizontalAlignment")) 2 else 0)
-    when (mask) {
-      0 -> androidx.compose.foundation.layout.Column(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.foundation.layout.Column(
-        `modifier` = node.modifier("modifier", scope),
-        `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.foundation.layout.Column(
-        `modifier` = node.modifier("modifier", scope),
-        `horizontalAlignment` = toComposeHorizontalAlignment(node.string("horizontalAlignment")),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.foundation.layout.Column(
-        `modifier` = node.modifier("modifier", scope),
-        `verticalArrangement` = toComposeVerticalArrangement(node.string("verticalArrangement")),
-        `horizontalAlignment` = toComposeHorizontalAlignment(node.string("horizontalAlignment")),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.runtime.CompositionLocalProvider(vararg values: androidx.compose.runtime.ProvidedValue<*>, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererCompositionLocalProvider {
-  @Composable
-  fun render(node: ComposeNode) {
-    androidx.compose.runtime.CompositionLocalProvider(
-      content = { RenderComposeChildren(node.children) },
-    )
-  }
-}
-
-// androidx.compose.material3.ContainedLoadingIndicator(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, indicatorColor: androidx.compose.ui.graphics.Color, containerShape: androidx.compose.ui.graphics.Shape, polygons: kotlin.collections.List<androidx.graphics.shapes.RoundedPolygon>)
-internal object RendererContainedLoadingIndicator {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("containerColor")) 1 else 0) +
-      (if (node.has("indicatorColor")) 2 else 0) +
-      (if (node.has("containerShape")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-      )
-      2 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `indicatorColor` = node.color("indicatorColor"),
-      )
-      3 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `indicatorColor` = node.color("indicatorColor"),
-      )
-      4 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      5 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      6 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `indicatorColor` = node.color("indicatorColor"),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      7 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `indicatorColor` = node.color("indicatorColor"),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ContainedLoadingIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, indicatorColor: androidx.compose.ui.graphics.Color, containerShape: androidx.compose.ui.graphics.Shape, polygons: kotlin.collections.List<androidx.graphics.shapes.RoundedPolygon>)
-internal object RendererContainedLoadingIndicator_1 {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("containerColor")) 1 else 0) +
-      (if (node.has("indicatorColor")) 2 else 0) +
-      (if (node.has("containerShape")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-      )
-      2 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `indicatorColor` = node.color("indicatorColor"),
-      )
-      3 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `indicatorColor` = node.color("indicatorColor"),
-      )
-      4 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      5 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      6 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `indicatorColor` = node.color("indicatorColor"),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      7 -> androidx.compose.material3.ContainedLoadingIndicator(
-        `progress` = { node.number("progress").toFloat() },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `indicatorColor` = node.color("indicatorColor"),
-        `containerShape` = node.arguments().shape("containerShape"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DatePicker(state: androidx.compose.material3.DatePickerState, modifier: androidx.compose.ui.Modifier, dateFormatter: androidx.compose.material3.DatePickerFormatter, colors: androidx.compose.material3.DatePickerColors, title: kotlin.Function0<kotlin.Unit>?, headline: kotlin.Function0<kotlin.Unit>?, showModeToggle: kotlin.Boolean, focusRequester: androidx.compose.ui.focus.FocusRequester?)
-internal object RendererDatePicker {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeDatePickerState() else null
-    val mask = (if (node.has("dateFormatter")) 1 else 0) +
-      (if (node.has("title")) 2 else 0) +
-      (if (node.has("headline")) 4 else 0) +
-      (if (node.has("showModeToggle")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-      )
-      2 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-      )
-      3 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-      )
-      4 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      5 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      6 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      7 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      8 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      9 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      10 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      11 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      12 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      13 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      14 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      15 -> androidx.compose.material3.DatePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DatePickerDialog(onDismissRequest: kotlin.Function0<kotlin.Unit>, confirmButton: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, dismissButton: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, tonalElevation: androidx.compose.ui.unit.Dp, colors: androidx.compose.material3.DatePickerColors, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererDatePickerDialog {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("dismissButton")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("tonalElevation")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.DatePickerDialog(
-        `onDismissRequest` = { node.emit("onDismissRequest") },
-        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
-        `modifier` = node.modifier("modifier", scope),
-        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
-        `shape` = node.arguments().shape("shape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(selectedDateMillis: kotlin.Long?, displayMode: androidx.compose.material3.DisplayMode, dateFormatter: androidx.compose.material3.DatePickerFormatter, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
-internal object RendererDatePickerHeadline {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentColor")) 1 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(
-        `selectedDateMillis` = if (node.isNull("selectedDateMillis")) null else (node.number("selectedDateMillis").toLong()),
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(
-        `selectedDateMillis` = if (node.isNull("selectedDateMillis")) null else (node.number("selectedDateMillis").toLong()),
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DatePickerDefaults.DatePickerTitle(displayMode: androidx.compose.material3.DisplayMode, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
-internal object RendererDatePickerTitle {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentColor")) 1 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DatePickerDefaults.DatePickerTitle(
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.DatePickerDefaults.DatePickerTitle(
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DateRangePicker(state: androidx.compose.material3.DateRangePickerState, modifier: androidx.compose.ui.Modifier, dateFormatter: androidx.compose.material3.DatePickerFormatter, colors: androidx.compose.material3.DatePickerColors, title: kotlin.Function0<kotlin.Unit>?, headline: kotlin.Function0<kotlin.Unit>?, showModeToggle: kotlin.Boolean, focusRequester: androidx.compose.ui.focus.FocusRequester?)
-internal object RendererDateRangePicker {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeDateRangePickerState() else null
-    val mask = (if (node.has("dateFormatter")) 1 else 0) +
-      (if (node.has("title")) 2 else 0) +
-      (if (node.has("headline")) 4 else 0) +
-      (if (node.has("showModeToggle")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-      )
-      2 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-      )
-      3 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-      )
-      4 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      5 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      6 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      7 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-      )
-      8 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      9 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      10 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      11 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      12 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      13 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      14 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      15 -> androidx.compose.material3.DateRangePicker(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
-        `headline` = if (node.isNull("headline")) null else ({ RenderComposeChildren(node.slot("headline")) }),
-        `showModeToggle` = node.boolean("showModeToggle"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(selectedStartDateMillis: kotlin.Long?, selectedEndDateMillis: kotlin.Long?, displayMode: androidx.compose.material3.DisplayMode, dateFormatter: androidx.compose.material3.DatePickerFormatter, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
-internal object RendererDateRangePickerHeadline {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentColor")) 1 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(
-        `selectedStartDateMillis` = if (node.isNull("selectedStartDateMillis")) null else (node.number("selectedStartDateMillis").toLong()),
-        `selectedEndDateMillis` = if (node.isNull("selectedEndDateMillis")) null else (node.number("selectedEndDateMillis").toLong()),
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(
-        `selectedStartDateMillis` = if (node.isNull("selectedStartDateMillis")) null else (node.number("selectedStartDateMillis").toLong()),
-        `selectedEndDateMillis` = if (node.isNull("selectedEndDateMillis")) null else (node.number("selectedEndDateMillis").toLong()),
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(displayMode: androidx.compose.material3.DisplayMode, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
-internal object RendererDateRangePickerTitle {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentColor")) 1 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(
-        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.ui.window.Dialog(onDismissRequest: kotlin.Function0<kotlin.Unit>, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererDialog {
-  @Composable
-  fun render(node: ComposeNode) {
-    androidx.compose.ui.window.Dialog(
-      `onDismissRequest` = { node.emit("onDismissRequest") },
-      content = { RenderComposeChildren(node.children) },
-    )
-  }
-}
-
-// androidx.compose.foundation.text.selection.DisableSelection(content: kotlin.Function0<kotlin.Unit>)
-internal object RendererDisableSelection {
-  @Composable
-  fun render(node: ComposeNode) {
-    androidx.compose.foundation.text.selection.DisableSelection(
-      content = { RenderComposeChildren(node.children) },
-    )
   }
 }

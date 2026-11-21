@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { modifierKinds, modifierOutputs, typeImports } from "./modifiers.mjs";
 import { valueOutputs } from "./values.mjs";
 import { factoryOutputs } from "./factories.mjs";
+import { recordOutputs } from "./records.mjs";
 import { verifyInventory } from "./inventory.mjs";
 
 const repo = fileURLToPath(new URL("../../", import.meta.url));
@@ -27,6 +28,12 @@ const sharedTypes = {
   semantics: ["ComposeSemantics", "toSemantics"],
   focusProperties: ["ComposeFocusProperties", "toFocusProperties"],
   dateFormatter: ["ComposeDatePickerFormatter", "toDatePickerFormatter"],
+  textFieldValue: ["ComposeTextFieldValue", "toComposeTextFieldValue"],
+  nestedScrollConnection: ["ComposeNestedScrollConnection", "toComposeNestedScrollConnection"],
+  keyPolicy: ["ComposeKeyPolicy", "toComposeKeyPolicy"],
+  animationSpec: ["ComposeAnimationSpec", "toComposeAnimationSpec"],
+  enterTransition: ["ComposeVisibilityTransition", "toComposeEnterTransition"],
+  exitTransition: ["ComposeVisibilityTransition", "toComposeExitTransition"],
 };
 
 const stateKinds = {
@@ -48,7 +55,17 @@ const stateKinds = {
   snackbarHostState: ["ComposeSnackbarHostState", "androidx.compose.material3.SnackbarHostState", "rememberComposeSnackbarHostState"],
 };
 
+const handleKinds = {
+  focusRequester: ["ComposeFocusRequester", "rememberComposeFocusRequester"],
+  bringIntoViewRequester: ["ComposeBringIntoViewRequester", "rememberComposeBringIntoViewRequester"],
+};
+
 const kinds = {
+  ...Object.fromEntries(Object.entries(handleKinds).map(([kind, [type, factory]]) => [
+    kind, { type, input: "object", module: "../utils/nativeHandles",
+      expression: (key) => `node.jsonObject(${key}).${factory}()`,
+      modifierExpression: () => kind, composition: { value: kind, factory } },
+  ])),
   ...Object.fromEntries(Object.entries(stateKinds).map(([kind, [type]]) => [
     kind, { type, input: "object", module: kind === "sheetState" ? "./components" : "../utils/composeValues" },
   ])),
@@ -94,9 +111,15 @@ const kinds = {
   eventLayoutPosition: eventSnapshot("ComposeLayoutPosition", "androidx.compose.ui.layout.LayoutCoordinates"),
   eventNullableLayoutPosition: eventSnapshot("ComposeLayoutPosition", "androidx.compose.ui.layout.LayoutCoordinates", true),
   eventFocusState: eventSnapshot("ComposeFocusState", "androidx.compose.ui.focus.FocusState"),
+  eventTextFieldValue: eventSnapshot("ComposeTextFieldSnapshot", "androidx.compose.ui.text.input.TextFieldValue"),
   eventInt: { type: "(value: number) => void", input: "function", expression: emitValue("Int") },
   slot: { type: "ReactNode", expression: (key) => `{ RenderComposeChildren(node.slot(${key})) }` },
 };
+
+for (const { name } of manifest.records ?? []) {
+  kinds["record:" + name] = { type: name, input: "object", module: "./records",
+    expression: (key) => "node.jsonObject(" + key + ").decode" + name + "()" };
+}
 
 for (const { name } of manifest.values ?? []) {
   kinds[name] = { type: name, input: "string", expression: (key) => `to${name}(node.string(${key}))` };
@@ -312,13 +335,13 @@ function kotlin({ components }) {
     const bits = new Map(optionals.map(({ name }, index) => [name, 1 << index]));
     const call = (mask, indent) => {
       const args = passedParameters({ parameters }, mask)
-        .map(({ name, kind, nullable, scope }) => {
+        .map(({ name, kind, nullable, scope, nativeName = name }) => {
           const key = quote(name);
           const value = Object.hasOwn(stateKinds, kind) ? `requireNotNull(${name}Value)`
             : kind === "slot" && scope ? renderSlot(`node.slot(${key})`, scope)
             : kinds[kind].expression(key);
           const expression = nullable ? `if (node.isNull(${key})) null else (${value})` : value;
-          return `\`${name}\` = ${expression}`;
+          return `\`${nativeName}\` = ${expression}`;
         });
       if (children) {
         const argument = childrenParameter ?? "content";
@@ -449,8 +472,10 @@ for (const [name, overloads] of Map.groupBy(manifest.components, ({ name }) => n
 }
 const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers, { ...kinds, ...modifierKinds });
 const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
+const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? []);
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
 const nativeFiles = [
+  [`${android}/ComposeRecords.kt`, recordKotlin],
   [`${android}/ComposeFactories.kt`, factoryKotlin],
   ...kotlin(manifest).map(([file, content]) => [`${android}/${file}`, content]),
   [`${android}/ModifierRegistry.kt`, modifierKotlin],
@@ -477,6 +502,7 @@ const files = [
   ["src/generated/components.tsx", typeScript(manifest)],
   ["src/generated/modifiers.ts", modifierTypeScript],
   ["src/generated/values.ts", valueTypeScript],
+  ["src/generated/records.ts", recordTypeScript],
   ["src/generated/factories.ts", factoryTypeScript],
   ["tools/compose-codegen/api-surface.json", `{\n${Object.entries(surface).map(([kind, entries]) =>
     `  "${kind}": [\n${entries.map((entry) => `    ${JSON.stringify(entry)}`).join(",\n")}\n  ]`).join(",\n")}\n}\n`],
