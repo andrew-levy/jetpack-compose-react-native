@@ -87,10 +87,20 @@ if (mode === "audit") {
   // overload and replaces it with one that requires railExpanded.
   const expected = [["icon", "label", "modifier", "onClick", "selected"],
     ["enabled", "icon", "label", "modifier", "onClick", "selected"]];
+  const tooltipNames = new Set(["PlainTooltip", "RichTooltip"]);
+  const newCaretShape = new Set(newer.components.filter(({ name, parameters }) =>
+    tooltipNames.has(name) && parameters.some(({ name }) => name === "caretShape")
+  ).map(({ name }) => name));
   const unexpected = lost.filter((form) => {
-    const [name, children, props] = JSON.parse(form);
-    if (name !== "WideNavigationRailItem" || children) return true;
+    const [name, children, props, kind, scope] = JSON.parse(form);
     const names = props.map(([prop]) => prop);
+    // Material 3 replaces tooltip caretSize with caretShape. Verify that the
+    // rest of each call still resolves after removing the replaced prop.
+    if (newCaretShape.has(name) && names.includes("caretSize")) {
+      return !upgradedForms.has(JSON.stringify([name, children,
+        props.filter(([prop]) => prop !== "caretSize"), kind, scope]));
+    }
+    if (name !== "WideNavigationRailItem" || children) return true;
     return !expected.some((shape) => shape.join() === names.join());
   });
   for (const form of lost) console.log(`Removed JSX call form ${form}`);
