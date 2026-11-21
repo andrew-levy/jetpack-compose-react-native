@@ -45,3 +45,11 @@ export function useBringIntoViewRequester(): ComposeBringIntoViewRequester {
   const [value, send] = useNativeHandle<"bringIntoViewRequester", "bringIntoView">("bringIntoViewRequester");
   return useMemo(() => ({ ...value, bringIntoView: () => send("bringIntoView") }), [value, send]);
 }
+
+export type ComposeInteractionSource = NativeHandle<"interactionSource", never>;
+
+/** Share one native interaction source between modifiers and components in a Compose host. */
+export function useInteractionSource(): ComposeInteractionSource {
+  const token = useId();
+  return useMemo(() => ({ kind: "interactionSource", token }), [token]);
+}

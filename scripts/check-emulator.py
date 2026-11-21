@@ -201,21 +201,24 @@ def verify():
     nodes = wait_for("Show bridge", window=window)
     tap(nodes["Show bridge"])
     nodes = wait_for("Request native focus", "Native target idle", "Allow native scroll", "Scroll card 1", window=window)
-    tap(nodes["Request native focus"])
-    nodes = wait_for("Native target focused", "Allow native scroll", "Scroll card 1", "Scroll card 2", window=window)
+    with record("native-focus-style"):
+        tap(nodes["Request native focus"])
+        nodes = wait_for("Native target focused", "Allow native scroll", "Scroll card 1", "Scroll card 2", window=window)
     first, second = bounds(nodes["Scroll card 1"]), bounds(nodes["Scroll card 2"])
     y = (first[1] + first[3]) // 2
     swipe = ("shell", "input", "swipe", str(second[2] + 24), str(y), str(first[0]), str(y), "300")
     adb(*swipe)
     nodes = wait_for("Scroll card 1", "Allow native scroll", layout_ready=lambda items: bounds(items["Scroll card 1"]) == first, window=window)
-    tap(nodes["Allow native scroll"])
-    nodes = wait_for("Block native scroll", window=window)
-    adb(*swipe)
-    nodes = wait_for("Block native scroll", absent=("Scroll card 1",), window=window)
+    with record("native-nested-scroll"):
+        tap(nodes["Allow native scroll"])
+        nodes = wait_for("Block native scroll", window=window)
+        adb(*swipe)
+        nodes = wait_for("Block native scroll", absent=("Scroll card 1",), window=window)
     capture("15-bridge")
     nodes = wait_for("Run animation", window=window)
-    tap(nodes["Run animation"])
-    nodes = wait_for("Native animation complete", "Modifiers", window=window)
+    with record("native-animation-spec"):
+        tap(nodes["Run animation"])
+        nodes = wait_for("Native animation complete", "Modifiers", window=window)
 
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)

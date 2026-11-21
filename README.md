@@ -41,6 +41,45 @@ Generated components accept the `modifiers` prop, and chains start with
 `padding` paints the padded area. See the [code generation guide](tools/compose-codegen/README.md)
 for package discovery, supported argument types, and regeneration.
 
+## Focus, scrolling, and styles
+
+Create a requester with `useFocusRequester()` or `useBringIntoViewRequester()`.
+Attach it to the target modifier, then call `requestFocus()` or
+`bringIntoView()` from a React event. Keep users of the same handle in a single
+Compose host.
+
+Use `Modifier.nestedScroll({ preScroll: { y: 1 } })` to consume vertical deltas
+before the child scrolls. Pre- and post-scroll rules also accept per-axis
+fractions for flings. Use `Modifier.onPreviewKeyEvent({ keyCodes: [4], event: "up" })`
+to consume matching key events on Android.
+
+Animation parameters accept native spring, tween, and snap specs. For example,
+`Modifier.animateContentSize({ animationSpec: { type: "tween", durationMillis: 240 } })`.
+
+Compose Foundation 1.11 supplies the experimental Style API. Use a style object
+with `Modifier.styleable`. Share an interaction source when a style should
+respond to focus, press, or hover from another modifier.
+
+```tsx
+import { Box, Modifier, Text, useInteractionSource } from "jetpack-compose-react-native";
+
+function StyledFocusTarget() {
+  const interactionSource = useInteractionSource();
+  return (
+    <Box modifiers={Modifier.styleable({
+      style: {
+        background: "#ede5fc",
+        contentPadding: 12,
+        whenFocused: { background: "#c1f2e7" },
+      },
+      styleState: { interactionSource },
+    }).focusable({ interactionSource })}>
+      <Text text="Focus target" />
+    </Box>
+  );
+}
+```
+
 ## Customize the theme
 
 Wrap a Compose subtree in `MaterialTheme` and pass a Material 3 color scheme.
@@ -88,7 +127,7 @@ Use the tabs in the [example app](example/App.tsx) to spot-check generated bindi
 
 | Tab | What to try |
 | --- | --- |
-| **Components** | Switch between buttons, inputs, surfaces, and progress. Try the two slider thumbs, tabs, chips, and both text field styles. |
+| **Components** | Switch between buttons, inputs, surfaces, progress, and collections. In Bridge, try native focus and styles, nested scroll, and animation specs. |
 | **Modifiers** | Swap chain order and compare gradients, borders, clipping, shadows, size, offset, layering, and scoped weight. |
 | **Overlays** | Open the bottom sheet or alert dialog. Choose a dropdown action, then undo it in the snackbar. |
 | **Interop** | Tap either button to insert or remove a React Native child in a Compose layout. |

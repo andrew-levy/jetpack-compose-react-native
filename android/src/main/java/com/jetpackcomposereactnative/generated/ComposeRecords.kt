@@ -5,6 +5,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.json.JSONObject
 
+internal fun JSONObject.decodeComposeOffset(): androidx.compose.ui.geometry.Offset = androidx.compose.ui.geometry.Offset(
+  `x` = getDouble("x").toFloat(),
+  `y` = getDouble("y").toFloat(),
+)
+
 internal fun JSONObject.decodeComposeTransformOrigin(): androidx.compose.ui.graphics.TransformOrigin = androidx.compose.ui.graphics.TransformOrigin(
   `pivotFractionX` = getDouble("pivotFractionX").toFloat(),
   `pivotFractionY` = getDouble("pivotFractionY").toFloat(),

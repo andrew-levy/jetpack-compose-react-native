@@ -5,6 +5,7 @@ import { modifierKinds, modifierOutputs, typeImports } from "./modifiers.mjs";
 import { valueOutputs } from "./values.mjs";
 import { factoryOutputs } from "./factories.mjs";
 import { recordOutputs } from "./records.mjs";
+import { styleOutputs } from "./styles.mjs";
 import { verifyInventory } from "./inventory.mjs";
 
 const repo = fileURLToPath(new URL("../../", import.meta.url));
@@ -58,9 +59,19 @@ const stateKinds = {
 const handleKinds = {
   focusRequester: ["ComposeFocusRequester", "rememberComposeFocusRequester"],
   bringIntoViewRequester: ["ComposeBringIntoViewRequester", "rememberComposeBringIntoViewRequester"],
+  interactionSource: ["ComposeInteractionSource", "rememberComposeInteractionSource"],
 };
 
 const kinds = {
+  foundationStyle: { type: "ComposeFoundationStyle", input: "object", module: "./styles",
+    expression: (key) => "node.jsonObject(" + key + ").toComposeFoundationStyle()" },
+  foundationStyles: { type: "readonly ComposeFoundationStyle[]", input: "tuple", module: "./styles",
+    imports: ["ComposeFoundationStyle"], spread: true,
+    expression: (key) => `args.jsonArray(${key}).toComposeFoundationStyles()` },
+  foundationStyleState: { type: "ComposeFoundationStyleState", input: "object", module: "./styles",
+    expression: (key) => `node.jsonObject(${key}).rememberComposeFoundationStyleState()`,
+    modifierExpression: () => "styleState",
+    composition: { value: "styleState", factory: "rememberComposeFoundationStyleState" } },
   ...Object.fromEntries(Object.entries(handleKinds).map(([kind, [type, factory]]) => [
     kind, { type, input: "object", module: "../utils/nativeHandles",
       expression: (key) => `node.jsonObject(${key}).${factory}()`,
@@ -473,8 +484,10 @@ for (const [name, overloads] of Map.groupBy(manifest.components, ({ name }) => n
 const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers, { ...kinds, ...modifierKinds });
 const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
 const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? []);
+const [styleTypeScript, styleKotlin] = styleOutputs(manifest.styleProperties ?? [], { ...kinds, ...modifierKinds });
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
 const nativeFiles = [
+  [`${android}/ComposeStyleValues.kt`, styleKotlin],
   [`${android}/ComposeRecords.kt`, recordKotlin],
   [`${android}/ComposeFactories.kt`, factoryKotlin],
   ...kotlin(manifest).map(([file, content]) => [`${android}/${file}`, content]),
@@ -503,6 +516,7 @@ const files = [
   ["src/generated/modifiers.ts", modifierTypeScript],
   ["src/generated/values.ts", valueTypeScript],
   ["src/generated/records.ts", recordTypeScript],
+  ["src/generated/styles.ts", styleTypeScript],
   ["src/generated/factories.ts", factoryTypeScript],
   ["tools/compose-codegen/api-surface.json", `{\n${Object.entries(surface).map(([kind, entries]) =>
     `  "${kind}": [\n${entries.map((entry) => `    ${JSON.stringify(entry)}`).join(",\n")}\n  ]`).join(",\n")}\n}\n`],

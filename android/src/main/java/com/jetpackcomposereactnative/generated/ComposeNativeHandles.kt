@@ -1,6 +1,7 @@
 package com.jetpackcomposereactnative.generated
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -39,15 +40,23 @@ internal val LocalComposeNativeHandles = staticCompositionLocalOf<ComposeNativeH
 }
 
 @Composable
+private fun <T : Any> JSONObject.rememberHandleEntry(
+  kind: String,
+  factory: () -> T,
+): ComposeNativeHandles.Entry<T> {
+  require(getString("kind") == kind) { "Expected Compose handle of kind $kind" }
+  val token = getString("token")
+  val store = LocalComposeNativeHandles.current
+  return remember(store, kind, token) { store.resolve(kind, token, factory) }
+}
+
+@Composable
 private fun <T : Any> JSONObject.rememberHandle(
   kind: String,
   factory: () -> T,
   execute: suspend (T, String) -> Unit,
 ): T {
-  require(getString("kind") == kind) { "Expected Compose handle of kind $kind" }
-  val token = getString("token")
-  val store = LocalComposeNativeHandles.current
-  val entry = remember(store, kind, token) { store.resolve(kind, token, factory) }
+  val entry = rememberHandleEntry(kind, factory)
   val command = optJSONObject("command")
   val revision = command?.getLong("revision")
   val operation = command?.getString("operation")
@@ -77,3 +86,7 @@ internal fun JSONObject.rememberComposeBringIntoViewRequester(): BringIntoViewRe
   rememberHandle("bringIntoViewRequester", { BringIntoViewRequester() }) { requester, operation ->
     if (operation == "bringIntoView") requester.bringIntoView()
   }
+
+@Composable
+internal fun JSONObject.rememberComposeInteractionSource(): MutableInteractionSource =
+  rememberHandleEntry("interactionSource", { MutableInteractionSource() }).value

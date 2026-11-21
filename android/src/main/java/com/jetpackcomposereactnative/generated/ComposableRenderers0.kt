@@ -10604,7 +10604,8 @@ internal object RendererAssistChip {
     val mask = (if (node.has("enabled")) 1 else 0) +
       (if (node.has("leadingIcon")) 2 else 0) +
       (if (node.has("trailingIcon")) 4 else 0) +
-      (if (node.has("shape")) 8 else 0)
+      (if (node.has("shape")) 8 else 0) +
+      (if (node.has("interactionSource")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.material3.AssistChip(
         `onClick` = { node.emit("onClick") },
@@ -10718,6 +10719,134 @@ internal object RendererAssistChip {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
+      16 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      17 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      18 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      19 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      20 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      21 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      22 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      23 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      24 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      25 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      26 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      27 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      28 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      29 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      30 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      31 -> androidx.compose.material3.AssistChip(
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -10797,7 +10926,7 @@ internal object RendererBasicAlertDialog {
   }
 }
 
-// androidx.compose.foundation.text.BasicSecureTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorator: androidx.compose.foundation.text.input.TextFieldDecorator?, textObfuscationMode: androidx.compose.foundation.text.input.TextObfuscationMode, textObfuscationCharacter: kotlin.Char)
+// androidx.compose.foundation.text.BasicSecureTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorator: androidx.compose.foundation.text.input.TextFieldDecorator?, textObfuscationMode: androidx.compose.foundation.text.input.TextObfuscationMode, textObfuscationCharacter: kotlin.Char, scrollState: androidx.compose.foundation.ScrollState)
 internal object RendererBasicSecureTextField {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
@@ -10805,7 +10934,8 @@ internal object RendererBasicSecureTextField {
     val mask = (if (node.has("enabled")) 1 else 0) +
       (if (node.has("readOnly")) 2 else 0) +
       (if (node.has("textStyle")) 4 else 0) +
-      (if (node.has("cursorBrush")) 8 else 0)
+      (if (node.has("interactionSource")) 8 else 0) +
+      (if (node.has("cursorBrush")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -10854,46 +10984,46 @@ internal object RendererBasicSecureTextField {
       8 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       9 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       10 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       11 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       12 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       13 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       14 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       15 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -10901,6 +11031,118 @@ internal object RendererBasicSecureTextField {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      17 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      18 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      19 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      20 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      21 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      22 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      23 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      24 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      25 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      26 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      27 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      28 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      29 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      30 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      31 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       else -> error("Invalid generated arguments for " + node.name)
@@ -11362,7 +11604,8 @@ internal object RendererBasicTextField {
     val mask = (if (node.has("enabled")) 1 else 0) +
       (if (node.has("readOnly")) 2 else 0) +
       (if (node.has("textStyle")) 4 else 0) +
-      (if (node.has("cursorBrush")) 8 else 0)
+      (if (node.has("interactionSource")) 8 else 0) +
+      (if (node.has("cursorBrush")) 16 else 0)
     when (mask) {
       0 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
@@ -11411,46 +11654,46 @@ internal object RendererBasicTextField {
       8 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       9 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       10 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       11 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       12 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       13 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       14 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       15 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
@@ -11458,6 +11701,118 @@ internal object RendererBasicTextField {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      17 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      18 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      19 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      20 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      21 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      22 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      23 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      24 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      25 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      26 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      27 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      28 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      29 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      30 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      31 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       else -> error("Invalid generated arguments for " + node.name)
@@ -11475,12 +11830,17 @@ internal object RendererBasicTextField_1 {
       (if (node.has("singleLine")) 8 else 0) +
       (if (node.has("maxLines")) 16 else 0) +
       (if (node.has("minLines")) 32 else 0) +
-      (if (node.has("cursorBrush")) 64 else 0)
+      (if (node.has("interactionSource")) 64 else 0) +
+      (if (node.has("cursorBrush")) 128 else 0)
     when (mask / 32) {
       0 -> renderBasicTextField_1Group0(node, scope, mask)
       1 -> renderBasicTextField_1Group1(node, scope, mask)
       2 -> renderBasicTextField_1Group2(node, scope, mask)
       3 -> renderBasicTextField_1Group3(node, scope, mask)
+      4 -> renderBasicTextField_1Group4(node, scope, mask)
+      5 -> renderBasicTextField_1Group5(node, scope, mask)
+      6 -> renderBasicTextField_1Group6(node, scope, mask)
+      7 -> renderBasicTextField_1Group7(node, scope, mask)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -12018,21 +12378,21 @@ internal object RendererBasicTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       65 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       66 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       67 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12040,14 +12400,14 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       68 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       69 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12055,7 +12415,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       70 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12063,7 +12423,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       71 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12072,14 +12432,14 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       72 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       73 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12087,7 +12447,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       74 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12095,7 +12455,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       75 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12104,7 +12464,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       76 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12112,7 +12472,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       77 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12121,7 +12481,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       78 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12130,7 +12490,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       79 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12140,14 +12500,14 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       80 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       81 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12155,7 +12515,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       82 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12163,7 +12523,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       83 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12172,7 +12532,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       84 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12180,7 +12540,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       85 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12189,7 +12549,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       86 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12198,7 +12558,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       87 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12208,7 +12568,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       88 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12216,7 +12576,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       89 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12225,7 +12585,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       90 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12234,7 +12594,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       91 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12244,7 +12604,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       92 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12253,7 +12613,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       93 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12263,7 +12623,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       94 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12273,7 +12633,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       95 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12284,7 +12644,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -12298,7 +12658,7 @@ internal object RendererBasicTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       97 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12306,7 +12666,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       98 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12314,7 +12674,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       99 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12323,7 +12683,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       100 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12331,7 +12691,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       101 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12340,7 +12700,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       102 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12349,7 +12709,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       103 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12359,7 +12719,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       104 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12367,7 +12727,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       105 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12376,7 +12736,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       106 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12385,7 +12745,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       107 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12395,7 +12755,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       108 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12404,7 +12764,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       109 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12414,7 +12774,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       110 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12424,7 +12784,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       111 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12435,7 +12795,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       112 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12443,7 +12803,7 @@ internal object RendererBasicTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       113 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12452,7 +12812,7 @@ internal object RendererBasicTextField_1 {
         `enabled` = node.boolean("enabled"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       114 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12461,7 +12821,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       115 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12471,7 +12831,7 @@ internal object RendererBasicTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       116 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12480,7 +12840,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       117 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12490,7 +12850,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       118 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12500,7 +12860,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       119 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12511,7 +12871,7 @@ internal object RendererBasicTextField_1 {
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       120 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12520,7 +12880,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       121 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12530,7 +12890,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       122 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12540,7 +12900,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       123 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12551,7 +12911,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       124 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12561,7 +12921,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       125 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12572,7 +12932,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       126 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12583,7 +12943,7 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       127 -> androidx.compose.foundation.text.BasicTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -12595,832 +12955,907 @@ internal object RendererBasicTextField_1 {
         `singleLine` = node.boolean("singleLine"),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
-}
-
-// androidx.compose.foundation.text.BasicTextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)
-internal object RendererBasicTextField_2 {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("readOnly")) 2 else 0) +
-      (if (node.has("textStyle")) 4 else 0) +
-      (if (node.has("singleLine")) 8 else 0) +
-      (if (node.has("maxLines")) 16 else 0) +
-      (if (node.has("minLines")) 32 else 0) +
-      (if (node.has("cursorBrush")) 64 else 0)
-    when (mask / 32) {
-      0 -> renderBasicTextField_2Group0(node, scope, mask)
-      1 -> renderBasicTextField_2Group1(node, scope, mask)
-      2 -> renderBasicTextField_2Group2(node, scope, mask)
-      3 -> renderBasicTextField_2Group3(node, scope, mask)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
 
   @Composable
-  private fun renderBasicTextField_2Group0(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_1Group4(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      0 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      128 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      1 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-      )
-      2 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-      )
-      3 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      129 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      4 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-      )
-      5 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-      )
-      6 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      130 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      7 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      131 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      8 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      9 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      10 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      11 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      12 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      132 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      13 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      133 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      14 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      134 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      15 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      135 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      16 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      17 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      18 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      19 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      20 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      21 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      22 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      23 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-      )
-      24 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      136 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      25 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      137 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      26 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      138 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      27 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      139 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      28 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      140 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      29 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      141 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      30 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      142 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      31 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      143 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      144 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      145 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      146 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      147 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      148 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      149 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      150 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      151 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      152 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      153 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      154 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      155 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      156 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      157 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      158 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      159 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
   @Composable
-  private fun renderBasicTextField_2Group1(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_1Group5(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      32 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      160 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      33 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      161 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      34 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      162 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      35 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      163 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      36 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      164 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      37 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      165 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      38 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      166 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      39 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      40 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      41 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      42 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      43 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      44 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      45 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      46 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      47 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      167 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      48 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      49 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      50 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      51 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      52 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      53 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      54 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      55 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-      )
-      56 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      168 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      57 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      169 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      58 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      170 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      59 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      171 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      60 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      172 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      61 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      173 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      62 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      174 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      63 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      175 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      176 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      177 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      178 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      179 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      180 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      181 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      182 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      183 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      184 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      185 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      186 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      187 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      188 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      189 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      190 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      191 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
   @Composable
-  private fun renderBasicTextField_2Group2(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_1Group6(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      64 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      192 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      65 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      66 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      67 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      193 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      68 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      69 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      70 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      194 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      71 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      195 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      72 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      73 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      74 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      75 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      76 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      196 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      77 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      197 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      78 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      198 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      79 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      199 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      80 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      81 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      82 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      83 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      84 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      85 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      86 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      87 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      88 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      200 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      89 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      201 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      90 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      202 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      91 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      203 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      92 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      204 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      93 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      205 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      94 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      206 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      95 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      207 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      208 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
         `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      209 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      210 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      211 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      212 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      213 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      214 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      215 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      216 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      217 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      218 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      219 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      220 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      221 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      222 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      223 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       else -> error("Invalid generated arguments for " + node.name)
@@ -13428,2706 +13863,343 @@ internal object RendererBasicTextField_2 {
   }
 
   @Composable
-  private fun renderBasicTextField_2Group3(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderBasicTextField_1Group7(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      96 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      224 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      97 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      225 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      98 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      226 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      99 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      227 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      100 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      228 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      101 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      229 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      102 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      230 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      103 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      104 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      105 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      106 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      107 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      108 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      109 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      110 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      111 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      231 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `singleLine` = node.boolean("singleLine"),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      112 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      113 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      114 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      115 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      116 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      117 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      118 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      119 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `maxLines` = node.number("maxLines").toInt(),
-        `minLines` = node.number("minLines").toInt(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      120 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      232 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      121 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      233 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      122 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      234 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      123 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      235 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      124 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      236 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      125 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      237 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      126 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      238 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      127 -> androidx.compose.foundation.text.BasicTextField(
-        `value` = node.string("value"),
-        `onValueChange` = { value: String -> node.emit("onValueChange", value) },
+      239 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `singleLine` = node.boolean("singleLine"),
-        `maxLines` = node.number("maxLines").toInt(),
         `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.foundation.BasicTooltipBox(positionProvider: androidx.compose.ui.window.PopupPositionProvider, tooltip: kotlin.Function0<kotlin.Unit>, state: androidx.compose.foundation.BasicTooltipState, modifier: androidx.compose.ui.Modifier, focusable: kotlin.Boolean, enableUserInput: kotlin.Boolean, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererBasicTooltipBox {
-  @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val positionProviderValue = if (node.has("positionProvider") && !node.isNull("positionProvider")) node.jsonObject("positionProvider").rememberComposePopupPosition() else null
-    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeBasicTooltipState() else null
-    val mask = (if (node.has("focusable")) 1 else 0) +
-      (if (node.has("enableUserInput")) 2 else 0)
-    when (mask) {
-      0 -> androidx.compose.foundation.BasicTooltipBox(
-        `positionProvider` = requireNotNull(positionProviderValue),
-        `tooltip` = { RenderComposeChildren(node.slot("tooltip")) },
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children) },
-      )
-      1 -> androidx.compose.foundation.BasicTooltipBox(
-        `positionProvider` = requireNotNull(positionProviderValue),
-        `tooltip` = { RenderComposeChildren(node.slot("tooltip")) },
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `focusable` = node.boolean("focusable"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      2 -> androidx.compose.foundation.BasicTooltipBox(
-        `positionProvider` = requireNotNull(positionProviderValue),
-        `tooltip` = { RenderComposeChildren(node.slot("tooltip")) },
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enableUserInput` = node.boolean("enableUserInput"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      3 -> androidx.compose.foundation.BasicTooltipBox(
-        `positionProvider` = requireNotNull(positionProviderValue),
-        `tooltip` = { RenderComposeChildren(node.slot("tooltip")) },
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `focusable` = node.boolean("focusable"),
-        `enableUserInput` = node.boolean("enableUserInput"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.BottomAppBar(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, contentPadding: androidx.compose.foundation.layout.PaddingValues, windowInsets: androidx.compose.foundation.layout.WindowInsets, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererBottomAppBar {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("containerColor")) 1 else 0) +
-      (if (node.has("contentColor")) 2 else 0) +
-      (if (node.has("tonalElevation")) 4 else 0) +
-      (if (node.has("contentPadding")) 8 else 0) +
-      (if (node.has("windowInsets")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      16 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      17 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      18 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      19 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      20 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      21 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      22 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      23 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      24 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      25 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      26 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      27 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      28 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      29 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      30 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      31 -> androidx.compose.material3.BottomAppBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.BottomAppBar(actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, floatingActionButton: kotlin.Function0<kotlin.Unit>?, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, contentPadding: androidx.compose.foundation.layout.PaddingValues, windowInsets: androidx.compose.foundation.layout.WindowInsets)
-internal object RendererBottomAppBar_1 {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("floatingActionButton")) 1 else 0) +
-      (if (node.has("containerColor")) 2 else 0) +
-      (if (node.has("contentColor")) 4 else 0) +
-      (if (node.has("tonalElevation")) 8 else 0) +
-      (if (node.has("contentPadding")) 16 else 0) +
-      (if (node.has("windowInsets")) 32 else 0)
-    when (mask / 32) {
-      0 -> renderBottomAppBar_1Group0(node, scope, mask)
-      1 -> renderBottomAppBar_1Group1(node, scope, mask)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderBottomAppBar_1Group0(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      0 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-      )
-      2 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-      )
-      3 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-      )
-      4 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      5 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-      )
-      6 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      7 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      8 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      9 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      10 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      11 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      12 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      13 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      14 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      15 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-      )
-      16 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      17 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      18 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      19 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      20 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      21 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      22 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      23 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      24 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      25 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      26 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      27 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      28 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      29 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      30 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      31 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderBottomAppBar_1Group1(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      32 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      33 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      34 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      35 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      36 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      37 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      38 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      39 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      40 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      41 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      42 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      43 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      44 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      45 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      46 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      47 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      48 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      49 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      50 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      51 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      52 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      53 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      54 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      55 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      56 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      57 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      58 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      59 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      60 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      61 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      62 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      63 -> androidx.compose.material3.BottomAppBar(
-        `actions` = { RenderComposeChildren(node.slot("actions"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `floatingActionButton` = if (node.isNull("floatingActionButton")) null else ({ RenderComposeChildren(node.slot("floatingActionButton")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.BottomSheetScaffold(sheetContent: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, scaffoldState: androidx.compose.material3.BottomSheetScaffoldState, sheetPeekHeight: androidx.compose.ui.unit.Dp, sheetMaxWidth: androidx.compose.ui.unit.Dp, sheetShape: androidx.compose.ui.graphics.Shape, sheetContainerColor: androidx.compose.ui.graphics.Color, sheetContentColor: androidx.compose.ui.graphics.Color, sheetTonalElevation: androidx.compose.ui.unit.Dp, sheetShadowElevation: androidx.compose.ui.unit.Dp, sheetDragHandle: kotlin.Function0<kotlin.Unit>?, sheetSwipeEnabled: kotlin.Boolean, topBar: kotlin.Function0<kotlin.Unit>?, snackbarHost: kotlin.Function1<androidx.compose.material3.SnackbarHostState, kotlin.Unit>, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, content: kotlin.Function1<androidx.compose.foundation.layout.PaddingValues, kotlin.Unit>)
-internal object RendererBottomSheetScaffold {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val scaffoldStateValue = if (node.has("scaffoldState") && !node.isNull("scaffoldState")) node.jsonObject("scaffoldState").rememberComposeBottomSheetScaffoldState() else null
-    val mask = (if (node.has("scaffoldState")) 1 else 0) +
-      (if (node.has("sheetPeekHeight")) 2 else 0) +
-      (if (node.has("sheetMaxWidth")) 4 else 0) +
-      (if (node.has("sheetShape")) 8 else 0) +
-      (if (node.has("sheetContainerColor")) 16 else 0) +
-      (if (node.has("sheetContentColor")) 32 else 0) +
-      (if (node.has("sheetTonalElevation")) 64 else 0) +
-      (if (node.has("sheetShadowElevation")) 128 else 0) +
-      (if (node.has("sheetDragHandle")) 256 else 0) +
-      (if (node.has("sheetSwipeEnabled")) 512 else 0) +
-      (if (node.has("topBar")) 1024 else 0) +
-      (if (node.has("containerColor")) 2048 else 0) +
-      (if (node.has("contentColor")) 4096 else 0)
-    when (mask / 32) {
-      0 -> renderBottomSheetScaffoldGroup0(node, scope, mask, scaffoldStateValue)
-      1 -> renderBottomSheetScaffoldGroup1(node, scope, mask, scaffoldStateValue)
-      2 -> renderBottomSheetScaffoldGroup2(node, scope, mask, scaffoldStateValue)
-      3 -> renderBottomSheetScaffoldGroup3(node, scope, mask, scaffoldStateValue)
-      4 -> renderBottomSheetScaffoldGroup4(node, scope, mask, scaffoldStateValue)
-      5 -> renderBottomSheetScaffoldGroup5(node, scope, mask, scaffoldStateValue)
-      8 -> renderBottomSheetScaffoldGroup8(node, scope, mask, scaffoldStateValue)
-      9 -> renderBottomSheetScaffoldGroup9(node, scope, mask, scaffoldStateValue)
-      16 -> renderBottomSheetScaffoldGroup16(node, scope, mask, scaffoldStateValue)
-      17 -> renderBottomSheetScaffoldGroup17(node, scope, mask, scaffoldStateValue)
-      32 -> renderBottomSheetScaffoldGroup32(node, scope, mask, scaffoldStateValue)
-      33 -> renderBottomSheetScaffoldGroup33(node, scope, mask, scaffoldStateValue)
-      64 -> renderBottomSheetScaffoldGroup64(node, scope, mask, scaffoldStateValue)
-      65 -> renderBottomSheetScaffoldGroup65(node, scope, mask, scaffoldStateValue)
-      128 -> renderBottomSheetScaffoldGroup128(node, scope, mask, scaffoldStateValue)
-      129 -> renderBottomSheetScaffoldGroup129(node, scope, mask, scaffoldStateValue)
-      255 -> renderBottomSheetScaffoldGroup255(node, scope, mask, scaffoldStateValue)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup0(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      0 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      3 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      5 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      6 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      7 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      8 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      10 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      12 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      14 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      16 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      17 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      18 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      19 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      20 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      21 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      22 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      23 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      24 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      26 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      28 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      30 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup1(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      32 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      33 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      34 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      35 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      36 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      37 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      38 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      39 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      40 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      42 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      44 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      46 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      48 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      49 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      50 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      51 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      52 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      53 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      54 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      55 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      56 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      58 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      60 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      62 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup2(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      64 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      66 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      68 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      70 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      80 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      82 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      84 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      86 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup3(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      96 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      98 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      100 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      102 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      112 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      114 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      116 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      118 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup4(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      128 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      130 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      132 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      134 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      144 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      146 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      148 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      150 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup5(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      160 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      162 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      164 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      166 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      176 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      178 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      180 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      182 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup8(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      256 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      258 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      260 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      262 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      272 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      274 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      276 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      278 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup9(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      288 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      290 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      292 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      294 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      304 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      306 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      308 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      310 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup16(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      512 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      514 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      516 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      518 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      528 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      530 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      532 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      534 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup17(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      544 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      546 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      548 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      550 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      560 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      562 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      564 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      566 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup32(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      1024 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1026 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1028 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1030 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1040 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1042 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1044 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1046 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup33(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      1056 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1058 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1060 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1062 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1072 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1074 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1076 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      1078 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup64(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      2048 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2050 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2052 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2054 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2064 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2066 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2068 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2070 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup65(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      2080 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2082 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2084 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2086 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2096 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2098 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2100 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      2102 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `containerColor` = node.color("containerColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup128(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      4096 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4098 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4100 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4102 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4112 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4114 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4116 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4118 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup129(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      4128 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4130 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4132 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4134 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4144 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4146 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4148 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      4150 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderBottomSheetScaffoldGroup255(node: ComposeNode, scope: Any?, mask: Int, scaffoldStateValue: androidx.compose.material3.BottomSheetScaffoldState?) {
-    when (mask) {
-      8191 -> androidx.compose.material3.BottomSheetScaffold(
-        `sheetContent` = { RenderComposeChildren(node.slot("sheetContent"), this) },
-        `modifier` = node.modifier("modifier", scope),
-        `scaffoldState` = requireNotNull(scaffoldStateValue),
-        `sheetPeekHeight` = node.number("sheetPeekHeight").dp,
-        `sheetMaxWidth` = node.number("sheetMaxWidth").dp,
-        `sheetShape` = node.arguments().shape("sheetShape"),
-        `sheetContainerColor` = node.color("sheetContainerColor"),
-        `sheetContentColor` = node.color("sheetContentColor"),
-        `sheetTonalElevation` = node.number("sheetTonalElevation").dp,
-        `sheetShadowElevation` = node.number("sheetShadowElevation").dp,
-        `sheetDragHandle` = if (node.isNull("sheetDragHandle")) null else ({ RenderComposeChildren(node.slot("sheetDragHandle")) }),
-        `sheetSwipeEnabled` = node.boolean("sheetSwipeEnabled"),
-        `topBar` = if (node.isNull("topBar")) null else ({ RenderComposeChildren(node.slot("topBar")) }),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { padding -> RenderPaddedComposeChildren(node.children, padding) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.foundation.layout.Box(modifier: androidx.compose.ui.Modifier, contentAlignment: androidx.compose.ui.Alignment, propagateMinConstraints: kotlin.Boolean, content: kotlin.Function1<androidx.compose.foundation.layout.BoxScope, kotlin.Unit>)
-internal object RendererBox {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentAlignment")) 1 else 0) +
-      (if (node.has("propagateMinConstraints")) 2 else 0)
-    when (mask) {
-      0 -> androidx.compose.foundation.layout.Box(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.foundation.layout.Box(
-        `modifier` = node.modifier("modifier", scope),
-        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.foundation.layout.Box(
-        `modifier` = node.modifier("modifier", scope),
-        `propagateMinConstraints` = node.boolean("propagateMinConstraints"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.foundation.layout.Box(
-        `modifier` = node.modifier("modifier", scope),
-        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
-        `propagateMinConstraints` = node.boolean("propagateMinConstraints"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.foundation.layout.BoxWithConstraints(modifier: androidx.compose.ui.Modifier, contentAlignment: androidx.compose.ui.Alignment, propagateMinConstraints: kotlin.Boolean, content: kotlin.Function1<androidx.compose.foundation.layout.BoxWithConstraintsScope, kotlin.Unit>)
-internal object RendererBoxWithConstraints {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentAlignment")) 1 else 0) +
-      (if (node.has("propagateMinConstraints")) 2 else 0)
-    when (mask) {
-      0 -> androidx.compose.foundation.layout.BoxWithConstraints(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.foundation.layout.BoxWithConstraints(
-        `modifier` = node.modifier("modifier", scope),
-        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.foundation.layout.BoxWithConstraints(
-        `modifier` = node.modifier("modifier", scope),
-        `propagateMinConstraints` = node.boolean("propagateMinConstraints"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.foundation.layout.BoxWithConstraints(
-        `modifier` = node.modifier("modifier", scope),
-        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
-        `propagateMinConstraints` = node.boolean("propagateMinConstraints"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.Button(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererButton {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("contentPadding")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
+      240 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      241 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      2 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
+      242 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      3 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
+      243 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
+        `readOnly` = node.boolean("readOnly"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      6 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
+      244 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      7 -> androidx.compose.material3.Button(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.Card(modifier: androidx.compose.ui.Modifier, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.CardColors, elevation: androidx.compose.material3.CardElevation, border: androidx.compose.foundation.BorderStroke?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererCard {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("shape")) 1 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.Card(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.Card(
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.Card(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.CardColors, elevation: androidx.compose.material3.CardElevation, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererCard_1 {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.Card(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.Card(
-        `onClick` = { node.emit("onClick") },
+      245 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      2 -> androidx.compose.material3.Card(
-        `onClick` = { node.emit("onClick") },
+      246 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      3 -> androidx.compose.material3.Card(
-        `onClick` = { node.emit("onClick") },
+      247 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      248 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      249 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      250 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      251 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      252 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      253 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      254 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      255 -> androidx.compose.foundation.text.BasicTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }

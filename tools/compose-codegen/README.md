@@ -111,6 +111,19 @@ cross the bridge. The runtime has small adapters for shape and brush values
 and preserves the existing `backgroundColor` and `backgroundBrush` aliases. The
 `modifier` prop remains available for existing callers.
 
+The extractor discovers immutable value records from public constructors or
+same-name factories with supported fields. That discovery generates both the
+TypeScript shape and native decoder for values such as `TransformOrigin` and
+`DpOffset`. It also discovers supported Foundation `StyleScope` properties
+from the Compose classpath.
+
+APIs that accept the same native handle or value type share a decoder. Requesters
+and interaction sources retain their identity within a Compose host. Animation
+specs use the same decoder for components and modifiers. Scroll and key policies
+run on Android so Compose can act on the result during the current event.
+Custom native interfaces and arbitrary return-valued JavaScript callbacks still
+need a native adapter.
+
 ## Verify
 
 ```sh

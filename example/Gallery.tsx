@@ -5,7 +5,7 @@ import {
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
   DatePicker, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
-  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, type ComposeChain, type ComposeFloatRange, type ComposeTextFieldValue,
+  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeTextFieldValue,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -227,6 +227,7 @@ export function Components() {
 
 function BridgeCapabilities() {
   const requester = useFocusRequester();
+  const interactionSource = useInteractionSource();
   const [focused, setFocused] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(true);
   const [visible, setVisible] = useState(false);
@@ -236,7 +237,14 @@ function BridgeCapabilities() {
       <Demo title="Native handles and input policy">
         <Column modifiers={fullWidth}>
           <Button onClick={requester.requestFocus}><Text text="Request native focus" /></Button>
-          <Box modifiers={Modifier.focusRequester(requester).onFocusChanged(event => setFocused(event.isFocused)).focusable()}>
+          <Box modifiers={Modifier
+            .styleable({
+              style: { background: "#ede5fc", contentPadding: 8, whenFocused: { background: "#c1f2e7" } },
+              styleState: { interactionSource },
+            })
+            .focusRequester(requester)
+            .onFocusChanged(event => setFocused(event.isFocused))
+            .focusable({ interactionSource })}>
             <Text text={focused ? "Native target focused" : "Native target idle"} />
           </Box>
           <Button onClick={() => setScrollLocked(!scrollLocked)}>

@@ -118,7 +118,7 @@ function kotlin(overloads, kinds) {
   for (const { kotlinFunction, scope } of overloads) {
     if (!scope && !imports.has(kotlinFunction)) imports.set(kotlinFunction, `composeModifier${imports.size}`);
   }
-  const functions = overloads.flatMap(({ signature: sourceSignature, id, name, kotlinFunction, parameters, argumentLists, scope, optIns }) => {
+  const functions = overloads.flatMap(({ signature: sourceSignature, id, name, kotlinFunction, parameters, argumentLists, scope, optIns, composable }) => {
     const annotations = [
       `// ${sourceSignature}`,
       ...(optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : []),
@@ -128,7 +128,8 @@ function kotlin(overloads, kinds) {
       const args = passed.map(({ name, kind, nullable }) => {
         const key = quote(name);
         const value = (kinds[kind].modifierExpression ?? kinds[kind].expression)(key).replaceAll("node.", "args.");
-        return `\`${name}\` = ${nullable ? `if (args.isNull(${key})) null else (${value})` : value}`;
+        const argument = nullable ? `if (args.isNull(${key})) null else (${value})` : value;
+        return `\`${name}\` = ${kinds[kind].spread ? "*" : ""}${argument}`;
       });
       const functionName = scope ? name : imports.get(kotlinFunction);
       const compositionValues = passed.flatMap(({ name, kind, nullable }) => {
@@ -140,8 +141,8 @@ function kotlin(overloads, kinds) {
         return [`val ${value} = ${nullable ? `if (args.isNull(${key})) null else ${factoryCall}` : factoryCall}`];
       });
       const call = `${functionName}(${args.join(", ")})`;
-      const invocation = compositionValues.length
-        ? `modifier.composed { ${compositionValues.join("; ")}; ${call} }`
+      const invocation = composable || compositionValues.length
+        ? `modifier.composed { ${[...compositionValues, call].join("; ")} }`
         : `modifier.${call}`;
       return scope ? `with(scope) { ${invocation} }` : invocation;
     };
@@ -194,7 +195,7 @@ function kotlin(overloads, kinds) {
     "package com.jetpackcomposereactnative.generated",
     "",
     "import androidx.compose.ui.Modifier",
-    ...(overloads.some(({ parameters }) => parameters.some(({ kind }) => kinds[kind].composition))
+    ...(overloads.some(({ parameters, composable }) => composable || parameters.some(({ kind }) => kinds[kind].composition))
       ? ["import androidx.compose.ui.composed"] : []),
     "import androidx.compose.ui.unit.dp",
     "import androidx.compose.ui.unit.sp",

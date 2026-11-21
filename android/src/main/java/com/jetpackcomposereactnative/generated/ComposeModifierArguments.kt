@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
 import com.jetpackcomposereactnative.common.parseComposeColor
+import org.json.JSONArray
 import org.json.JSONObject
 
 internal class ComposeModifierArguments(
@@ -17,11 +18,12 @@ internal class ComposeModifierArguments(
   fun has(name: String) = values.has(name)
   fun isNull(name: String) = values.isNull(name)
   fun jsonObject(name: String): JSONObject = values.getJSONObject(name)
+  fun jsonArray(name: String): JSONArray = values.getJSONArray(name)
   fun string(name: String): String = values.getString(name)
   fun boolean(name: String): Boolean = values.getBoolean(name)
   fun number(name: String): Double = values.getDouble(name)
   fun floatRange(name: String): ClosedFloatingPointRange<Float> {
-    val range = values.getJSONArray(name)
+    val range = jsonArray(name)
     return range.getDouble(0).toFloat()..range.getDouble(1).toFloat()
   }
   fun color(name: String) = parseComposeColor(string(name))

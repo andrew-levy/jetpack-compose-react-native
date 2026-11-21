@@ -103,8 +103,9 @@ private class ComposeApiExtractor(
     val modifiers = discoverModifiers(modifierDeclarations, coverage)
     val factories = discoverFactories(resolver)
     val usedKinds = (components.flatMap { it.parameters } + modifiers.flatMap { it.parameters }).map { it.kind }.toSet()
-    val records = recordTypes.values.filter { "record:" + it.name in usedKinds }
-    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList(), factories, records,
+    val styleProperties = discoverStyleProperties(resolver)
+    val records = recordTypes.values.filter { "record:" + it.name in usedKinds || styleProperties.any { prop -> prop.kind == "record:" + it.name } }
+    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList(), factories, records, styleProperties,
       discovered.sortedWith(compareBy({ it.kind }, { it.signature })),
       coverage.sortedWith(compareBy({ it.kind }, { it.signature })))
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
@@ -140,6 +141,29 @@ private class ComposeApiExtractor(
       val binding = options.filter { it.fields.size == width }.distinct().singleOrNull()
       binding?.let { type to it }
     }.toMap()
+  }
+
+  private fun discoverStyleProperties(resolver: Resolver): List<Parameter> {
+    val scope = resolver.getClassDeclarationByName(
+      resolver.getKSNameFromString("androidx.compose.foundation.style.StyleScope"),
+    ) ?: return emptyList()
+    val overloads = scope.getAllFunctions().filter { function ->
+      function.getVisibility() == Visibility.PUBLIC && !function.isDeprecated() &&
+        function.typeParameters.isEmpty() && function.returnType?.resolve()?.name == "kotlin.Unit"
+    }.mapNotNull { function ->
+      val param = function.parameters.singleOrNull() ?: return@mapNotNull null
+      val type = param.type.resolve()
+      if (param.isVararg || type.isMarkedNullable) return@mapNotNull null
+      val kind = valueKinds[type.name]?.takeIf { it in styleFieldKinds } ?: drawingValueKinds[type.name]
+        ?: valueTypes[type.name]?.name ?: type.recordKind() ?: return@mapNotNull null
+      Parameter(function.simpleName.asString(), kind, optional = true, nullable = false)
+    }.toList()
+    // Keep dimensions in dp and prefer color for the simple background/foreground form.
+    val preferred = listOf("dp", "color")
+    return overloads.groupBy { it.name }.toSortedMap().values.mapNotNull { options ->
+      val distinct = options.distinct()
+      distinct.singleOrNull() ?: preferred.firstNotNullOfOrNull { kind -> distinct.singleOrNull { it.kind == kind } }
+    }
   }
 
   private fun recordValue(fn: KSFunctionDeclaration, type: String): RecordValue? {
@@ -318,16 +342,14 @@ private class ComposeApiExtractor(
         if (optIns.any { it.getVisibility() != Visibility.PUBLIC }) {
           return@mapNotNull omit("unsupported", "Opt-in marker is not public")
         }
-        if (fn.annotations.any { it.annotationType.resolve().name == COMPOSABLE }) {
-          return@mapNotNull omit("adapterRequired", "Modifier must run in composition")
-        }
+        val composable = fn.annotations.any { it.annotationType.resolve().name == COMPOSABLE }
 
         val parameters = mutableListOf<Parameter>()
         for (parameter in fn.parameters) {
           val name = parameter.name?.asString() ?: return@mapNotNull omit("unsupported", "Unnamed parameter")
           val type = parameter.type.resolve()
           val kind = when {
-            parameter.isVararg -> null
+            parameter.isVararg -> modifierVarargKinds[type.name]
             qualifiedName == "androidx.compose.ui.layout.layoutId" && name == "layoutId" && type.name == "kotlin.Any" -> "string"
             else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
               ?: type.recordKind() ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
@@ -356,7 +378,7 @@ private class ComposeApiExtractor(
           OmittedForm(passed(mask).map { it.name }, "Kotlin selects another overload or the call is ambiguous")
         }, kind = "modifier", budgetOmittedForms = forms.omittedCount.takeIf { it > 0 })
         ModifierOverload(fn.signature(), fn.simpleName.asString(), qualifiedName, parameters, masks, receiver,
-          optIns.mapNotNull { it.qualifiedName?.asString() }.sorted())
+          optIns.mapNotNull { it.qualifiedName?.asString() }.sorted(), composable.takeIf { it })
       }.sortedBy { overload -> overload.parameters.joinToString { "${it.name}:${it.kind}" } }
     }
 
@@ -615,6 +637,7 @@ private val objectKinds = setOf("colorScheme", "paddingValues", "windowInsets", 
 
 private val recordPackages = listOf("androidx.compose.ui.geometry", "androidx.compose.ui.graphics", "androidx.compose.ui.unit")
 private val recordFieldKinds = setOf("float", "double", "int", "dp", "sp", "boolean")
+private val styleFieldKinds = recordFieldKinds + setOf("color", "textStyle")
 
 private const val COLOR = "androidx.compose.ui.graphics.Color"
 private val factoryTypes = setOf("androidx.compose.material3.ColorScheme")
@@ -629,7 +652,8 @@ private val expandedBridgeKinds = setOf(
 )
 private val capabilityBridgeKinds = setOf(
   "animationSpec", "enterTransition", "exitTransition", "focusRequester", "bringIntoViewRequester",
-  "nestedScrollConnection", "keyPolicy", "textFieldValue", "eventTextFieldValue", "foundationStyle"
+  "nestedScrollConnection", "keyPolicy", "textFieldValue", "eventTextFieldValue", "foundationStyle",
+  "foundationStyleState", "interactionSource"
 )
 private val preferredComponentKinds = setOf("int", "float", "double", "dp", "sp", "string", "boolean", "color",
   "colorScheme", "slot", "event", "eventString", "eventBoolean", "eventInt", "eventDouble")
@@ -653,6 +677,7 @@ private val modifierValueKinds = drawingValueKinds + mapOf(
   "androidx.compose.ui.layout.AlignmentLine" to "alignmentLine",
   "androidx.compose.ui.layout.HorizontalAlignmentLine" to "alignmentLine"
 )
+private val modifierVarargKinds = mapOf("androidx.compose.foundation.style.Style" to "foundationStyles")
 private val valueSources = mapOf(
   "androidx.compose.ui.Alignment" to ValueSource("ComposeAlignment", listOf("androidx.compose.ui.Alignment")),
   "androidx.compose.ui.Alignment.Horizontal" to ValueSource("ComposeHorizontalAlignment", listOf("androidx.compose.ui.Alignment")),
@@ -735,9 +760,13 @@ private val valueKinds = mapOf(
   "androidx.compose.ui.text.TextStyle" to "textStyle",
   "androidx.compose.ui.text.input.TextFieldValue" to "textFieldValue",
   "androidx.compose.ui.focus.FocusRequester" to "focusRequester",
+  "androidx.compose.foundation.interaction.InteractionSource" to "interactionSource",
+  "androidx.compose.foundation.interaction.MutableInteractionSource" to "interactionSource",
   "androidx.compose.ui.input.nestedscroll.NestedScrollConnection" to "nestedScrollConnection",
   "androidx.compose.animation.core.AnimationSpec" to "animationSpec",
   "androidx.compose.animation.core.FiniteAnimationSpec" to "animationSpec",
+  "androidx.compose.foundation.style.Style" to "foundationStyle",
+  "androidx.compose.foundation.style.StyleState" to "foundationStyleState",
   "androidx.compose.animation.EnterTransition" to "enterTransition",
   "androidx.compose.animation.ExitTransition" to "exitTransition",
   "androidx.compose.ui.graphics.painter.Painter" to "painter",
@@ -751,6 +780,7 @@ private data class Manifest(
   val values: List<ValueType>,
   val factories: List<ValueFactory>,
   val records: List<RecordValue>,
+  val styleProperties: List<Parameter>,
   val discovered: List<Discovery>,
   val coverage: List<Coverage>
 )
@@ -761,7 +791,8 @@ private data class ModifierOverload(
   val parameters: List<Parameter>,
   val masks: List<Int>,
   val scope: String?,
-  val optIns: List<String>
+  val optIns: List<String>,
+  val composable: Boolean? = null
 )
 private data class ValueSource(val name: String, val owners: List<String>)
 private data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>, val optIns: List<String>)

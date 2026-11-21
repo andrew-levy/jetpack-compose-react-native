@@ -63,10 +63,14 @@ if (mode === "audit") {
   for (const [name, kind] of [
     ["focusRequester", "focusRequester"],
     ["bringIntoViewRequester", "bringIntoViewRequester"],
+    ["hoverable", "interactionSource"],
     ["nestedScroll", "nestedScrollConnection"],
     ["onKeyEvent", "keyPolicy"],
     ["animateContentSize", "animationSpec"],
     ["animateItem", "animationSpec"],
+    ["styleable", "foundationStyle"],
+    ["styleable", "foundationStyleState"],
+    ["styleable", "foundationStyles"],
   ]) {
     assert.ok(manifest.modifiers.some(modifier => modifier.name === name &&
       modifier.parameters.some(parameter => parameter.kind === kind)), name + " must use the shared adapter");
@@ -76,6 +80,10 @@ if (mode === "audit") {
   assert.ok(manifest.components.some(component => component.name === "Text" &&
     component.parameters.some(parameter => parameter.name === "composeTextStyle" && parameter.nativeName === "style")));
   assert.ok(manifest.records.some(record => record.name === "ComposeTransformOrigin"));
+  assert.ok(manifest.styleProperties.some(property => property.name === "translation" &&
+    property.kind === "record:ComposeOffset"));
+  assert.ok(manifest.styleProperties.some(property => property.name === "contentPadding" &&
+    property.kind === "dp"));
 } else if (mode === "surface") {
   const baseline = callForms(read(first));
   const actual = callForms(read(second));
