@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { BackHandler, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 
-import { Components, Expressive, Interop, Modifiers } from "./Gallery";
+import { Bindings, Components, Expressive, Interop, Modifiers } from "./Gallery";
 
 const screens = [
   { title: "Components", View: Components },
   { title: "Expressive", View: Expressive },
   { title: "Modifiers", View: Modifiers },
   { title: "Interop", View: Interop },
+  { title: "Bindings", View: Bindings },
 ] as const;
 
 export default function App() {

@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { modifierKinds, modifierOutputs } from "./modifiers.mjs";
 import { valueOutputs } from "./values.mjs";
 import { factoryOutputs } from "./factories.mjs";
+import { verifyInventory } from "./inventory.mjs";
 
 const repo = fileURLToPath(new URL("../../", import.meta.url));
 const input = process.env.COMPOSE_API_MANIFEST ??
@@ -11,6 +12,8 @@ const input = process.env.COMPOSE_API_MANIFEST ??
 const output = process.env.COMPOSE_GENERATED_OUTPUT;
 const manifest = JSON.parse(fs.readFileSync(input, "utf8"));
 const check = process.argv.includes("--check");
+const candidateDir = process.env.COMPOSE_KOTLIN_CANDIDATES;
+const approvedDir = process.env.COMPOSE_APPROVED_KOTLIN;
 const quote = JSON.stringify;
 
 const kinds = {
@@ -23,6 +26,10 @@ const kinds = {
   dp: { type: "number", expression: (key) => `node.number(${key}).dp` },
   sp: { type: "number", expression: (key) => `node.number(${key}).sp` },
   colorScheme: { type: "ColorScheme", input: "object", expression: (key) => `node.jsonObject(${key}).toColorScheme()` },
+  paddingValues: { type: "ComposePaddingValues", input: "object", expression: (key) => `node.jsonObject(${key}).toPaddingValues()` },
+  windowInsets: { type: "ComposeWindowInsets", input: "object", expression: (key) => `node.jsonObject(${key}).toWindowInsets()` },
+  windowInsetsProducer: { type: "ComposeWindowInsets", input: "object", expression: (key) => `{ node.jsonObject(${key}).toWindowInsets() }` },
+  sheetState: { type: "ComposeSheetState", input: "object" },
   color: { type: "string", expression: (key) => `node.color(${key})` },
   shape: { ...modifierKinds.shape, expression: (key) => `node.arguments().shape(${key})` },
   brush: { ...modifierKinds.brush, expression: (key) => `node.arguments().brush(${key})` },
@@ -49,9 +56,9 @@ function emitValue(type) {
 }
 
 function validate({ schemaVersion, components, modifiers, values, factories, coverage }) {
-  if (schemaVersion !== 3 || !Array.isArray(components) || !components.length ||
+  if (schemaVersion !== 4 || !Array.isArray(components) || !components.length ||
       !Array.isArray(modifiers) || !Array.isArray(values) || !Array.isArray(factories) || !Array.isArray(coverage)) {
-    throw Error("Expected a nonempty Compose API manifest with schema version 3.");
+    throw Error("Expected a nonempty Compose API manifest with schema version 4.");
   }
   for (const { name, kotlinFunction, parameters, children } of components) {
     if (!/^[A-Z]\w*$/.test(name)) throw Error(`Invalid component: ${name}`);
@@ -80,7 +87,7 @@ function fieldType({ kind, nullable }) {
   return `${value}${nullable && kind !== "slot" ? " | null" : ""}`;
 }
 
-function componentFields(component, parameters, exact, reserved = []) {
+function componentFields(component, parameters, reserved = []) {
   const fields = parameters.flatMap((parameter) => {
     const { name, optional, kind } = parameter;
     const type = fieldType(parameter);
@@ -89,7 +96,7 @@ function componentFields(component, parameters, exact, reserved = []) {
       "  /** @deprecated Use the modifiers prop. */",
       `  modifier?: ${type};`,
     ];
-    return [`  ${name}${optional && !exact ? "?" : ""}: ${type};`];
+    return [`  ${name}${optional ? "?" : ""}: ${type};`];
   });
   if (component.children) fields.push("  children?: ReactNode;");
   const names = new Set(parameters.map(({ name }) => name));
@@ -103,6 +110,30 @@ function componentFields(component, parameters, exact, reserved = []) {
   return fields;
 }
 
+// Merge sibling masks into optional TypeScript fields while keeping the accepted forms exact.
+function propForms({ masks, parameters }) {
+  const optionals = parameters.filter(({ optional, kind }) => optional && kind !== "modifier");
+  const all = (1 << optionals.length) - 1;
+  function compact(forms, bit) {
+    if (forms.length === 0) return [];
+    const remaining = all & ~(bit - 1);
+    if (forms.length === 2 ** (optionals.length - Math.log2(bit))) return [[0, remaining]];
+    if (bit > all) return [[0, 0]];
+    const without = compact(forms.filter((mask) => !(mask & bit)), bit * 2);
+    const withProp = new Map(compact(forms.filter((mask) => mask & bit), bit * 2)
+      .map(([required, optional]) => [`${required}:${optional}`, [required, optional]]));
+    const result = without.map(([required, optional]) =>
+      withProp.delete(`${required}:${optional}`) ? [required, optional | bit] : [required, optional]);
+    return [...result, ...[...withProp.values()].map(([required, optional]) => [required | bit, optional])];
+  }
+  return compact(masks, 1).map(([required, optional]) => parameters.flatMap((parameter) => {
+    if (!parameter.optional || parameter.kind === "modifier") return [parameter];
+    const bit = 1 << optionals.indexOf(parameter);
+    if (required & bit) return [{ ...parameter, optional: false }];
+    return optional & bit ? [parameter] : [];
+  }));
+}
+
 function typeScript({ components, values, factories }) {
   const usedKinds = new Set(components.flatMap(({ parameters }) => parameters.map(({ kind }) => kind)));
   const types = values.map(({ name }) => name).filter((name) => usedKinds.has(name));
@@ -114,15 +145,13 @@ function typeScript({ components, values, factories }) {
       [...parameters.map(({ name }) => name), ...(children ? ["children"] : [])]))];
     const simple = overloads.length === 1 && exhaustive(first);
     const fields = simple
-      ? [`export interface ${name}Props {`, ...componentFields(first, first.parameters, false), "}"]
+      ? [`export interface ${name}Props {`, ...componentFields(first, first.parameters), "}"]
       : [
         `export type ${name}Props =`,
         ...overloads.flatMap((component) => {
-          const full = exhaustive(component);
-          const forms = full ? [component.parameters] : component.masks.map((mask) => passedParameters(component, mask));
-          return forms.flatMap((parameters) => [
+          return propForms(component).flatMap((parameters) => [
             "  | {",
-            ...componentFields(component, parameters, !full, allProps).map((line) => `  ${line}`),
+            ...componentFields(component, parameters, allProps).map((line) => `  ${line}`),
             "    }",
           ]);
         }),
@@ -167,6 +196,15 @@ function typeScript({ components, values, factories }) {
     ...(usedKinds.has("floatRange") || usedKinds.has("eventFloatRange") ? [
       "export type ComposeFloatRange = readonly [start: number, endInclusive: number];",
     ] : []),
+    ...(usedKinds.has("paddingValues") ? [
+      "export type ComposePaddingValues = { all?: number; horizontal?: number; vertical?: number; start?: number; top?: number; end?: number; bottom?: number };",
+    ] : []),
+    ...(usedKinds.has("windowInsets") || usedKinds.has("windowInsetsProducer") ? [
+      "export type ComposeWindowInsets = { left?: number; top?: number; right?: number; bottom?: number };",
+    ] : []),
+    ...(usedKinds.has("sheetState") ? [
+      "export type ComposeSheetState = { skipPartiallyExpanded?: boolean };",
+    ] : []),
     ...(types.length ? [`import type { ${types.join(", ")} } from "./values";`] : []),
     "",
     ...declarations.flatMap((declaration) => [declaration, ""]),
@@ -175,9 +213,9 @@ function typeScript({ components, values, factories }) {
 
 function kotlin({ components }) {
   const dispatch = components.map(({ id, renderer, parameters }) =>
-    `    ${quote(id)} -> render${renderer}(node${parameters.some(({ kind }) => kind === "modifier") ? ", scope" : ""})`
+    `    ${quote(id)} -> Renderer${renderer}.render(node${parameters.some(({ kind }) => kind === "modifier") ? ", scope" : ""})`
   );
-  const functions = components.map(({ renderer, kotlinFunction, parameters, children, childrenScope, optIns, masks }) => {
+  const functions = components.map(({ signature, renderer, kotlinFunction, parameters, children, childrenScope, optIns, masks }) => {
     const modifierScope = parameters.some(({ kind }) => kind === "modifier") ? ", scope: Any?" : "";
     const optionals = parameters.filter(({ optional, kind }) => optional && kind !== "modifier");
     const bits = new Map(optionals.map(({ name }, index) => [name, 1 << index]));
@@ -185,8 +223,8 @@ function kotlin({ components }) {
       const args = passedParameters({ parameters }, mask)
         .map(({ name, kind, nullable, scope }) => {
           const key = quote(name);
-          const value = kind === "slot" && scope
-            ? `{ RenderComposeChildren(node.slot(${key}), this) }`
+          const value = kind === "sheetState" ? `requireNotNull(${name}Value)`
+            : kind === "slot" && scope ? `{ RenderComposeChildren(node.slot(${key}), this) }`
             : kinds[kind].expression(key);
           const expression = nullable ? `if (node.isNull(${key})) null else (${value})` : value;
           return `\`${name}\` = ${expression}`;
@@ -199,19 +237,54 @@ function kotlin({ components }) {
       ].join("\n") : `${kotlinFunction}()`;
     };
 
+    const maskValue = optionals.map(({ name }) =>
+      `(if (node.has(${quote(name)})) ${bits.get(name)} else 0)`).join(" +\n    ");
+    const state = parameters.filter(({ kind }) => kind === "sheetState");
+    const stateArguments = state.map(({ name }) => `, ${name}Value`).join("");
+    const stateValues = state.map(({ name }) =>
+      `  val ${name}Value = if (node.has(${quote(name)}) && !node.isNull(${quote(name)})) node.jsonObject(${quote(name)}).rememberComposeSheetState() else null`
+    );
+    const invalid = '    else -> error("Invalid generated arguments for " + node.name)';
+    const groupSize = 32;
+    const groups = Map.groupBy(masks, (mask) => Math.floor(mask / groupSize));
+    const split = masks.length > groupSize;
     const body = !optionals.length ? [`  ${call(0, "  ")}`] : [
-      "  val mask = " + optionals.map(({ name }) =>
-        `(if (node.has(${quote(name)})) ${bits.get(name)} else 0)`).join(" +\n    "),
-      "  when (mask) {",
-      ...masks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`),
-      '    else -> error("Invalid generated arguments for " + node.name)',
+      `  val mask = ${maskValue}`,
+      split ? `  when (mask / ${groupSize}) {` : "  when (mask) {",
+      ...(split ? [...groups.keys()].map((group) =>
+        `    ${group} -> render${renderer}Group${group}(node${modifierScope ? ", scope" : ""}, mask${stateArguments})`
+      ) : masks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`)),
+      invalid,
       "  }",
     ];
-    return [
+    const annotations = [
       ...(optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : []),
       "@Composable",
-      `private fun render${renderer}(node: ComposeNode${modifierScope}) {`,
+    ];
+    const stateTypes = state.map(({ name }) => `, ${name}Value: androidx.compose.material3.SheetState?`).join("");
+    const methods = [
+      ...annotations,
+      `fun render(node: ComposeNode${modifierScope}) {`,
+      ...stateValues,
       ...body,
+      "}",
+      "",
+      ...(split ? [...groups].flatMap(([group, groupMasks]) => [
+        ...annotations,
+        `private fun render${renderer}Group${group}(node: ComposeNode${modifierScope}, mask: Int${stateTypes}) {`,
+        "  when (mask) {",
+        ...groupMasks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`),
+        invalid,
+        "  }",
+        "}",
+        "",
+      ]) : []),
+    ];
+    return [
+      `// ${signature}`,
+      `private object Renderer${renderer} {`,
+      ...methods.filter((line, index) => line || index !== methods.length - 1)
+        .map((line) => line ? `  ${line.replaceAll("\n", "\n  ")}` : ""),
       "}",
       "",
     ].join("\n");
@@ -239,6 +312,9 @@ function kotlin({ components }) {
 }
 
 validate(manifest);
+const inventoryPath = process.env.COMPOSE_BINARY_INVENTORY ??
+  path.join(repo, "tools/compose-codegen/build/compose-binary-inventory.json");
+verifyInventory(manifest, JSON.parse(fs.readFileSync(inventoryPath, "utf8")));
 const [factoryTypeScript, factoryKotlin] = factoryOutputs(manifest.factories);
 for (const [name, overloads] of Map.groupBy(manifest.components, ({ name }) => name)) {
   overloads.forEach((component, index) => {
@@ -249,18 +325,38 @@ for (const [name, overloads] of Map.groupBy(manifest.components, ({ name }) => n
 const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers, { ...kinds, ...modifierKinds });
 const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
-const files = [
-  ["src/generated/components.tsx", typeScript(manifest)],
-  ["src/generated/modifiers.ts", modifierTypeScript],
-  ["src/generated/values.ts", valueTypeScript],
-  ["src/generated/factories.ts", factoryTypeScript],
+const nativeFiles = [
   [`${android}/ComposeFactories.kt`, factoryKotlin],
-  ["tools/compose-codegen/coverage.json", `${JSON.stringify(manifest.coverage, null, 2)}\n`],
   [`${android}/ComposableRegistry.kt`, kotlin(manifest)],
   [`${android}/ModifierRegistry.kt`, modifierKotlin],
   [`${android}/ComposeValues.kt`, valueKotlin],
 ];
 
+if (candidateDir) {
+  fs.mkdirSync(candidateDir, { recursive: true });
+  for (const [relative, content] of nativeFiles) fs.writeFileSync(path.join(candidateDir, path.basename(relative)), content);
+  process.exit(0);
+}
+if (!approvedDir) throw Error("Run the generation pipeline so Kotlin compiles before writing package exports.");
+for (const [relative, content] of nativeFiles) {
+  if (fs.readFileSync(path.join(approvedDir, path.basename(relative)), "utf8") !== content) {
+    throw Error(`Kotlin candidate changed after compilation: ${relative}`);
+  }
+}
+const surface = {
+  components: manifest.components.map(({ name, parameters, children, masks }) => ({ name, parameters, children, masks })),
+  modifiers: manifest.modifiers.map(({ name, parameters, scope, masks }) => ({ name, parameters, scope, masks })),
+};
+const files = [
+  ...nativeFiles,
+  ["src/generated/components.tsx", typeScript(manifest)],
+  ["src/generated/modifiers.ts", modifierTypeScript],
+  ["src/generated/values.ts", valueTypeScript],
+  ["src/generated/factories.ts", factoryTypeScript],
+  ["tools/compose-codegen/api-surface.json", `{\n${Object.entries(surface).map(([kind, entries]) =>
+    `  "${kind}": [\n${entries.map((entry) => `    ${JSON.stringify(entry)}`).join(",\n")}\n  ]`).join(",\n")}\n}\n`],
+  ["tools/compose-codegen/coverage.json", `${JSON.stringify(manifest.coverage, null, 2)}\n`],
+];
 for (const [relative, content] of files) {
   const destination = output ? path.join(output, path.basename(relative)) : path.join(repo, relative);
   if (check) {

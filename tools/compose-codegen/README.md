@@ -39,20 +39,21 @@ With Android SDK 35, JDK 17, Gradle 8.9, and Node 22 installed, run these comman
 from the repository root.
 
 ```sh
-gradle -p tools/compose-codegen kspDebugKotlin
-node tools/compose-codegen/generate.mjs
+node tools/compose-codegen/pipeline.mjs
 ```
 
-KSP discovers public composables and public `Modifier` extensions on the
-pinned AndroidX classpath, including extensions for supported layout scopes. Use
-`-PcomposePackages=package1,package2` or
-`-PmodifierPackages=package1,package2` to change the package searches. The
-generator uses the discovered declarations to emit TypeScript components and
-modifier overloads, native Kotlin dispatch, string unions and converters for values such as
-`Alignment` and `Arrangement`, and bindings for Material color scheme factories.
-KSP reads the Kotlin opt-in markers on declarations and signature types so the
-generated functions can opt in to experimental APIs automatically. Consumers
-build the checked-in output without running the extractor.
+The pipeline reads the Kotlin metadata and JVM annotations of the resolved AndroidX Compose
+artifacts. It finds their packages automatically and checks KSP's inventory of public
+composables and public `Modifier` extensions against those binaries, including overloads
+and public member declarations. Missing entries or mismatched coverage fail the run.
+Use `-PcomposePackages=package.one.*,package.two` or `-PmodifierPackages=package.one` to
+select a package tree or an exact package. Discovery is driven by the pinned Gradle classpath.
+
+KSP records declarations, nested types, defaults, and opt-ins. The generator stages Kotlin
+calls and compiles them with the Compose compiler and the production value decoders before
+writing Kotlin dispatch and TypeScript exports from the same manifest. Failed candidates
+leave their source and compiler diagnostics under `tools/compose-codegen/build/`.
+Consumers build the checked-in output without running the extractor.
 
 The component bridge supports primitives, shape and brush values, float ranges
 as pairs, modifiers, callbacks, JSX children, and named composable slots.
@@ -62,12 +63,17 @@ progress and `<CircularProgressIndicator progress={0.5} />` renders determinate
 progress. Progress parameters that Kotlin reads through a float supplier
 receive the current React prop as a native lambda.
 
-Kotlin supplies library defaults for omitted arguments. The generator budgets
-128 call forms per overload, which allows seven independently optional props
-in addition to the modifier. The [coverage report](coverage.json) records every
-public top-level composable in the configured packages by Kotlin signature,
-including omitted props and ambiguous or shadowed call forms. It gives the
-reason for each skipped or unsupported declaration.
+Kotlin supplies library defaults for omitted arguments. Overloads with up to ten independently
+optional props get all named-argument combinations considered. For larger overloads the
+generator preserves established call forms, offers each added prop with those forms, and
+considers the full call. The report counts the remaining default-argument combinations.
+Compose and modifier signatures each have an outcome in [coverage.json](coverage.json),
+including unsupported bridges, omitted props, and ambiguous or shadowed argument forms.
+
+Structured props such as `contentPadding` and `windowInsets` take numbers in dp.
+`BoxWithConstraints` accepts native Compose and React Native children. `ModalBottomSheet`
+can take `sheetState={{ skipPartiallyExpanded: true }}`. Compose owns the sheet state
+and React controls whether the sheet is mounted.
 
 Start a chain on `Modifier` and pass it through the `modifiers` prop.
 Modifiers apply in chain order. Pass the primary value first and additional
@@ -93,15 +99,12 @@ and preserves the existing `backgroundColor` and `backgroundBrush` aliases. The
 ## Verify
 
 ```sh
-node tools/compose-codegen/generate.mjs --check
+node tools/compose-codegen/pipeline.mjs --check
 ```
 
-CI also compares the pinned Material 3 release with a newer version using
-`-PcomposeMaterial3Version`. It reports API additions, removals, and status
-changes and checks for JSX call forms lost beyond documented upstream changes. A Kotlin
-fixture checks discovery of new overloads, public opt-in markers, and unsupported
-parameter reporting.
-
+CI independently checks discovery, compiles candidate bindings, and compares
+[api-surface.json](api-surface.json) with the base commit to catch lost call forms. A
+second run compares the pinned Material 3 release with the configured upgrade fixture.
 The example app exercises nested Compose JSX, React Native children, modifiers,
 height measurement, updates, and tap events. Run `npm run android:verify` from
-the repository root to build the app and run the emulator check.
+the repository root to build the app and run the emulator checks.

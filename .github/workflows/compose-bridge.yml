@@ -2,7 +2,8 @@ name: Compose Bridge
 
 on:
   push:
-    branches: [poc/generated-compose-bridge]
+    branches: [poc/generated-compose-bridge, compose-generation-audit]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -14,6 +15,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -29,29 +32,38 @@ jobs:
         run: |
           sdk_root="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
           "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-34' 'build-tools;34.0.0' 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
-      - name: Verify sources generated from AndroidX Compose
+      - name: Audit pinned Compose and verify compiler-approved bindings
         run: |
-          gradle -p tools/compose-codegen kspDebugKotlin
-          node tools/compose-codegen/generate.mjs --check
+          node tools/compose-codegen/pipeline.mjs --check
+          node tools/compose-codegen/tests/verify.mjs audit \
+            tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json \
+            tools/compose-codegen/build/compose-binary-inventory.json
+      - name: Detect lost public call forms
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE_SHA" ] && git cat-file -e "$BASE_SHA:tools/compose-codegen/api-surface.json" 2>/dev/null; then
+            previous=$(mktemp)
+            git show "$BASE_SHA:tools/compose-codegen/api-surface.json" > "$previous"
+            node tools/compose-codegen/tests/verify.mjs surface "$previous" tools/compose-codegen/api-surface.json
+          fi
       - name: Compare coverage after upgrading Material 3
         run: |
           manifest=tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json
           pinned=$(mktemp)
           cp "$manifest" "$pinned"
-          gradle -p tools/compose-codegen kspDebugKotlin -PcomposeMaterial3Version=1.5.0-alpha01
+          COMPOSE_GENERATED_OUTPUT="$(mktemp -d)" node tools/compose-codegen/pipeline.mjs -PcomposeMaterial3Version=1.5.0-alpha01
           node tools/compose-codegen/tests/verify.mjs upgrade "$pinned" "$manifest"
-          COMPOSE_GENERATED_OUTPUT="$(mktemp -d)" node tools/compose-codegen/generate.mjs
-      - name: Discover opted-in composable overloads and a modifier
+      - name: Discover and compile fixture overloads with no manual catalog
         run: |
           probe=tools/compose-codegen/src/debug/kotlin/DiscoveryProbe.kt
           mkdir -p "$(dirname "$probe")"
           trap 'rm -f "$probe"' EXIT
           cp tools/compose-codegen/tests/DiscoveryProbe.kt "$probe"
-          gradle -p tools/compose-codegen kspDebugKotlin \
+          export COMPOSE_GENERATED_OUTPUT="$(mktemp -d)"
+          node tools/compose-codegen/pipeline.mjs \
             -PcomposePackages=com.jetpackcomposereactnative.codegen \
             -PmodifierPackages=com.jetpackcomposereactnative.codegen
-          export COMPOSE_GENERATED_OUTPUT="$(mktemp -d)"
-          node tools/compose-codegen/generate.mjs
           node tools/compose-codegen/tests/verify.mjs probe \
             tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json \
             "$COMPOSE_GENERATED_OUTPUT"

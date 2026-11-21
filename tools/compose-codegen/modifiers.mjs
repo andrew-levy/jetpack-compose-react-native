@@ -105,14 +105,17 @@ function kotlin(overloads, kinds) {
   for (const { kotlinFunction, scope } of overloads) {
     if (!scope && !imports.has(kotlinFunction)) imports.set(kotlinFunction, `composeModifier${imports.size}`);
   }
-  const functions = overloads.flatMap(({ id, name, kotlinFunction, parameters, argumentLists, scope, optIns }) => {
-    const annotations = optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : [];
+  const functions = overloads.flatMap(({ signature: sourceSignature, id, name, kotlinFunction, parameters, argumentLists, scope, optIns }) => {
+    const annotations = [
+      `// ${sourceSignature}`,
+      ...(optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : []),
+    ];
     const signature = `private fun apply${id}(modifier: Modifier, args: ComposeModifierArguments${scope ? `, scope: ${scope}` : ""}): Modifier`;
     const render = (passed) => {
       const args = passed.map(({ name, kind, nullable }) => {
         const key = quote(name);
         const value = kinds[kind].expression(key).replaceAll("node.", "args.");
-        return `\`${name}\` = ${nullable ? `if (args.isNull(${key})) null else ${value}` : value}`;
+        return `\`${name}\` = ${nullable ? `if (args.isNull(${key})) null else (${value})` : value}`;
       });
       const call = `modifier.${scope ? name : imports.get(kotlinFunction)}(${args.join(", ")})`;
       return scope ? `with(scope) { ${call} }` : call;
@@ -128,19 +131,34 @@ function kotlin(overloads, kinds) {
     }
     const optional = parameters.filter(({ optional }) => optional);
     const mask = optional.map(({ name }, index) => `(if (args.has(${quote(name)})) ${1 << index} else 0)`);
+    const cases = argumentLists.map((passed) => [
+      optional.reduce((bits, parameter, bit) => passed.includes(parameter) ? bits | (1 << bit) : bits, 0),
+      render(passed),
+    ]);
+    const groupSize = 32;
+    const split = cases.length > groupSize;
+    const groups = Map.groupBy(cases, ([index]) => Math.floor(index / groupSize));
+    const invalid = '    else -> error("Invalid generated modifier arguments: " + args)';
     return [
       ...annotations,
       `${signature} {`,
       `  val mask = ${mask.join(" +\n    ")}`,
-      "  return when (mask) {",
-      ...argumentLists.map((passed) => {
-        const index = optional.reduce((bits, parameter, bit) => passed.includes(parameter) ? bits | (1 << bit) : bits, 0);
-        return `    ${index} -> ${render(passed)}`;
-      }),
-      '    else -> error("Invalid generated modifier arguments: " + args)',
+      split ? `  return when (mask / ${groupSize}) {` : "  return when (mask) {",
+      ...(split ? [...groups.keys()].map((group) =>
+        `    ${group} -> apply${id}Group${group}(modifier, args${scope ? ", scope" : ""}, mask)`
+      ) : cases.map(([index, call]) => `    ${index} -> ${call}`)),
+      invalid,
       "  }",
       "}",
       "",
+      ...(split ? [...groups].flatMap(([group, groupCases]) => [
+        ...annotations.slice(1),
+        `${signature.replace(`apply${id}(`, `apply${id}Group${group}(`).replace("): Modifier", ", mask: Int): Modifier")} = when (mask) {`,
+        ...groupCases.map(([index, call]) => `    ${index} -> ${call}`),
+        invalid,
+        "  }",
+        "",
+      ]) : []),
     ];
   });
 

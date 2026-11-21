@@ -1,10 +1,10 @@
 import { useState, type ReactNode } from "react";
 import { Pressable, ScrollView, StyleSheet, Text as RNText, View } from "react-native";
 import {
-  AlertDialog, Badge, BadgedBox, Box, Button, Card, Checkbox,
+  AlertDialog, Badge, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ElevatedButton, FilterChip,
   FilledTonalButton, HorizontalDivider, LinearProgressIndicator, ListItem, LoadingIndicator,
-  MaterialExpressiveTheme, MaterialTheme, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
+  MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedTextField, RadioButton, Row, Spacer,
   Switch, Text, TextButton, lightColorScheme, type ComposeChain,
 } from "jetpack-compose-react-native";
 
@@ -330,6 +330,36 @@ export function Interop({ showCode }: GalleryProps) {
         <Text text="Fixed height Compose" style={styles.fixedRoot} />
       </Demo>
     </>
+  );
+}
+
+export function Bindings({ showCode }: GalleryProps) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Demo
+      title="Generated bindings"
+      showCode={showCode}
+      source={'<BottomAppBar contentPadding={{ horizontal: 20 }}>\n  <BoxWithConstraints><RNText>React Native inside Compose</RNText></BoxWithConstraints>\n</BottomAppBar>'}
+    >
+      <Column modifiers={fullWidth}>
+        <BottomAppBar contentPadding={{ horizontal: 20 }} windowInsets={{}}>
+          <BoxWithConstraints>
+            <RNText>React Native inside Compose</RNText>
+          </BoxWithConstraints>
+        </BottomAppBar>
+        <Button onClick={() => setOpen(true)}><Text text="Open generated sheet" /></Button>
+        {open && (
+          <ModalBottomSheet
+            onDismissRequest={() => setOpen(false)}
+            sheetState={{ skipPartiallyExpanded: true }}
+            dragHandle={null}
+          >
+            <Text text="Native sheet state" />
+            <Button onClick={() => setOpen(false)}><Text text="Close generated sheet" /></Button>
+          </ModalBottomSheet>
+        )}
+      </Column>
+    </Demo>
   );
 }
 

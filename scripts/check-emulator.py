@@ -184,6 +184,14 @@ def verify():
             else:
                 adb("shell", "settings", "put", "global", "animator_duration_scale", animation_scale)
 
+    nodes = wait_for("Bindings", window=window)
+    tap(nodes["Bindings"])
+    nodes = wait_for("React Native inside Compose", "Open generated sheet", window=window)
+    tap(nodes["Open generated sheet"])
+    nodes = wait_for("Native sheet state", "Close generated sheet")
+    tap(nodes["Close generated sheet"])
+    wait_for("React Native inside Compose", "Open generated sheet", absent=("Native sheet state",), window=window)
+
 
 try:
     verify()
@@ -191,4 +199,4 @@ except ActivityRecreated as error:
     print(f"{error}. Restarting the tap sequence.", flush=True)
     verify()
 
-print("Verified standard and Expressive themes, live modifier changes, source snippets, and mixed Compose and React Native layout and events.")
+print("Verified standard and Expressive themes, live modifier changes, source snippets, and mixed children, insets, and native sheet state.")

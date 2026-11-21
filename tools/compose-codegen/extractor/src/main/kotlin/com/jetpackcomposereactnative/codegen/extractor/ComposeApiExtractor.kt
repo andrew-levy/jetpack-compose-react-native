@@ -16,23 +16,27 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import com.google.devtools.ksp.symbol.KSType
+import com.google.devtools.ksp.symbol.KSTypeParameter
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.google.devtools.ksp.symbol.Nullability
+import com.google.devtools.ksp.symbol.Origin
 import com.google.devtools.ksp.symbol.Visibility
+import com.google.devtools.ksp.symbol.Variance
 import com.google.gson.Gson
+import com.google.gson.JsonParser
+import java.io.File
 
 class ComposeApiExtractorProvider : SymbolProcessorProvider {
-  override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor =
-    ComposeApiExtractor(
-      environment.codeGenerator,
-      environment.logger,
-      environment.packages("composePackages"),
-      environment.packages("modifierPackages")
+  override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
+    val inventory = File(environment.options.getValue("inventoryPath")).reader().use {
+      JsonParser.parseReader(it).asJsonObject
+    }
+    fun packages(key: String) = inventory.getAsJsonArray(key).map { it.asString }
+    return ComposeApiExtractor(
+      environment.codeGenerator, environment.logger, packages("composePackages"), packages("modifierPackages")
     )
+  }
 }
-
-private fun SymbolProcessorEnvironment.packages(key: String): List<String> =
-  options.getValue(key).split(';').map(String::trim).filter(String::isNotEmpty).distinct()
 
 private class ComposeApiExtractor(
   private val generator: CodeGenerator,
@@ -49,13 +53,17 @@ private class ComposeApiExtractor(
     generated = true
 
     valueTypes = discoverValues(resolver)
-    val functions = packages.flatMap { resolver.getDeclarationsFromPackage(it).toList() }
-      .filterIsInstance<KSFunctionDeclaration>()
+    val functions = declarationsInPackages(resolver, packages)
     val declarations = functions
       .filter { it.qualifiedName != null && it.getVisibility() == Visibility.PUBLIC }
       .filter { fn -> fn.annotations.any { it.annotationType.resolve().name == COMPOSABLE } }
       .sortedBy { it.signature() }
     val coverage = mutableListOf<Coverage>()
+    val modifierDeclarations = declarationsInPackages(resolver, modifierPackages).filter {
+      it.extensionReceiver?.resolve()?.name == MODIFIER && it.returnType?.resolve()?.name == MODIFIER
+    }
+    val discovered = declarations.map { it.discovered("component") } +
+      modifierDeclarations.map { it.discovered("modifier") }
     val components = declarations.groupBy { it.simpleName.asString() }.toSortedMap()
       .flatMap { (_, overloads) ->
         val competing = overloads.groupBy { it.qualifiedName!!.asString() }
@@ -79,7 +87,7 @@ private class ComposeApiExtractor(
             candidate.declaration.signature(),
             if (masks.isEmpty()) "skipped" else "generated",
             if (masks.isEmpty()) "All forms are shadowed by another overload" else null,
-            candidate.omitted, omittedForms
+            candidate.omitted, omittedForms, budgetOmittedForms = candidate.budgetOmittedForms.takeIf { it > 0 }
           )
           if (masks.isEmpty()) null else component.copy(masks = masks)
         }
@@ -90,9 +98,11 @@ private class ComposeApiExtractor(
       return emptyList()
     }
 
-    val modifiers = discoverModifiers(resolver)
+    val modifiers = discoverModifiers(modifierDeclarations, coverage)
     val factories = discoverFactories(resolver)
-    val manifest = Manifest(3, components, modifiers, valueTypes.values.toList(), factories, coverage.sortedBy { it.signature })
+    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList(), factories,
+      discovered.sortedWith(compareBy({ it.kind }, { it.signature })),
+      coverage.sortedWith(compareBy({ it.kind }, { it.signature })))
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
       .bufferedWriter().use { Gson().toJson(manifest, it) }
     logger.info("Discovered ${components.size} composable overloads and ${modifiers.size} modifier overloads")
@@ -118,7 +128,8 @@ private class ComposeApiExtractor(
     if (fn.simpleName.asString().firstOrNull()?.isUpperCase() != true) {
       return omit("skipped", "Composable does not use a JSX component name")
     }
-    if (fn.extensionReceiver != null) return omit("unsupported", "Extension receiver requires a native scope")
+    if (fn.parentDeclaration != null) return omit("adapterRequired", "Member composable requires a native owner")
+    if (fn.extensionReceiver != null) return omit("adapterRequired", "Extension receiver requires a native scope")
     if (fn.typeParameters.isNotEmpty()) return omit("unsupported", "Generic composable")
     if (fn.returnType?.resolve()?.name != "kotlin.Unit") return omit("unsupported", "Composable returns a value")
     val optIns = fn.optInMarkers()
@@ -157,21 +168,15 @@ private class ComposeApiExtractor(
       supported += Parameter(name, kind, parameter.hasDefault, type.nullability == Nullability.NULLABLE,
         scope = if (isSlot) type.contentScope() else null)
     }
-    if (omitted.any { it.required }) return omit("unsupported", "Required parameter cannot cross the bridge", omitted)
+    if (omitted.any { it.required }) return omit("adapterRequired", "Required parameter cannot cross the bridge", omitted)
 
-    // Bound generated call sites while keeping the established primitive and slot props first.
-    val optional = supported.filter { it.optional && it.kind != "modifier" }
-    val established = optional.filter { it.kind in preferredComponentKinds }.take(4).toSet()
-    val constants = optional.filter { parameter -> valueTypes.values.any { it.name == parameter.kind } }
-    val prioritized = (established + constants + optional).toList()
-    val overBudget = prioritized.drop(MAX_COMPONENT_OPTIONALS).map { it.name }.toSet()
     val types = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
-    omitted += overBudget.map { OmittedParameter(it, types.getValue(it).signatureName(), "Kotlin default-argument call budget", false) }
-    val parameters = supported.filterNot { it.name in overBudget }
-    val component = Component(fn.simpleName.asString(), function, parameters, children, childrenScope,
+    val parameters = supported
+    val component = Component(fn.signature(), fn.simpleName.asString(), function, parameters, children, childrenScope,
       optIns.mapNotNull { it.qualifiedName?.asString() }.sorted(), emptyList())
-    val optionalCount = parameters.count { it.optional && it.kind != "modifier" }
-    val (masks, blocked) = (0 until (1 shl optionalCount)).partition { mask ->
+    val optional = parameters.filter { it.optional && it.kind != "modifier" }
+    val forms = callForms(optional)
+    val (masks, blocked) = forms.masks.partition { mask ->
       val passed = component.passed(mask).associate { it.name to types.getValue(it.name) }.toMutableMap()
       if (children) passed["content"] = types.getValue("content")
       overloads.none { other ->
@@ -179,7 +184,7 @@ private class ComposeApiExtractor(
       }
     }
     if (masks.isEmpty()) return omit("unsupported", "No unambiguous Kotlin call forms", omitted)
-    return Candidate(fn, component, masks, blocked, omitted)
+    return Candidate(fn, component, masks, blocked, omitted, forms.omittedCount)
   }
 
   @OptIn(KspExperimental::class)
@@ -209,61 +214,108 @@ private class ComposeApiExtractor(
     }
 
   @OptIn(KspExperimental::class)
-  private fun discoverModifiers(resolver: Resolver): List<ModifierOverload> {
-    val topLevel = modifierPackages.flatMap { resolver.getDeclarationsFromPackage(it).toList() }
-      .filterIsInstance<KSFunctionDeclaration>()
-    val scoped = scopes.filter { it.substringBeforeLast('.') in modifierPackages }.flatMap { scope ->
-      resolver.getClassDeclarationByName(resolver.getKSNameFromString(scope))
-        ?.declarations?.filterIsInstance<KSFunctionDeclaration>()?.toList().orEmpty()
+  private fun declarationsInPackages(resolver: Resolver, packages: List<String>): List<KSFunctionDeclaration> =
+    packages.flatMap { packageName ->
+      resolver.getDeclarationsFromPackage(packageName).flatMap { it.publicFunctions() }.toList()
     }
-    return (topLevel + scoped)
-      .filter {
-        it.getVisibility() == Visibility.PUBLIC && it.qualifiedName != null &&
-          it.extensionReceiver?.resolve()?.name == MODIFIER && it.returnType?.resolve()?.name == MODIFIER
-      }
-      .groupBy { it.qualifiedName!!.asString() }
-      .toSortedMap()
-      .flatMap { (qualifiedName, declarations) ->
-        val available = declarations.filter { fn ->
-          fn.annotations.none { it.annotationType.resolve().name == "kotlin.Deprecated" }
-        }
-        available.mapNotNull { fn ->
-          val optIns = fn.optInMarkers()
-          if (fn.typeParameters.isNotEmpty() || optIns.any { it.getVisibility() != Visibility.PUBLIC } ||
-            fn.annotations.any { it.annotationType.resolve().name == COMPOSABLE }
-          ) return@mapNotNull null
 
-          val parameters = mutableListOf<Parameter>()
-          for (parameter in fn.parameters) {
-            val name = parameter.name?.asString() ?: return@mapNotNull null
-            val type = parameter.type.resolve()
-            val kind = if (parameter.isVararg) null else
-              modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
-                ?: parameter.eventKind(type)?.takeUnless { it == "eventFloatRange" }
-            if (kind == null || kind == "modifier") {
-              if (!parameter.hasDefault) return@mapNotNull null
-            } else if (!parameter.hasDefault || parameters.count { it.optional } < MAX_OPTIONAL_VALUES) {
-              parameters += Parameter(name, kind, parameter.hasDefault, type.nullability == Nullability.NULLABLE)
-            }
-          }
+  private fun KSDeclaration.publicFunctions(): Sequence<KSFunctionDeclaration> {
+    if (qualifiedName == null || getVisibility() != Visibility.PUBLIC) return emptySequence()
+    return when (this) {
+      is KSFunctionDeclaration -> sequenceOf(this)
+      is KSClassDeclaration -> declarations.flatMap { it.publicFunctions() }
+      else -> emptySequence()
+    }
+  }
 
-          val optional = parameters.filter { it.optional }
-          val parameterTypes = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
-          val masks = (0 until (1 shl optional.size)).filter { mask ->
-            val passed = parameters.filter { !it.optional || (mask and (1 shl optional.indexOf(it))) != 0 }
-              .associate { it.name to parameterTypes.getValue(it.name) }
-            available.none { other ->
-              other != fn && other.parameters.size <= fn.parameters.size && accepts(other, passed)
-            }
-          }
-          if (masks.isEmpty()) return@mapNotNull null
-          val receiver = (fn.parentDeclaration as? KSClassDeclaration)?.qualifiedName?.asString()
-          ModifierOverload(fn.simpleName.asString(), qualifiedName, parameters, masks, receiver,
-            optIns.mapNotNull { it.qualifiedName?.asString() }.sorted())
-        }.distinct().sortedBy { overload ->
-          overload.parameters.joinToString { "${it.name}:${it.kind}" }
+  private fun discoverModifiers(
+    functions: List<KSFunctionDeclaration>,
+    coverage: MutableList<Coverage>
+  ): List<ModifierOverload> =
+    functions.groupBy { it.qualifiedName!!.asString() }.toSortedMap().flatMap { (qualifiedName, declarations) ->
+      val available = declarations.filterNot { it.isDeprecated() }
+      declarations.sortedBy { it.signature() }.mapNotNull { fn ->
+        val omitted = mutableListOf<OmittedParameter>()
+        fun omit(status: String, reason: String): ModifierOverload? {
+          coverage += Coverage(fn.signature(), status, reason, omitted, kind = "modifier")
+          return null
         }
-      }
+        if (fn.isDeprecated()) return@mapNotNull omit("skipped", "Deprecated Kotlin declaration")
+        val receiver = (fn.parentDeclaration as? KSClassDeclaration)?.qualifiedName?.asString()
+        if (receiver != null && receiver !in scopes) {
+          return@mapNotNull omit("adapterRequired", "Modifier requires a native owner: $receiver")
+        }
+        val optIns = fn.optInMarkers()
+        if (fn.typeParameters.isNotEmpty()) return@mapNotNull omit("adapterRequired", "Generic modifier")
+        if (optIns.any { it.getVisibility() != Visibility.PUBLIC }) {
+          return@mapNotNull omit("unsupported", "Opt-in marker is not public")
+        }
+        if (fn.annotations.any { it.annotationType.resolve().name == COMPOSABLE }) {
+          return@mapNotNull omit("adapterRequired", "Modifier must run in composition")
+        }
+
+        val parameters = mutableListOf<Parameter>()
+        for (parameter in fn.parameters) {
+          val name = parameter.name?.asString() ?: return@mapNotNull omit("unsupported", "Unnamed parameter")
+          val type = parameter.type.resolve()
+          val kind = if (parameter.isVararg) null else
+            modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
+              ?: parameter.eventKind(type)?.takeUnless { it == "eventFloatRange" }
+          if (kind == null || kind == "modifier") {
+            val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
+            omitted += OmittedParameter(name, type.signatureName(), reason, !parameter.hasDefault && !parameter.isVararg)
+          } else {
+            parameters += Parameter(name, kind, parameter.hasDefault, type.nullability == Nullability.NULLABLE)
+          }
+        }
+        if (omitted.any { it.required }) return@mapNotNull omit("adapterRequired", "Required parameter cannot cross the bridge")
+
+        val optional = parameters.filter { it.optional }
+        val forms = callForms(optional)
+        val parameterTypes = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
+        fun passed(mask: Int) = parameters.filter { !it.optional || (mask and (1 shl optional.indexOf(it))) != 0 }
+        val (masks, blocked) = forms.masks.partition { mask ->
+          val arguments = passed(mask).associate { it.name to parameterTypes.getValue(it.name) }
+          available.none { other ->
+            other != fn && other.parameters.size <= fn.parameters.size && accepts(other, arguments)
+          }
+        }
+        if (masks.isEmpty()) return@mapNotNull omit("unsupported", "No unambiguous Kotlin call forms")
+        coverage += Coverage(fn.signature(), "generated", null, omitted, blocked.map { mask ->
+          OmittedForm(passed(mask).map { it.name }, "Kotlin selects another overload or the call is ambiguous")
+        }, kind = "modifier", budgetOmittedForms = forms.omittedCount.takeIf { it > 0 })
+        ModifierOverload(fn.signature(), fn.simpleName.asString(), qualifiedName, parameters, masks, receiver,
+          optIns.mapNotNull { it.qualifiedName?.asString() }.sorted())
+      }.sortedBy { overload -> overload.parameters.joinToString { "${it.name}:${it.kind}" } }
+    }
+
+  private fun KSFunctionDeclaration.discovered(kind: String): Discovery = Discovery(
+    kind, signature(), origin == Origin.KOTLIN_LIB,
+    parameters.map { parameter ->
+      val type = parameter.type.resolve()
+      DiscoveredParameter(parameter.name?.asString().orEmpty(), type.signatureName(), parameter.hasDefault, parameter.isVararg)
+    },
+    returnType?.resolve()?.signatureName(),
+    optInMarkers().mapNotNull { it.qualifiedName?.asString() }.sorted()
+  )
+
+  private fun callForms(optional: List<Parameter>): CallForms {
+    require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
+    val total = 1 shl optional.size
+    if (total <= 1024) return CallForms((0 until total).toList(), 0)
+
+    // Keep the previous public set, then combine every extra prop with every subset of that set.
+    // Also support the full call. The report accounts for the remaining combinations.
+    val established = optional.filter { it.kind in preferredComponentKinds }.take(4).toSet()
+    val constants = optional.filter { parameter -> valueTypes.values.any { it.name == parameter.kind } }
+    val core = (established + constants + optional).take(7)
+    val extra = (optional - core.toSet()).map { 1 shl optional.indexOf(it) }
+    val coreMasks = core.fold(listOf(0)) { masks, parameter ->
+      val bit = 1 shl optional.indexOf(parameter)
+      masks + masks.map { it or bit }
+    }
+    val masks = (coreMasks + extra.flatMap { bit -> coreMasks.map { it or bit } } + (total - 1)).sorted()
+    return CallForms(masks, total - masks.size)
   }
 
   private fun accepts(fn: KSFunctionDeclaration, passed: Map<String, KSType>): Boolean {
@@ -307,11 +359,11 @@ private class ComposeApiExtractor(
   }
 
   private fun KSType.signatureName(): String = buildString {
-    append(name ?: declaration.simpleName.asString())
+    append(if (declaration is KSTypeParameter) declaration.simpleName.asString() else name ?: declaration.simpleName.asString())
     if (arguments.isNotEmpty()) append(arguments.joinToString(prefix = "<", postfix = ">") {
-      it.type?.resolve()?.signatureName() ?: "*"
+      if (it.variance == Variance.STAR) "*" else it.type?.resolve()?.signatureName() ?: "*"
     })
-    if (nullability == Nullability.NULLABLE) append("?")
+    if (isMarkedNullable) append("?")
   }
 
   private fun KSDeclaration.isDeprecated(): Boolean =
@@ -323,8 +375,16 @@ private class ComposeApiExtractor(
       .any { argument -> argument.value.toString().substringAfterLast('.') in setOf("ERROR", "HIDDEN") }
 
   private fun KSFunctionDeclaration.isComposableTarget(expected: String): Boolean =
-    annotations.filter { it.annotationType.resolve().name == "androidx.compose.runtime.ComposableTarget" }
-      .all { it.arguments.singleOrNull()?.value == expected }
+    annotations.all { annotation ->
+      val type = annotation.annotationType.resolve()
+      when {
+        type.name == "androidx.compose.runtime.ComposableTarget" ->
+          annotation.arguments.singleOrNull()?.value == expected
+        type.declaration.annotations.any { it.annotationType.resolve().name == "androidx.compose.runtime.ComposableTargetMarker" } ->
+          type.name == expected
+        else -> true
+      }
+    }
 
   private fun KSDeclaration.optInMarkers(): Set<KSDeclaration> {
     val parents = generateSequence(this) { it.parentDeclaration }
@@ -378,9 +438,13 @@ private class ComposeApiExtractor(
   }
 
   private fun KSValueParameter.producerKind(type: KSType): String? =
-    if (type.name == "kotlin.Function0" && type.arguments.singleOrNull()?.type?.resolve()?.name == "kotlin.Float" &&
-      (this.type.annotations + type.annotations).none { it.annotationType.resolve().name == COMPOSABLE }
-    ) "floatProducer" else null
+    if (type.name != "kotlin.Function0") null else when (type.arguments.singleOrNull()?.type?.resolve()?.name) {
+      "androidx.compose.foundation.layout.WindowInsets" -> "windowInsetsProducer"
+      "kotlin.Float" -> if ((this.type.annotations + type.annotations).none {
+        it.annotationType.resolve().name == COMPOSABLE
+      }) "floatProducer" else null
+      else -> null
+    }
 
   private val KSType.name: String? get() = declaration.qualifiedName?.asString()
 }
@@ -388,16 +452,16 @@ private class ComposeApiExtractor(
 private fun String.inputType(): String = when {
   this in setOf("int", "float", "double", "dp", "sp", "floatProducer") -> "number"
   this == "color" || startsWith("Compose") -> "string"
-  this == "colorScheme" || this == "floatRange" -> "object"
+  this in setOf("colorScheme", "floatRange", "paddingValues", "windowInsets", "windowInsetsProducer", "sheetState") -> "object"
   startsWith("event") -> "function"
   else -> this
 }
 
 private const val COLOR = "androidx.compose.ui.graphics.Color"
 private val factoryTypes = setOf("androidx.compose.material3.ColorScheme")
-private val reservedProps = setOf("children", "key", "ref", "style", "testID", "modifiers")
 private val preferredComponentKinds = setOf("int", "float", "double", "dp", "sp", "string", "boolean", "color",
-  "colorScheme", "slot", "event", "eventString", "eventBoolean", "eventFloat", "eventInt", "eventDouble")
+  "colorScheme", "slot", "event", "eventString", "eventBoolean", "eventInt", "eventDouble")
+private val reservedProps = setOf("children", "key", "ref", "style", "testID", "modifiers")
 
 private const val MODIFIER = "androidx.compose.ui.Modifier"
 private val modifierValueKinds = mapOf(
@@ -416,16 +480,20 @@ private val valueSources = mapOf(
   "androidx.compose.ui.semantics.Role" to ValueSource("ComposeRole", listOf("androidx.compose.ui.semantics.Role"))
 )
 private const val COMPOSABLE = "androidx.compose.runtime.Composable"
-private const val MAX_OPTIONAL_VALUES = 4
-private const val MAX_COMPONENT_OPTIONALS = 7
 private val scopes = setOf(
   "androidx.compose.foundation.layout.RowScope",
   "androidx.compose.foundation.layout.ColumnScope",
   "androidx.compose.foundation.layout.BoxScope",
+  "androidx.compose.foundation.layout.BoxWithConstraintsScope",
   "androidx.compose.foundation.layout.FlowRowScope",
   "androidx.compose.foundation.layout.FlowColumnScope"
 )
-private val componentValueKinds = mapOf("androidx.compose.material3.ColorScheme" to "colorScheme")
+private val componentValueKinds = mapOf(
+  "androidx.compose.material3.ColorScheme" to "colorScheme",
+  "androidx.compose.foundation.layout.PaddingValues" to "paddingValues",
+  "androidx.compose.foundation.layout.WindowInsets" to "windowInsets",
+  "androidx.compose.material3.SheetState" to "sheetState"
+)
 private val valueKinds = mapOf(
   "kotlin.String" to "string",
   "kotlin.Boolean" to "boolean",
@@ -443,9 +511,11 @@ private data class Manifest(
   val modifiers: List<ModifierOverload>,
   val values: List<ValueType>,
   val factories: List<ValueFactory>,
+  val discovered: List<Discovery>,
   val coverage: List<Coverage>
 )
 private data class ModifierOverload(
+  val signature: String,
   val name: String,
   val kotlinFunction: String,
   val parameters: List<Parameter>,
@@ -457,6 +527,7 @@ private data class ValueSource(val name: String, val owners: List<String>)
 private data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>)
 private data class ValueCase(val name: String, val expression: String)
 private data class Component(
+  val signature: String,
   val name: String, val kotlinFunction: String, val parameters: List<Parameter>,
   val children: Boolean, val childrenScope: String?, val optIns: List<String>, val masks: List<Int>
 ) {
@@ -473,12 +544,20 @@ private data class Candidate(
   val component: Component,
   val masks: List<Int>,
   val blocked: List<Int>,
-  val omitted: List<OmittedParameter>
+  val omitted: List<OmittedParameter>,
+  val budgetOmittedForms: Int
 )
+private data class CallForms(val masks: List<Int>, val omittedCount: Int)
 private data class Coverage(
   val signature: String, val status: String, val reason: String?,
-  val omittedParameters: List<OmittedParameter>, val omittedForms: List<OmittedForm> = emptyList()
+  val omittedParameters: List<OmittedParameter>, val omittedForms: List<OmittedForm> = emptyList(),
+  val kind: String = "component", val budgetOmittedForms: Int? = null
 )
+private data class Discovery(
+  val kind: String, val signature: String, val binary: Boolean, val parameters: List<DiscoveredParameter>,
+  val returnType: String?, val optIns: List<String>
+)
+private data class DiscoveredParameter(val name: String, val type: String, val optional: Boolean, val vararg: Boolean)
 private data class OmittedParameter(val name: String, val kotlinType: String, val reason: String, val required: Boolean)
 private data class OmittedForm(val props: List<String>, val reason: String)
 private data class ValueFactory(
