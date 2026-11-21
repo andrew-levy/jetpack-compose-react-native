@@ -44,7 +44,9 @@ try {
   copyFileSync(join(build, "compose-binary-inventory.json"), env.COMPOSE_BINARY_INVENTORY);
   run(process.execPath, ["generate.mjs"], { ...env, COMPOSE_KOTLIN_CANDIDATES: candidateDir });
   run(gradle, [
-    "compileDebugKotlin", "-x", "kspDebugKotlin", ...gradleArgs, `-PcomposeCandidateDir=${candidateDir}`,
+    "compileDebugKotlin", "-x", "kspDebugKotlin", ...gradleArgs,
+    // Each run has a new source directory and can resolve a different AndroidX classpath.
+    "-Pkotlin.incremental=false", `-PcomposeCandidateDir=${candidateDir}`,
   ], process.env, join(stage, "kotlin-compile.log"));
   run(process.execPath, ["generate.mjs", ...(check ? ["--check"] : [])],
     { ...env, COMPOSE_APPROVED_KOTLIN: candidateDir });
