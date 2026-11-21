@@ -117,6 +117,11 @@ def bounds(node):
     return tuple(map(int, re.findall(r"-?\d+", node.get("bounds"))))
 
 
+def node_height(node):
+    _, top, _, bottom = bounds(node)
+    return bottom - top
+
+
 def tap(node):
     left, top, right, bottom = bounds(node)
     adb("shell", "input", "tap", str((left + right) // 2), str((top + bottom) // 2))
@@ -184,7 +189,12 @@ def verify():
     tap(nodes["Show collections"])
     nodes = wait_for(
         "Purple swatch", "Layout reported to React", "Native row 2", "Native row 3", "Modifiers",
-        absent=("Native row 1",), window=window,
+        # Compose may report a sliver of the preceding item in the content padding.
+        layout_ready=lambda nodes: (
+            "Native row 1" not in nodes
+            or node_height(nodes["Native row 1"]) < node_height(nodes["Native row 2"]) / 2
+        ),
+        window=window,
     )
     capture("14-collections")
 
