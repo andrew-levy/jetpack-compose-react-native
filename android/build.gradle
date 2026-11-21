@@ -1,86 +1,30 @@
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "org.jetbrains.kotlin.plugin.compose"
+apply plugin: "com.facebook.react"
 
-group = 'expo.modules.jetpackcomposereactnative'
-version = '0.1.0'
-
-def expoModulesCorePlugin = new File(project(":expo-modules-core").projectDir.absolutePath, "ExpoModulesCorePlugin.gradle")
-apply from: expoModulesCorePlugin
-applyKotlinExpoModulesCorePlugin()
-useCoreDependencies()
-useExpoPublishing()
-
-// If you want to use the managed Android SDK versions from expo-modules-core, set this to true.
-// The Android SDK versions will be bumped from time to time in SDK releases and may introduce breaking changes in your module code.
-// Most of the time, you may like to manage the Android SDK versions yourself.
-def useManagedAndroidSdkVersions = false
-if (useManagedAndroidSdkVersions) {
-  useDefaultAndroidSdkVersions()
-} else {
-  buildscript {
-    // Simple helper that allows the root project to override versions declared by this library.
-    ext.safeExtGet = { prop, fallback ->
-      rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
-    }
-  }
-  project.android {
-    compileSdkVersion safeExtGet("compileSdkVersion", 34)
-    defaultConfig {
-      minSdkVersion safeExtGet("minSdkVersion", 21)
-      targetSdkVersion safeExtGet("targetSdkVersion", 34)
-    }
-  }
-}
+def sdkVersion = { key, fallback -> rootProject.ext.has(key) ? rootProject.ext.get(key) : fallback }
 
 android {
-  namespace "expo.modules.jetpackcomposereactnative"
-  buildFeatures {
-    compose true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.14"
-  }
-  defaultConfig {
-    versionCode 1
-    versionName "0.1.0"
-  }
-  lintOptions {
-    abortOnError false
-  }
+    namespace "com.jetpackcomposereactnative"
+    compileSdk sdkVersion("compileSdkVersion", 35)
+
+    defaultConfig {
+        minSdk sdkVersion("minSdkVersion", 23)
+    }
+
+    buildFeatures { compose true }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = "17" }
 }
 
 dependencies {
-  def COIL_VERSION = "3.0.2"
-
-  implementation("io.coil-kt.coil3:coil:${COIL_VERSION}")
-  implementation("io.coil-kt.coil3:coil-network-okhttp:${COIL_VERSION}")
-  implementation("io.coil-kt.coil3:coil-svg:${COIL_VERSION}")
-  implementation("io.coil-kt.coil3:coil-compose:${COIL_VERSION}")
-
-  implementation 'com.facebook.react:react-android'
-  implementation 'androidx.compose.ui:ui-tooling-preview-android:1.7.6'
-  def composeBom = platform('androidx.compose:compose-bom:2024.09.03')
-  implementation composeBom
-  androidTestImplementation composeBom
-
-  // Choose one of the following:
-  // Material Design 3
-  implementation 'androidx.compose.material3:material3'
-  // or Material Design 2
-  implementation 'androidx.compose.material:material'
-  // or skip Material Design and build directly on top of foundational components
-  implementation 'androidx.compose.foundation:foundation'
-  // or only import the main APIs for the underlying toolkit systems,
-  // such as input and measurement/layout
-  implementation 'androidx.compose.ui:ui'
-
-  // Optional - Included automatically by material, only add when you need
-  // the icons but not the material library (e.g. when using Material3 or a
-  // custom design system based on Foundation)
-  implementation 'androidx.compose.material:material-icons-core'
-  // Optional - Add full set of material icons
-  implementation 'androidx.compose.material:material-icons-extended'
-  // Optional - Add window size utils
-  implementation 'androidx.compose.material3.adaptive:adaptive'
-  // Reflect API
-  implementation 'org.jetbrains.kotlin:kotlin-reflect:1.9.24'
+    implementation "com.facebook.react:react-android"
+    implementation platform("androidx.compose:compose-bom:2025.05.01")
+    implementation "androidx.compose.foundation:foundation"
+    // This release exposes MaterialExpressiveTheme publicly.
+    implementation "androidx.compose.material3:material3:1.4.0-alpha15"
 }

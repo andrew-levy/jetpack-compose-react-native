@@ -1,0 +1,443 @@
+import { useState, type ReactNode } from "react";
+import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
+import {
+  AlertDialog, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
+  CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
+  FilledIconButton, FilledTonalButton, HorizontalDivider, InputChip, LinearProgressIndicator, ListItem, LoadingIndicator,
+  MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
+  SuggestionChip, Switch, Tab, Text, TextButton, TextField, ToggleButton, lightColorScheme, type ComposeChain, type ComposeFloatRange,
+} from "jetpack-compose-react-native";
+
+const rounded = { rect: { cornerRadius: 14 } };
+const fullWidth = Modifier.fillMaxWidth();
+const defaultColors = lightColorScheme();
+const tealColors = lightColorScheme({ primary: "#005e54", onPrimary: "#ffffff" });
+
+function Demo({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <View style={styles.demo}>
+      <RNText accessibilityRole="header" style={styles.demoTitle}>{title}</RNText>
+      {children}
+    </View>
+  );
+}
+
+export function Expressive() {
+  return (
+    <>
+      <Demo
+        title="Loading indicators"
+      >
+        <Row modifiers={fullWidth} horizontalArrangement="spaceEvenly">
+          <MaterialTheme>
+            <Column horizontalAlignment="centerHorizontally">
+              <Text text="Standard" />
+              <Spacer modifiers={Modifier.height(8)} />
+              <Box modifiers={Modifier.size(56)} contentAlignment="center">
+                <CircularProgressIndicator />
+              </Box>
+            </Column>
+          </MaterialTheme>
+          <MaterialExpressiveTheme>
+            <Column horizontalAlignment="centerHorizontally">
+              <Text text="Expressive morph" />
+              <Spacer modifiers={Modifier.height(8)} />
+              <Box modifiers={Modifier.size(56)} contentAlignment="center">
+                <LoadingIndicator />
+              </Box>
+            </Column>
+          </MaterialExpressiveTheme>
+        </Row>
+      </Demo>
+    </>
+  );
+}
+
+function Buttons() {
+  const [count, setCount] = useState(0);
+  const [customAccent, setCustomAccent] = useState(false);
+  const [expressive, setExpressive] = useState(false);
+  function increment() {
+    setCount((value) => value + 1);
+  }
+
+  const Theme = expressive ? MaterialExpressiveTheme : MaterialTheme;
+  const colors = customAccent ? tealColors : expressive ? undefined : defaultColors;
+
+
+  return (
+    <Demo title="Buttons">
+      <Theme colorScheme={colors}>
+        <Column modifiers={fullWidth}>
+          <Row>
+            <Button onClick={increment}><Text text="Filled" /></Button>
+            <Spacer modifiers={Modifier.width(8)} />
+            <OutlinedButton onClick={increment}><Text text="Outlined" /></OutlinedButton>
+          </Row>
+          <Row>
+            <FilledTonalButton onClick={increment}><Text text="Tonal" /></FilledTonalButton>
+            <Spacer modifiers={Modifier.width(8)} />
+            <ElevatedButton onClick={increment}><Text text="Elevated" /></ElevatedButton>
+          </Row>
+          <Row verticalAlignment="centerVertically">
+            <TextButton enabled={count > 0} onClick={() => setCount(0)}><Text text="Reset" /></TextButton>
+            <Text text={`Button presses: ${count}`} color="#5d4b73" />
+          </Row>
+          <Row>
+            <TextButton onClick={() => setCustomAccent(!customAccent)}>
+              <Text text={customAccent ? "Reset accent" : "Try teal accent"} />
+            </TextButton>
+            <TextButton onClick={() => setExpressive(!expressive)}>
+              <Text text={expressive ? "Use standard theme" : "Try Expressive theme"} />
+            </TextButton>
+          </Row>
+          <Row verticalAlignment="centerVertically">
+            <FilledIconButton onClick={increment}><Text text="+" fontSize={22} /></FilledIconButton>
+            <Spacer modifiers={Modifier.width(8)} />
+            <ToggleButton checked={count > 0} onCheckedChange={(checked) => setCount(checked ? 1 : 0)}>
+              <Text text="Toggle" />
+            </ToggleButton>
+            <Spacer modifiers={Modifier.width(8)} />
+            <OutlinedButton enabled={false} onClick={increment}><Text text="Disabled" /></OutlinedButton>
+          </Row>
+        </Column>
+      </Theme>
+    </Demo>
+  );
+}
+
+function Controls() {
+  const [notifications, setNotifications] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+  const [level, setLevel] = useState(0.35);
+  const [range, setRange] = useState<ComposeFloatRange>([0.25, 0.75]);
+  const [mode, setMode] = useState<"Daily" | "Weekly">("Daily");
+
+  return (
+    <Demo title="Controls">
+      <Column modifiers={fullWidth}>
+        <Row modifiers={fullWidth} horizontalArrangement="spaceBetween" verticalAlignment="centerVertically">
+          <Text text={notifications ? "Notifications on" : "Notifications off"} />
+          <Switch checked={notifications} onCheckedChange={setNotifications} />
+        </Row>
+        <HorizontalDivider />
+        <Row modifiers={fullWidth} horizontalArrangement="spaceBetween" verticalAlignment="centerVertically">
+          <Text text={favorite ? "Saved to favorites" : "Save to favorites"} />
+          <Checkbox checked={favorite} onCheckedChange={setFavorite} />
+        </Row>
+        <Row verticalAlignment="centerVertically">
+          <RadioButton selected={mode === "Daily"} onClick={() => setMode("Daily")} />
+          <Text text="Daily" />
+          <RadioButton selected={mode === "Weekly"} onClick={() => setMode("Weekly")} />
+          <Text text="Weekly" />
+        </Row>
+        <FlowRow modifiers={fullWidth} horizontalArrangement="spaceBetween" maxItemsInEachRow={2}>
+          <FilterChip selected={favorite} onClick={() => setFavorite(!favorite)} label={<Text text="Favorites" />} />
+          <AssistChip onClick={() => setMode("Daily")} label={<Text text="Daily digest" />} />
+          <InputChip selected={notifications} onClick={() => setNotifications(!notifications)} label={<Text text="Alerts" />} />
+          <SuggestionChip onClick={() => setMode("Weekly")} label={<Text text="Try weekly" />} />
+        </FlowRow>
+        <Text text={`Slider ${Math.round(level * 100)}%`} />
+        <Slider value={level} onValueChange={setLevel} />
+        <Text text={`Range ${Math.round(range[0] * 100)}–${Math.round(range[1] * 100)}%`} />
+        <RangeSlider value={range} onValueChange={setRange} />
+      </Column>
+    </Demo>
+  );
+}
+
+function TextFields() {
+  const [name, setName] = useState("");
+
+  return (
+    <Demo title="Text fields">
+      <Column modifiers={fullWidth}>
+        <OutlinedTextField
+          modifiers={fullWidth}
+          value={name}
+          onValueChange={setName}
+          label={<Text text="Display name" />}
+          placeholder={<Text text="Type a name" />}
+        />
+        <Spacer modifiers={Modifier.height(8)} />
+        <TextField modifiers={fullWidth} value={name} onValueChange={setName} label={<Text text="Filled field" />} />
+        <BasicText text={name.trim() ? `Hello, ${name.trim()}` : "Enter a name in either field."} />
+      </Column>
+    </Demo>
+  );
+}
+
+function Dialogs() {
+  const [open, setOpen] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const dismiss = () => setOpen(false);
+
+  return (
+    <Demo title="Dialogs">
+      <Column>
+        <Button onClick={() => setOpen(true)}><Text text="Open dialog" /></Button>
+        <Text text={confirmed ? "Draft published" : "Draft ready"} color="#5d4b73" />
+        {open && (
+          <AlertDialog
+            onDismissRequest={dismiss}
+            title={<Text text="Publish draft?" />}
+            text={<Text text="This opens a native Material 3 dialog." />}
+            dismissButton={<TextButton onClick={dismiss}><Text text="Cancel" /></TextButton>}
+            confirmButton={
+              <TextButton onClick={() => { setConfirmed(true); dismiss(); }}>
+                <Text text="Publish" />
+              </TextButton>
+            }
+          />
+        )}
+      </Column>
+    </Demo>
+  );
+}
+
+const componentGroups = ["Buttons", "Inputs", "Surfaces", "Progress"] as const;
+
+export function Components() {
+  const [group, setGroup] = useState<(typeof componentGroups)[number]>("Buttons");
+  return (
+    <>
+      <View accessibilityRole="tablist" style={styles.groups}>
+        {componentGroups.map((name) => (
+          <Pressable
+            key={name}
+            accessibilityRole="tab"
+            accessibilityLabel={`Show ${name.toLowerCase()}`}
+            accessibilityState={{ selected: group === name }}
+            onPress={() => setGroup(name)}
+            style={[styles.group, group === name && styles.selectedGroup]}
+          >
+            <RNText style={styles.groupLabel}>{name}</RNText>
+          </Pressable>
+        ))}
+      </View>
+      {group === "Buttons" && <Buttons />}
+      {group === "Inputs" && <><Controls /><TextFields /></>}
+      {group === "Surfaces" && <Surfaces />}
+      {group === "Progress" && <Progress />}
+    </>
+  );
+}
+
+function Surfaces() {
+  const [tab, setTab] = useState(0);
+  return (
+    <Demo title="Cards, tabs & badges">
+      <Column modifiers={fullWidth}>
+        <PrimaryTabRow selectedTabIndex={tab} tabs={["Inbox", "Archive"].map((label, index) => (
+          <Tab key={label} selected={index === tab} onClick={() => setTab(index)} text={<Text text={label} />} />
+        ))} />
+        <Card modifiers={Modifier.fillMaxWidth().padding({ vertical: 6 })}>
+          <ListItem
+            headlineContent={<Text text={tab === 0 ? "New messages" : "Archived messages"} />}
+            supportingContent={<Text text="Filled card and list item" />}
+            trailingContent={<BadgedBox badge={<Badge content={<Text text="3" />} />}><Text text="Mail" /></BadgedBox>}
+          />
+        </Card>
+        <ElevatedCard modifiers={Modifier.fillMaxWidth().padding({ vertical: 6 })}>
+          <Text text="Elevated card" modifiers={Modifier.padding(16)} />
+        </ElevatedCard>
+        <OutlinedCard modifiers={Modifier.fillMaxWidth().padding({ vertical: 6 })}>
+          <Text text="Outlined card" modifiers={Modifier.padding(16)} />
+        </OutlinedCard>
+      </Column>
+    </Demo>
+  );
+}
+
+function Progress() {
+  return (
+    <Demo title="Progress indicators">
+      <Column modifiers={fullWidth}>
+        <Text text="Determinate linear" />
+        <LinearProgressIndicator progress={0.65} modifiers={fullWidth} />
+        <Spacer modifiers={Modifier.height(12)} />
+        <Text text="Determinate circular" />
+        <CircularProgressIndicator progress={0.65} modifiers={Modifier.size(40)} />
+        <Spacer modifiers={Modifier.height(12)} />
+        <Text text="Indeterminate linear" />
+        <LinearProgressIndicator modifiers={fullWidth} />
+        <Spacer modifiers={Modifier.height(12)} />
+        <MaterialExpressiveTheme>
+          <Text text="Contained loading indicator" />
+          <ContainedLoadingIndicator />
+        </MaterialExpressiveTheme>
+      </Column>
+    </Demo>
+  );
+}
+
+function Sample({ label, modifiers }: { label: string; modifiers: ComposeChain }) {
+  return (
+    <Box modifiers={modifiers} contentAlignment="center">
+      <Text text={label} color="#2d1c43" fontWeight="bold" fontSize={14} />
+    </Box>
+  );
+}
+
+export function Modifiers() {
+  const [swapped, setSwapped] = useState(false);
+  const fill = Modifier.background("#e2d1fc", { in: rounded });
+  const paddedFill = swapped ? Modifier.padding(20).background("#e2d1fc", { in: rounded }) : fill.padding(20);
+
+  return (
+    <>
+      <Demo title="Modifier playground">
+        <Column modifiers={fullWidth}>
+          <Box modifiers={Modifier.fillMaxWidth().height(92).background("#f3edf9", { in: rounded })} contentAlignment="center">
+            <Sample label="Compose" modifiers={paddedFill} />
+          </Box>
+          <Spacer modifiers={Modifier.height(6)} />
+          <Text text={swapped ? "Padding → background" : "Background → padding"} color="#5d4b73" />
+          <Button onClick={() => setSwapped(!swapped)}><Text text="Swap order" /></Button>
+        </Column>
+      </Demo>
+      <Demo title="Shapes, borders & gradients">
+        <Column modifiers={fullWidth}>
+          <Sample
+            label="Gradient"
+            modifiers={Modifier.fillMaxWidth().height(66)
+              .background({ colors: ["#c7b2fa", "#f5c6e4"] }, { in: rounded })
+              .border("#8862ad", { width: 2, shape: rounded })}
+          />
+          <Spacer modifiers={Modifier.height(16)} />
+          <Row modifiers={fullWidth} verticalAlignment="centerVertically">
+            <Sample label="Clip" modifiers={Modifier.size(70).clip("circle").background("#e2d1fc")} />
+            <Spacer modifiers={Modifier.width(14)} />
+            <Sample label="Shadow" modifiers={Modifier.size(70).shadow(6, { shape: rounded }).background("#ede5fc", { in: rounded })} />
+            <Spacer modifiers={Modifier.width(14)} />
+            <Sample label="Rotate" modifiers={Modifier.size(66).rotate(-9).alpha(0.7).background("#f1cce5", { in: rounded })} />
+          </Row>
+        </Column>
+      </Demo>
+      <Demo title="Size, offset & layering">
+        <Row modifiers={fullWidth} horizontalArrangement="spaceEvenly" verticalAlignment="centerVertically">
+          <Sample label="Ratio" modifiers={Modifier.width(66).aspectRatio(1.4).background("#e2d1fc")} />
+          <Sample label="Scale" modifiers={Modifier.size(60).scale(0.8).background("#f1cce5")} />
+          <Box modifiers={Modifier.size(70)}>
+            <Sample label="Front" modifiers={Modifier.size(51).zIndex(1).background("#e0d4ff")} />
+            <Sample label="" modifiers={Modifier.size(51).offset({ x: 16, y: 16 }).background("#c2b1ed")} />
+          </Box>
+        </Row>
+      </Demo>
+      <Demo title="Scoped layout">
+        <Row modifiers={fullWidth} verticalAlignment="centerVertically">
+          <Sample label="Weight 1" modifiers={Modifier.weight(1).height(48).background("#e2d1fc", { in: rounded })} />
+          <Spacer modifiers={Modifier.width(8)} />
+          <Sample label="Weight 2" modifiers={Modifier.weight(2).height(64).background("#cbb5f0", { in: rounded })} />
+        </Row>
+      </Demo>
+    </>
+  );
+}
+
+export function Interop() {
+  const [clicks, setClicks] = useState(0);
+  const onClick = () => setClicks((value) => value + 1);
+
+  return (
+    <>
+      <Demo title="Mixed children">
+        <Column horizontalAlignment="start" modifiers={Modifier
+          .fillMaxWidth()
+          .background("#eee8f8", { in: rounded })
+          .padding("all", 8)}
+        >
+          <Text
+            text={clicks ? `Tapped ${clicks}` : "Ready"}
+            modifiers={Modifier.clickable(onClick)}
+            fontWeight="bold"
+          />
+          <Row>
+            <Button modifiers={Modifier.align("centerVertically")} onClick={onClick}>
+              <Text text="Tap Compose" fontSize={13} />
+            </Button>
+            <View style={styles.reactChild}>
+              <Pressable accessibilityRole="button" onPress={onClick}>
+                <RNText style={styles.reactButtonLabel}>Tap React Native</RNText>
+              </Pressable>
+            </View>
+          </Row>
+          {clicks % 2 === 0
+            ? <Text key="even" text="Even click count" />
+            : <Text key="odd" text="Odd click count" />}
+          {clicks % 2 === 1 && <RNText style={styles.marker}>Added by React</RNText>}
+        </Column>
+        <RNText style={styles.marker}>Below Compose</RNText>
+        <Text text="Fixed height Compose" style={styles.fixedRoot} />
+      </Demo>
+    </>
+  );
+}
+
+export function Overlays() {
+  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [snackbar, setSnackbar] = useState(false);
+  function chooseItem() {
+    setMenu(false);
+    setSnackbar(true);
+  }
+
+  return (
+    <>
+      <Demo title="Modal bottom sheet">
+        <Column modifiers={fullWidth}>
+          <BottomAppBar contentPadding={{ horizontal: 20 }} windowInsets={{}}>
+            <BoxWithConstraints>
+              <RNText>React Native inside Compose</RNText>
+            </BoxWithConstraints>
+          </BottomAppBar>
+          <Button onClick={() => setOpen(true)}><Text text="Open generated sheet" /></Button>
+          {open && (
+            <ModalBottomSheet
+              onDismissRequest={() => setOpen(false)}
+              sheetState={{ skipPartiallyExpanded: true }}
+            >
+              <Column modifiers={Modifier.fillMaxWidth().padding(20)}>
+                <Text text="Native sheet state" fontSize={23} fontWeight="bold" />
+                <RNText style={styles.marker}>React Native content in the sheet</RNText>
+                <Spacer modifiers={Modifier.height(12)} />
+                <Button onClick={() => setOpen(false)}><Text text="Close generated sheet" /></Button>
+              </Column>
+            </ModalBottomSheet>
+          )}
+        </Column>
+      </Demo>
+      <Dialogs />
+      <Demo title="Menu and snackbar">
+        <Column modifiers={fullWidth}>
+          <Box>
+            <OutlinedButton onClick={() => setMenu(true)}><Text text="Open menu" /></OutlinedButton>
+            <DropdownMenu expanded={menu} onDismissRequest={() => setMenu(false)}>
+              <DropdownMenuItem text={<Text text="Archive item" />} onClick={chooseItem} />
+              <DropdownMenuItem text={<Text text="Mark as read" />} onClick={chooseItem} />
+            </DropdownMenu>
+          </Box>
+          {snackbar && (
+            <Snackbar action={<TextButton onClick={() => setSnackbar(false)}><Text text="Undo" /></TextButton>}>
+              <Text text="Change saved" />
+            </Snackbar>
+          )}
+        </Column>
+      </Demo>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  groups: { flexDirection: "row", gap: 6 },
+  group: { flex: 1, minHeight: 40, alignItems: "center", justifyContent: "center", borderRadius: 8, backgroundColor: "#eee8f8" },
+  selectedGroup: { backgroundColor: "#e0d3f4" },
+  groupLabel: { fontSize: 13, fontWeight: "700", color: "#392552" },
+  demo: { padding: 12, backgroundColor: "#fff", borderColor: "#e9e2f1", borderWidth: 1, borderRadius: 14, gap: 8 },
+  demoTitle: { color: "#302244", fontSize: 17, fontWeight: "800" },
+  reactChild: { padding: 5 },
+  reactButtonLabel: { color: "#45305e", fontSize: 12, fontWeight: "700" },
+  marker: { color: "#524261", fontSize: 13 },
+  fixedRoot: { height: 40 },
+});
