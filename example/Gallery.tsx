@@ -5,7 +5,7 @@ import {
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
   DatePicker, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
-  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, ToggleButton, TriStateCheckbox, lightColorScheme, type ComposeChain, type ComposeFloatRange,
+  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, type ComposeChain, type ComposeFloatRange,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -227,6 +227,7 @@ export function Components() {
 function Collections() {
   const [measured, setMeasured] = useState(false);
   const [selected, setSelected] = useState(false);
+  const [numericTime, setNumericTime] = useState(false);
   return (
     <>
       <Demo title="Native list and layout callbacks">
@@ -278,7 +279,12 @@ function Collections() {
         >
           <DatePicker state={{}} />
         </Scaffold>
-        <TimeInput state={{ initialHour: 9, initialMinute: 30 }} />
+        <Button onClick={() => setNumericTime(!numericTime)}>
+          <Text text={numericTime ? "Show clock" : "Enter time with keyboard"} />
+        </Button>
+        {numericTime
+          ? <TimeInput state={{ initialHour: 9, initialMinute: 30 }} />
+          : <TimePicker state={{ initialHour: 9, initialMinute: 30 }} />}
       </Demo>
     </>
   );
