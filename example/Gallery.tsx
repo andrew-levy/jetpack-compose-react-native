@@ -3,9 +3,9 @@ import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
   AlertDialog, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
-  FilledIconButton, FilledTonalButton, HorizontalDivider, InputChip, LinearProgressIndicator, ListItem, LoadingIndicator,
+  DatePicker, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
-  SuggestionChip, Switch, Tab, Text, TextButton, TextField, ToggleButton, lightColorScheme, type ComposeChain, type ComposeFloatRange,
+  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, ToggleButton, TriStateCheckbox, lightColorScheme, type ComposeChain, type ComposeFloatRange,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -195,7 +195,7 @@ function Dialogs() {
   );
 }
 
-const componentGroups = ["Buttons", "Inputs", "Surfaces", "Progress"] as const;
+const componentGroups = ["Buttons", "Inputs", "Surfaces", "Progress", "Collections"] as const;
 
 export function Components() {
   const [group, setGroup] = useState<(typeof componentGroups)[number]>("Buttons");
@@ -219,6 +219,67 @@ export function Components() {
       {group === "Inputs" && <><Controls /><TextFields /></>}
       {group === "Surfaces" && <Surfaces />}
       {group === "Progress" && <Progress />}
+      {group === "Collections" && <Collections />}
+    </>
+  );
+}
+
+function Collections() {
+  const [measured, setMeasured] = useState(false);
+  const [selected, setSelected] = useState(false);
+  return (
+    <>
+      <Demo title="Native list and layout callbacks">
+        <Row modifiers={fullWidth} verticalAlignment="centerVertically">
+          <Image
+            painter={{ color: "#69489b" }}
+            contentDescription="Purple swatch"
+            modifiers={Modifier.size(24).clip("circle").onSizeChanged(({ width }) => setMeasured(width > 0))}
+          />
+          <Spacer modifiers={Modifier.width(8)} />
+          <Text text={measured ? "Layout reported to React" : "Measuring layout"} />
+        </Row>
+        <LazyColumn
+          style={{ height: 114 }}
+          modifiers={fullWidth}
+          state={{ initialIndex: 1 }}
+          contentPadding={{ top: 4, bottom: 4 }}
+        >
+          {Array.from({ length: 8 }, (_, index) => (
+            <Text key={index} text={`Native row ${index + 1}`} modifiers={Modifier.height(36)} />
+          ))}
+        </LazyColumn>
+      </Demo>
+      <Demo title="Native grid and tri-state selection">
+        <LazyVerticalGrid columns={{ count: 2 }} style={{ height: 108 }} modifiers={fullWidth}>
+          {["Orchid", "Periwinkle", "Lilac", "Lavender"].map((color) => (
+            <Text key={color} text={color} modifiers={Modifier.height(45)} />
+          ))}
+        </LazyVerticalGrid>
+        <Row verticalAlignment="centerVertically">
+          <TriStateCheckbox state={selected ? "on" : "indeterminate"} onClick={() => setSelected(!selected)} />
+          <Text text={selected ? "Selected" : "Partly selected"} />
+        </Row>
+      </Demo>
+      <Demo title="Swipeable pages">
+        <HorizontalPager state={{ initialPage: 1 }} style={{ height: 100 }} modifiers={fullWidth}>
+          {["First page", "Second page", "Third page"].map((page) => (
+            <Box key={page} modifiers={Modifier.fillMaxSize().background("#e2d1fc")} contentAlignment="center">
+              <Text text={page} />
+            </Box>
+          ))}
+        </HorizontalPager>
+      </Demo>
+      <Demo title="Scaffold and native pickers">
+        <Scaffold
+          style={{ height: 410 }}
+          modifiers={fullWidth}
+          topBar={<Text text="Calendar" modifiers={Modifier.padding(12)} />}
+        >
+          <DatePicker state={{}} />
+        </Scaffold>
+        <TimeInput state={{ initialHour: 9, initialMinute: 30 }} />
+      </Demo>
     </>
   );
 }

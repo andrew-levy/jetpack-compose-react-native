@@ -48,7 +48,7 @@ export function verifyInventory({ discovered, coverage, components, modifiers },
     if ([...omitted.values()].some((reason) => !reason)) errors.push(`An omitted prop has no reason for ${signature}`);
     if (exported) {
       const names = new Set(exported.parameters.map(({ name }) => name));
-      if (exported.children) names.add("content");
+      if (exported.children) names.add(exported.childrenParameter ?? "content");
       for (const { name } of parameters) {
         if (!names.has(name) && !omitted.has(name)) errors.push(`Unaccounted prop ${name} in ${signature}`);
       }

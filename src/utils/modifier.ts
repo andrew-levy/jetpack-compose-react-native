@@ -34,7 +34,7 @@ export interface ModifierCompatibility<Chain> {
   }): Chain;
 }
 
-type ArgumentType = "string" | "number" | "boolean" | "function" | "shape" | "brush";
+type ArgumentType = "string" | "number" | "boolean" | "function" | "shape" | "brush" | "object" | "tuple" | "paddingValues" | "windowInsets";
 type Argument = readonly [key: string, type: ArgumentType, nullable: boolean];
 
 interface Overload {
@@ -58,8 +58,20 @@ function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+const structuredEdges = {
+  paddingValues: new Set(["all", "horizontal", "vertical", "start", "top", "end", "bottom"]),
+  windowInsets: new Set(["left", "top", "right", "bottom"]),
+};
+
 function matches(value: unknown, type: ArgumentType, nullable: boolean): boolean {
   if (value === null) return nullable;
+  if (type === "paddingValues" || type === "windowInsets") {
+    return isObject(value) && Object.entries(value).every(([key, edge]) =>
+      structuredEdges[type].has(key) && (edge === undefined || (typeof edge === "number" && Number.isFinite(edge)))
+    );
+  }
+  if (type === "object") return isObject(value);
+  if (type === "tuple") return Array.isArray(value);
   if (type === "shape") {
     return typeof value === "string" || (isObject(value) &&
       (typeof value.radius === "number" || (isObject(value.rect) && typeof value.rect.cornerRadius === "number")));

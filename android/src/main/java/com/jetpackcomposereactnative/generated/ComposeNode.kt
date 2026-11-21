@@ -3,8 +3,15 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import org.json.JSONObject
+import java.util.concurrent.atomic.AtomicInteger
 
-internal interface ComposeChild
+private val composeChildIds = AtomicInteger()
+
+internal fun nextComposeChildId(): Int = composeChildIds.incrementAndGet()
+
+internal interface ComposeChild {
+  val composeChildId: Int
+}
 
 internal interface ComposeNode : ComposeChild {
   val name: String

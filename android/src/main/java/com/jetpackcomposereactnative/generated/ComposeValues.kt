@@ -90,6 +90,51 @@ internal fun toComposeFontWeight(value: String): androidx.compose.ui.text.font.F
   else -> error("Unknown ComposeFontWeight: " + value)
 }
 
+internal fun toComposeToggleableState(value: String): androidx.compose.ui.state.ToggleableState = when (value) {
+  "indeterminate" -> androidx.compose.ui.state.ToggleableState.Indeterminate
+  "off" -> androidx.compose.ui.state.ToggleableState.Off
+  "on" -> androidx.compose.ui.state.ToggleableState.On
+  else -> error("Unknown ComposeToggleableState: " + value)
+}
+
+internal fun toComposeOrientation(value: String): androidx.compose.foundation.gestures.Orientation = when (value) {
+  "horizontal" -> androidx.compose.foundation.gestures.Orientation.Horizontal
+  "vertical" -> androidx.compose.foundation.gestures.Orientation.Vertical
+  else -> error("Unknown ComposeOrientation: " + value)
+}
+
+internal fun toComposeIntrinsicSize(value: String): androidx.compose.foundation.layout.IntrinsicSize = when (value) {
+  "max" -> androidx.compose.foundation.layout.IntrinsicSize.Max
+  "min" -> androidx.compose.foundation.layout.IntrinsicSize.Min
+  else -> error("Unknown ComposeIntrinsicSize: " + value)
+}
+
+internal fun toComposeContentScale(value: String): androidx.compose.ui.layout.ContentScale = when (value) {
+  "crop" -> androidx.compose.ui.layout.ContentScale.Crop
+  "fillBounds" -> androidx.compose.ui.layout.ContentScale.FillBounds
+  "fillHeight" -> androidx.compose.ui.layout.ContentScale.FillHeight
+  "fillWidth" -> androidx.compose.ui.layout.ContentScale.FillWidth
+  "fit" -> androidx.compose.ui.layout.ContentScale.Fit
+  "inside" -> androidx.compose.ui.layout.ContentScale.Inside
+  "none" -> androidx.compose.ui.layout.ContentScale.None
+  else -> error("Unknown ComposeContentScale: " + value)
+}
+
+internal fun toComposePointerIcon(value: String): androidx.compose.ui.input.pointer.PointerIcon = when (value) {
+  "crosshair" -> androidx.compose.ui.input.pointer.PointerIcon.Crosshair
+  "default" -> androidx.compose.ui.input.pointer.PointerIcon.Default
+  "hand" -> androidx.compose.ui.input.pointer.PointerIcon.Hand
+  "text" -> androidx.compose.ui.input.pointer.PointerIcon.Text
+  else -> error("Unknown ComposePointerIcon: " + value)
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+internal fun toComposeDisplayMode(value: String): androidx.compose.material3.DisplayMode = when (value) {
+  "input" -> androidx.compose.material3.DisplayMode.Input
+  "picker" -> androidx.compose.material3.DisplayMode.Picker
+  else -> error("Unknown ComposeDisplayMode: " + value)
+}
+
 internal fun toComposeRole(value: String): androidx.compose.ui.semantics.Role = when (value) {
   "button" -> androidx.compose.ui.semantics.Role.Button
   "carousel" -> androidx.compose.ui.semantics.Role.Carousel

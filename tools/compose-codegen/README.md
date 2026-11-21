@@ -63,17 +63,32 @@ progress and `<CircularProgressIndicator progress={0.5} />` renders determinate
 progress. Progress parameters that Kotlin reads through a float supplier
 receive the current React prop as a native lambda.
 
-Kotlin supplies library defaults for omitted arguments. Overloads with up to ten independently
-optional props get all named-argument combinations considered. For larger overloads the
-generator preserves established call forms, offers each added prop with those forms, and
-considers the full call. The report counts the remaining default-argument combinations.
+Kotlin supplies library defaults for omitted arguments. The generator preserves
+established call forms. It limits the number of new default-argument combinations for
+wide signatures, combining each new prop with the core props and considering the full
+call. The report counts the remaining combinations. Large Kotlin dispatch tables are
+written in separate source files to bound the compiler's work per file.
 Compose and modifier signatures each have an outcome in [coverage.json](coverage.json),
 including unsupported bridges, omitted props, and ambiguous or shadowed argument forms.
 
 Structured props such as `contentPadding` and `windowInsets` take numbers in dp.
-`BoxWithConstraints` accepts native Compose and React Native children. `ModalBottomSheet`
-can take `sheetState={{ skipPartiallyExpanded: true }}`. Compose owns the sheet state
-and React controls whether the sheet is mounted.
+`Image`, `Icon`, and `Modifier.paint` can read a plain color or a drawable from the
+application's Android `res/drawable` resources. For example, use
+`painter={{ drawable: "hero" }}` for `res/drawable/hero.xml` or a packaged bitmap.
+
+Lazy lists and grids treat each direct child as an item, and pagers treat each
+direct child as a page. Use React keys for stable item identity and give scrolling
+containers a bounded size on their scroll axis. Compose lazily renders items from
+the existing React child tree. Grid cells can use `{ count: 2 }` or `{ minSize: 140 }`
+with the minimum size in dp.
+
+`BoxWithConstraints` accepts native Compose and React Native children. The scaffold
+bindings automatically apply the content padding passed by Compose. State props
+such as `DatePicker`'s `state`, `LazyColumn`'s `state`, and `ModalBottomSheet`'s
+`sheetState` initialize state owned by Compose. Pass a new React key to reset that
+state. Use an existing controlled overload when you need to observe or drive its
+value in JavaScript. The layout and focus callbacks deliver serializable snapshots.
+Layout dimensions and positions relative to the Compose root use physical pixels.
 
 Start a chain on `Modifier` and pass it through the `modifiers` prop.
 Modifiers apply in chain order. Pass the primary value first and additional

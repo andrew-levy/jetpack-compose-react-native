@@ -16,6 +16,7 @@ internal class ComposeModifierArguments(
 ) {
   fun has(name: String) = values.has(name)
   fun isNull(name: String) = values.isNull(name)
+  fun jsonObject(name: String): JSONObject = values.getJSONObject(name)
   fun string(name: String): String = values.getString(name)
   fun boolean(name: String): Boolean = values.getBoolean(name)
   fun number(name: String): Double = values.getDouble(name)

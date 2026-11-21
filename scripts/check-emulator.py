@@ -181,6 +181,13 @@ def verify():
     with record("progress"):
         time.sleep(1.75)
 
+    tap(nodes["Show collections"])
+    nodes = wait_for(
+        "Purple swatch", "Layout reported to React", "Native row 2", "Native row 3", "Modifiers",
+        absent=("Native row 1",), window=window,
+    )
+    capture("14-collections")
+
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)
     capture("07-modifiers")

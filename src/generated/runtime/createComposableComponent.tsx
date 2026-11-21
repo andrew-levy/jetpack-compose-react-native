@@ -49,6 +49,8 @@ function propValue(props: Record<string, unknown>, name: string) {
 function matchesType(value: unknown, kind: string, nullable: boolean) {
   if (kind === "ReactNode") return true;
   if (value === null) return nullable;
+  if (kind === "tuple") return Array.isArray(value);
+  if (kind === "object") return typeof value === "object" && !Array.isArray(value);
   if (kind === "ComposeModifier") return typeof (value as ComposeModifier)?.build === "function";
   if (kind === "brush" || kind === "shape") return typeof value === "string" || typeof value === "object";
   return typeof value === kind;

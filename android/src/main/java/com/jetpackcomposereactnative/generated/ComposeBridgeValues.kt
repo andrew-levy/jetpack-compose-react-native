@@ -1,12 +1,79 @@
 package com.jetpackcomposereactnative.generated
 
+import androidx.compose.foundation.BasicTooltipState
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.rememberBasicTooltipState
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyGridState
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.material3.BottomSheetScaffoldState
+import androidx.compose.material3.DatePickerDefaults
+import androidx.compose.material3.DatePickerFormatter
+import androidx.compose.material3.DatePickerState
+import androidx.compose.material3.DateRangePickerState
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SearchBarState
+import androidx.compose.material3.SearchBarValue
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.TooltipState
 import androidx.compose.material3.SheetState
+import androidx.compose.material3.SwipeToDismissBoxState
+import androidx.compose.material3.SwipeToDismissBoxValue
+import androidx.compose.material3.TimePickerState
+import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.rememberDateRangePickerState
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.rememberStandardBottomSheetState
+import androidx.compose.material3.rememberSwipeToDismissBoxState
+import androidx.compose.material3.rememberTimePickerState
+import androidx.compose.material3.rememberSearchBarState
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.focus.FocusProperties
+import androidx.compose.ui.focus.FocusState
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.disabled
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.spatial.RelativeLayoutBounds
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.layout.FirstBaseline
+import androidx.compose.ui.layout.HorizontalAlignmentLine
+import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.window.PopupPositionProvider
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.jetpackcomposereactnative.common.parseComposeColor
 import org.json.JSONObject
 
 internal fun JSONObject.toPaddingValues(): PaddingValues {
@@ -31,3 +98,190 @@ internal fun JSONObject.toWindowInsets(): WindowInsets = WindowInsets(
 @Composable
 internal fun JSONObject.rememberComposeSheetState(): SheetState =
   rememberModalBottomSheetState(skipPartiallyExpanded = optBoolean("skipPartiallyExpanded"))
+
+internal fun JSONObject.toDpSize(): DpSize = DpSize(getDouble("width").dp, getDouble("height").dp)
+
+internal fun JSONObject.toAnnotatedString(): AnnotatedString = AnnotatedString(getString("text"))
+
+internal fun JSONObject.toTextStyle(): TextStyle = TextStyle(
+  color = optString("color").takeIf { it.isNotEmpty() }?.let(::parseComposeColor) ?: Color.Unspecified,
+  fontSize = textUnit("fontSize"),
+  lineHeight = textUnit("lineHeight"),
+  letterSpacing = textUnit("letterSpacing"),
+)
+
+private fun JSONObject.textUnit(name: String): TextUnit =
+  if (isNull(name)) TextUnit.Unspecified else getDouble(name).sp
+
+@Composable
+internal fun JSONObject.rememberComposePainter(): Painter {
+  if (has("color")) {
+    val color = getString("color")
+    return remember(color) { ColorPainter(parseComposeColor(color)) }
+  }
+  val context = LocalContext.current
+  val drawable = getString("drawable")
+  val id = remember(context, drawable) {
+    context.resources.getIdentifier(drawable, "drawable", context.packageName)
+  }
+  require(id != 0) { "Unknown Android drawable: " + drawable }
+  return painterResource(id)
+}
+
+@Composable
+internal fun JSONObject.rememberComposeTextFieldState(): TextFieldState =
+  rememberTextFieldState(initialText = optString("initialText"))
+
+internal fun IntSize.toComposeSnapshot(): JSONObject =
+  JSONObject().put("width", width).put("height", height)
+
+internal fun LayoutCoordinates.toComposeSnapshot(): JSONObject {
+  val position = positionInRoot()
+  return size.toComposeSnapshot().put("x", position.x.toDouble()).put("y", position.y.toDouble())
+}
+
+internal fun FocusState.toComposeSnapshot(): JSONObject =
+  JSONObject().put("isFocused", isFocused).put("hasFocus", hasFocus).put("isCaptured", isCaptured)
+
+private fun JSONObject.longOrNull(name: String): Long? = if (isNull(name)) null else getLong(name)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeDatePickerState(): DatePickerState {
+  val initialDate = longOrNull("initialSelectedDateMillis")
+  return rememberDatePickerState(
+    initialSelectedDateMillis = initialDate,
+    initialDisplayedMonthMillis = longOrNull("initialDisplayedMonthMillis") ?: initialDate,
+  )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeDateRangePickerState(): DateRangePickerState {
+  val initialStart = longOrNull("initialSelectedStartDateMillis")
+  return rememberDateRangePickerState(
+    initialSelectedStartDateMillis = initialStart,
+    initialSelectedEndDateMillis = longOrNull("initialSelectedEndDateMillis"),
+    initialDisplayedMonthMillis = longOrNull("initialDisplayedMonthMillis") ?: initialStart,
+  )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeTimePickerState(): TimePickerState =
+  rememberTimePickerState(
+    initialHour = optInt("initialHour"),
+    initialMinute = optInt("initialMinute"),
+    is24Hour = optBoolean("is24Hour"),
+  )
+
+@Composable
+internal fun JSONObject.rememberComposeSwipeToDismissState(): SwipeToDismissBoxState =
+  rememberSwipeToDismissBoxState(
+    initialValue = when (val value = optString("initialValue", "settled")) {
+      "settled" -> SwipeToDismissBoxValue.Settled
+      "startToEnd" -> SwipeToDismissBoxValue.StartToEnd
+      "endToStart" -> SwipeToDismissBoxValue.EndToStart
+      else -> error("Unknown swipe-to-dismiss state: " + value)
+    },
+  )
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeBottomSheetScaffoldState(): BottomSheetScaffoldState =
+  rememberBottomSheetScaffoldState(bottomSheetState = rememberStandardBottomSheetState(
+    skipHiddenState = optBoolean("skipHiddenState", true),
+  ))
+
+@Composable
+internal fun JSONObject.rememberComposeScrollState(): ScrollState =
+  rememberScrollState(optInt("initialOffsetPx"))
+
+internal fun JSONObject.toGridCells(): GridCells =
+  if (has("count")) GridCells.Fixed(getInt("count")) else GridCells.Adaptive(getDouble("minSize").dp)
+
+internal fun JSONObject.toStaggeredGridCells(): StaggeredGridCells =
+  if (has("count")) StaggeredGridCells.Fixed(getInt("count")) else StaggeredGridCells.Adaptive(getDouble("minSize").dp)
+
+@Composable
+internal fun JSONObject.rememberComposeLazyListState(): LazyListState =
+  rememberLazyListState(optInt("initialIndex"), optInt("initialOffsetPx"))
+
+@Composable
+internal fun JSONObject.rememberComposeLazyGridState(): LazyGridState =
+  rememberLazyGridState(optInt("initialIndex"), optInt("initialOffsetPx"))
+
+@Composable
+internal fun JSONObject.rememberComposeLazyStaggeredGridState(): LazyStaggeredGridState =
+  rememberLazyStaggeredGridState(optInt("initialIndex"), optInt("initialOffsetPx"))
+
+@Composable
+internal fun JSONObject.rememberComposePagerState(node: ComposeNode): PagerState =
+  rememberPagerState(initialPage = optInt("initialPage")) { node.children.size }
+
+internal fun RelativeLayoutBounds.toComposeSnapshot(): JSONObject = JSONObject()
+  .put("width", boundsInRoot.width).put("height", boundsInRoot.height)
+  .put("x", boundsInRoot.left).put("y", boundsInRoot.top)
+
+internal fun JSONObject.toFocusProperties(): FocusProperties.() -> Unit = {
+  canFocus = getBoolean("canFocus")
+}
+
+internal fun JSONObject.toSemantics(): SemanticsPropertyReceiver.() -> Unit = {
+  if (this@toSemantics.has("contentDescription")) contentDescription = getString("contentDescription")
+  if (this@toSemantics.has("stateDescription")) stateDescription = getString("stateDescription")
+  if (this@toSemantics.has("role")) role = toComposeRole(getString("role"))
+  if (optBoolean("heading")) heading()
+  if (optBoolean("disabled")) disabled()
+}
+
+internal fun toComposeAlignmentLine(value: String): HorizontalAlignmentLine = when (value) {
+  "firstBaseline" -> FirstBaseline
+  "lastBaseline" -> LastBaseline
+  else -> error("Unknown alignment line: " + value)
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+internal fun JSONObject.toDatePickerFormatter(): DatePickerFormatter = DatePickerDefaults.dateFormatter(
+  yearSelectionSkeleton = optString("yearSelectionSkeleton", DatePickerDefaults.YearMonthSkeleton),
+  selectedDateSkeleton = optString("selectedDateSkeleton", DatePickerDefaults.YearAbbrMonthDaySkeleton),
+  selectedDateDescriptionSkeleton = optString("selectedDateDescriptionSkeleton", DatePickerDefaults.YearMonthWeekdayDaySkeleton),
+)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeSearchBarState(): SearchBarState = rememberSearchBarState(
+  initialValue = if (optBoolean("initiallyExpanded")) SearchBarValue.Expanded else SearchBarValue.Collapsed,
+)
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+internal fun JSONObject.rememberComposeBasicTooltipState(): BasicTooltipState = rememberBasicTooltipState(
+  initialIsVisible = optBoolean("initiallyVisible"),
+  isPersistent = optBoolean("persistent", true),
+)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeTooltipState(): TooltipState = rememberTooltipState(
+  initialIsVisible = optBoolean("initiallyVisible"),
+  isPersistent = optBoolean("persistent"),
+)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposePopupPosition(): PopupPositionProvider = if (isNull("spacing")) {
+  TooltipDefaults.rememberTooltipPositionProvider()
+} else {
+  TooltipDefaults.rememberTooltipPositionProvider(spacingBetweenTooltipAndAnchor = getDouble("spacing").dp)
+}
+
+@Composable
+internal fun JSONObject.rememberComposeSnackbarHostState(): SnackbarHostState {
+  val state = remember { SnackbarHostState() }
+  val message = optString("message")
+  LaunchedEffect(state, message) {
+    if (message.isNotEmpty()) state.showSnackbar(message)
+  }
+  return state
+}

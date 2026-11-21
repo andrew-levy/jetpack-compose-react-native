@@ -20,6 +20,7 @@ internal class ReactChildSlot(
     private val child: View,
     private val onProposalChanged: () -> Unit
 ) : FrameLayout(context), ComposeChild {
+    override val composeChildId = nextComposeChildId()
     var size by mutableStateOf(IntSize(child.width, child.height))
         private set
     var proposal: IntSize? = null

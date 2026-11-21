@@ -69,7 +69,7 @@ private class ComposeApiExtractor(
         val competing = overloads.groupBy { it.qualifiedName!!.asString() }
         val candidates = overloads.mapNotNull { fn ->
           describe(fn, competing.getValue(fn.qualifiedName!!.asString()), coverage)
-        }.sortedWith(compareBy({ 0 !in it.masks }, { it.component.parameters.count { p -> !p.optional } },
+        }.sortedWith(compareBy({ it.declaration.parentDeclaration != null }, { 0 !in it.masks }, { it.component.parameters.count { p -> !p.optional } },
           { -it.component.parameters.size }, { it.declaration.parameters.size }, { it.declaration.signature() }))
         val claimedForms = mutableSetOf<List<String>>()
         candidates.mapNotNull { candidate ->
@@ -128,8 +128,17 @@ private class ComposeApiExtractor(
     if (fn.simpleName.asString().firstOrNull()?.isUpperCase() != true) {
       return omit("skipped", "Composable does not use a JSX component name")
     }
-    if (fn.parentDeclaration != null) return omit("adapterRequired", "Member composable requires a native owner")
-    if (fn.extensionReceiver != null) return omit("adapterRequired", "Extension receiver requires a native scope")
+    val owner = fn.parentDeclaration as? KSClassDeclaration
+    val receiver = fn.extensionReceiver?.resolve()?.name
+    // An unqualified call never competes with an extension overload on a native receiver.
+    val ownerScope = owner?.qualifiedName?.asString()?.takeIf { it in scopes }
+      ?: receiver?.takeIf { it in scopedExtensionReceivers }
+    if (fn.parentDeclaration != null && owner?.classKind != ClassKind.OBJECT && ownerScope == null) {
+      return omit("adapterRequired", "Member composable requires a native owner")
+    }
+    if (fn.extensionReceiver != null && ownerScope == null) {
+      return omit("adapterRequired", "Extension receiver requires a native scope")
+    }
     if (fn.typeParameters.isNotEmpty()) return omit("unsupported", "Generic composable")
     if (fn.returnType?.resolve()?.name != "kotlin.Unit") return omit("unsupported", "Composable returns a value")
     val optIns = fn.optInMarkers()
@@ -140,13 +149,13 @@ private class ComposeApiExtractor(
     val supported = mutableListOf<Parameter>()
     val omitted = mutableListOf<OmittedParameter>()
     var childrenScope: String? = null
-    var children = false
+    var childrenParameter: String? = null
     for (parameter in fn.parameters) {
       val name = parameter.name?.asString() ?: return omit("unsupported", "Unnamed parameter")
       val type = parameter.type.resolve()
       val isSlot = parameter.isContentSlot(type)
-      if (name == "content" && isSlot && type.nullability == Nullability.NOT_NULL) {
-        children = true
+      if ((name == "content" || type.isPagerContent()) && isSlot && type.nullability == Nullability.NOT_NULL) {
+        childrenParameter = name
         childrenScope = type.contentScope()
         continue
       }
@@ -154,7 +163,7 @@ private class ComposeApiExtractor(
         parameter.isVararg || name in reservedProps -> null
         isSlot -> "slot"
         else -> valueKinds[type.name] ?: componentValueKinds[type.name]
-          ?: modifierValueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
+          ?: drawingValueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
           ?: type.rangeKind() ?: parameter.producerKind(type)
       }
       if (kind == null) {
@@ -172,15 +181,20 @@ private class ComposeApiExtractor(
 
     val types = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
     val parameters = supported
-    val component = Component(fn.signature(), fn.simpleName.asString(), function, parameters, children, childrenScope,
-      optIns.mapNotNull { it.qualifiedName?.asString() }.sorted(), emptyList())
+    val component = Component(fn.signature(), fn.simpleName.asString(), function, parameters, childrenParameter != null, childrenScope,
+      optIns.mapNotNull { it.qualifiedName?.asString() }.sorted(), emptyList(),
+      childrenParameter = childrenParameter?.takeUnless { it == "content" }, ownerScope = ownerScope,
+      scopedExtension = if (receiver != null) true else null)
     val optional = parameters.filter { it.optional && it.kind != "modifier" }
-    val forms = callForms(optional)
+    val newlyBridgeable = parameters.any { !it.optional && it.kind in expandedBridgeKinds } ||
+      childrenScope == PADDING_VALUES || childrenScope in lazyBuilderScopes
+    val forms = callForms(optional, newlyBridgeable)
     val (masks, blocked) = forms.masks.partition { mask ->
       val passed = component.passed(mask).associate { it.name to types.getValue(it.name) }.toMutableMap()
-      if (children) passed["content"] = types.getValue("content")
+      childrenParameter?.let { passed[it] = types.getValue(it) }
       overloads.none { other ->
-        other != fn && !other.isDeprecated() && other.parameters.size <= fn.parameters.size && accepts(other, passed)
+        other != fn && !other.isDeprecated() && other.extensionReceiver?.resolve()?.name == receiver &&
+          other.parameters.size <= fn.parameters.size && accepts(other, passed)
       }
     }
     if (masks.isEmpty()) return omit("unsupported", "No unambiguous Kotlin call forms", omitted)
@@ -258,9 +272,12 @@ private class ComposeApiExtractor(
         for (parameter in fn.parameters) {
           val name = parameter.name?.asString() ?: return@mapNotNull omit("unsupported", "Unnamed parameter")
           val type = parameter.type.resolve()
-          val kind = if (parameter.isVararg) null else
-            modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
-              ?: parameter.eventKind(type)?.takeUnless { it == "eventFloatRange" }
+          val kind = when {
+            parameter.isVararg -> null
+            qualifiedName == "androidx.compose.ui.layout.layoutId" && name == "layoutId" && type.name == "kotlin.Any" -> "string"
+            else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
+              ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
+          }
           if (kind == null || kind == "modifier") {
             val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
             omitted += OmittedParameter(name, type.signatureName(), reason, !parameter.hasDefault && !parameter.isVararg)
@@ -271,7 +288,7 @@ private class ComposeApiExtractor(
         if (omitted.any { it.required }) return@mapNotNull omit("adapterRequired", "Required parameter cannot cross the bridge")
 
         val optional = parameters.filter { it.optional }
-        val forms = callForms(optional)
+        val forms = callForms(optional, parameters.any { !it.optional && it.kind in expandedBridgeKinds })
         val parameterTypes = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
         fun passed(mask: Int) = parameters.filter { !it.optional || (mask and (1 shl optional.indexOf(it))) != 0 }
         val (masks, blocked) = forms.masks.partition { mask ->
@@ -299,23 +316,39 @@ private class ComposeApiExtractor(
     optInMarkers().mapNotNull { it.qualifiedName?.asString() }.sorted()
   )
 
-  private fun callForms(optional: List<Parameter>): CallForms {
+  private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
     require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
     val total = 1 shl optional.size
-    if (total <= 1024) return CallForms((0 until total).toList(), 0)
+    if (total <= if (newlyBridgeable) 128 else 1024) return CallForms((0 until total).toList(), 0)
 
-    // Keep the previous public set, then combine every extra prop with every subset of that set.
-    // Also support the full call. The report accounts for the remaining combinations.
-    val established = optional.filter { it.kind in preferredComponentKinds }.take(4).toSet()
-    val constants = optional.filter { parameter -> valueTypes.values.any { it.name == parameter.kind } }
-    val core = (established + constants + optional).take(7)
-    val extra = (optional - core.toSet()).map { 1 shl optional.indexOf(it) }
-    val coreMasks = core.fold(listOf(0)) { masks, parameter ->
+    // Leave room for added bridge types without dropping previously accepted argument combinations.
+    val established = optional.filterNot { it.kind in expandedBridgeKinds }
+    fun masks(parameters: List<Parameter>): List<Int> = parameters.fold(listOf(0)) { masks, parameter ->
       val bit = 1 shl optional.indexOf(parameter)
       masks + masks.map { it or bit }
     }
-    val masks = (coreMasks + extra.flatMap { bit -> coreMasks.map { it or bit } } + (total - 1)).sorted()
-    return CallForms(masks, total - masks.size)
+    // New signatures keep all core combinations, each additional prop and the full form.
+    if (newlyBridgeable) {
+      val core = optional.filter { it.kind in preferredComponentKinds }.take(4).toSet()
+      val coreParameters = (core + optional).take(4)
+      val coreMasks = masks(coreParameters)
+      val extra = (optional - coreParameters.toSet()).map { 1 shl optional.indexOf(it) }
+      val considered = (coreMasks + extra.flatMap { bit -> coreMasks.map { it or bit } } + (total - 1))
+        .distinct().sorted()
+      return CallForms(considered, total - considered.size)
+    }
+    val preferred = established.filter { it.kind in preferredComponentKinds }.take(4).toSet()
+    val constants = established.filter { parameter -> valueTypes.values.any { it.name == parameter.kind } }
+    val core = (preferred + constants + established).take(7)
+    val coreMasks = masks(core)
+    val previousMasks = if (established.size <= 10) masks(established) else {
+      val extra = (established - core.toSet()).map { 1 shl optional.indexOf(it) }
+      coreMasks + extra.flatMap { bit -> coreMasks.map { it or bit } } + established.sumOf { 1 shl optional.indexOf(it) }
+    }
+    val newProps = (optional - established.toSet()).map { 1 shl optional.indexOf(it) }
+    val considered = (previousMasks + newProps.flatMap { bit -> coreMasks.map { it or bit } } + (total - 1))
+      .distinct().sorted()
+    return CallForms(considered, total - considered.size)
   }
 
   private fun accepts(fn: KSFunctionDeclaration, passed: Map<String, KSType>): Boolean {
@@ -336,7 +369,14 @@ private class ComposeApiExtractor(
           ?: return@flatMap emptyList()
         val holders = listOf(owner) + owner.declarations.filterIsInstance<KSClassDeclaration>()
           .filter { it.isCompanionObject }.toList()
-        holders.filter { it.classKind == ClassKind.OBJECT }.flatMap { holder ->
+        val enumCases = if (owner.classKind == ClassKind.ENUM_CLASS && expected.isAssignableFrom(owner.asStarProjectedType())) {
+          owner.declarations.filterIsInstance<KSClassDeclaration>().filter { it.classKind == ClassKind.ENUM_ENTRY }
+            .map { entry ->
+              val name = entry.simpleName.asString()
+              ValueCase(name.replaceFirstChar { it.lowercaseChar() }, "$ownerName.$name")
+            }.toList()
+        } else emptyList()
+        enumCases + holders.filter { it.classKind == ClassKind.OBJECT }.flatMap { holder ->
           holder.declarations.filterIsInstance<KSPropertyDeclaration>()
             .filter { it.getVisibility() == Visibility.PUBLIC && expected.isAssignableFrom(it.type.resolve()) }
             .filter { property -> property.annotations.none { it.annotationType.resolve().name == "kotlin.Deprecated" } }
@@ -346,7 +386,8 @@ private class ComposeApiExtractor(
             }.toList()
         }
       }.distinctBy { it.name }.sortedBy { it.name }
-      if (properties.isEmpty()) null else typeName to ValueType(source.name, typeName, properties)
+      val optIns = declaration.optInMarkers().mapNotNull { it.qualifiedName?.asString() }.sorted()
+      if (properties.isEmpty()) null else typeName to ValueType(source.name, typeName, properties, optIns)
     }.toMap()
 
   private fun KSFunctionDeclaration.signature(): String = buildString {
@@ -402,12 +443,13 @@ private class ComposeApiExtractor(
       .flatMap { it.declarationsInType() }
 
   private fun KSValueParameter.isContentSlot(type: KSType): Boolean {
-    if (name?.asString() != "content" &&
+    if (name?.asString() != "content" && !type.isPagerContent() &&
       (this.type.annotations + type.annotations).none { it.annotationType.resolve().name == COMPOSABLE }) return false
     if (type.arguments.lastOrNull()?.type?.resolve()?.name != "kotlin.Unit") return false
     return when (type.name) {
       "kotlin.Function0" -> true
       "kotlin.Function1" -> type.contentScope() != null
+      "kotlin.Function2" -> type.isPagerContent()
       else -> false
     }
   }
@@ -416,11 +458,21 @@ private class ComposeApiExtractor(
     if (name == "kotlin.ranges.ClosedFloatingPointRange" &&
       arguments.singleOrNull()?.type?.resolve()?.name == "kotlin.Float") "floatRange" else null
 
-  private fun KSType.contentScope(): String? =
-    if (name == "kotlin.Function1") arguments.first().type?.resolve()?.name?.takeIf { it in scopes } else null
+  private fun KSType.isPagerContent(): Boolean = name == "kotlin.Function2" &&
+    arguments[0].type?.resolve()?.name == PAGER_SCOPE && arguments[1].type?.resolve()?.name == "kotlin.Int" &&
+    arguments[2].type?.resolve()?.name == "kotlin.Unit"
+
+  private fun KSType.contentScope(): String? = when {
+    isPagerContent() -> PAGER_SCOPE
+    name == "kotlin.Function1" -> arguments.first().type?.resolve()?.name?.takeIf {
+      it in scopes || it in lazyBuilderScopes || it == PADDING_VALUES
+    }
+    else -> null
+  }
 
   private fun KSValueParameter.eventKind(type: KSType): String? {
-    if (!name?.asString().orEmpty().startsWith("on")) return null
+    val parameter = name?.asString().orEmpty()
+    if (!parameter.startsWith("on") && parameter != "callback") return null
     if (type.arguments.lastOrNull()?.type?.resolve()?.name != "kotlin.Unit") return null
     val argument = type.arguments.firstOrNull()?.type?.resolve()
     return when (type.name) {
@@ -431,8 +483,22 @@ private class ComposeApiExtractor(
         "kotlin.Float" -> "eventFloat"
         "kotlin.Double" -> "eventDouble"
         "kotlin.Int" -> "eventInt"
+        "androidx.compose.ui.unit.IntSize" -> "eventLayoutSize"
+        "androidx.compose.ui.spatial.RelativeLayoutBounds" -> "eventLayoutBounds"
+        "androidx.compose.ui.layout.LayoutCoordinates" ->
+          if (argument.isMarkedNullable) "eventNullableLayoutPosition" else "eventLayoutPosition"
+        "androidx.compose.ui.focus.FocusState" -> "eventFocusState"
         else -> if (argument?.rangeKind() == "floatRange") "eventFloatRange" else null
       }
+      else -> null
+    }
+  }
+
+  private fun KSType.modifierReceiverKind(): String? {
+    if (name != "kotlin.Function1" || arguments.last().type?.resolve()?.name != "kotlin.Unit") return null
+    return when (arguments.first().type?.resolve()?.name) {
+      "androidx.compose.ui.focus.FocusProperties" -> "focusProperties"
+      "androidx.compose.ui.semantics.SemanticsPropertyReceiver" -> "semantics"
       else -> null
     }
   }
@@ -450,23 +516,52 @@ private class ComposeApiExtractor(
 }
 
 private fun String.inputType(): String = when {
-  this in setOf("int", "float", "double", "dp", "sp", "floatProducer") -> "number"
+  this in setOf("int", "long", "float", "double", "dp", "sp", "floatProducer") -> "number"
   this == "color" || startsWith("Compose") -> "string"
-  this in setOf("colorScheme", "floatRange", "paddingValues", "windowInsets", "windowInsetsProducer", "sheetState") -> "object"
+  this == "floatRange" -> "tuple"
+  this == "alignmentLine" -> "string"
+  this in objectKinds -> "object"
   startsWith("event") -> "function"
   else -> this
 }
 
+private val objectKinds = setOf("colorScheme", "paddingValues", "windowInsets", "windowInsetsProducer",
+  "sheetState", "dpSize", "annotatedString", "textStyle", "painter", "datePickerState", "dateRangePickerState",
+  "timePickerState", "swipeToDismissState", "bottomSheetScaffoldState", "scrollState", "gridCells", "staggeredGridCells",
+  "lazyListState", "lazyGridState", "lazyStaggeredGridState", "pagerState", "textFieldState", "focusProperties", "semantics", "searchBarState", "basicTooltipState", "tooltipState",
+  "popupPosition", "dateFormatter", "snackbarHostState")
+
 private const val COLOR = "androidx.compose.ui.graphics.Color"
 private val factoryTypes = setOf("androidx.compose.material3.ColorScheme")
+private val expandedBridgeKinds = setOf(
+  "dpSize", "annotatedString", "textStyle", "painter", "gridCells", "staggeredGridCells", "datePickerState",
+  "dateRangePickerState", "timePickerState", "swipeToDismissState", "bottomSheetScaffoldState", "scrollState",
+  "lazyListState", "lazyGridState", "lazyStaggeredGridState", "pagerState", "textFieldState",
+  "searchBarState", "basicTooltipState", "tooltipState", "popupPosition", "dateFormatter", "snackbarHostState",
+  "alignmentLine", "focusProperties", "semantics", "ComposePointerIcon", "ComposeDisplayMode", "long",
+  "eventLayoutSize", "eventLayoutBounds", "eventLayoutPosition", "eventNullableLayoutPosition", "eventFocusState",
+  "ComposeToggleableState", "ComposeOrientation", "ComposeIntrinsicSize", "ComposeContentScale"
+)
 private val preferredComponentKinds = setOf("int", "float", "double", "dp", "sp", "string", "boolean", "color",
   "colorScheme", "slot", "event", "eventString", "eventBoolean", "eventInt", "eventDouble")
 private val reservedProps = setOf("children", "key", "ref", "style", "testID", "modifiers")
 
+private const val PAGER_SCOPE = "androidx.compose.foundation.pager.PagerScope"
+private val lazyBuilderScopes = setOf(
+  "androidx.compose.foundation.lazy.LazyListScope",
+  "androidx.compose.foundation.lazy.grid.LazyGridScope",
+  "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope"
+)
+private const val PADDING_VALUES = "androidx.compose.foundation.layout.PaddingValues"
 private const val MODIFIER = "androidx.compose.ui.Modifier"
-private val modifierValueKinds = mapOf(
+private val drawingValueKinds = mapOf(
   "androidx.compose.ui.graphics.Shape" to "shape",
   "androidx.compose.ui.graphics.Brush" to "brush"
+)
+private val modifierValueKinds = drawingValueKinds + mapOf(
+  "androidx.compose.foundation.ScrollState" to "scrollState",
+  "androidx.compose.ui.layout.AlignmentLine" to "alignmentLine",
+  "androidx.compose.ui.layout.HorizontalAlignmentLine" to "alignmentLine"
 )
 private val valueSources = mapOf(
   "androidx.compose.ui.Alignment" to ValueSource("ComposeAlignment", listOf("androidx.compose.ui.Alignment")),
@@ -477,6 +572,12 @@ private val valueSources = mapOf(
   "androidx.compose.ui.text.style.TextAlign" to ValueSource("ComposeTextAlign", listOf("androidx.compose.ui.text.style.TextAlign")),
   "androidx.compose.ui.text.style.TextOverflow" to ValueSource("ComposeTextOverflow", listOf("androidx.compose.ui.text.style.TextOverflow")),
   "androidx.compose.ui.text.font.FontWeight" to ValueSource("ComposeFontWeight", listOf("androidx.compose.ui.text.font.FontWeight")),
+  "androidx.compose.ui.state.ToggleableState" to ValueSource("ComposeToggleableState", listOf("androidx.compose.ui.state.ToggleableState")),
+  "androidx.compose.foundation.gestures.Orientation" to ValueSource("ComposeOrientation", listOf("androidx.compose.foundation.gestures.Orientation")),
+  "androidx.compose.foundation.layout.IntrinsicSize" to ValueSource("ComposeIntrinsicSize", listOf("androidx.compose.foundation.layout.IntrinsicSize")),
+  "androidx.compose.ui.layout.ContentScale" to ValueSource("ComposeContentScale", listOf("androidx.compose.ui.layout.ContentScale")),
+  "androidx.compose.ui.input.pointer.PointerIcon" to ValueSource("ComposePointerIcon", listOf("androidx.compose.ui.input.pointer.PointerIcon")),
+  "androidx.compose.material3.DisplayMode" to ValueSource("ComposeDisplayMode", listOf("androidx.compose.material3.DisplayMode")),
   "androidx.compose.ui.semantics.Role" to ValueSource("ComposeRole", listOf("androidx.compose.ui.semantics.Role"))
 )
 private const val COMPOSABLE = "androidx.compose.runtime.Composable"
@@ -486,22 +587,63 @@ private val scopes = setOf(
   "androidx.compose.foundation.layout.BoxScope",
   "androidx.compose.foundation.layout.BoxWithConstraintsScope",
   "androidx.compose.foundation.layout.FlowRowScope",
-  "androidx.compose.foundation.layout.FlowColumnScope"
+  "androidx.compose.foundation.layout.FlowColumnScope",
+  "androidx.compose.animation.AnimatedVisibilityScope",
+  "androidx.compose.animation.SharedTransitionScope",
+  "androidx.compose.material3.ExposedDropdownMenuBoxScope",
+  "androidx.compose.material3.FloatingActionButtonMenuScope",
+  "androidx.compose.material3.ToggleFloatingActionButtonScope",
+  "androidx.compose.material3.MultiChoiceSegmentedButtonRowScope",
+  "androidx.compose.material3.SingleChoiceSegmentedButtonRowScope",
+  "androidx.compose.material3.TooltipScope",
+  "androidx.compose.ui.layout.LookaheadScope",
+  "androidx.compose.foundation.lazy.LazyItemScope",
+  "androidx.compose.foundation.lazy.grid.LazyGridItemScope",
+  "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemScope",
+  PAGER_SCOPE
+)
+private val scopedExtensionReceivers = setOf(
+  "androidx.compose.material3.TooltipScope",
+  "androidx.compose.material3.MultiChoiceSegmentedButtonRowScope",
+  "androidx.compose.material3.SingleChoiceSegmentedButtonRowScope"
 )
 private val componentValueKinds = mapOf(
   "androidx.compose.material3.ColorScheme" to "colorScheme",
-  "androidx.compose.foundation.layout.PaddingValues" to "paddingValues",
-  "androidx.compose.foundation.layout.WindowInsets" to "windowInsets",
-  "androidx.compose.material3.SheetState" to "sheetState"
+  "androidx.compose.material3.SheetState" to "sheetState",
+  "androidx.compose.material3.DatePickerState" to "datePickerState",
+  "androidx.compose.material3.DateRangePickerState" to "dateRangePickerState",
+  "androidx.compose.material3.TimePickerState" to "timePickerState",
+  "androidx.compose.material3.SwipeToDismissBoxState" to "swipeToDismissState",
+  "androidx.compose.material3.BottomSheetScaffoldState" to "bottomSheetScaffoldState",
+  "androidx.compose.foundation.lazy.LazyListState" to "lazyListState",
+  "androidx.compose.foundation.lazy.grid.LazyGridState" to "lazyGridState",
+  "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState" to "lazyStaggeredGridState",
+  "androidx.compose.foundation.lazy.grid.GridCells" to "gridCells",
+  "androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells" to "staggeredGridCells",
+  "androidx.compose.foundation.pager.PagerState" to "pagerState",
+  "androidx.compose.foundation.text.input.TextFieldState" to "textFieldState",
+  "androidx.compose.material3.SearchBarState" to "searchBarState",
+  "androidx.compose.foundation.BasicTooltipState" to "basicTooltipState",
+  "androidx.compose.material3.TooltipState" to "tooltipState",
+  "androidx.compose.ui.window.PopupPositionProvider" to "popupPosition",
+  "androidx.compose.material3.DatePickerFormatter" to "dateFormatter",
+  "androidx.compose.material3.SnackbarHostState" to "snackbarHostState"
 )
 private val valueKinds = mapOf(
   "kotlin.String" to "string",
   "kotlin.Boolean" to "boolean",
   "kotlin.Int" to "int",
+  "kotlin.Long" to "long",
   "kotlin.Float" to "float",
   "kotlin.Double" to "double",
   "androidx.compose.ui.Modifier" to "modifier",
   "androidx.compose.ui.unit.Dp" to "dp",
+  "androidx.compose.ui.unit.DpSize" to "dpSize",
+  "androidx.compose.foundation.layout.PaddingValues" to "paddingValues",
+  "androidx.compose.foundation.layout.WindowInsets" to "windowInsets",
+  "androidx.compose.ui.text.AnnotatedString" to "annotatedString",
+  "androidx.compose.ui.text.TextStyle" to "textStyle",
+  "androidx.compose.ui.graphics.painter.Painter" to "painter",
   "androidx.compose.ui.unit.TextUnit" to "sp",
   COLOR to "color"
 )
@@ -524,12 +666,13 @@ private data class ModifierOverload(
   val optIns: List<String>
 )
 private data class ValueSource(val name: String, val owners: List<String>)
-private data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>)
+private data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>, val optIns: List<String>)
 private data class ValueCase(val name: String, val expression: String)
 private data class Component(
   val signature: String,
   val name: String, val kotlinFunction: String, val parameters: List<Parameter>,
-  val children: Boolean, val childrenScope: String?, val optIns: List<String>, val masks: List<Int>
+  val children: Boolean, val childrenScope: String?, val optIns: List<String>, val masks: List<Int>,
+  val childrenParameter: String?, val ownerScope: String?, val scopedExtension: Boolean?
 ) {
   fun passed(mask: Int): List<Parameter> {
     var bit = 0

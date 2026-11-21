@@ -16,6 +16,18 @@ export const modifierKinds = {
   brush: { type: "ComposeBrush", expression: (key) => `args.brush(${key})`, input: "brush" },
 };
 
+export function typeImports(descriptors, ownModule) {
+  const modules = new Map();
+  for (const { type, module, imports } of descriptors) {
+    if (!module || module === ownModule) continue;
+    if (!modules.has(module)) modules.set(module, new Set());
+    for (const name of imports ?? [type]) modules.get(module).add(name);
+  }
+  return [...modules].map(([module, names]) =>
+    `import type { ${[...names].sort().join(", ")} } from ${quote(module)};`
+  );
+}
+
 export function modifierOutputs(modifiers, kinds) {
   const overloads = modifiers.map((modifier, id) => {
     const optional = modifier.parameters.filter(({ optional }) => optional);
@@ -61,7 +73,7 @@ function typeScript(overloads, kinds) {
     (metadata[name] ??= []).push({
       id, primary, labels,
       forms: argumentLists.map((parameters) => parameters.map(({ name, kind, nullable }) =>
-        [name, kinds[kind].input ?? kinds[kind].type, nullable]
+        [name, kinds[kind].modifierInput ?? kinds[kind].input ?? kinds[kind].type, nullable]
       )),
     });
   }
@@ -73,6 +85,7 @@ function typeScript(overloads, kinds) {
   return [
     "// Generated from Compose declarations by generate.mjs.",
     'import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
+    ...typeImports(overloads.flatMap(({ parameters }) => parameters.map(({ kind }) => kinds[kind]))),
     ...(valueTypes.length ? [`import type { ${valueTypes.join(", ")} } from "./values";`] : []),
     "",
     "interface GeneratedModifiers {",
@@ -114,11 +127,23 @@ function kotlin(overloads, kinds) {
     const render = (passed) => {
       const args = passed.map(({ name, kind, nullable }) => {
         const key = quote(name);
-        const value = kinds[kind].expression(key).replaceAll("node.", "args.");
+        const value = (kinds[kind].modifierExpression ?? kinds[kind].expression)(key).replaceAll("node.", "args.");
         return `\`${name}\` = ${nullable ? `if (args.isNull(${key})) null else (${value})` : value}`;
       });
-      const call = `modifier.${scope ? name : imports.get(kotlinFunction)}(${args.join(", ")})`;
-      return scope ? `with(scope) { ${call} }` : call;
+      const functionName = scope ? name : imports.get(kotlinFunction);
+      const compositionValues = passed.flatMap(({ name, kind, nullable }) => {
+        const composition = kinds[kind].composition;
+        if (!composition) return [];
+        const { value, factory } = composition;
+        const key = quote(name);
+        const factoryCall = `args.jsonObject(${key}).${factory}()`;
+        return [`val ${value} = ${nullable ? `if (args.isNull(${key})) null else ${factoryCall}` : factoryCall}`];
+      });
+      const call = `${functionName}(${args.join(", ")})`;
+      const invocation = compositionValues.length
+        ? `modifier.composed { ${compositionValues.join("; ")}; ${call} }`
+        : `modifier.${call}`;
+      return scope ? `with(scope) { ${invocation} }` : invocation;
     };
     if (argumentLists.length === 1) {
       const [passed] = argumentLists;
@@ -169,6 +194,8 @@ function kotlin(overloads, kinds) {
     "package com.jetpackcomposereactnative.generated",
     "",
     "import androidx.compose.ui.Modifier",
+    ...(overloads.some(({ parameters }) => parameters.some(({ kind }) => kinds[kind].composition))
+      ? ["import androidx.compose.ui.composed"] : []),
     "import androidx.compose.ui.unit.dp",
     "import androidx.compose.ui.unit.sp",
     ...[...imports].map(([name, alias]) => `import ${name} as ${alias}`),

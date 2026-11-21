@@ -32,6 +32,7 @@ internal class ComposeNodeManager : ComposeContainerManager<GeneratedComposeNode
 
 internal class GeneratedComposeNodeView(context: Context) :
   ComposeContainerView(context), ComposeNode {
+  override val composeChildId = nextComposeChildId()
   private var values by mutableStateOf(JSONObject())
   internal var componentName by mutableStateOf("")
   override val name: String get() = values.optString("\$overload", componentName)

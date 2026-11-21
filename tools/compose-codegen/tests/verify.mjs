@@ -51,6 +51,15 @@ if (mode === "audit") {
   assert.ok(!manifest.components.some(({ kotlinFunction }) => kotlinFunction.startsWith("androidx.compose.ui.graphics.vector.")));
   assert.ok(manifest.components.some(({ name, parameters }) => name === "BottomAppBar" &&
     parameters.some(({ kind }) => kind === "paddingValues")));
+  const pager = manifest.components.find(({ name }) => name === "HorizontalPager");
+  assert.equal(pager?.childrenParameter, "pageContent");
+  assert.ok(pager.parameters.some(({ kind }) => kind === "pagerState"));
+  assert.ok(manifest.components.some(({ name, childrenScope }) =>
+    name === "LazyColumn" && childrenScope?.endsWith(".LazyListScope")));
+  assert.ok(manifest.components.some(({ name, ownerScope }) =>
+    name === "ExposedDropdownMenu" && ownerScope?.endsWith(".ExposedDropdownMenuBoxScope")));
+  assert.ok(manifest.modifiers.some(({ name, parameters }) =>
+    name === "onSizeChanged" && parameters.some(({ kind }) => kind === "eventLayoutSize")));
 } else if (mode === "surface") {
   const baseline = callForms(read(first));
   const actual = callForms(read(second));
