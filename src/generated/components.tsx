@@ -4,11 +4,12 @@ import { createComposableComponent, type ComposeModifier } from "./runtime/creat
 import type { ColorScheme } from "./factories";
 import type { ComposeShape, ComposeBrush } from "../utils/modifier";
 export type ComposeFloatRange = readonly [start: number, endInclusive: number];
-import type { ComposeAnimationSpec, ComposeAnnotatedString, ComposeBorderStroke, ComposeBottomSheetScaffoldState, ComposeCarouselState, ComposeDatePickerFormatter, ComposeDatePickerState, ComposeDateRangePickerState, ComposeDpSize, ComposeDrawing, ComposeFlexBoxConfig, ComposeFlingBehavior, ComposeGridCells, ComposeGridConfig, ComposeInputTransformation, ComposeKeyboardActions, ComposeKeyboardOptions, ComposeLayoutMeasurePolicy, ComposeLazyState, ComposeNestedScrollConnection, ComposeOutputTransformation, ComposeOverscrollEffect, ComposePaddingValues, ComposePageSize, ComposePagerState, ComposePainter, ComposePopupPosition, ComposeSearchBarState, ComposeSnackbarHostState, ComposeSwipeToDismissState, ComposeTextFieldLineLimits, ComposeTextFieldSnapshot, ComposeTextFieldState, ComposeTextFieldValue, ComposeTextStyle, ComposeTimePickerState, ComposeTooltipState, ComposeVisibilityTransition, ComposeVisualTransformation, ComposeWindowInsets } from "../utils/composeValues";
+import type { ComposeAnimationSpec, ComposeAnnotatedString, ComposeAppBarItem, ComposeBorderStroke, ComposeBottomSheetScaffoldState, ComposeButtonGroupItem, ComposeCarouselState, ComposeContentTransition, ComposeDatePickerFormatter, ComposeDatePickerState, ComposeDateRangePickerState, ComposeDpSize, ComposeDrawing, ComposeFlexBoxConfig, ComposeFlingBehavior, ComposeGridCells, ComposeGridConfig, ComposeInputTransformation, ComposeKeyboardActions, ComposeKeyboardOptions, ComposeLayoutMeasurePolicy, ComposeLazyState, ComposeNestedScrollBehavior, ComposeOutputTransformation, ComposeOverscrollEffect, ComposePaddingValues, ComposePageSize, ComposePagerState, ComposePainter, ComposePopupPosition, ComposeScrollState, ComposeSearchBarState, ComposeSnackbarHostState, ComposeSwipeToDismissState, ComposeTextFieldLineLimits, ComposeTextFieldSnapshot, ComposeTextFieldState, ComposeTextFieldValue, ComposeTextLayout, ComposeTextStyle, ComposeTimePickerState, ComposeTooltipState, ComposeTopAppBarScrollBehavior, ComposeVisibilityTransition, ComposeVisualTransformation, ComposeWindowInsets } from "../utils/composeValues";
 import type { ComposeButtonColorsValue, ComposeCardColorsValue, ComposeCheckboxColorsValue, ComposeChipColorsValue, ComposeChipElevationValue, ComposeDpOffset, ComposeDragHandleColorsValue, ComposeIconButtonColorsValue, ComposeIconToggleButtonColorsValue, ComposeIntOffset, ComposeListItemColorsValue, ComposeMenuItemColorsValue, ComposeNavigationBarItemColorsValue, ComposeNavigationItemColorsValue, ComposeNavigationRailItemColorsValue, ComposeRadioButtonColorsValue, ComposeSegmentedButtonColorsValue, ComposeSelectableChipElevationValue, ComposeSliderColorsValue, ComposeSwitchColorsValue, ComposeTextFieldColorsValue, ComposeToggleButtonColorsValue, ComposeWideNavigationRailColorsValue } from "./records";
 import type { ComposeFocusRequester, ComposeInteractionSource, ComposePullToRefreshState, ComposeRangeSliderState, ComposeSliderState } from "../utils/nativeHandles";
 export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";
-export type ComposeSheetState = { skipPartiallyExpanded?: boolean };
+import type { ComposeModalSheetState } from "../utils/composeValues";
+export type ComposeSheetState = ComposeModalSheetState;
 import type { ComposeSnapPosition, ComposeTimePickerDisplayMode, ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight, ComposeToggleableState, ComposeContentScale, ComposeDisplayMode } from "./values";
 
 export interface ActiveIconProps {
@@ -50,13 +51,15 @@ export interface AnimatedContentProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  transitionSpec?: ComposeContentTransition;
   contentAlignment?: ComposeAlignment;
   label?: string;
   children?: ReactNode;
 }
 export const AnimatedContent = createComposableComponent<AnimatedContentProps>({
   name: "AnimatedContent",
-  props: ["targetState","modifier","contentAlignment","label"],
+  props: ["targetState","modifier","transitionSpec","contentAlignment","label"],
+  objectProps: ["transitionSpec"],
   children: true,
 });
 
@@ -75,6 +78,38 @@ export const AnimatedVisibility = createComposableComponent<AnimatedVisibilityPr
   props: ["visible","modifier","enter","exit","label"],
   objectProps: ["enter","exit"],
   children: true,
+});
+
+export interface AppBarColumnProps {
+  overflowIndicator?: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  maxItemCount?: number;
+  items: readonly ComposeAppBarItem[];
+}
+export const AppBarColumn = createComposableComponent<AppBarColumnProps>({
+  name: "AppBarColumn",
+  props: ["modifier","maxItemCount","items"],
+  objectProps: ["items"],
+  slots: ["overflowIndicator"],
+  children: false,
+});
+
+export interface AppBarRowProps {
+  overflowIndicator?: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  maxItemCount?: number;
+  items: readonly ComposeAppBarItem[];
+}
+export const AppBarRow = createComposableComponent<AppBarRowProps>({
+  name: "AppBarRow",
+  props: ["modifier","maxItemCount","items"],
+  objectProps: ["items"],
+  slots: ["overflowIndicator"],
+  children: false,
 });
 
 export type AssistChipProps =
@@ -215,14 +250,128 @@ export type BasicSecureTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
     textStyle?: ComposeTextStyle;
     keyboardOptions?: ComposeKeyboardOptions;
-    onKeyboardAction?: (() => void) | null;
+    cursorBrush: ComposeBrush;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush?: ComposeBrush;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
     interactionSource?: ComposeInteractionSource | null;
     cursorBrush?: ComposeBrush;
     inputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    keyboardOptions: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    keyboardOptions: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    textStyle: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    textStyle: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -233,10 +382,124 @@ export type BasicSecureTextFieldProps =
     readOnly?: boolean;
     inputTransformation: ComposeInputTransformation | null;
     keyboardOptions?: ComposeKeyboardOptions;
-    onKeyboardAction?: (() => void) | null;
+    scrollState?: ComposeScrollState;
     textStyle?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    inputTransformation: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    onKeyboardAction?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    textStyle?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    textStyle: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState: ComposeScrollState;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    inputTransformation?: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    onKeyboardAction?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    inputTransformation?: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    onKeyboardAction?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -249,18 +512,20 @@ export type BasicSecureTextFieldProps =
     textStyle: ComposeTextStyle;
     keyboardOptions: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
     interactionSource: ComposeInteractionSource | null;
     cursorBrush: ComposeBrush;
+    scrollState?: ComposeScrollState;
     }
 ;
 export const BasicSecureTextField = createComposableComponent<BasicSecureTextFieldProps>({
   name: "BasicSecureTextField",
-  props: ["state","modifier","enabled","readOnly","inputTransformation","textStyle","keyboardOptions","interactionSource","cursorBrush"],
-  objectProps: ["state","inputTransformation","textStyle","keyboardOptions","interactionSource","cursorBrush"],
-  events: ["onKeyboardAction"],
+  props: ["state","modifier","enabled","readOnly","inputTransformation","textStyle","keyboardOptions","interactionSource","cursorBrush","scrollState"],
+  objectProps: ["state","inputTransformation","textStyle","keyboardOptions","interactionSource","cursorBrush","scrollState"],
+  events: ["onKeyboardAction","onTextLayout"],
   children: false,
   overloads: [
-    { id: "BasicSecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["inputTransformation","object",true,true],["textStyle","object",true,false],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["interactionSource","object",true,true],["cursorBrush","brush",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,19,20,21,22,23,24,25,26,27,32,33,34,35,36,37,38,39,40,41,42,43,48,49,50,51,52,53,54,55,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,96,97,98,99,104,105,106,107,112,113,114,115,120,121,122,123,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,160,161,162,163,168,169,170,171,176,177,178,179,184,185,186,187,192,193,194,195,200,201,202,203,208,209,210,211,216,217,218,219,224,225,226,227,232,233,234,235,240,241,242,243,248,249,250,251,255] },
+    { id: "BasicSecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["inputTransformation","object",true,true],["textStyle","object",true,false],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["onTextLayout","function",true,true],["interactionSource","object",true,true],["cursorBrush","brush",true,false],["scrollState","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,19,20,21,22,23,24,25,26,27,32,33,34,35,36,37,38,39,40,41,42,43,48,49,50,51,52,53,54,55,56,57,58,59,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,160,161,162,163,168,169,170,171,176,177,178,179,184,185,186,187,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,447,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,576,959,1023] },
   ],
 });
 
@@ -271,6 +536,7 @@ export type BasicTextProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     composeTextStyle?: ComposeTextStyle;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
     overflow?: ComposeTextOverflow;
     softWrap?: boolean;
     maxLines?: number;
@@ -282,6 +548,7 @@ export type BasicTextProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     composeTextStyle?: ComposeTextStyle;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
     overflow?: ComposeTextOverflow;
     softWrap?: boolean;
     maxLines?: number;
@@ -292,10 +559,11 @@ export const BasicText = createComposableComponent<BasicTextProps>({
   name: "BasicText",
   props: ["text","modifier","composeTextStyle","overflow","softWrap","maxLines","minLines"],
   objectProps: ["composeTextStyle","text"],
+  events: ["onTextLayout"],
   children: false,
   overloads: [
-    { id: "BasicText", children: false, parameters: [["text","string",false,false],["modifier","ComposeModifier",true,false],["composeTextStyle","object",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
-    { id: "BasicText#1", children: false, parameters: [["text","object",false,false],["modifier","ComposeModifier",true,false],["composeTextStyle","object",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "BasicText", children: false, parameters: [["text","string",false,false],["modifier","ComposeModifier",true,false],["composeTextStyle","object",true,false],["onTextLayout","function",true,true],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "BasicText#1", children: false, parameters: [["text","object",false,false],["modifier","ComposeModifier",true,false],["composeTextStyle","object",true,false],["onTextLayout","function",true,true],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
 });
 
@@ -305,16 +573,43 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    onKeyboardAction?: (() => void) | null;
-    lineLimits?: ComposeTextFieldLineLimits;
-    outputTransformation?: ComposeOutputTransformation | null;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
+    scrollState?: ComposeScrollState;
     enabled?: never;
     readOnly?: never;
     inputTransformation?: never;
     textStyle?: never;
     keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    outputTransformation?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    inputTransformation?: ComposeInputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    outputTransformation: ComposeOutputTransformation | null;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -329,15 +624,17 @@ export type BasicTextFieldProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     cursorBrush: ComposeBrush;
-    readOnly?: never;
     inputTransformation?: never;
-    textStyle?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -351,16 +648,43 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     interactionSource: ComposeInteractionSource | null;
     cursorBrush?: ComposeBrush;
-    readOnly?: never;
+    enabled?: never;
     inputTransformation?: never;
-    textStyle?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    inputTransformation?: ComposeInputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    outputTransformation?: ComposeOutputTransformation | null;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -382,8 +706,35 @@ export type BasicTextFieldProps =
     textStyle?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    onKeyboardAction: (() => void) | null;
+    lineLimits?: ComposeTextFieldLineLimits;
+    outputTransformation?: ComposeOutputTransformation | null;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -405,8 +756,10 @@ export type BasicTextFieldProps =
     textStyle?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -421,15 +774,17 @@ export type BasicTextFieldProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     keyboardOptions: ComposeKeyboardOptions;
-    lineLimits?: ComposeTextFieldLineLimits;
-    outputTransformation?: ComposeOutputTransformation | null;
+    scrollState?: ComposeScrollState;
     enabled?: never;
     readOnly?: never;
     inputTransformation?: never;
     textStyle?: never;
     onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    outputTransformation?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -443,16 +798,43 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     keyboardOptions: ComposeKeyboardOptions;
     interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    keyboardOptions: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
     readOnly?: never;
     inputTransformation?: never;
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -474,8 +856,10 @@ export type BasicTextFieldProps =
     inputTransformation?: never;
     textStyle?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -497,8 +881,10 @@ export type BasicTextFieldProps =
     readOnly?: never;
     inputTransformation?: never;
     textStyle?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -512,16 +898,43 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    enabled?: boolean;
     textStyle: ComposeTextStyle;
-    interactionSource?: ComposeInteractionSource | null;
-    cursorBrush?: ComposeBrush;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
     readOnly?: never;
     inputTransformation?: never;
-    keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
     outputTransformation?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    textStyle: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -543,8 +956,10 @@ export type BasicTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -566,31 +981,10 @@ export type BasicTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     cursorBrush?: never;
     outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    textStyle: ComposeTextStyle;
-    keyboardOptions: ComposeKeyboardOptions;
-    interactionSource?: ComposeInteractionSource | null;
-    readOnly?: never;
-    inputTransformation?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -607,13 +1001,40 @@ export type BasicTextFieldProps =
     enabled?: boolean;
     inputTransformation: ComposeInputTransformation | null;
     keyboardOptions?: ComposeKeyboardOptions;
-    onKeyboardAction?: (() => void) | null;
-    lineLimits?: ComposeTextFieldLineLimits;
-    outputTransformation?: ComposeOutputTransformation | null;
+    scrollState?: ComposeScrollState;
     readOnly?: never;
     textStyle?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    outputTransformation?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    inputTransformation: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -628,222 +1049,17 @@ export type BasicTextFieldProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
-    readOnly: boolean;
-    textStyle?: ComposeTextStyle;
-    interactionSource?: ComposeInteractionSource | null;
-    cursorBrush?: ComposeBrush;
-    inputTransformation?: never;
-    keyboardOptions?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    readOnly: boolean;
-    textStyle?: ComposeTextStyle;
-    lineLimits: ComposeTextFieldLineLimits;
-    interactionSource?: ComposeInteractionSource | null;
-    enabled?: never;
-    inputTransformation?: never;
-    keyboardOptions?: never;
-    onKeyboardAction?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    readOnly: boolean;
-    textStyle?: ComposeTextStyle;
-    onKeyboardAction: (() => void) | null;
-    interactionSource?: ComposeInteractionSource | null;
-    enabled?: never;
-    inputTransformation?: never;
-    keyboardOptions?: never;
-    lineLimits?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    readOnly: boolean;
-    textStyle?: ComposeTextStyle;
-    keyboardOptions: ComposeKeyboardOptions;
-    interactionSource?: ComposeInteractionSource | null;
-    enabled?: never;
-    inputTransformation?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    lineLimits?: ComposeTextFieldLineLimits;
-    outputTransformation?: ComposeOutputTransformation | null;
-    readOnly?: never;
-    inputTransformation?: never;
-    textStyle?: never;
-    keyboardOptions?: never;
-    onKeyboardAction?: never;
-    interactionSource?: never;
-    cursorBrush?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    onKeyboardAction: (() => void) | null;
-    outputTransformation?: ComposeOutputTransformation | null;
-    readOnly?: never;
-    inputTransformation?: never;
-    textStyle?: never;
-    keyboardOptions?: never;
-    lineLimits?: never;
-    interactionSource?: never;
-    cursorBrush?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    onKeyboardAction: (() => void) | null;
-    lineLimits: ComposeTextFieldLineLimits;
-    outputTransformation: ComposeOutputTransformation | null;
-    readOnly?: never;
-    inputTransformation?: never;
-    textStyle?: never;
-    keyboardOptions?: never;
-    interactionSource?: never;
-    cursorBrush?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    keyboardOptions: ComposeKeyboardOptions;
-    outputTransformation?: ComposeOutputTransformation | null;
-    readOnly?: never;
-    inputTransformation?: never;
-    textStyle?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    interactionSource?: never;
-    cursorBrush?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    keyboardOptions: ComposeKeyboardOptions;
-    lineLimits: ComposeTextFieldLineLimits;
-    outputTransformation: ComposeOutputTransformation | null;
-    readOnly?: never;
-    inputTransformation?: never;
-    textStyle?: never;
-    onKeyboardAction?: never;
-    interactionSource?: never;
-    cursorBrush?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    keyboardOptions: ComposeKeyboardOptions;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
     lineLimits?: ComposeTextFieldLineLimits;
-    outputTransformation: ComposeOutputTransformation | null;
+    outputTransformation?: ComposeOutputTransformation | null;
     readOnly?: never;
-    inputTransformation?: never;
     textStyle?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
+    scrollState?: never;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -857,82 +1073,15 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    lineLimits: ComposeTextFieldLineLimits;
-    interactionSource?: ComposeInteractionSource | null;
-    inputTransformation?: never;
-    textStyle?: never;
-    keyboardOptions?: never;
-    onKeyboardAction?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    onKeyboardAction: (() => void) | null;
-    interactionSource?: ComposeInteractionSource | null;
-    inputTransformation?: never;
-    textStyle?: never;
-    keyboardOptions?: never;
-    lineLimits?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    keyboardOptions: ComposeKeyboardOptions;
-    interactionSource?: ComposeInteractionSource | null;
-    inputTransformation?: never;
-    textStyle?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
+    enabled?: boolean;
+    inputTransformation: ComposeInputTransformation | null;
     textStyle: ComposeTextStyle;
-    lineLimits: ComposeTextFieldLineLimits;
-    inputTransformation?: never;
-    keyboardOptions?: never;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState: ComposeScrollState;
+    readOnly?: never;
     onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
@@ -949,36 +1098,15 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    enabled: boolean;
     readOnly: boolean;
-    textStyle: ComposeTextStyle;
-    lineLimits: ComposeTextFieldLineLimits;
-    interactionSource: ComposeInteractionSource | null;
-    cursorBrush?: ComposeBrush;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
     inputTransformation?: never;
-    keyboardOptions?: never;
     onKeyboardAction?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    textStyle: ComposeTextStyle;
-    onKeyboardAction: (() => void) | null;
-    inputTransformation?: never;
-    keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
@@ -995,78 +1123,608 @@ export type BasicTextFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    textStyle: ComposeTextStyle;
-    onKeyboardAction: (() => void) | null;
-    interactionSource: ComposeInteractionSource | null;
-    cursorBrush?: ComposeBrush;
-    inputTransformation?: never;
-    keyboardOptions?: never;
-    lineLimits?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    textStyle: ComposeTextStyle;
-    keyboardOptions: ComposeKeyboardOptions;
-    inputTransformation?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    interactionSource?: never;
-    cursorBrush?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    readOnly: boolean;
-    textStyle: ComposeTextStyle;
-    keyboardOptions: ComposeKeyboardOptions;
-    interactionSource: ComposeInteractionSource | null;
-    cursorBrush?: ComposeBrush;
-    inputTransformation?: never;
-    onKeyboardAction?: never;
-    lineLimits?: never;
-    outputTransformation?: never;
-    value?: never;
-    onValueChange?: never;
-    keyboardActions?: never;
-    singleLine?: never;
-    maxLines?: never;
-    minLines?: never;
-    visualTransformation?: never;
-    }
-  | {
-    state: ComposeTextFieldState;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
     readOnly: boolean;
     inputTransformation?: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle?: ComposeTextStyle;
+    lineLimits: ComposeTextFieldLineLimits;
+    interactionSource?: ComposeInteractionSource | null;
+    enabled?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle?: ComposeTextStyle;
+    onKeyboardAction: (() => void) | null;
+    interactionSource?: ComposeInteractionSource | null;
+    enabled?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState: ComposeScrollState;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    scrollState?: ComposeScrollState;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    outputTransformation: ComposeOutputTransformation | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle?: ComposeTextStyle;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush?: ComposeBrush;
+    readOnly?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    inputTransformation?: ComposeInputTransformation | null;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions?: ComposeKeyboardOptions;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    lineLimits: ComposeTextFieldLineLimits;
+    outputTransformation?: ComposeOutputTransformation | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    onKeyboardAction: (() => void) | null;
+    outputTransformation?: ComposeOutputTransformation | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    outputTransformation: ComposeOutputTransformation | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction?: (() => void) | null;
+    lineLimits?: ComposeTextFieldLineLimits;
+    outputTransformation: ComposeOutputTransformation | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    textStyle?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle?: ComposeTextStyle;
+    keyboardOptions: ComposeKeyboardOptions;
+    interactionSource: ComposeInteractionSource | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    outputTransformation: ComposeOutputTransformation | null;
+    readOnly?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    outputTransformation?: ComposeOutputTransformation | null;
+    readOnly?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush?: ComposeBrush;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    lineLimits: ComposeTextFieldLineLimits;
+    interactionSource?: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    onKeyboardAction: (() => void) | null;
+    interactionSource?: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    textStyle?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    keyboardOptions: ComposeKeyboardOptions;
+    interactionSource: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    textStyle?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    lineLimits?: ComposeTextFieldLineLimits;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush?: ComposeBrush;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    lineLimits: ComposeTextFieldLineLimits;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    onKeyboardAction: (() => void) | null;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    onKeyboardAction: (() => void) | null;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush?: ComposeBrush;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    keyboardOptions: ComposeKeyboardOptions;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush?: ComposeBrush;
+    inputTransformation?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
     textStyle: ComposeTextStyle;
     keyboardOptions: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
@@ -1074,6 +1732,59 @@ export type BasicTextFieldProps =
     interactionSource: ComposeInteractionSource | null;
     cursorBrush: ComposeBrush;
     outputTransformation?: ComposeOutputTransformation | null;
+    inputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    textStyle: ComposeTextStyle;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush: ComposeBrush;
+    onTextLayout?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    visualTransformation?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    textStyle: ComposeTextStyle;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
+    interactionSource: ComposeInteractionSource | null;
+    cursorBrush: ComposeBrush;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState?: ComposeScrollState;
     value?: never;
     onValueChange?: never;
     keyboardActions?: never;
@@ -1101,8 +1812,35 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
+    visualTransformation?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    singleLine?: boolean;
+    maxLines?: number;
+    onTextLayout: (value: ComposeTextLayout) => void;
+    state?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    keyboardActions?: never;
+    minLines?: never;
     visualTransformation?: never;
     }
   | {
@@ -1121,9 +1859,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     maxLines?: never;
     minLines?: never;
@@ -1145,9 +1885,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     maxLines?: never;
     minLines?: never;
     }
@@ -1168,9 +1910,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     minLines?: never;
     visualTransformation?: never;
     }
@@ -1190,9 +1934,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     maxLines?: never;
     minLines?: never;
@@ -1213,9 +1959,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     minLines?: never;
     visualTransformation?: never;
@@ -1236,9 +1984,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     singleLine?: never;
     maxLines?: never;
     minLines?: never;
@@ -1260,9 +2010,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     maxLines?: never;
     minLines?: never;
     }
@@ -1283,9 +2035,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     minLines?: never;
     visualTransformation?: never;
     }
@@ -1305,9 +2059,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     minLines?: never;
     visualTransformation?: never;
@@ -1329,9 +2085,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     maxLines?: never;
     minLines?: never;
     }
@@ -1355,7 +2113,9 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
+    scrollState?: never;
     visualTransformation?: never;
     }
   | {
@@ -1368,6 +2128,7 @@ export type BasicTextFieldProps =
     readOnly: boolean;
     textStyle: ComposeTextStyle;
     keyboardOptions: ComposeKeyboardOptions;
+    keyboardActions?: ComposeKeyboardActions;
     singleLine: boolean;
     maxLines: number;
     minLines: number;
@@ -1377,8 +2138,9 @@ export type BasicTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
-    keyboardActions?: never;
+    scrollState?: never;
     visualTransformation?: never;
     }
   | {
@@ -1395,7 +2157,8 @@ export type BasicTextFieldProps =
     singleLine: boolean;
     maxLines: number;
     minLines: number;
-    visualTransformation?: ComposeVisualTransformation;
+    visualTransformation: ComposeVisualTransformation;
+    onTextLayout?: (value: ComposeTextLayout) => void;
     interactionSource: ComposeInteractionSource | null;
     cursorBrush: ComposeBrush;
     state?: never;
@@ -1403,6 +2166,7 @@ export type BasicTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     outputTransformation?: never;
+    scrollState?: never;
     }
   | {
     value: string;
@@ -1423,8 +2187,35 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
+    visualTransformation?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    singleLine?: boolean;
+    maxLines?: number;
+    onTextLayout: (value: ComposeTextLayout) => void;
+    state?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    interactionSource?: never;
+    cursorBrush?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    keyboardActions?: never;
+    minLines?: never;
     visualTransformation?: never;
     }
   | {
@@ -1443,9 +2234,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     maxLines?: never;
     minLines?: never;
@@ -1467,9 +2260,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     maxLines?: never;
     minLines?: never;
     }
@@ -1490,9 +2285,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     minLines?: never;
     visualTransformation?: never;
     }
@@ -1512,9 +2309,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     maxLines?: never;
     minLines?: never;
@@ -1535,9 +2334,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     minLines?: never;
     visualTransformation?: never;
@@ -1558,9 +2359,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     singleLine?: never;
     maxLines?: never;
     minLines?: never;
@@ -1582,9 +2385,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     maxLines?: never;
     minLines?: never;
     }
@@ -1605,9 +2410,11 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     minLines?: never;
     visualTransformation?: never;
     }
@@ -1627,9 +2434,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     keyboardActions?: never;
     minLines?: never;
     visualTransformation?: never;
@@ -1651,9 +2460,11 @@ export type BasicTextFieldProps =
     textStyle?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     interactionSource?: never;
     cursorBrush?: never;
     outputTransformation?: never;
+    scrollState?: never;
     maxLines?: never;
     minLines?: never;
     }
@@ -1677,7 +2488,9 @@ export type BasicTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
+    scrollState?: never;
     visualTransformation?: never;
     }
   | {
@@ -1690,6 +2503,7 @@ export type BasicTextFieldProps =
     readOnly: boolean;
     textStyle: ComposeTextStyle;
     keyboardOptions: ComposeKeyboardOptions;
+    keyboardActions?: ComposeKeyboardActions;
     singleLine: boolean;
     maxLines: number;
     minLines: number;
@@ -1699,8 +2513,9 @@ export type BasicTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
     outputTransformation?: never;
-    keyboardActions?: never;
+    scrollState?: never;
     visualTransformation?: never;
     }
   | {
@@ -1717,7 +2532,8 @@ export type BasicTextFieldProps =
     singleLine: boolean;
     maxLines: number;
     minLines: number;
-    visualTransformation?: ComposeVisualTransformation;
+    visualTransformation: ComposeVisualTransformation;
+    onTextLayout?: (value: ComposeTextLayout) => void;
     interactionSource: ComposeInteractionSource | null;
     cursorBrush: ComposeBrush;
     state?: never;
@@ -1725,18 +2541,19 @@ export type BasicTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     outputTransformation?: never;
+    scrollState?: never;
     }
 ;
 export const BasicTextField = createComposableComponent<BasicTextFieldProps>({
   name: "BasicTextField",
-  props: ["state","modifier","enabled","readOnly","inputTransformation","textStyle","keyboardOptions","lineLimits","interactionSource","cursorBrush","outputTransformation","value","keyboardActions","singleLine","maxLines","minLines","visualTransformation"],
-  objectProps: ["state","inputTransformation","textStyle","keyboardOptions","lineLimits","interactionSource","cursorBrush","outputTransformation","value","keyboardActions","visualTransformation"],
-  events: ["onKeyboardAction","onValueChange"],
+  props: ["state","modifier","enabled","readOnly","inputTransformation","textStyle","keyboardOptions","lineLimits","interactionSource","cursorBrush","outputTransformation","scrollState","value","keyboardActions","singleLine","maxLines","minLines","visualTransformation"],
+  objectProps: ["state","inputTransformation","textStyle","keyboardOptions","lineLimits","interactionSource","cursorBrush","outputTransformation","scrollState","value","keyboardActions","visualTransformation"],
+  events: ["onKeyboardAction","onTextLayout","onValueChange"],
   children: false,
   overloads: [
-    { id: "BasicTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["inputTransformation","object",true,true],["textStyle","object",true,false],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["interactionSource","object",true,true],["cursorBrush","brush",true,false],["outputTransformation","object",true,true]], masks: [0,1,2,3,4,5,8,9,10,11,16,17,18,19,20,21,24,25,26,27,32,33,34,35,36,37,40,41,42,43,48,52,53,64,65,66,67,68,69,72,73,74,75,80,84,85,96,100,101,116,117,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,160,161,162,163,168,169,170,171,192,193,194,195,200,201,202,203,256,257,258,259,264,265,266,267,384,385,386,387,392,393,394,395,411,427,459,507,511,512,513,516,517,528,529,532,533,544,545,548,549,560,561,564,565,576,577,580,581,592,593,596,597,608,609,612,613,624,625,628,629,1019,1023] },
-    { id: "BasicTextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["visualTransformation","object",true,false],["interactionSource","object",true,true],["cursorBrush","brush",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,19,24,32,33,34,35,36,37,38,39,40,41,42,43,48,49,50,51,64,65,66,67,68,69,70,71,72,73,74,75,80,81,82,83,96,97,98,99,100,101,102,103,104,105,106,107,112,113,114,115,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,256,257,264,265,272,273,280,281,288,289,296,297,304,305,312,313,512,513,514,515,516,517,518,519,544,545,546,547,548,549,550,551,576,577,578,579,580,581,582,583,608,609,610,611,612,613,614,615,640,641,642,643,644,645,646,647,672,673,674,675,676,677,678,679,704,705,706,707,708,709,710,711,736,737,738,739,740,741,742,743,1024,1025,1026,1027,1028,1029,1030,1031,1056,1057,1058,1059,1060,1061,1062,1063,1088,1089,1090,1091,1092,1093,1094,1095,1120,1121,1122,1123,1124,1125,1126,1127,1152,1153,1154,1155,1156,1157,1158,1159,1184,1185,1186,1187,1188,1189,1190,1191,1216,1217,1218,1219,1220,1221,1222,1223,1248,1249,1250,1251,1252,1253,1254,1255,1536,1537,1538,1539,1540,1541,1542,1543,1568,1569,1570,1571,1572,1573,1574,1575,1600,1601,1602,1603,1604,1605,1606,1607,1632,1633,1634,1635,1636,1637,1638,1639,1664,1665,1666,1667,1668,1669,1670,1671,1696,1697,1698,1699,1700,1701,1702,1703,1728,1729,1730,1731,1732,1733,1734,1735,1760,1761,1762,1763,1764,1765,1766,1767,1775,1783,1791,2047] },
-    { id: "BasicTextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["visualTransformation","object",true,false],["interactionSource","object",true,true],["cursorBrush","brush",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,19,24,32,33,34,35,36,37,38,39,40,41,42,43,48,49,50,51,64,65,66,67,68,69,70,71,72,73,74,75,80,81,82,83,96,97,98,99,100,101,102,103,104,105,106,107,112,113,114,115,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,256,257,264,265,272,273,280,281,288,289,296,297,304,305,312,313,512,513,514,515,516,517,518,519,544,545,546,547,548,549,550,551,576,577,578,579,580,581,582,583,608,609,610,611,612,613,614,615,640,641,642,643,644,645,646,647,672,673,674,675,676,677,678,679,704,705,706,707,708,709,710,711,736,737,738,739,740,741,742,743,1024,1025,1026,1027,1028,1029,1030,1031,1056,1057,1058,1059,1060,1061,1062,1063,1088,1089,1090,1091,1092,1093,1094,1095,1120,1121,1122,1123,1124,1125,1126,1127,1152,1153,1154,1155,1156,1157,1158,1159,1184,1185,1186,1187,1188,1189,1190,1191,1216,1217,1218,1219,1220,1221,1222,1223,1248,1249,1250,1251,1252,1253,1254,1255,1536,1537,1538,1539,1540,1541,1542,1543,1568,1569,1570,1571,1572,1573,1574,1575,1600,1601,1602,1603,1604,1605,1606,1607,1632,1633,1634,1635,1636,1637,1638,1639,1664,1665,1666,1667,1668,1669,1670,1671,1696,1697,1698,1699,1700,1701,1702,1703,1728,1729,1730,1731,1732,1733,1734,1735,1760,1761,1762,1763,1764,1765,1766,1767,1775,1783,1791,2047] },
+    { id: "BasicTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["inputTransformation","object",true,true],["textStyle","object",true,false],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["onTextLayout","function",true,true],["interactionSource","object",true,true],["cursorBrush","brush",true,false],["outputTransformation","object",true,true],["scrollState","object",true,false]], masks: [0,1,2,3,4,5,8,9,10,11,16,17,18,19,20,21,24,25,26,27,32,33,34,35,36,37,40,41,42,43,48,52,53,64,65,66,67,68,69,72,73,74,75,80,84,85,96,100,101,116,117,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,320,321,322,323,328,329,330,331,512,513,514,515,520,521,522,523,768,769,770,771,776,777,778,779,795,811,843,891,895,1024,1025,1028,1029,1040,1041,1044,1045,1056,1057,1060,1061,1072,1073,1076,1077,1088,1089,1092,1093,1104,1105,1108,1109,1120,1121,1124,1125,1136,1137,1140,1141,1915,1919,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2176,3967,4095] },
+    { id: "BasicTextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["visualTransformation","object",true,false],["onTextLayout","function",true,false],["interactionSource","object",true,true],["cursorBrush","brush",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,19,24,32,33,34,35,36,37,38,39,40,41,42,43,48,49,50,51,64,65,66,67,68,69,70,71,72,73,74,75,80,81,82,83,96,97,98,99,100,101,102,103,104,105,106,107,112,113,114,115,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,256,257,264,265,272,273,280,281,288,289,296,297,304,305,312,313,512,513,514,515,516,517,518,519,544,545,546,547,548,549,550,551,576,577,578,579,580,581,582,583,608,609,610,611,612,613,614,615,1024,1025,1026,1027,1028,1029,1030,1031,1056,1057,1058,1059,1060,1061,1062,1063,1088,1089,1090,1091,1092,1093,1094,1095,1120,1121,1122,1123,1124,1125,1126,1127,1152,1153,1154,1155,1156,1157,1158,1159,1184,1185,1186,1187,1188,1189,1190,1191,1216,1217,1218,1219,1220,1221,1222,1223,1248,1249,1250,1251,1252,1253,1254,1255,2048,2049,2050,2051,2052,2053,2054,2055,2080,2081,2082,2083,2084,2085,2086,2087,2112,2113,2114,2115,2116,2117,2118,2119,2144,2145,2146,2147,2148,2149,2150,2151,2176,2177,2178,2179,2180,2181,2182,2183,2208,2209,2210,2211,2212,2213,2214,2215,2240,2241,2242,2243,2244,2245,2246,2247,2272,2273,2274,2275,2276,2277,2278,2279,3072,3073,3074,3075,3076,3077,3078,3079,3104,3105,3106,3107,3108,3109,3110,3111,3136,3137,3138,3139,3140,3141,3142,3143,3168,3169,3170,3171,3172,3173,3174,3175,3200,3201,3202,3203,3204,3205,3206,3207,3232,3233,3234,3235,3236,3237,3238,3239,3264,3265,3266,3267,3268,3269,3270,3271,3296,3297,3298,3299,3300,3301,3302,3303,3311,3319,3327,3583,4095] },
+    { id: "BasicTextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["visualTransformation","object",true,false],["onTextLayout","function",true,false],["interactionSource","object",true,true],["cursorBrush","brush",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,16,17,18,19,24,32,33,34,35,36,37,38,39,40,41,42,43,48,49,50,51,64,65,66,67,68,69,70,71,72,73,74,75,80,81,82,83,96,97,98,99,100,101,102,103,104,105,106,107,112,113,114,115,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,256,257,264,265,272,273,280,281,288,289,296,297,304,305,312,313,512,513,514,515,516,517,518,519,544,545,546,547,548,549,550,551,576,577,578,579,580,581,582,583,608,609,610,611,612,613,614,615,1024,1025,1026,1027,1028,1029,1030,1031,1056,1057,1058,1059,1060,1061,1062,1063,1088,1089,1090,1091,1092,1093,1094,1095,1120,1121,1122,1123,1124,1125,1126,1127,1152,1153,1154,1155,1156,1157,1158,1159,1184,1185,1186,1187,1188,1189,1190,1191,1216,1217,1218,1219,1220,1221,1222,1223,1248,1249,1250,1251,1252,1253,1254,1255,2048,2049,2050,2051,2052,2053,2054,2055,2080,2081,2082,2083,2084,2085,2086,2087,2112,2113,2114,2115,2116,2117,2118,2119,2144,2145,2146,2147,2148,2149,2150,2151,2176,2177,2178,2179,2180,2181,2182,2183,2208,2209,2210,2211,2212,2213,2214,2215,2240,2241,2242,2243,2244,2245,2246,2247,2272,2273,2274,2275,2276,2277,2278,2279,3072,3073,3074,3075,3076,3077,3078,3079,3104,3105,3106,3107,3108,3109,3110,3111,3136,3137,3138,3139,3140,3141,3142,3143,3168,3169,3170,3171,3172,3173,3174,3175,3200,3201,3202,3203,3204,3205,3206,3207,3232,3233,3234,3235,3236,3237,3238,3239,3264,3265,3266,3267,3268,3269,3270,3271,3296,3297,3298,3299,3300,3301,3302,3303,3311,3319,3327,3583,4095] },
   ],
 });
 
@@ -2076,6 +2893,23 @@ export const Button = createComposableComponent<ButtonProps>({
   children: true,
 });
 
+export interface ButtonGroupProps {
+  overflowIndicator?: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  expandedRatio?: number;
+  horizontalArrangement?: ComposeHorizontalArrangement;
+  items: readonly ComposeButtonGroupItem[];
+}
+export const ButtonGroup = createComposableComponent<ButtonGroupProps>({
+  name: "ButtonGroup",
+  props: ["modifier","expandedRatio","horizontalArrangement","items"],
+  objectProps: ["items"],
+  slots: ["overflowIndicator"],
+  children: false,
+});
+
 export type CanvasProps =
   | {
     modifiers: ComposeModifier;
@@ -2150,11 +2984,12 @@ export interface CenterAlignedTopAppBarProps {
   actions?: ReactNode;
   expandedHeight?: number;
   windowInsets?: ComposeWindowInsets;
+  scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
 }
 export const CenterAlignedTopAppBar = createComposableComponent<CenterAlignedTopAppBarProps>({
   name: "CenterAlignedTopAppBar",
-  props: ["modifier","expandedHeight","windowInsets"],
-  objectProps: ["windowInsets"],
+  props: ["modifier","expandedHeight","windowInsets","scrollBehavior"],
+  objectProps: ["windowInsets","scrollBehavior"],
   slots: ["title","navigationIcon","actions"],
   children: false,
 });
@@ -2272,13 +3107,14 @@ export interface ClickableTextProps {
   softWrap?: boolean;
   overflow?: ComposeTextOverflow;
   maxLines?: number;
+  onTextLayout?: (value: ComposeTextLayout) => void;
   onClick: (value: number) => void;
 }
 export const ClickableText = createComposableComponent<ClickableTextProps>({
   name: "ClickableText",
   props: ["text","modifier","composeTextStyle","softWrap","overflow","maxLines"],
   objectProps: ["text","composeTextStyle"],
-  events: ["onClick"],
+  events: ["onTextLayout","onClick"],
   children: false,
 });
 
@@ -2888,6 +3724,7 @@ export interface DropdownMenuProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   offset?: ComposeDpOffset;
+  scrollState?: ComposeScrollState;
   shape?: ComposeShape;
   containerColor?: string;
   tonalElevation?: number;
@@ -2897,8 +3734,8 @@ export interface DropdownMenuProps {
 }
 export const DropdownMenu = createComposableComponent<DropdownMenuProps>({
   name: "DropdownMenu",
-  props: ["expanded","modifier","offset","shape","containerColor","tonalElevation","shadowElevation","border"],
-  objectProps: ["offset","shape","border"],
+  props: ["expanded","modifier","offset","scrollState","shape","containerColor","tonalElevation","shadowElevation","border"],
+  objectProps: ["offset","scrollState","shape","border"],
   events: ["onDismissRequest"],
   children: true,
 });
@@ -3225,6 +4062,7 @@ export interface ExposedDropdownMenuProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  scrollState?: ComposeScrollState;
   matchAnchorWidth?: boolean;
   shape?: ComposeShape;
   containerColor?: string;
@@ -3235,8 +4073,8 @@ export interface ExposedDropdownMenuProps {
 }
 export const ExposedDropdownMenu = createComposableComponent<ExposedDropdownMenuProps>({
   name: "ExposedDropdownMenu",
-  props: ["expanded","modifier","matchAnchorWidth","shape","containerColor","tonalElevation","shadowElevation","border"],
-  objectProps: ["shape","border"],
+  props: ["expanded","modifier","scrollState","matchAnchorWidth","shape","containerColor","tonalElevation","shadowElevation","border"],
+  objectProps: ["scrollState","shape","border"],
   events: ["onDismissRequest"],
   children: true,
 });
@@ -3659,7 +4497,7 @@ export type HorizontalPagerProps =
     pageSpacing?: number;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     children?: ReactNode;
     contentPadding?: never;
     pageSize?: never;
@@ -3745,7 +4583,7 @@ export type HorizontalPagerProps =
     verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     contentPadding?: never;
     pageSize?: never;
@@ -3932,7 +4770,7 @@ export type HorizontalPagerProps =
     verticalAlignment?: ComposeVerticalAlignment;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     beyondViewportPageCount?: never;
@@ -3949,7 +4787,7 @@ export type HorizontalPagerProps =
     verticalAlignment?: ComposeVerticalAlignment;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     pageSpacing?: never;
@@ -3966,7 +4804,7 @@ export type HorizontalPagerProps =
     pageSpacing: number;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     verticalAlignment?: never;
@@ -3983,7 +4821,7 @@ export type HorizontalPagerProps =
     pageSpacing: number;
     verticalAlignment: ComposeVerticalAlignment;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     userScrollEnabled?: never;
@@ -4000,7 +4838,7 @@ export type HorizontalPagerProps =
     pageSpacing: number;
     verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     reverseLayout?: never;
@@ -4035,7 +4873,7 @@ export type HorizontalPagerProps =
     verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
     pageSize?: never;
@@ -4052,7 +4890,7 @@ export type HorizontalPagerProps =
     verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     snapPosition: ComposeSnapPosition;
     children?: ReactNode;
     pageSize?: never;
@@ -4070,7 +4908,7 @@ export type HorizontalPagerProps =
     verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     children?: ReactNode;
     snapPosition?: never;
     overscrollEffect?: never;
@@ -4087,7 +4925,7 @@ export type HorizontalPagerProps =
     verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     snapPosition: ComposeSnapPosition;
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
@@ -4347,6 +5185,7 @@ export type InputFieldProps =
     interactionSource?: ComposeInteractionSource | null;
     inputTransformation?: never;
     outputTransformation?: never;
+    scrollState?: never;
     colors?: never;
     state?: never;
     expanded?: never;
@@ -4372,7 +5211,35 @@ export type InputFieldProps =
     suffix?: never;
     inputTransformation?: never;
     outputTransformation?: never;
+    scrollState?: never;
     shape?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    scrollState: ComposeScrollState;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    shape?: never;
+    colors?: never;
     interactionSource?: never;
     state?: never;
     expanded?: never;
@@ -4397,6 +5264,7 @@ export type InputFieldProps =
     prefix?: never;
     suffix?: never;
     inputTransformation?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -4423,6 +5291,7 @@ export type InputFieldProps =
     trailingIcon?: never;
     prefix?: never;
     suffix?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -4451,6 +5320,7 @@ export type InputFieldProps =
     shape: ComposeShape;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    scrollState?: never;
     colors?: never;
     state?: never;
     expanded?: never;
@@ -4477,6 +5347,7 @@ export type InputFieldProps =
     shape: ComposeShape;
     interactionSource: ComposeInteractionSource | null;
     outputTransformation?: never;
+    scrollState?: never;
     colors?: never;
     state?: never;
     expanded?: never;
@@ -4503,6 +5374,34 @@ export type InputFieldProps =
     outputTransformation: ComposeOutputTransformation | null;
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    scrollState?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     state?: never;
     expanded?: never;
@@ -4532,6 +5431,7 @@ export type InputFieldProps =
     searchBarState?: never;
     inputTransformation?: never;
     outputTransformation?: never;
+    scrollState?: never;
     colors?: never;
     query?: never;
     onQueryChange?: never;
@@ -4557,7 +5457,35 @@ export type InputFieldProps =
     suffix?: never;
     inputTransformation?: never;
     outputTransformation?: never;
+    scrollState?: never;
     shape?: never;
+    interactionSource?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    onSearch: (value: string) => void;
+    expanded: boolean;
+    onExpandedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    scrollState: ComposeScrollState;
+    textFieldState?: never;
+    searchBarState?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    shape?: never;
+    colors?: never;
     interactionSource?: never;
     query?: never;
     onQueryChange?: never;
@@ -4582,6 +5510,7 @@ export type InputFieldProps =
     prefix?: never;
     suffix?: never;
     inputTransformation?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -4608,6 +5537,7 @@ export type InputFieldProps =
     trailingIcon?: never;
     prefix?: never;
     suffix?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -4636,6 +5566,7 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     inputTransformation?: never;
+    scrollState?: never;
     colors?: never;
     query?: never;
     onQueryChange?: never;
@@ -4662,6 +5593,7 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     outputTransformation?: never;
+    scrollState?: never;
     colors?: never;
     query?: never;
     onQueryChange?: never;
@@ -4686,6 +5618,34 @@ export type InputFieldProps =
     outputTransformation: ComposeOutputTransformation | null;
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    textFieldState?: never;
+    searchBarState?: never;
+    scrollState?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    onSearch: (value: string) => void;
+    expanded: boolean;
+    onExpandedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     textFieldState?: never;
     searchBarState?: never;
@@ -4715,20 +5675,21 @@ export type InputFieldProps =
     suffix?: never;
     inputTransformation?: never;
     outputTransformation?: never;
+    scrollState?: never;
     shape?: never;
     state?: never;
     }
 ;
 export const InputField = createComposableComponent<InputFieldProps>({
   name: "InputField",
-  props: ["textFieldState","searchBarState","modifier","enabled","readOnly","textStyle","inputTransformation","outputTransformation","shape","colors","interactionSource","state","expanded","query"],
-  objectProps: ["textFieldState","searchBarState","textStyle","inputTransformation","outputTransformation","shape","colors","interactionSource","state"],
+  props: ["textFieldState","searchBarState","modifier","enabled","readOnly","textStyle","inputTransformation","outputTransformation","scrollState","shape","colors","interactionSource","state","expanded","query"],
+  objectProps: ["textFieldState","searchBarState","textStyle","inputTransformation","outputTransformation","scrollState","shape","colors","interactionSource","state"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix"],
   events: ["onSearch","onExpandedChange","onQueryChange"],
   children: false,
   overloads: [
-    { id: "InputField", children: false, parameters: [["textFieldState","object",false,false],["searchBarState","object",false,false],["onSearch","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,5120,5121,5122,5123,5124,5125,5126,5127,5128,5129,5130,5131,5132,5133,5134,5135,5136,5137,5138,5139,5140,5141,5142,5143,5144,5145,5146,5147,5148,5149,5150,5151,5152,5153,5154,5155,5156,5157,5158,5159,5160,5161,5162,5163,5164,5165,5166,5167,5168,5169,5170,5171,5172,5173,5174,5175,5176,5177,5178,5179,5180,5181,5182,5183,5184,5185,5186,5187,5188,5189,5190,5191,5192,5193,5194,5195,5196,5197,5198,5199,5200,5201,5202,5203,5204,5205,5206,5207,5208,5209,5210,5211,5212,5213,5214,5215,5216,5217,5218,5219,5220,5221,5222,5223,5224,5225,5226,5227,5228,5229,5230,5231,5232,5233,5234,5235,5236,5237,5238,5239,5240,5241,5242,5243,5244,5245,5246,5247,5248,5249,5250,5251,5252,5253,5254,5255,5256,5257,5258,5259,5260,5261,5262,5263,5264,5265,5266,5267,5268,5269,5270,5271,5272,5273,5274,5275,5276,5277,5278,5279,5280,5281,5282,5283,5284,5285,5286,5287,5288,5289,5290,5291,5292,5293,5294,5295,5296,5297,5298,5299,5300,5301,5302,5303,5304,5305,5306,5307,5308,5309,5310,5311,5312,5313,5314,5315,5316,5317,5318,5319,5320,5321,5322,5323,5324,5325,5326,5327,5328,5329,5330,5331,5332,5333,5334,5335,5336,5337,5338,5339,5340,5341,5342,5343,5344,5345,5346,5347,5348,5349,5350,5351,5352,5353,5354,5355,5356,5357,5358,5359,5360,5361,5362,5363,5364,5365,5366,5367,5368,5369,5370,5371,5372,5373,5374,5375,5631,5887,6143,8191] },
-    { id: "InputField#1", children: false, parameters: [["state","object",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,5120,5121,5122,5123,5124,5125,5126,5127,5128,5129,5130,5131,5132,5133,5134,5135,5136,5137,5138,5139,5140,5141,5142,5143,5144,5145,5146,5147,5148,5149,5150,5151,5152,5153,5154,5155,5156,5157,5158,5159,5160,5161,5162,5163,5164,5165,5166,5167,5168,5169,5170,5171,5172,5173,5174,5175,5176,5177,5178,5179,5180,5181,5182,5183,5184,5185,5186,5187,5188,5189,5190,5191,5192,5193,5194,5195,5196,5197,5198,5199,5200,5201,5202,5203,5204,5205,5206,5207,5208,5209,5210,5211,5212,5213,5214,5215,5216,5217,5218,5219,5220,5221,5222,5223,5224,5225,5226,5227,5228,5229,5230,5231,5232,5233,5234,5235,5236,5237,5238,5239,5240,5241,5242,5243,5244,5245,5246,5247,5248,5249,5250,5251,5252,5253,5254,5255,5256,5257,5258,5259,5260,5261,5262,5263,5264,5265,5266,5267,5268,5269,5270,5271,5272,5273,5274,5275,5276,5277,5278,5279,5280,5281,5282,5283,5284,5285,5286,5287,5288,5289,5290,5291,5292,5293,5294,5295,5296,5297,5298,5299,5300,5301,5302,5303,5304,5305,5306,5307,5308,5309,5310,5311,5312,5313,5314,5315,5316,5317,5318,5319,5320,5321,5322,5323,5324,5325,5326,5327,5328,5329,5330,5331,5332,5333,5334,5335,5336,5337,5338,5339,5340,5341,5342,5343,5344,5345,5346,5347,5348,5349,5350,5351,5352,5353,5354,5355,5356,5357,5358,5359,5360,5361,5362,5363,5364,5365,5366,5367,5368,5369,5370,5371,5372,5373,5374,5375,5631,5887,6143,8191] },
+    { id: "InputField", children: false, parameters: [["textFieldState","object",false,false],["searchBarState","object",false,false],["onSearch","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,8224,8225,8226,8227,8228,8229,8230,8231,8232,8233,8234,8235,8236,8237,8238,8239,8240,8241,8242,8243,8244,8245,8246,8247,8248,8249,8250,8251,8252,8253,8254,8255,8256,8257,8258,8259,8260,8261,8262,8263,8264,8265,8266,8267,8268,8269,8270,8271,8272,8273,8274,8275,8276,8277,8278,8279,8280,8281,8282,8283,8284,8285,8286,8287,8288,8289,8290,8291,8292,8293,8294,8295,8296,8297,8298,8299,8300,8301,8302,8303,8304,8305,8306,8307,8308,8309,8310,8311,8312,8313,8314,8315,8316,8317,8318,8319,8320,8321,8322,8323,8324,8325,8326,8327,8328,8329,8330,8331,8332,8333,8334,8335,8336,8337,8338,8339,8340,8341,8342,8343,8344,8345,8346,8347,8348,8349,8350,8351,8352,8353,8354,8355,8356,8357,8358,8359,8360,8361,8362,8363,8364,8365,8366,8367,8368,8369,8370,8371,8372,8373,8374,8375,8376,8377,8378,8379,8380,8381,8382,8383,8384,8385,8386,8387,8388,8389,8390,8391,8392,8393,8394,8395,8396,8397,8398,8399,8400,8401,8402,8403,8404,8405,8406,8407,8408,8409,8410,8411,8412,8413,8414,8415,8416,8417,8418,8419,8420,8421,8422,8423,8424,8425,8426,8427,8428,8429,8430,8431,8432,8433,8434,8435,8436,8437,8438,8439,8440,8441,8442,8443,8444,8445,8446,8447,10240,10241,10242,10243,10244,10245,10246,10247,10248,10249,10250,10251,10252,10253,10254,10255,10256,10257,10258,10259,10260,10261,10262,10263,10264,10265,10266,10267,10268,10269,10270,10271,10272,10273,10274,10275,10276,10277,10278,10279,10280,10281,10282,10283,10284,10285,10286,10287,10288,10289,10290,10291,10292,10293,10294,10295,10296,10297,10298,10299,10300,10301,10302,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314,10315,10316,10317,10318,10319,10320,10321,10322,10323,10324,10325,10326,10327,10328,10329,10330,10331,10332,10333,10334,10335,10336,10337,10338,10339,10340,10341,10342,10343,10344,10345,10346,10347,10348,10349,10350,10351,10352,10353,10354,10355,10356,10357,10358,10359,10360,10361,10362,10363,10364,10365,10366,10367,10368,10369,10370,10371,10372,10373,10374,10375,10376,10377,10378,10379,10380,10381,10382,10383,10384,10385,10386,10387,10388,10389,10390,10391,10392,10393,10394,10395,10396,10397,10398,10399,10400,10401,10402,10403,10404,10405,10406,10407,10408,10409,10410,10411,10412,10413,10414,10415,10416,10417,10418,10419,10420,10421,10422,10423,10424,10425,10426,10427,10428,10429,10430,10431,10432,10433,10434,10435,10436,10437,10438,10439,10440,10441,10442,10443,10444,10445,10446,10447,10448,10449,10450,10451,10452,10453,10454,10455,10456,10457,10458,10459,10460,10461,10462,10463,10464,10465,10466,10467,10468,10469,10470,10471,10472,10473,10474,10475,10476,10477,10478,10479,10480,10481,10482,10483,10484,10485,10486,10487,10488,10489,10490,10491,10492,10493,10494,10495,10751,11007,11263,15359,16383] },
+    { id: "InputField#1", children: false, parameters: [["state","object",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,8224,8225,8226,8227,8228,8229,8230,8231,8232,8233,8234,8235,8236,8237,8238,8239,8240,8241,8242,8243,8244,8245,8246,8247,8248,8249,8250,8251,8252,8253,8254,8255,8256,8257,8258,8259,8260,8261,8262,8263,8264,8265,8266,8267,8268,8269,8270,8271,8272,8273,8274,8275,8276,8277,8278,8279,8280,8281,8282,8283,8284,8285,8286,8287,8288,8289,8290,8291,8292,8293,8294,8295,8296,8297,8298,8299,8300,8301,8302,8303,8304,8305,8306,8307,8308,8309,8310,8311,8312,8313,8314,8315,8316,8317,8318,8319,8320,8321,8322,8323,8324,8325,8326,8327,8328,8329,8330,8331,8332,8333,8334,8335,8336,8337,8338,8339,8340,8341,8342,8343,8344,8345,8346,8347,8348,8349,8350,8351,8352,8353,8354,8355,8356,8357,8358,8359,8360,8361,8362,8363,8364,8365,8366,8367,8368,8369,8370,8371,8372,8373,8374,8375,8376,8377,8378,8379,8380,8381,8382,8383,8384,8385,8386,8387,8388,8389,8390,8391,8392,8393,8394,8395,8396,8397,8398,8399,8400,8401,8402,8403,8404,8405,8406,8407,8408,8409,8410,8411,8412,8413,8414,8415,8416,8417,8418,8419,8420,8421,8422,8423,8424,8425,8426,8427,8428,8429,8430,8431,8432,8433,8434,8435,8436,8437,8438,8439,8440,8441,8442,8443,8444,8445,8446,8447,10240,10241,10242,10243,10244,10245,10246,10247,10248,10249,10250,10251,10252,10253,10254,10255,10256,10257,10258,10259,10260,10261,10262,10263,10264,10265,10266,10267,10268,10269,10270,10271,10272,10273,10274,10275,10276,10277,10278,10279,10280,10281,10282,10283,10284,10285,10286,10287,10288,10289,10290,10291,10292,10293,10294,10295,10296,10297,10298,10299,10300,10301,10302,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314,10315,10316,10317,10318,10319,10320,10321,10322,10323,10324,10325,10326,10327,10328,10329,10330,10331,10332,10333,10334,10335,10336,10337,10338,10339,10340,10341,10342,10343,10344,10345,10346,10347,10348,10349,10350,10351,10352,10353,10354,10355,10356,10357,10358,10359,10360,10361,10362,10363,10364,10365,10366,10367,10368,10369,10370,10371,10372,10373,10374,10375,10376,10377,10378,10379,10380,10381,10382,10383,10384,10385,10386,10387,10388,10389,10390,10391,10392,10393,10394,10395,10396,10397,10398,10399,10400,10401,10402,10403,10404,10405,10406,10407,10408,10409,10410,10411,10412,10413,10414,10415,10416,10417,10418,10419,10420,10421,10422,10423,10424,10425,10426,10427,10428,10429,10430,10431,10432,10433,10434,10435,10436,10437,10438,10439,10440,10441,10442,10443,10444,10445,10446,10447,10448,10449,10450,10451,10452,10453,10454,10455,10456,10457,10458,10459,10460,10461,10462,10463,10464,10465,10466,10467,10468,10469,10470,10471,10472,10473,10474,10475,10476,10477,10478,10479,10480,10481,10482,10483,10484,10485,10486,10487,10488,10489,10490,10491,10492,10493,10494,10495,10751,11007,11263,15359,16383] },
     { id: "InputField#2", children: false, parameters: [["query","string",false,false],["onQueryChange","function",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
 });
@@ -4793,25 +5754,143 @@ export const LargeExtendedFloatingActionButton = createComposableComponent<Large
   ],
 });
 
-export interface LargeFlexibleTopAppBarProps {
-  title: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  subtitle?: ReactNode;
-  navigationIcon?: ReactNode;
-  actions?: ReactNode;
-  titleHorizontalAlignment?: ComposeHorizontalAlignment;
-  collapsedHeight?: number;
-  expandedHeight?: number;
-  windowInsets?: ComposeWindowInsets;
-}
+export type LargeFlexibleTopAppBarProps =
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle?: ReactNode;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+    expandedHeight?: never;
+    windowInsets?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle?: ReactNode;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    windowInsets: ComposeWindowInsets;
+    expandedHeight?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    subtitle?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    titleHorizontalAlignment?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    titleHorizontalAlignment: ComposeHorizontalAlignment;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    collapsedHeight?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    titleHorizontalAlignment: ComposeHorizontalAlignment;
+    collapsedHeight: number;
+    expandedHeight: number;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    titleHorizontalAlignment: ComposeHorizontalAlignment;
+    collapsedHeight: number;
+    expandedHeight: number;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+    }
+;
 export const LargeFlexibleTopAppBar = createComposableComponent<LargeFlexibleTopAppBarProps>({
   name: "LargeFlexibleTopAppBar",
-  props: ["modifier","titleHorizontalAlignment","collapsedHeight","expandedHeight","windowInsets"],
-  objectProps: ["windowInsets"],
+  props: ["modifier","titleHorizontalAlignment","collapsedHeight","expandedHeight","windowInsets","scrollBehavior"],
+  objectProps: ["windowInsets","scrollBehavior"],
   slots: ["title","subtitle","navigationIcon","actions"],
   children: false,
+  overloads: [
+    { id: "LargeFlexibleTopAppBar", children: false, parameters: [["title","ReactNode",false,false],["modifier","ComposeModifier",true,false],["subtitle","ReactNode",true,true],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["titleHorizontalAlignment","string",true,false],["collapsedHeight","number",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,255] },
+  ],
 });
 
 export interface LargeFloatingActionButtonProps {
@@ -4843,11 +5922,12 @@ export interface LargeTopAppBarProps {
   collapsedHeight?: number;
   expandedHeight?: number;
   windowInsets?: ComposeWindowInsets;
+  scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
 }
 export const LargeTopAppBar = createComposableComponent<LargeTopAppBarProps>({
   name: "LargeTopAppBar",
-  props: ["modifier","collapsedHeight","expandedHeight","windowInsets"],
-  objectProps: ["windowInsets"],
+  props: ["modifier","collapsedHeight","expandedHeight","windowInsets","scrollBehavior"],
+  objectProps: ["windowInsets","scrollBehavior"],
   slots: ["title","navigationIcon","actions"],
   children: false,
 });
@@ -6367,25 +7447,143 @@ export const MediumExtendedFloatingActionButton = createComposableComponent<Medi
   ],
 });
 
-export interface MediumFlexibleTopAppBarProps {
-  title: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  subtitle?: ReactNode;
-  navigationIcon?: ReactNode;
-  actions?: ReactNode;
-  titleHorizontalAlignment?: ComposeHorizontalAlignment;
-  collapsedHeight?: number;
-  expandedHeight?: number;
-  windowInsets?: ComposeWindowInsets;
-}
+export type MediumFlexibleTopAppBarProps =
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle?: ReactNode;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+    expandedHeight?: never;
+    windowInsets?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle?: ReactNode;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    windowInsets: ComposeWindowInsets;
+    expandedHeight?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    subtitle?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    actions?: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    titleHorizontalAlignment?: ComposeHorizontalAlignment;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    collapsedHeight?: number;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    titleHorizontalAlignment?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    titleHorizontalAlignment: ComposeHorizontalAlignment;
+    expandedHeight: number;
+    windowInsets?: ComposeWindowInsets;
+    collapsedHeight?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    titleHorizontalAlignment: ComposeHorizontalAlignment;
+    collapsedHeight: number;
+    expandedHeight: number;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    title: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    subtitle: ReactNode;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    titleHorizontalAlignment: ComposeHorizontalAlignment;
+    collapsedHeight: number;
+    expandedHeight: number;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+    }
+;
 export const MediumFlexibleTopAppBar = createComposableComponent<MediumFlexibleTopAppBarProps>({
   name: "MediumFlexibleTopAppBar",
-  props: ["modifier","titleHorizontalAlignment","collapsedHeight","expandedHeight","windowInsets"],
-  objectProps: ["windowInsets"],
+  props: ["modifier","titleHorizontalAlignment","collapsedHeight","expandedHeight","windowInsets","scrollBehavior"],
+  objectProps: ["windowInsets","scrollBehavior"],
   slots: ["title","subtitle","navigationIcon","actions"],
   children: false,
+  overloads: [
+    { id: "MediumFlexibleTopAppBar", children: false, parameters: [["title","ReactNode",false,false],["modifier","ComposeModifier",true,false],["subtitle","ReactNode",true,true],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["titleHorizontalAlignment","string",true,false],["collapsedHeight","number",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,255] },
+  ],
 });
 
 export interface MediumFloatingActionButtonProps {
@@ -6417,11 +7615,12 @@ export interface MediumTopAppBarProps {
   collapsedHeight?: number;
   expandedHeight?: number;
   windowInsets?: ComposeWindowInsets;
+  scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
 }
 export const MediumTopAppBar = createComposableComponent<MediumTopAppBarProps>({
   name: "MediumTopAppBar",
-  props: ["modifier","collapsedHeight","expandedHeight","windowInsets"],
-  objectProps: ["windowInsets"],
+  props: ["modifier","collapsedHeight","expandedHeight","windowInsets","scrollBehavior"],
+  objectProps: ["windowInsets","scrollBehavior"],
   slots: ["title","navigationIcon","actions"],
   children: false,
 });
@@ -6807,6 +8006,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -6829,6 +8029,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -6851,6 +8052,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -6873,6 +8075,30 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    shape?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -6894,6 +8120,7 @@ export type OutlinedSecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     keyboardOptions?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -6916,6 +8143,7 @@ export type OutlinedSecureTextFieldProps =
     supportingText?: never;
     isError?: never;
     inputTransformation?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -6938,6 +8166,7 @@ export type OutlinedSecureTextFieldProps =
     suffix?: never;
     supportingText?: never;
     isError?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -6960,6 +8189,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -6982,6 +8212,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7004,6 +8235,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7026,6 +8258,7 @@ export type OutlinedSecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7048,6 +8281,7 @@ export type OutlinedSecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7070,6 +8304,7 @@ export type OutlinedSecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7093,6 +8328,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7115,6 +8351,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7136,6 +8373,7 @@ export type OutlinedSecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7161,6 +8399,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     colors?: never;
     }
   | {
@@ -7183,6 +8422,7 @@ export type OutlinedSecureTextFieldProps =
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
     keyboardOptions?: never;
+    onTextLayout?: never;
     colors?: never;
     }
   | {
@@ -7205,6 +8445,7 @@ export type OutlinedSecureTextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    onTextLayout?: never;
     colors?: never;
     }
   | {
@@ -7228,6 +8469,30 @@ export type OutlinedSecureTextFieldProps =
     colors?: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
+    onTextLayout?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
     }
 ;
 export const OutlinedSecureTextField = createComposableComponent<OutlinedSecureTextFieldProps>({
@@ -7235,10 +8500,10 @@ export const OutlinedSecureTextField = createComposableComponent<OutlinedSecureT
   props: ["state","modifier","enabled","textStyle","isError","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
   objectProps: ["state","textStyle","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText"],
-  events: ["onKeyboardAction"],
+  events: ["onKeyboardAction","onTextLayout"],
   children: false,
   overloads: [
-    { id: "OutlinedSecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4100,4101,4104,4105,4108,4109,4112,4113,4116,4117,4120,4121,4124,4125,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,16384,16385,16388,16389,16392,16393,16396,16397,16400,16401,16404,16405,16408,16409,16412,16413,20991,32768,32769,32770,32771,32772,32773,32774,32775,32776,32777,32778,32779,32780,32781,32782,32783,32784,32785,32786,32787,32788,32789,32790,32791,32792,32793,32794,32795,32796,32797,32798,32799,32800,32801,32802,32803,32804,32805,32806,32807,32808,32809,32810,32811,32812,32813,32814,32815,32816,32817,32818,32819,32820,32821,32822,32823,32824,32825,32826,32827,32828,32829,32830,32831,53759,54783,55807,56831,57343,65535] },
+    { id: "OutlinedSecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["onTextLayout","function",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,8192,8193,8196,8197,8200,8201,8204,8205,8208,8209,8212,8213,8216,8217,8220,8221,16384,16385,16386,16387,16388,16389,16390,16391,16392,16393,16394,16395,16396,16397,16398,16399,16400,16401,16402,16403,16404,16405,16406,16407,16408,16409,16410,16411,16412,16413,16414,16415,32768,32769,32772,32773,32776,32777,32780,32781,32784,32785,32788,32789,32792,32793,32796,32797,41471,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,65568,65569,65570,65571,65572,65573,65574,65575,65576,65577,65578,65579,65580,65581,65582,65583,65584,65585,65586,65587,65588,65589,65590,65591,65592,65593,65594,65595,65596,65597,65598,65599,107007,108031,109055,110079,110591,126975,131071] },
   ],
 });
 
@@ -7264,6 +8529,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7297,6 +8564,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -7330,6 +8599,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -7363,6 +8634,78 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    scrollState: ComposeScrollState;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -7395,6 +8738,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7428,6 +8773,8 @@ export type OutlinedTextFieldProps =
     inputTransformation?: never;
     outputTransformation?: never;
     keyboardOptions?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7461,6 +8808,8 @@ export type OutlinedTextFieldProps =
     inputTransformation?: never;
     outputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7494,6 +8843,8 @@ export type OutlinedTextFieldProps =
     inputTransformation?: never;
     outputTransformation?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7527,6 +8878,8 @@ export type OutlinedTextFieldProps =
     supportingText?: never;
     isError?: never;
     inputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7560,6 +8913,8 @@ export type OutlinedTextFieldProps =
     suffix?: never;
     supportingText?: never;
     isError?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7593,6 +8948,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7626,6 +8983,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7659,6 +9018,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7692,6 +9053,43 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7725,6 +9123,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7758,6 +9158,43 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    placeholder: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7791,6 +9228,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7824,6 +9263,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7858,9 +9299,46 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    textStyle: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7891,9 +9369,46 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7923,6 +9438,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7956,6 +9473,43 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -7989,6 +9543,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8022,6 +9578,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8058,6 +9616,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -8091,6 +9651,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -8124,6 +9686,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -8157,6 +9721,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -8190,6 +9756,8 @@ export type OutlinedTextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -8223,6 +9791,8 @@ export type OutlinedTextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     outputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -8255,6 +9825,78 @@ export type OutlinedTextFieldProps =
     lineLimits: ComposeTextFieldLineLimits;
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    onTextLayout?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    onTextLayout?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    scrollState?: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     value?: never;
@@ -8290,6 +9932,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -8323,6 +9967,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -8356,6 +10002,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8389,6 +10037,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8422,6 +10072,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8455,6 +10107,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8488,6 +10142,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8520,6 +10176,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8555,6 +10213,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8586,6 +10246,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8619,6 +10281,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8652,6 +10316,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8686,6 +10352,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -8719,6 +10387,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -8752,6 +10422,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -8783,6 +10455,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8817,6 +10491,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8851,6 +10527,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8883,6 +10561,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8916,6 +10596,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8950,6 +10632,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -8982,6 +10666,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9015,6 +10701,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9052,6 +10740,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -9086,6 +10776,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -9120,6 +10812,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -9153,6 +10847,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -9188,6 +10884,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     contentPadding?: never;
     }
   | {
@@ -9214,6 +10912,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -9247,6 +10947,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -9280,6 +10982,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9313,6 +11017,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9346,6 +11052,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9379,6 +11087,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9412,6 +11122,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9444,6 +11156,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9479,6 +11193,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9510,6 +11226,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9543,6 +11261,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9576,6 +11296,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9610,6 +11332,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -9643,6 +11367,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -9676,6 +11402,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -9707,6 +11435,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9741,6 +11471,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9775,6 +11507,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9807,6 +11541,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9840,6 +11576,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9874,6 +11612,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9906,6 +11646,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9939,6 +11681,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -9976,6 +11720,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -10010,6 +11756,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -10044,6 +11792,8 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -10077,6 +11827,8 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -10112,18 +11864,20 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     contentPadding?: never;
     }
 ;
 export const OutlinedTextField = createComposableComponent<OutlinedTextFieldProps>({
   name: "OutlinedTextField",
-  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
-  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
+  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","scrollState","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
+  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","scrollState","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText","label"],
-  events: ["onKeyboardAction","onValueChange"],
+  events: ["onKeyboardAction","onTextLayout","onValueChange"],
   children: false,
   overloads: [
-    { id: "OutlinedTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,131072,131073,131074,131075,131080,131081,131082,131083,131088,131089,131090,131091,131096,131097,131098,131099,164863,262144,262145,262146,262147,262148,262149,262150,262151,262152,262153,262154,262155,262156,262157,262158,262159,262160,262161,262162,262163,262164,262165,262166,262167,262168,262169,262170,262171,262172,262173,262174,262175,262176,262177,262178,262179,262180,262181,262182,262183,262184,262185,262186,262187,262188,262189,262190,262191,262192,262193,262194,262195,262196,262197,262198,262199,262200,262201,262202,262203,262204,262205,262206,262207,427007,431103,435199,443391,455679,456703,457727,458751,524287] },
+    { id: "OutlinedTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["onTextLayout","function",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32772,32773,32774,32775,32776,32777,32778,32779,32780,32781,32782,32783,32784,32785,32786,32787,32788,32789,32790,32791,32792,32793,32794,32795,32796,32797,32798,32799,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,98304,131072,131073,131074,131075,131080,131081,131082,131083,131088,131089,131090,131091,131096,131097,131098,131099,262144,262145,262146,262147,262148,262149,262150,262151,262152,262153,262154,262155,262156,262157,262158,262159,262160,262161,262162,262163,262164,262165,262166,262167,262168,262169,262170,262171,262172,262173,262174,262175,524288,524289,524290,524291,524296,524297,524298,524299,524304,524305,524306,524307,524312,524313,524314,524315,656383,1048576,1048577,1048578,1048579,1048580,1048581,1048582,1048583,1048584,1048585,1048586,1048587,1048588,1048589,1048590,1048591,1048592,1048593,1048594,1048595,1048596,1048597,1048598,1048599,1048600,1048601,1048602,1048603,1048604,1048605,1048606,1048607,1048608,1048609,1048610,1048611,1048612,1048613,1048614,1048615,1048616,1048617,1048618,1048619,1048620,1048621,1048622,1048623,1048624,1048625,1048626,1048627,1048628,1048629,1048630,1048631,1048632,1048633,1048634,1048635,1048636,1048637,1048638,1048639,1704959,1709055,1713151,1721343,1733631,1734655,1735679,1736703,1998847,2031615,2064383,2097151] },
     { id: "OutlinedTextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
     { id: "OutlinedTextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
   ],
@@ -10272,6 +12026,7 @@ export interface PrimaryScrollableTabRowProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  scrollState?: ComposeScrollState;
   containerColor?: string;
   contentColor?: string;
   edgePadding?: number;
@@ -10282,7 +12037,8 @@ export interface PrimaryScrollableTabRowProps {
 }
 export const PrimaryScrollableTabRow = createComposableComponent<PrimaryScrollableTabRowProps>({
   name: "PrimaryScrollableTabRow",
-  props: ["selectedTabIndex","modifier","containerColor","contentColor","edgePadding","minTabWidth"],
+  props: ["selectedTabIndex","modifier","scrollState","containerColor","contentColor","edgePadding","minTabWidth"],
+  objectProps: ["scrollState"],
   slots: ["indicator","divider","tabs"],
   children: false,
 });
@@ -10574,6 +12330,7 @@ export interface SecondaryScrollableTabRowProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  scrollState?: ComposeScrollState;
   containerColor?: string;
   contentColor?: string;
   edgePadding?: number;
@@ -10584,7 +12341,8 @@ export interface SecondaryScrollableTabRowProps {
 }
 export const SecondaryScrollableTabRow = createComposableComponent<SecondaryScrollableTabRowProps>({
   name: "SecondaryScrollableTabRow",
-  props: ["selectedTabIndex","modifier","containerColor","contentColor","edgePadding","minTabWidth"],
+  props: ["selectedTabIndex","modifier","scrollState","containerColor","contentColor","edgePadding","minTabWidth"],
+  objectProps: ["scrollState"],
   slots: ["indicator","divider","tabs"],
   children: false,
 });
@@ -10626,6 +12384,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10648,6 +12407,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -10670,6 +12430,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -10692,6 +12453,30 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    shape?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -10713,6 +12498,7 @@ export type SecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     keyboardOptions?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10735,6 +12521,7 @@ export type SecureTextFieldProps =
     supportingText?: never;
     isError?: never;
     inputTransformation?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10757,6 +12544,7 @@ export type SecureTextFieldProps =
     suffix?: never;
     supportingText?: never;
     isError?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10779,6 +12567,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10801,6 +12590,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10823,6 +12613,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10845,6 +12636,7 @@ export type SecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10867,6 +12659,7 @@ export type SecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10889,6 +12682,7 @@ export type SecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10912,6 +12706,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10934,6 +12729,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10955,6 +12751,7 @@ export type SecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -10980,6 +12777,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
     colors?: never;
     }
   | {
@@ -11002,6 +12800,7 @@ export type SecureTextFieldProps =
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
     keyboardOptions?: never;
+    onTextLayout?: never;
     colors?: never;
     }
   | {
@@ -11024,6 +12823,7 @@ export type SecureTextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    onTextLayout?: never;
     colors?: never;
     }
   | {
@@ -11047,6 +12847,30 @@ export type SecureTextFieldProps =
     colors?: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
+    onTextLayout?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
     }
 ;
 export const SecureTextField = createComposableComponent<SecureTextFieldProps>({
@@ -11054,10 +12878,10 @@ export const SecureTextField = createComposableComponent<SecureTextFieldProps>({
   props: ["state","modifier","enabled","textStyle","isError","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
   objectProps: ["state","textStyle","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText"],
-  events: ["onKeyboardAction"],
+  events: ["onKeyboardAction","onTextLayout"],
   children: false,
   overloads: [
-    { id: "SecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4100,4101,4104,4105,4108,4109,4112,4113,4116,4117,4120,4121,4124,4125,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,16384,16385,16388,16389,16392,16393,16396,16397,16400,16401,16404,16405,16408,16409,16412,16413,20991,32768,32769,32770,32771,32772,32773,32774,32775,32776,32777,32778,32779,32780,32781,32782,32783,32784,32785,32786,32787,32788,32789,32790,32791,32792,32793,32794,32795,32796,32797,32798,32799,32800,32801,32802,32803,32804,32805,32806,32807,32808,32809,32810,32811,32812,32813,32814,32815,32816,32817,32818,32819,32820,32821,32822,32823,32824,32825,32826,32827,32828,32829,32830,32831,53759,54783,55807,56831,57343,65535] },
+    { id: "SecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["onTextLayout","function",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,8192,8193,8196,8197,8200,8201,8204,8205,8208,8209,8212,8213,8216,8217,8220,8221,16384,16385,16386,16387,16388,16389,16390,16391,16392,16393,16394,16395,16396,16397,16398,16399,16400,16401,16402,16403,16404,16405,16406,16407,16408,16409,16410,16411,16412,16413,16414,16415,32768,32769,32772,32773,32776,32777,32780,32781,32784,32785,32788,32789,32792,32793,32796,32797,41471,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,65568,65569,65570,65571,65572,65573,65574,65575,65576,65577,65578,65579,65580,65581,65582,65583,65584,65585,65586,65587,65588,65589,65590,65591,65592,65593,65594,65595,65596,65597,65598,65599,107007,108031,109055,110079,110591,126975,131071] },
   ],
 });
 
@@ -11703,6 +13527,25 @@ export type TextProps =
     softWrap?: never;
     maxLines?: never;
     minLines?: never;
+    onTextLayout?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color?: string;
+    fontSize?: number;
+    fontWeight?: ComposeFontWeight | null;
+    letterSpacing?: number;
+    lineHeight?: number;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    textAlign?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    composeTextStyle?: never;
     }
   | {
     text: string;
@@ -11719,6 +13562,7 @@ export type TextProps =
     overflow?: never;
     softWrap?: never;
     maxLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11736,6 +13580,7 @@ export type TextProps =
     minLines?: number;
     overflow?: never;
     softWrap?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11753,6 +13598,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     overflow?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11770,6 +13616,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     color?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11787,6 +13634,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     fontSize?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11804,6 +13652,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     fontWeight?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11821,6 +13670,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     letterSpacing?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11838,6 +13688,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     textAlign?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11855,6 +13706,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     lineHeight?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11872,6 +13724,7 @@ export type TextProps =
     maxLines?: number;
     minLines?: number;
     softWrap?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11889,6 +13742,7 @@ export type TextProps =
     softWrap: boolean;
     minLines?: number;
     maxLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11906,6 +13760,7 @@ export type TextProps =
     softWrap: boolean;
     maxLines: number;
     minLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11924,6 +13779,25 @@ export type TextProps =
     maxLines: number;
     minLines: number;
     composeTextStyle?: ComposeTextStyle;
+    onTextLayout?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color: string;
+    fontSize: number;
+    fontWeight: ComposeFontWeight | null;
+    letterSpacing: number;
+    textAlign: ComposeTextAlign | null;
+    lineHeight: number;
+    overflow: ComposeTextOverflow;
+    softWrap: boolean;
+    maxLines: number;
+    minLines: number;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    composeTextStyle: ComposeTextStyle;
     }
   | {
     text: ComposeAnnotatedString;
@@ -11941,6 +13815,25 @@ export type TextProps =
     softWrap?: never;
     maxLines?: never;
     minLines?: never;
+    onTextLayout?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color?: string;
+    fontSize?: number;
+    fontWeight?: ComposeFontWeight | null;
+    letterSpacing?: number;
+    lineHeight?: number;
+    onTextLayout: (value: ComposeTextLayout) => void;
+    textAlign?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    composeTextStyle?: never;
     }
   | {
     text: ComposeAnnotatedString;
@@ -11957,6 +13850,7 @@ export type TextProps =
     overflow?: never;
     softWrap?: never;
     maxLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11974,6 +13868,7 @@ export type TextProps =
     overflow?: never;
     softWrap?: never;
     minLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -11991,6 +13886,7 @@ export type TextProps =
     overflow?: never;
     maxLines?: never;
     minLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -12008,6 +13904,7 @@ export type TextProps =
     softWrap?: never;
     maxLines?: never;
     minLines?: never;
+    onTextLayout?: never;
     composeTextStyle?: never;
     }
   | {
@@ -12026,6 +13923,7 @@ export type TextProps =
     softWrap?: never;
     maxLines?: never;
     minLines?: never;
+    onTextLayout?: never;
     }
   | {
     text: ComposeAnnotatedString;
@@ -12043,6 +13941,7 @@ export type TextProps =
     softWrap?: never;
     maxLines?: never;
     minLines?: never;
+    onTextLayout?: never;
     }
   | {
     text: ComposeAnnotatedString;
@@ -12060,16 +13959,36 @@ export type TextProps =
     maxLines: number;
     minLines: number;
     composeTextStyle?: ComposeTextStyle;
+    onTextLayout?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color: string;
+    fontSize: number;
+    fontWeight: ComposeFontWeight | null;
+    letterSpacing: number;
+    textAlign: ComposeTextAlign | null;
+    lineHeight: number;
+    overflow: ComposeTextOverflow;
+    softWrap: boolean;
+    maxLines: number;
+    minLines: number;
+    onTextLayout: (value: ComposeTextLayout) => void;
+    composeTextStyle: ComposeTextStyle;
     }
 ;
 export const Text = createComposableComponent<TextProps>({
   name: "Text",
   props: ["text","modifier","color","fontSize","fontWeight","letterSpacing","textAlign","lineHeight","overflow","softWrap","maxLines","minLines","composeTextStyle"],
   objectProps: ["composeTextStyle","text"],
+  events: ["onTextLayout"],
   children: false,
   overloads: [
-    { id: "Text", children: false, parameters: [["text","string",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["fontSize","number",true,false],["fontWeight","string",true,true],["letterSpacing","number",true,false],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869,870,871,872,873,874,875,876,877,878,879,880,881,882,883,884,885,886,887,888,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,912,913,914,915,916,917,918,919,920,921,922,923,924,925,926,927,928,929,930,931,932,933,934,935,936,937,938,939,940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999,1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,2047] },
-    { id: "Text#1", children: false, parameters: [["text","object",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["fontSize","number",true,false],["fontWeight","string",true,true],["letterSpacing","number",true,false],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,24,25,26,27,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,96,97,98,99,104,105,106,107,128,129,130,131,136,137,138,139,160,161,162,163,168,169,170,171,256,257,258,259,264,265,266,267,288,289,290,291,296,297,298,299,512,513,514,515,520,521,522,523,544,545,546,547,552,553,554,555,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,2047] },
+    { id: "Text", children: false, parameters: [["text","string",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["fontSize","number",true,false],["fontWeight","string",true,true],["letterSpacing","number",true,false],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["onTextLayout","function",true,true],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869,870,871,872,873,874,875,876,877,878,879,880,881,882,883,884,885,886,887,888,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,912,913,914,915,916,917,918,919,920,921,922,923,924,925,926,927,928,929,930,931,932,933,934,935,936,937,938,939,940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999,1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,3071,4095] },
+    { id: "Text#1", children: false, parameters: [["text","object",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["fontSize","number",true,false],["fontWeight","string",true,true],["letterSpacing","number",true,false],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["onTextLayout","function",true,false],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,24,25,26,27,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,96,97,98,99,104,105,106,107,128,129,130,131,136,137,138,139,160,161,162,163,168,169,170,171,256,257,258,259,264,265,266,267,288,289,290,291,296,297,298,299,512,513,514,515,520,521,522,523,544,545,546,547,552,553,554,555,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,3071,4095] },
   ],
 });
 
@@ -12116,6 +14035,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12149,6 +14070,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     interactionSource?: never;
@@ -12182,6 +14105,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -12215,6 +14140,78 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    scrollState: ComposeScrollState;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    onTextLayout?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    scrollState?: ComposeScrollState;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -12247,6 +14244,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12280,6 +14279,8 @@ export type TextFieldProps =
     inputTransformation?: never;
     outputTransformation?: never;
     keyboardOptions?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12313,6 +14314,8 @@ export type TextFieldProps =
     inputTransformation?: never;
     outputTransformation?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12346,6 +14349,8 @@ export type TextFieldProps =
     inputTransformation?: never;
     outputTransformation?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12379,6 +14384,8 @@ export type TextFieldProps =
     supportingText?: never;
     isError?: never;
     inputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12412,6 +14419,8 @@ export type TextFieldProps =
     suffix?: never;
     supportingText?: never;
     isError?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12445,6 +14454,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12478,6 +14489,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12511,6 +14524,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12544,6 +14559,43 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12577,6 +14629,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12610,6 +14664,43 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    placeholder: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12643,6 +14734,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12676,6 +14769,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12710,9 +14805,46 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    textStyle: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    readOnly?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -12743,9 +14875,46 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    enabled?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -12775,6 +14944,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12808,6 +14979,43 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12841,6 +15049,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12874,6 +15084,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -12910,6 +15122,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -12943,6 +15157,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -12976,6 +15192,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -13009,6 +15227,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -13042,6 +15262,8 @@ export type TextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -13075,6 +15297,8 @@ export type TextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     outputTransformation?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     value?: never;
     onValueChange?: never;
@@ -13107,6 +15331,78 @@ export type TextFieldProps =
     lineLimits: ComposeTextFieldLineLimits;
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    onTextLayout?: never;
+    scrollState?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    onTextLayout?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    onTextLayout: ((value: ComposeTextLayout) => void) | null;
+    scrollState?: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     value?: never;
@@ -13142,6 +15438,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -13175,6 +15473,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -13208,6 +15508,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13241,6 +15543,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13274,6 +15578,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13307,6 +15613,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13340,6 +15648,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13372,6 +15682,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13407,6 +15719,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13438,6 +15752,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13471,6 +15787,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13504,6 +15822,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13538,6 +15858,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -13571,6 +15893,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -13604,6 +15928,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -13635,6 +15961,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13669,6 +15997,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13703,6 +16033,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13735,6 +16067,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13768,6 +16102,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13802,6 +16138,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13834,6 +16172,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13867,6 +16207,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -13904,6 +16246,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -13938,6 +16282,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -13972,6 +16318,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -14005,6 +16353,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -14040,6 +16390,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     contentPadding?: never;
     }
   | {
@@ -14066,6 +16418,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -14099,6 +16453,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -14132,6 +16488,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14165,6 +16523,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14198,6 +16558,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14231,6 +16593,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14264,6 +16628,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14296,6 +16662,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14331,6 +16699,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14362,6 +16732,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14395,6 +16767,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14428,6 +16802,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14462,6 +16838,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -14495,6 +16873,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -14528,6 +16908,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -14559,6 +16941,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14593,6 +16977,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14627,6 +17013,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14659,6 +17047,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14692,6 +17082,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14726,6 +17118,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14758,6 +17152,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14791,6 +17187,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     shape?: never;
     colors?: never;
     contentPadding?: never;
@@ -14828,6 +17226,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     interactionSource?: never;
@@ -14862,6 +17262,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -14896,6 +17298,8 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -14929,6 +17333,8 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
@@ -14964,18 +17370,20 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    onTextLayout?: never;
+    scrollState?: never;
     contentPadding?: never;
     }
 ;
 export const TextField = createComposableComponent<TextFieldProps>({
   name: "TextField",
-  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
-  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
+  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","scrollState","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
+  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","scrollState","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText","label"],
-  events: ["onKeyboardAction","onValueChange"],
+  events: ["onKeyboardAction","onTextLayout","onValueChange"],
   children: false,
   overloads: [
-    { id: "TextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,131072,131073,131074,131075,131080,131081,131082,131083,131088,131089,131090,131091,131096,131097,131098,131099,164863,262144,262145,262146,262147,262148,262149,262150,262151,262152,262153,262154,262155,262156,262157,262158,262159,262160,262161,262162,262163,262164,262165,262166,262167,262168,262169,262170,262171,262172,262173,262174,262175,262176,262177,262178,262179,262180,262181,262182,262183,262184,262185,262186,262187,262188,262189,262190,262191,262192,262193,262194,262195,262196,262197,262198,262199,262200,262201,262202,262203,262204,262205,262206,262207,427007,431103,435199,443391,455679,456703,457727,458751,524287] },
+    { id: "TextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["onTextLayout","function",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32772,32773,32774,32775,32776,32777,32778,32779,32780,32781,32782,32783,32784,32785,32786,32787,32788,32789,32790,32791,32792,32793,32794,32795,32796,32797,32798,32799,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,98304,131072,131073,131074,131075,131080,131081,131082,131083,131088,131089,131090,131091,131096,131097,131098,131099,262144,262145,262146,262147,262148,262149,262150,262151,262152,262153,262154,262155,262156,262157,262158,262159,262160,262161,262162,262163,262164,262165,262166,262167,262168,262169,262170,262171,262172,262173,262174,262175,524288,524289,524290,524291,524296,524297,524298,524299,524304,524305,524306,524307,524312,524313,524314,524315,656383,1048576,1048577,1048578,1048579,1048580,1048581,1048582,1048583,1048584,1048585,1048586,1048587,1048588,1048589,1048590,1048591,1048592,1048593,1048594,1048595,1048596,1048597,1048598,1048599,1048600,1048601,1048602,1048603,1048604,1048605,1048606,1048607,1048608,1048609,1048610,1048611,1048612,1048613,1048614,1048615,1048616,1048617,1048618,1048619,1048620,1048621,1048622,1048623,1048624,1048625,1048626,1048627,1048628,1048629,1048630,1048631,1048632,1048633,1048634,1048635,1048636,1048637,1048638,1048639,1704959,1709055,1713151,1721343,1733631,1734655,1735679,1736703,1998847,2031615,2064383,2097151] },
     { id: "TextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
     { id: "TextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
   ],
@@ -15204,6 +17612,7 @@ export type TopAppBarProps =
     actions?: ReactNode;
     expandedHeight?: number;
     windowInsets?: ComposeWindowInsets;
+    scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
     subtitle?: never;
     titleHorizontalAlignment?: never;
     }
@@ -15218,17 +17627,18 @@ export type TopAppBarProps =
     titleHorizontalAlignment?: ComposeHorizontalAlignment;
     expandedHeight?: number;
     windowInsets?: ComposeWindowInsets;
+    scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
     }
 ;
 export const TopAppBar = createComposableComponent<TopAppBarProps>({
   name: "TopAppBar",
-  props: ["modifier","expandedHeight","windowInsets","titleHorizontalAlignment"],
-  objectProps: ["windowInsets"],
+  props: ["modifier","expandedHeight","windowInsets","scrollBehavior","titleHorizontalAlignment"],
+  objectProps: ["windowInsets","scrollBehavior"],
   slots: ["title","navigationIcon","actions","subtitle"],
   children: false,
   overloads: [
-    { id: "TopAppBar", children: false, parameters: [["title","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
-    { id: "TopAppBar#1", children: false, parameters: [["title","ReactNode",false,false],["subtitle","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["titleHorizontalAlignment","string",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "TopAppBar", children: false, parameters: [["title","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "TopAppBar#1", children: false, parameters: [["title","ReactNode",false,false],["subtitle","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["titleHorizontalAlignment","string",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
 });
 
@@ -15471,7 +17881,7 @@ export type VerticalPagerProps =
     pageSpacing?: number;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     children?: ReactNode;
     contentPadding?: never;
     pageSize?: never;
@@ -15557,7 +17967,7 @@ export type VerticalPagerProps =
     horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     contentPadding?: never;
     pageSize?: never;
@@ -15744,7 +18154,7 @@ export type VerticalPagerProps =
     horizontalAlignment?: ComposeHorizontalAlignment;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     beyondViewportPageCount?: never;
@@ -15761,7 +18171,7 @@ export type VerticalPagerProps =
     horizontalAlignment?: ComposeHorizontalAlignment;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     pageSpacing?: never;
@@ -15778,7 +18188,7 @@ export type VerticalPagerProps =
     pageSpacing: number;
     userScrollEnabled?: boolean;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     horizontalAlignment?: never;
@@ -15795,7 +18205,7 @@ export type VerticalPagerProps =
     pageSpacing: number;
     horizontalAlignment: ComposeHorizontalAlignment;
     reverseLayout?: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     userScrollEnabled?: never;
@@ -15812,7 +18222,7 @@ export type VerticalPagerProps =
     pageSpacing: number;
     horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled: boolean;
-    pageNestedScrollConnection?: ComposeNestedScrollConnection;
+    pageNestedScrollConnection?: ComposeNestedScrollBehavior;
     children?: ReactNode;
     pageSize?: never;
     reverseLayout?: never;
@@ -15847,7 +18257,7 @@ export type VerticalPagerProps =
     horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
     pageSize?: never;
@@ -15864,7 +18274,7 @@ export type VerticalPagerProps =
     horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     snapPosition: ComposeSnapPosition;
     children?: ReactNode;
     pageSize?: never;
@@ -15882,7 +18292,7 @@ export type VerticalPagerProps =
     horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     children?: ReactNode;
     snapPosition?: never;
     overscrollEffect?: never;
@@ -15899,7 +18309,7 @@ export type VerticalPagerProps =
     horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled: boolean;
     reverseLayout: boolean;
-    pageNestedScrollConnection: ComposeNestedScrollConnection;
+    pageNestedScrollConnection: ComposeNestedScrollBehavior;
     snapPosition: ComposeSnapPosition;
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;

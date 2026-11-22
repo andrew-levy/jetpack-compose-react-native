@@ -1,5 +1,6 @@
 package com.jetpackcomposereactnative.generated
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -20,14 +21,27 @@ internal fun RenderComposeChildren(children: List<ComposeChild>, scope: Any? = n
 internal fun RenderComposeChild(child: ComposeChild, scope: Any? = null) {
   key(child) {
     when (child) {
-      is ComposeNode -> if (child.name.isNotEmpty()) WithComposeOwners(scope) { RenderComposable(child, scope) }
+      is ComposeNode -> when (child.name) {
+        "" -> Unit
+        STICKY_HEADER -> RenderComposeChildren(child.children, scope)
+        else -> WithComposeOwners(scope) { RenderComposable(child, scope) }
+      }
       is ReactChildSlot -> RenderReactChild(child)
     }
   }
 }
 
+private const val STICKY_HEADER = "\$stickyHeader"
+
+@OptIn(ExperimentalFoundationApi::class)
 internal fun LazyListScope.renderLazyComposeChildren(children: List<ComposeChild>) {
-  for (child in children) item(key = child.composeChildId) { RenderComposeChild(child, this) }
+  for (child in children) {
+    if (child is ComposeNode && child.name == STICKY_HEADER) {
+      stickyHeader(key = child.composeChildId) { RenderComposeChild(child, this) }
+    } else {
+      item(key = child.composeChildId) { RenderComposeChild(child, this) }
+    }
+  }
 }
 
 internal fun LazyGridScope.renderLazyComposeChildren(children: List<ComposeChild>) {

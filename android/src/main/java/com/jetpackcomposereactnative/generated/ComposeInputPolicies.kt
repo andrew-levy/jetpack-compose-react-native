@@ -1,5 +1,8 @@
 package com.jetpackcomposereactnative.generated
 
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.KeyEventType
@@ -11,7 +14,14 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.unit.Velocity
 import org.json.JSONObject
 
-internal fun JSONObject.toComposeNestedScrollConnection(): NestedScrollConnection {
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeNestedScrollConnection(): NestedScrollConnection {
+  if (optString("kind") == "topAppBarScroll") return rememberComposeTopAppBarScrollBehavior().nestedScrollConnection
+  return remember(toString()) { toComposeNestedScrollConnection() }
+}
+
+private fun JSONObject.toComposeNestedScrollConnection(): NestedScrollConnection {
   val pre = optJSONObject("preScroll").toConsumption()
   val post = optJSONObject("postScroll").toConsumption()
   val preFling = optJSONObject("preFling").toConsumption()

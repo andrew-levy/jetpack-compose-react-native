@@ -175,7 +175,11 @@ def verify():
     tap(nodes["Filled"])
     nodes = wait_for("Button presses: 2", "Use standard theme", window=window)
     tap(nodes["Use standard theme"])
-    nodes = wait_for("Button presses: 2", "Show inputs", window=window)
+    nodes = wait_for("Button presses: 2", "Show inputs", "More actions", window=window)
+    tap(nodes["More actions"])
+    nodes = wait_for("Save draft")
+    tap(nodes["Save draft"])
+    nodes = wait_for("Saved from overflow", "Show inputs", window=window)
 
     tap(nodes["Show inputs"])
     nodes = wait_for("Notifications off", "Save to favorites", "Slider 35%", "Show surfaces", window=window)
@@ -199,6 +203,7 @@ def verify():
     tap(nodes["Show collections"])
     nodes = wait_for(
         "Purple swatch", "Layout reported to React", "Native row 2", "Native row 3", "Modifiers",
+        "Pinned feed header", "Jump to row 6", "First row: 2", "Collapsing feed toolbar",
         # Compose may report a sliver of the preceding item in the content padding.
         layout_ready=lambda nodes: (
             "Native row 1" not in nodes
@@ -207,6 +212,16 @@ def verify():
         window=window,
     )
     capture("14-collections")
+    toolbar_height = node_height(nodes["Collapsing feed toolbar"])
+    left, top, right, bottom = bounds(nodes["Native row 3"])
+    x = str((left + right) // 2)
+    adb("shell", "input", "swipe", x, str((top + bottom) // 2), x, str(top - 45), "350")
+    nodes = wait_for(
+        "Pinned feed header", "Jump to row 6", "Collapsing feed toolbar", window=window,
+        layout_ready=lambda nodes: node_height(nodes["Collapsing feed toolbar"]) < toolbar_height,
+    )
+    tap(nodes["Jump to row 6"])
+    wait_for("Native row 6", "Pinned feed header", "First row: 6", window=window)
 
     nodes = wait_for("Show bridge", window=window)
     tap(nodes["Show bridge"])
@@ -246,7 +261,7 @@ def verify():
     nodes = wait_for("Drag reported to React", "Crossfade content", window=window)
     tap(nodes["Crossfade content"])
     nodes = wait_for(
-        "Second crossfade state", "Size animation callback received", "Native phone input", "Modifiers",
+        "Second crossfade state", "Size animation callback received", "Sliding content end", "Native phone input", "Modifiers",
         absent=("First crossfade state",), window=window,
         layout_ready=lambda nodes: input_has_value(nodes, "Native phone input", "123-4"),
     )
@@ -312,6 +327,10 @@ def verify():
         capture("11-bottom-sheet")
         tap(nodes["Close generated sheet"])
         nodes = wait_for("Open dialog", "Open generated sheet", absent=("Native sheet state",), window=window)
+    tap(nodes["Open generated sheet"])
+    nodes = wait_for("Native sheet state", "Close generated sheet")
+    tap(nodes["Close generated sheet"])
+    nodes = wait_for("Open dialog", absent=("Native sheet state",), window=window)
 
     with record("alert-dialog"):
         tap(nodes["Open dialog"])

@@ -6,6 +6,9 @@ import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.RangeSliderState
 import androidx.compose.material3.SliderState
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.TopAppBarState
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,6 +22,15 @@ import org.json.JSONObject
 
 internal class ComposeNativeHandles {
   private val entries = mutableMapOf<Pair<String, String>, WeakReference<Entry<*>>>()
+  private val controlRevisions = mutableMapOf<Pair<String, String>, Long>()
+
+  // Keep the revision for commands issued to state that can leave and reenter the same host.
+  fun claimControlCommand(kind: String, token: String, revision: Long): Boolean {
+    val key = kind to token
+    if (revision <= (controlRevisions[key] ?: 0L)) return false
+    controlRevisions[key] = revision
+    return true
+  }
 
   internal class Entry<T : Any>(val value: T) {
     private var revision = 0L
@@ -137,4 +149,16 @@ private fun JSONObject.sliderRange(name: String, default: ClosedFloatingPointRan
   val end = values.getDouble(1).toFloat()
   require(start.isFinite() && end.isFinite() && start <= end) { "Expected an ordered Compose slider range" }
   return start..end
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeTopAppBarScrollBehavior(): TopAppBarScrollBehavior {
+  val state = rememberHandleEntry("topAppBarScroll") { TopAppBarState(-Float.MAX_VALUE, 0f, 0f) }.value
+  return when (val mode = getString("mode")) {
+    "pinned" -> TopAppBarDefaults.pinnedScrollBehavior(state)
+    "enterAlways" -> TopAppBarDefaults.enterAlwaysScrollBehavior(state)
+    "exitUntilCollapsed" -> TopAppBarDefaults.exitUntilCollapsedScrollBehavior(state)
+    else -> error("Unknown Compose top app bar scroll behavior: $mode")
+  }
 }

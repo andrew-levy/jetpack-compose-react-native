@@ -1,6 +1,6 @@
 // Generated from Compose declarations by generate.mjs.
 import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";
-import type { ComposeAlignmentLine, ComposeAnchoredDragState, ComposeAnimationSpec, ComposeBorderStroke, ComposeContentDrawing, ComposeDpSize, ComposeDrag2DState, ComposeDragState, ComposeDragTarget, ComposeDragTransfer, ComposeDragTypes, ComposeDrawing, ComposeFlexConfig, ComposeFlingBehavior, ComposeFocusProperties, ComposeFocusState, ComposeIndication, ComposeKeyPolicy, ComposeLayoutModifierMeasure, ComposeLayoutPosition, ComposeLayoutSize, ComposeMotionEvent, ComposeNestedScrollConnection, ComposeOverscrollEffect, ComposePaddingValues, ComposePainter, ComposeReceiveContent, ComposeRectRulers, ComposeRotaryPolicy, ComposeScrollState, ComposeScrollable2DState, ComposeScrollableState, ComposeSemantics, ComposeShadow, ComposeSharedContent, ComposeTouchPolicy, ComposeTransformableState, ComposeVisibilityTransition, ComposeWindowInsets } from "../utils/composeValues";
+import type { ComposeAlignmentLine, ComposeAnchoredDragState, ComposeAnimationSpec, ComposeBorderStroke, ComposeContentDrawing, ComposeDpSize, ComposeDrag2DState, ComposeDragState, ComposeDragTarget, ComposeDragTransfer, ComposeDragTypes, ComposeDrawing, ComposeFlexConfig, ComposeFlingBehavior, ComposeFocusProperties, ComposeFocusState, ComposeIndication, ComposeKeyPolicy, ComposeLayoutModifierMeasure, ComposeLayoutPosition, ComposeLayoutSize, ComposeMotionEvent, ComposeNestedScrollBehavior, ComposeOverscrollEffect, ComposePaddingValues, ComposePainter, ComposePointerPolicy, ComposeReceiveContent, ComposeRectRulers, ComposeRotaryPolicy, ComposeScrollState, ComposeScrollable2DState, ComposeScrollableState, ComposeSemantics, ComposeShadow, ComposeSharedContent, ComposeTouchPolicy, ComposeTransformableState, ComposeVisibilityTransition, ComposeWindowInsets } from "../utils/composeValues";
 import type { ComposeDpTouchBoundsExpansionValue, ComposeMarqueeSpacingValue, ComposeOffset, ComposeTextFieldColorsValue, ComposeTransformOrigin } from "./records";
 import type { ComposeBringIntoViewRequester, ComposeFocusRequester, ComposeInteractionSource, ComposeLayoutBoundsHolder, ComposePullToRefreshState } from "../utils/nativeHandles";
 import type { ComposeFloatRange } from "./components";
@@ -2636,8 +2636,8 @@ interface GeneratedModifiers {
   motionEventSpy(options: { watcher: (value: ComposeMotionEvent) => void }): ComposeChain;
   motionEventSpy(watcher: (value: ComposeMotionEvent) => void): ComposeChain;
   navigationBarsPadding(): ComposeChain;
-  nestedScroll(options: { connection: ComposeNestedScrollConnection }): ComposeChain;
-  nestedScroll(connection: ComposeNestedScrollConnection): ComposeChain;
+  nestedScroll(options: { connection: ComposeNestedScrollBehavior }): ComposeChain;
+  nestedScroll(connection: ComposeNestedScrollBehavior): ComposeChain;
   offset(): ComposeChain;
   offset(options: { x: number }): ComposeChain;
   offset(x: number): ComposeChain;
@@ -2772,6 +2772,9 @@ interface GeneratedModifiers {
   pointerHoverIcon(icon: ComposePointerIcon): ComposeChain;
   pointerHoverIcon(options: { icon: ComposePointerIcon; overrideDescendants: boolean }): ComposeChain;
   pointerHoverIcon(icon: ComposePointerIcon, options: { overrideDescendants: boolean }): ComposeChain;
+  pointerInput(options: { key1: string | null; block: ComposePointerPolicy }): ComposeChain;
+  pointerInput(options: { key1: string | null; key2: string | null; block: ComposePointerPolicy }): ComposeChain;
+  pointerInput(options: { keys: readonly (string | null)[]; block: ComposePointerPolicy }): ComposeChain;
   pointerInteropFilter(options: { onTouchEvent: ComposeTouchPolicy }): ComposeChain;
   pointerInteropFilter(onTouchEvent: ComposeTouchPolicy): ComposeChain;
   preferKeepClear(): ComposeChain;
@@ -3688,62 +3691,67 @@ export const Modifier = createModifier({
   "pointerHoverIcon": [
     { id: 185, primary: "icon", forms: [[["icon","string",false]],[["icon","string",false],["overrideDescendants","boolean",false]]] },
   ],
+  "pointerInput": [
+    { id: 186, forms: [[["key1","string",true],["block","object",false]]] },
+    { id: 187, forms: [[["key1","string",true],["key2","string",true],["block","object",false]]] },
+    { id: 188, forms: [[["keys","tuple",false],["block","object",false]]] },
+  ],
   "pointerInteropFilter": [
-    { id: 186, primary: "onTouchEvent", forms: [[["onTouchEvent","object",false]]] },
+    { id: 189, primary: "onTouchEvent", forms: [[["onTouchEvent","object",false]]] },
   ],
   "stylusHoverIcon": [
-    { id: 187, primary: "icon", forms: [[["icon","string",false]],[["icon","string",false],["overrideDescendants","boolean",false]],[["icon","string",false],["touchBoundsExpansion","object",true]],[["icon","string",false],["overrideDescendants","boolean",false],["touchBoundsExpansion","object",true]]] },
+    { id: 190, primary: "icon", forms: [[["icon","string",false]],[["icon","string",false],["overrideDescendants","boolean",false]],[["icon","string",false],["touchBoundsExpansion","object",true]],[["icon","string",false],["overrideDescendants","boolean",false],["touchBoundsExpansion","object",true]]] },
   ],
   "onPreRotaryScrollEvent": [
-    { id: 188, primary: "onPreRotaryScrollEvent", forms: [[["onPreRotaryScrollEvent","object",false]]] },
+    { id: 191, primary: "onPreRotaryScrollEvent", forms: [[["onPreRotaryScrollEvent","object",false]]] },
   ],
   "onRotaryScrollEvent": [
-    { id: 189, primary: "onRotaryScrollEvent", forms: [[["onRotaryScrollEvent","object",false]]] },
+    { id: 192, primary: "onRotaryScrollEvent", forms: [[["onRotaryScrollEvent","object",false]]] },
   ],
   "keepScreenOn": [
-    { id: 190, forms: [[]] },
+    { id: 193, forms: [[]] },
   ],
   "layout": [
-    { id: 191, primary: "measure", forms: [[["measure","object",false]]] },
+    { id: 194, primary: "measure", forms: [[["measure","object",false]]] },
   ],
   "layoutBounds": [
-    { id: 192, primary: "holder", forms: [[["holder","object",false]]] },
+    { id: 195, primary: "holder", forms: [[["holder","object",false]]] },
   ],
   "layoutId": [
-    { id: 193, primary: "layoutId", forms: [[["layoutId","string",false]]] },
+    { id: 196, primary: "layoutId", forms: [[["layoutId","string",false]]] },
   ],
   "onGloballyPositioned": [
-    { id: 194, primary: "onGloballyPositioned", forms: [[["onGloballyPositioned","function",false]]] },
+    { id: 197, primary: "onGloballyPositioned", forms: [[["onGloballyPositioned","function",false]]] },
   ],
   "onLayoutRectChanged": [
-    { id: 195, primary: "callback", forms: [[["callback","function",false]],[["throttleMillis","number",false],["callback","function",false]],[["debounceMillis","number",false],["callback","function",false]],[["throttleMillis","number",false],["debounceMillis","number",false],["callback","function",false]]] },
+    { id: 198, primary: "callback", forms: [[["callback","function",false]],[["throttleMillis","number",false],["callback","function",false]],[["debounceMillis","number",false],["callback","function",false]],[["throttleMillis","number",false],["debounceMillis","number",false],["callback","function",false]]] },
   ],
   "onPlaced": [
-    { id: 196, primary: "onPlaced", forms: [[["onPlaced","function",false]]] },
+    { id: 199, primary: "onPlaced", forms: [[["onPlaced","function",false]]] },
   ],
   "onSizeChanged": [
-    { id: 197, primary: "onSizeChanged", forms: [[["onSizeChanged","function",false]]] },
+    { id: 200, primary: "onSizeChanged", forms: [[["onSizeChanged","function",false]]] },
   ],
   "onVisibilityChanged": [
-    { id: 198, primary: "callback", forms: [[["callback","function",false]],[["minDurationMs","number",false],["callback","function",false]],[["minFractionVisible","number",false],["callback","function",false]],[["minDurationMs","number",false],["minFractionVisible","number",false],["callback","function",false]],[["viewportBounds","object",true],["callback","function",false]],[["minDurationMs","number",false],["viewportBounds","object",true],["callback","function",false]],[["minFractionVisible","number",false],["viewportBounds","object",true],["callback","function",false]],[["minDurationMs","number",false],["minFractionVisible","number",false],["viewportBounds","object",true],["callback","function",false]]] },
+    { id: 201, primary: "callback", forms: [[["callback","function",false]],[["minDurationMs","number",false],["callback","function",false]],[["minFractionVisible","number",false],["callback","function",false]],[["minDurationMs","number",false],["minFractionVisible","number",false],["callback","function",false]],[["viewportBounds","object",true],["callback","function",false]],[["minDurationMs","number",false],["viewportBounds","object",true],["callback","function",false]],[["minFractionVisible","number",false],["viewportBounds","object",true],["callback","function",false]],[["minDurationMs","number",false],["minFractionVisible","number",false],["viewportBounds","object",true],["callback","function",false]]] },
   ],
   "testTag": [
-    { id: 199, primary: "tag", forms: [[["tag","string",false]]] },
+    { id: 202, primary: "tag", forms: [[["tag","string",false]]] },
   ],
   "preferredFrameRate": [
-    { id: 200, primary: "frameRate", forms: [[["frameRate","number",false]]] },
-    { id: 201, primary: "frameRateCategory", forms: [[["frameRateCategory","string",false]]] },
+    { id: 203, primary: "frameRate", forms: [[["frameRate","number",false]]] },
+    { id: 204, primary: "frameRateCategory", forms: [[["frameRateCategory","string",false]]] },
   ],
   "clearAndSetSemantics": [
-    { id: 202, primary: "properties", forms: [[["properties","object",false]]] },
+    { id: 205, primary: "properties", forms: [[["properties","object",false]]] },
   ],
   "semantics": [
-    { id: 203, primary: "properties", forms: [[["properties","object",false]],[["mergeDescendants","boolean",false],["properties","object",false]]] },
+    { id: 206, primary: "properties", forms: [[["properties","object",false]],[["mergeDescendants","boolean",false],["properties","object",false]]] },
   ],
   "sensitiveContent": [
-    { id: 204, forms: [[],[["isContentSensitive","boolean",false]]] },
+    { id: 207, forms: [[],[["isContentSensitive","boolean",false]]] },
   ],
   "zIndex": [
-    { id: 205, primary: "zIndex", forms: [[["zIndex","number",false]]] },
+    { id: 208, primary: "zIndex", forms: [[["zIndex","number",false]]] },
   ],
 }) as Modifier;

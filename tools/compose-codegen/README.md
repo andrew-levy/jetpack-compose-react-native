@@ -92,6 +92,42 @@ state. Use an existing controlled overload when you need to observe or drive its
 value in JavaScript. The layout and focus callbacks deliver serializable snapshots.
 Layout dimensions and positions relative to the Compose root use physical pixels.
 
+Use `StickyHeader` as a direct child of `LazyColumn` or `LazyRow`. The header
+counts as one item for native indices. A list or grid can receive
+`useLazyListState({ onStateChange })` for scroll commands and visible-item
+snapshots. Use `usePagerState` with pagers and `useScrollState` with scroll
+modifiers. Each control handle belongs to one scroll container. A command can
+replace an in-flight command, and out-of-range positions are clamped to the
+current content. Snapshots also work with plain state objects.
+
+Modal sheets and persistent sheets accept `useModalBottomSheetState` and
+`useBottomSheetScaffoldState` respectively. Observe `currentValue` to remove a
+modal after its hide animation ends. Persistent sheets can hide when
+`skipHiddenState` is false.
+
+For a collapsing toolbar, call `useTopAppBarScrollBehavior("exitUntilCollapsed")`.
+Pass its value to the Material top app bar's `scrollBehavior` and to
+`Modifier.nestedScroll` on a parent of the scrollable content. Keep both usages
+inside the same Compose host, typically a shared Compose `Column` or `Scaffold`.
+
+`ButtonGroup`, `AppBarRow`, and `AppBarColumn` accept an `items` array for
+clickable and toggleable actions. App bar items take a painter as their icon.
+Compose manages overflow and shows its native menu. The optional
+`overflowIndicator` React slot replaces the default icon and opens the menu
+when pressed.
+
+For styled text, pass `{ text, spans }` to an annotated-text overload of
+`Text` or `BasicText`. Span ranges use UTF-16 offsets. Semantics support
+`onClick` and named `customActions` that notify React when Android invokes them.
+Text and text fields can report text layout size, line count, and overflow.
+Visibility transitions include fade, slide, and scale. `AnimatedContent`
+accepts a `transitionSpec` with an enter and exit transition.
+
+`Modifier.pointerInput` runs a native pointer policy with an event pass and
+consumption rules. Its optional `onEvent` sends a snapshot of pointer changes
+with coordinates in local physical pixels. Put gesture decisions that must
+consume events into the native policy so React can observe changes asynchronously.
+
 Start a chain on `Modifier` and pass it through the `modifiers` prop.
 Modifiers apply in chain order. Pass the primary value first and additional
 settings in an options object. You can also pass a named arguments object to

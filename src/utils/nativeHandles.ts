@@ -1,6 +1,16 @@
 import { useCallback, useId, useMemo, useState } from "react";
 
-type HandleCommand<Operation extends string> = { revision: number; operation: Operation };
+import type {
+  ComposeBottomSheetScaffoldState, ComposeLazyState, ComposeModalSheetState, ComposePagerState, ComposeScrollState,
+  ComposeTopAppBarScrollBehavior, ComposeTopAppBarScrollMode,
+} from "./composeValues";
+
+type HandleCommand<Operation extends string> = {
+  revision: number;
+  operation: Operation;
+  target?: number;
+  offsetPx?: number;
+};
 
 type NativeHandle<Kind extends string, Operation extends string> = {
   readonly kind: Kind;
@@ -11,8 +21,8 @@ type NativeHandle<Kind extends string, Operation extends string> = {
 function useNativeHandle<Kind extends string, Operation extends string>(kind: Kind) {
   const token = useId();
   const [command, setCommand] = useState<HandleCommand<Operation>>();
-  const send = useCallback((operation: Operation) => {
-    setCommand(previous => ({ revision: (previous?.revision ?? 0) + 1, operation }));
+  const send = useCallback((operation: Operation, target?: number, offsetPx?: number) => {
+    setCommand(previous => ({ revision: (previous?.revision ?? 0) + 1, operation, target, offsetPx }));
   }, []);
   const value = useMemo<NativeHandle<Kind, Operation>>(() => ({ kind, token, command }), [kind, token, command]);
   return [value, send] as const;
@@ -94,4 +104,90 @@ export function useSliderState(options: ComposeSliderOptions = {}): ComposeSlide
 export function useRangeSliderState(options: ComposeRangeSliderOptions = {}): ComposeRangeSliderState {
   const handle = useHandleToken("rangeSliderState");
   return { ...handle, ...options };
+}
+
+type ScrollCommand = "scroll" | "animate";
+type SheetCommand = "show" | "hide" | "expand" | "partialExpand";
+
+export type ComposeLazyStateHandle = ComposeLazyState & NativeHandle<"lazy", ScrollCommand> & {
+  scrollToItem(index: number, offsetPx?: number): void;
+  animateScrollToItem(index: number, offsetPx?: number): void;
+};
+export type ComposePagerStateHandle = ComposePagerState & NativeHandle<"pager", ScrollCommand> & {
+  scrollToPage(index: number): void;
+  animateScrollToPage(index: number): void;
+};
+export type ComposeScrollStateHandle = ComposeScrollState & NativeHandle<"scroll", ScrollCommand> & {
+  scrollTo(offsetPx: number): void;
+  animateScrollTo(offsetPx: number): void;
+};
+
+function scrollPosition(value: number): number {
+  if (!Number.isInteger(value) || value < 0 || value > 0x7fffffff) {
+    throw new RangeError("Compose scroll positions must be nonnegative 32-bit integers");
+  }
+  return value;
+}
+
+/** Attach a handle to a single lazy list or grid via its state prop. */
+export function useLazyListState(options: ComposeLazyState = {}): ComposeLazyStateHandle {
+  const [handle, send] = useNativeHandle<"lazy", ScrollCommand>("lazy");
+  const actions = useMemo(() => ({
+    scrollToItem: (index: number, offsetPx = 0) => send("scroll", scrollPosition(index), scrollPosition(offsetPx)),
+    animateScrollToItem: (index: number, offsetPx = 0) => send("animate", scrollPosition(index), scrollPosition(offsetPx)),
+  }), [send]);
+  return { ...options, ...handle, ...actions };
+}
+
+export function usePagerState(options: ComposePagerState = {}): ComposePagerStateHandle {
+  const [handle, send] = useNativeHandle<"pager", ScrollCommand>("pager");
+  const actions = useMemo(() => ({
+    scrollToPage: (index: number) => send("scroll", scrollPosition(index)),
+    animateScrollToPage: (index: number) => send("animate", scrollPosition(index)),
+  }), [send]);
+  return { ...options, ...handle, ...actions };
+}
+
+export function useScrollState(options: ComposeScrollState = {}): ComposeScrollStateHandle {
+  const [handle, send] = useNativeHandle<"scroll", ScrollCommand>("scroll");
+  const actions = useMemo(() => ({
+    scrollTo: (offsetPx: number) => send("scroll", scrollPosition(offsetPx)),
+    animateScrollTo: (offsetPx: number) => send("animate", scrollPosition(offsetPx)),
+  }), [send]);
+  return { ...options, ...handle, ...actions };
+}
+
+type SheetActions = {
+  show(): void;
+  hide(): void;
+  expand(): void;
+  partialExpand(): void;
+};
+export type ComposeModalSheetStateHandle = ComposeModalSheetState & NativeHandle<"sheet", SheetCommand> & SheetActions;
+export type ComposeBottomSheetScaffoldStateHandle = ComposeBottomSheetScaffoldState &
+  NativeHandle<"sheetScaffold", SheetCommand> & SheetActions;
+
+function useSheetCommands<Kind extends "sheet" | "sheetScaffold">(kind: Kind) {
+  const [handle, send] = useNativeHandle<Kind, SheetCommand>(kind);
+  const actions = useMemo(() => ({
+    show: () => send("show"),
+    hide: () => send("hide"),
+    expand: () => send("expand"),
+    partialExpand: () => send("partialExpand"),
+  }), [send]);
+  return { ...handle, ...actions };
+}
+
+export function useModalBottomSheetState(options: ComposeModalSheetState = {}): ComposeModalSheetStateHandle {
+  return { ...options, ...useSheetCommands("sheet") };
+}
+
+export function useBottomSheetScaffoldState(options: ComposeBottomSheetScaffoldState = {}): ComposeBottomSheetScaffoldStateHandle {
+  return { ...options, ...useSheetCommands("sheetScaffold") };
+}
+
+/** Pass the same behavior to a top app bar and Modifier.nestedScroll in one Compose host. */
+export function useTopAppBarScrollBehavior(mode: ComposeTopAppBarScrollMode = "enterAlways"): ComposeTopAppBarScrollBehavior {
+  const token = useId();
+  return useMemo(() => ({ kind: "topAppBarScroll", token, mode }), [token, mode]);
 }

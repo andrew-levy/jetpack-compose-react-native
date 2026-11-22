@@ -3,23 +3,12 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.foundation.BasicTooltipState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.rememberBasicTooltipState
-import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyGridState
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
-import androidx.compose.foundation.pager.PagerState
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.material3.BottomSheetScaffoldState
 import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.DatePickerFormatter
 import androidx.compose.material3.DatePickerState
@@ -30,15 +19,11 @@ import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.TooltipState
-import androidx.compose.material3.SheetState
 import androidx.compose.material3.SwipeToDismissBoxState
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.TimePickerState
-import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberDateRangePickerState
-import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.material3.rememberSearchBarState
@@ -51,7 +36,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.focus.FocusProperties
 import androidx.compose.ui.focus.FocusState
+import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.heading
@@ -67,6 +55,10 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
@@ -96,14 +88,52 @@ internal fun JSONObject.toWindowInsets(): WindowInsets = WindowInsets(
   bottom = optDouble("bottom", 0.0).dp,
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-internal fun JSONObject.rememberComposeSheetState(): SheetState =
-  rememberModalBottomSheetState(skipPartiallyExpanded = optBoolean("skipPartiallyExpanded"))
-
 internal fun JSONObject.toDpSize(): DpSize = DpSize(getDouble("width").dp, getDouble("height").dp)
 
-internal fun JSONObject.toAnnotatedString(): AnnotatedString = AnnotatedString(getString("text"))
+internal fun JSONObject.toAnnotatedString(): AnnotatedString {
+  val text = getString("text")
+  if (!has("spans") && !has("annotations")) return AnnotatedString(text)
+  val builder = AnnotatedString.Builder(text)
+  optJSONArray("spans")?.let { spans ->
+    for (index in 0 until spans.length()) {
+      val span = spans.getJSONObject(index)
+      val (start, end) = span.textBounds(text.length)
+      builder.addStyle(SpanStyle(
+        color = span.textColor("color"),
+        background = span.textColor("background"),
+        fontSize = span.textUnit("fontSize"),
+        fontWeight = span.optString("fontWeight").takeIf { it.isNotEmpty() }?.let(::toComposeFontWeight),
+        fontStyle = if (span.has("italic")) {
+          if (span.getBoolean("italic")) FontStyle.Italic else FontStyle.Normal
+        } else null,
+        textDecoration = when (span.optString("decoration")) {
+          "underline" -> TextDecoration.Underline
+          "lineThrough" -> TextDecoration.LineThrough
+          "none" -> TextDecoration.None
+          else -> null
+        },
+      ), start, end)
+    }
+  }
+  optJSONArray("annotations")?.let { annotations ->
+    for (index in 0 until annotations.length()) {
+      val annotation = annotations.getJSONObject(index)
+      val (start, end) = annotation.textBounds(text.length)
+      builder.addStringAnnotation(annotation.getString("tag"), annotation.getString("value"), start, end)
+    }
+  }
+  return builder.toAnnotatedString()
+}
+
+private fun JSONObject.textBounds(length: Int): Pair<Int, Int> {
+  val start = getInt("start")
+  val end = getInt("end")
+  require(start in 0..length && end in start..length) { "Compose text span is outside the text" }
+  return start to end
+}
+
+private fun JSONObject.textColor(name: String): Color =
+  if (isNull(name)) Color.Unspecified else parseComposeColor(getString(name))
 
 internal fun JSONObject.toTextStyle(): TextStyle = TextStyle(
   color = optString("color").takeIf { it.isNotEmpty() }?.let(::parseComposeColor) ?: Color.Unspecified,
@@ -188,38 +218,11 @@ internal fun JSONObject.rememberComposeSwipeToDismissState(): SwipeToDismissBoxS
     },
   )
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-internal fun JSONObject.rememberComposeBottomSheetScaffoldState(): BottomSheetScaffoldState =
-  rememberBottomSheetScaffoldState(bottomSheetState = rememberStandardBottomSheetState(
-    skipHiddenState = optBoolean("skipHiddenState", true),
-  ))
-
-@Composable
-internal fun JSONObject.rememberComposeScrollState(): ScrollState =
-  rememberScrollState(optInt("initialOffsetPx"))
-
 internal fun JSONObject.toGridCells(): GridCells =
   if (has("count")) GridCells.Fixed(getInt("count")) else GridCells.Adaptive(getDouble("minSize").dp)
 
 internal fun JSONObject.toStaggeredGridCells(): StaggeredGridCells =
   if (has("count")) StaggeredGridCells.Fixed(getInt("count")) else StaggeredGridCells.Adaptive(getDouble("minSize").dp)
-
-@Composable
-internal fun JSONObject.rememberComposeLazyListState(): LazyListState =
-  rememberLazyListState(optInt("initialIndex"), optInt("initialOffsetPx"))
-
-@Composable
-internal fun JSONObject.rememberComposeLazyGridState(): LazyGridState =
-  rememberLazyGridState(optInt("initialIndex"), optInt("initialOffsetPx"))
-
-@Composable
-internal fun JSONObject.rememberComposeLazyStaggeredGridState(): LazyStaggeredGridState =
-  rememberLazyStaggeredGridState(optInt("initialIndex"), optInt("initialOffsetPx"))
-
-@Composable
-internal fun JSONObject.rememberComposePagerState(node: ComposeNode): PagerState =
-  rememberPagerState(initialPage = optInt("initialPage")) { node.children.size }
 
 internal fun RelativeLayoutBounds.toComposeSnapshot(): JSONObject = JSONObject()
   .put("width", boundsInRoot.width).put("height", boundsInRoot.height)
@@ -229,12 +232,25 @@ internal fun JSONObject.toFocusProperties(): FocusProperties.() -> Unit = {
   canFocus = getBoolean("canFocus")
 }
 
-internal fun JSONObject.toSemantics(): SemanticsPropertyReceiver.() -> Unit = {
+internal fun JSONObject.toSemantics(args: ComposeModifierArguments): SemanticsPropertyReceiver.() -> Unit = {
   if (this@toSemantics.has("contentDescription")) contentDescription = getString("contentDescription")
   if (this@toSemantics.has("stateDescription")) stateDescription = getString("stateDescription")
   if (this@toSemantics.has("role")) role = toComposeRole(getString("role"))
   if (optBoolean("heading")) heading()
   if (optBoolean("disabled")) disabled()
+  if (!isNull("onClick")) onClick(optString("onClickLabel").takeIf { it.isNotEmpty() }) {
+    args.emitValueEvent(this@toSemantics, "onClick", null)
+    true
+  }
+  optJSONArray("customActions")?.let { actions ->
+    customActions = List(actions.length()) { index ->
+      val action = actions.getJSONObject(index)
+      CustomAccessibilityAction(action.getString("label")) {
+        args.emitValueEvent(action, "onAction", null)
+        true
+      }
+    }
+  }
 }
 
 internal fun toComposeAlignmentLine(value: String): HorizontalAlignmentLine = when (value) {
@@ -307,3 +323,7 @@ private fun TextRange.toComposeSnapshot() = JSONObject().put("start", start).put
 @Composable
 internal fun JSONObject.rememberComposeCarouselState(node: ComposeNode): androidx.compose.material3.carousel.CarouselState =
   androidx.compose.material3.carousel.rememberCarouselState(initialItem = optInt("initialItem")) { node.children.size }
+
+internal fun TextLayoutResult.toComposeSnapshot(): JSONObject = JSONObject()
+  .put("width", size.width).put("height", size.height).put("lineCount", lineCount)
+  .put("didOverflowWidth", didOverflowWidth).put("didOverflowHeight", didOverflowHeight)

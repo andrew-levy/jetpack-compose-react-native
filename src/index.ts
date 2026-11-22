@@ -6,10 +6,13 @@ export type * from "./utils/composeValues";
 export {
   useFocusRequester, useBringIntoViewRequester, useInteractionSource, useLayoutBoundsHolder,
   usePullToRefreshState, useSliderState, useRangeSliderState,
+  useLazyListState, usePagerState, useScrollState, useModalBottomSheetState, useBottomSheetScaffoldState, useTopAppBarScrollBehavior,
 } from "./utils/nativeHandles";
 export type {
   ComposeFocusRequester, ComposeBringIntoViewRequester, ComposeInteractionSource, ComposeLayoutBoundsHolder,
   ComposePullToRefreshState, ComposeSliderState, ComposeRangeSliderState, ComposeSliderOptions, ComposeRangeSliderOptions,
+  ComposeLazyStateHandle, ComposePagerStateHandle, ComposeScrollStateHandle,
+  ComposeModalSheetStateHandle, ComposeBottomSheetScaffoldStateHandle,
 } from "./utils/nativeHandles";
 export type { ComposeBrush, ComposeShape } from "./utils/modifier";
 
@@ -18,3 +21,4 @@ export * from "./generated/factories";
 export { createComposableComponent } from "./generated/runtime/createComposableComponent";
 export type { ComposeModifier, ComposableDescription } from "./generated/runtime/createComposableComponent";
 export type { ComposableViewProps } from "./generated/runtime/shared";
+export { StickyHeader } from "./generated/runtime/StickyHeader";

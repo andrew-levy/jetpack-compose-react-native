@@ -81,6 +81,7 @@ if (mode === "audit") {
     ["dropShadow", "shadowValue"],
     ["layout", "layoutModifierMeasure"],
     ["pointerInteropFilter", "touchPolicy"],
+    ["pointerInput", "pointerPolicy"],
     ["onRotaryScrollEvent", "rotaryPolicy"],
   ]) {
     assert.ok(manifest.modifiers.some(modifier => modifier.name === name &&
@@ -122,6 +123,19 @@ if (mode === "audit") {
     parameters.some(({ name, kind }) => name === "finishedListener" &&
       kind === "eventTuple:androidx.compose.ui.unit.IntSize,androidx.compose.ui.unit.IntSize")));
   assert.ok(manifest.components.some(({ name }) => name === "MaterialExpressiveTheme"));
+  for (const name of ["ButtonGroup", "AppBarRow", "AppBarColumn"]) {
+    assert.ok(manifest.components.some(component => component.name === name &&
+      component.parameters.some(parameter => parameter.name === "items" && parameter.nativeName === "content") &&
+      component.parameters.some(parameter => parameter.name === "overflowIndicator" && parameter.optional)),
+      name + " must expose native overflow actions");
+  }
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "MediumTopAppBar" &&
+    parameters.some(({ kind }) => kind === "topAppBarScrollBehavior")));
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "AnimatedContent" &&
+    parameters.some(({ kind }) => kind === "contentTransition")));
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "BasicTextField" &&
+    parameters.some(({ kind }) => kind === "eventTextLayoutProvider") &&
+    parameters.some(({ kind }) => kind === "scrollState")));
   assert.ok(manifest.components.some(({ name, ownerScope }) => name === "NavigationBarItem" && ownerScope?.endsWith(".RowScope")));
   assert.ok(manifest.components.some(component => component.name === "Text" &&
     component.parameters.some(parameter => parameter.name === "composeTextStyle" && parameter.nativeName === "style")));

@@ -194,13 +194,16 @@ private class ComposeApiExtractor(
     for (parameter in fn.parameters) {
       val name = parameter.name?.asString() ?: return omit("unsupported", "Unnamed parameter")
       val type = parameter.type.resolve()
-      val isSlot = parameter.isContentSlot(type) || name == "content" && indexedContent != null
+      val actionItems = type.actionItemKind().takeIf { name == "content" }
+      val overflowScope = type.contentScope()?.takeIf { name == "overflowIndicator" && it in overflowMenuScopes }
+      val isSlot = actionItems == null && (parameter.isContentSlot(type) || name == "content" && indexedContent != null)
       if ((name == "content" || type.indexedSlotScope() != null) && isSlot && type.nullability == Nullability.NOT_NULL) {
         childrenParameter = name
         childrenScope = indexedContent ?: type.contentScope()
         continue
       }
       val publicName = when {
+        actionItems != null -> "items"
         name == "style" && type.name == "androidx.compose.ui.text.TextStyle" -> "composeTextStyle"
         name == "style" && type.name == "androidx.compose.foundation.style.Style" -> "composeStyle"
         else -> name
@@ -208,11 +211,12 @@ private class ComposeApiExtractor(
       val kind = when {
         parameter.isVararg || publicName in reservedProps -> null
         isSlot -> "slot"
+        actionItems != null -> actionItems
         name == "targetState" && indexedContent != null -> "int"
         else -> valueKinds[type.name] ?: componentValueKinds[type.name]
           ?: drawingValueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
           ?: type.rangeKind() ?: parameter.producerKind(type)
-          ?: type.drawingKind()
+          ?: type.drawingKind() ?: type.contentTransitionKind()
           ?: "gridConfig".takeIf { type.name == "kotlin.Function1" &&
             type.arguments.first().type?.resolve()?.name == "androidx.compose.foundation.layout.GridConfigurationScope" &&
             type.arguments.last().type?.resolve()?.name == "kotlin.Unit" }
@@ -227,7 +231,7 @@ private class ComposeApiExtractor(
         continue
       }
       val nullable = type.nullability == Nullability.NULLABLE && !(name == "targetState" && indexedContent != null)
-      supported += Parameter(publicName, kind, parameter.hasDefault, nullable,
+      supported += Parameter(publicName, kind, parameter.hasDefault || overflowScope != null, nullable,
         scope = if (isSlot) type.contentScope() else null, nativeName = name.takeIf { it != publicName })
     }
     if (omitted.any { it.required }) return omit("adapterRequired", "Required parameter cannot cross the bridge", omitted)
@@ -331,6 +335,8 @@ private class ComposeApiExtractor(
           val name = parameter.name?.asString() ?: return@mapNotNull omit("unsupported", "Unnamed parameter")
           val type = parameter.type.resolve()
           val kind = when {
+            qualifiedName == "androidx.compose.ui.input.pointer.pointerInput" && type.name == "kotlin.Any" ->
+              if (parameter.isVararg) "pointerKeys" else "string"
             parameter.isVararg -> modifierVarargKinds[type.name]
             qualifiedName == "androidx.compose.ui.layout.layoutId" && name == "layoutId" && type.name == "kotlin.Any" -> "string"
             else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
@@ -341,7 +347,7 @@ private class ComposeApiExtractor(
             val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
             omitted += OmittedParameter(name, type.signatureName(), reason, !parameter.hasDefault && !parameter.isVararg)
           } else {
-            parameters += Parameter(name, kind, parameter.hasDefault, type.nullability == Nullability.NULLABLE)
+            parameters += Parameter(name, kind, parameter.hasDefault, !parameter.isVararg && type.nullability == Nullability.NULLABLE)
           }
         }
         if (omitted.any { it.required }) return@mapNotNull omit("adapterRequired", "Required parameter cannot cross the bridge")
@@ -385,6 +391,10 @@ private class ComposeApiExtractor(
   )
 
   private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
+    val runtime = optional.filter { it.kind in newRuntimeKinds }
+    if (runtime.isNotEmpty()) {
+      return extendCallForms(optional, runtime, newlyBridgeable, 128, 5)
+    }
     val inferred = optional.filter { structuredValues.isInferredKind(it.kind) || it.kind.startsWith("eventTuple:") }
     if (inferred.isNotEmpty()) {
       // First build the previous surface with the new types removed. Applying
@@ -435,7 +445,7 @@ private class ComposeApiExtractor(
     } else emptyList()
     // Preserve the previously generated full form with each new option in isolation.
     val priorFull = old.sumOf(::bit)
-    val fullWithOne = added.filter { it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds }
+    val fullWithOne = added.filter { it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds || it.kind in newRuntimeKinds }
       .map { priorFull or bit(it) }
     val considered = (previousMasks + newMasks + pairedMasks + fullWithOne + (total - 1)).distinct().sorted()
     return CallForms(considered, total - considered.size)
@@ -614,10 +624,26 @@ private class ComposeApiExtractor(
     return arguments[0].type?.resolve()?.name?.takeIf { it in indexedSlotScopes }
   }
 
+  private fun KSType.contentTransitionKind(): String? =
+    "contentTransition".takeIf {
+      name == "kotlin.Function1" &&
+        arguments.first().type?.resolve()?.name == "androidx.compose.animation.AnimatedContentTransitionScope" &&
+        arguments.last().type?.resolve()?.name == "androidx.compose.animation.ContentTransform"
+    }
+
+  private fun KSType.actionItemKind(): String? {
+    if (name != "kotlin.Function1" || arguments.last().type?.resolve()?.name != "kotlin.Unit") return null
+    return when (arguments.first().type?.resolve()?.name) {
+      "androidx.compose.material3.ButtonGroupScope" -> "buttonGroupItems"
+      "androidx.compose.material3.AppBarRowScope", "androidx.compose.material3.AppBarColumnScope" -> "appBarItems"
+      else -> null
+    }
+  }
+
   private fun KSType.contentScope(): String? = when {
     indexedSlotScope() != null -> indexedSlotScope()
     name == "kotlin.Function1" -> arguments.first().type?.resolve()?.name?.takeIf {
-      it in scopes || it in lazyBuilderScopes || it == PADDING_VALUES
+      it in scopes || it in lazyBuilderScopes || it in overflowMenuScopes || it == PADDING_VALUES
     }
     else -> null
   }
@@ -627,6 +653,13 @@ private class ComposeApiExtractor(
     if (type.arguments.lastOrNull()?.type?.resolve()?.name != "kotlin.Unit") return null
     if (!parameter.startsWith("on") && parameter != "callback" && parameter != "watcher" &&
       !parameter.endsWith("Listener")) return null
+    if (type.name == "kotlin.Function2" && type.arguments[0].type?.resolve()?.name == "androidx.compose.ui.unit.Density") {
+      val provider = type.arguments[1].type?.resolve()
+      if (provider?.name == "kotlin.Function0" &&
+        provider.arguments.singleOrNull()?.type?.resolve()?.name == "androidx.compose.ui.text.TextLayoutResult") {
+        return "eventTextLayoutProvider"
+      }
+    }
     if (type.name in callbackTupleTypes && (this.type.annotations + type.annotations).none {
       it.annotationType.resolve().name in setOf(COMPOSABLE, "kotlin.ExtensionFunctionType")
     }) {
@@ -666,6 +699,7 @@ private class ComposeApiExtractor(
           if (argument.isMarkedNullable) "eventNullableLayoutPosition" else "eventLayoutPosition"
         "androidx.compose.ui.focus.FocusState" -> "eventFocusState"
         "androidx.compose.ui.text.input.TextFieldValue" -> "eventTextFieldValue"
+        "androidx.compose.ui.text.TextLayoutResult" -> "eventTextLayout"
         else -> if (argument?.rangeKind() == "floatRange") "eventFloatRange" else null
       }
       else -> null
@@ -724,7 +758,7 @@ private class ComposeApiExtractor(
 private fun String.inputType(): String = when {
   this in setOf("int", "long", "float", "double", "dp", "sp", "floatProducer") -> "number"
   this == "color" || startsWith("Compose") -> "string"
-  this == "floatRange" -> "tuple"
+  this in setOf("floatRange", "buttonGroupItems", "appBarItems", "pointerKeys") -> "tuple"
   this in setOf("alignmentLine", "visibilityScope", "lookaheadScope") -> "string"
   startsWith("record:") -> "object"
   this in objectKinds || this in textAdapterKinds ||
@@ -737,8 +771,11 @@ private val objectKinds = setOf("colorScheme", "paddingValues", "windowInsets", 
   "sheetState", "dpSize", "annotatedString", "textStyle", "painter", "datePickerState", "dateRangePickerState",
   "timePickerState", "swipeToDismissState", "bottomSheetScaffoldState", "scrollState", "gridCells", "staggeredGridCells",
   "lazyListState", "lazyGridState", "lazyStaggeredGridState", "pagerState", "textFieldState", "focusProperties", "semantics", "searchBarState", "basicTooltipState", "tooltipState",
-  "popupPosition", "dateFormatter", "snackbarHostState")
+  "popupPosition", "dateFormatter", "snackbarHostState", "topAppBarScrollBehavior", "contentTransition")
 
+private val newRuntimeKinds = setOf(
+  "topAppBarScrollBehavior", "contentTransition", "scrollState", "eventTextLayout", "eventTextLayoutProvider",
+)
 private val callbackTupleTypes = setOf("kotlin.Function2", "kotlin.Function3", "kotlin.Function4")
 private val callbackTupleValues = setOf(
   "kotlin.String", "kotlin.Boolean", "kotlin.Int", "kotlin.Long", "kotlin.Float", "kotlin.Double",
@@ -777,7 +814,7 @@ private val extendedCapabilityKinds = setOf(
   "carouselState", "overscrollEffect", "flingBehavior", "ComposeAutofillContentType",
   "sharedContentState", "boundsTransform", "visibilityScope", "lookaheadScope",
   "rotaryPolicy", "touchPolicy", "receiveContent", "indication", "rectRulers", "dpPoint", "keyboardActions",
-  "eventKeyboardAction", "eventDpSize", "eventMotion", "ComposeFrameRateCategory",
+  "eventKeyboardAction", "eventDpSize", "eventMotion", "ComposeFrameRateCategory", "pointerPolicy",
   "dragTypePolicy", "dragTransfer", "dragTarget", "eventInsets", "layoutMeasurePolicy", "layoutModifierMeasure"
 )
 private val preferredComponentKinds = setOf("int", "float", "double", "dp", "sp", "string", "boolean", "color",
@@ -792,6 +829,10 @@ private val lazyBuilderScopes = setOf(
   "androidx.compose.foundation.lazy.grid.LazyGridScope",
   "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope"
 )
+private val overflowMenuScopes = setOf(
+  "androidx.compose.material3.ButtonGroupMenuState",
+  "androidx.compose.material3.AppBarMenuState",
+)
 private const val PADDING_VALUES = "androidx.compose.foundation.layout.PaddingValues"
 private const val MODIFIER = "androidx.compose.ui.Modifier"
 private val drawingValueKinds = mapOf(
@@ -802,6 +843,7 @@ private val specializedModifierTypes = mapOf(
   "androidx.compose.foundation.gestures.AnchoredDraggableState" to "anchoredDragState"
 )
 private val modifierValueKinds = drawingValueKinds + specializedModifierTypes + mapOf(
+  "androidx.compose.ui.input.pointer.PointerInputEventHandler" to "pointerPolicy",
   "androidx.compose.foundation.content.ReceiveContentListener" to "receiveContent",
   "androidx.compose.ui.draganddrop.DragAndDropTarget" to "dragTarget",
   "androidx.compose.ui.layout.RectRulers" to "rectRulers",
@@ -878,7 +920,9 @@ private val scopedExtensionReceivers = setOf(
 )
 private val componentValueKinds = mapOf(
   "androidx.compose.material3.ColorScheme" to "colorScheme",
+  "androidx.compose.foundation.ScrollState" to "scrollState",
   "androidx.compose.material3.SheetState" to "sheetState",
+  "androidx.compose.material3.TopAppBarScrollBehavior" to "topAppBarScrollBehavior",
   "androidx.compose.material3.DatePickerState" to "datePickerState",
   "androidx.compose.material3.DateRangePickerState" to "dateRangePickerState",
   "androidx.compose.material3.TimePickerState" to "timePickerState",

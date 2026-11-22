@@ -1,4 +1,4 @@
-import type { ComposeRole } from "../generated/values";
+import type { ComposeFontWeight, ComposeRole } from "../generated/values";
 
 /** Dimensions are expressed in dp. */
 export type ComposeDpSize = { width: number; height: number };
@@ -9,7 +9,23 @@ export type ComposePaddingValues = { all?: number; horizontal?: number; vertical
 /** Physical window inset edges, expressed in dp. */
 export type ComposeWindowInsets = { left?: number; top?: number; right?: number; bottom?: number };
 
-export type ComposeAnnotatedString = { text: string };
+/** Span and annotation bounds are UTF-16 offsets with an exclusive end. */
+export type ComposeAnnotatedString = {
+  text: string;
+  spans?: readonly ComposeTextSpan[];
+  annotations?: readonly { start: number; end: number; tag: string; value: string }[];
+};
+
+export type ComposeTextSpan = {
+  start: number;
+  end: number;
+  color?: string;
+  background?: string;
+  fontSize?: number;
+  fontWeight?: ComposeFontWeight;
+  italic?: boolean;
+  decoration?: "none" | "underline" | "lineThrough";
+};
 
 export type ComposeTextStyle = {
   color?: string;
@@ -30,14 +46,43 @@ export type ComposeDateRangePickerState = {
 };
 export type ComposeTimePickerState = { initialHour?: number; initialMinute?: number; is24Hour?: boolean };
 export type ComposeSwipeToDismissState = { initialValue?: "settled" | "startToEnd" | "endToStart" };
-export type ComposeBottomSheetScaffoldState = { skipHiddenState?: boolean };
+type ObservedState<Snapshot> = { onStateChange?: (state: Snapshot) => void };
+
+export type ComposeSheetValue = "hidden" | "partiallyExpanded" | "expanded";
+export type ComposeSheetSnapshot = {
+  currentValue: ComposeSheetValue;
+  targetValue: ComposeSheetValue;
+  isVisible: boolean;
+};
+export type ComposeModalSheetState = ObservedState<ComposeSheetSnapshot> & { skipPartiallyExpanded?: boolean };
+export type ComposeBottomSheetScaffoldState = ObservedState<ComposeSheetSnapshot> & { skipHiddenState?: boolean };
 export type ComposeGridCells = { count: number } | { minSize: number };
-export type ComposeLazyState = { initialIndex?: number; initialOffsetPx?: number };
-export type ComposePagerState = { initialPage?: number };
-export type ComposeScrollState = { initialOffsetPx?: number };
+export type ComposeLazySnapshot = {
+  firstVisibleItemIndex: number;
+  firstVisibleItemScrollOffsetPx: number;
+  visibleItemIndices: readonly number[];
+  totalItemsCount: number;
+  isScrollInProgress: boolean;
+};
+export type ComposePagerSnapshot = {
+  currentPage: number;
+  settledPage: number;
+  targetPage: number;
+  currentPageOffsetFraction: number;
+  isScrollInProgress: boolean;
+};
+export type ComposeScrollSnapshot = { offsetPx: number; maxOffsetPx: number; isScrollInProgress: boolean };
+export type ComposeLazyState = ObservedState<ComposeLazySnapshot> & { initialIndex?: number; initialOffsetPx?: number };
+export type ComposePagerState = ObservedState<ComposePagerSnapshot> & { initialPage?: number };
+export type ComposeScrollState = ObservedState<ComposeScrollSnapshot> & { initialOffsetPx?: number };
 
 /** Sizes and coordinates reported by Compose use physical pixels. */
 export type ComposeLayoutSize = { width: number; height: number };
+export type ComposeTextLayout = ComposeLayoutSize & {
+  lineCount: number;
+  didOverflowWidth: boolean;
+  didOverflowHeight: boolean;
+};
 export type ComposeLayoutPosition = ComposeLayoutSize & { x: number; y: number };
 export type ComposeFocusState = { isFocused: boolean; hasFocus: boolean; isCaptured: boolean };
 
@@ -48,6 +93,9 @@ export type ComposeSemantics = {
   role?: ComposeRole;
   heading?: boolean;
   disabled?: boolean;
+  onClickLabel?: string;
+  onClick?: () => void;
+  customActions?: readonly { label: string; onAction: () => void }[];
 };
 export type ComposeFocusProperties = { canFocus: boolean };
 
@@ -65,6 +113,13 @@ export type ComposeSnackbarHostState = { message?: string };
 
 /** Fractions of the available delta or velocity consumed natively, from zero to one. */
 export type ComposeAxisConsumption = { x?: number; y?: number };
+export type ComposeTopAppBarScrollMode = "pinned" | "enterAlways" | "exitUntilCollapsed";
+export type ComposeTopAppBarScrollBehavior = {
+  readonly kind: "topAppBarScroll";
+  readonly token: string;
+  readonly mode: ComposeTopAppBarScrollMode;
+};
+
 export type ComposeNestedScrollConnection = {
   preScroll?: ComposeAxisConsumption;
   postScroll?: ComposeAxisConsumption;
@@ -72,6 +127,7 @@ export type ComposeNestedScrollConnection = {
   postFling?: ComposeAxisConsumption;
   userInputOnly?: boolean;
 };
+export type ComposeNestedScrollBehavior = ComposeNestedScrollConnection | ComposeTopAppBarScrollBehavior;
 
 /** Android key codes consumed synchronously by this modifier. */
 export type ComposeKeyPolicy = { keyCodes: readonly number[]; event?: "down" | "up" | "both" };
@@ -86,7 +142,14 @@ export type ComposeAnimationSpec =
 
 export type ComposeVisibilityTransition =
   | { type: "none" }
-  | { type: "fade"; alpha?: number; animationSpec?: ComposeAnimationSpec };
+  | { type: "fade"; alpha?: number; animationSpec?: ComposeAnimationSpec }
+  | { type: "scale"; scale?: number; animationSpec?: ComposeAnimationSpec }
+  | { type: "slide"; direction: "up" | "down" | "left" | "right"; fraction?: number; animationSpec?: ComposeAnimationSpec };
+
+export type ComposeContentTransition = {
+  enter: ComposeVisibilityTransition;
+  exit: ComposeVisibilityTransition;
+};
 
 export type ComposeTextRange = { start: number; end: number };
 export type ComposeTextFieldValue = {
@@ -287,3 +350,28 @@ export type ComposeKeyboardActions = {
 export type ComposeDragTransfer = { text: string; label?: string };
 export type ComposeDragTypes = { mimeTypes: readonly string[] };
 export type ComposeDragTarget = { onDrop: (text: string) => void };
+
+type ComposeAction = { label: string; enabled?: boolean } & (
+  | { checked?: never; onClick: () => void; onCheckedChange?: never }
+  | { checked: boolean; onCheckedChange: (checked: boolean) => void; onClick?: never }
+);
+
+export type ComposeButtonGroupItem = ComposeAction & { icon?: ComposePainter; weight?: number };
+export type ComposeAppBarItem = ComposeAction & { icon: ComposePainter };
+
+export type ComposePointerChange = {
+  id: string;
+  uptimeMillis: number;
+  position: { x: number; y: number };
+  previousPosition: { x: number; y: number };
+  pressed: boolean;
+  previousPressed: boolean;
+  consumed: boolean;
+  pointerType: string;
+};
+
+export type ComposePointerPolicy = {
+  pass?: "initial" | "main" | "final";
+  consume?: "none" | "movement" | "all";
+  onEvent?: (event: { type: string; changes: readonly ComposePointerChange[] }) => void;
+};

@@ -36,6 +36,9 @@ if (candidateDir.isPresent) {
         "generated/ComposeInteractionValues.kt",
         "generated/ComposeInputPolicies.kt",
         "generated/ComposeNativeHandles.kt",
+        "generated/ComposeStateControls.kt",
+        "generated/ComposeOverflowActions.kt",
+        "generated/ComposePointerPolicy.kt",
         "generated/ComposeModifierArguments.kt",
         "generated/ComposeNode.kt",
         "generated/RenderComposeChildren.kt"

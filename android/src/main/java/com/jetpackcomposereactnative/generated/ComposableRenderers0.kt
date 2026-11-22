@@ -1337,8 +1337,9 @@ internal object RendererAlertDialog {
 internal object RendererAnimatedContent {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("contentAlignment")) 1 else 0) +
-      (if (node.has("label")) 2 else 0)
+    val mask = (if (node.has("transitionSpec")) 1 else 0) +
+      (if (node.has("contentAlignment")) 2 else 0) +
+      (if (node.has("label")) 4 else 0)
     when (mask) {
       0 -> androidx.compose.animation.AnimatedContent(
         `targetState` = node.number("targetState").toInt(),
@@ -1348,18 +1349,46 @@ internal object RendererAnimatedContent {
       1 -> androidx.compose.animation.AnimatedContent(
         `targetState` = node.number("targetState").toInt(),
         `modifier` = node.modifier("modifier", scope),
-        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
+        `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
         content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
       )
       2 -> androidx.compose.animation.AnimatedContent(
         `targetState` = node.number("targetState").toInt(),
         `modifier` = node.modifier("modifier", scope),
-        `label` = node.string("label"),
+        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
         content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
       )
       3 -> androidx.compose.animation.AnimatedContent(
         `targetState` = node.number("targetState").toInt(),
         `modifier` = node.modifier("modifier", scope),
+        `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
+        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
+        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      4 -> androidx.compose.animation.AnimatedContent(
+        `targetState` = node.number("targetState").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `label` = node.string("label"),
+        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      5 -> androidx.compose.animation.AnimatedContent(
+        `targetState` = node.number("targetState").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
+        `label` = node.string("label"),
+        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      6 -> androidx.compose.animation.AnimatedContent(
+        `targetState` = node.number("targetState").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
+        `label` = node.string("label"),
+        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+      )
+      7 -> androidx.compose.animation.AnimatedContent(
+        `targetState` = node.number("targetState").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
         `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
         `label` = node.string("label"),
         content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
@@ -1428,6 +1457,74 @@ internal object RendererAnimatedVisibility {
         `exit` = node.jsonObject("exit").toComposeExitTransition(),
         `label` = node.string("label"),
         content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.AppBarColumn(overflowIndicator: kotlin.Function1<androidx.compose.material3.AppBarMenuState, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, maxItemCount: kotlin.Int, content: kotlin.Function1<androidx.compose.material3.AppBarColumnScope, kotlin.Unit>)
+internal object RendererAppBarColumn {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("overflowIndicator")) 1 else 0) +
+      (if (node.has("maxItemCount")) 2 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.AppBarColumn(
+        `modifier` = node.modifier("modifier", scope),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+      )
+      1 -> androidx.compose.material3.AppBarColumn(
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+        `modifier` = node.modifier("modifier", scope),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+      )
+      2 -> androidx.compose.material3.AppBarColumn(
+        `modifier` = node.modifier("modifier", scope),
+        `maxItemCount` = node.number("maxItemCount").toInt(),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+      )
+      3 -> androidx.compose.material3.AppBarColumn(
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxItemCount` = node.number("maxItemCount").toInt(),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.AppBarRow(overflowIndicator: kotlin.Function1<androidx.compose.material3.AppBarMenuState, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, maxItemCount: kotlin.Int, content: kotlin.Function1<androidx.compose.material3.AppBarRowScope, kotlin.Unit>)
+internal object RendererAppBarRow {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("overflowIndicator")) 1 else 0) +
+      (if (node.has("maxItemCount")) 2 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.AppBarRow(
+        `modifier` = node.modifier("modifier", scope),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+      )
+      1 -> androidx.compose.material3.AppBarRow(
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+        `modifier` = node.modifier("modifier", scope),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+      )
+      2 -> androidx.compose.material3.AppBarRow(
+        `modifier` = node.modifier("modifier", scope),
+        `maxItemCount` = node.number("maxItemCount").toInt(),
+        `content` = node.arguments().toComposeAppBarItems("items"),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+      )
+      3 -> androidx.compose.material3.AppBarRow(
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
+        `modifier` = node.modifier("modifier", scope),
+        `maxItemCount` = node.number("maxItemCount").toInt(),
+        `content` = node.arguments().toComposeAppBarItems("items"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }

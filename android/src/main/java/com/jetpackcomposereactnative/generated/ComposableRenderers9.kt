@@ -22,7 +22,7 @@ internal object RendererModalBottomSheet {
   @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val sheetStateValue = if (node.has("sheetState") && !node.isNull("sheetState")) node.jsonObject("sheetState").rememberComposeSheetState() else null
+    val sheetStateValue = if (node.has("sheetState") && !node.isNull("sheetState")) node.jsonObject("sheetState").rememberComposeSheetState(node.arguments()) else null
     val content_dragHandle: @Composable () -> Unit = { RenderComposeChildren(node.slot("dragHandle")) }
     val slot_dragHandle = if (node.isNull("dragHandle")) null else content_dragHandle
     val mask = (if (node.has("sheetState")) 1 else 0) +

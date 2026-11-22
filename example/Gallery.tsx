@@ -1,11 +1,12 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
-  AlertDialog, AnimatedVisibility, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
+  AlertDialog, AnimatedContent, AnimatedVisibility, AppBarRow, ButtonGroup, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
   Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
   Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeLayoutSize, type ComposeTextFieldValue,
+  StickyHeader, MediumTopAppBar, useLazyListState, useModalBottomSheetState, usePagerState, useTopAppBarScrollBehavior,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -57,6 +58,7 @@ function Buttons() {
   const [count, setCount] = useState(0);
   const [customAccent, setCustomAccent] = useState(false);
   const [expressive, setExpressive] = useState(false);
+  const [overflowSaved, setOverflowSaved] = useState(false);
   function increment() {
     setCount((value) => value + 1);
   }
@@ -99,6 +101,17 @@ function Buttons() {
             </ToggleButton>
             <Spacer modifiers={Modifier.width(8)} />
             <OutlinedButton enabled={false} onClick={increment}><Text text="Disabled" /></OutlinedButton>
+          </Row>
+          <ButtonGroup items={[
+            { label: "Decrease", onClick: () => setCount(value => Math.max(0, value - 1)) },
+            { label: "Increase", onClick: increment },
+          ]} />
+          <Row verticalAlignment="centerVertically">
+            <AppBarRow maxItemCount={1} items={[
+              { label: "First action", icon: { color: "#65438f" }, onClick: increment },
+              { label: "Save draft", icon: { color: "#00726a" }, onClick: () => setOverflowSaved(true) },
+            ]} />
+            {overflowSaved && <Text text="Saved from overflow" />}
           </Row>
         </Column>
       </Theme>
@@ -285,6 +298,7 @@ function BridgeCapabilities() {
 
 function BridgeAdditions() {
   const [dragged, setDragged] = useState(false);
+  const [pointerSeen, setPointerSeen] = useState(false);
   const [destination, setDestination] = useState(0);
   const [sizeAnimationFinished, setSizeAnimationFinished] = useState(false);
 
@@ -295,9 +309,10 @@ function BridgeAdditions() {
           contentAlignment="center"
           modifiers={fullWidth.height(56).background("#e0d5fa")
             .semantics({ contentDescription: "Drag surface" })
+            .pointerInput({ key1: "observe", block: { onEvent: () => setPointerSeen(true) } })
             .draggable({ orientation: "horizontal", state: { onDelta: () => setDragged(true) } })}
         >
-          <Text text={dragged ? "Drag reported to React" : "Drag horizontally"} />
+          <Text text={dragged && pointerSeen ? "Drag reported to React" : "Drag horizontally"} />
         </Box>
         <Grid config={{ columns: [{ fr: 1 }, { fr: 1 }], rows: ["auto"], gap: 8 }} modifiers={fullWidth.padding(8)}>
           <Text text="Compose grid child" modifiers={Modifier.gridItem({ column: 1 })} />
@@ -307,7 +322,9 @@ function BridgeAdditions() {
           modifiers={fullWidth}
           measurePolicy={{ height: 40, children: [{}, { horizontalBias: 1, verticalBias: 1 }] }}
         >
-          <Text text="Layout start" modifiers={Modifier.layout({ height: 28 })} />
+          <Text text="Layout start" modifiers={Modifier.layout({ height: 28 }).semantics({
+            customActions: [{ label: "Reset drag indicator", onAction: () => setDragged(false) }],
+          })} />
           <RNText>Layout end</RNText>
         </Layout>
         <Button
@@ -335,6 +352,13 @@ function BridgeAdditions() {
           </Box>
         </Box>
         {sizeAnimationFinished && <Text text="Size animation callback received" />}
+        <AnimatedContent targetState={destination} transitionSpec={{
+          enter: { type: "slide", direction: "right", fraction: 0.5 },
+          exit: { type: "scale", scale: 0.8 },
+        }}>
+          <Text key="first" text="Sliding content start" />
+          <Text key="second" text="Sliding content end" />
+        </AnimatedContent>
         <TextField
           modifiers={fullWidth.semantics({ contentDescription: "Native phone input" })}
           state={{ initialText: "1234" }}
@@ -352,6 +376,14 @@ function Collections() {
   const [measured, setMeasured] = useState(false);
   const [selected, setSelected] = useState(false);
   const [numericTime, setNumericTime] = useState(false);
+  const [firstRow, setFirstRow] = useState(2);
+  const [headerMeasured, setHeaderMeasured] = useState(false);
+  const [settledPage, setSettledPage] = useState(1);
+  const list = useLazyListState({ initialIndex: 2, onStateChange: ({ firstVisibleItemIndex }) => {
+    setFirstRow(firstVisibleItemIndex);
+  } });
+  const pager = usePagerState({ initialPage: 1, onStateChange: (state) => setSettledPage(state.settledPage) });
+  const toolbar = useTopAppBarScrollBehavior("exitUntilCollapsed");
   return (
     <>
       <Demo title="Native list and layout callbacks">
@@ -364,16 +396,25 @@ function Collections() {
           <Spacer modifiers={Modifier.width(8)} />
           <Text text={measured ? "Layout reported to React" : "Measuring layout"} />
         </Row>
-        <LazyColumn
-          style={{ height: 114 }}
-          modifiers={fullWidth}
-          state={{ initialIndex: 1 }}
-          contentPadding={{ top: 4, bottom: 4 }}
-        >
-          {Array.from({ length: 8 }, (_, index) => (
-            <Text key={index} text={`Native row ${index + 1}`} modifiers={Modifier.height(36)} />
-          ))}
-        </LazyColumn>
+        <Column modifiers={fullWidth.nestedScroll(toolbar)}>
+          <MediumTopAppBar title={<Text text="Native feed toolbar" />} scrollBehavior={toolbar}
+            windowInsets={{}} modifiers={Modifier.semantics({ contentDescription: "Collapsing feed toolbar" })} />
+          <LazyColumn modifiers={fullWidth.height(132)} state={list} contentPadding={{ top: 4, bottom: 4 }}>
+            <StickyHeader>
+              <Text text={{ text: "Pinned feed header", spans: [{ start: 0, end: 6, fontWeight: "bold" }] }}
+                onTextLayout={({ lineCount, width }) => setHeaderMeasured(lineCount === 1 && width > 0)}
+                modifiers={fullWidth.background("#ede5fc").height(22)} />
+            </StickyHeader>
+            {Array.from({ length: 12 }, (_, index) => (
+              <Text key={index} text={`Native row ${index + 1}`} modifiers={Modifier.height(36)} />
+            ))}
+          </LazyColumn>
+        </Column>
+        <Row modifiers={fullWidth} verticalAlignment="centerVertically">
+          <Button onClick={() => list.scrollToItem(6)}><Text text="Jump to row 6" /></Button>
+          <Spacer modifiers={Modifier.width(8)} />
+          <Text text={headerMeasured ? `First row: ${firstRow}` : "Measuring header"} />
+        </Row>
       </Demo>
       <Demo title="Native grid and tri-state selection">
         <LazyVerticalGrid columns={{ count: 2 }} style={{ height: 108 }} modifiers={fullWidth}>
@@ -387,7 +428,11 @@ function Collections() {
         </Row>
       </Demo>
       <Demo title="Swipeable pages">
-        <HorizontalPager state={{ initialPage: 1 }} style={{ height: 100 }} modifiers={fullWidth}>
+        <Row modifiers={fullWidth} verticalAlignment="centerVertically">
+          <Button onClick={() => pager.animateScrollToPage(2)}><Text text="Jump to third page" /></Button>
+          <Text text={`Settled page: ${settledPage + 1}`} />
+        </Row>
+        <HorizontalPager state={pager} style={{ height: 100 }} modifiers={fullWidth}>
           {["First page", "Second page", "Third page"].map((page) => (
             <Box key={page} modifiers={Modifier.fillMaxSize().background("#e2d1fc")} contentAlignment="center">
               <Text text={page} />
@@ -569,6 +614,14 @@ export function Overlays() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [snackbar, setSnackbar] = useState(false);
+  const sheetWasVisible = useRef(false);
+  const sheet = useModalBottomSheetState({
+    skipPartiallyExpanded: true,
+    onStateChange: ({ currentValue, isVisible }) => {
+      if (isVisible) sheetWasVisible.current = true;
+      if (currentValue === "hidden" && sheetWasVisible.current) setOpen(false);
+    },
+  });
   function chooseItem() {
     setMenu(false);
     setSnackbar(true);
@@ -583,17 +636,20 @@ export function Overlays() {
               <RNText>React Native inside Compose</RNText>
             </BoxWithConstraints>
           </BottomAppBar>
-          <Button onClick={() => setOpen(true)}><Text text="Open generated sheet" /></Button>
+          <Button onClick={() => {
+            sheetWasVisible.current = false;
+            setOpen(true);
+          }}><Text text="Open generated sheet" /></Button>
           {open && (
             <ModalBottomSheet
               onDismissRequest={() => setOpen(false)}
-              sheetState={{ skipPartiallyExpanded: true }}
+              sheetState={sheet}
             >
               <Column modifiers={Modifier.fillMaxWidth().padding(20)}>
                 <Text text="Native sheet state" fontSize={23} fontWeight="bold" />
                 <RNText style={styles.marker}>React Native content in the sheet</RNText>
                 <Spacer modifiers={Modifier.height(12)} />
-                <Button onClick={() => setOpen(false)}><Text text="Close generated sheet" /></Button>
+                <Button onClick={sheet.hide}><Text text="Close generated sheet" /></Button>
               </Column>
             </ModalBottomSheet>
           )}

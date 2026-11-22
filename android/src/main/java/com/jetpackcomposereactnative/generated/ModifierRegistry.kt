@@ -127,25 +127,26 @@ import androidx.compose.ui.input.key.onPreviewKeyEvent as composeModifier116
 import androidx.compose.ui.input.nestedscroll.nestedScroll as composeModifier117
 import androidx.compose.ui.input.pointer.motionEventSpy as composeModifier118
 import androidx.compose.ui.input.pointer.pointerHoverIcon as composeModifier119
-import androidx.compose.ui.input.pointer.pointerInteropFilter as composeModifier120
-import androidx.compose.ui.input.pointer.stylusHoverIcon as composeModifier121
-import androidx.compose.ui.input.rotary.onPreRotaryScrollEvent as composeModifier122
-import androidx.compose.ui.input.rotary.onRotaryScrollEvent as composeModifier123
-import androidx.compose.ui.keepScreenOn as composeModifier124
-import androidx.compose.ui.layout.layout as composeModifier125
-import androidx.compose.ui.layout.layoutBounds as composeModifier126
-import androidx.compose.ui.layout.layoutId as composeModifier127
-import androidx.compose.ui.layout.onGloballyPositioned as composeModifier128
-import androidx.compose.ui.layout.onLayoutRectChanged as composeModifier129
-import androidx.compose.ui.layout.onPlaced as composeModifier130
-import androidx.compose.ui.layout.onSizeChanged as composeModifier131
-import androidx.compose.ui.layout.onVisibilityChanged as composeModifier132
-import androidx.compose.ui.platform.testTag as composeModifier133
-import androidx.compose.ui.preferredFrameRate as composeModifier134
-import androidx.compose.ui.semantics.clearAndSetSemantics as composeModifier135
-import androidx.compose.ui.semantics.semantics as composeModifier136
-import androidx.compose.ui.sensitiveContent as composeModifier137
-import androidx.compose.ui.zIndex as composeModifier138
+import androidx.compose.ui.input.pointer.pointerInput as composeModifier120
+import androidx.compose.ui.input.pointer.pointerInteropFilter as composeModifier121
+import androidx.compose.ui.input.pointer.stylusHoverIcon as composeModifier122
+import androidx.compose.ui.input.rotary.onPreRotaryScrollEvent as composeModifier123
+import androidx.compose.ui.input.rotary.onRotaryScrollEvent as composeModifier124
+import androidx.compose.ui.keepScreenOn as composeModifier125
+import androidx.compose.ui.layout.layout as composeModifier126
+import androidx.compose.ui.layout.layoutBounds as composeModifier127
+import androidx.compose.ui.layout.layoutId as composeModifier128
+import androidx.compose.ui.layout.onGloballyPositioned as composeModifier129
+import androidx.compose.ui.layout.onLayoutRectChanged as composeModifier130
+import androidx.compose.ui.layout.onPlaced as composeModifier131
+import androidx.compose.ui.layout.onSizeChanged as composeModifier132
+import androidx.compose.ui.layout.onVisibilityChanged as composeModifier133
+import androidx.compose.ui.platform.testTag as composeModifier134
+import androidx.compose.ui.preferredFrameRate as composeModifier135
+import androidx.compose.ui.semantics.clearAndSetSemantics as composeModifier136
+import androidx.compose.ui.semantics.semantics as composeModifier137
+import androidx.compose.ui.sensitiveContent as composeModifier138
+import androidx.compose.ui.zIndex as composeModifier139
 
 @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class, androidx.compose.foundation.layout.ExperimentalFlexBoxApi::class, androidx.compose.foundation.layout.ExperimentalGridApi::class, androidx.compose.foundation.layout.ExperimentalLayoutApi::class, androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModifierArguments, scope: Any?): Modifier? = when (id) {
@@ -355,6 +356,9 @@ internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModi
   203 -> apply203(modifier, args)
   204 -> apply204(modifier, args)
   205 -> apply205(modifier, args)
+  206 -> apply206(modifier, args)
+  207 -> apply207(modifier, args)
+  208 -> apply208(modifier, args)
   else -> error("Unknown generated Compose modifier: " + id)
 }
 
@@ -1489,14 +1493,14 @@ private fun apply35(modifier: Modifier, args: ComposeModifierArguments): Modifie
     (if (args.has("flingBehavior")) 2 else 0) +
     (if (args.has("reverseScrolling")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier19(`state` = scrollState) }
-    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled")) }
-    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier19(`state` = scrollState, `reverseScrolling` = args.boolean("reverseScrolling")) }
-    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier19(`state` = scrollState) }
+    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled")) }
+    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier19(`state` = scrollState, `reverseScrolling` = args.boolean("reverseScrolling")) }
+    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -1507,14 +1511,14 @@ private fun apply36(modifier: Modifier, args: ComposeModifierArguments): Modifie
     (if (args.has("flingBehavior")) 2 else 0) +
     (if (args.has("reverseScrolling")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect)) }
-    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled")) }
-    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect)) }
+    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled")) }
+    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier19(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -2616,14 +2620,14 @@ private fun apply142(modifier: Modifier, args: ComposeModifierArguments): Modifi
     (if (args.has("flingBehavior")) 2 else 0) +
     (if (args.has("reverseScrolling")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier87(`state` = scrollState) }
-    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled")) }
-    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier87(`state` = scrollState, `reverseScrolling` = args.boolean("reverseScrolling")) }
-    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier87(`state` = scrollState) }
+    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled")) }
+    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier87(`state` = scrollState, `reverseScrolling` = args.boolean("reverseScrolling")) }
+    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -2634,14 +2638,14 @@ private fun apply143(modifier: Modifier, args: ComposeModifierArguments): Modifi
     (if (args.has("flingBehavior")) 2 else 0) +
     (if (args.has("reverseScrolling")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect)) }
-    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled")) }
-    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
-    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
-    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    0 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect)) }
+    1 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled")) }
+    2 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    3 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior)) }
+    4 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    5 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    6 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
+    7 -> modifier.composed { val scrollState = args.jsonObject("state").rememberComposeScrollState(args); val overscrollEffect = if (args.isNull("overscrollEffect")) null else args.jsonObject("overscrollEffect").rememberComposeOverscrollEffect(); val flingBehavior = if (args.isNull("flingBehavior")) null else args.jsonObject("flingBehavior").rememberComposeFlingBehavior(); composeModifier87(`state` = scrollState, `overscrollEffect` = if (args.isNull("overscrollEffect")) null else (overscrollEffect), `enabled` = args.boolean("enabled"), `flingBehavior` = if (args.isNull("flingBehavior")) null else (flingBehavior), `reverseScrolling` = args.boolean("reverseScrolling")) }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -4230,7 +4234,7 @@ private fun apply182(modifier: Modifier, args: ComposeModifierArguments): Modifi
 
 // androidx.compose.ui.input.nestedscroll.nestedScroll [receiver: androidx.compose.ui.Modifier](connection: androidx.compose.ui.input.nestedscroll.NestedScrollConnection, dispatcher: androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher?)
 private fun apply183(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier117(`connection` = args.jsonObject("connection").toComposeNestedScrollConnection())
+  modifier.composed { val nestedScrollConnection = args.jsonObject("connection").rememberComposeNestedScrollConnection(); composeModifier117(`connection` = nestedScrollConnection) }
 
 // androidx.compose.ui.input.pointer.motionEventSpy [receiver: androidx.compose.ui.Modifier](watcher: kotlin.Function1<android.view.MotionEvent, kotlin.Unit>)
 private fun apply184(modifier: Modifier, args: ComposeModifierArguments): Modifier =
@@ -4246,126 +4250,138 @@ private fun apply185(modifier: Modifier, args: ComposeModifierArguments): Modifi
   }
 }
 
-// androidx.compose.ui.input.pointer.pointerInteropFilter [receiver: androidx.compose.ui.Modifier](requestDisallowInterceptTouchEvent: androidx.compose.ui.input.pointer.RequestDisallowInterceptTouchEvent?, onTouchEvent: kotlin.Function1<android.view.MotionEvent, kotlin.Boolean>)
+// androidx.compose.ui.input.pointer.pointerInput [receiver: androidx.compose.ui.Modifier](key1: kotlin.Any?, block: androidx.compose.ui.input.pointer.PointerInputEventHandler)
 private fun apply186(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier120(`onTouchEvent` = args.jsonObject("onTouchEvent").toComposeTouchPolicy(args))
+  modifier.composed { val pointerPolicy = args.rememberComposePointerPolicy("block"); composeModifier120(`key1` = if (args.isNull("key1")) null else (args.string("key1")), `block` = pointerPolicy) }
+
+// androidx.compose.ui.input.pointer.pointerInput [receiver: androidx.compose.ui.Modifier](key1: kotlin.Any?, key2: kotlin.Any?, block: androidx.compose.ui.input.pointer.PointerInputEventHandler)
+private fun apply187(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composed { val pointerPolicy = args.rememberComposePointerPolicy("block"); composeModifier120(`key1` = if (args.isNull("key1")) null else (args.string("key1")), `key2` = if (args.isNull("key2")) null else (args.string("key2")), `block` = pointerPolicy) }
+
+// androidx.compose.ui.input.pointer.pointerInput [receiver: androidx.compose.ui.Modifier](vararg keys: kotlin.Any?, block: androidx.compose.ui.input.pointer.PointerInputEventHandler)
+private fun apply188(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composed { val pointerPolicy = args.rememberComposePointerPolicy("block"); composeModifier120(`keys` = *args.jsonArray("keys").toComposePointerKeys(), `block` = pointerPolicy) }
+
+// androidx.compose.ui.input.pointer.pointerInteropFilter [receiver: androidx.compose.ui.Modifier](requestDisallowInterceptTouchEvent: androidx.compose.ui.input.pointer.RequestDisallowInterceptTouchEvent?, onTouchEvent: kotlin.Function1<android.view.MotionEvent, kotlin.Boolean>)
+private fun apply189(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier121(`onTouchEvent` = args.jsonObject("onTouchEvent").toComposeTouchPolicy(args))
 
 // androidx.compose.ui.input.pointer.stylusHoverIcon [receiver: androidx.compose.ui.Modifier](icon: androidx.compose.ui.input.pointer.PointerIcon, overrideDescendants: kotlin.Boolean, touchBoundsExpansion: androidx.compose.ui.node.DpTouchBoundsExpansion?)
-private fun apply187(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply190(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("overrideDescendants")) 1 else 0) +
     (if (args.has("touchBoundsExpansion")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")))
-    1 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")), `overrideDescendants` = args.boolean("overrideDescendants"))
-    2 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")), `touchBoundsExpansion` = if (args.isNull("touchBoundsExpansion")) null else (args.jsonObject("touchBoundsExpansion").decodeComposeDpTouchBoundsExpansionValue()))
-    3 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")), `overrideDescendants` = args.boolean("overrideDescendants"), `touchBoundsExpansion` = if (args.isNull("touchBoundsExpansion")) null else (args.jsonObject("touchBoundsExpansion").decodeComposeDpTouchBoundsExpansionValue()))
+    0 -> modifier.composeModifier122(`icon` = toComposePointerIcon(args.string("icon")))
+    1 -> modifier.composeModifier122(`icon` = toComposePointerIcon(args.string("icon")), `overrideDescendants` = args.boolean("overrideDescendants"))
+    2 -> modifier.composeModifier122(`icon` = toComposePointerIcon(args.string("icon")), `touchBoundsExpansion` = if (args.isNull("touchBoundsExpansion")) null else (args.jsonObject("touchBoundsExpansion").decodeComposeDpTouchBoundsExpansionValue()))
+    3 -> modifier.composeModifier122(`icon` = toComposePointerIcon(args.string("icon")), `overrideDescendants` = args.boolean("overrideDescendants"), `touchBoundsExpansion` = if (args.isNull("touchBoundsExpansion")) null else (args.jsonObject("touchBoundsExpansion").decodeComposeDpTouchBoundsExpansionValue()))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.input.rotary.onPreRotaryScrollEvent [receiver: androidx.compose.ui.Modifier](onPreRotaryScrollEvent: kotlin.Function1<androidx.compose.ui.input.rotary.RotaryScrollEvent, kotlin.Boolean>)
-private fun apply188(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier122(`onPreRotaryScrollEvent` = args.jsonObject("onPreRotaryScrollEvent").toComposeRotaryPolicy(args))
+private fun apply191(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier123(`onPreRotaryScrollEvent` = args.jsonObject("onPreRotaryScrollEvent").toComposeRotaryPolicy(args))
 
 // androidx.compose.ui.input.rotary.onRotaryScrollEvent [receiver: androidx.compose.ui.Modifier](onRotaryScrollEvent: kotlin.Function1<androidx.compose.ui.input.rotary.RotaryScrollEvent, kotlin.Boolean>)
-private fun apply189(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier123(`onRotaryScrollEvent` = args.jsonObject("onRotaryScrollEvent").toComposeRotaryPolicy(args))
+private fun apply192(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier124(`onRotaryScrollEvent` = args.jsonObject("onRotaryScrollEvent").toComposeRotaryPolicy(args))
 
 // androidx.compose.ui.keepScreenOn [receiver: androidx.compose.ui.Modifier]()
-private fun apply190(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier124()
+private fun apply193(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier125()
 
 // androidx.compose.ui.layout.layout [receiver: androidx.compose.ui.Modifier](measure: kotlin.Function3<androidx.compose.ui.layout.MeasureScope, androidx.compose.ui.layout.Measurable, androidx.compose.ui.unit.Constraints, androidx.compose.ui.layout.MeasureResult>)
-private fun apply191(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier125(`measure` = args.jsonObject("measure").toComposeLayoutModifierMeasure())
+private fun apply194(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier126(`measure` = args.jsonObject("measure").toComposeLayoutModifierMeasure())
 
 // androidx.compose.ui.layout.layoutBounds [receiver: androidx.compose.ui.Modifier](holder: androidx.compose.ui.layout.LayoutBoundsHolder)
-private fun apply192(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composed { val layoutBoundsHolder = args.jsonObject("holder").rememberComposeLayoutBoundsHolder(); composeModifier126(`holder` = layoutBoundsHolder) }
+private fun apply195(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composed { val layoutBoundsHolder = args.jsonObject("holder").rememberComposeLayoutBoundsHolder(); composeModifier127(`holder` = layoutBoundsHolder) }
 
 // androidx.compose.ui.layout.layoutId [receiver: androidx.compose.ui.Modifier](layoutId: kotlin.Any)
-private fun apply193(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier127(`layoutId` = args.string("layoutId"))
+private fun apply196(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier128(`layoutId` = args.string("layoutId"))
 
 // androidx.compose.ui.layout.onGloballyPositioned [receiver: androidx.compose.ui.Modifier](onGloballyPositioned: kotlin.Function1<androidx.compose.ui.layout.LayoutCoordinates, kotlin.Unit>)
-private fun apply194(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier128(`onGloballyPositioned` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onGloballyPositioned", value.toComposeSnapshot()) })
+private fun apply197(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier129(`onGloballyPositioned` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onGloballyPositioned", value.toComposeSnapshot()) })
 
 // androidx.compose.ui.layout.onLayoutRectChanged [receiver: androidx.compose.ui.Modifier](throttleMillis: kotlin.Long, debounceMillis: kotlin.Long, callback: kotlin.Function1<androidx.compose.ui.spatial.RelativeLayoutBounds, kotlin.Unit>)
-private fun apply195(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply198(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("throttleMillis")) 1 else 0) +
     (if (args.has("debounceMillis")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier129(`callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
-    1 -> modifier.composeModifier129(`throttleMillis` = args.number("throttleMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
-    2 -> modifier.composeModifier129(`debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
-    3 -> modifier.composeModifier129(`throttleMillis` = args.number("throttleMillis").toLong(), `debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    0 -> modifier.composeModifier130(`callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    1 -> modifier.composeModifier130(`throttleMillis` = args.number("throttleMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    2 -> modifier.composeModifier130(`debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    3 -> modifier.composeModifier130(`throttleMillis` = args.number("throttleMillis").toLong(), `debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.layout.onPlaced [receiver: androidx.compose.ui.Modifier](onPlaced: kotlin.Function1<androidx.compose.ui.layout.LayoutCoordinates, kotlin.Unit>)
-private fun apply196(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier130(`onPlaced` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onPlaced", value.toComposeSnapshot()) })
+private fun apply199(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier131(`onPlaced` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onPlaced", value.toComposeSnapshot()) })
 
 // androidx.compose.ui.layout.onSizeChanged [receiver: androidx.compose.ui.Modifier](onSizeChanged: kotlin.Function1<androidx.compose.ui.unit.IntSize, kotlin.Unit>)
-private fun apply197(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier131(`onSizeChanged` = { value: androidx.compose.ui.unit.IntSize -> args.emit("onSizeChanged", value.toComposeSnapshot()) })
+private fun apply200(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier132(`onSizeChanged` = { value: androidx.compose.ui.unit.IntSize -> args.emit("onSizeChanged", value.toComposeSnapshot()) })
 
 // androidx.compose.ui.layout.onVisibilityChanged [receiver: androidx.compose.ui.Modifier](minDurationMs: kotlin.Long, minFractionVisible: kotlin.Float, viewportBounds: androidx.compose.ui.layout.LayoutBoundsHolder?, callback: kotlin.Function1<kotlin.Boolean, kotlin.Unit>)
-private fun apply198(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply201(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("minDurationMs")) 1 else 0) +
     (if (args.has("minFractionVisible")) 2 else 0) +
     (if (args.has("viewportBounds")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier132(`callback` = { value: Boolean -> args.emit("callback", value) })
-    1 -> modifier.composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `callback` = { value: Boolean -> args.emit("callback", value) })
-    2 -> modifier.composeModifier132(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
-    3 -> modifier.composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
-    4 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
-    5 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
-    6 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
-    7 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    0 -> modifier.composeModifier133(`callback` = { value: Boolean -> args.emit("callback", value) })
+    1 -> modifier.composeModifier133(`minDurationMs` = args.number("minDurationMs").toLong(), `callback` = { value: Boolean -> args.emit("callback", value) })
+    2 -> modifier.composeModifier133(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
+    3 -> modifier.composeModifier133(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
+    4 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier133(`viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    5 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier133(`minDurationMs` = args.number("minDurationMs").toLong(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    6 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier133(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    7 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier133(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.platform.testTag [receiver: androidx.compose.ui.Modifier](tag: kotlin.String)
-private fun apply199(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier133(`tag` = args.string("tag"))
+private fun apply202(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier134(`tag` = args.string("tag"))
 
 // androidx.compose.ui.preferredFrameRate [receiver: androidx.compose.ui.Modifier](frameRate: kotlin.Float)
-private fun apply200(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier134(`frameRate` = args.number("frameRate").toFloat())
+private fun apply203(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier135(`frameRate` = args.number("frameRate").toFloat())
 
 // androidx.compose.ui.preferredFrameRate [receiver: androidx.compose.ui.Modifier](frameRateCategory: androidx.compose.ui.FrameRateCategory)
-private fun apply201(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier134(`frameRateCategory` = toComposeFrameRateCategory(args.string("frameRateCategory")))
+private fun apply204(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier135(`frameRateCategory` = toComposeFrameRateCategory(args.string("frameRateCategory")))
 
 // androidx.compose.ui.semantics.clearAndSetSemantics [receiver: androidx.compose.ui.Modifier](properties: kotlin.Function1<androidx.compose.ui.semantics.SemanticsPropertyReceiver, kotlin.Unit>)
-private fun apply202(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier135(`properties` = args.jsonObject("properties").toSemantics())
+private fun apply205(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier136(`properties` = args.jsonObject("properties").toSemantics(args))
 
 // androidx.compose.ui.semantics.semantics [receiver: androidx.compose.ui.Modifier](mergeDescendants: kotlin.Boolean, properties: kotlin.Function1<androidx.compose.ui.semantics.SemanticsPropertyReceiver, kotlin.Unit>)
-private fun apply203(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply206(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("mergeDescendants")) 1 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier136(`properties` = args.jsonObject("properties").toSemantics())
-    1 -> modifier.composeModifier136(`mergeDescendants` = args.boolean("mergeDescendants"), `properties` = args.jsonObject("properties").toSemantics())
+    0 -> modifier.composeModifier137(`properties` = args.jsonObject("properties").toSemantics(args))
+    1 -> modifier.composeModifier137(`mergeDescendants` = args.boolean("mergeDescendants"), `properties` = args.jsonObject("properties").toSemantics(args))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.sensitiveContent [receiver: androidx.compose.ui.Modifier](isContentSensitive: kotlin.Boolean)
-private fun apply204(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply207(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("isContentSensitive")) 1 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier137()
-    1 -> modifier.composeModifier137(`isContentSensitive` = args.boolean("isContentSensitive"))
+    0 -> modifier.composeModifier138()
+    1 -> modifier.composeModifier138(`isContentSensitive` = args.boolean("isContentSensitive"))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.zIndex [receiver: androidx.compose.ui.Modifier](zIndex: kotlin.Float)
-private fun apply205(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier138(`zIndex` = args.number("zIndex").toFloat())
+private fun apply208(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier139(`zIndex` = args.number("zIndex").toFloat())
