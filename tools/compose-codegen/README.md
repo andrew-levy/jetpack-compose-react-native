@@ -74,9 +74,12 @@ Compose and modifier signatures each have an outcome in [coverage.json](coverage
 including unsupported bridges, omitted props, and ambiguous or shadowed argument forms.
 
 Structured props such as `contentPadding` and `windowInsets` take numbers in dp.
-`Image`, `Icon`, and `Modifier.paint` can read a plain color or a drawable from the
-application's Android `res/drawable` resources. For example, use
-`painter={{ drawable: "hero" }}` for `res/drawable/hero.xml` or a packaged bitmap.
+`Image`, `Icon`, and `Modifier.paint` accept a built-in Material icon, a plain color,
+or an Android drawable. Use `painter={{ icon: "Edit", style: "outlined" }}` for a
+built-in icon or `painter={{ drawable: "hero" }}` for `res/drawable/hero.xml`.
+The generator reads icon names and styles from the AndroidX Material Icons Core
+dependency. Omit `style` for filled icons, or use a style such as
+`autoMirroredOutlined` for directional icons that mirror in right-to-left layouts.
 
 Lazy lists and grids treat each direct child as an item, and pagers treat each
 direct child as a page. Use React keys for stable item identity and give scrolling
@@ -123,6 +126,9 @@ Text and text fields can report text layout size, line count, and overflow.
 Visibility transitions include fade, slide, and scale. `AnimatedContent`
 accepts a `transitionSpec` with an enter and exit transition.
 
+Pass React content to `BasicTextField`'s `decorator` or `decorationBox`. Put one
+`<ComposeInnerContent />` inside that content to render the native editable control.
+
 `Modifier.pointerInput` runs a native pointer policy with an event pass and
 consumption rules. Its optional `onEvent` sends a snapshot of pointer changes
 with coordinates in local physical pixels. Put gesture decisions that must
@@ -159,6 +165,10 @@ nullable. The extractor rejects construction paths with cycles, ambiguous calls,
 or fields requiring native owners. It also discovers supported Foundation
 `StyleScope` properties from the Compose classpath.
 
+Components can also use values made by a public Compose defaults factory. Pass
+`elevation={{ factory: "ButtonDefaults.buttonElevation", defaultElevation: 3 }}`
+to `Button`, for example. Kotlin supplies the factory's other defaults.
+
 Unit-returning callbacks with several supported arguments deliver a typed tuple
 in one JavaScript event. The `finishedListener` option on
 `Modifier.animateContentSize` receives `readonly [ComposeLayoutSize, ComposeLayoutSize]`
@@ -168,20 +178,19 @@ APIs that accept the same native handle or value type share a decoder. Requester
 and interaction sources retain their identity within a Compose host. Animation
 specs use the same decoder for components and modifiers. Scroll and key policies
 run on Android so Compose can act on the result during the current event.
-## Native bridge capabilities
+## Animation and native policies
 
-- Indexed content in `Crossfade` and `AnimatedContent` selects a mounted React
-  child by position. Keyed states and custom transition specs need a native
-  content selection and transition expression model.
+- In `Crossfade` and `AnimatedContent`, pass a number to select a child by
+  position or a string to select a direct child by its React `key`. Keep both
+  children mounted while Compose animates between them.
 - `nestedScroll` synchronously consumes configured fractions of the available
   scroll and fling. A custom connection or a programmatic dispatcher needs
   native policies for callback arguments, results, and coroutine ownership.
-- The current requester and interaction source hooks retain identity within a
-  Compose host. List and sheet state inputs initialize native-owned state.
-  Reusable command and observation support needs generated operations and a
-  composition-scoped lifetime policy.
-- The animation spec adapter supports spring, tween, and snap. Keyframes need
-  a decoder for the animated value type, such as a float, offset, or size.
+- The requester and interaction source hooks retain identity within a Compose
+  host. List and sheet handles send commands to composition-owned native state.
+- Animation specs support spring, tween, snap, and keyframes. Each keyframe
+  takes `atMillis` and a value in the animated property's type, such as a number
+  for `Crossfade` or a pixel size for `Modifier.animateContentSize`.
 
 ## Verify
 

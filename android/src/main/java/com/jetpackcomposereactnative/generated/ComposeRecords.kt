@@ -1,6 +1,9 @@
 // Generated from Compose value factories by generate.mjs.
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package com.jetpackcomposereactnative.generated
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpackcomposereactnative.common.parseComposeColor
@@ -20,6 +23,136 @@ internal fun JSONObject.decodeComposeButtonColorsValue(): androidx.compose.mater
   `contentColor` = parseComposeColor(getString("contentColor")),
   `disabledContainerColor` = parseComposeColor(getString("disabledContainerColor")),
   `disabledContentColor` = parseComposeColor(getString("disabledContentColor")),
+)
+
+@Composable
+internal fun JSONObject.decodeComposeButtonElevationValue(): androidx.compose.material3.ButtonElevation = when (val factory = getString("factory")) {
+  "ButtonDefaults.buttonElevation" -> decodeComposeButtonElevationValueFactory0()
+  "ButtonDefaults.elevatedButtonElevation" -> decodeComposeButtonElevationValueFactory1()
+  "ButtonDefaults.filledTonalButtonElevation" -> decodeComposeButtonElevationValueFactory2()
+  else -> error("Unknown ComposeButtonElevationValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeButtonElevationValueFactory0(): androidx.compose.material3.ButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0) + (if (has("disabledElevation")) 16 else 0)) {
+  0 -> androidx.compose.material3.ButtonDefaults.buttonElevation()
+  1 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  16 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`disabledElevation` = getDouble("disabledElevation").dp)
+  17 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  18 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  19 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  20 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  21 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  22 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  23 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  24 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  25 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  26 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  27 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  28 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  29 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  30 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  31 -> androidx.compose.material3.ButtonDefaults.buttonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.ButtonDefaults.buttonElevation")
+}
+
+@Composable
+private fun JSONObject.decodeComposeButtonElevationValueFactory1(): androidx.compose.material3.ButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0) + (if (has("disabledElevation")) 16 else 0)) {
+  0 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation()
+  1 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  16 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`disabledElevation` = getDouble("disabledElevation").dp)
+  17 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  18 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  19 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  20 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  21 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  22 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  23 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  24 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  25 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  26 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  27 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  28 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  29 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  30 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  31 -> androidx.compose.material3.ButtonDefaults.elevatedButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.ButtonDefaults.elevatedButtonElevation")
+}
+
+@Composable
+private fun JSONObject.decodeComposeButtonElevationValueFactory2(): androidx.compose.material3.ButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0) + (if (has("disabledElevation")) 16 else 0)) {
+  0 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation()
+  1 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  16 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`disabledElevation` = getDouble("disabledElevation").dp)
+  17 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  18 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  19 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  20 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  21 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  22 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  23 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  24 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  25 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  26 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  27 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  28 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  29 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  30 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  31 -> androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.ButtonDefaults.filledTonalButtonElevation")
+}
+
+@Composable
+internal fun JSONObject.decodeComposeButtonShapesValue(): androidx.compose.material3.ButtonShapes = when (val factory = getString("factory")) {
+  "ButtonDefaults.shapesFor" -> decodeComposeButtonShapesValueFactory0()
+  else -> error("Unknown ComposeButtonShapesValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeButtonShapesValueFactory0(): androidx.compose.material3.ButtonShapes = androidx.compose.material3.ButtonDefaults.shapesFor(
+  `buttonHeight` = getDouble("buttonHeight").dp,
 )
 
 internal fun JSONObject.decodeComposeCardColorsValue(): androidx.compose.material3.CardColors = androidx.compose.material3.CardColors(
@@ -64,10 +197,116 @@ internal fun JSONObject.decodeComposeChipElevationValue(): androidx.compose.mate
   `disabledElevation` = getDouble("disabledElevation").dp,
 )
 
+internal fun JSONObject.decodeComposeDatePickerColorsValue(): androidx.compose.material3.DatePickerColors = androidx.compose.material3.DatePickerColors(
+  `containerColor` = parseComposeColor(getString("containerColor")),
+  `titleContentColor` = parseComposeColor(getString("titleContentColor")),
+  `headlineContentColor` = parseComposeColor(getString("headlineContentColor")),
+  `weekdayContentColor` = parseComposeColor(getString("weekdayContentColor")),
+  `subheadContentColor` = parseComposeColor(getString("subheadContentColor")),
+  `navigationContentColor` = parseComposeColor(getString("navigationContentColor")),
+  `yearContentColor` = parseComposeColor(getString("yearContentColor")),
+  `disabledYearContentColor` = parseComposeColor(getString("disabledYearContentColor")),
+  `currentYearContentColor` = parseComposeColor(getString("currentYearContentColor")),
+  `selectedYearContentColor` = parseComposeColor(getString("selectedYearContentColor")),
+  `disabledSelectedYearContentColor` = parseComposeColor(getString("disabledSelectedYearContentColor")),
+  `selectedYearContainerColor` = parseComposeColor(getString("selectedYearContainerColor")),
+  `disabledSelectedYearContainerColor` = parseComposeColor(getString("disabledSelectedYearContainerColor")),
+  `dayContentColor` = parseComposeColor(getString("dayContentColor")),
+  `disabledDayContentColor` = parseComposeColor(getString("disabledDayContentColor")),
+  `selectedDayContentColor` = parseComposeColor(getString("selectedDayContentColor")),
+  `disabledSelectedDayContentColor` = parseComposeColor(getString("disabledSelectedDayContentColor")),
+  `selectedDayContainerColor` = parseComposeColor(getString("selectedDayContainerColor")),
+  `disabledSelectedDayContainerColor` = parseComposeColor(getString("disabledSelectedDayContainerColor")),
+  `todayContentColor` = parseComposeColor(getString("todayContentColor")),
+  `todayDateBorderColor` = parseComposeColor(getString("todayDateBorderColor")),
+  `dayInSelectionRangeContainerColor` = parseComposeColor(getString("dayInSelectionRangeContainerColor")),
+  `dayInSelectionRangeContentColor` = parseComposeColor(getString("dayInSelectionRangeContentColor")),
+  `dividerColor` = parseComposeColor(getString("dividerColor")),
+  `dateTextFieldColors` = getJSONObject("dateTextFieldColors").decodeComposeTextFieldColorsValue(),
+)
+
 internal fun JSONObject.decodeComposeDragHandleColorsValue(): androidx.compose.material3.DragHandleColors = androidx.compose.material3.DragHandleColors(
   `color` = parseComposeColor(getString("color")),
   `pressedColor` = parseComposeColor(getString("pressedColor")),
   `draggedColor` = parseComposeColor(getString("draggedColor")),
+)
+
+@Composable
+internal fun JSONObject.decodeComposeFloatingActionButtonElevationValue(): androidx.compose.material3.FloatingActionButtonElevation = when (val factory = getString("factory")) {
+  "FloatingActionButtonDefaults.bottomAppBarFabElevation" -> decodeComposeFloatingActionButtonElevationValueFactory0()
+  "FloatingActionButtonDefaults.elevation" -> decodeComposeFloatingActionButtonElevationValueFactory1()
+  "FloatingActionButtonDefaults.loweredElevation" -> decodeComposeFloatingActionButtonElevationValueFactory2()
+  else -> error("Unknown ComposeFloatingActionButtonElevationValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeFloatingActionButtonElevationValueFactory0(): androidx.compose.material3.FloatingActionButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0)) {
+  0 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation()
+  1 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation")
+}
+
+@Composable
+private fun JSONObject.decodeComposeFloatingActionButtonElevationValueFactory1(): androidx.compose.material3.FloatingActionButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0)) {
+  0 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation()
+  1 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.FloatingActionButtonDefaults.elevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.FloatingActionButtonDefaults.elevation")
+}
+
+@Composable
+private fun JSONObject.decodeComposeFloatingActionButtonElevationValueFactory2(): androidx.compose.material3.FloatingActionButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0)) {
+  0 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation()
+  1 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.FloatingActionButtonDefaults.loweredElevation")
+}
+
+internal fun JSONObject.decodeComposeFloatingToolbarColorsValue(): androidx.compose.material3.FloatingToolbarColors = androidx.compose.material3.FloatingToolbarColors(
+  `toolbarContainerColor` = parseComposeColor(getString("toolbarContainerColor")),
+  `toolbarContentColor` = parseComposeColor(getString("toolbarContentColor")),
+  `fabContainerColor` = parseComposeColor(getString("fabContainerColor")),
+  `fabContentColor` = parseComposeColor(getString("fabContentColor")),
 )
 
 internal fun JSONObject.decodeComposeIconButtonColorsValue(): androidx.compose.material3.IconButtonColors = androidx.compose.material3.IconButtonColors(
@@ -144,6 +383,19 @@ internal fun JSONObject.decodeComposeRadioButtonColorsValue(): androidx.compose.
   `disabledUnselectedColor` = parseComposeColor(getString("disabledUnselectedColor")),
 )
 
+internal fun JSONObject.decodeComposeRichTooltipColorsValue(): androidx.compose.material3.RichTooltipColors = androidx.compose.material3.RichTooltipColors(
+  `containerColor` = parseComposeColor(getString("containerColor")),
+  `contentColor` = parseComposeColor(getString("contentColor")),
+  `titleContentColor` = parseComposeColor(getString("titleContentColor")),
+  `actionContentColor` = parseComposeColor(getString("actionContentColor")),
+)
+
+internal fun JSONObject.decodeComposeSearchBarColorsValue(): androidx.compose.material3.SearchBarColors = androidx.compose.material3.SearchBarColors(
+  `containerColor` = parseComposeColor(getString("containerColor")),
+  `dividerColor` = parseComposeColor(getString("dividerColor")),
+  `inputFieldColors` = getJSONObject("inputFieldColors").decodeComposeTextFieldColorsValue(),
+)
+
 internal fun JSONObject.decodeComposeSegmentedButtonColorsValue(): androidx.compose.material3.SegmentedButtonColors = androidx.compose.material3.SegmentedButtonColors(
   `activeContainerColor` = parseComposeColor(getString("activeContainerColor")),
   `activeContentColor` = parseComposeColor(getString("activeContentColor")),
@@ -179,6 +431,23 @@ internal fun JSONObject.decodeComposeSliderColorsValue(): androidx.compose.mater
   `disabledActiveTickColor` = parseComposeColor(getString("disabledActiveTickColor")),
   `disabledInactiveTrackColor` = parseComposeColor(getString("disabledInactiveTrackColor")),
   `disabledInactiveTickColor` = parseComposeColor(getString("disabledInactiveTickColor")),
+)
+
+@Composable
+internal fun JSONObject.decodeComposeSplitButtonShapesValue(): androidx.compose.material3.SplitButtonShapes = when (val factory = getString("factory")) {
+  "SplitButtonDefaults.leadingButtonShapesFor" -> decodeComposeSplitButtonShapesValueFactory0()
+  "SplitButtonDefaults.trailingButtonShapesFor" -> decodeComposeSplitButtonShapesValueFactory1()
+  else -> error("Unknown ComposeSplitButtonShapesValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeSplitButtonShapesValueFactory0(): androidx.compose.material3.SplitButtonShapes = androidx.compose.material3.SplitButtonDefaults.leadingButtonShapesFor(
+  `buttonHeight` = getDouble("buttonHeight").dp,
+)
+
+@Composable
+private fun JSONObject.decodeComposeSplitButtonShapesValueFactory1(): androidx.compose.material3.SplitButtonShapes = androidx.compose.material3.SplitButtonDefaults.trailingButtonShapesFor(
+  `buttonHeight` = getDouble("buttonHeight").dp,
 )
 
 internal fun JSONObject.decodeComposeSwitchColorsValue(): androidx.compose.material3.SwitchColors = androidx.compose.material3.SwitchColors(
@@ -246,6 +515,23 @@ internal fun JSONObject.decodeComposeTextFieldColorsValue(): androidx.compose.ma
   `errorSuffixColor` = parseComposeColor(getString("errorSuffixColor")),
 )
 
+internal fun JSONObject.decodeComposeTimePickerColorsValue(): androidx.compose.material3.TimePickerColors = androidx.compose.material3.TimePickerColors(
+  `clockDialColor` = parseComposeColor(getString("clockDialColor")),
+  `selectorColor` = parseComposeColor(getString("selectorColor")),
+  `containerColor` = parseComposeColor(getString("containerColor")),
+  `periodSelectorBorderColor` = parseComposeColor(getString("periodSelectorBorderColor")),
+  `clockDialSelectedContentColor` = parseComposeColor(getString("clockDialSelectedContentColor")),
+  `clockDialUnselectedContentColor` = parseComposeColor(getString("clockDialUnselectedContentColor")),
+  `periodSelectorSelectedContainerColor` = parseComposeColor(getString("periodSelectorSelectedContainerColor")),
+  `periodSelectorUnselectedContainerColor` = parseComposeColor(getString("periodSelectorUnselectedContainerColor")),
+  `periodSelectorSelectedContentColor` = parseComposeColor(getString("periodSelectorSelectedContentColor")),
+  `periodSelectorUnselectedContentColor` = parseComposeColor(getString("periodSelectorUnselectedContentColor")),
+  `timeSelectorSelectedContainerColor` = parseComposeColor(getString("timeSelectorSelectedContainerColor")),
+  `timeSelectorUnselectedContainerColor` = parseComposeColor(getString("timeSelectorUnselectedContainerColor")),
+  `timeSelectorSelectedContentColor` = parseComposeColor(getString("timeSelectorSelectedContentColor")),
+  `timeSelectorUnselectedContentColor` = parseComposeColor(getString("timeSelectorUnselectedContentColor")),
+)
+
 internal fun JSONObject.decodeComposeToggleButtonColorsValue(): androidx.compose.material3.ToggleButtonColors = androidx.compose.material3.ToggleButtonColors(
   `containerColor` = parseComposeColor(getString("containerColor")),
   `contentColor` = parseComposeColor(getString("contentColor")),
@@ -253,6 +539,26 @@ internal fun JSONObject.decodeComposeToggleButtonColorsValue(): androidx.compose
   `disabledContentColor` = parseComposeColor(getString("disabledContentColor")),
   `checkedContainerColor` = parseComposeColor(getString("checkedContainerColor")),
   `checkedContentColor` = parseComposeColor(getString("checkedContentColor")),
+)
+
+@Composable
+internal fun JSONObject.decodeComposeToggleButtonShapesValue(): androidx.compose.material3.ToggleButtonShapes = when (val factory = getString("factory")) {
+  "ToggleButtonDefaults.shapesFor" -> decodeComposeToggleButtonShapesValueFactory0()
+  else -> error("Unknown ComposeToggleButtonShapesValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeToggleButtonShapesValueFactory0(): androidx.compose.material3.ToggleButtonShapes = androidx.compose.material3.ToggleButtonDefaults.shapesFor(
+  `buttonHeight` = getDouble("buttonHeight").dp,
+)
+
+internal fun JSONObject.decodeComposeTopAppBarColorsValue(): androidx.compose.material3.TopAppBarColors = androidx.compose.material3.TopAppBarColors(
+  `containerColor` = parseComposeColor(getString("containerColor")),
+  `scrolledContainerColor` = parseComposeColor(getString("scrolledContainerColor")),
+  `navigationIconContentColor` = parseComposeColor(getString("navigationIconContentColor")),
+  `titleContentColor` = parseComposeColor(getString("titleContentColor")),
+  `actionIconContentColor` = parseComposeColor(getString("actionIconContentColor")),
+  `subtitleContentColor` = parseComposeColor(getString("subtitleContentColor")),
 )
 
 internal fun JSONObject.decodeComposeWideNavigationRailColorsValue(): androidx.compose.material3.WideNavigationRailColors = androidx.compose.material3.WideNavigationRailColors(

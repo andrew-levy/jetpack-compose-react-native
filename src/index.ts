@@ -2,6 +2,7 @@ export { Modifier, type ComposeChain } from "./generated/modifiers";
 export type * from "./generated/values";
 export type * from "./generated/records";
 export type * from "./generated/styles";
+export type * from "./generated/icons";
 export type * from "./utils/composeValues";
 export {
   useFocusRequester, useBringIntoViewRequester, useInteractionSource, useLayoutBoundsHolder,
@@ -22,3 +23,4 @@ export { createComposableComponent } from "./generated/runtime/createComposableC
 export type { ComposeModifier, ComposableDescription } from "./generated/runtime/createComposableComponent";
 export type { ComposableViewProps } from "./generated/runtime/shared";
 export { StickyHeader } from "./generated/runtime/StickyHeader";
+export { ComposeInnerContent } from "./generated/runtime/ComposeInnerContent";

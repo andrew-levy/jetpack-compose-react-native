@@ -214,3 +214,168 @@ internal fun toComposeRole(value: String): androidx.compose.ui.semantics.Role = 
   "valuePicker" -> androidx.compose.ui.semantics.Role.ValuePicker
   else -> error("Unknown ComposeRole: " + value)
 }
+
+internal fun toComposeSharedTransitionScopePlaceholderSizeValue(value: String): androidx.compose.animation.SharedTransitionScope.PlaceholderSize = when (value) {
+  "animatedSize" -> androidx.compose.animation.SharedTransitionScope.PlaceholderSize.`AnimatedSize`
+  "contentSize" -> androidx.compose.animation.SharedTransitionScope.PlaceholderSize.`ContentSize`
+  else -> error("Unknown ComposeSharedTransitionScopePlaceholderSizeValue: " + value)
+}
+
+internal fun toComposeSharedTransitionScopeResizeModeValue(value: String): androidx.compose.animation.SharedTransitionScope.ResizeMode = when (value) {
+  "remeasureToBounds" -> androidx.compose.animation.SharedTransitionScope.ResizeMode.`RemeasureToBounds`
+  else -> error("Unknown ComposeSharedTransitionScopeResizeModeValue: " + value)
+}
+
+internal fun toComposeMarqueeAnimationModeValue(value: String): androidx.compose.foundation.MarqueeAnimationMode = when (value) {
+  "immediately" -> androidx.compose.foundation.MarqueeAnimationMode.`Immediately`
+  "whileFocused" -> androidx.compose.foundation.MarqueeAnimationMode.`WhileFocused`
+  else -> error("Unknown ComposeMarqueeAnimationModeValue: " + value)
+}
+
+internal fun toComposeTextObfuscationModeValue(value: String): androidx.compose.foundation.text.input.TextObfuscationMode = when (value) {
+  "hidden" -> androidx.compose.foundation.text.input.TextObfuscationMode.`Hidden`
+  "revealLastTyped" -> androidx.compose.foundation.text.input.TextObfuscationMode.`RevealLastTyped`
+  "visible" -> androidx.compose.foundation.text.input.TextObfuscationMode.`Visible`
+  else -> error("Unknown ComposeTextObfuscationModeValue: " + value)
+}
+
+internal fun toComposeFabPositionValue(value: String): androidx.compose.material3.FabPosition = when (value) {
+  "center" -> androidx.compose.material3.FabPosition.`Center`
+  "end" -> androidx.compose.material3.FabPosition.`End`
+  "endOverlay" -> androidx.compose.material3.FabPosition.`EndOverlay`
+  "start" -> androidx.compose.material3.FabPosition.`Start`
+  else -> error("Unknown ComposeFabPositionValue: " + value)
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+internal fun toComposeFloatingToolbarHorizontalFabPositionValue(value: String): androidx.compose.material3.FloatingToolbarHorizontalFabPosition = when (value) {
+  "end" -> androidx.compose.material3.FloatingToolbarHorizontalFabPosition.`End`
+  "start" -> androidx.compose.material3.FloatingToolbarHorizontalFabPosition.`Start`
+  else -> error("Unknown ComposeFloatingToolbarHorizontalFabPositionValue: " + value)
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+internal fun toComposeFloatingToolbarVerticalFabPositionValue(value: String): androidx.compose.material3.FloatingToolbarVerticalFabPosition = when (value) {
+  "bottom" -> androidx.compose.material3.FloatingToolbarVerticalFabPosition.`Bottom`
+  "top" -> androidx.compose.material3.FloatingToolbarVerticalFabPosition.`Top`
+  else -> error("Unknown ComposeFloatingToolbarVerticalFabPositionValue: " + value)
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+internal fun toComposeNavigationItemIconPositionValue(value: String): androidx.compose.material3.NavigationItemIconPosition = when (value) {
+  "start" -> androidx.compose.material3.NavigationItemIconPosition.`Start`
+  "top" -> androidx.compose.material3.NavigationItemIconPosition.`Top`
+  else -> error("Unknown ComposeNavigationItemIconPositionValue: " + value)
+}
+
+internal fun toComposeShortNavigationBarArrangementValue(value: String): androidx.compose.material3.ShortNavigationBarArrangement = when (value) {
+  "centered" -> androidx.compose.material3.ShortNavigationBarArrangement.`Centered`
+  "equalWeight" -> androidx.compose.material3.ShortNavigationBarArrangement.`EqualWeight`
+  else -> error("Unknown ComposeShortNavigationBarArrangementValue: " + value)
+}
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+internal fun toComposeTimePickerLayoutTypeValue(value: String): androidx.compose.material3.TimePickerLayoutType = when (value) {
+  "horizontal" -> androidx.compose.material3.TimePickerLayoutType.`Horizontal`
+  "vertical" -> androidx.compose.material3.TimePickerLayoutType.`Vertical`
+  else -> error("Unknown ComposeTimePickerLayoutTypeValue: " + value)
+}
+
+internal fun toComposeBlurredEdgeTreatmentValue(value: String): androidx.compose.ui.draw.BlurredEdgeTreatment = when (value) {
+  "rectangle" -> androidx.compose.ui.draw.BlurredEdgeTreatment.`Rectangle`
+  "unbounded" -> androidx.compose.ui.draw.BlurredEdgeTreatment.`Unbounded`
+  else -> error("Unknown ComposeBlurredEdgeTreatmentValue: " + value)
+}
+
+internal fun toComposeBlendModeValue(value: String): androidx.compose.ui.graphics.BlendMode = when (value) {
+  "clear" -> androidx.compose.ui.graphics.BlendMode.`Clear`
+  "color" -> androidx.compose.ui.graphics.BlendMode.`Color`
+  "colorBurn" -> androidx.compose.ui.graphics.BlendMode.`ColorBurn`
+  "colorDodge" -> androidx.compose.ui.graphics.BlendMode.`ColorDodge`
+  "darken" -> androidx.compose.ui.graphics.BlendMode.`Darken`
+  "difference" -> androidx.compose.ui.graphics.BlendMode.`Difference`
+  "dst" -> androidx.compose.ui.graphics.BlendMode.`Dst`
+  "dstAtop" -> androidx.compose.ui.graphics.BlendMode.`DstAtop`
+  "dstIn" -> androidx.compose.ui.graphics.BlendMode.`DstIn`
+  "dstOut" -> androidx.compose.ui.graphics.BlendMode.`DstOut`
+  "dstOver" -> androidx.compose.ui.graphics.BlendMode.`DstOver`
+  "exclusion" -> androidx.compose.ui.graphics.BlendMode.`Exclusion`
+  "hardlight" -> androidx.compose.ui.graphics.BlendMode.`Hardlight`
+  "hue" -> androidx.compose.ui.graphics.BlendMode.`Hue`
+  "lighten" -> androidx.compose.ui.graphics.BlendMode.`Lighten`
+  "luminosity" -> androidx.compose.ui.graphics.BlendMode.`Luminosity`
+  "modulate" -> androidx.compose.ui.graphics.BlendMode.`Modulate`
+  "multiply" -> androidx.compose.ui.graphics.BlendMode.`Multiply`
+  "overlay" -> androidx.compose.ui.graphics.BlendMode.`Overlay`
+  "plus" -> androidx.compose.ui.graphics.BlendMode.`Plus`
+  "saturation" -> androidx.compose.ui.graphics.BlendMode.`Saturation`
+  "screen" -> androidx.compose.ui.graphics.BlendMode.`Screen`
+  "softlight" -> androidx.compose.ui.graphics.BlendMode.`Softlight`
+  "src" -> androidx.compose.ui.graphics.BlendMode.`Src`
+  "srcAtop" -> androidx.compose.ui.graphics.BlendMode.`SrcAtop`
+  "srcIn" -> androidx.compose.ui.graphics.BlendMode.`SrcIn`
+  "srcOut" -> androidx.compose.ui.graphics.BlendMode.`SrcOut`
+  "srcOver" -> androidx.compose.ui.graphics.BlendMode.`SrcOver`
+  "xor" -> androidx.compose.ui.graphics.BlendMode.`Xor`
+  else -> error("Unknown ComposeBlendModeValue: " + value)
+}
+
+internal fun toComposeCompositingStrategyValue(value: String): androidx.compose.ui.graphics.CompositingStrategy = when (value) {
+  "auto" -> androidx.compose.ui.graphics.CompositingStrategy.`Auto`
+  "modulateAlpha" -> androidx.compose.ui.graphics.CompositingStrategy.`ModulateAlpha`
+  "offscreen" -> androidx.compose.ui.graphics.CompositingStrategy.`Offscreen`
+  else -> error("Unknown ComposeCompositingStrategyValue: " + value)
+}
+
+internal fun toComposeStrokeCapValue(value: String): androidx.compose.ui.graphics.StrokeCap = when (value) {
+  "butt" -> androidx.compose.ui.graphics.StrokeCap.`Butt`
+  "round" -> androidx.compose.ui.graphics.StrokeCap.`Round`
+  "square" -> androidx.compose.ui.graphics.StrokeCap.`Square`
+  else -> error("Unknown ComposeStrokeCapValue: " + value)
+}
+
+internal fun toComposeFontStyleValue(value: String): androidx.compose.ui.text.font.FontStyle = when (value) {
+  "italic" -> androidx.compose.ui.text.font.FontStyle.`Italic`
+  "normal" -> androidx.compose.ui.text.font.FontStyle.`Normal`
+  else -> error("Unknown ComposeFontStyleValue: " + value)
+}
+
+internal fun toComposeFontSynthesisValue(value: String): androidx.compose.ui.text.font.FontSynthesis = when (value) {
+  "all" -> androidx.compose.ui.text.font.FontSynthesis.`All`
+  "none" -> androidx.compose.ui.text.font.FontSynthesis.`None`
+  "style" -> androidx.compose.ui.text.font.FontSynthesis.`Style`
+  "weight" -> androidx.compose.ui.text.font.FontSynthesis.`Weight`
+  else -> error("Unknown ComposeFontSynthesisValue: " + value)
+}
+
+internal fun toComposeHyphensValue(value: String): androidx.compose.ui.text.style.Hyphens = when (value) {
+  "auto" -> androidx.compose.ui.text.style.Hyphens.`Auto`
+  "none" -> androidx.compose.ui.text.style.Hyphens.`None`
+  "unspecified" -> androidx.compose.ui.text.style.Hyphens.`Unspecified`
+  else -> error("Unknown ComposeHyphensValue: " + value)
+}
+
+internal fun toComposeLineBreakValue(value: String): androidx.compose.ui.text.style.LineBreak = when (value) {
+  "heading" -> androidx.compose.ui.text.style.LineBreak.`Heading`
+  "paragraph" -> androidx.compose.ui.text.style.LineBreak.`Paragraph`
+  "simple" -> androidx.compose.ui.text.style.LineBreak.`Simple`
+  "unspecified" -> androidx.compose.ui.text.style.LineBreak.`Unspecified`
+  else -> error("Unknown ComposeLineBreakValue: " + value)
+}
+
+internal fun toComposeTextDecorationValue(value: String): androidx.compose.ui.text.style.TextDecoration = when (value) {
+  "lineThrough" -> androidx.compose.ui.text.style.TextDecoration.`LineThrough`
+  "none" -> androidx.compose.ui.text.style.TextDecoration.`None`
+  "underline" -> androidx.compose.ui.text.style.TextDecoration.`Underline`
+  else -> error("Unknown ComposeTextDecorationValue: " + value)
+}
+
+internal fun toComposeTextDirectionValue(value: String): androidx.compose.ui.text.style.TextDirection = when (value) {
+  "content" -> androidx.compose.ui.text.style.TextDirection.`Content`
+  "contentOrLtr" -> androidx.compose.ui.text.style.TextDirection.`ContentOrLtr`
+  "contentOrRtl" -> androidx.compose.ui.text.style.TextDirection.`ContentOrRtl`
+  "ltr" -> androidx.compose.ui.text.style.TextDirection.`Ltr`
+  "rtl" -> androidx.compose.ui.text.style.TextDirection.`Rtl`
+  "unspecified" -> androidx.compose.ui.text.style.TextDirection.`Unspecified`
+  else -> error("Unknown ComposeTextDirectionValue: " + value)
+}

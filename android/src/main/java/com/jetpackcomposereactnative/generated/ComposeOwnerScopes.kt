@@ -6,7 +6,6 @@ import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.LookaheadScope
 import org.json.JSONObject
 
@@ -47,5 +46,5 @@ internal fun currentComposeLookaheadScope(): LookaheadScope =
   checkNotNull(LocalOwnerScopes.current.lookahead) { "animateBounds requires a LookaheadScope or SharedTransitionLayout" }
 
 internal fun JSONObject.toComposeBoundsTransform(): BoundsTransform = BoundsTransform { _, _ ->
-  toComposeAnimationSpec<Rect>()
+  toComposeRectAnimationSpec()
 }

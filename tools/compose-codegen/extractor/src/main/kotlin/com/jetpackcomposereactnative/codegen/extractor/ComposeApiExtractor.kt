@@ -59,7 +59,7 @@ private class ComposeApiExtractor(
       valueKinds + componentValueKinds + modifierValueKinds,
       valueTypes.mapValues { (_, value) -> value.name },
       isDeprecated = { it.isDeprecated() },
-      hasOptIns = { it.optInMarkers().isNotEmpty() },
+      optIns = { it.optInMarkers() },
       accepts = { fn, arguments -> accepts(fn, arguments) },
     )
     val functions = declarationsInPackages(resolver, packages)
@@ -116,14 +116,41 @@ private class ComposeApiExtractor(
     val usedKinds = (components.flatMap { it.parameters } + modifiers.flatMap { it.parameters } + styleProperties)
       .map { it.kind }.toSet()
     val records = structuredValues.recordsFor(usedKinds)
-    val enums = structuredValues.enumsFor(usedKinds + records.flatMap { record -> record.fields.map { it.kind } })
+    val enums = structuredValues.enumsFor(usedKinds + records.flatMap { record ->
+      (record.fields + record.factories.flatMap { it.fields }).map { it.kind }
+    })
     val manifest = Manifest(4, components, modifiers, valueTypes.values.toList() + enums, factories, records, styleProperties,
+      discoverIcons(resolver),
       discovered.sortedWith(compareBy({ it.kind }, { it.signature })),
       coverage.sortedWith(compareBy({ it.kind }, { it.signature })))
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
       .bufferedWriter().use { Gson().toJson(manifest, it) }
     logger.info("Discovered ${components.size} composable overloads and ${modifiers.size} modifier overloads")
     return emptyList()
+  }
+
+  @OptIn(KspExperimental::class)
+  private fun discoverIcons(resolver: Resolver): List<MaterialIcon> {
+    val root = "androidx.compose.material.icons"
+    return listOf("Filled", "Outlined", "Rounded", "Sharp", "TwoTone").flatMap { style ->
+      listOf(false, true).flatMap { mirrored ->
+        val theme = if (mirrored) "AutoMirrored.$style" else style
+        val namespace = (if (mirrored) "$root.automirrored" else root) + "." + style.lowercase()
+        resolver.getDeclarationsFromPackage(namespace).filterIsInstance<KSPropertyDeclaration>()
+          .filter { property ->
+            property.getVisibility() == Visibility.PUBLIC &&
+              property.extensionReceiver?.resolve()?.name == "$root.Icons.$theme" &&
+              property.type.resolve().name == "androidx.compose.ui.graphics.vector.ImageVector"
+          }
+          .map { property ->
+            val name = property.simpleName.asString()
+            MaterialIcon(
+              (if (mirrored) "autoMirrored" + style else style.replaceFirstChar { it.lowercaseChar() }),
+              name, "$namespace.$name", theme,
+            )
+          }.toList()
+      }
+    }.sortedWith(compareBy({ it.style }, { it.name }))
   }
 
   private fun discoverStyleProperties(resolver: Resolver): List<Parameter> {
@@ -196,7 +223,9 @@ private class ComposeApiExtractor(
       val type = parameter.type.resolve()
       val actionItems = type.actionItemKind().takeIf { name == "content" }
       val overflowScope = type.contentScope()?.takeIf { name == "overflowIndicator" && it in overflowMenuScopes }
-      val isSlot = actionItems == null && (parameter.isContentSlot(type) || name == "content" && indexedContent != null)
+      val decorator = parameter.decoratorScope(type)
+      val isSlot = actionItems == null &&
+        (decorator != null || parameter.isContentSlot(type) || name == "content" && indexedContent != null)
       if ((name == "content" || type.indexedSlotScope() != null) && isSlot && type.nullability == Nullability.NOT_NULL) {
         childrenParameter = name
         childrenScope = indexedContent ?: type.contentScope()
@@ -215,12 +244,12 @@ private class ComposeApiExtractor(
         name == "targetState" && indexedContent != null -> "int"
         else -> valueKinds[type.name] ?: componentValueKinds[type.name]
           ?: drawingValueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
-          ?: type.rangeKind() ?: parameter.producerKind(type)
+          ?: type.rangeKind() ?: type.animationKind() ?: parameter.producerKind(type)
           ?: type.drawingKind() ?: type.contentTransitionKind()
           ?: "gridConfig".takeIf { type.name == "kotlin.Function1" &&
             type.arguments.first().type?.resolve()?.name == "androidx.compose.foundation.layout.GridConfigurationScope" &&
             type.arguments.last().type?.resolve()?.name == "kotlin.Unit" }
-          ?: structuredValues.kind(type)
+          ?: structuredValues.kind(type) ?: structuredValues.defaultsKind(type)
       }
       if (kind == null) {
         omitted += OmittedParameter(name, type.signatureName(), when {
@@ -232,7 +261,7 @@ private class ComposeApiExtractor(
       }
       val nullable = type.nullability == Nullability.NULLABLE && !(name == "targetState" && indexedContent != null)
       supported += Parameter(publicName, kind, parameter.hasDefault || overflowScope != null, nullable,
-        scope = if (isSlot) type.contentScope() else null, nativeName = name.takeIf { it != publicName })
+        scope = if (isSlot) decorator ?: type.contentScope() else null, nativeName = name.takeIf { it != publicName })
     }
     if (omitted.any { it.required }) return omit("adapterRequired", "Required parameter cannot cross the bridge", omitted)
 
@@ -340,7 +369,8 @@ private class ComposeApiExtractor(
             parameter.isVararg -> modifierVarargKinds[type.name]
             qualifiedName == "androidx.compose.ui.layout.layoutId" && name == "layoutId" && type.name == "kotlin.Any" -> "string"
             else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
-              ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind() ?: type.drawingKind() ?: parameter.producerKind(type)
+              ?: type.rangeKind() ?: type.animationKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
+              ?: type.drawingKind() ?: parameter.producerKind(type)
               ?: structuredValues.kind(type)
           }
           if (kind == null || kind == "modifier") {
@@ -391,11 +421,11 @@ private class ComposeApiExtractor(
   )
 
   private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
-    val runtime = optional.filter { it.kind in newRuntimeKinds }
+    val runtime = optional.filter { it.kind in newRuntimeKinds || it.scope?.startsWith("decoration:") == true }
     if (runtime.isNotEmpty()) {
       return extendCallForms(optional, runtime, newlyBridgeable, 128, 5)
     }
-    val inferred = optional.filter { structuredValues.isInferredKind(it.kind) || it.kind.startsWith("eventTuple:") }
+    val inferred = optional.filter { it.isInferredValue() || it.kind.startsWith("eventTuple:") }
     if (inferred.isNotEmpty()) {
       // First build the previous surface with the new types removed. Applying
       // the budgets in the opposite order can drop existing prop combinations.
@@ -432,24 +462,39 @@ private class ComposeApiExtractor(
     val previousMasks = previous.masks.map { mask ->
       old.filterIndexed { index, _ -> mask and (1 shl index) != 0 }.sumOf(::bit)
     }
-    val preferred = if (combineAdded) old.filter { it.name in textFieldControlProps }
-      else old.filter { it.kind in preferredComponentKinds }.take(4)
-    val core = (preferred.toSet() + old).take(coreLimit)
-    val coreMasks = core.fold(listOf(0)) { masks, parameter -> masks + masks.map { it or bit(parameter) } }
-    val addedBits = if (combineAdded) {
-      added.fold(listOf(0)) { masks, parameter -> masks + masks.map { it or bit(parameter) } }.drop(1)
-    } else added.map(::bit)
+    val established = old.filterNot { it.isInferredValue() }
+    val preferred = if (combineAdded) established.filter { it.name in textFieldControlProps }
+      else established.filter { it.kind in preferredComponentKinds }.take(4)
+    val core = (preferred.toSet() + established + old).take(coreLimit)
+    fun subsets(parameters: List<Parameter>) =
+      parameters.fold(listOf(0)) { masks, parameter -> masks + masks.map { it or bit(parameter) } }
+    val coreMasks = subsets(core)
+    val addedBits = if (combineAdded) subsets(added).drop(1) else added.map(::bit)
     val newMasks = addedBits.flatMap { mask -> coreMasks.map { it or mask } }
     val pairedMasks = if (exhaustiveLimit < 1024 && !combineAdded) added.flatMapIndexed { index, first ->
       added.drop(index + 1).map { second -> bit(first) or bit(second) }
     } else emptyList()
-    // Preserve the previously generated full form with each new option in isolation.
-    val priorFull = old.sumOf(::bit)
-    val fullWithOne = added.filter { it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds || it.kind in newRuntimeKinds }
-      .map { priorFull or bit(it) }
-    val considered = (previousMasks + newMasks + pairedMasks + fullWithOne + (total - 1)).distinct().sorted()
+    // Keep the complete established form available as more optional value
+    // types become inferable. Combine small sets of options so adding a
+    // decorator or SDK value cannot silently remove a working JSX call.
+    val explicitFull = established.sumOf(::bit)
+    val inferred = old - established.toSet()
+    val fullForms = if (inferred.size <= 4) {
+      subsets(inferred).map { explicitFull or it }
+    } else listOf(explicitFull, old.sumOf(::bit))
+    val addedFullForms = if (exhaustiveLimit < 1024 && added.size <= 5) {
+      subsets(added)
+    } else added.filter {
+      it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds || it.kind in newRuntimeKinds ||
+        it.scope?.startsWith("decoration:") == true
+    }.map(::bit)
+    val completeForms = fullForms.flatMap { base -> addedFullForms.map { base or it } }
+    val considered = (previousMasks + newMasks + pairedMasks + completeForms + (total - 1))
+      .distinct().sorted()
     return CallForms(considered, total - considered.size)
   }
+
+  private fun Parameter.isInferredValue() = kind == "char" || structuredValues.isInferredKind(kind)
 
   private fun previousCallForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
     require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
@@ -597,6 +642,17 @@ private class ComposeApiExtractor(
     }
   }
 
+  private fun KSValueParameter.decoratorScope(type: KSType): String? = when {
+    type.name == "androidx.compose.foundation.text.input.TextFieldDecorator" -> "decoration:textField"
+    (this.type.annotations + type.annotations).none { it.annotationType.resolve().name == COMPOSABLE } -> null
+    type.name == "kotlin.Function1" && type.arguments.last().type?.resolve()?.name == "kotlin.Unit" &&
+      type.arguments.first().type?.resolve()?.let { inner ->
+        inner.name == "kotlin.Function0" && inner.arguments.single().type?.resolve()?.name == "kotlin.Unit" &&
+          inner.annotations.any { it.annotationType.resolve().name == COMPOSABLE }
+      } == true -> "decoration:lambda"
+    else -> null
+  }
+
   // Specialize target-state animations to a child index, retaining native Compose transitions.
   private fun KSFunctionDeclaration.indexedContentScope(): String? {
     val state = typeParameters.singleOrNull() ?: return null
@@ -617,6 +673,17 @@ private class ComposeApiExtractor(
   private fun KSType.rangeKind(): String? =
     if (name == "kotlin.ranges.ClosedFloatingPointRange" &&
       arguments.singleOrNull()?.type?.resolve()?.name == "kotlin.Float") "floatRange" else null
+
+  private fun KSType.animationKind(): String? {
+    if (name != "androidx.compose.animation.core.AnimationSpec" &&
+      name != "androidx.compose.animation.core.FiniteAnimationSpec") return null
+    return when (arguments.singleOrNull()?.type?.resolve()?.name) {
+      "kotlin.Float" -> "animationSpec"
+      "androidx.compose.ui.unit.IntSize" -> "animationSpec:size"
+      "androidx.compose.ui.unit.IntOffset" -> "animationSpec:offset"
+      else -> null
+    }
+  }
 
   private fun KSType.indexedSlotScope(): String? {
     if (name != "kotlin.Function2" || arguments[1].type?.resolve()?.name != "kotlin.Int" ||
@@ -757,7 +824,7 @@ private class ComposeApiExtractor(
 
 private fun String.inputType(): String = when {
   this in setOf("int", "long", "float", "double", "dp", "sp", "floatProducer") -> "number"
-  this == "color" || startsWith("Compose") -> "string"
+  this == "char" || this == "color" || startsWith("Compose") -> "string"
   this in setOf("floatRange", "buttonGroupItems", "appBarItems", "pointerKeys") -> "tuple"
   this in setOf("alignmentLine", "visibilityScope", "lookaheadScope") -> "string"
   startsWith("record:") -> "object"
@@ -797,7 +864,8 @@ private val expandedBridgeKinds = setOf(
   "ComposeToggleableState", "ComposeOrientation", "ComposeIntrinsicSize", "ComposeContentScale"
 )
 private val capabilityBridgeKinds = setOf(
-  "animationSpec", "enterTransition", "exitTransition", "focusRequester", "bringIntoViewRequester",
+  "animationSpec", "animationSpec:size", "animationSpec:offset", "enterTransition", "exitTransition",
+  "focusRequester", "bringIntoViewRequester",
   "nestedScrollConnection", "keyPolicy", "textFieldValue", "eventTextFieldValue", "foundationStyle",
   "foundationStyleState", "interactionSource"
 )
@@ -945,6 +1013,7 @@ private val componentValueKinds = mapOf(
 )
 private val valueKinds = mapOf(
   "kotlin.String" to "string",
+  "kotlin.Char" to "char",
   "kotlin.Boolean" to "boolean",
   "kotlin.Int" to "int",
   "kotlin.Long" to "long",
@@ -982,8 +1051,6 @@ private val valueKinds = mapOf(
   "androidx.compose.foundation.interaction.InteractionSource" to "interactionSource",
   "androidx.compose.foundation.interaction.MutableInteractionSource" to "interactionSource",
   "androidx.compose.ui.input.nestedscroll.NestedScrollConnection" to "nestedScrollConnection",
-  "androidx.compose.animation.core.AnimationSpec" to "animationSpec",
-  "androidx.compose.animation.core.FiniteAnimationSpec" to "animationSpec",
   "androidx.compose.foundation.style.Style" to "foundationStyle",
   "androidx.compose.foundation.style.StyleState" to "foundationStyleState",
   "androidx.compose.animation.EnterTransition" to "enterTransition",
@@ -1000,9 +1067,11 @@ private data class Manifest(
   val factories: List<ValueFactory>,
   val records: List<RecordValue>,
   val styleProperties: List<Parameter>,
+  val icons: List<MaterialIcon>,
   val discovered: List<Discovery>,
   val coverage: List<Coverage>
 )
+private data class MaterialIcon(val style: String, val name: String, val property: String, val theme: String)
 private data class ModifierOverload(
   val signature: String,
   val name: String,

@@ -10,277 +10,1565 @@ import androidx.compose.material3.PlainTooltip as composeScoped2
 import androidx.compose.material3.RichTooltip as composeScoped3
 import androidx.compose.material3.SegmentedButton as composeScoped4
 
-// androidx.compose.material3.ModalWideNavigationRail(modifier: androidx.compose.ui.Modifier, state: androidx.compose.material3.WideNavigationRailState, hideOnCollapse: kotlin.Boolean, collapsedShape: androidx.compose.ui.graphics.Shape, expandedShape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.WideNavigationRailColors, header: kotlin.Function0<kotlin.Unit>?, expandedHeaderTopPadding: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, arrangement: androidx.compose.foundation.layout.Arrangement.Vertical, expandedProperties: androidx.compose.material3.ModalWideNavigationRailProperties, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererModalWideNavigationRail {
-  private fun decode_hideOnCollapse(node: ComposeNode) = node.boolean("hideOnCollapse")
-  private fun decode_expandedHeaderTopPadding(node: ComposeNode) = node.number("expandedHeaderTopPadding").dp
+// androidx.compose.material3.ModalBottomSheet(onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, sheetState: androidx.compose.material3.SheetState, sheetMaxWidth: androidx.compose.ui.unit.Dp, sheetGesturesEnabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, scrimColor: androidx.compose.ui.graphics.Color, dragHandle: kotlin.Function0<kotlin.Unit>?, contentWindowInsets: kotlin.Function0<androidx.compose.foundation.layout.WindowInsets>, properties: androidx.compose.material3.ModalBottomSheetProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererModalBottomSheet {
+  private fun decode_sheetMaxWidth(node: ComposeNode) = node.number("sheetMaxWidth").dp
+  private fun decode_sheetGesturesEnabled(node: ComposeNode) = node.boolean("sheetGesturesEnabled")
+  private fun decode_containerColor(node: ComposeNode) = node.color("containerColor")
+  private fun decode_contentColor(node: ComposeNode) = node.color("contentColor")
+  private fun decode_tonalElevation(node: ComposeNode) = node.number("tonalElevation").dp
+  private fun decode_scrimColor(node: ComposeNode) = node.color("scrimColor")
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val content_header: @Composable () -> Unit = { RenderComposeChildren(node.slot("header")) }
-    val slot_header = if (node.isNull("header")) null else content_header
-    val renderChildren: @Composable () -> Unit = { RenderComposeChildren(node.children) }
-    val mask = (if (node.has("hideOnCollapse")) 1 else 0) +
-      (if (node.has("collapsedShape")) 2 else 0) +
-      (if (node.has("expandedShape")) 4 else 0) +
-      (if (node.has("colors")) 8 else 0) +
-      (if (node.has("header")) 16 else 0) +
-      (if (node.has("expandedHeaderTopPadding")) 32 else 0) +
-      (if (node.has("windowInsets")) 64 else 0) +
-      (if (node.has("arrangement")) 128 else 0)
+    val sheetStateValue = if (node.has("sheetState") && !node.isNull("sheetState")) node.jsonObject("sheetState").rememberComposeSheetState(node.arguments()) else null
+    val content_dragHandle: @Composable () -> Unit = { RenderComposeChildren(node.slot("dragHandle")) }
+    val slot_dragHandle = if (node.isNull("dragHandle")) null else content_dragHandle
+    val mask = (if (node.has("sheetState")) 1 else 0) +
+      (if (node.has("sheetMaxWidth")) 2 else 0) +
+      (if (node.has("sheetGesturesEnabled")) 4 else 0) +
+      (if (node.has("shape")) 8 else 0) +
+      (if (node.has("containerColor")) 16 else 0) +
+      (if (node.has("contentColor")) 32 else 0) +
+      (if (node.has("tonalElevation")) 64 else 0) +
+      (if (node.has("scrimColor")) 128 else 0) +
+      (if (node.has("dragHandle")) 256 else 0) +
+      (if (node.has("contentWindowInsets")) 512 else 0)
     when (mask / 32) {
-      0 -> renderModalWideNavigationRailGroup0(node, scope, mask, renderChildren, slot_header)
-      1 -> renderModalWideNavigationRailGroup1(node, scope, mask, renderChildren, slot_header)
-      2 -> renderModalWideNavigationRailGroup2(node, scope, mask, renderChildren, slot_header)
-      3 -> renderModalWideNavigationRailGroup3(node, scope, mask, renderChildren, slot_header)
-      4 -> renderModalWideNavigationRailGroup4(node, scope, mask, renderChildren, slot_header)
-      5 -> renderModalWideNavigationRailGroup5(node, scope, mask, renderChildren, slot_header)
-      6 -> renderModalWideNavigationRailGroup6(node, scope, mask, renderChildren, slot_header)
-      7 -> renderModalWideNavigationRailGroup7(node, scope, mask, renderChildren, slot_header)
+      0 -> renderModalBottomSheetGroup0(node, scope, mask, sheetStateValue, slot_dragHandle)
+      1 -> renderModalBottomSheetGroup1(node, scope, mask, sheetStateValue, slot_dragHandle)
+      2 -> renderModalBottomSheetGroup2(node, scope, mask, sheetStateValue, slot_dragHandle)
+      3 -> renderModalBottomSheetGroup3(node, scope, mask, sheetStateValue, slot_dragHandle)
+      4 -> renderModalBottomSheetGroup4(node, scope, mask, sheetStateValue, slot_dragHandle)
+      5 -> renderModalBottomSheetGroup5(node, scope, mask, sheetStateValue, slot_dragHandle)
+      6 -> renderModalBottomSheetGroup6(node, scope, mask, sheetStateValue, slot_dragHandle)
+      7 -> renderModalBottomSheetGroup7(node, scope, mask, sheetStateValue, slot_dragHandle)
+      8 -> renderModalBottomSheetGroup8(node, scope, mask, sheetStateValue, slot_dragHandle)
+      9 -> renderModalBottomSheetGroup9(node, scope, mask, sheetStateValue, slot_dragHandle)
+      10 -> renderModalBottomSheetGroup10(node, scope, mask, sheetStateValue, slot_dragHandle)
+      11 -> renderModalBottomSheetGroup11(node, scope, mask, sheetStateValue, slot_dragHandle)
+      12 -> renderModalBottomSheetGroup12(node, scope, mask, sheetStateValue, slot_dragHandle)
+      13 -> renderModalBottomSheetGroup13(node, scope, mask, sheetStateValue, slot_dragHandle)
+      14 -> renderModalBottomSheetGroup14(node, scope, mask, sheetStateValue, slot_dragHandle)
+      15 -> renderModalBottomSheetGroup15(node, scope, mask, sheetStateValue, slot_dragHandle)
+      16 -> renderModalBottomSheetGroup16(node, scope, mask, sheetStateValue, slot_dragHandle)
+      17 -> renderModalBottomSheetGroup17(node, scope, mask, sheetStateValue, slot_dragHandle)
+      18 -> renderModalBottomSheetGroup18(node, scope, mask, sheetStateValue, slot_dragHandle)
+      19 -> renderModalBottomSheetGroup19(node, scope, mask, sheetStateValue, slot_dragHandle)
+      20 -> renderModalBottomSheetGroup20(node, scope, mask, sheetStateValue, slot_dragHandle)
+      21 -> renderModalBottomSheetGroup21(node, scope, mask, sheetStateValue, slot_dragHandle)
+      22 -> renderModalBottomSheetGroup22(node, scope, mask, sheetStateValue, slot_dragHandle)
+      23 -> renderModalBottomSheetGroup23(node, scope, mask, sheetStateValue, slot_dragHandle)
+      24 -> renderModalBottomSheetGroup24(node, scope, mask, sheetStateValue, slot_dragHandle)
+      25 -> renderModalBottomSheetGroup25(node, scope, mask, sheetStateValue, slot_dragHandle)
+      26 -> renderModalBottomSheetGroup26(node, scope, mask, sheetStateValue, slot_dragHandle)
+      27 -> renderModalBottomSheetGroup27(node, scope, mask, sheetStateValue, slot_dragHandle)
+      28 -> renderModalBottomSheetGroup28(node, scope, mask, sheetStateValue, slot_dragHandle)
+      29 -> renderModalBottomSheetGroup29(node, scope, mask, sheetStateValue, slot_dragHandle)
+      30 -> renderModalBottomSheetGroup30(node, scope, mask, sheetStateValue, slot_dragHandle)
+      31 -> renderModalBottomSheetGroup31(node, scope, mask, sheetStateValue, slot_dragHandle)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup0(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup0(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      0 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), content = renderChildren)
-      1 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), content = renderChildren)
-      2 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), content = renderChildren)
-      3 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), content = renderChildren)
-      4 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), content = renderChildren)
-      5 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), content = renderChildren)
-      6 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), content = renderChildren)
-      7 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), content = renderChildren)
-      8 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      9 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      10 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      11 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      12 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      13 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      14 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      15 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), content = renderChildren)
-      16 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, content = renderChildren)
-      17 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, content = renderChildren)
-      18 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, content = renderChildren)
-      19 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, content = renderChildren)
-      20 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, content = renderChildren)
-      21 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, content = renderChildren)
-      22 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, content = renderChildren)
-      23 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, content = renderChildren)
-      24 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      25 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      26 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      27 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      28 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      29 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      30 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
-      31 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, content = renderChildren)
+      0 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), content = { RenderComposeChildren(node.children, this) })
+      1 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), content = { RenderComposeChildren(node.children, this) })
+      2 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), content = { RenderComposeChildren(node.children, this) })
+      3 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), content = { RenderComposeChildren(node.children, this) })
+      4 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), content = { RenderComposeChildren(node.children, this) })
+      5 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), content = { RenderComposeChildren(node.children, this) })
+      6 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), content = { RenderComposeChildren(node.children, this) })
+      7 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), content = { RenderComposeChildren(node.children, this) })
+      8 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      9 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      10 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      11 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      12 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      13 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      14 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      15 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
+      16 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      17 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      18 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      19 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      20 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      21 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      22 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      23 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      24 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      25 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      26 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      27 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      28 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      29 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      30 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
+      31 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup1(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup1(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      32 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      33 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      34 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      35 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      36 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      37 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      38 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      39 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      40 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      41 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      42 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      43 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      44 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      45 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      46 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      47 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      48 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      49 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      50 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      51 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      52 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      53 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      54 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      55 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      56 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      57 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      58 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      59 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      60 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      61 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      62 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
-      63 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), content = renderChildren)
+      32 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      33 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      34 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      35 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      36 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      37 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      38 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      39 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      40 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      41 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      42 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      43 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      44 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      45 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      46 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      47 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      48 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      49 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      50 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      51 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      52 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      53 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      54 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      55 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      56 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      57 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      58 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      59 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      60 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      61 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      62 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
+      63 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup2(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup2(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      64 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      65 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      66 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      67 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      68 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      69 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      70 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      71 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      80 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      81 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      82 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      83 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      84 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      85 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      86 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      87 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
+      64 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      65 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      66 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      67 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      68 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      69 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      70 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      71 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      72 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      73 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      74 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      75 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      76 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      77 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      78 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      79 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      80 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      81 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      82 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      83 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      84 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      85 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      86 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      87 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      88 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      89 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      90 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      91 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      92 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      93 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      94 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      95 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup3(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup3(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      96 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      97 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      98 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      99 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      100 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      101 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      102 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      103 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      112 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      113 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      114 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      115 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      116 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      117 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      118 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
-      119 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), content = renderChildren)
+      96 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      97 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      98 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      99 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      100 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      101 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      102 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      103 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      104 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      105 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      106 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      107 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      108 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      109 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      110 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      111 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      112 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      113 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      114 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      115 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      116 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      117 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      118 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      119 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      120 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      121 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      122 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      123 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      124 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      125 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      126 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
+      127 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup4(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup4(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      128 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      129 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      130 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      131 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      132 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      133 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      134 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      135 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      144 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      145 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      146 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      147 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      148 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      149 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      150 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      151 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
+      128 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      129 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      130 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      131 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      132 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      133 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      134 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      135 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      136 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      137 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      138 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      139 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      140 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      141 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      142 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      143 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      144 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      145 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      146 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      147 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      148 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      149 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      150 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      151 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      152 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      153 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      154 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      155 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      156 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      157 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      158 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      159 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup5(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup5(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      160 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      161 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      162 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      163 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      164 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      165 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      166 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      167 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      176 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      177 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      178 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      179 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      180 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      181 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      182 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      183 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
+      160 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      161 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      162 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      163 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      164 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      165 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      166 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      167 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      168 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      169 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      170 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      171 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      172 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      173 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      174 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      175 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      176 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      177 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      178 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      179 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      180 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      181 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      182 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      183 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      184 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      185 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      186 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      187 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      188 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      189 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      190 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      191 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup6(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup6(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      192 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      193 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      194 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      195 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      196 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      197 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      198 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      199 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      208 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      209 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      210 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      211 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      212 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      213 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      214 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      215 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
+      192 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      193 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      194 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      195 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      196 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      197 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      198 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      199 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      200 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      201 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      202 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      203 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      204 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      205 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      206 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      207 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      208 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      209 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      210 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      211 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      212 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      213 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      214 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      215 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      216 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      217 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      218 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      219 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      220 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      221 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      222 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      223 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
   @Composable
-  private fun renderModalWideNavigationRailGroup7(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit, slot_header: (@Composable () -> Unit)?) {
+  private fun renderModalBottomSheetGroup7(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
     when (mask) {
-      224 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      225 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      226 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      227 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      228 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      229 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      230 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      231 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      240 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      241 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      242 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      243 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      244 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      245 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      246 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      247 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
-      255 -> androidx.compose.material3.ModalWideNavigationRail(`modifier` = node.modifier("modifier", scope), `hideOnCollapse` = decode_hideOnCollapse(node), `collapsedShape` = node.arguments().shape("collapsedShape"), `expandedShape` = node.arguments().shape("expandedShape"), `colors` = node.jsonObject("colors").decodeComposeWideNavigationRailColorsValue(), `header` = slot_header, `expandedHeaderTopPadding` = decode_expandedHeaderTopPadding(node), `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(), `arrangement` = toComposeVerticalArrangement(node.string("arrangement")), content = renderChildren)
+      224 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      225 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      226 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      227 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      228 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      229 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      230 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      231 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      232 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      233 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      234 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      235 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      236 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      237 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      238 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      239 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      240 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      241 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      242 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      243 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      244 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      245 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      246 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      247 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      248 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      249 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      250 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      251 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      252 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      253 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      254 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      255 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup8(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      256 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      257 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      258 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      259 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      260 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      261 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      262 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      263 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      264 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      265 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      266 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      267 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      268 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      269 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      270 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      271 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      272 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      273 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      274 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      275 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      276 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      277 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      278 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      279 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      280 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      281 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      282 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      283 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      284 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      285 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      286 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      287 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup9(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      288 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      289 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      290 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      291 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      292 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      293 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      294 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      295 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      296 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      297 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      298 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      299 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      300 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      301 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      302 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      303 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      304 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      305 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      306 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      307 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      308 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      309 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      310 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      311 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      312 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      313 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      314 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      315 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      316 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      317 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      318 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      319 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup10(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      320 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      321 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      322 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      323 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      324 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      325 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      326 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      327 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      328 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      329 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      330 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      331 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      332 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      333 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      334 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      335 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      336 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      337 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      338 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      339 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      340 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      341 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      342 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      343 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      344 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      345 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      346 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      347 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      348 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      349 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      350 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      351 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup11(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      352 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      353 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      354 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      355 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      356 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      357 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      358 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      359 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      360 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      361 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      362 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      363 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      364 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      365 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      366 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      367 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      368 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      369 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      370 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      371 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      372 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      373 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      374 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      375 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      376 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      377 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      378 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      379 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      380 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      381 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      382 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      383 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup12(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      384 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      385 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      386 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      387 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      388 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      389 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      390 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      391 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      392 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      393 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      394 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      395 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      396 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      397 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      398 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      399 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      400 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      401 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      402 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      403 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      404 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      405 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      406 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      407 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      408 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      409 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      410 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      411 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      412 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      413 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      414 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      415 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup13(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      416 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      417 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      418 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      419 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      420 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      421 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      422 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      423 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      424 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      425 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      426 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      427 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      428 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      429 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      430 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      431 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      432 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      433 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      434 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      435 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      436 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      437 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      438 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      439 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      440 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      441 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      442 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      443 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      444 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      445 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      446 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      447 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup14(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      448 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      449 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      450 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      451 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      452 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      453 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      454 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      455 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      456 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      457 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      458 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      459 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      460 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      461 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      462 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      463 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      464 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      465 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      466 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      467 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      468 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      469 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      470 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      471 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      472 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      473 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      474 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      475 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      476 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      477 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      478 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      479 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup15(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      480 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      481 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      482 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      483 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      484 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      485 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      486 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      487 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      488 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      489 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      490 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      491 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      492 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      493 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      494 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      495 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      496 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      497 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      498 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      499 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      500 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      501 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      502 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      503 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      504 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      505 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      506 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      507 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      508 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      509 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      510 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      511 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup16(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      512 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      513 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      514 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      515 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      516 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      517 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      518 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      519 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      520 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      521 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      522 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      523 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      524 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      525 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      526 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      527 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      528 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      529 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      530 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      531 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      532 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      533 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      534 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      535 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      536 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      537 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      538 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      539 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      540 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      541 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      542 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      543 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup17(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      544 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      545 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      546 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      547 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      548 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      549 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      550 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      551 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      552 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      553 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      554 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      555 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      556 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      557 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      558 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      559 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      560 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      561 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      562 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      563 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      564 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      565 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      566 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      567 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      568 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      569 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      570 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      571 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      572 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      573 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      574 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      575 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup18(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      576 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      577 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      578 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      579 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      580 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      581 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      582 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      583 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      584 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      585 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      586 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      587 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      588 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      589 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      590 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      591 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      592 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      593 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      594 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      595 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      596 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      597 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      598 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      599 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      600 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      601 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      602 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      603 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      604 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      605 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      606 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      607 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup19(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      608 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      609 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      610 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      611 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      612 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      613 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      614 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      615 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      616 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      617 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      618 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      619 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      620 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      621 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      622 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      623 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      624 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      625 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      626 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      627 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      628 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      629 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      630 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      631 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      632 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      633 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      634 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      635 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      636 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      637 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      638 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      639 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup20(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      640 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      641 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      642 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      643 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      644 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      645 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      646 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      647 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      648 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      649 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      650 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      651 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      652 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      653 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      654 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      655 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      656 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      657 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      658 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      659 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      660 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      661 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      662 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      663 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      664 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      665 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      666 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      667 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      668 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      669 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      670 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      671 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup21(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      672 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      673 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      674 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      675 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      676 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      677 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      678 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      679 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      680 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      681 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      682 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      683 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      684 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      685 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      686 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      687 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      688 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      689 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      690 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      691 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      692 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      693 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      694 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      695 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      696 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      697 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      698 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      699 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      700 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      701 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      702 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      703 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup22(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      704 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      705 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      706 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      707 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      708 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      709 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      710 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      711 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      712 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      713 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      714 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      715 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      716 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      717 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      718 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      719 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      720 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      721 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      722 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      723 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      724 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      725 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      726 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      727 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      728 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      729 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      730 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      731 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      732 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      733 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      734 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      735 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup23(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      736 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      737 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      738 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      739 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      740 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      741 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      742 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      743 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      744 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      745 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      746 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      747 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      748 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      749 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      750 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      751 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      752 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      753 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      754 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      755 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      756 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      757 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      758 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      759 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      760 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      761 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      762 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      763 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      764 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      765 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      766 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      767 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup24(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      768 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      769 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      770 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      771 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      772 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      773 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      774 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      775 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      776 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      777 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      778 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      779 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      780 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      781 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      782 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      783 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      784 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      785 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      786 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      787 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      788 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      789 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      790 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      791 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      792 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      793 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      794 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      795 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      796 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      797 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      798 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      799 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup25(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      800 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      801 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      802 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      803 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      804 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      805 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      806 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      807 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      808 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      809 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      810 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      811 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      812 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      813 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      814 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      815 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      816 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      817 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      818 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      819 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      820 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      821 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      822 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      823 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      824 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      825 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      826 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      827 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      828 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      829 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      830 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      831 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup26(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      832 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      833 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      834 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      835 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      836 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      837 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      838 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      839 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      840 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      841 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      842 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      843 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      844 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      845 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      846 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      847 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      848 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      849 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      850 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      851 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      852 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      853 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      854 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      855 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      856 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      857 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      858 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      859 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      860 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      861 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      862 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      863 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup27(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      864 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      865 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      866 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      867 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      868 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      869 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      870 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      871 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      872 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      873 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      874 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      875 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      876 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      877 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      878 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      879 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      880 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      881 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      882 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      883 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      884 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      885 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      886 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      887 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      888 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      889 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      890 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      891 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      892 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      893 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      894 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      895 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup28(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      896 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      897 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      898 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      899 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      900 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      901 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      902 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      903 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      904 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      905 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      906 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      907 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      908 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      909 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      910 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      911 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      912 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      913 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      914 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      915 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      916 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      917 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      918 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      919 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      920 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      921 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      922 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      923 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      924 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      925 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      926 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      927 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup29(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      928 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      929 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      930 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      931 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      932 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      933 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      934 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      935 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      936 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      937 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      938 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      939 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      940 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      941 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      942 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      943 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      944 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      945 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      946 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      947 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      948 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      949 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      950 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      951 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      952 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      953 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      954 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      955 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      956 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      957 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      958 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      959 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup30(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      960 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      961 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      962 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      963 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      964 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      965 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      966 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      967 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      968 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      969 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      970 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      971 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      972 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      973 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      974 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      975 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      976 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      977 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      978 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      979 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      980 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      981 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      982 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      983 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      984 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      985 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      986 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      987 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      988 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      989 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      990 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      991 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderModalBottomSheetGroup31(node: ComposeNode, scope: Any?, mask: Int, sheetStateValue: androidx.compose.material3.SheetState?, slot_dragHandle: (@Composable () -> Unit)?) {
+    when (mask) {
+      992 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      993 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      994 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      995 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      996 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      997 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      998 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      999 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1000 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1001 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1002 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1003 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1004 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1005 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1006 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1007 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1008 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1009 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1010 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1011 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1012 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1013 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1014 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1015 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1016 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1017 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1018 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1019 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1020 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1021 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1022 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
+      1023 -> androidx.compose.material3.ModalBottomSheet(`onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `sheetState` = requireNotNull(sheetStateValue), `sheetMaxWidth` = decode_sheetMaxWidth(node), `sheetGesturesEnabled` = decode_sheetGesturesEnabled(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `scrimColor` = decode_scrimColor(node), `dragHandle` = slot_dragHandle, `contentWindowInsets` = { node.jsonObject("contentWindowInsets").toWindowInsets() }, content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 }
 
-// androidx.compose.material3.MultiChoiceSegmentedButtonRow(modifier: androidx.compose.ui.Modifier, space: androidx.compose.ui.unit.Dp, content: kotlin.Function1<androidx.compose.material3.MultiChoiceSegmentedButtonRowScope, kotlin.Unit>)
-internal object RendererMultiChoiceSegmentedButtonRow {
+// androidx.compose.material3.ModalDrawerSheet(modifier: androidx.compose.ui.Modifier, drawerShape: androidx.compose.ui.graphics.Shape, drawerContainerColor: androidx.compose.ui.graphics.Color, drawerContentColor: androidx.compose.ui.graphics.Color, drawerTonalElevation: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererModalDrawerSheet {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("space")) 1 else 0)
+    val mask = (if (node.has("drawerShape")) 1 else 0) +
+      (if (node.has("drawerContainerColor")) 2 else 0) +
+      (if (node.has("drawerContentColor")) 4 else 0) +
+      (if (node.has("drawerTonalElevation")) 8 else 0) +
+      (if (node.has("windowInsets")) 16 else 0)
     when (mask) {
-      0 -> androidx.compose.material3.MultiChoiceSegmentedButtonRow(
+      0 -> androidx.compose.material3.ModalDrawerSheet(
         `modifier` = node.modifier("modifier", scope),
         content = { RenderComposeChildren(node.children, this) },
       )
-      1 -> androidx.compose.material3.MultiChoiceSegmentedButtonRow(
+      1 -> androidx.compose.material3.ModalDrawerSheet(
         `modifier` = node.modifier("modifier", scope),
-        `space` = node.number("space").dp,
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      16 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      17 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      18 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      19 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      20 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      21 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      22 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      23 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      24 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      25 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      26 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      27 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      28 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      29 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      30 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      31 -> androidx.compose.material3.ModalDrawerSheet(
+        `modifier` = node.modifier("modifier", scope),
+        `drawerShape` = node.arguments().shape("drawerShape"),
+        `drawerContainerColor` = node.color("drawerContainerColor"),
+        `drawerContentColor` = node.color("drawerContentColor"),
+        `drawerTonalElevation` = node.number("drawerTonalElevation").dp,
+        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
         content = { RenderComposeChildren(node.children, this) },
       )
       else -> error("Invalid generated arguments for " + node.name)
@@ -288,2721 +1576,37 @@ internal object RendererMultiChoiceSegmentedButtonRow {
   }
 }
 
-// androidx.compose.ui.layout.MultiMeasureLayout(modifier: androidx.compose.ui.Modifier, content: kotlin.Function0<kotlin.Unit>, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)
-internal object RendererMultiMeasureLayout {
+// androidx.compose.material3.ModalNavigationDrawer(drawerContent: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, drawerState: androidx.compose.material3.DrawerState, gesturesEnabled: kotlin.Boolean, scrimColor: androidx.compose.ui.graphics.Color, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererModalNavigationDrawer {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
-    androidx.compose.ui.layout.MultiMeasureLayout(
-      `modifier` = node.modifier("modifier", scope),
-      `measurePolicy` = node.jsonObject("measurePolicy").toComposeLayoutMeasurePolicy(),
-      content = { RenderComposeChildren(node.children) },
-    )
-  }
-}
-
-// androidx.compose.material3.NavigationBar(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererNavigationBar {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("containerColor")) 1 else 0) +
-      (if (node.has("contentColor")) 2 else 0) +
-      (if (node.has("tonalElevation")) 4 else 0) +
-      (if (node.has("windowInsets")) 8 else 0)
+    val mask = (if (node.has("gesturesEnabled")) 1 else 0) +
+      (if (node.has("scrimColor")) 2 else 0)
     when (mask) {
-      0 -> androidx.compose.material3.NavigationBar(
+      0 -> androidx.compose.material3.ModalNavigationDrawer(
+        `drawerContent` = { RenderComposeChildren(node.slot("drawerContent")) },
         `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.NavigationBar(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.NavigationBarItem [receiver: androidx.compose.foundation.layout.RowScope](selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, icon: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, label: kotlin.Function0<kotlin.Unit>?, alwaysShowLabel: kotlin.Boolean, colors: androidx.compose.material3.NavigationBarItemColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererNavigationBarItem {
-  @Composable
-  fun render(node: ComposeNode, scope: androidx.compose.foundation.layout.RowScope) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("label")) 2 else 0) +
-      (if (node.has("alwaysShowLabel")) 4 else 0) +
-      (if (node.has("colors")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-      )
-      2 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-      )
-      3 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-      )
-      4 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      5 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      6 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      7 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      8 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      9 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      10 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      11 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      12 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      13 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      14 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      15 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-      )
-      16 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      17 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      18 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      19 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      20 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      21 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      22 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      23 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      24 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      25 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      26 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      27 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      28 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      29 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      30 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      31 -> scope.composeScoped1(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationBarItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.NavigationDrawerItem(label: kotlin.Function0<kotlin.Unit>, selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, icon: kotlin.Function0<kotlin.Unit>?, badge: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.NavigationDrawerItemColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererNavigationDrawerItem {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("icon")) 1 else 0) +
-      (if (node.has("badge")) 2 else 0) +
-      (if (node.has("shape")) 4 else 0) +
-      (if (node.has("interactionSource")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-      )
-      2 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-      )
-      3 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-      )
-      4 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-      )
-      5 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      6 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      7 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      8 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      9 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      10 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      11 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      12 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      13 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      14 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      15 -> androidx.compose.material3.NavigationDrawerItem(
-        `label` = { RenderComposeChildren(node.slot("label")) },
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `icon` = if (node.isNull("icon")) null else ({ RenderComposeChildren(node.slot("icon")) }),
-        `badge` = if (node.isNull("badge")) null else ({ RenderComposeChildren(node.slot("badge")) }),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.NavigationRail(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, header: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>?, windowInsets: androidx.compose.foundation.layout.WindowInsets, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererNavigationRail {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("containerColor")) 1 else 0) +
-      (if (node.has("contentColor")) 2 else 0) +
-      (if (node.has("header")) 4 else 0) +
-      (if (node.has("windowInsets")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.NavigationRail(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `header` = if (node.isNull("header")) null else ({ RenderComposeChildren(node.slot("header"), this) }),
-        `windowInsets` = node.jsonObject("windowInsets").toWindowInsets(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.NavigationRailItem(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, icon: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, label: kotlin.Function0<kotlin.Unit>?, alwaysShowLabel: kotlin.Boolean, colors: androidx.compose.material3.NavigationRailItemColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererNavigationRailItem {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("label")) 2 else 0) +
-      (if (node.has("alwaysShowLabel")) 4 else 0) +
-      (if (node.has("colors")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-      )
-      2 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-      )
-      3 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-      )
-      4 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      5 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      6 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      7 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-      )
-      8 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      9 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      10 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      11 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      12 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      13 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      14 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      15 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-      )
-      16 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      17 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      18 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      19 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      20 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      21 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      22 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      23 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      24 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      25 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      26 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      27 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      28 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      29 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      30 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      31 -> androidx.compose.material3.NavigationRailItem(
-        `selected` = node.boolean("selected"),
-        `onClick` = { node.emit("onClick") },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
-        `colors` = node.jsonObject("colors").decodeComposeNavigationRailItemColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.OutlinedButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererOutlinedButton {
-  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
-
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("colors")) 4 else 0) +
-      (if (node.has("border")) 8 else 0) +
-      (if (node.has("contentPadding")) 16 else 0) +
-      (if (node.has("interactionSource")) 32 else 0)
-    when (mask / 32) {
-      0 -> renderOutlinedButtonGroup0(node, scope, mask)
-      1 -> renderOutlinedButtonGroup1(node, scope, mask)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedButtonGroup0(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      0 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), content = { RenderComposeChildren(node.children, this) })
-      1 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), content = { RenderComposeChildren(node.children, this) })
-      2 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
-      3 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
-      4 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
-      5 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
-      6 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
-      7 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
-      8 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      9 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      10 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      11 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      12 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      13 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      14 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      15 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      16 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      17 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      18 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      19 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      20 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      21 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      22 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      23 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      24 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      25 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      26 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      27 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      28 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      29 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      30 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      31 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedButtonGroup1(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      32 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      33 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      34 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      35 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      36 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      37 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      38 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      39 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      40 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      41 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      42 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      43 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      44 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      45 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      46 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      47 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      48 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      49 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      50 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      51 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      52 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      53 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      54 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      55 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      56 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      57 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      58 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      59 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      60 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      61 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      62 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      63 -> androidx.compose.material3.OutlinedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.OutlinedCard(modifier: androidx.compose.ui.Modifier, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.CardColors, elevation: androidx.compose.material3.CardElevation, border: androidx.compose.foundation.BorderStroke, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererOutlinedCard {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("shape")) 1 else 0) +
-      (if (node.has("colors")) 2 else 0) +
-      (if (node.has("border")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.OutlinedCard(
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.OutlinedCard(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.CardColors, elevation: androidx.compose.material3.CardElevation, border: androidx.compose.foundation.BorderStroke, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererOutlinedCard_1 {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("colors")) 4 else 0) +
-      (if (node.has("border")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      16 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      17 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      18 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      19 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      20 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      21 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      22 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      23 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      24 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      25 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      26 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      27 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      28 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      29 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      30 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      31 -> androidx.compose.material3.OutlinedCard(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeCardColorsValue(),
-        `border` = node.jsonObject("border").toComposeBorderStroke(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.OutlinedIconButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.IconButtonColors, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererOutlinedIconButton {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("colors")) 4 else 0) +
-      (if (node.has("border")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children) },
-      )
-      1 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      2 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      3 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      4 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      5 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      6 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      7 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      8 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      9 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      10 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      11 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      12 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      13 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      14 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      15 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      16 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      17 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      18 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      19 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      20 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      21 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      22 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      23 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      24 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      25 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      26 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      27 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      28 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      29 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      30 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      31 -> androidx.compose.material3.OutlinedIconButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.OutlinedIconToggleButton(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.IconToggleButtonColors, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererOutlinedIconToggleButton {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("colors")) 4 else 0) +
-      (if (node.has("border")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children) },
-      )
-      1 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      2 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      3 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children) },
-      )
-      4 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      5 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      6 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      7 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        content = { RenderComposeChildren(node.children) },
-      )
-      8 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      9 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      10 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      11 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      12 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      13 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      14 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      15 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      16 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      17 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      18 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      19 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      20 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      21 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      22 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      23 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      24 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      25 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      26 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      27 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children) },
-      )
-      28 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         content = { RenderComposeChildren(node.children) },
       )
-      29 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+      1 -> androidx.compose.material3.ModalNavigationDrawer(
+        `drawerContent` = { RenderComposeChildren(node.slot("drawerContent")) },
         `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `gesturesEnabled` = node.boolean("gesturesEnabled"),
         content = { RenderComposeChildren(node.children) },
       )
-      30 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+      2 -> androidx.compose.material3.ModalNavigationDrawer(
+        `drawerContent` = { RenderComposeChildren(node.slot("drawerContent")) },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `scrimColor` = node.color("scrimColor"),
         content = { RenderComposeChildren(node.children) },
       )
-      31 -> androidx.compose.material3.OutlinedIconToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+      3 -> androidx.compose.material3.ModalNavigationDrawer(
+        `drawerContent` = { RenderComposeChildren(node.slot("drawerContent")) },
         `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
-        `colors` = node.jsonObject("colors").decodeComposeIconToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `gesturesEnabled` = node.boolean("gesturesEnabled"),
+        `scrimColor` = node.color("scrimColor"),
         content = { RenderComposeChildren(node.children) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shapes: androidx.compose.material3.SplitButtonShapes, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererOutlinedLeadingButton {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("colors")) 2 else 0) +
-      (if (node.has("border")) 4 else 0) +
-      (if (node.has("contentPadding")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      16 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      17 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      18 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      19 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      20 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      21 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      22 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      23 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      24 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      25 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      26 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      27 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      28 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      29 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      30 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      31 -> androidx.compose.material3.SplitButtonDefaults.OutlinedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
       )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.OutlinedSecureTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, labelPosition: androidx.compose.material3.TextFieldLabelPosition, label: kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, textObfuscationMode: androidx.compose.foundation.text.input.TextObfuscationMode, textObfuscationCharacter: kotlin.Char, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererOutlinedSecureTextField {
-  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
-  private fun decode_isError(node: ComposeNode) = node.boolean("isError")
-
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeTextFieldState() else null
-    val content_placeholder: @Composable () -> Unit = { RenderComposeChildren(node.slot("placeholder")) }
-    val slot_placeholder = if (node.isNull("placeholder")) null else content_placeholder
-    val content_leadingIcon: @Composable () -> Unit = { RenderComposeChildren(node.slot("leadingIcon")) }
-    val slot_leadingIcon = if (node.isNull("leadingIcon")) null else content_leadingIcon
-    val content_trailingIcon: @Composable () -> Unit = { RenderComposeChildren(node.slot("trailingIcon")) }
-    val slot_trailingIcon = if (node.isNull("trailingIcon")) null else content_trailingIcon
-    val content_prefix: @Composable () -> Unit = { RenderComposeChildren(node.slot("prefix")) }
-    val slot_prefix = if (node.isNull("prefix")) null else content_prefix
-    val content_suffix: @Composable () -> Unit = { RenderComposeChildren(node.slot("suffix")) }
-    val slot_suffix = if (node.isNull("suffix")) null else content_suffix
-    val content_supportingText: @Composable () -> Unit = { RenderComposeChildren(node.slot("supportingText")) }
-    val slot_supportingText = if (node.isNull("supportingText")) null else content_supportingText
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("textStyle")) 2 else 0) +
-      (if (node.has("placeholder")) 4 else 0) +
-      (if (node.has("leadingIcon")) 8 else 0) +
-      (if (node.has("trailingIcon")) 16 else 0) +
-      (if (node.has("prefix")) 32 else 0) +
-      (if (node.has("suffix")) 64 else 0) +
-      (if (node.has("supportingText")) 128 else 0) +
-      (if (node.has("isError")) 256 else 0) +
-      (if (node.has("inputTransformation")) 512 else 0) +
-      (if (node.has("keyboardOptions")) 1024 else 0) +
-      (if (node.has("onKeyboardAction")) 2048 else 0) +
-      (if (node.has("onTextLayout")) 4096 else 0) +
-      (if (node.has("shape")) 8192 else 0) +
-      (if (node.has("colors")) 16384 else 0) +
-      (if (node.has("contentPadding")) 32768 else 0) +
-      (if (node.has("interactionSource")) 65536 else 0)
-    when (mask / 32) {
-      0 -> renderOutlinedSecureTextFieldGroup0(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      1 -> renderOutlinedSecureTextFieldGroup1(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      2 -> renderOutlinedSecureTextFieldGroup2(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      4 -> renderOutlinedSecureTextFieldGroup4(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      8 -> renderOutlinedSecureTextFieldGroup8(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      16 -> renderOutlinedSecureTextFieldGroup16(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      32 -> renderOutlinedSecureTextFieldGroup32(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      48 -> renderOutlinedSecureTextFieldGroup48(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      64 -> renderOutlinedSecureTextFieldGroup64(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      80 -> renderOutlinedSecureTextFieldGroup80(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      96 -> renderOutlinedSecureTextFieldGroup96(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      112 -> renderOutlinedSecureTextFieldGroup112(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      128 -> renderOutlinedSecureTextFieldGroup128(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      256 -> renderOutlinedSecureTextFieldGroup256(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      512 -> renderOutlinedSecureTextFieldGroup512(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      1024 -> renderOutlinedSecureTextFieldGroup1024(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      1295 -> renderOutlinedSecureTextFieldGroup1295(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      2048 -> renderOutlinedSecureTextFieldGroup2048(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      2049 -> renderOutlinedSecureTextFieldGroup2049(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      3343 -> renderOutlinedSecureTextFieldGroup3343(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      3375 -> renderOutlinedSecureTextFieldGroup3375(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      3407 -> renderOutlinedSecureTextFieldGroup3407(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      3439 -> renderOutlinedSecureTextFieldGroup3439(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      3455 -> renderOutlinedSecureTextFieldGroup3455(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      3967 -> renderOutlinedSecureTextFieldGroup3967(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      4095 -> renderOutlinedSecureTextFieldGroup4095(node, scope, mask, stateValue, slot_placeholder, slot_leadingIcon, slot_trailingIcon, slot_prefix, slot_suffix, slot_supportingText)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup0(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      0 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope))
-      1 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node))
-      2 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle())
-      3 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle())
-      4 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder)
-      5 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder)
-      6 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder)
-      7 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder)
-      8 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon)
-      9 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon)
-      10 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon)
-      11 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon)
-      12 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon)
-      13 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon)
-      14 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon)
-      15 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon)
-      16 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon)
-      17 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon)
-      18 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon)
-      19 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon)
-      20 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon)
-      21 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon)
-      22 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon)
-      23 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon)
-      24 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      25 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      26 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      27 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      28 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      29 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      30 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      31 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup1(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      32 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `prefix` = slot_prefix)
-      33 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `prefix` = slot_prefix)
-      36 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `prefix` = slot_prefix)
-      37 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `prefix` = slot_prefix)
-      40 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix)
-      41 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix)
-      44 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix)
-      45 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix)
-      48 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      49 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      52 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      53 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      56 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      57 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      60 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      61 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup2(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      64 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `suffix` = slot_suffix)
-      65 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `suffix` = slot_suffix)
-      68 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `suffix` = slot_suffix)
-      69 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `suffix` = slot_suffix)
-      72 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `suffix` = slot_suffix)
-      73 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `suffix` = slot_suffix)
-      76 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `suffix` = slot_suffix)
-      77 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `suffix` = slot_suffix)
-      80 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      81 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      84 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      85 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      88 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      89 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      92 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      93 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `suffix` = slot_suffix)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup4(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      128 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `supportingText` = slot_supportingText)
-      129 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `supportingText` = slot_supportingText)
-      132 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `supportingText` = slot_supportingText)
-      133 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `supportingText` = slot_supportingText)
-      136 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `supportingText` = slot_supportingText)
-      137 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `supportingText` = slot_supportingText)
-      140 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `supportingText` = slot_supportingText)
-      141 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `supportingText` = slot_supportingText)
-      144 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      145 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      148 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      149 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      152 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      153 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      156 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      157 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `supportingText` = slot_supportingText)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup8(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      256 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `isError` = decode_isError(node))
-      257 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `isError` = decode_isError(node))
-      260 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `isError` = decode_isError(node))
-      261 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `isError` = decode_isError(node))
-      264 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `isError` = decode_isError(node))
-      265 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `isError` = decode_isError(node))
-      268 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `isError` = decode_isError(node))
-      269 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `isError` = decode_isError(node))
-      272 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      273 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      276 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      277 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      280 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      281 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      284 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      285 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `isError` = decode_isError(node))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup16(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      512 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()))
-      513 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()))
-      514 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()))
-      515 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup32(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      1024 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1025 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1028 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1029 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1032 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1033 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1036 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1037 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1040 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1041 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1044 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1045 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1048 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1049 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1052 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1053 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup48(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      1536 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1537 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1538 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      1539 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions())
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup64(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      2048 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2049 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2052 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2053 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2056 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2057 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2060 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2061 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2064 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2065 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2068 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2069 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2072 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2073 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2076 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2077 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup80(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      2560 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2561 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2562 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      2563 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup96(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      3072 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup112(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      3584 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      3585 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      3586 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      3587 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup128(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      4096 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4097 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4098 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4099 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4100 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4101 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4102 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4103 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4104 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4105 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4106 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4107 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4108 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4109 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4110 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4111 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4112 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4113 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4114 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4115 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4116 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4117 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4118 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4119 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4120 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4121 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4122 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4123 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4124 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4125 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4126 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      4127 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup256(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      8192 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"))
-      8193 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"))
-      8196 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `shape` = node.arguments().shape("shape"))
-      8197 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `shape` = node.arguments().shape("shape"))
-      8200 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"))
-      8201 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"))
-      8204 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"))
-      8205 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"))
-      8208 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8209 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8212 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8213 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8216 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8217 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8220 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      8221 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup512(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      16384 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16385 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16386 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16387 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16388 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16389 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16390 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16391 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16392 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16393 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16394 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16395 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16396 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16397 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16398 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16399 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16400 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16401 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16402 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16403 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16404 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16405 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16406 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16407 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16408 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16409 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16410 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16411 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16412 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16413 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16414 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      16415 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue())
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup1024(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      32768 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32769 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32772 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32773 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32776 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32777 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32780 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32781 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32784 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32785 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32788 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32789 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32792 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32793 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32796 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      32797 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup1295(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      41471 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues())
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup2048(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      65536 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65537 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65538 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65539 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65540 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65541 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65542 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65543 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65544 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65545 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65546 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65547 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65548 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65549 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65550 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65551 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65552 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65553 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65554 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65555 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65556 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65557 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65558 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65559 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65560 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65561 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65562 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65563 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65564 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65565 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65566 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65567 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup2049(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      65568 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65569 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65570 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65571 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65572 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65573 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65574 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65575 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65576 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65577 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65578 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65579 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65580 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65581 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65582 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65583 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65584 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65585 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65586 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65587 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65588 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65589 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65590 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65591 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65592 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65593 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65594 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65595 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65596 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65597 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65598 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65599 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup3343(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      107007 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup3375(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      108031 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup3407(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      109055 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup3439(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      110079 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup3455(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      110591 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup3967(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      126975 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup4095(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?, slot_placeholder: (@Composable () -> Unit)?, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?, slot_prefix: (@Composable () -> Unit)?, slot_suffix: (@Composable () -> Unit)?, slot_supportingText: (@Composable () -> Unit)?) {
-    when (mask) {
-      131071 -> androidx.compose.material3.OutlinedSecureTextField(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `textStyle` = node.jsonObject("textStyle").toTextStyle(), `placeholder` = slot_placeholder, `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `prefix` = slot_prefix, `suffix` = slot_suffix, `supportingText` = slot_supportingText, `isError` = decode_isError(node), `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()), `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(), `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }), `onTextLayout` = if (node.isNull("onTextLayout")) null else ({ result -> result()?.let { node.emit("onTextLayout", it.toComposeSnapshot()) } }), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       else -> error("Invalid generated arguments for " + node.name)
     }
   }

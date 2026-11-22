@@ -34,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.focus.FocusProperties
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.semantics.CustomAccessibilityAction
@@ -147,6 +148,9 @@ private fun JSONObject.textUnit(name: String): TextUnit =
 
 @Composable
 internal fun JSONObject.rememberComposePainter(): Painter {
+  if (has("icon")) return rememberVectorPainter(
+    composeMaterialIcon(optString("style", "filled"), getString("icon")),
+  )
   if (has("color")) {
     val color = getString("color")
     return remember(color) { ColorPainter(parseComposeColor(color)) }

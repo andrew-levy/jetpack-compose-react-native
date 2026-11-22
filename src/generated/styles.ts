@@ -2,7 +2,7 @@
 import type { ComposeBaselineShiftValue, ComposeOffset, ComposeTextIndentValue, ComposeTransformOrigin } from "./records";
 import type { ComposeAnimationSpec, ComposeTextStyle } from "../utils/composeValues";
 import type { ComposeInteractionSource } from '../utils/nativeHandles';
-import type { ComposeFontWeight, ComposeTextAlign } from './values';
+import type { ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHyphensValue, ComposeLineBreakValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue } from './values';
 import type { ComposeShape, ComposeBrush } from '../utils/modifier';
 
 export interface ComposeFoundationStyle {
@@ -31,11 +31,15 @@ export interface ComposeFoundationStyle {
   externalPaddingTop?: number;
   externalPaddingVertical?: number;
   fontSize?: number;
+  fontStyle?: ComposeFontStyleValue;
+  fontSynthesis?: ComposeFontSynthesisValue;
   fontWeight?: ComposeFontWeight;
   foreground?: string;
   height?: number;
+  hyphens?: ComposeHyphensValue;
   left?: number;
   letterSpacing?: number;
+  lineBreak?: ComposeLineBreakValue;
   lineHeight?: number;
   maxHeight?: number;
   maxWidth?: number;
@@ -51,6 +55,8 @@ export interface ComposeFoundationStyle {
   shape?: ComposeShape;
   size?: number;
   textAlign?: ComposeTextAlign;
+  textDecoration?: ComposeTextDecorationValue;
+  textDirection?: ComposeTextDirectionValue;
   textIndent?: ComposeTextIndentValue;
   textStyle?: ComposeTextStyle;
   top?: number;

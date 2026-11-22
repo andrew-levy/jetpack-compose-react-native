@@ -58,7 +58,7 @@ export function styleOutputs(properties, kinds) {
     ...bindings.map(({ name }) => "    " + name + "Value?.let { " + name + "(it) }"),
     ...states.map((name) => "    " + name + "Value?.let { " + name + "(it) }"),
     "  }",
-    '  val animation = optJSONObject("animationSpec")?.toComposeAnimationSpec<Float>() ?: return style',
+    '  val animation = optJSONObject("animationSpec")?.toComposeFloatAnimationSpec() ?: return style',
     "  return Style { animate(animation, style) }",
     "}",
     "",

@@ -22,6 +22,11 @@ internal class ComposeModifierArguments(
   fun string(name: String): String = values.getString(name)
   fun boolean(name: String): Boolean = values.getBoolean(name)
   fun number(name: String): Double = values.getDouble(name)
+  fun animationTarget(name: String): Any = when (val value = values.get(name)) {
+    is String -> value
+    is Number -> value.toInt()
+    else -> error("Expected a Compose animation target key or index")
+  }
   fun floatRange(name: String): ClosedFloatingPointRange<Float> {
     val range = jsonArray(name)
     return range.getDouble(0).toFloat()..range.getDouble(1).toFloat()

@@ -1342,56 +1342,56 @@ internal object RendererAnimatedContent {
       (if (node.has("label")) 4 else 0)
     when (mask) {
       0 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       1 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       2 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       3 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
         `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       4 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `label` = node.string("label"),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       5 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
         `label` = node.string("label"),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       6 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
         `label` = node.string("label"),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       7 -> androidx.compose.animation.AnimatedContent(
-        `targetState` = node.number("targetState").toInt(),
+        `targetState` = node.arguments().animationTarget("targetState"),
         `modifier` = node.modifier("modifier", scope),
         `transitionSpec` = { node.jsonObject("transitionSpec").toComposeContentTransition() },
         `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
         `label` = node.string("label"),
-        content = { index -> node.children.getOrNull(index)?.let { RenderComposeChild(it, this) } },
+        content = { state -> RenderComposeAnimationChild(node, state, this) },
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -1729,6 +1729,7 @@ internal object RendererAssistChip {
       205 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       206 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       207 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      223 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -1736,6 +1737,7 @@ internal object RendererAssistChip {
   @Composable
   private fun renderAssistChipGroup7(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
     when (mask) {
+      239 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       255 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       else -> error("Invalid generated arguments for " + node.name)
     }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 
@@ -18,15 +20,39 @@ internal fun RenderComposeChildren(children: List<ComposeChild>, scope: Any? = n
 }
 
 @Composable
+internal fun RenderComposeAnimationChild(node: ComposeNode, state: Any, scope: Any? = null) {
+  when (state) {
+    is Int -> node.children.getOrNull(state)?.let { RenderComposeChild(it, scope) }
+    is String -> RenderComposeChildren(node.slot("\$state:$state"), scope)
+  }
+}
+
+@Composable
 internal fun RenderComposeChild(child: ComposeChild, scope: Any? = null) {
   key(child) {
     when (child) {
       is ComposeNode -> when (child.name) {
         "" -> Unit
         STICKY_HEADER -> RenderComposeChildren(child.children, scope)
+        "\$innerContent" -> checkNotNull(LocalInnerContent.current) {
+          "ComposeInnerContent requires a Compose decoration slot"
+        }.invoke()
         else -> WithComposeOwners(scope) { RenderComposable(child, scope) }
       }
       is ReactChildSlot -> RenderReactChild(child)
+    }
+  }
+}
+
+private val LocalInnerContent = compositionLocalOf<(@Composable () -> Unit)?> { null }
+
+@Composable
+internal fun RenderComposeDecoration(children: List<ComposeChild>, inner: @Composable () -> Unit) {
+  if (children.isEmpty()) {
+    inner()
+  } else {
+    CompositionLocalProvider(LocalInnerContent provides inner) {
+      RenderComposeChildren(children)
     }
   }
 }

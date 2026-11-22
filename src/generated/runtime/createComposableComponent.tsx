@@ -45,6 +45,7 @@ type OverloadParameter = readonly [
 interface ComposableOverload {
   id: string;
   children: boolean;
+  keyedChildren?: boolean;
   parameters: readonly OverloadParameter[];
   masks: readonly number[];
 }
@@ -56,6 +57,7 @@ export interface ComposableDescription {
   events?: readonly string[];
   slots?: readonly string[];
   children: boolean;
+  keyedChildren?: boolean;
   overloads?: readonly ComposableOverload[];
 }
 
@@ -67,6 +69,7 @@ function matchesType(value: unknown, kind: string, nullable: boolean) {
   if (kind === "ReactNode") return true;
   if (value === null) return nullable;
   if (kind === "tuple") return Array.isArray(value);
+  if (kind === "animationTarget") return typeof value === "string" || typeof value === "number";
   if (kind === "object") return typeof value === "object" && !Array.isArray(value);
   if (kind === "ComposeModifier") return typeof (value as ComposeModifier)?.build === "function";
   if (kind === "brush" || kind === "shape") return typeof value === "string" || typeof value === "object";
@@ -96,6 +99,13 @@ function selectOverload(
   });
   if (!overload) throw new Error(`No Compose ${description.name} overload accepts ${passed.join(", ")}`);
   return overload;
+}
+
+function animationChildren(children: React.ReactNode) {
+  return React.Children.map(children, (child) => {
+    if (!React.isValidElement(child) || child.key === null) return null;
+    return <RenderComposeNode slotName={`$state:${child.key}`}>{child}</RenderComposeNode>;
+  });
 }
 
 export function createComposableComponent<P extends object>(
@@ -142,6 +152,7 @@ export function createComposableComponent<P extends object>(
       if (child === null) return null;
       return <RenderComposeNode key={name} slotName={name}>{child}</RenderComposeNode>;
     });
+    const usesKeys = (overload?.keyedChildren ?? description.keyedChildren) && typeof input.targetState === "string";
 
     const node = (
       <RenderComposeNode
@@ -155,7 +166,9 @@ export function createComposableComponent<P extends object>(
           else callback?.(value);
         }}
       >
-        {(overload?.children ?? description.children) ? props.children : null}
+        {(overload?.children ?? description.children)
+          ? (usesKeys ? animationChildren(props.children) : props.children)
+          : null}
         {slots}
       </RenderComposeNode>
     );

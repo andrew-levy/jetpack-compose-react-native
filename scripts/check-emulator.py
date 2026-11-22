@@ -261,7 +261,8 @@ def verify():
     nodes = wait_for("Drag reported to React", "Crossfade content", window=window)
     tap(nodes["Crossfade content"])
     nodes = wait_for(
-        "Second crossfade state", "Size animation callback received", "Sliding content end", "Native phone input", "Modifiers",
+        "Second crossfade state", "Size animation callback received", "Sliding content end",
+        "Native phone input", "Edit note icon", "Editable note", "Modifiers",
         absent=("First crossfade state",), window=window,
         layout_ready=lambda nodes: input_has_value(nodes, "Native phone input", "123-4"),
     )

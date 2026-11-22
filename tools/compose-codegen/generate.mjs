@@ -8,6 +8,7 @@ import { recordOutputs } from "./records.mjs";
 import { scalarKinds } from "./scalars.mjs";
 import { eventTupleDescriptor } from "./events.mjs";
 import { styleOutputs } from "./styles.mjs";
+import { iconOutputs } from "./icons.mjs";
 import { verifyInventory } from "./inventory.mjs";
 
 const repo = fileURLToPath(new URL("../../", import.meta.url));
@@ -50,7 +51,7 @@ const sharedTypes = {
   textFieldValue: ["ComposeTextFieldValue", "toComposeTextFieldValue"],
 
   keyPolicy: ["ComposeKeyPolicy", "toComposeKeyPolicy"],
-  animationSpec: ["ComposeAnimationSpec", "toComposeAnimationSpec"],
+  animationSpec: ["ComposeAnimationSpec", "toComposeFloatAnimationSpec"],
   enterTransition: ["ComposeVisibilityTransition", "toComposeEnterTransition"],
   exitTransition: ["ComposeVisibilityTransition", "toComposeExitTransition"],
 };
@@ -121,7 +122,8 @@ const kinds = {
   sharedContentState: { type: "ComposeSharedContent", input: "object", module: "../utils/composeValues",
     modifierExpression: () => "sharedContentState",
     composition: { value: "sharedContentState", factory: "rememberComposeSharedContentState" } },
-  boundsTransform: { type: "ComposeAnimationSpec", input: "object", module: "../utils/composeValues",
+  boundsTransform: { type: "ComposeAnimationSpec<ComposeAnimationRect>", input: "object", module: "../utils/composeValues",
+    imports: ["ComposeAnimationSpec", "ComposeAnimationRect"],
     modifierExpression: (key) => "args.jsonObject(" + key + ").toComposeBoundsTransform()" },
   visibilityScope: { type: '"current"', input: "string",
     modifierExpression: () => "visibilityScope",
@@ -186,6 +188,14 @@ const kinds = {
   ...Object.fromEntries(Object.entries(sharedTypes).map(([kind, [type, decoder]]) => [
     kind, { type, input: "object", module: "../utils/composeValues", expression: (key) => `node.jsonObject(${key}).${decoder}()`,
       ...((kind === "paddingValues" || kind === "windowInsets") && { modifierInput: kind }) },
+  ])),
+  ...Object.fromEntries([
+    ["animationSpec:size", "ComposeLayoutSize", "toComposeSizeAnimationSpec"],
+    ["animationSpec:offset", "ComposeAnimationOffset", "toComposeOffsetAnimationSpec"],
+  ].map(([kind, value, decoder]) => [
+    kind, { type: `ComposeAnimationSpec<${value}>`, input: "object", module: "../utils/composeValues",
+      imports: ["ComposeAnimationSpec", value],
+      expression: (key) => `node.jsonObject(${key}).${decoder}()` },
   ])),
   ...modifierKinds,
   ...scalarKinds,
@@ -285,10 +295,14 @@ function fieldType({ kind, nullable }) {
   return `${value}${nullable && kind !== "slot" ? " | null" : ""}`;
 }
 
+function animationTarget(component, name) {
+  return name === "targetState" && component.childrenScope?.startsWith("indexed:");
+}
+
 function componentFields(component, parameters, reserved = []) {
   const fields = parameters.flatMap((parameter) => {
     const { name, optional, kind } = parameter;
-    const type = fieldType(parameter);
+    const type = animationTarget(component, name) ? "number | string" : fieldType(parameter);
     if (kind === "modifier") return [
       `  modifiers${optional ? "?" : ""}: ${type};`,
       "  /** @deprecated Use the modifiers prop. */",
@@ -369,14 +383,17 @@ function typeScript({ components, values, factories }) {
       ...(objectProps.length ? [`  objectProps: ${quote(objectProps)},`] : []),
       ...(slots.length ? [`  slots: ${quote(slots)},`] : []),
       ...(events.length ? [`  events: ${quote(events)},`] : []),
+      ...(simple && animationTarget(first, "targetState") ? ["  keyedChildren: true,"] : []),
       `  children: ${overloads.some(({ children }) => children)},`,
       ...(!simple ? [
         "  overloads: [",
-        ...overloads.map(({ id, children, masks, parameters }) => {
+        ...overloads.map((component) => {
+          const { id, children, masks, parameters } = component;
           const asInput = ({ name, kind, optional, nullable }) => [
-            name, kinds[kind].input ?? kinds[kind].type, optional, nullable,
+            name, animationTarget(component, name) ? "animationTarget" : kinds[kind].input ?? kinds[kind].type, optional, nullable,
           ];
-          return `    { id: ${quote(id)}, children: ${children}, parameters: ${quote(parameters.map(asInput))}, masks: ${quote(masks)} },`;
+          const keyed = animationTarget(component, "targetState") ? ", keyedChildren: true" : "";
+          return `    { id: ${quote(id)}, children: ${children}${keyed}, parameters: ${quote(parameters.map(asInput))}, masks: ${quote(masks)} },`;
         }),
         "  ],",
       ] : []),
@@ -422,10 +439,17 @@ const overflowMenuScopes = new Set([
 ]);
 
 function renderSlot(children, scope) {
+  if (scope === "decoration:textField") {
+    return `androidx.compose.foundation.text.input.TextFieldDecorator { inner -> RenderComposeDecoration(${children}, inner) }`;
+  }
+  if (scope === "decoration:lambda") return `{ inner -> RenderComposeDecoration(${children}, inner) }`;
   if (overflowMenuScopes.has(scope)) return `{ menu -> RenderComposeOverflowIndicator(${children}, menu::show) }`;
   if (lazyBuilderScopes.has(scope)) return `{ renderLazyComposeChildren(${children}) }`;
-  if (indexedSlotScopes.has(scope) || scope?.startsWith("indexed:")) {
-    return `{ index -> ${children}.getOrNull(index)?.let { RenderComposeChild(it${scope === "indexed:" ? "" : ", this"}) } }`;
+  if (scope?.startsWith("indexed:")) {
+    return `{ state -> RenderComposeAnimationChild(node, state${scope === "indexed:" ? "" : ", this"}) }`;
+  }
+  if (indexedSlotScopes.has(scope)) {
+    return `{ index -> ${children}.getOrNull(index)?.let { RenderComposeChild(it, this) } }`;
   }
   if (scope === "androidx.compose.foundation.layout.PaddingValues") {
     return `{ padding -> RenderPaddedComposeChildren(${children}, padding) }`;
@@ -465,12 +489,14 @@ function kotlin({ components }) {
     const slotNames = new Set(sharedSlots.map(({ name }) => name));
     const parameterValue = ({ name, kind, nullable, scope }) => {
       const key = quote(name);
-      const value = Object.hasOwn(stateKinds, kind) ? `requireNotNull(${name}Value)`
+      const value = animationTarget({ childrenScope }, name) ? `node.arguments().animationTarget(${key})`
+        : Object.hasOwn(stateKinds, kind) ? `requireNotNull(${name}Value)`
         : kind === "slot" && scope ? renderSlot(`node.slot(${key})`, scope)
         : kinds[kind].expression(key);
       return nullable ? `if (node.isNull(${key})) null else (${value})` : value;
     };
-    const shared = new Map(parameters.filter(({ kind }) => compact && Object.hasOwn(scalarKinds, kind))
+    const shared = new Map(parameters.filter(({ kind, name }) =>
+      compact && Object.hasOwn(scalarKinds, kind) && !animationTarget({ childrenScope }, name))
       .map((parameter) => [parameter.name, parameter]));
     const call = (mask, indent) => {
       const passed = passedParameters({ parameters }, mask);
@@ -638,8 +664,10 @@ const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers,
 const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
 const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? [], kinds);
 const [styleTypeScript, styleKotlin] = styleOutputs(manifest.styleProperties ?? [], { ...kinds, ...modifierKinds });
+const [iconTypeScript, iconKotlin] = iconOutputs(manifest.icons);
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
 const nativeFiles = [
+  [`${android}/ComposeMaterialIcons.kt`, iconKotlin],
   [`${android}/ComposeStyleValues.kt`, styleKotlin],
   [`${android}/ComposeRecords.kt`, recordKotlin],
   [`${android}/ComposeFactories.kt`, factoryKotlin],
@@ -670,6 +698,7 @@ const files = [
   ["src/generated/values.ts", valueTypeScript],
   ["src/generated/records.ts", recordTypeScript],
   ["src/generated/styles.ts", styleTypeScript],
+  ["src/generated/icons.ts", iconTypeScript],
   ["src/generated/factories.ts", factoryTypeScript],
   ["tools/compose-codegen/api-surface.json", `{\n${Object.entries(surface).map(([kind, entries]) =>
     `  "${kind}": [\n${entries.map((entry) => `    ${JSON.stringify(entry)}`).join(",\n")}\n  ]`).join(",\n")}\n}\n`],

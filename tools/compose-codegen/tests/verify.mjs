@@ -20,7 +20,8 @@ function callForms(surface) {
       const passed = parameters
         .filter(({ optional, kind: parameterKind }) => !optional || parameterKind === "modifier" || (mask & (1 << bit++)))
         .map(({ name, kind: parameterKind, nullable, optional }) =>
-          [name, parameterKind, nullable, parameterKind === "modifier" && optional])
+          [name, parameterKind.startsWith("animationSpec:") ? "animationSpec" : parameterKind,
+            nullable, parameterKind === "modifier" && optional])
         .sort(([left], [right]) => left.localeCompare(right));
       return JSON.stringify([name, children, passed, kind, scope]);
     }))));
@@ -66,7 +67,7 @@ if (mode === "audit") {
     ["hoverable", "interactionSource"],
     ["nestedScroll", "nestedScrollConnection"],
     ["onKeyEvent", "keyPolicy"],
-    ["animateContentSize", "animationSpec"],
+    ["animateContentSize", "animationSpec:size"],
     ["animateItem", "animationSpec"],
     ["styleable", "foundationStyle"],
     ["styleable", "foundationStyleState"],
@@ -119,6 +120,20 @@ if (mode === "audit") {
   assert.ok(manifest.components.some(({ name, parameters }) => name === "DecorationBox" &&
     parameters.some(({ kind }) => kind === "visualTransformation")));
   assert.ok(manifest.components.some(({ name, childrenScope }) => name === "Crossfade" && childrenScope === "indexed:"));
+  for (const [name, scope] of [["decorator", "decoration:textField"], ["decorationBox", "decoration:lambda"]]) {
+    assert.ok(manifest.components.some(component => component.name === "BasicTextField" &&
+      component.parameters.some(parameter => parameter.name === name && parameter.scope === scope)),
+      `BasicTextField must expose its ${name} slot`);
+  }
+  const appBarColors = manifest.records.find(({ kotlinType }) => kotlinType === "androidx.compose.material3.TopAppBarColors");
+  assert.ok(appBarColors?.optIns.includes("androidx.compose.material3.ExperimentalMaterial3Api"),
+    "Discover public value types with a public Compose opt-in");
+  const elevation = manifest.records.find(({ kotlinType }) => kotlinType === "androidx.compose.material3.ButtonElevation");
+  assert.ok(elevation?.factories.some(({ name, fields }) =>
+    name === "ButtonDefaults.buttonElevation" && fields.some(({ name }) => name === "defaultElevation")),
+    "Discover Material defaults factories for value types with internal constructors");
+  assert.ok(manifest.icons.some(({ style, name }) => style === "autoMirroredOutlined" && name === "ArrowBack"),
+    "Discover directional Material icons from the Compose classpath");
   assert.ok(manifest.modifiers.some(({ name, parameters }) => name === "animateContentSize" &&
     parameters.some(({ name, kind }) => name === "finishedListener" &&
       kind === "eventTuple:androidx.compose.ui.unit.IntSize,androidx.compose.ui.unit.IntSize")));

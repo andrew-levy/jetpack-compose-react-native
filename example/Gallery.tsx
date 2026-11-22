@@ -1,9 +1,9 @@
 import { useRef, useState, type ReactNode } from "react";
 import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
-  AlertDialog, AnimatedContent, AnimatedVisibility, AppBarRow, ButtonGroup, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
+  AlertDialog, AnimatedContent, AnimatedVisibility, AppBarRow, ButtonGroup, AssistChip, Badge, BasicText, BasicTextField, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox, ComposeInnerContent,
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
-  Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
+  Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Icon, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
   Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeLayoutSize, type ComposeTextFieldValue,
   StickyHeader, MediumTopAppBar, useLazyListState, useModalBottomSheetState, usePagerState, useTopAppBarScrollBehavior,
@@ -72,7 +72,9 @@ function Buttons() {
       <Theme colorScheme={colors}>
         <Column modifiers={fullWidth}>
           <Row>
-            <Button onClick={increment}><Text text="Filled" /></Button>
+            <Button onClick={increment} elevation={{ factory: "ButtonDefaults.buttonElevation", defaultElevation: 3 }}>
+              <Text text="Filled" />
+            </Button>
             <Spacer modifiers={Modifier.width(8)} />
             <OutlinedButton onClick={increment}><Text text="Outlined" /></OutlinedButton>
           </Row>
@@ -345,14 +347,16 @@ function BridgeAdditions() {
           },
         })}>
           <Box modifiers={Modifier.height(destination === 0 ? 24 : 44)}>
-            <Crossfade targetState={destination} animationSpec={{ type: "tween", durationMillis: 200 }}>
+            <Crossfade targetState={destination} animationSpec={{
+              type: "keyframes", durationMillis: 200, frames: [{ atMillis: 100, value: 0.5 }],
+            }}>
               <Text key="first" text="First crossfade state" />
               <Text key="second" text="Second crossfade state" />
             </Crossfade>
           </Box>
         </Box>
         {sizeAnimationFinished && <Text text="Size animation callback received" />}
-        <AnimatedContent targetState={destination} transitionSpec={{
+        <AnimatedContent targetState={destination === 0 ? "first" : "second"} transitionSpec={{
           enter: { type: "slide", direction: "right", fraction: 0.5 },
           exit: { type: "scale", scale: 0.8 },
         }}>
@@ -366,6 +370,17 @@ function BridgeAdditions() {
           lineLimits={{ type: "singleLine" }}
           inputTransformation={{ digitsOnly: true, maxLength: 6 }}
           outputTransformation={{ insertions: [{ offset: 3, text: "-" }] }}
+        />
+        <BasicTextField
+          state={{ initialText: "Editable note" }}
+          modifier={fullWidth}
+          decorator={
+            <Row verticalAlignment="centerVertically" modifiers={fullWidth.padding(8)}>
+              <Icon painter={{ icon: "Edit", style: "outlined" }} contentDescription="Edit note icon" />
+              <Spacer modifiers={Modifier.width(8)} />
+              <ComposeInnerContent />
+            </Row>
+          }
         />
       </Column>
     </Demo>

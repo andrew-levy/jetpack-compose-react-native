@@ -10,6 +10,994 @@ import androidx.compose.material3.PlainTooltip as composeScoped2
 import androidx.compose.material3.RichTooltip as composeScoped3
 import androidx.compose.material3.SegmentedButton as composeScoped4
 
+// androidx.compose.material3.ContainedLoadingIndicator(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, indicatorColor: androidx.compose.ui.graphics.Color, containerShape: androidx.compose.ui.graphics.Shape, polygons: kotlin.collections.List<androidx.graphics.shapes.RoundedPolygon>)
+internal object RendererContainedLoadingIndicator {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("containerColor")) 1 else 0) +
+      (if (node.has("indicatorColor")) 2 else 0) +
+      (if (node.has("containerShape")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+      )
+      2 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      3 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      4 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      5 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      6 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      7 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.ContainedLoadingIndicator(progress: kotlin.Function0<kotlin.Float>, modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, indicatorColor: androidx.compose.ui.graphics.Color, containerShape: androidx.compose.ui.graphics.Shape, polygons: kotlin.collections.List<androidx.graphics.shapes.RoundedPolygon>)
+internal object RendererContainedLoadingIndicator_1 {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("containerColor")) 1 else 0) +
+      (if (node.has("indicatorColor")) 2 else 0) +
+      (if (node.has("containerShape")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+      )
+      2 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      3 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+      )
+      4 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      5 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      6 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      7 -> androidx.compose.material3.ContainedLoadingIndicator(
+        `progress` = { node.number("progress").toFloat() },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `indicatorColor` = node.color("indicatorColor"),
+        `containerShape` = node.arguments().shape("containerShape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.OutlinedTextFieldDefaults.Container(enabled: kotlin.Boolean, isError: kotlin.Boolean, interactionSource: androidx.compose.foundation.interaction.InteractionSource, modifier: androidx.compose.ui.Modifier, colors: androidx.compose.material3.TextFieldColors, shape: androidx.compose.ui.graphics.Shape, focusedBorderThickness: androidx.compose.ui.unit.Dp, unfocusedBorderThickness: androidx.compose.ui.unit.Dp)
+internal object RendererContainer {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("colors")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("focusedBorderThickness")) 4 else 0) +
+      (if (node.has("unfocusedBorderThickness")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+      )
+      2 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+      )
+      3 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+      )
+      4 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      5 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      6 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      7 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      8 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      9 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      10 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      11 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      12 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      13 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      14 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      15 -> androidx.compose.material3.OutlinedTextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.TextFieldDefaults.Container(enabled: kotlin.Boolean, isError: kotlin.Boolean, interactionSource: androidx.compose.foundation.interaction.InteractionSource, modifier: androidx.compose.ui.Modifier, colors: androidx.compose.material3.TextFieldColors, shape: androidx.compose.ui.graphics.Shape, focusedIndicatorLineThickness: androidx.compose.ui.unit.Dp, unfocusedIndicatorLineThickness: androidx.compose.ui.unit.Dp)
+internal object RendererContainer_1 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("colors")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("focusedIndicatorLineThickness")) 4 else 0) +
+      (if (node.has("unfocusedIndicatorLineThickness")) 8 else 0)
+    when (mask) {
+      4 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+      )
+      5 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+      )
+      6 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+      )
+      7 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+      )
+      8 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      9 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      10 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      11 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      12 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      13 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      14 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      15 -> androidx.compose.material3.TextFieldDefaults.Container(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedIndicatorLineThickness` = node.number("focusedIndicatorLineThickness").dp,
+        `unfocusedIndicatorLineThickness` = node.number("unfocusedIndicatorLineThickness").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(enabled: kotlin.Boolean, isError: kotlin.Boolean, interactionSource: androidx.compose.foundation.interaction.InteractionSource, colors: androidx.compose.material3.TextFieldColors, shape: androidx.compose.ui.graphics.Shape, focusedBorderThickness: androidx.compose.ui.unit.Dp, unfocusedBorderThickness: androidx.compose.ui.unit.Dp)
+internal object RendererContainerBox {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode) {
+    val mask = (if (node.has("colors")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("focusedBorderThickness")) 4 else 0) +
+      (if (node.has("unfocusedBorderThickness")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+      )
+      1 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+      )
+      2 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `shape` = node.arguments().shape("shape"),
+      )
+      3 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+      )
+      4 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      5 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      6 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      7 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+      )
+      8 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      9 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      10 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `shape` = node.arguments().shape("shape"),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      11 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      12 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      13 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      14 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      15 -> androidx.compose.material3.OutlinedTextFieldDefaults.ContainerBox(
+        `enabled` = node.boolean("enabled"),
+        `isError` = node.boolean("isError"),
+        `interactionSource` = node.jsonObject("interactionSource").rememberComposeInteractionSource(),
+        `colors` = node.jsonObject("colors").decodeComposeTextFieldColorsValue(),
+        `shape` = node.arguments().shape("shape"),
+        `focusedBorderThickness` = node.number("focusedBorderThickness").dp,
+        `unfocusedBorderThickness` = node.number("unfocusedBorderThickness").dp,
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.animation.Crossfade(targetState: T, modifier: androidx.compose.ui.Modifier, animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>, label: kotlin.String, content: kotlin.Function1<T, kotlin.Unit>)
+internal object RendererCrossfade {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("animationSpec")) 1 else 0) +
+      (if (node.has("label")) 2 else 0)
+    when (mask) {
+      0 -> androidx.compose.animation.Crossfade(
+        `targetState` = node.arguments().animationTarget("targetState"),
+        `modifier` = node.modifier("modifier", scope),
+        content = { state -> RenderComposeAnimationChild(node, state) },
+      )
+      1 -> androidx.compose.animation.Crossfade(
+        `targetState` = node.arguments().animationTarget("targetState"),
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeFloatAnimationSpec(),
+        content = { state -> RenderComposeAnimationChild(node, state) },
+      )
+      2 -> androidx.compose.animation.Crossfade(
+        `targetState` = node.arguments().animationTarget("targetState"),
+        `modifier` = node.modifier("modifier", scope),
+        `label` = node.string("label"),
+        content = { state -> RenderComposeAnimationChild(node, state) },
+      )
+      3 -> androidx.compose.animation.Crossfade(
+        `targetState` = node.arguments().animationTarget("targetState"),
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeFloatAnimationSpec(),
+        `label` = node.string("label"),
+        content = { state -> RenderComposeAnimationChild(node, state) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.animation.CustomizedLookaheadAnimationVisualDebugging(debugColor: androidx.compose.ui.graphics.Color, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererCustomizedLookaheadAnimationVisualDebugging {
+  @OptIn(androidx.compose.animation.ExperimentalLookaheadAnimationVisualDebugApi::class)
+  @Composable
+  fun render(node: ComposeNode) {
+    androidx.compose.animation.CustomizedLookaheadAnimationVisualDebugging(
+      `debugColor` = node.color("debugColor"),
+      content = { RenderComposeChildren(node.children) },
+    )
+  }
+}
+
+// androidx.compose.material3.DatePicker(state: androidx.compose.material3.DatePickerState, modifier: androidx.compose.ui.Modifier, dateFormatter: androidx.compose.material3.DatePickerFormatter, colors: androidx.compose.material3.DatePickerColors, title: kotlin.Function0<kotlin.Unit>?, headline: kotlin.Function0<kotlin.Unit>?, showModeToggle: kotlin.Boolean, focusRequester: androidx.compose.ui.focus.FocusRequester?)
+internal object RendererDatePicker {
+  private fun decode_showModeToggle(node: ComposeNode) = node.boolean("showModeToggle")
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeDatePickerState() else null
+    val content_title: @Composable () -> Unit = { RenderComposeChildren(node.slot("title")) }
+    val slot_title = if (node.isNull("title")) null else content_title
+    val content_headline: @Composable () -> Unit = { RenderComposeChildren(node.slot("headline")) }
+    val slot_headline = if (node.isNull("headline")) null else content_headline
+    val mask = (if (node.has("dateFormatter")) 1 else 0) +
+      (if (node.has("colors")) 2 else 0) +
+      (if (node.has("title")) 4 else 0) +
+      (if (node.has("headline")) 8 else 0) +
+      (if (node.has("showModeToggle")) 16 else 0) +
+      (if (node.has("focusRequester")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderDatePickerGroup0(node, scope, mask, stateValue, slot_title, slot_headline)
+      1 -> renderDatePickerGroup1(node, scope, mask, stateValue, slot_title, slot_headline)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderDatePickerGroup0(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.material3.DatePickerState?, slot_title: (@Composable () -> Unit)?, slot_headline: (@Composable () -> Unit)?) {
+    when (mask) {
+      0 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope))
+      1 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter())
+      2 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue())
+      3 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue())
+      4 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title)
+      5 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title)
+      6 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title)
+      7 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title)
+      8 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline)
+      9 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline)
+      10 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline)
+      11 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline)
+      12 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline)
+      13 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline)
+      14 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline)
+      15 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline)
+      16 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `showModeToggle` = decode_showModeToggle(node))
+      17 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `showModeToggle` = decode_showModeToggle(node))
+      18 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node))
+      19 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node))
+      20 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      21 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      22 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      23 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      24 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      25 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      26 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      27 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      28 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      29 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      30 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      31 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderDatePickerGroup1(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.material3.DatePickerState?, slot_title: (@Composable () -> Unit)?, slot_headline: (@Composable () -> Unit)?) {
+    when (mask) {
+      32 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      33 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      34 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      35 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      36 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      37 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      38 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      39 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      40 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      41 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      42 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      43 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      44 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      45 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      46 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      47 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      48 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      49 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      50 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      51 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      52 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      53 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      54 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      55 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      56 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      57 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      58 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      59 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      60 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      61 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      62 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      63 -> androidx.compose.material3.DatePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePickerDialog(onDismissRequest: kotlin.Function0<kotlin.Unit>, confirmButton: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, dismissButton: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, tonalElevation: androidx.compose.ui.unit.Dp, colors: androidx.compose.material3.DatePickerColors, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererDatePickerDialog {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("dismissButton")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("tonalElevation")) 4 else 0) +
+      (if (node.has("colors")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `shape` = node.arguments().shape("shape"),
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.DatePickerDialog(
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `confirmButton` = { RenderComposeChildren(node.slot("confirmButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `dismissButton` = if (node.isNull("dismissButton")) null else ({ RenderComposeChildren(node.slot("dismissButton")) }),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(selectedDateMillis: kotlin.Long?, displayMode: androidx.compose.material3.DisplayMode, dateFormatter: androidx.compose.material3.DatePickerFormatter, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDatePickerHeadline {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(
+        `selectedDateMillis` = if (node.isNull("selectedDateMillis")) null else (node.number("selectedDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DatePickerDefaults.DatePickerHeadline(
+        `selectedDateMillis` = if (node.isNull("selectedDateMillis")) null else (node.number("selectedDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DatePickerDefaults.DatePickerTitle(displayMode: androidx.compose.material3.DisplayMode, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDatePickerTitle {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DatePickerDefaults.DatePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DatePickerDefaults.DatePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DateRangePicker(state: androidx.compose.material3.DateRangePickerState, modifier: androidx.compose.ui.Modifier, dateFormatter: androidx.compose.material3.DatePickerFormatter, colors: androidx.compose.material3.DatePickerColors, title: kotlin.Function0<kotlin.Unit>?, headline: kotlin.Function0<kotlin.Unit>?, showModeToggle: kotlin.Boolean, focusRequester: androidx.compose.ui.focus.FocusRequester?)
+internal object RendererDateRangePicker {
+  private fun decode_showModeToggle(node: ComposeNode) = node.boolean("showModeToggle")
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeDateRangePickerState() else null
+    val content_title: @Composable () -> Unit = { RenderComposeChildren(node.slot("title")) }
+    val slot_title = if (node.isNull("title")) null else content_title
+    val content_headline: @Composable () -> Unit = { RenderComposeChildren(node.slot("headline")) }
+    val slot_headline = if (node.isNull("headline")) null else content_headline
+    val mask = (if (node.has("dateFormatter")) 1 else 0) +
+      (if (node.has("colors")) 2 else 0) +
+      (if (node.has("title")) 4 else 0) +
+      (if (node.has("headline")) 8 else 0) +
+      (if (node.has("showModeToggle")) 16 else 0) +
+      (if (node.has("focusRequester")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderDateRangePickerGroup0(node, scope, mask, stateValue, slot_title, slot_headline)
+      1 -> renderDateRangePickerGroup1(node, scope, mask, stateValue, slot_title, slot_headline)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderDateRangePickerGroup0(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.material3.DateRangePickerState?, slot_title: (@Composable () -> Unit)?, slot_headline: (@Composable () -> Unit)?) {
+    when (mask) {
+      0 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope))
+      1 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter())
+      2 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue())
+      3 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue())
+      4 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title)
+      5 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title)
+      6 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title)
+      7 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title)
+      8 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline)
+      9 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline)
+      10 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline)
+      11 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline)
+      12 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline)
+      13 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline)
+      14 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline)
+      15 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline)
+      16 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `showModeToggle` = decode_showModeToggle(node))
+      17 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `showModeToggle` = decode_showModeToggle(node))
+      18 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node))
+      19 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node))
+      20 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      21 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      22 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      23 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node))
+      24 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      25 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      26 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      27 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      28 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      29 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      30 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      31 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node))
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderDateRangePickerGroup1(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.material3.DateRangePickerState?, slot_title: (@Composable () -> Unit)?, slot_headline: (@Composable () -> Unit)?) {
+    when (mask) {
+      32 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      33 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      34 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      35 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      36 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      37 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      38 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      39 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      40 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      41 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      42 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      43 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      44 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      45 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      46 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      47 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      48 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      49 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      50 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      51 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      52 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      53 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      54 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      55 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      56 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      57 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      58 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      59 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      60 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      61 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      62 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      63 -> androidx.compose.material3.DateRangePicker(`state` = requireNotNull(stateValue), `modifier` = node.modifier("modifier", scope), `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(), `colors` = node.jsonObject("colors").decodeComposeDatePickerColorsValue(), `title` = slot_title, `headline` = slot_headline, `showModeToggle` = decode_showModeToggle(node), `focusRequester` = if (node.isNull("focusRequester")) null else (node.jsonObject("focusRequester").rememberComposeFocusRequester()))
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(selectedStartDateMillis: kotlin.Long?, selectedEndDateMillis: kotlin.Long?, displayMode: androidx.compose.material3.DisplayMode, dateFormatter: androidx.compose.material3.DatePickerFormatter, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDateRangePickerHeadline {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(
+        `selectedStartDateMillis` = if (node.isNull("selectedStartDateMillis")) null else (node.number("selectedStartDateMillis").toLong()),
+        `selectedEndDateMillis` = if (node.isNull("selectedEndDateMillis")) null else (node.number("selectedEndDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerHeadline(
+        `selectedStartDateMillis` = if (node.isNull("selectedStartDateMillis")) null else (node.number("selectedStartDateMillis").toLong()),
+        `selectedEndDateMillis` = if (node.isNull("selectedEndDateMillis")) null else (node.number("selectedEndDateMillis").toLong()),
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `dateFormatter` = node.jsonObject("dateFormatter").toDatePickerFormatter(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(displayMode: androidx.compose.material3.DisplayMode, modifier: androidx.compose.ui.Modifier, contentColor: androidx.compose.ui.graphics.Color)
+internal object RendererDateRangePickerTitle {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentColor")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.DateRangePickerDefaults.DateRangePickerTitle(
+        `displayMode` = toComposeDisplayMode(node.string("displayMode")),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
 // androidx.compose.material3.TextFieldDefaults.DecorationBox(value: kotlin.String, innerTextField: kotlin.Function0<kotlin.Unit>, enabled: kotlin.Boolean, singleLine: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, interactionSource: androidx.compose.foundation.interaction.InteractionSource, isError: kotlin.Boolean, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, container: kotlin.Function0<kotlin.Unit>)
 internal object RendererDecorationBox {
   private fun decode_value(node: ComposeNode) = node.string("value")
@@ -665,8 +1653,9 @@ internal object RendererDockedSearchBar {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
     val mask = (if (node.has("shape")) 1 else 0) +
-      (if (node.has("tonalElevation")) 2 else 0) +
-      (if (node.has("shadowElevation")) 4 else 0)
+      (if (node.has("colors")) 2 else 0) +
+      (if (node.has("tonalElevation")) 4 else 0) +
+      (if (node.has("shadowElevation")) 8 else 0)
     when (mask) {
       0 -> androidx.compose.material3.DockedSearchBar(
         `inputField` = { RenderComposeChildren(node.slot("inputField")) },
@@ -688,7 +1677,7 @@ internal object RendererDockedSearchBar {
         `expanded` = node.boolean("expanded"),
         `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
         `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
         content = { RenderComposeChildren(node.children, this) },
       )
       3 -> androidx.compose.material3.DockedSearchBar(
@@ -697,7 +1686,7 @@ internal object RendererDockedSearchBar {
         `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
         content = { RenderComposeChildren(node.children, this) },
       )
       4 -> androidx.compose.material3.DockedSearchBar(
@@ -705,7 +1694,7 @@ internal object RendererDockedSearchBar {
         `expanded` = node.boolean("expanded"),
         `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
         `modifier` = node.modifier("modifier", scope),
-        `shadowElevation` = node.number("shadowElevation").dp,
+        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       5 -> androidx.compose.material3.DockedSearchBar(
@@ -714,7 +1703,7 @@ internal object RendererDockedSearchBar {
         `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
-        `shadowElevation` = node.number("shadowElevation").dp,
+        `tonalElevation` = node.number("tonalElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       6 -> androidx.compose.material3.DockedSearchBar(
@@ -722,8 +1711,8 @@ internal object RendererDockedSearchBar {
         `expanded` = node.boolean("expanded"),
         `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
         `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
         `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
       )
       7 -> androidx.compose.material3.DockedSearchBar(
@@ -732,6 +1721,82 @@ internal object RendererDockedSearchBar {
         `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.DockedSearchBar(
+        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
+        `expanded` = node.boolean("expanded"),
+        `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `colors` = node.jsonObject("colors").decodeComposeSearchBarColorsValue(),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         content = { RenderComposeChildren(node.children, this) },
@@ -1320,6 +2385,7 @@ internal object RendererElevatedAssistChip {
       205 -> androidx.compose.material3.ElevatedAssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       206 -> androidx.compose.material3.ElevatedAssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       207 -> androidx.compose.material3.ElevatedAssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      223 -> androidx.compose.material3.ElevatedAssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -1327,6 +2393,7 @@ internal object RendererElevatedAssistChip {
   @Composable
   private fun renderElevatedAssistChipGroup7(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
     when (mask) {
+      239 -> androidx.compose.material3.ElevatedAssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       255 -> androidx.compose.material3.ElevatedAssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -1342,12 +2409,15 @@ internal object RendererElevatedButton {
     val mask = (if (node.has("enabled")) 1 else 0) +
       (if (node.has("shape")) 2 else 0) +
       (if (node.has("colors")) 4 else 0) +
-      (if (node.has("border")) 8 else 0) +
-      (if (node.has("contentPadding")) 16 else 0) +
-      (if (node.has("interactionSource")) 32 else 0)
+      (if (node.has("elevation")) 8 else 0) +
+      (if (node.has("border")) 16 else 0) +
+      (if (node.has("contentPadding")) 32 else 0) +
+      (if (node.has("interactionSource")) 64 else 0)
     when (mask / 32) {
       0 -> renderElevatedButtonGroup0(node, scope, mask)
       1 -> renderElevatedButtonGroup1(node, scope, mask)
+      2 -> renderElevatedButtonGroup2(node, scope, mask)
+      3 -> renderElevatedButtonGroup3(node, scope, mask)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -1363,30 +2433,30 @@ internal object RendererElevatedButton {
       5 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
       6 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
       7 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
-      8 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      9 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      10 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      11 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      12 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      13 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      14 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      15 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      16 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      17 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      18 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      19 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      20 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      21 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      22 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      23 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      24 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      25 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      26 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      27 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      28 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      29 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      30 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
-      31 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      8 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      9 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      10 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      11 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      12 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      13 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      14 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      15 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      16 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      17 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      18 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      19 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      20 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      21 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      22 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      23 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      24 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      25 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      26 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      27 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      28 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      29 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      30 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      31 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -1394,38 +2464,217 @@ internal object RendererElevatedButton {
   @Composable
   private fun renderElevatedButtonGroup1(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      32 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      33 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      34 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      35 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      36 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      37 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      38 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      39 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      40 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      41 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      42 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      43 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      44 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      45 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      46 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      47 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      48 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      49 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      50 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      51 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      52 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      53 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      54 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      55 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      56 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      57 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      58 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      59 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      60 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      61 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      62 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
-      63 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      32 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      33 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      34 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      35 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      36 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      37 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      38 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      39 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      40 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      41 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      42 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      43 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      44 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      45 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      46 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      47 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      48 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      49 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      50 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      51 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      52 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      53 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      54 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      55 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      56 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      57 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      58 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      59 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      60 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      61 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      62 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      63 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderElevatedButtonGroup2(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      64 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      65 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      66 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      67 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      68 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      69 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      70 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      71 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      72 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      73 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      74 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      75 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      76 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      77 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      78 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      79 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      80 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      81 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      82 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      83 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      84 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      85 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      86 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      87 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      88 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      89 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      90 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      91 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      92 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      93 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      94 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      95 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderElevatedButtonGroup3(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      96 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      97 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      98 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      99 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      100 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      101 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      102 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      103 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      104 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      105 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      106 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      107 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      108 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      109 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      110 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      111 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      112 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      113 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      114 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      115 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      116 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      117 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      118 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      119 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      120 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      121 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      122 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      123 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      124 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      125 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      126 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      127 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.ElevatedButton(onClick: kotlin.Function0<kotlin.Unit>, shapes: androidx.compose.material3.ButtonShapes, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
+internal object RendererElevatedButton_1 {
+  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("colors")) 2 else 0) +
+      (if (node.has("elevation")) 4 else 0) +
+      (if (node.has("border")) 8 else 0) +
+      (if (node.has("contentPadding")) 16 else 0) +
+      (if (node.has("interactionSource")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderElevatedButton_1Group0(node, scope, mask)
+      1 -> renderElevatedButton_1Group1(node, scope, mask)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  private fun renderElevatedButton_1Group0(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      0 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), content = { RenderComposeChildren(node.children, this) })
+      1 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), content = { RenderComposeChildren(node.children, this) })
+      2 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
+      3 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), content = { RenderComposeChildren(node.children, this) })
+      4 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      5 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      6 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      7 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), content = { RenderComposeChildren(node.children, this) })
+      8 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      9 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      10 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      11 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      12 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      13 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      14 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      15 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
+      16 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      17 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      18 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      19 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      20 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      21 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      22 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      23 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      24 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      25 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      26 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      27 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      28 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      29 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      30 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      31 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), content = { RenderComposeChildren(node.children, this) })
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  private fun renderElevatedButton_1Group1(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      32 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      33 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      34 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      35 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      36 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      37 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      38 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      39 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      40 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      41 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      42 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      43 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      44 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      45 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      46 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      47 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      48 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      49 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      50 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      51 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      52 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      53 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      54 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      55 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      56 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      57 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      58 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      59 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      60 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      61 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      62 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
+      63 -> androidx.compose.material3.ElevatedButton(`onClick` = { node.emit("onClick") }, `shapes` = node.jsonObject("shapes").decodeComposeButtonShapesValue(), `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeButtonElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = { RenderComposeChildren(node.children, this) })
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -1769,1855 +3018,6 @@ internal object RendererElevatedFilterChip {
       125 -> androidx.compose.material3.ElevatedFilterChip(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeSelectableChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       126 -> androidx.compose.material3.ElevatedFilterChip(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeSelectableChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
       127 -> androidx.compose.material3.ElevatedFilterChip(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeSelectableChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shapes: androidx.compose.material3.SplitButtonShapes, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererElevatedLeadingButton {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("colors")) 2 else 0) +
-      (if (node.has("border")) 4 else 0) +
-      (if (node.has("contentPadding")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      16 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      17 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      18 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      19 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      20 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      21 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      22 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      23 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      24 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      25 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      26 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      27 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      28 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      29 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      30 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      31 -> androidx.compose.material3.SplitButtonDefaults.ElevatedLeadingButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ElevatedSuggestionChip(onClick: kotlin.Function0<kotlin.Unit>, label: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, icon: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.ChipColors, elevation: androidx.compose.material3.ChipElevation?, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererElevatedSuggestionChip {
-  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
-
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val slot_label: @Composable () -> Unit = { RenderComposeChildren(node.slot("label")) }
-    val content_icon: @Composable () -> Unit = { RenderComposeChildren(node.slot("icon")) }
-    val slot_icon = if (node.isNull("icon")) null else content_icon
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("icon")) 2 else 0) +
-      (if (node.has("shape")) 4 else 0) +
-      (if (node.has("colors")) 8 else 0) +
-      (if (node.has("elevation")) 16 else 0) +
-      (if (node.has("border")) 32 else 0) +
-      (if (node.has("interactionSource")) 64 else 0)
-    when (mask / 32) {
-      0 -> renderElevatedSuggestionChipGroup0(node, scope, mask, slot_label, slot_icon)
-      1 -> renderElevatedSuggestionChipGroup1(node, scope, mask, slot_label, slot_icon)
-      2 -> renderElevatedSuggestionChipGroup2(node, scope, mask, slot_label, slot_icon)
-      3 -> renderElevatedSuggestionChipGroup3(node, scope, mask, slot_label, slot_icon)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderElevatedSuggestionChipGroup0(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_icon: (@Composable () -> Unit)?) {
-    when (mask) {
-      0 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope))
-      1 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node))
-      2 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon)
-      3 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon)
-      4 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"))
-      5 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"))
-      6 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"))
-      7 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"))
-      8 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      9 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      10 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      11 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      12 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      13 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      14 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      15 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      16 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      17 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      18 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      19 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      20 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      21 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      22 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      23 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      24 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      25 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      26 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      27 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      28 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      29 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      30 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      31 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderElevatedSuggestionChipGroup1(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_icon: (@Composable () -> Unit)?) {
-    when (mask) {
-      32 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      33 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      34 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      35 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      36 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      37 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      38 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      39 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      40 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      41 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      42 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      43 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      44 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      45 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      46 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      47 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      48 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      49 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      50 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      51 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      52 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      53 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      54 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      55 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      56 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      57 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      58 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      59 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      60 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      61 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      62 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      63 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderElevatedSuggestionChipGroup2(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_icon: (@Composable () -> Unit)?) {
-    when (mask) {
-      64 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      65 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      66 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      67 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      68 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      69 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      70 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      71 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      72 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      73 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      74 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      75 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      76 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      77 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      78 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      79 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      80 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      81 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      82 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      83 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      84 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      85 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      86 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      87 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      88 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      89 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      90 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      91 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      92 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      93 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      94 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      95 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderElevatedSuggestionChipGroup3(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_icon: (@Composable () -> Unit)?) {
-    when (mask) {
-      96 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      97 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      98 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      99 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      100 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      101 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      102 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      103 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      104 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      105 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      106 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      107 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      108 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      109 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      110 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      111 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      112 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      113 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      114 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      115 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      116 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      117 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      118 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      119 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      120 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      121 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      122 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      123 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      124 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      125 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      126 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      127 -> androidx.compose.material3.ElevatedSuggestionChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ElevatedToggleButton(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shapes: androidx.compose.material3.ToggleButtonShapes, colors: androidx.compose.material3.ToggleButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererElevatedToggleButton {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("colors")) 2 else 0) +
-      (if (node.has("border")) 4 else 0) +
-      (if (node.has("contentPadding")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      16 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      17 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      18 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      19 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      20 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      21 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      22 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      23 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      24 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      25 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      26 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      27 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      28 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      29 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      30 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      31 -> androidx.compose.material3.ElevatedToggleButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeToggleButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shapes: androidx.compose.material3.SplitButtonShapes, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererElevatedTrailingButton {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("colors")) 2 else 0) +
-      (if (node.has("border")) 4 else 0) +
-      (if (node.has("contentPadding")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      16 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      17 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      18 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      19 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      20 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      21 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      22 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      23 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      24 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      25 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      26 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      27 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      28 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      29 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      30 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      31 -> androidx.compose.material3.SplitButtonDefaults.ElevatedTrailingButton(
-        `checked` = node.boolean("checked"),
-        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `colors` = node.jsonObject("colors").decodeComposeButtonColorsValue(),
-        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ExpandedDockedSearchBar(state: androidx.compose.material3.SearchBarState, inputField: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.SearchBarColors, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, properties: androidx.compose.ui.window.PopupProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererExpandedDockedSearchBar {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeSearchBarState() else null
-    val mask = (if (node.has("shape")) 1 else 0) +
-      (if (node.has("tonalElevation")) 2 else 0) +
-      (if (node.has("shadowElevation")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.ExpandedDockedSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ExpandedFullScreenSearchBar(state: androidx.compose.material3.SearchBarState, inputField: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, collapsedShape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.SearchBarColors, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, windowInsets: kotlin.Function0<androidx.compose.foundation.layout.WindowInsets>, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererExpandedFullScreenSearchBar {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeSearchBarState() else null
-    val mask = (if (node.has("collapsedShape")) 1 else 0) +
-      (if (node.has("tonalElevation")) 2 else 0) +
-      (if (node.has("shadowElevation")) 4 else 0) +
-      (if (node.has("windowInsets")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `shadowElevation` = node.number("shadowElevation").dp,
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `shadowElevation` = node.number("shadowElevation").dp,
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.ExpandedFullScreenSearchBar(
-        `state` = requireNotNull(stateValue),
-        `inputField` = { RenderComposeChildren(node.slot("inputField")) },
-        `modifier` = node.modifier("modifier", scope),
-        `collapsedShape` = node.arguments().shape("collapsedShape"),
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        `windowInsets` = { node.jsonObject("windowInsets").toWindowInsets() },
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ExposedDropdownMenuBoxScope.ExposedDropdownMenu(expanded: kotlin.Boolean, onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, scrollState: androidx.compose.foundation.ScrollState, matchAnchorWidth: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
-internal object RendererExposedDropdownMenu {
-  private fun decode_expanded(node: ComposeNode) = node.boolean("expanded")
-  private fun decode_matchAnchorWidth(node: ComposeNode) = node.boolean("matchAnchorWidth")
-  private fun decode_containerColor(node: ComposeNode) = node.color("containerColor")
-  private fun decode_tonalElevation(node: ComposeNode) = node.number("tonalElevation").dp
-  private fun decode_shadowElevation(node: ComposeNode) = node.number("shadowElevation").dp
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope) {
-    val scrollStateValue = if (node.has("scrollState") && !node.isNull("scrollState")) node.jsonObject("scrollState").rememberComposeScrollState(node.arguments()) else null
-    val mask = (if (node.has("scrollState")) 1 else 0) +
-      (if (node.has("matchAnchorWidth")) 2 else 0) +
-      (if (node.has("shape")) 4 else 0) +
-      (if (node.has("containerColor")) 8 else 0) +
-      (if (node.has("tonalElevation")) 16 else 0) +
-      (if (node.has("shadowElevation")) 32 else 0) +
-      (if (node.has("border")) 64 else 0)
-    when (mask / 32) {
-      0 -> renderExposedDropdownMenuGroup0(node, scope, mask, scrollStateValue)
-      1 -> renderExposedDropdownMenuGroup1(node, scope, mask, scrollStateValue)
-      2 -> renderExposedDropdownMenuGroup2(node, scope, mask, scrollStateValue)
-      3 -> renderExposedDropdownMenuGroup3(node, scope, mask, scrollStateValue)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderExposedDropdownMenuGroup0(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope, mask: Int, scrollStateValue: androidx.compose.foundation.ScrollState?) {
-    when (mask) {
-      0 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), content = { RenderComposeChildren(node.children, this) })
-      1 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), content = { RenderComposeChildren(node.children, this) })
-      2 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), content = { RenderComposeChildren(node.children, this) })
-      3 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), content = { RenderComposeChildren(node.children, this) })
-      4 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
-      5 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
-      6 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
-      7 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), content = { RenderComposeChildren(node.children, this) })
-      8 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      9 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      10 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      11 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      12 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      13 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      14 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      15 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), content = { RenderComposeChildren(node.children, this) })
-      16 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      17 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      18 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      19 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      20 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      21 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      22 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      23 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      24 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      25 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      26 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      27 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      28 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      29 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      30 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      31 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), content = { RenderComposeChildren(node.children, this) })
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderExposedDropdownMenuGroup1(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope, mask: Int, scrollStateValue: androidx.compose.foundation.ScrollState?) {
-    when (mask) {
-      32 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      33 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      34 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      35 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      36 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      37 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      38 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      39 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      40 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      41 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      42 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      43 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      44 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      45 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      46 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      47 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      48 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      49 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      50 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      51 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      52 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      53 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      54 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      55 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      56 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      57 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      58 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      59 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      60 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      61 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      62 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      63 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = { RenderComposeChildren(node.children, this) })
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderExposedDropdownMenuGroup2(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope, mask: Int, scrollStateValue: androidx.compose.foundation.ScrollState?) {
-    when (mask) {
-      64 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      65 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      66 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      67 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      68 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      69 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      70 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      71 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      72 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      73 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      74 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      75 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      76 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      77 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      78 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      79 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      80 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      81 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      82 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      83 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      84 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      85 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      86 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      87 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      88 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      89 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      90 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      91 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      92 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      93 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      94 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      95 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  private fun renderExposedDropdownMenuGroup3(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope, mask: Int, scrollStateValue: androidx.compose.foundation.ScrollState?) {
-    when (mask) {
-      96 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      97 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      98 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      99 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      100 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      101 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      102 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      103 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      104 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      105 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      106 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      107 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      108 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      109 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      110 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      111 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      112 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      113 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      114 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      115 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      116 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      117 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      118 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      119 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      120 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      121 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      122 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      123 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      124 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      125 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      126 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      127 -> scope.ExposedDropdownMenu(`expanded` = decode_expanded(node), `onDismissRequest` = { node.emit("onDismissRequest") }, `modifier` = node.modifier("modifier", scope), `scrollState` = requireNotNull(scrollStateValue), `matchAnchorWidth` = decode_matchAnchorWidth(node), `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = { RenderComposeChildren(node.children, this) })
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ExposedDropdownMenuBox(expanded: kotlin.Boolean, onExpandedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, content: kotlin.Function1<androidx.compose.material3.ExposedDropdownMenuBoxScope, kotlin.Unit>)
-internal object RendererExposedDropdownMenuBox {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    androidx.compose.material3.ExposedDropdownMenuBox(
-      `expanded` = node.boolean("expanded"),
-      `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
-      `modifier` = node.modifier("modifier", scope),
-      content = { RenderComposeChildren(node.children, this) },
-    )
-  }
-}
-
-// androidx.compose.material3.ExtendedFloatingActionButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, elevation: androidx.compose.material3.FloatingActionButtonElevation, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
-internal object RendererExtendedFloatingActionButton {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("shape")) 1 else 0) +
-      (if (node.has("containerColor")) 2 else 0) +
-      (if (node.has("contentColor")) 4 else 0) +
-      (if (node.has("interactionSource")) 8 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      1 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      2 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      3 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      4 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      5 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      6 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      7 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      8 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      9 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      10 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      11 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      12 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      13 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      14 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      15 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        content = { RenderComposeChildren(node.children, this) },
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.ExtendedFloatingActionButton(text: kotlin.Function0<kotlin.Unit>, icon: kotlin.Function0<kotlin.Unit>, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, expanded: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, elevation: androidx.compose.material3.FloatingActionButtonElevation, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererExtendedFloatingActionButton_1 {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("expanded")) 1 else 0) +
-      (if (node.has("shape")) 2 else 0) +
-      (if (node.has("containerColor")) 4 else 0) +
-      (if (node.has("contentColor")) 8 else 0) +
-      (if (node.has("interactionSource")) 16 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-      )
-      2 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-      )
-      3 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-      )
-      4 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-      )
-      5 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `containerColor` = node.color("containerColor"),
-      )
-      6 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-      )
-      7 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-      )
-      8 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      9 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `contentColor` = node.color("contentColor"),
-      )
-      10 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-      )
-      11 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-      )
-      12 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      13 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      14 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      15 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      16 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      17 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      18 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      19 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      20 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      21 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `containerColor` = node.color("containerColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      22 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      23 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      24 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      25 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      26 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      27 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      28 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      29 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      30 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      31 -> androidx.compose.material3.ExtendedFloatingActionButton(
-        `text` = { RenderComposeChildren(node.slot("text")) },
-        `icon` = { RenderComposeChildren(node.slot("icon")) },
-        `onClick` = { node.emit("onClick") },
-        `modifier` = node.modifier("modifier", scope),
-        `expanded` = node.boolean("expanded"),
-        `shape` = node.arguments().shape("shape"),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }

@@ -1,4 +1,5 @@
 import type { ComposeFontWeight, ComposeRole } from "../generated/values";
+import type { ComposeMaterialIcon } from "../generated/icons";
 
 /** Dimensions are expressed in dp. */
 export type ComposeDpSize = { width: number; height: number };
@@ -34,8 +35,8 @@ export type ComposeTextStyle = {
   letterSpacing?: number;
 };
 
-/** A color fill or a drawable bundled in the Android app. */
-export type ComposePainter = { color: string } | { drawable: string };
+/** A built-in Material icon, a color fill, or a drawable bundled in the Android app. */
+export type ComposePainter = ComposeMaterialIcon | { color: string } | { drawable: string };
 export type ComposeTextFieldState = { initialText?: string };
 
 export type ComposeDatePickerState = { initialSelectedDateMillis?: number; initialDisplayedMonthMillis?: number };
@@ -135,16 +136,25 @@ export type ComposeKeyPolicy = { keyCodes: readonly number[]; event?: "down" | "
 export type ComposeEasing = "linear" | "fastOutSlowIn" | "linearOutSlowIn" | "fastOutLinearIn"
   | readonly [x1: number, y1: number, x2: number, y2: number];
 
-export type ComposeAnimationSpec =
+export type ComposeAnimationOffset = { x: number; y: number };
+export type ComposeAnimationRect = { left: number; top: number; right: number; bottom: number };
+
+export type ComposeAnimationSpec<Value = number> =
   | { type: "spring"; dampingRatio?: number; stiffness?: number }
   | { type: "tween"; durationMillis?: number; delayMillis?: number; easing?: ComposeEasing }
-  | { type: "snap"; delayMillis?: number };
+  | { type: "snap"; delayMillis?: number }
+  | {
+      type: "keyframes";
+      durationMillis: number;
+      delayMillis?: number;
+      frames: readonly { atMillis: number; value: Value; easing?: ComposeEasing }[];
+    };
 
 export type ComposeVisibilityTransition =
   | { type: "none" }
   | { type: "fade"; alpha?: number; animationSpec?: ComposeAnimationSpec }
   | { type: "scale"; scale?: number; animationSpec?: ComposeAnimationSpec }
-  | { type: "slide"; direction: "up" | "down" | "left" | "right"; fraction?: number; animationSpec?: ComposeAnimationSpec };
+  | { type: "slide"; direction: "up" | "down" | "left" | "right"; fraction?: number; animationSpec?: ComposeAnimationSpec<ComposeAnimationOffset> };
 
 export type ComposeContentTransition = {
   enter: ComposeVisibilityTransition;

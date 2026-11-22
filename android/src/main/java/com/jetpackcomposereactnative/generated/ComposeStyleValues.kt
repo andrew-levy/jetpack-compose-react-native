@@ -45,11 +45,15 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val externalPaddingTopValue = if (args.isNull("externalPaddingTop")) null else args.number("externalPaddingTop").dp
   val externalPaddingVerticalValue = if (args.isNull("externalPaddingVertical")) null else args.number("externalPaddingVertical").dp
   val fontSizeValue = if (args.isNull("fontSize")) null else args.number("fontSize").sp
+  val fontStyleValue = if (args.isNull("fontStyle")) null else toComposeFontStyleValue(args.string("fontStyle"))
+  val fontSynthesisValue = if (args.isNull("fontSynthesis")) null else toComposeFontSynthesisValue(args.string("fontSynthesis"))
   val fontWeightValue = if (args.isNull("fontWeight")) null else toComposeFontWeight(args.string("fontWeight"))
   val foregroundValue = if (args.isNull("foreground")) null else args.color("foreground")
   val heightValue = if (args.isNull("height")) null else args.number("height").dp
+  val hyphensValue = if (args.isNull("hyphens")) null else toComposeHyphensValue(args.string("hyphens"))
   val leftValue = if (args.isNull("left")) null else args.number("left").dp
   val letterSpacingValue = if (args.isNull("letterSpacing")) null else args.number("letterSpacing").sp
+  val lineBreakValue = if (args.isNull("lineBreak")) null else toComposeLineBreakValue(args.string("lineBreak"))
   val lineHeightValue = if (args.isNull("lineHeight")) null else args.number("lineHeight").sp
   val maxHeightValue = if (args.isNull("maxHeight")) null else args.number("maxHeight").dp
   val maxWidthValue = if (args.isNull("maxWidth")) null else args.number("maxWidth").dp
@@ -65,6 +69,8 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val shapeValue = if (args.isNull("shape")) null else args.shape("shape")
   val sizeValue = if (args.isNull("size")) null else args.number("size").dp
   val textAlignValue = if (args.isNull("textAlign")) null else toComposeTextAlign(args.string("textAlign"))
+  val textDecorationValue = if (args.isNull("textDecoration")) null else toComposeTextDecorationValue(args.string("textDecoration"))
+  val textDirectionValue = if (args.isNull("textDirection")) null else toComposeTextDirectionValue(args.string("textDirection"))
   val textIndentValue = if (args.isNull("textIndent")) null else args.jsonObject("textIndent").decodeComposeTextIndentValue()
   val textStyleValue = if (args.isNull("textStyle")) null else args.jsonObject("textStyle").toTextStyle()
   val topValue = if (args.isNull("top")) null else args.number("top").dp
@@ -106,11 +112,15 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
     externalPaddingTopValue?.let { externalPaddingTop(it) }
     externalPaddingVerticalValue?.let { externalPaddingVertical(it) }
     fontSizeValue?.let { fontSize(it) }
+    fontStyleValue?.let { fontStyle(it) }
+    fontSynthesisValue?.let { fontSynthesis(it) }
     fontWeightValue?.let { fontWeight(it) }
     foregroundValue?.let { foreground(it) }
     heightValue?.let { height(it) }
+    hyphensValue?.let { hyphens(it) }
     leftValue?.let { left(it) }
     letterSpacingValue?.let { letterSpacing(it) }
+    lineBreakValue?.let { lineBreak(it) }
     lineHeightValue?.let { lineHeight(it) }
     maxHeightValue?.let { maxHeight(it) }
     maxWidthValue?.let { maxWidth(it) }
@@ -126,6 +136,8 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
     shapeValue?.let { shape(it) }
     sizeValue?.let { size(it) }
     textAlignValue?.let { textAlign(it) }
+    textDecorationValue?.let { textDecoration(it) }
+    textDirectionValue?.let { textDirection(it) }
     textIndentValue?.let { textIndent(it) }
     textStyleValue?.let { textStyle(it) }
     topValue?.let { top(it) }
@@ -142,7 +154,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
     hoveredValue?.let { hovered(it) }
     pressedValue?.let { pressed(it) }
   }
-  val animation = optJSONObject("animationSpec")?.toComposeAnimationSpec<Float>() ?: return style
+  val animation = optJSONObject("animationSpec")?.toComposeFloatAnimationSpec() ?: return style
   return Style { animate(animation, style) }
 }
 
