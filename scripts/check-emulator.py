@@ -117,6 +117,16 @@ def bounds(node):
     return tuple(map(int, re.findall(r"-?\d+", node.get("bounds"))))
 
 
+def input_has_value(nodes, label, text):
+    field = nodes.get(text)
+    return (
+        field is not None
+        and label in nodes
+        and field.get("class") == "android.widget.EditText"
+        and bounds(field) == bounds(nodes[label])
+    )
+
+
 def node_height(node):
     _, top, _, bottom = bounds(node)
     return bottom - top
@@ -238,15 +248,15 @@ def verify():
     nodes = wait_for(
         "Second crossfade state", "Size animation callback received", "Native phone input", "Modifiers",
         absent=("First crossfade state",), window=window,
-        layout_ready=lambda nodes: nodes["Native phone input"].get("text") == "123-4",
+        layout_ready=lambda nodes: input_has_value(nodes, "Native phone input", "123-4"),
     )
 
-    tap(nodes["Native phone input"])
+    tap(nodes["123-4"])
     adb("shell", "input", "keyevent", "KEYCODE_MOVE_END")
     adb("shell", "input", "text", "a567")
     nodes = wait_for(
         "Native phone input", "Modifiers", window=window,
-        layout_ready=lambda nodes: nodes["Native phone input"].get("text") == "123-456",
+        layout_ready=lambda nodes: input_has_value(nodes, "Native phone input", "123-456"),
     )
 
     tap(nodes["Modifiers"])
