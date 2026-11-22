@@ -169,6 +169,10 @@ Components can also use values made by a public Compose defaults factory. Pass
 `elevation={{ factory: "ButtonDefaults.buttonElevation", defaultElevation: 3 }}`
 to `Button`, for example. Kotlin supplies the factory's other defaults.
 
+Dialogs and popups accept a `properties` object for options such as outside-tap
+dismissal, back-button dismissal, and default window width. Popup properties also
+include focusability and clipping. Dialog properties include the window title.
+
 Unit-returning callbacks with several supported arguments deliver a typed tuple
 in one JavaScript event. The `finishedListener` option on
 `Modifier.animateContentSize` receives `readonly [ComposeLayoutSize, ComposeLayoutSize]`

@@ -19,7 +19,8 @@ export function recordOutputs(records, kinds) {
     ...(optIns.length ? [`@file:OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`, ""] : []),
     "package com.jetpackcomposereactnative.generated",
     "",
-    ...(records.some(({ factories }) => factories?.length) ? ["import androidx.compose.runtime.Composable"] : []),
+    ...(records.some(({ factories }) => factories?.some(({ composable }) => composable))
+      ? ["import androidx.compose.runtime.Composable"] : []),
     "import androidx.compose.ui.unit.dp",
     "import androidx.compose.ui.unit.sp",
     ...(fields.some(({ kind }) => kind === "color")
@@ -56,11 +57,13 @@ export function recordOutputs(records, kinds) {
       ...factories.map(({ name, fields }) =>
         `  | { ${[`factory: ${JSON.stringify(name)}`, ...typeFields(fields)].join("; ")} }`),
       ";");
-    kt.push("@Composable", `${signature} = when (val factory = getString("factory")) {`,
+    if (factories.some(({ composable }) => composable)) kt.push("@Composable");
+    kt.push(`${signature} = when (val factory = getString("factory")) {`,
       ...factories.map(({ name: label }, index) => `  ${JSON.stringify(label)} -> decode${name}Factory${index}()`),
       `  else -> error("Unknown ${name} factory: " + factory)`, "}");
-    for (const [index, { function: call, fields }] of factories.entries()) {
-      kt.push("", "@Composable");
+    for (const [index, { function: call, fields, composable }] of factories.entries()) {
+      kt.push("");
+      if (composable) kt.push("@Composable");
       emitDecoder(`private fun JSONObject.decode${name}Factory${index}(): ${kotlinType}`, call, fields, call);
     }
   }

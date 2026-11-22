@@ -46,7 +46,8 @@ internal object RendererAlertDialog {
       (if (node.has("iconContentColor")) 64 else 0) +
       (if (node.has("titleContentColor")) 128 else 0) +
       (if (node.has("textContentColor")) 256 else 0) +
-      (if (node.has("tonalElevation")) 512 else 0)
+      (if (node.has("tonalElevation")) 512 else 0) +
+      (if (node.has("properties")) 1024 else 0)
     when (mask / 32) {
       0 -> renderAlertDialogGroup0(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
       1 -> renderAlertDialogGroup1(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
@@ -80,6 +81,13 @@ internal object RendererAlertDialog {
       29 -> renderAlertDialogGroup29(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
       30 -> renderAlertDialogGroup30(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
       31 -> renderAlertDialogGroup31(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      32 -> renderAlertDialogGroup32(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      47 -> renderAlertDialogGroup47(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      55 -> renderAlertDialogGroup55(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      59 -> renderAlertDialogGroup59(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      61 -> renderAlertDialogGroup61(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      62 -> renderAlertDialogGroup62(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
+      63 -> renderAlertDialogGroup63(node, scope, mask, slot_confirmButton, slot_dismissButton, slot_icon, slot_title, slot_text)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -1331,6 +1339,98 @@ internal object RendererAlertDialog {
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
+
+  @Composable
+  private fun renderAlertDialogGroup32(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      1024 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1025 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1026 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1027 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1028 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `title` = slot_title, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1029 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `title` = slot_title, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1030 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `title` = slot_title, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1031 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1032 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1033 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1034 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1035 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1036 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `title` = slot_title, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1037 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `title` = slot_title, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1038 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1039 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1040 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1041 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1042 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1043 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1044 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `title` = slot_title, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1045 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `title` = slot_title, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1046 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `title` = slot_title, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1047 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1048 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1049 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1050 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1051 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1052 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1053 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1054 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      1055 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderAlertDialogGroup47(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      1535 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderAlertDialogGroup55(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      1791 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderAlertDialogGroup59(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      1919 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderAlertDialogGroup61(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      1983 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderAlertDialogGroup62(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      2015 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderAlertDialogGroup63(node: ComposeNode, scope: Any?, mask: Int, slot_confirmButton: @Composable () -> Unit, slot_dismissButton: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?, slot_title: (@Composable () -> Unit)?, slot_text: (@Composable () -> Unit)?) {
+    when (mask) {
+      2031 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      2039 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      2043 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      2045 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      2046 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      2047 -> androidx.compose.material3.AlertDialog(`onDismissRequest` = { node.emit("onDismissRequest") }, `confirmButton` = slot_confirmButton, `modifier` = node.modifier("modifier", scope), `dismissButton` = slot_dismissButton, `icon` = slot_icon, `title` = slot_title, `text` = slot_text, `shape` = node.arguments().shape("shape"), `containerColor` = decode_containerColor(node), `iconContentColor` = decode_iconContentColor(node), `titleContentColor` = decode_titleContentColor(node), `textContentColor` = decode_textContentColor(node), `tonalElevation` = decode_tonalElevation(node), `properties` = node.jsonObject("properties").toComposeDialogProperties())
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
 }
 
 // androidx.compose.animation.AnimatedContent(targetState: S, modifier: androidx.compose.ui.Modifier, transitionSpec: kotlin.Function1<androidx.compose.animation.AnimatedContentTransitionScope<S>, androidx.compose.animation.ContentTransform>, contentAlignment: androidx.compose.ui.Alignment, label: kotlin.String, contentKey: kotlin.Function1<S, kotlin.Any?>, content: kotlin.Function2<androidx.compose.animation.AnimatedContentScope, S, kotlin.Unit>)
@@ -1528,292 +1628,5 @@ internal object RendererAppBarRow {
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
-  }
-}
-
-// androidx.compose.material3.AssistChip(onClick: kotlin.Function0<kotlin.Unit>, label: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.ChipColors, elevation: androidx.compose.material3.ChipElevation?, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
-internal object RendererAssistChip {
-  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
-
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val slot_label: @Composable () -> Unit = { RenderComposeChildren(node.slot("label")) }
-    val content_leadingIcon: @Composable () -> Unit = { RenderComposeChildren(node.slot("leadingIcon")) }
-    val slot_leadingIcon = if (node.isNull("leadingIcon")) null else content_leadingIcon
-    val content_trailingIcon: @Composable () -> Unit = { RenderComposeChildren(node.slot("trailingIcon")) }
-    val slot_trailingIcon = if (node.isNull("trailingIcon")) null else content_trailingIcon
-    val mask = (if (node.has("enabled")) 1 else 0) +
-      (if (node.has("leadingIcon")) 2 else 0) +
-      (if (node.has("trailingIcon")) 4 else 0) +
-      (if (node.has("shape")) 8 else 0) +
-      (if (node.has("colors")) 16 else 0) +
-      (if (node.has("elevation")) 32 else 0) +
-      (if (node.has("border")) 64 else 0) +
-      (if (node.has("interactionSource")) 128 else 0)
-    when (mask / 32) {
-      0 -> renderAssistChipGroup0(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      1 -> renderAssistChipGroup1(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      2 -> renderAssistChipGroup2(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      3 -> renderAssistChipGroup3(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      4 -> renderAssistChipGroup4(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      6 -> renderAssistChipGroup6(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      7 -> renderAssistChipGroup7(node, scope, mask, slot_label, slot_leadingIcon, slot_trailingIcon)
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup0(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      0 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope))
-      1 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node))
-      2 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon)
-      3 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon)
-      4 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon)
-      5 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon)
-      6 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      7 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon)
-      8 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"))
-      9 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"))
-      10 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"))
-      11 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"))
-      12 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      13 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      14 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      15 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"))
-      16 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      17 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      18 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      19 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      20 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      21 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      22 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      23 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      24 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      25 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      26 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      27 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      28 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      29 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      30 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      31 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue())
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup1(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      32 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      33 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      34 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      35 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      36 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      37 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      38 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      39 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      40 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      41 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      42 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      43 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      44 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      45 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      46 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      47 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      48 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup2(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      64 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      65 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      66 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      67 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      68 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      69 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      70 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      71 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      72 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      73 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      74 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      75 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      76 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      77 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      78 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      79 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      80 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      81 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      82 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      83 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      84 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      85 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      86 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      87 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      88 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      89 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      90 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      91 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      92 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      93 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      94 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      95 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup3(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      96 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      97 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      98 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      99 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      100 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      101 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      102 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      103 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      104 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      105 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      106 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      107 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      108 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      109 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      110 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      111 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup4(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      128 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      129 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      130 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      131 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      132 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      133 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      134 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      135 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      136 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      137 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      138 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      139 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      140 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      141 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      142 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      143 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup6(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      192 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      193 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      194 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      195 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      196 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      197 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      198 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      199 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      200 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      201 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      202 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      203 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      204 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      205 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      206 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      207 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      223 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderAssistChipGroup7(node: ComposeNode, scope: Any?, mask: Int, slot_label: @Composable () -> Unit, slot_leadingIcon: (@Composable () -> Unit)?, slot_trailingIcon: (@Composable () -> Unit)?) {
-    when (mask) {
-      239 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      255 -> androidx.compose.material3.AssistChip(`onClick` = { node.emit("onClick") }, `label` = slot_label, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `leadingIcon` = slot_leadingIcon, `trailingIcon` = slot_trailingIcon, `shape` = node.arguments().shape("shape"), `colors` = node.jsonObject("colors").decodeComposeChipColorsValue(), `elevation` = if (node.isNull("elevation")) null else (node.jsonObject("elevation").decodeComposeChipElevationValue()), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.Badge(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>?)
-internal object RendererBadge {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    val mask = (if (node.has("containerColor")) 1 else 0) +
-      (if (node.has("contentColor")) 2 else 0) +
-      (if (node.has("content")) 4 else 0)
-    when (mask) {
-      0 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-      )
-      1 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-      )
-      2 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-      )
-      3 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-      )
-      4 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `content` = if (node.isNull("content")) null else ({ RenderComposeChildren(node.slot("content"), this) }),
-      )
-      5 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `content` = if (node.isNull("content")) null else ({ RenderComposeChildren(node.slot("content"), this) }),
-      )
-      6 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `contentColor` = node.color("contentColor"),
-        `content` = if (node.isNull("content")) null else ({ RenderComposeChildren(node.slot("content"), this) }),
-      )
-      7 -> androidx.compose.material3.Badge(
-        `modifier` = node.modifier("modifier", scope),
-        `containerColor` = node.color("containerColor"),
-        `contentColor` = node.color("contentColor"),
-        `content` = if (node.isNull("content")) null else ({ RenderComposeChildren(node.slot("content"), this) }),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-}
-
-// androidx.compose.material3.BadgedBox(badge: kotlin.Function1<androidx.compose.foundation.layout.BoxScope, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, content: kotlin.Function1<androidx.compose.foundation.layout.BoxScope, kotlin.Unit>)
-internal object RendererBadgedBox {
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    androidx.compose.material3.BadgedBox(
-      `badge` = { RenderComposeChildren(node.slot("badge"), this) },
-      `modifier` = node.modifier("modifier", scope),
-      content = { RenderComposeChildren(node.children, this) },
-    )
-  }
-}
-
-// androidx.compose.material3.BasicAlertDialog(onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, properties: androidx.compose.ui.window.DialogProperties, content: kotlin.Function0<kotlin.Unit>)
-internal object RendererBasicAlertDialog {
-  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-  @Composable
-  fun render(node: ComposeNode, scope: Any?) {
-    androidx.compose.material3.BasicAlertDialog(
-      `onDismissRequest` = { node.emit("onDismissRequest") },
-      `modifier` = node.modifier("modifier", scope),
-      content = { RenderComposeChildren(node.children) },
-    )
   }
 }

@@ -42,6 +42,8 @@ const sharedTypes = {
   dpSize: ["ComposeDpSize", "toDpSize"],
   paddingValues: ["ComposePaddingValues", "toPaddingValues"],
   windowInsets: ["ComposeWindowInsets", "toWindowInsets"],
+  dialogProperties: ["ComposeDialogProperties", "toComposeDialogProperties"],
+  popupProperties: ["ComposePopupProperties", "toComposePopupProperties"],
   annotatedString: ["ComposeAnnotatedString", "toAnnotatedString"],
   textStyle: ["ComposeTextStyle", "toTextStyle"],
   gridCells: ["ComposeGridCells", "toGridCells"],

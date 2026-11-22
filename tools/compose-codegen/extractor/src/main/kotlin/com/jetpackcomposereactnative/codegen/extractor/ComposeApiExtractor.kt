@@ -371,7 +371,7 @@ private class ComposeApiExtractor(
             else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
               ?: type.rangeKind() ?: type.animationKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
               ?: type.drawingKind() ?: parameter.producerKind(type)
-              ?: structuredValues.kind(type)
+              ?: structuredValues.kind(type) ?: structuredValues.defaultsKind(type, allowComposable = false)
           }
           if (kind == null || kind == "modifier") {
             val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
@@ -423,13 +423,13 @@ private class ComposeApiExtractor(
   private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
     val runtime = optional.filter { it.kind in newRuntimeKinds || it.scope?.startsWith("decoration:") == true }
     if (runtime.isNotEmpty()) {
-      return extendCallForms(optional, runtime, newlyBridgeable, 128, 5)
+      return extendCallForms(optional, runtime, newlyBridgeable, 256, 5)
     }
     val inferred = optional.filter { it.isInferredValue() || it.kind.startsWith("eventTuple:") }
     if (inferred.isNotEmpty()) {
       // First build the previous surface with the new types removed. Applying
       // the budgets in the opposite order can drop existing prop combinations.
-      return extendCallForms(optional, inferred, newlyBridgeable, 128, 5)
+      return extendCallForms(optional, inferred, newlyBridgeable, 256, 5)
     }
     val textParameters = optional.filter { it.kind in textAdapterKinds }
     if (textParameters.isNotEmpty()) {
@@ -489,12 +489,15 @@ private class ComposeApiExtractor(
         it.scope?.startsWith("decoration:") == true
     }.map(::bit)
     val completeForms = fullForms.flatMap { base -> addedFullForms.map { base or it } }
-    val considered = (previousMasks + newMasks + pairedMasks + completeForms + (total - 1))
+    val fullMask = total - 1
+    val omitOne = optional.map { fullMask xor bit(it) }
+    val considered = (previousMasks + newMasks + pairedMasks + completeForms + omitOne + fullMask)
       .distinct().sorted()
     return CallForms(considered, total - considered.size)
   }
 
-  private fun Parameter.isInferredValue() = kind == "char" || structuredValues.isInferredKind(kind)
+  private fun Parameter.isInferredValue() =
+    kind in setOf("char", "dialogProperties", "popupProperties") || structuredValues.isInferredKind(kind)
 
   private fun previousCallForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
     require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
@@ -835,6 +838,7 @@ private fun String.inputType(): String = when {
 }
 
 private val objectKinds = setOf("colorScheme", "paddingValues", "windowInsets", "windowInsetsProducer",
+  "dialogProperties", "popupProperties",
   "sheetState", "dpSize", "annotatedString", "textStyle", "painter", "datePickerState", "dateRangePickerState",
   "timePickerState", "swipeToDismissState", "bottomSheetScaffoldState", "scrollState", "gridCells", "staggeredGridCells",
   "lazyListState", "lazyGridState", "lazyStaggeredGridState", "pagerState", "textFieldState", "focusProperties", "semantics", "searchBarState", "basicTooltipState", "tooltipState",
@@ -1044,6 +1048,8 @@ private val valueKinds = mapOf(
   "androidx.compose.ui.unit.DpSize" to "dpSize",
   "androidx.compose.foundation.layout.PaddingValues" to "paddingValues",
   "androidx.compose.foundation.layout.WindowInsets" to "windowInsets",
+  "androidx.compose.ui.window.DialogProperties" to "dialogProperties",
+  "androidx.compose.ui.window.PopupProperties" to "popupProperties",
   "androidx.compose.ui.text.AnnotatedString" to "annotatedString",
   "androidx.compose.ui.text.TextStyle" to "textStyle",
   "androidx.compose.ui.text.input.TextFieldValue" to "textFieldValue",

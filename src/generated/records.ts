@@ -1,6 +1,11 @@
 // Generated from Compose value factories by generate.mjs.
+import type { ComposeBlendModeValue } from "./values";
 
 export type ComposeMarqueeSpacingValue = { spacing: number };
+
+export type ComposeTextAutoSizeValue =
+  | { factory: "TextAutoSize.StepBased"; minFontSize?: number; maxFontSize?: number; stepSize?: number }
+;
 
 export type ComposeTextSelectionColorsValue = { handleColor: string; backgroundColor: string };
 
@@ -17,6 +22,12 @@ export type ComposeButtonShapesValue =
 ;
 
 export type ComposeCardColorsValue = { containerColor: string; contentColor: string; disabledContainerColor: string; disabledContentColor: string };
+
+export type ComposeCardElevationValue =
+  | { factory: "CardDefaults.cardElevation"; defaultElevation?: number; pressedElevation?: number; focusedElevation?: number; hoveredElevation?: number; draggedElevation?: number; disabledElevation?: number }
+  | { factory: "CardDefaults.elevatedCardElevation"; defaultElevation?: number; pressedElevation?: number; focusedElevation?: number; hoveredElevation?: number; draggedElevation?: number; disabledElevation?: number }
+  | { factory: "CardDefaults.outlinedCardElevation"; defaultElevation?: number; pressedElevation?: number; focusedElevation?: number; hoveredElevation?: number; draggedElevation?: number; disabledElevation?: number }
+;
 
 export type ComposeCheckboxColorsValue = { checkedCheckmarkColor: string; uncheckedCheckmarkColor: string; checkedBoxColor: string; uncheckedBoxColor: string; disabledCheckedBoxColor: string; disabledUncheckedBoxColor: string; disabledIndeterminateBoxColor: string; checkedBorderColor: string; uncheckedBorderColor: string; disabledBorderColor: string; disabledUncheckedBorderColor: string; disabledIndeterminateBorderColor: string };
 
@@ -43,6 +54,11 @@ export type ComposeIconToggleButtonColorsValue = { containerColor: string; conte
 export type ComposeListItemColorsValue = { containerColor: string; headlineColor: string; leadingIconColor: string; overlineColor: string; supportingTextColor: string; trailingIconColor: string; disabledHeadlineColor: string; disabledLeadingIconColor: string; disabledTrailingIconColor: string };
 
 export type ComposeMenuItemColorsValue = { textColor: string; leadingIconColor: string; trailingIconColor: string; disabledTextColor: string; disabledLeadingIconColor: string; disabledTrailingIconColor: string };
+
+export type ComposeMotionSchemeValue =
+  | { factory: "MotionScheme.expressive" }
+  | { factory: "MotionScheme.standard" }
+;
 
 export type ComposeNavigationBarItemColorsValue = { selectedIconColor: string; selectedTextColor: string; selectedIndicatorColor: string; unselectedIconColor: string; unselectedTextColor: string; disabledIconColor: string; disabledTextColor: string };
 
@@ -84,6 +100,11 @@ export type ComposeTopAppBarColorsValue = { containerColor: string; scrolledCont
 export type ComposeWideNavigationRailColorsValue = { containerColor: string; contentColor: string; modalContainerColor: string; modalScrimColor: string };
 
 export type ComposeOffset = { x: number; y: number };
+
+export type ComposeColorFilterValue =
+  | { factory: "ColorFilter.lighting"; multiply: string; add: string }
+  | { factory: "ColorFilter.tint"; color: string; blendMode?: ComposeBlendModeValue }
+;
 
 export type ComposeTransformOrigin = { pivotFractionX: number; pivotFractionY: number };
 

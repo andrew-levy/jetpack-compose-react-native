@@ -54,6 +54,9 @@ import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.window.PopupPositionProvider
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.PopupProperties
+import androidx.compose.ui.window.SecureFlagPolicy
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -87,6 +90,32 @@ internal fun JSONObject.toWindowInsets(): WindowInsets = WindowInsets(
   top = optDouble("top", 0.0).dp,
   right = optDouble("right", 0.0).dp,
   bottom = optDouble("bottom", 0.0).dp,
+)
+
+private fun JSONObject.secureWindowPolicy(): SecureFlagPolicy = when (val policy = optString("securePolicy", "inherit")) {
+  "inherit" -> SecureFlagPolicy.Inherit
+  "secureOn" -> SecureFlagPolicy.SecureOn
+  "secureOff" -> SecureFlagPolicy.SecureOff
+  else -> error("Unknown Compose window security policy: " + policy)
+}
+
+internal fun JSONObject.toComposeDialogProperties(): DialogProperties = DialogProperties(
+  dismissOnBackPress = optBoolean("dismissOnBackPress", true),
+  dismissOnClickOutside = optBoolean("dismissOnClickOutside", true),
+  securePolicy = secureWindowPolicy(),
+  usePlatformDefaultWidth = optBoolean("usePlatformDefaultWidth", true),
+  decorFitsSystemWindows = optBoolean("decorFitsSystemWindows", true),
+  windowTitle = optString("windowTitle"),
+)
+
+internal fun JSONObject.toComposePopupProperties(): PopupProperties = PopupProperties(
+  focusable = optBoolean("focusable"),
+  dismissOnBackPress = optBoolean("dismissOnBackPress", true),
+  dismissOnClickOutside = optBoolean("dismissOnClickOutside", true),
+  securePolicy = secureWindowPolicy(),
+  excludeFromSystemGesture = optBoolean("excludeFromSystemGesture", true),
+  clippingEnabled = optBoolean("clippingEnabled", true),
+  usePlatformDefaultWidth = optBoolean("usePlatformDefaultWidth"),
 )
 
 internal fun JSONObject.toDpSize(): DpSize = DpSize(getDouble("width").dp, getDouble("height").dp)

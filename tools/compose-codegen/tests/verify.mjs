@@ -134,6 +134,11 @@ if (mode === "audit") {
     "Discover Material defaults factories for value types with internal constructors");
   assert.ok(manifest.icons.some(({ style, name }) => style === "autoMirroredOutlined" && name === "ArrowBack"),
     "Discover directional Material icons from the Compose classpath");
+  for (const [name, kind] of [["AlertDialog", "dialogProperties"], ["DropdownMenu", "popupProperties"]]) {
+    assert.ok(manifest.components.some(component => component.name === name &&
+      component.parameters.some(parameter => parameter.name === "properties" && parameter.kind === kind)),
+      `${name} must expose its window properties`);
+  }
   assert.ok(manifest.modifiers.some(({ name, parameters }) => name === "animateContentSize" &&
     parameters.some(({ name, kind }) => name === "finishedListener" &&
       kind === "eventTuple:androidx.compose.ui.unit.IntSize,androidx.compose.ui.unit.IntSize")));

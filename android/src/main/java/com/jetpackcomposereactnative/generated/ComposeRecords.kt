@@ -13,6 +13,23 @@ internal fun JSONObject.decodeComposeMarqueeSpacingValue(): androidx.compose.fou
   `spacing` = getDouble("spacing").dp,
 )
 
+internal fun JSONObject.decodeComposeTextAutoSizeValue(): androidx.compose.foundation.text.TextAutoSize = when (val factory = getString("factory")) {
+  "TextAutoSize.StepBased" -> decodeComposeTextAutoSizeValueFactory0()
+  else -> error("Unknown ComposeTextAutoSizeValue factory: " + factory)
+}
+
+private fun JSONObject.decodeComposeTextAutoSizeValueFactory0(): androidx.compose.foundation.text.TextAutoSize = when ((if (has("minFontSize")) 1 else 0) + (if (has("maxFontSize")) 2 else 0) + (if (has("stepSize")) 4 else 0)) {
+  0 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased()
+  1 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`minFontSize` = getDouble("minFontSize").sp)
+  2 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`maxFontSize` = getDouble("maxFontSize").sp)
+  3 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`minFontSize` = getDouble("minFontSize").sp, `maxFontSize` = getDouble("maxFontSize").sp)
+  4 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`stepSize` = getDouble("stepSize").sp)
+  5 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`minFontSize` = getDouble("minFontSize").sp, `stepSize` = getDouble("stepSize").sp)
+  6 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`maxFontSize` = getDouble("maxFontSize").sp, `stepSize` = getDouble("stepSize").sp)
+  7 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`minFontSize` = getDouble("minFontSize").sp, `maxFontSize` = getDouble("maxFontSize").sp, `stepSize` = getDouble("stepSize").sp)
+  else -> error("Invalid generated arguments for androidx.compose.foundation.text.TextAutoSize.Companion.StepBased")
+}
+
 internal fun JSONObject.decodeComposeTextSelectionColorsValue(): androidx.compose.foundation.text.selection.TextSelectionColors = androidx.compose.foundation.text.selection.TextSelectionColors(
   `handleColor` = parseComposeColor(getString("handleColor")),
   `backgroundColor` = parseComposeColor(getString("backgroundColor")),
@@ -162,6 +179,221 @@ internal fun JSONObject.decodeComposeCardColorsValue(): androidx.compose.materia
   `disabledContentColor` = parseComposeColor(getString("disabledContentColor")),
 )
 
+@Composable
+internal fun JSONObject.decodeComposeCardElevationValue(): androidx.compose.material3.CardElevation = when (val factory = getString("factory")) {
+  "CardDefaults.cardElevation" -> decodeComposeCardElevationValueFactory0()
+  "CardDefaults.elevatedCardElevation" -> decodeComposeCardElevationValueFactory1()
+  "CardDefaults.outlinedCardElevation" -> decodeComposeCardElevationValueFactory2()
+  else -> error("Unknown ComposeCardElevationValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeCardElevationValueFactory0(): androidx.compose.material3.CardElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0) + (if (has("draggedElevation")) 16 else 0) + (if (has("disabledElevation")) 32 else 0)) {
+  0 -> androidx.compose.material3.CardDefaults.cardElevation()
+  1 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.CardDefaults.cardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  16 -> androidx.compose.material3.CardDefaults.cardElevation(`draggedElevation` = getDouble("draggedElevation").dp)
+  17 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  18 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  19 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  20 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  21 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  22 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  23 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  24 -> androidx.compose.material3.CardDefaults.cardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  25 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  26 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  27 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  28 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  29 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  30 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  31 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  32 -> androidx.compose.material3.CardDefaults.cardElevation(`disabledElevation` = getDouble("disabledElevation").dp)
+  33 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  34 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  35 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  36 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  37 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  38 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  39 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  40 -> androidx.compose.material3.CardDefaults.cardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  41 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  42 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  43 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  44 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  45 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  46 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  47 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  48 -> androidx.compose.material3.CardDefaults.cardElevation(`draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  49 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  50 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  51 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  52 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  53 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  54 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  55 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  56 -> androidx.compose.material3.CardDefaults.cardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  57 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  58 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  59 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  60 -> androidx.compose.material3.CardDefaults.cardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  61 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  62 -> androidx.compose.material3.CardDefaults.cardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  63 -> androidx.compose.material3.CardDefaults.cardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.CardDefaults.cardElevation")
+}
+
+@Composable
+private fun JSONObject.decodeComposeCardElevationValueFactory1(): androidx.compose.material3.CardElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0) + (if (has("draggedElevation")) 16 else 0) + (if (has("disabledElevation")) 32 else 0)) {
+  0 -> androidx.compose.material3.CardDefaults.elevatedCardElevation()
+  1 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  16 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`draggedElevation` = getDouble("draggedElevation").dp)
+  17 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  18 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  19 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  20 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  21 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  22 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  23 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  24 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  25 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  26 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  27 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  28 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  29 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  30 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  31 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  32 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`disabledElevation` = getDouble("disabledElevation").dp)
+  33 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  34 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  35 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  36 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  37 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  38 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  39 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  40 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  41 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  42 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  43 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  44 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  45 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  46 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  47 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  48 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  49 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  50 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  51 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  52 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  53 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  54 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  55 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  56 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  57 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  58 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  59 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  60 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  61 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  62 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  63 -> androidx.compose.material3.CardDefaults.elevatedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.CardDefaults.elevatedCardElevation")
+}
+
+@Composable
+private fun JSONObject.decodeComposeCardElevationValueFactory2(): androidx.compose.material3.CardElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0) + (if (has("draggedElevation")) 16 else 0) + (if (has("disabledElevation")) 32 else 0)) {
+  0 -> androidx.compose.material3.CardDefaults.outlinedCardElevation()
+  1 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp)
+  2 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp)
+  3 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp)
+  4 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp)
+  5 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  6 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  7 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp)
+  8 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp)
+  9 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  10 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  11 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  12 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  13 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  14 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  15 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp)
+  16 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`draggedElevation` = getDouble("draggedElevation").dp)
+  17 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  18 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  19 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  20 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  21 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  22 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  23 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  24 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  25 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  26 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  27 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  28 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  29 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  30 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  31 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp)
+  32 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`disabledElevation` = getDouble("disabledElevation").dp)
+  33 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  34 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  35 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  36 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  37 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  38 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  39 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  40 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  41 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  42 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  43 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  44 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  45 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  46 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  47 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  48 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  49 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  50 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  51 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  52 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  53 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  54 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  55 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  56 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  57 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  58 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  59 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  60 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  61 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  62 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  63 -> androidx.compose.material3.CardDefaults.outlinedCardElevation(`defaultElevation` = getDouble("defaultElevation").dp, `pressedElevation` = getDouble("pressedElevation").dp, `focusedElevation` = getDouble("focusedElevation").dp, `hoveredElevation` = getDouble("hoveredElevation").dp, `draggedElevation` = getDouble("draggedElevation").dp, `disabledElevation` = getDouble("disabledElevation").dp)
+  else -> error("Invalid generated arguments for androidx.compose.material3.CardDefaults.outlinedCardElevation")
+}
+
 internal fun JSONObject.decodeComposeCheckboxColorsValue(): androidx.compose.material3.CheckboxColors = androidx.compose.material3.CheckboxColors(
   `checkedCheckmarkColor` = parseComposeColor(getString("checkedCheckmarkColor")),
   `uncheckedCheckmarkColor` = parseComposeColor(getString("uncheckedCheckmarkColor")),
@@ -239,7 +471,6 @@ internal fun JSONObject.decodeComposeFloatingActionButtonElevationValue(): andro
   else -> error("Unknown ComposeFloatingActionButtonElevationValue factory: " + factory)
 }
 
-@Composable
 private fun JSONObject.decodeComposeFloatingActionButtonElevationValueFactory0(): androidx.compose.material3.FloatingActionButtonElevation = when ((if (has("defaultElevation")) 1 else 0) + (if (has("pressedElevation")) 2 else 0) + (if (has("focusedElevation")) 4 else 0) + (if (has("hoveredElevation")) 8 else 0)) {
   0 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation()
   1 -> androidx.compose.material3.FloatingActionButtonDefaults.bottomAppBarFabElevation(`defaultElevation` = getDouble("defaultElevation").dp)
@@ -344,6 +575,18 @@ internal fun JSONObject.decodeComposeMenuItemColorsValue(): androidx.compose.mat
   `disabledTextColor` = parseComposeColor(getString("disabledTextColor")),
   `disabledLeadingIconColor` = parseComposeColor(getString("disabledLeadingIconColor")),
   `disabledTrailingIconColor` = parseComposeColor(getString("disabledTrailingIconColor")),
+)
+
+internal fun JSONObject.decodeComposeMotionSchemeValue(): androidx.compose.material3.MotionScheme = when (val factory = getString("factory")) {
+  "MotionScheme.expressive" -> decodeComposeMotionSchemeValueFactory0()
+  "MotionScheme.standard" -> decodeComposeMotionSchemeValueFactory1()
+  else -> error("Unknown ComposeMotionSchemeValue factory: " + factory)
+}
+
+private fun JSONObject.decodeComposeMotionSchemeValueFactory0(): androidx.compose.material3.MotionScheme = androidx.compose.material3.MotionScheme.Companion.expressive(
+)
+
+private fun JSONObject.decodeComposeMotionSchemeValueFactory1(): androidx.compose.material3.MotionScheme = androidx.compose.material3.MotionScheme.Companion.standard(
 )
 
 internal fun JSONObject.decodeComposeNavigationBarItemColorsValue(): androidx.compose.material3.NavigationBarItemColors = androidx.compose.material3.NavigationBarItemColors(
@@ -572,6 +815,23 @@ internal fun JSONObject.decodeComposeOffset(): androidx.compose.ui.geometry.Offs
   `x` = getDouble("x").toFloat(),
   `y` = getDouble("y").toFloat(),
 )
+
+internal fun JSONObject.decodeComposeColorFilterValue(): androidx.compose.ui.graphics.ColorFilter = when (val factory = getString("factory")) {
+  "ColorFilter.lighting" -> decodeComposeColorFilterValueFactory0()
+  "ColorFilter.tint" -> decodeComposeColorFilterValueFactory1()
+  else -> error("Unknown ComposeColorFilterValue factory: " + factory)
+}
+
+private fun JSONObject.decodeComposeColorFilterValueFactory0(): androidx.compose.ui.graphics.ColorFilter = androidx.compose.ui.graphics.ColorFilter.Companion.lighting(
+  `multiply` = parseComposeColor(getString("multiply")),
+  `add` = parseComposeColor(getString("add")),
+)
+
+private fun JSONObject.decodeComposeColorFilterValueFactory1(): androidx.compose.ui.graphics.ColorFilter = when ((if (has("blendMode")) 1 else 0)) {
+  0 -> androidx.compose.ui.graphics.ColorFilter.Companion.tint(`color` = parseComposeColor(getString("color")))
+  1 -> androidx.compose.ui.graphics.ColorFilter.Companion.tint(`color` = parseComposeColor(getString("color")), `blendMode` = toComposeBlendModeValue(getString("blendMode")))
+  else -> error("Invalid generated arguments for androidx.compose.ui.graphics.ColorFilter.Companion.tint")
+}
 
 internal fun JSONObject.decodeComposeTransformOrigin(): androidx.compose.ui.graphics.TransformOrigin = androidx.compose.ui.graphics.TransformOrigin(
   `pivotFractionX` = getDouble("pivotFractionX").toFloat(),

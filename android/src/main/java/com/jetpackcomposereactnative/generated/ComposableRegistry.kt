@@ -163,6 +163,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "LookaheadScope" -> RendererLookaheadScope.render(node)
     "MaterialExpressiveTheme" -> RendererMaterialExpressiveTheme.render(node)
     "MaterialTheme" -> RendererMaterialTheme.render(node)
+    "MaterialTheme#1" -> RendererMaterialTheme_1.render(node)
     "MediumExtendedFloatingActionButton" -> RendererMediumExtendedFloatingActionButton.render(node, scope)
     "MediumExtendedFloatingActionButton#1" -> RendererMediumExtendedFloatingActionButton_1.render(node, scope)
     "MediumFlexibleTopAppBar" -> RendererMediumFlexibleTopAppBar.render(node, scope)

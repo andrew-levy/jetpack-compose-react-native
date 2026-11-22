@@ -16,7 +16,9 @@ internal data class RecordValue(
   val name: String, val kotlinType: String, val fields: List<Parameter>, val optIns: List<String>,
   val factories: List<RecordFactory> = emptyList(),
 )
-internal data class RecordFactory(val name: String, val function: String, val fields: List<Parameter>)
+internal data class RecordFactory(
+  val name: String, val function: String, val fields: List<Parameter>, val composable: Boolean,
+)
 
 internal class StructuredValueResolver(
   private val resolver: Resolver,
@@ -38,13 +40,14 @@ internal class StructuredValueResolver(
   fun kind(type: KSType): String? = resolve(type, field = false)
 
   @OptIn(KspExperimental::class)
-  fun defaultsKind(type: KSType): String? {
+  fun defaultsKind(type: KSType, allowComposable: Boolean = true): String? {
     val declaration = type.declaration as? KSClassDeclaration ?: return null
     val qualified = declaration.qualifiedName?.asString() ?: return null
     val namespace = declaration.packageName.asString()
     if (!namespace.startsWith("androidx.compose.") || type.arguments.isNotEmpty() ||
       qualified in namedValues || qualified in adapters || !hasBridgeVisibility(declaration)) return null
-    records[qualified]?.let { return "record:" + it.name }
+    fun isUsable(record: RecordValue) = allowComposable || record.factories.none { it.composable }
+    records[qualified]?.let { return if (isUsable(it)) "record:" + it.name else null }
     if (qualified in rejectedDefaults) return null
 
     val name = "Compose" + qualified.removePrefix("$namespace.").replace(".", "") + "Value"
@@ -57,26 +60,38 @@ internal class StructuredValueResolver(
         .groupBy { it.returnType?.resolve()?.declaration?.qualifiedName?.asString().orEmpty() }
     }[qualified].orEmpty()
 
-    val resolved = candidates.groupBy { it.qualifiedName?.asString() }.mapNotNull { (function, overloads) ->
-      if (function == null) return@mapNotNull null
-      // Zero-argument overloads can provide the same factory's empty form.
-      // Keep the branch with fields if the name also has a parameterized overload.
-      val fn = (overloads.filter { it.parameters.isNotEmpty() }.ifEmpty { overloads }).singleOrNull()
-        ?: return@mapNotNull null
-      if (fn.returnType?.resolve()?.isMarkedNullable != false) return@mapNotNull null
-      val fields = decodeFields(fn) ?: return@mapNotNull null
-      val label = function.removePrefix("$namespace.")
-      RecordFactory(label, function, fields) to fn
-    }
+    val companionFactories = declaration.declarations.filterIsInstance<KSClassDeclaration>()
+      .filter { it.isCompanionObject }
+      .flatMap { it.declarations.filterIsInstance<KSFunctionDeclaration>() }
+      .filter {
+        it.extensionReceiver == null && it.typeParameters.isEmpty() && hasBridgeVisibility(it) &&
+          it.returnType?.resolve()?.declaration == declaration
+      }.toList()
+    val resolved = (candidates + companionFactories).groupBy { it.qualifiedName?.asString() }
+      .mapNotNull { (function, overloads) ->
+        if (function == null) return@mapNotNull null
+        // Zero-argument overloads can provide the same factory's empty form.
+        // Keep the branch with fields when a parameterized overload exists.
+        val fn = (overloads.filter { it.parameters.isNotEmpty() }.ifEmpty { overloads }).singleOrNull()
+          ?: return@mapNotNull null
+        if (fn.returnType?.resolve()?.isMarkedNullable != false) return@mapNotNull null
+        val fields = decodeFields(fn, maxDefaults = 6) ?: return@mapNotNull null
+        val label = function.removePrefix("$namespace.").replace(".Companion.", ".")
+        val composable = fn.annotations.any {
+          it.annotationType.resolve().declaration.qualifiedName?.asString() == "androidx.compose.runtime.Composable"
+        }
+        RecordFactory(label, function, fields, composable) to fn
+      }
     if (resolved.isEmpty()) {
       rejectedDefaults += qualified
       return null
     }
-    records[qualified] = RecordValue(name, qualified, emptyList(),
+    val record = RecordValue(name, qualified, emptyList(),
       markers(optIns(declaration) + resolved.flatMap { (_, fn) -> optIns(fn) }),
       resolved.map { (factory, _) -> factory }.sortedBy { it.name })
+    records[qualified] = record
     typeNames[name] = qualified
-    return "record:$name"
+    return if (isUsable(record)) "record:$name" else null
   }
 
   private fun resolve(type: KSType, field: Boolean): String? {
@@ -196,10 +211,10 @@ internal class StructuredValueResolver(
     return candidates.singleOrNull { it.fields.size == widest }
   }
 
-  private fun decodeFields(fn: KSFunctionDeclaration): List<Parameter>? {
+  private fun decodeFields(fn: KSFunctionDeclaration, maxDefaults: Int = 5): List<Parameter>? {
     val parameters = fn.parameters
     // Keep decoding bounded while calling Kotlin for the actual default expressions.
-    if (parameters.any { it.isVararg } || parameters.count { it.hasDefault } > 5) return null
+    if (parameters.any { it.isVararg } || parameters.count { it.hasDefault } > maxDefaults) return null
     return parameters.map { parameter ->
       val label = parameter.name?.asString() ?: return null
       val value = parameter.type.resolve()

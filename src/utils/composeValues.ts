@@ -10,6 +10,24 @@ export type ComposePaddingValues = { all?: number; horizontal?: number; vertical
 /** Physical window inset edges, expressed in dp. */
 export type ComposeWindowInsets = { left?: number; top?: number; right?: number; bottom?: number };
 
+type ComposeWindowProperties = {
+  dismissOnBackPress?: boolean;
+  dismissOnClickOutside?: boolean;
+  securePolicy?: "inherit" | "secureOn" | "secureOff";
+  usePlatformDefaultWidth?: boolean;
+};
+
+export type ComposeDialogProperties = ComposeWindowProperties & {
+  decorFitsSystemWindows?: boolean;
+  windowTitle?: string;
+};
+
+export type ComposePopupProperties = ComposeWindowProperties & {
+  focusable?: boolean;
+  excludeFromSystemGesture?: boolean;
+  clippingEnabled?: boolean;
+};
+
 /** Span and annotation bounds are UTF-16 offsets with an exclusive end. */
 export type ComposeAnnotatedString = {
   text: string;

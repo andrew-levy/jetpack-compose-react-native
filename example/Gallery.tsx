@@ -195,6 +195,7 @@ function Dialogs() {
         {open && (
           <AlertDialog
             onDismissRequest={dismiss}
+            properties={{ windowTitle: "Publish draft", dismissOnClickOutside: false }}
             title={<Text text="Publish draft?" />}
             text={<Text text="This opens a native Material 3 dialog." />}
             dismissButton={<TextButton onClick={dismiss}><Text text="Cancel" /></TextButton>}
@@ -675,7 +676,7 @@ export function Overlays() {
         <Column modifiers={fullWidth}>
           <Box>
             <OutlinedButton onClick={() => setMenu(true)}><Text text="Open menu" /></OutlinedButton>
-            <DropdownMenu expanded={menu} onDismissRequest={() => setMenu(false)}>
+            <DropdownMenu expanded={menu} onDismissRequest={() => setMenu(false)} properties={{ focusable: true }}>
               <DropdownMenuItem text={<Text text="Archive item" />} onClick={chooseItem} />
               <DropdownMenuItem text={<Text text="Mark as read" />} onClick={chooseItem} />
             </DropdownMenu>
