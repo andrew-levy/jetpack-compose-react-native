@@ -22,6 +22,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val args = ComposeModifierArguments(this) { _, _ -> }
   val alphaValue = if (args.isNull("alpha")) null else args.number("alpha").toFloat()
   val backgroundValue = if (args.isNull("background")) null else args.color("background")
+  val baselineShiftValue = if (args.isNull("baselineShift")) null else args.jsonObject("baselineShift").decodeComposeBaselineShiftValue()
   val borderBrushValue = if (args.isNull("borderBrush")) null else args.brush("borderBrush")
   val borderColorValue = if (args.isNull("borderColor")) null else args.color("borderColor")
   val borderWidthValue = if (args.isNull("borderWidth")) null else args.number("borderWidth").dp
@@ -64,6 +65,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val shapeValue = if (args.isNull("shape")) null else args.shape("shape")
   val sizeValue = if (args.isNull("size")) null else args.number("size").dp
   val textAlignValue = if (args.isNull("textAlign")) null else toComposeTextAlign(args.string("textAlign"))
+  val textIndentValue = if (args.isNull("textIndent")) null else args.jsonObject("textIndent").decodeComposeTextIndentValue()
   val textStyleValue = if (args.isNull("textStyle")) null else args.jsonObject("textStyle").toTextStyle()
   val topValue = if (args.isNull("top")) null else args.number("top").dp
   val transformOriginValue = if (args.isNull("transformOrigin")) null else args.jsonObject("transformOrigin").decodeComposeTransformOrigin()
@@ -81,6 +83,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val style = Style {
     alphaValue?.let { alpha(it) }
     backgroundValue?.let { background(it) }
+    baselineShiftValue?.let { baselineShift(it) }
     borderBrushValue?.let { borderBrush(it) }
     borderColorValue?.let { borderColor(it) }
     borderWidthValue?.let { borderWidth(it) }
@@ -123,6 +126,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
     shapeValue?.let { shape(it) }
     sizeValue?.let { size(it) }
     textAlignValue?.let { textAlign(it) }
+    textIndentValue?.let { textIndent(it) }
     textStyleValue?.let { textStyle(it) }
     topValue?.let { top(it) }
     transformOriginValue?.let { transformOrigin(it) }

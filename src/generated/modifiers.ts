@@ -1,8 +1,8 @@
 // Generated from Compose declarations by generate.mjs.
 import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";
 import type { ComposeAlignmentLine, ComposeAnchoredDragState, ComposeAnimationSpec, ComposeBorderStroke, ComposeContentDrawing, ComposeDpSize, ComposeDrag2DState, ComposeDragState, ComposeDragTarget, ComposeDragTransfer, ComposeDragTypes, ComposeDrawing, ComposeFlexConfig, ComposeFlingBehavior, ComposeFocusProperties, ComposeFocusState, ComposeIndication, ComposeKeyPolicy, ComposeLayoutModifierMeasure, ComposeLayoutPosition, ComposeLayoutSize, ComposeMotionEvent, ComposeNestedScrollConnection, ComposeOverscrollEffect, ComposePaddingValues, ComposePainter, ComposeReceiveContent, ComposeRectRulers, ComposeRotaryPolicy, ComposeScrollState, ComposeScrollable2DState, ComposeScrollableState, ComposeSemantics, ComposeShadow, ComposeSharedContent, ComposeTouchPolicy, ComposeTransformableState, ComposeVisibilityTransition, ComposeWindowInsets } from "../utils/composeValues";
+import type { ComposeDpTouchBoundsExpansionValue, ComposeMarqueeSpacingValue, ComposeOffset, ComposeTextFieldColorsValue, ComposeTransformOrigin } from "./records";
 import type { ComposeBringIntoViewRequester, ComposeFocusRequester, ComposeInteractionSource, ComposeLayoutBoundsHolder, ComposePullToRefreshState } from "../utils/nativeHandles";
-import type { ComposeOffset, ComposeTransformOrigin } from "./records";
 import type { ComposeFloatRange } from "./components";
 import type { ComposeFoundationStyle, ComposeFoundationStyleState } from "./styles";
 import type { ComposeAlignment, ComposeAutofillContentType, ComposeContentScale, ComposeFrameRateCategory, ComposeHorizontalAlignment, ComposeIntrinsicSize, ComposeMenuAnchorType, ComposeOrientation, ComposePointerIcon, ComposeRole, ComposeToggleableState, ComposeVerticalAlignment } from "./values";
@@ -85,12 +85,17 @@ interface GeneratedModifiers {
   animateBounds(lookaheadScope: "current", options: { animateMotionFrameOfReference: boolean }): ComposeChain;
   animateBounds(options: { lookaheadScope: "current"; boundsTransform: ComposeAnimationSpec; animateMotionFrameOfReference: boolean }): ComposeChain;
   animateBounds(lookaheadScope: "current", options: { boundsTransform: ComposeAnimationSpec; animateMotionFrameOfReference: boolean }): ComposeChain;
-  animateContentSize(): ComposeChain;
-  animateContentSize(options: { animationSpec: ComposeAnimationSpec }): ComposeChain;
-  animateContentSize(animationSpec: ComposeAnimationSpec): ComposeChain;
   animateContentSize(options: { alignment: ComposeAlignment }): ComposeChain;
   animateContentSize(alignment: ComposeAlignment): ComposeChain;
   animateContentSize(options: { animationSpec: ComposeAnimationSpec; alignment: ComposeAlignment }): ComposeChain;
+  animateContentSize(options: { alignment: ComposeAlignment; finishedListener: ((values: readonly [value1: ComposeLayoutSize, value2: ComposeLayoutSize]) => void) | null }): ComposeChain;
+  animateContentSize(options: { animationSpec: ComposeAnimationSpec; alignment: ComposeAlignment; finishedListener: ((values: readonly [value1: ComposeLayoutSize, value2: ComposeLayoutSize]) => void) | null }): ComposeChain;
+  animateContentSize(): ComposeChain;
+  animateContentSize(options: { animationSpec: ComposeAnimationSpec }): ComposeChain;
+  animateContentSize(animationSpec: ComposeAnimationSpec): ComposeChain;
+  animateContentSize(options: { finishedListener: ((values: readonly [value1: ComposeLayoutSize, value2: ComposeLayoutSize]) => void) | null }): ComposeChain;
+  animateContentSize(finishedListener: ((values: readonly [value1: ComposeLayoutSize, value2: ComposeLayoutSize]) => void) | null): ComposeChain;
+  animateContentSize(options: { animationSpec: ComposeAnimationSpec; finishedListener: ((values: readonly [value1: ComposeLayoutSize, value2: ComposeLayoutSize]) => void) | null }): ComposeChain;
   animateEnterExit(): ComposeChain;
   animateEnterExit(options: { enter: ComposeVisibilityTransition }): ComposeChain;
   animateEnterExit(enter: ComposeVisibilityTransition): ComposeChain;
@@ -150,6 +155,15 @@ interface GeneratedModifiers {
   basicMarquee(options: { iterations: number; initialDelayMillis: number }): ComposeChain;
   basicMarquee(options: { repeatDelayMillis: number; initialDelayMillis: number }): ComposeChain;
   basicMarquee(options: { iterations: number; repeatDelayMillis: number; initialDelayMillis: number }): ComposeChain;
+  basicMarquee(options: { spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(spacing: ComposeMarqueeSpacingValue): ComposeChain;
+  basicMarquee(options: { iterations: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(options: { repeatDelayMillis: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(options: { iterations: number; repeatDelayMillis: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(options: { initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(options: { iterations: number; initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(options: { repeatDelayMillis: number; initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
+  basicMarquee(options: { iterations: number; repeatDelayMillis: number; initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue }): ComposeChain;
   basicMarquee(options: { velocity: number }): ComposeChain;
   basicMarquee(velocity: number): ComposeChain;
   basicMarquee(options: { iterations: number; velocity: number }): ComposeChain;
@@ -159,6 +173,14 @@ interface GeneratedModifiers {
   basicMarquee(options: { iterations: number; initialDelayMillis: number; velocity: number }): ComposeChain;
   basicMarquee(options: { repeatDelayMillis: number; initialDelayMillis: number; velocity: number }): ComposeChain;
   basicMarquee(options: { iterations: number; repeatDelayMillis: number; initialDelayMillis: number; velocity: number }): ComposeChain;
+  basicMarquee(options: { spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { iterations: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { repeatDelayMillis: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { iterations: number; repeatDelayMillis: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { iterations: number; initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { repeatDelayMillis: number; initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
+  basicMarquee(options: { iterations: number; repeatDelayMillis: number; initialDelayMillis: number; spacing: ComposeMarqueeSpacingValue; velocity: number }): ComposeChain;
   blur(options: { radius: number }): ComposeChain;
   blur(radius: number): ComposeChain;
   blur(options: { radiusX: number; radiusY: number }): ComposeChain;
@@ -2322,13 +2344,21 @@ interface GeneratedModifiers {
   imePadding(): ComposeChain;
   indication(options: { interactionSource: ComposeInteractionSource; indication: ComposeIndication | null }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; textFieldShape: ComposeShape | null }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; textFieldShape: ComposeShape | null }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; focusedIndicatorLineThickness: number }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; focusedIndicatorLineThickness: number }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; textFieldShape: ComposeShape | null; focusedIndicatorLineThickness: number }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; textFieldShape: ComposeShape | null; focusedIndicatorLineThickness: number }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; unfocusedIndicatorLineThickness: number }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; unfocusedIndicatorLineThickness: number }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; textFieldShape: ComposeShape | null; unfocusedIndicatorLineThickness: number }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; textFieldShape: ComposeShape | null; unfocusedIndicatorLineThickness: number }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; focusedIndicatorLineThickness: number; unfocusedIndicatorLineThickness: number }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; focusedIndicatorLineThickness: number; unfocusedIndicatorLineThickness: number }): ComposeChain;
   indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; textFieldShape: ComposeShape | null; focusedIndicatorLineThickness: number; unfocusedIndicatorLineThickness: number }): ComposeChain;
+  indicatorLine(options: { enabled: boolean; isError: boolean; interactionSource: ComposeInteractionSource; colors: ComposeTextFieldColorsValue | null; textFieldShape: ComposeShape | null; focusedIndicatorLineThickness: number; unfocusedIndicatorLineThickness: number }): ComposeChain;
   innerShadow(options: { shape: ComposeShape; shadow: ComposeShadow }): ComposeChain;
   keepScreenOn(): ComposeChain;
   layout(options: { measure: ComposeLayoutModifierMeasure }): ComposeChain;
@@ -3052,6 +3082,10 @@ interface GeneratedModifiers {
   stylusHoverIcon(icon: ComposePointerIcon): ComposeChain;
   stylusHoverIcon(options: { icon: ComposePointerIcon; overrideDescendants: boolean }): ComposeChain;
   stylusHoverIcon(icon: ComposePointerIcon, options: { overrideDescendants: boolean }): ComposeChain;
+  stylusHoverIcon(options: { icon: ComposePointerIcon; touchBoundsExpansion: ComposeDpTouchBoundsExpansionValue | null }): ComposeChain;
+  stylusHoverIcon(icon: ComposePointerIcon, options: { touchBoundsExpansion: ComposeDpTouchBoundsExpansionValue | null }): ComposeChain;
+  stylusHoverIcon(options: { icon: ComposePointerIcon; overrideDescendants: boolean; touchBoundsExpansion: ComposeDpTouchBoundsExpansionValue | null }): ComposeChain;
+  stylusHoverIcon(icon: ComposePointerIcon, options: { overrideDescendants: boolean; touchBoundsExpansion: ComposeDpTouchBoundsExpansionValue | null }): ComposeChain;
   systemBarsPadding(): ComposeChain;
   systemGestureExclusion(): ComposeChain;
   systemGesturesPadding(): ComposeChain;
@@ -3197,15 +3231,15 @@ export const Modifier = createModifier({
     { id: 7, primary: "lookaheadScope", forms: [[["lookaheadScope","string",false]],[["lookaheadScope","string",false],["boundsTransform","object",false]],[["lookaheadScope","string",false],["animateMotionFrameOfReference","boolean",false]],[["lookaheadScope","string",false],["boundsTransform","object",false],["animateMotionFrameOfReference","boolean",false]]] },
   ],
   "animateContentSize": [
-    { id: 8, forms: [[],[["animationSpec","object",false]]] },
-    { id: 9, forms: [[["alignment","string",false]],[["animationSpec","object",false],["alignment","string",false]]] },
+    { id: 8, forms: [[["alignment","string",false]],[["animationSpec","object",false],["alignment","string",false]],[["alignment","string",false],["finishedListener","function",true]],[["animationSpec","object",false],["alignment","string",false],["finishedListener","function",true]]] },
+    { id: 9, forms: [[],[["animationSpec","object",false]],[["finishedListener","function",true]],[["animationSpec","object",false],["finishedListener","function",true]]] },
   ],
   "background": [
     { id: 11, primary: "color", labels: {"shape":"in"}, forms: [[["color","string",false]],[["color","string",false],["shape","shape",false]]] },
     { id: 10, primary: "brush", labels: {"shape":"in"}, forms: [[["brush","brush",false]],[["brush","brush",false],["shape","shape",false]],[["brush","brush",false],["alpha","number",false]],[["brush","brush",false],["shape","shape",false],["alpha","number",false]]] },
   ],
   "basicMarquee": [
-    { id: 12, forms: [[],[["iterations","number",false]],[["repeatDelayMillis","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false]],[["initialDelayMillis","number",false]],[["iterations","number",false],["initialDelayMillis","number",false]],[["repeatDelayMillis","number",false],["initialDelayMillis","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["initialDelayMillis","number",false]],[["velocity","number",false]],[["iterations","number",false],["velocity","number",false]],[["repeatDelayMillis","number",false],["velocity","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["velocity","number",false]],[["initialDelayMillis","number",false],["velocity","number",false]],[["iterations","number",false],["initialDelayMillis","number",false],["velocity","number",false]],[["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["velocity","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["velocity","number",false]]] },
+    { id: 12, forms: [[],[["iterations","number",false]],[["repeatDelayMillis","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false]],[["initialDelayMillis","number",false]],[["iterations","number",false],["initialDelayMillis","number",false]],[["repeatDelayMillis","number",false],["initialDelayMillis","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["initialDelayMillis","number",false]],[["spacing","object",false]],[["iterations","number",false],["spacing","object",false]],[["repeatDelayMillis","number",false],["spacing","object",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["spacing","object",false]],[["initialDelayMillis","number",false],["spacing","object",false]],[["iterations","number",false],["initialDelayMillis","number",false],["spacing","object",false]],[["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["spacing","object",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["spacing","object",false]],[["velocity","number",false]],[["iterations","number",false],["velocity","number",false]],[["repeatDelayMillis","number",false],["velocity","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["velocity","number",false]],[["initialDelayMillis","number",false],["velocity","number",false]],[["iterations","number",false],["initialDelayMillis","number",false],["velocity","number",false]],[["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["velocity","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["velocity","number",false]],[["spacing","object",false],["velocity","number",false]],[["iterations","number",false],["spacing","object",false],["velocity","number",false]],[["repeatDelayMillis","number",false],["spacing","object",false],["velocity","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["spacing","object",false],["velocity","number",false]],[["initialDelayMillis","number",false],["spacing","object",false],["velocity","number",false]],[["iterations","number",false],["initialDelayMillis","number",false],["spacing","object",false],["velocity","number",false]],[["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["spacing","object",false],["velocity","number",false]],[["iterations","number",false],["repeatDelayMillis","number",false],["initialDelayMillis","number",false],["spacing","object",false],["velocity","number",false]]] },
   ],
   "border": [
     { id: 13, forms: [[["border","object",false]],[["border","object",false],["shape","shape",false]]] },
@@ -3545,7 +3579,7 @@ export const Modifier = createModifier({
     { id: 147, primary: "selectedTabIndex", forms: [[["selectedTabIndex","number",false]],[["selectedTabIndex","number",false],["matchContentSize","boolean",false]]] },
   ],
   "indicatorLine": [
-    { id: 148, forms: [[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["focusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true],["focusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["focusedIndicatorLineThickness","number",false],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true],["focusedIndicatorLineThickness","number",false],["unfocusedIndicatorLineThickness","number",false]]] },
+    { id: 148, forms: [[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["textFieldShape","shape",true]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["focusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["focusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true],["focusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["textFieldShape","shape",true],["focusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["textFieldShape","shape",true],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["focusedIndicatorLineThickness","number",false],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["focusedIndicatorLineThickness","number",false],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["textFieldShape","shape",true],["focusedIndicatorLineThickness","number",false],["unfocusedIndicatorLineThickness","number",false]],[["enabled","boolean",false],["isError","boolean",false],["interactionSource","object",false],["colors","object",true],["textFieldShape","shape",true],["focusedIndicatorLineThickness","number",false],["unfocusedIndicatorLineThickness","number",false]]] },
   ],
   "animateIcon": [
     { id: 149, primary: "checkedProgress", forms: [[["checkedProgress","number",false]]] },
@@ -3658,7 +3692,7 @@ export const Modifier = createModifier({
     { id: 186, primary: "onTouchEvent", forms: [[["onTouchEvent","object",false]]] },
   ],
   "stylusHoverIcon": [
-    { id: 187, primary: "icon", forms: [[["icon","string",false]],[["icon","string",false],["overrideDescendants","boolean",false]]] },
+    { id: 187, primary: "icon", forms: [[["icon","string",false]],[["icon","string",false],["overrideDescendants","boolean",false]],[["icon","string",false],["touchBoundsExpansion","object",true]],[["icon","string",false],["overrideDescendants","boolean",false],["touchBoundsExpansion","object",true]]] },
   ],
   "onPreRotaryScrollEvent": [
     { id: 188, primary: "onPreRotaryScrollEvent", forms: [[["onPreRotaryScrollEvent","object",false]]] },

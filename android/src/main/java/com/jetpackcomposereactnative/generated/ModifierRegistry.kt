@@ -487,23 +487,29 @@ private fun apply7(modifier: Modifier, args: ComposeModifierArguments): Modifier
   }
 }
 
-// androidx.compose.animation.animateContentSize [receiver: androidx.compose.ui.Modifier](animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>, finishedListener: kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?)
+// androidx.compose.animation.animateContentSize [receiver: androidx.compose.ui.Modifier](animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>, alignment: androidx.compose.ui.Alignment, finishedListener: kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?)
 private fun apply8(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("animationSpec")) 1 else 0)
+  val mask = (if (args.has("animationSpec")) 1 else 0) +
+    (if (args.has("alignment")) 2 else 0) +
+    (if (args.has("finishedListener")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier1()
-    1 -> modifier.composeModifier1(`animationSpec` = args.jsonObject("animationSpec").toComposeAnimationSpec())
+    2 -> modifier.composeModifier1(`alignment` = toComposeAlignment(args.string("alignment")))
+    3 -> modifier.composeModifier1(`animationSpec` = args.jsonObject("animationSpec").toComposeAnimationSpec(), `alignment` = toComposeAlignment(args.string("alignment")))
+    6 -> modifier.composeModifier1(`alignment` = toComposeAlignment(args.string("alignment")), `finishedListener` = if (args.isNull("finishedListener")) null else ({ value1: androidx.compose.ui.unit.IntSize, value2: androidx.compose.ui.unit.IntSize -> args.emit("finishedListener", org.json.JSONArray().put(value1.toComposeSnapshot()).put(value2.toComposeSnapshot())) }))
+    7 -> modifier.composeModifier1(`animationSpec` = args.jsonObject("animationSpec").toComposeAnimationSpec(), `alignment` = toComposeAlignment(args.string("alignment")), `finishedListener` = if (args.isNull("finishedListener")) null else ({ value1: androidx.compose.ui.unit.IntSize, value2: androidx.compose.ui.unit.IntSize -> args.emit("finishedListener", org.json.JSONArray().put(value1.toComposeSnapshot()).put(value2.toComposeSnapshot())) }))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
-// androidx.compose.animation.animateContentSize [receiver: androidx.compose.ui.Modifier](animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>, alignment: androidx.compose.ui.Alignment, finishedListener: kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?)
+// androidx.compose.animation.animateContentSize [receiver: androidx.compose.ui.Modifier](animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntSize>, finishedListener: kotlin.Function2<androidx.compose.ui.unit.IntSize, androidx.compose.ui.unit.IntSize, kotlin.Unit>?)
 private fun apply9(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("animationSpec")) 1 else 0) +
-    (if (args.has("alignment")) 2 else 0)
+    (if (args.has("finishedListener")) 2 else 0)
   return when (mask) {
-    2 -> modifier.composeModifier1(`alignment` = toComposeAlignment(args.string("alignment")))
-    3 -> modifier.composeModifier1(`animationSpec` = args.jsonObject("animationSpec").toComposeAnimationSpec(), `alignment` = toComposeAlignment(args.string("alignment")))
+    0 -> modifier.composeModifier1()
+    1 -> modifier.composeModifier1(`animationSpec` = args.jsonObject("animationSpec").toComposeAnimationSpec())
+    2 -> modifier.composeModifier1(`finishedListener` = if (args.isNull("finishedListener")) null else ({ value1: androidx.compose.ui.unit.IntSize, value2: androidx.compose.ui.unit.IntSize -> args.emit("finishedListener", org.json.JSONArray().put(value1.toComposeSnapshot()).put(value2.toComposeSnapshot())) }))
+    3 -> modifier.composeModifier1(`animationSpec` = args.jsonObject("animationSpec").toComposeAnimationSpec(), `finishedListener` = if (args.isNull("finishedListener")) null else ({ value1: androidx.compose.ui.unit.IntSize, value2: androidx.compose.ui.unit.IntSize -> args.emit("finishedListener", org.json.JSONArray().put(value1.toComposeSnapshot()).put(value2.toComposeSnapshot())) }))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -536,7 +542,8 @@ private fun apply12(modifier: Modifier, args: ComposeModifierArguments): Modifie
   val mask = (if (args.has("iterations")) 1 else 0) +
     (if (args.has("repeatDelayMillis")) 2 else 0) +
     (if (args.has("initialDelayMillis")) 4 else 0) +
-    (if (args.has("velocity")) 8 else 0)
+    (if (args.has("spacing")) 8 else 0) +
+    (if (args.has("velocity")) 16 else 0)
   return when (mask) {
     0 -> modifier.composeModifier3()
     1 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt())
@@ -546,14 +553,30 @@ private fun apply12(modifier: Modifier, args: ComposeModifierArguments): Modifie
     5 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt())
     6 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt())
     7 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt())
-    8 -> modifier.composeModifier3(`velocity` = args.number("velocity").dp)
-    9 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `velocity` = args.number("velocity").dp)
-    10 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
-    11 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
-    12 -> modifier.composeModifier3(`initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
-    13 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
-    14 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
-    15 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    8 -> modifier.composeModifier3(`spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    9 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    10 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    11 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    12 -> modifier.composeModifier3(`initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    13 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    14 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    15 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue())
+    16 -> modifier.composeModifier3(`velocity` = args.number("velocity").dp)
+    17 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `velocity` = args.number("velocity").dp)
+    18 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    19 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    20 -> modifier.composeModifier3(`initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    21 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    22 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    23 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `velocity` = args.number("velocity").dp)
+    24 -> modifier.composeModifier3(`spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    25 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    26 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    27 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    28 -> modifier.composeModifier3(`initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    29 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    30 -> modifier.composeModifier3(`repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
+    31 -> modifier.composeModifier3(`iterations` = args.number("iterations").toInt(), `repeatDelayMillis` = args.number("repeatDelayMillis").toInt(), `initialDelayMillis` = args.number("initialDelayMillis").toInt(), `spacing` = args.jsonObject("spacing").decodeComposeMarqueeSpacingValue(), `velocity` = args.number("velocity").dp)
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -2676,18 +2699,27 @@ private fun apply147(modifier: Modifier, args: ComposeModifierArguments, scope: 
 
 // androidx.compose.material3.TextFieldDefaults.indicatorLine [receiver: androidx.compose.ui.Modifier](enabled: kotlin.Boolean, isError: kotlin.Boolean, interactionSource: androidx.compose.foundation.interaction.InteractionSource, colors: androidx.compose.material3.TextFieldColors?, textFieldShape: androidx.compose.ui.graphics.Shape?, focusedIndicatorLineThickness: androidx.compose.ui.unit.Dp, unfocusedIndicatorLineThickness: androidx.compose.ui.unit.Dp)
 private fun apply148(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("textFieldShape")) 1 else 0) +
-    (if (args.has("focusedIndicatorLineThickness")) 2 else 0) +
-    (if (args.has("unfocusedIndicatorLineThickness")) 4 else 0)
+  val mask = (if (args.has("colors")) 1 else 0) +
+    (if (args.has("textFieldShape")) 2 else 0) +
+    (if (args.has("focusedIndicatorLineThickness")) 4 else 0) +
+    (if (args.has("unfocusedIndicatorLineThickness")) 8 else 0)
   return when (mask) {
     0 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource) } }
-    1 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape"))) } }
-    2 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp) } }
-    3 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp) } }
-    4 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
-    5 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
-    6 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
-    7 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    1 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue())) } }
+    2 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape"))) } }
+    3 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape"))) } }
+    4 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp) } }
+    5 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp) } }
+    6 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp) } }
+    7 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp) } }
+    8 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    9 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    10 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    11 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    12 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    13 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    14 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
+    15 -> with(androidx.compose.material3.TextFieldDefaults) { modifier.composed { val interactionSource = args.jsonObject("interactionSource").rememberComposeInteractionSource(); indicatorLine(`enabled` = args.boolean("enabled"), `isError` = args.boolean("isError"), `interactionSource` = interactionSource, `colors` = if (args.isNull("colors")) null else (args.jsonObject("colors").decodeComposeTextFieldColorsValue()), `textFieldShape` = if (args.isNull("textFieldShape")) null else (args.shape("textFieldShape")), `focusedIndicatorLineThickness` = args.number("focusedIndicatorLineThickness").dp, `unfocusedIndicatorLineThickness` = args.number("unfocusedIndicatorLineThickness").dp) } }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
@@ -4220,10 +4252,13 @@ private fun apply186(modifier: Modifier, args: ComposeModifierArguments): Modifi
 
 // androidx.compose.ui.input.pointer.stylusHoverIcon [receiver: androidx.compose.ui.Modifier](icon: androidx.compose.ui.input.pointer.PointerIcon, overrideDescendants: kotlin.Boolean, touchBoundsExpansion: androidx.compose.ui.node.DpTouchBoundsExpansion?)
 private fun apply187(modifier: Modifier, args: ComposeModifierArguments): Modifier {
-  val mask = (if (args.has("overrideDescendants")) 1 else 0)
+  val mask = (if (args.has("overrideDescendants")) 1 else 0) +
+    (if (args.has("touchBoundsExpansion")) 2 else 0)
   return when (mask) {
     0 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")))
     1 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")), `overrideDescendants` = args.boolean("overrideDescendants"))
+    2 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")), `touchBoundsExpansion` = if (args.isNull("touchBoundsExpansion")) null else (args.jsonObject("touchBoundsExpansion").decodeComposeDpTouchBoundsExpansionValue()))
+    3 -> modifier.composeModifier121(`icon` = toComposePointerIcon(args.string("icon")), `overrideDescendants` = args.boolean("overrideDescendants"), `touchBoundsExpansion` = if (args.isNull("touchBoundsExpansion")) null else (args.jsonObject("touchBoundsExpansion").decodeComposeDpTouchBoundsExpansionValue()))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }

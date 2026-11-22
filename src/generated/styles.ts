@@ -1,6 +1,6 @@
 // Generated from Compose Foundation StyleScope by generate.mjs.
+import type { ComposeBaselineShiftValue, ComposeOffset, ComposeTextIndentValue, ComposeTransformOrigin } from "./records";
 import type { ComposeAnimationSpec, ComposeTextStyle } from "../utils/composeValues";
-import type { ComposeOffset, ComposeTransformOrigin } from "./records";
 import type { ComposeInteractionSource } from '../utils/nativeHandles';
 import type { ComposeFontWeight, ComposeTextAlign } from './values';
 import type { ComposeShape, ComposeBrush } from '../utils/modifier';
@@ -8,6 +8,7 @@ import type { ComposeShape, ComposeBrush } from '../utils/modifier';
 export interface ComposeFoundationStyle {
   alpha?: number;
   background?: string;
+  baselineShift?: ComposeBaselineShiftValue;
   borderBrush?: ComposeBrush;
   borderColor?: string;
   borderWidth?: number;
@@ -50,6 +51,7 @@ export interface ComposeFoundationStyle {
   shape?: ComposeShape;
   size?: number;
   textAlign?: ComposeTextAlign;
+  textIndent?: ComposeTextIndentValue;
   textStyle?: ComposeTextStyle;
   top?: number;
   transformOrigin?: ComposeTransformOrigin;

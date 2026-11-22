@@ -5,6 +5,8 @@ import { modifierKinds, modifierOutputs, typeImports } from "./modifiers.mjs";
 import { valueOutputs } from "./values.mjs";
 import { factoryOutputs } from "./factories.mjs";
 import { recordOutputs } from "./records.mjs";
+import { scalarKinds } from "./scalars.mjs";
+import { eventTupleDescriptor } from "./events.mjs";
 import { styleOutputs } from "./styles.mjs";
 import { verifyInventory } from "./inventory.mjs";
 
@@ -168,21 +170,13 @@ const kinds = {
       ...((kind === "paddingValues" || kind === "windowInsets") && { modifierInput: kind }) },
   ])),
   ...modifierKinds,
-  string: { type: "string", expression: (key) => `node.string(${key})` },
-  boolean: { type: "boolean", expression: (key) => `node.boolean(${key})` },
-  int: { type: "number", expression: (key) => `node.number(${key}).toInt()` },
-  long: { type: "number", expression: (key) => `node.number(${key}).toLong()` },
-  float: { type: "number", expression: (key) => `node.number(${key}).toFloat()` },
-  double: { type: "number", expression: (key) => `node.number(${key})` },
-  dp: { type: "number", expression: (key) => `node.number(${key}).dp` },
-  sp: { type: "number", expression: (key) => `node.number(${key}).sp` },
+  ...scalarKinds,
   colorScheme: { type: "ColorScheme", input: "object", expression: (key) => `node.jsonObject(${key}).toColorScheme()` },
   windowInsetsProducer: { type: "ComposeWindowInsets", input: "object", module: "../utils/composeValues", expression: (key) => `{ node.jsonObject(${key}).toWindowInsets() }` },
   painter: { type: "ComposePainter", input: "object", module: "../utils/composeValues",
     expression: (key) => `node.jsonObject(${key}).rememberComposePainter()`,
     modifierExpression: () => "painter",
     composition: { value: "painter", factory: "rememberComposePainter" } },
-  color: { type: "string", expression: (key) => `node.color(${key})` },
   shape: { ...modifierKinds.shape, expression: (key) => `node.arguments().shape(${key})` },
   brush: { ...modifierKinds.brush, expression: (key) => `node.arguments().brush(${key})` },
   floatRange: { type: "ComposeFloatRange", input: "tuple", module: "./components", expression: (key) => `node.arguments().floatRange(${key})`,
@@ -217,6 +211,10 @@ for (const { name } of manifest.records ?? []) {
 
 for (const { name } of manifest.values ?? []) {
   kinds[name] = { type: name, input: "string", expression: (key) => `to${name}(node.string(${key}))` };
+}
+
+for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
+  if (kind.startsWith("eventTuple:") && !Object.hasOwn(kinds, kind)) kinds[kind] = eventTupleDescriptor(kind);
 }
 
 function eventSnapshot(snapshot, native, nullable = false, module = "../utils/composeValues") {
@@ -430,31 +428,58 @@ function kotlin({ components }) {
       : kotlinFunction;
     const optionals = parameters.filter(({ optional, kind }) => optional && kind !== "modifier");
     const bits = new Map(optionals.map(({ name }, index) => [name, 1 << index]));
+    // Each mask still makes a statically resolved call so the Kotlin compiler owns
+    // the defaults. Reuse decoders and slot lambdas across masks without rendering omitted slots.
+    const compact = masks.length > 32;
+    const shareChildren = compact && children && !childrenScope;
+    const sharedSlots = compact ? parameters.filter(({ kind, scope }) => kind === "slot" && !scope) : [];
+    const slotNames = new Set(sharedSlots.map(({ name }) => name));
+    const parameterValue = ({ name, kind, nullable, scope }) => {
+      const key = quote(name);
+      const value = Object.hasOwn(stateKinds, kind) ? `requireNotNull(${name}Value)`
+        : kind === "slot" && scope ? renderSlot(`node.slot(${key})`, scope)
+        : kinds[kind].expression(key);
+      return nullable ? `if (node.isNull(${key})) null else (${value})` : value;
+    };
+    const shared = new Map(parameters.filter(({ kind }) => compact && Object.hasOwn(scalarKinds, kind))
+      .map((parameter) => [parameter.name, parameter]));
     const call = (mask, indent) => {
-      const args = passedParameters({ parameters }, mask)
-        .map(({ name, kind, nullable, scope, nativeName = name }) => {
-          const key = quote(name);
-          const value = Object.hasOwn(stateKinds, kind) ? `requireNotNull(${name}Value)`
-            : kind === "slot" && scope ? renderSlot(`node.slot(${key})`, scope)
-            : kinds[kind].expression(key);
-          const expression = nullable ? `if (node.isNull(${key})) null else (${value})` : value;
-          return `\`${nativeName}\` = ${expression}`;
-        });
+      const args = passedParameters({ parameters }, mask).map((parameter) => {
+        const { name, nativeName = name } = parameter;
+        const value = slotNames.has(name) ? `slot_${name}`
+          : shared.has(name) ? `decode_${name}(node)` : parameterValue(parameter);
+        return `\`${nativeName}\` = ${value}`;
+      });
       if (children) {
         const argument = childrenParameter ?? "content";
-        args.push(`${argument} = ${renderSlot("node.children", childrenScope)}`);
+        const content = shareChildren ? "renderChildren" : renderSlot("node.children", childrenScope);
+        args.push(`${argument} = ${content}`);
       }
-      return args.length ? [
+      if (compact || !args.length) return `${nativeFunction}(${args.join(", ")})`;
+      return [
         `${nativeFunction}(`,
         ...args.map((arg) => `${indent}  ${arg},`),
         `${indent})`,
-      ].join("\n") : `${nativeFunction}()`;
+      ].join("\n");
     };
 
     const maskValue = optionals.map(({ name }) =>
       `(if (node.has(${quote(name)})) ${bits.get(name)} else 0)`).join(" +\n    ");
     const state = parameters.filter(({ kind }) => Object.hasOwn(stateKinds, kind));
     const stateArguments = state.map(({ name }) => `, ${name}Value`).join("");
+    const childrenArgument = shareChildren ? ", renderChildren" : "";
+    const childrenType = shareChildren ? ", renderChildren: @Composable () -> Unit" : "";
+    const slotType = (nullable) => nullable ? "(@Composable () -> Unit)?" : "@Composable () -> Unit";
+    const slotArguments = sharedSlots.map(({ name }) => `, slot_${name}`).join("");
+    const slotTypes = sharedSlots.map(({ name, nullable }) => `, slot_${name}: ${slotType(nullable)}`).join("");
+    const slotValues = sharedSlots.flatMap(({ name, nullable }) => {
+      const key = quote(name);
+      const content = nullable ? `content_${name}` : `slot_${name}`;
+      return [
+        `  val ${content}: @Composable () -> Unit = { RenderComposeChildren(node.slot(${key})) }`,
+        ...(nullable ? [`  val slot_${name} = if (node.isNull(${key})) null else ${content}`] : []),
+      ];
+    });
     const stateValues = state.map(({ name, kind }) =>
       `  val ${name}Value = if (node.has(${quote(name)}) && !node.isNull(${quote(name)})) node.jsonObject(${quote(name)}).${stateKinds[kind][2]}(${stateKinds[kind][3] ? "node" : ""}) else null`
     );
@@ -466,7 +491,7 @@ function kotlin({ components }) {
       `  val mask = ${maskValue}`,
       split ? `  when (mask / ${groupSize}) {` : "  when (mask) {",
       ...(split ? [...groups.keys()].map((group) =>
-        `    ${group} -> render${renderer}Group${group}(node${modifierScope ? ", scope" : ""}, mask${stateArguments})`
+        `    ${group} -> render${renderer}Group${group}(node${modifierScope ? ", scope" : ""}, mask${stateArguments}${childrenArgument}${slotArguments})`
       ) : masks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`)),
       invalid,
       "  }",
@@ -477,15 +502,20 @@ function kotlin({ components }) {
     ];
     const stateTypes = state.map(({ name, kind }) => `, ${name}Value: ${stateKinds[kind][1]}?`).join("");
     const methods = [
+      ...[...shared.values()].map((parameter) =>
+        `private fun decode_${parameter.name}(node: ComposeNode) = ${parameterValue(parameter)}`),
+      ...(shared.size ? [""] : []),
       ...annotations,
       `fun render(node: ComposeNode${modifierScope}) {`,
       ...stateValues,
+      ...slotValues,
+      ...(shareChildren ? ["  val renderChildren: @Composable () -> Unit = { RenderComposeChildren(node.children) }"] : []),
       ...body,
       "}",
       "",
       ...(split ? [...groups].flatMap(([group, groupMasks]) => [
         ...annotations,
-        `private fun render${renderer}Group${group}(node: ComposeNode${modifierScope}, mask: Int${stateTypes}) {`,
+        `private fun render${renderer}Group${group}(node: ComposeNode${modifierScope}, mask: Int${stateTypes}${childrenType}${slotTypes}) {`,
         "  when (mask) {",
         ...groupMasks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`),
         invalid,
@@ -529,18 +559,23 @@ function kotlin({ components }) {
   // Kotlin lowers IR one file at a time. Keep a large API inventory from turning
   // into a single compilation unit containing thousands of default-argument calls.
   const maxRendererBytes = 1_000_000;
+  const maxCallsPerShard = 1_200;
   const shards = [];
   let shard = [];
   let size = 0;
-  for (const renderer of functions) {
+  let calls = 0;
+  for (const [index, renderer] of functions.entries()) {
     const bytes = Buffer.byteLength(renderer) + 1;
-    if (size + bytes > maxRendererBytes && shard.length) {
+    const forms = components[index].masks.length;
+    if (shard.length && (size + bytes > maxRendererBytes || calls + forms > maxCallsPerShard)) {
       shards.push(shard);
       shard = [];
       size = 0;
+      calls = 0;
     }
     shard.push(renderer);
     size += bytes;
+    calls += forms;
   }
   if (shard.length) shards.push(shard);
   if (shards.length <= 1) {
@@ -569,7 +604,7 @@ for (const [name, overloads] of Map.groupBy(manifest.components, ({ name }) => n
 }
 const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers, { ...kinds, ...modifierKinds });
 const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
-const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? []);
+const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? [], kinds);
 const [styleTypeScript, styleKotlin] = styleOutputs(manifest.styleProperties ?? [], { ...kinds, ...modifierKinds });
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
 const nativeFiles = [

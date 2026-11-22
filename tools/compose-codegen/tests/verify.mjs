@@ -118,6 +118,10 @@ if (mode === "audit") {
   assert.ok(manifest.components.some(({ name, parameters }) => name === "DecorationBox" &&
     parameters.some(({ kind }) => kind === "visualTransformation")));
   assert.ok(manifest.components.some(({ name, childrenScope }) => name === "Crossfade" && childrenScope === "indexed:"));
+  assert.ok(manifest.modifiers.some(({ name, parameters }) => name === "animateContentSize" &&
+    parameters.some(({ name, kind }) => name === "finishedListener" &&
+      kind === "eventTuple:androidx.compose.ui.unit.IntSize,androidx.compose.ui.unit.IntSize")));
+  assert.ok(manifest.components.some(({ name }) => name === "MaterialExpressiveTheme"));
   assert.ok(manifest.components.some(({ name, ownerScope }) => name === "NavigationBarItem" && ownerScope?.endsWith(".RowScope")));
   assert.ok(manifest.components.some(component => component.name === "Text" &&
     component.parameters.some(parameter => parameter.name === "composeTextStyle" && parameter.nativeName === "style")));
@@ -151,8 +155,6 @@ if (mode === "audit") {
   const lost = [...callForms(original)].filter((form) => !upgradedForms.has(form));
   // Material 3 1.5.0-alpha01 hides the previous WideNavigationRailItem
   // overload and replaces it with one that requires railExpanded.
-  const expected = [["icon", "label", "modifier", "onClick", "selected"],
-    ["enabled", "icon", "label", "modifier", "onClick", "selected"]];
   const tooltipNames = new Set(["PlainTooltip", "RichTooltip"]);
   const newCaretShape = new Set(newer.components.filter(({ name, parameters }) =>
     tooltipNames.has(name) && parameters.some(({ name }) => name === "caretShape")
@@ -167,8 +169,6 @@ if (mode === "audit") {
         props.filter(([prop]) => prop !== "caretSize"), kind, scope]));
     }
     if (name !== "WideNavigationRailItem" || children) return true;
-    const legacyNames = names.filter((prop) => prop !== "interactionSource");
-    if (!expected.some((shape) => shape.join() === legacyNames.join())) return true;
     const replacement = [...props, ["railExpanded", "boolean", false, false]]
       .sort(([left], [right]) => left.localeCompare(right));
     return !upgradedForms.has(JSON.stringify([name, children, replacement, kind, scope]));
@@ -199,6 +199,26 @@ if (mode === "audit") {
   assert.doesNotMatch(ts, /export const UnsupportedProbe/);
   assert.ok(kt.includes(`@OptIn(${name}.BridgeLayoutPreview::class, ${name}.BridgePreview::class)`));
   assert.ok(kt.includes(`${name}.DiscoveryProbe(`));
+  const nested = original.components.find(({ name }) => name === "NestedValueProbe");
+  assert.ok(nested?.children, "Nested values work alongside composable content");
+  assert.deepEqual(nested.parameters.map(({ kind }) => kind),
+    ["record:ComposeProbeConfigurationValue", "record:ComposeProbeShapeValue"]);
+  assert.ok(original.modifiers.some(({ name, parameters }) => name === "nestedValueProbe" &&
+    parameters[0].kind === "record:ComposeProbeConfigurationValue"));
+  const records = readOutput("records.ts");
+  assert.match(records, /inset: ComposeProbeInsetValue; fallback\?: ComposeProbeInsetValue \| null/);
+  assert.match(records, /direction\?: ComposeProbeDirectionOption/);
+  assert.match(readOutput("values.ts"), /ComposeProbeDirectionOption = "end" \| "start"/);
+  const recordKotlin = readOutput("ComposeRecords.kt");
+  assert.match(recordKotlin, /0 -> .*ProbeConfiguration\(`inset` = getJSONObject\("inset"\)\.decodeComposeProbeInsetValue\(\)\)/);
+  assert.match(recordKotlin, /if \(get\("fallback"\) === JSONObject.NULL\) null else getJSONObject\("fallback"\)\.decodeComposeProbeInsetValue\(\)/);
+  const modifiers = readOutput("modifiers.ts");
+  assert.ok(modifiers.includes("(values: readonly [value1: string | null, value2: number]) => void"));
+  assert.ok(readOutput("ModifierRegistry.kt").includes(
+    "org.json.JSONArray().put(value1 ?: org.json.JSONObject.NULL).put(value2)"));
+  assert.ok(original.coverage.some(({ signature, status, omittedParameters }) =>
+    signature.includes(".UnsupportedValueProbe(") && status === "adapterRequired" &&
+    omittedParameters.every(({ required }) => required) && omittedParameters.length === 2));
   assert.match(readOutput("modifiers.ts"), /discoveryProbe\(inset: number\)/);
   assert.ok(readOutput("ModifierRegistry.kt").includes(`import ${name}.discoveryProbe as `));
 } else {

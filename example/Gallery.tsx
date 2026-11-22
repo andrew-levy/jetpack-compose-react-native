@@ -5,7 +5,7 @@ import {
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
   Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
-  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeTextFieldValue,
+  Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeLayoutSize, type ComposeTextFieldValue,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -286,6 +286,7 @@ function BridgeCapabilities() {
 function BridgeAdditions() {
   const [dragged, setDragged] = useState(false);
   const [destination, setDestination] = useState(0);
+  const [sizeAnimationFinished, setSizeAnimationFinished] = useState(false);
 
   return (
     <Demo title="Native gestures and layout">
@@ -309,11 +310,31 @@ function BridgeAdditions() {
           <Text text="Layout start" modifiers={Modifier.layout({ height: 28 })} />
           <RNText>Layout end</RNText>
         </Layout>
-        <Button onClick={() => setDestination(1)}><Text text="Crossfade content" /></Button>
-        <Crossfade targetState={destination} animationSpec={{ type: "tween", durationMillis: 200 }}>
-          <Text key="first" text="First crossfade state" />
-          <Text key="second" text="Second crossfade state" />
-        </Crossfade>
+        <Button
+          colors={{
+            containerColor: "#5e3d84",
+            contentColor: "#ffffff",
+            disabledContainerColor: "#ded4e8",
+            disabledContentColor: "#51465d",
+          }}
+          onClick={() => setDestination(1)}
+        >
+          <Text text="Crossfade content" />
+        </Button>
+        <Box modifiers={Modifier.animateContentSize({
+          animationSpec: { type: "tween", durationMillis: 200 },
+          finishedListener: ([start, end]: readonly [ComposeLayoutSize, ComposeLayoutSize]) => {
+            setSizeAnimationFinished(end.height > start.height);
+          },
+        })}>
+          <Box modifiers={Modifier.height(destination === 0 ? 24 : 44)}>
+            <Crossfade targetState={destination} animationSpec={{ type: "tween", durationMillis: 200 }}>
+              <Text key="first" text="First crossfade state" />
+              <Text key="second" text="Second crossfade state" />
+            </Crossfade>
+          </Box>
+        </Box>
+        {sizeAnimationFinished && <Text text="Size animation callback received" />}
         <TextField
           modifiers={fullWidth.semantics({ contentDescription: "Native phone input" })}
           state={{ initialText: "1234" }}

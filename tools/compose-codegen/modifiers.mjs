@@ -18,7 +18,7 @@ export const modifierKinds = {
 
 export function typeImports(descriptors, ownModule) {
   const modules = new Map();
-  for (const { type, module, imports } of descriptors) {
+  for (const { type, module, imports } of descriptors.flatMap((descriptor) => descriptor.typeImports ?? [descriptor])) {
     if (!module || module === ownModule) continue;
     if (!modules.has(module)) modules.set(module, new Set());
     for (const name of imports ?? [type]) modules.get(module).add(name);

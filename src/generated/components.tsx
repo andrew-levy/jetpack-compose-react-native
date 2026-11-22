@@ -5,8 +5,8 @@ import type { ColorScheme } from "./factories";
 import type { ComposeShape, ComposeBrush } from "../utils/modifier";
 export type ComposeFloatRange = readonly [start: number, endInclusive: number];
 import type { ComposeAnimationSpec, ComposeAnnotatedString, ComposeBorderStroke, ComposeBottomSheetScaffoldState, ComposeCarouselState, ComposeDatePickerFormatter, ComposeDatePickerState, ComposeDateRangePickerState, ComposeDpSize, ComposeDrawing, ComposeFlexBoxConfig, ComposeFlingBehavior, ComposeGridCells, ComposeGridConfig, ComposeInputTransformation, ComposeKeyboardActions, ComposeKeyboardOptions, ComposeLayoutMeasurePolicy, ComposeLazyState, ComposeNestedScrollConnection, ComposeOutputTransformation, ComposeOverscrollEffect, ComposePaddingValues, ComposePageSize, ComposePagerState, ComposePainter, ComposePopupPosition, ComposeSearchBarState, ComposeSnackbarHostState, ComposeSwipeToDismissState, ComposeTextFieldLineLimits, ComposeTextFieldSnapshot, ComposeTextFieldState, ComposeTextFieldValue, ComposeTextStyle, ComposeTimePickerState, ComposeTooltipState, ComposeVisibilityTransition, ComposeVisualTransformation, ComposeWindowInsets } from "../utils/composeValues";
+import type { ComposeButtonColorsValue, ComposeCardColorsValue, ComposeCheckboxColorsValue, ComposeChipColorsValue, ComposeChipElevationValue, ComposeDpOffset, ComposeDragHandleColorsValue, ComposeIconButtonColorsValue, ComposeIconToggleButtonColorsValue, ComposeIntOffset, ComposeListItemColorsValue, ComposeMenuItemColorsValue, ComposeNavigationBarItemColorsValue, ComposeNavigationItemColorsValue, ComposeNavigationRailItemColorsValue, ComposeRadioButtonColorsValue, ComposeSegmentedButtonColorsValue, ComposeSelectableChipElevationValue, ComposeSliderColorsValue, ComposeSwitchColorsValue, ComposeTextFieldColorsValue, ComposeToggleButtonColorsValue, ComposeWideNavigationRailColorsValue } from "./records";
 import type { ComposeFocusRequester, ComposeInteractionSource, ComposePullToRefreshState, ComposeRangeSliderState, ComposeSliderState } from "../utils/nativeHandles";
-import type { ComposeDpOffset, ComposeIntOffset } from "./records";
 export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";
 export type ComposeSheetState = { skipPartiallyExpanded?: boolean };
 import type { ComposeSnapPosition, ComposeTimePickerDisplayMode, ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight, ComposeToggleableState, ComposeContentScale, ComposeDisplayMode } from "./values";
@@ -77,26 +77,93 @@ export const AnimatedVisibility = createComposableComponent<AnimatedVisibilityPr
   children: true,
 });
 
-export interface AssistChipProps {
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type AssistChipProps =
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    colors?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    elevation?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    }
+;
 export const AssistChip = createComposableComponent<AssistChipProps>({
   name: "AssistChip",
-  props: ["modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","interactionSource"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "AssistChip", children: false, parameters: [["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,255] },
+  ],
 });
 
 export interface BadgeProps {
@@ -1995,6 +2062,7 @@ export interface ButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -2002,8 +2070,8 @@ export interface ButtonProps {
 }
 export const Button = createComposableComponent<ButtonProps>({
   name: "Button",
-  props: ["modifier","enabled","shape","border","contentPadding","interactionSource"],
-  objectProps: ["shape","border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -2041,6 +2109,7 @@ export type CardProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     shape?: ComposeShape;
+    colors?: ComposeCardColorsValue;
     border?: ComposeBorderStroke | null;
     children?: ReactNode;
     onClick?: never;
@@ -2054,6 +2123,7 @@ export type CardProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     shape?: ComposeShape;
+    colors?: ComposeCardColorsValue;
     border?: ComposeBorderStroke | null;
     interactionSource?: ComposeInteractionSource | null;
     children?: ReactNode;
@@ -2061,13 +2131,13 @@ export type CardProps =
 ;
 export const Card = createComposableComponent<CardProps>({
   name: "Card",
-  props: ["modifier","shape","border","enabled","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","shape","colors","border","enabled","interactionSource"],
+  objectProps: ["shape","colors","border","interactionSource"],
   events: ["onClick"],
   children: true,
   overloads: [
-    { id: "Card", children: true, parameters: [["modifier","ComposeModifier",true,false],["shape","shape",true,false],["border","object",true,true]], masks: [0,1,2,3] },
-    { id: "Card#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "Card", children: true, parameters: [["modifier","ComposeModifier",true,false],["shape","shape",true,false],["colors","object",true,false],["border","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Card#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
   ],
 });
 
@@ -2095,14 +2165,15 @@ export interface CenteredTrackProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeSliderColorsValue;
   thumbTrackGapSize?: number;
   trackInsideCornerSize?: number;
   trackCornerSize?: number;
 }
 export const CenteredTrack = createComposableComponent<CenteredTrackProps>({
   name: "CenteredTrack",
-  props: ["sliderState","modifier","enabled","thumbTrackGapSize","trackInsideCornerSize","trackCornerSize"],
-  objectProps: ["sliderState"],
+  props: ["sliderState","modifier","enabled","colors","thumbTrackGapSize","trackInsideCornerSize","trackCornerSize"],
+  objectProps: ["sliderState","colors"],
   children: false,
 });
 
@@ -2113,12 +2184,13 @@ export interface CheckboxProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeCheckboxColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const Checkbox = createComposableComponent<CheckboxProps>({
   name: "Checkbox",
-  props: ["checked","modifier","enabled","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["checked","modifier","enabled","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   events: ["onCheckedChange"],
   children: false,
 });
@@ -2272,6 +2344,7 @@ export type ContainerProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    colors?: ComposeTextFieldColorsValue;
     shape?: ComposeShape;
     focusedBorderThickness?: number;
     unfocusedBorderThickness?: number;
@@ -2285,6 +2358,7 @@ export type ContainerProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    colors?: ComposeTextFieldColorsValue;
     shape?: ComposeShape;
     unfocusedIndicatorLineThickness: number;
     focusedBorderThickness?: never;
@@ -2298,6 +2372,7 @@ export type ContainerProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    colors?: ComposeTextFieldColorsValue;
     shape?: ComposeShape;
     focusedIndicatorLineThickness: number;
     unfocusedIndicatorLineThickness?: number;
@@ -2307,12 +2382,12 @@ export type ContainerProps =
 ;
 export const Container = createComposableComponent<ContainerProps>({
   name: "Container",
-  props: ["enabled","isError","interactionSource","modifier","shape","focusedBorderThickness","unfocusedBorderThickness","focusedIndicatorLineThickness","unfocusedIndicatorLineThickness"],
-  objectProps: ["interactionSource","shape"],
+  props: ["enabled","isError","interactionSource","modifier","colors","shape","focusedBorderThickness","unfocusedBorderThickness","focusedIndicatorLineThickness","unfocusedIndicatorLineThickness"],
+  objectProps: ["interactionSource","colors","shape"],
   children: false,
   overloads: [
-    { id: "Container", children: false, parameters: [["enabled","boolean",false,false],["isError","boolean",false,false],["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["shape","shape",true,false],["focusedBorderThickness","number",true,false],["unfocusedBorderThickness","number",true,false]], masks: [0,1,2,3,4,5,6,7] },
-    { id: "Container#1", children: false, parameters: [["enabled","boolean",false,false],["isError","boolean",false,false],["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["shape","shape",true,false],["focusedIndicatorLineThickness","number",true,false],["unfocusedIndicatorLineThickness","number",true,false]], masks: [2,3,4,5,6,7] },
+    { id: "Container", children: false, parameters: [["enabled","boolean",false,false],["isError","boolean",false,false],["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["shape","shape",true,false],["focusedBorderThickness","number",true,false],["unfocusedBorderThickness","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "Container#1", children: false, parameters: [["enabled","boolean",false,false],["isError","boolean",false,false],["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["shape","shape",true,false],["focusedIndicatorLineThickness","number",true,false],["unfocusedIndicatorLineThickness","number",true,false]], masks: [4,5,6,7,8,9,10,11,12,13,14,15] },
   ],
 });
 
@@ -2320,14 +2395,15 @@ export interface ContainerBoxProps {
   enabled: boolean;
   isError: boolean;
   interactionSource: ComposeInteractionSource;
+  colors?: ComposeTextFieldColorsValue;
   shape?: ComposeShape;
   focusedBorderThickness?: number;
   unfocusedBorderThickness?: number;
 }
 export const ContainerBox = createComposableComponent<ContainerBoxProps>({
   name: "ContainerBox",
-  props: ["enabled","isError","interactionSource","shape","focusedBorderThickness","unfocusedBorderThickness"],
-  objectProps: ["interactionSource","shape"],
+  props: ["enabled","isError","interactionSource","colors","shape","focusedBorderThickness","unfocusedBorderThickness"],
+  objectProps: ["interactionSource","colors","shape"],
   children: false,
 });
 
@@ -2492,6 +2568,7 @@ export type DecorationBoxProps =
     suffix?: never;
     supportingText?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -2511,6 +2588,27 @@ export type DecorationBoxProps =
     suffix?: never;
     supportingText?: never;
     shape?: never;
+    colors?: never;
+    container?: never;
+    }
+  | {
+    value: string;
+    innerTextField: ReactNode;
+    enabled: boolean;
+    singleLine: boolean;
+    visualTransformation: ComposeVisualTransformation;
+    interactionSource: ComposeInteractionSource;
+    isError?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    shape?: never;
+    contentPadding?: never;
     container?: never;
     }
   | {
@@ -2529,6 +2627,7 @@ export type DecorationBoxProps =
     prefix?: never;
     suffix?: never;
     supportingText?: never;
+    colors?: never;
     contentPadding?: never;
     container?: never;
     }
@@ -2548,6 +2647,7 @@ export type DecorationBoxProps =
     prefix?: never;
     suffix?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     container?: never;
     }
@@ -2567,6 +2667,7 @@ export type DecorationBoxProps =
     prefix?: never;
     supportingText?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     container?: never;
     }
@@ -2586,6 +2687,7 @@ export type DecorationBoxProps =
     suffix?: never;
     supportingText?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     container?: never;
     }
@@ -2601,6 +2703,7 @@ export type DecorationBoxProps =
     placeholder?: ReactNode;
     leadingIcon?: ReactNode;
     trailingIcon: ReactNode;
+    colors?: ComposeTextFieldColorsValue;
     prefix?: never;
     suffix?: never;
     supportingText?: never;
@@ -2624,6 +2727,7 @@ export type DecorationBoxProps =
     suffix: ReactNode;
     supportingText: ReactNode;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     container: ReactNode;
     }
@@ -2642,6 +2746,7 @@ export type DecorationBoxProps =
     prefix: ReactNode;
     suffix: ReactNode;
     supportingText: ReactNode;
+    colors?: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     container: ReactNode;
     shape?: never;
@@ -2649,13 +2754,13 @@ export type DecorationBoxProps =
 ;
 export const DecorationBox = createComposableComponent<DecorationBoxProps>({
   name: "DecorationBox",
-  props: ["value","enabled","singleLine","visualTransformation","interactionSource","isError","shape","contentPadding"],
-  objectProps: ["visualTransformation","interactionSource","shape","contentPadding"],
+  props: ["value","enabled","singleLine","visualTransformation","interactionSource","isError","shape","colors","contentPadding"],
+  objectProps: ["visualTransformation","interactionSource","shape","colors","contentPadding"],
   slots: ["innerTextField","label","placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText","container"],
   children: false,
   overloads: [
-    { id: "DecorationBox", children: false, parameters: [["value","string",false,false],["innerTextField","ReactNode",false,false],["enabled","boolean",false,false],["singleLine","boolean",false,false],["visualTransformation","object",false,false],["interactionSource","object",false,false],["isError","boolean",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["shape","shape",true,false],["contentPadding","object",true,false],["container","ReactNode",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,2047] },
-    { id: "DecorationBox#1", children: false, parameters: [["value","string",false,false],["innerTextField","ReactNode",false,false],["enabled","boolean",false,false],["singleLine","boolean",false,false],["visualTransformation","object",false,false],["interactionSource","object",false,false],["isError","boolean",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["contentPadding","object",true,false],["container","ReactNode",true,false]], masks: [1023] },
+    { id: "DecorationBox", children: false, parameters: [["value","string",false,false],["innerTextField","ReactNode",false,false],["enabled","boolean",false,false],["singleLine","boolean",false,false],["visualTransformation","object",false,false],["interactionSource","object",false,false],["isError","boolean",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["container","ReactNode",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,3583,4095] },
+    { id: "DecorationBox#1", children: false, parameters: [["value","string",false,false],["innerTextField","ReactNode",false,false],["enabled","boolean",false,false],["singleLine","boolean",false,false],["visualTransformation","object",false,false],["interactionSource","object",false,false],["isError","boolean",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["colors","object",true,false],["contentPadding","object",true,false],["container","ReactNode",true,false]], masks: [1791,2047] },
   ],
 });
 
@@ -2807,38 +2912,106 @@ export interface DropdownMenuItemProps {
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
   enabled?: boolean;
+  colors?: ComposeMenuItemColorsValue;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const DropdownMenuItem = createComposableComponent<DropdownMenuItemProps>({
   name: "DropdownMenuItem",
-  props: ["modifier","enabled","contentPadding","interactionSource"],
-  objectProps: ["contentPadding","interactionSource"],
+  props: ["modifier","enabled","colors","contentPadding","interactionSource"],
+  objectProps: ["colors","contentPadding","interactionSource"],
   slots: ["text","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
 });
 
-export interface ElevatedAssistChipProps {
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type ElevatedAssistChipProps =
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    colors?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    elevation?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    }
+;
 export const ElevatedAssistChip = createComposableComponent<ElevatedAssistChipProps>({
   name: "ElevatedAssistChip",
-  props: ["modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","interactionSource"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "ElevatedAssistChip", children: false, parameters: [["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,255] },
+  ],
 });
 
 export interface ElevatedButtonProps {
@@ -2848,6 +3021,7 @@ export interface ElevatedButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -2855,8 +3029,8 @@ export interface ElevatedButtonProps {
 }
 export const ElevatedButton = createComposableComponent<ElevatedButtonProps>({
   name: "ElevatedButton",
-  props: ["modifier","enabled","shape","border","contentPadding","interactionSource"],
-  objectProps: ["shape","border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -2867,6 +3041,7 @@ export type ElevatedCardProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     shape?: ComposeShape;
+    colors?: ComposeCardColorsValue;
     children?: ReactNode;
     onClick?: never;
     enabled?: never;
@@ -2879,19 +3054,20 @@ export type ElevatedCardProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     shape?: ComposeShape;
+    colors?: ComposeCardColorsValue;
     interactionSource?: ComposeInteractionSource | null;
     children?: ReactNode;
     }
 ;
 export const ElevatedCard = createComposableComponent<ElevatedCardProps>({
   name: "ElevatedCard",
-  props: ["modifier","shape","enabled","interactionSource"],
-  objectProps: ["shape","interactionSource"],
+  props: ["modifier","shape","colors","enabled","interactionSource"],
+  objectProps: ["shape","colors","interactionSource"],
   events: ["onClick"],
   children: true,
   overloads: [
-    { id: "ElevatedCard", children: true, parameters: [["modifier","ComposeModifier",true,false],["shape","shape",true,false]], masks: [0,1] },
-    { id: "ElevatedCard#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "ElevatedCard", children: true, parameters: [["modifier","ComposeModifier",true,false],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3] },
+    { id: "ElevatedCard#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
   ],
 });
 
@@ -2906,13 +3082,14 @@ export interface ElevatedFilterChipProps {
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
   shape?: ComposeShape;
+  elevation?: ComposeSelectableChipElevationValue | null;
   border?: ComposeBorderStroke | null;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const ElevatedFilterChip = createComposableComponent<ElevatedFilterChipProps>({
   name: "ElevatedFilterChip",
-  props: ["selected","modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["selected","modifier","enabled","shape","elevation","border","interactionSource"],
+  objectProps: ["shape","elevation","border","interactionSource"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
@@ -2924,6 +3101,7 @@ export interface ElevatedLeadingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -2931,8 +3109,8 @@ export interface ElevatedLeadingButtonProps {
 }
 export const ElevatedLeadingButton = createComposableComponent<ElevatedLeadingButtonProps>({
   name: "ElevatedLeadingButton",
-  props: ["modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -2946,13 +3124,15 @@ export interface ElevatedSuggestionChipProps {
   enabled?: boolean;
   icon?: ReactNode;
   shape?: ComposeShape;
+  colors?: ComposeChipColorsValue;
+  elevation?: ComposeChipElevationValue | null;
   border?: ComposeBorderStroke | null;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const ElevatedSuggestionChip = createComposableComponent<ElevatedSuggestionChipProps>({
   name: "ElevatedSuggestionChip",
-  props: ["modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","interactionSource"],
   slots: ["label","icon"],
   events: ["onClick"],
   children: false,
@@ -2965,6 +3145,7 @@ export interface ElevatedToggleButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeToggleButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -2972,8 +3153,8 @@ export interface ElevatedToggleButtonProps {
 }
 export const ElevatedToggleButton = createComposableComponent<ElevatedToggleButtonProps>({
   name: "ElevatedToggleButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -2985,6 +3166,7 @@ export interface ElevatedTrailingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -2992,8 +3174,8 @@ export interface ElevatedTrailingButtonProps {
 }
 export const ElevatedTrailingButton = createComposableComponent<ElevatedTrailingButtonProps>({
   name: "ElevatedTrailingButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -3124,13 +3306,14 @@ export interface FilledIconButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeIconButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
   children?: ReactNode;
 }
 export const FilledIconButton = createComposableComponent<FilledIconButtonProps>({
   name: "FilledIconButton",
-  props: ["modifier","enabled","shape","interactionSource"],
-  objectProps: ["shape","interactionSource"],
+  props: ["modifier","enabled","shape","colors","interactionSource"],
+  objectProps: ["shape","colors","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -3143,13 +3326,14 @@ export interface FilledIconToggleButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeIconToggleButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
   children?: ReactNode;
 }
 export const FilledIconToggleButton = createComposableComponent<FilledIconToggleButtonProps>({
   name: "FilledIconToggleButton",
-  props: ["checked","modifier","enabled","shape","interactionSource"],
-  objectProps: ["shape","interactionSource"],
+  props: ["checked","modifier","enabled","shape","colors","interactionSource"],
+  objectProps: ["shape","colors","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -3161,6 +3345,7 @@ export interface FilledTonalButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -3168,8 +3353,8 @@ export interface FilledTonalButtonProps {
 }
 export const FilledTonalButton = createComposableComponent<FilledTonalButtonProps>({
   name: "FilledTonalButton",
-  props: ["modifier","enabled","shape","border","contentPadding","interactionSource"],
-  objectProps: ["shape","border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -3181,13 +3366,14 @@ export interface FilledTonalIconButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeIconButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
   children?: ReactNode;
 }
 export const FilledTonalIconButton = createComposableComponent<FilledTonalIconButtonProps>({
   name: "FilledTonalIconButton",
-  props: ["modifier","enabled","shape","interactionSource"],
-  objectProps: ["shape","interactionSource"],
+  props: ["modifier","enabled","shape","colors","interactionSource"],
+  objectProps: ["shape","colors","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -3200,13 +3386,14 @@ export interface FilledTonalIconToggleButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeIconToggleButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
   children?: ReactNode;
 }
 export const FilledTonalIconToggleButton = createComposableComponent<FilledTonalIconToggleButtonProps>({
   name: "FilledTonalIconToggleButton",
-  props: ["checked","modifier","enabled","shape","interactionSource"],
-  objectProps: ["shape","interactionSource"],
+  props: ["checked","modifier","enabled","shape","colors","interactionSource"],
+  objectProps: ["shape","colors","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -3222,13 +3409,14 @@ export interface FilterChipProps {
   leadingIcon?: ReactNode;
   trailingIcon?: ReactNode;
   shape?: ComposeShape;
+  elevation?: ComposeSelectableChipElevationValue | null;
   border?: ComposeBorderStroke | null;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const FilterChip = createComposableComponent<FilterChipProps>({
   name: "FilterChip",
-  props: ["selected","modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["selected","modifier","enabled","shape","elevation","border","interactionSource"],
+  objectProps: ["shape","elevation","border","interactionSource"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
@@ -3973,14 +4161,15 @@ export interface IconButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeIconButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
   shape?: ComposeShape;
   children?: ReactNode;
 }
 export const IconButton = createComposableComponent<IconButtonProps>({
   name: "IconButton",
-  props: ["modifier","enabled","interactionSource","shape"],
-  objectProps: ["interactionSource","shape"],
+  props: ["modifier","enabled","colors","interactionSource","shape"],
+  objectProps: ["colors","interactionSource","shape"],
   events: ["onClick"],
   children: true,
 });
@@ -3992,14 +4181,15 @@ export interface IconToggleButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeIconToggleButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
   shape?: ComposeShape;
   children?: ReactNode;
 }
 export const IconToggleButton = createComposableComponent<IconToggleButtonProps>({
   name: "IconToggleButton",
-  props: ["checked","modifier","enabled","interactionSource","shape"],
-  objectProps: ["interactionSource","shape"],
+  props: ["checked","modifier","enabled","colors","interactionSource","shape"],
+  objectProps: ["colors","interactionSource","shape"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -4075,28 +4265,66 @@ export const IndicatorBox = createComposableComponent<IndicatorBoxProps>({
   children: true,
 });
 
-export interface InputChipProps {
-  selected: boolean;
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  avatar?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type InputChipProps =
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    }
+;
 export const InputChip = createComposableComponent<InputChipProps>({
   name: "InputChip",
-  props: ["selected","modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["selected","modifier","enabled","shape","elevation","border","interactionSource"],
+  objectProps: ["shape","elevation","border","interactionSource"],
   slots: ["label","leadingIcon","avatar","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "InputChip", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["avatar","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["elevation","object",true,true],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,255] },
+  ],
 });
 
 export type InputFieldProps =
@@ -4119,6 +4347,33 @@ export type InputFieldProps =
     interactionSource?: ComposeInteractionSource | null;
     inputTransformation?: never;
     outputTransformation?: never;
+    colors?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    shape?: never;
+    interactionSource?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -4143,6 +4398,7 @@ export type InputFieldProps =
     suffix?: never;
     inputTransformation?: never;
     shape?: never;
+    colors?: never;
     interactionSource?: never;
     state?: never;
     expanded?: never;
@@ -4168,6 +4424,7 @@ export type InputFieldProps =
     prefix?: never;
     suffix?: never;
     shape?: never;
+    colors?: never;
     interactionSource?: never;
     state?: never;
     expanded?: never;
@@ -4194,6 +4451,7 @@ export type InputFieldProps =
     shape: ComposeShape;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -4216,8 +4474,35 @@ export type InputFieldProps =
     prefix: ReactNode;
     suffix: ReactNode;
     inputTransformation: ComposeInputTransformation | null;
-    outputTransformation?: ComposeOutputTransformation | null;
     shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    outputTransformation?: never;
+    colors?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     state?: never;
     expanded?: never;
@@ -4247,6 +4532,33 @@ export type InputFieldProps =
     searchBarState?: never;
     inputTransformation?: never;
     outputTransformation?: never;
+    colors?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    onSearch: (value: string) => void;
+    expanded: boolean;
+    onExpandedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    textFieldState?: never;
+    searchBarState?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    shape?: never;
+    interactionSource?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -4271,6 +4583,7 @@ export type InputFieldProps =
     suffix?: never;
     inputTransformation?: never;
     shape?: never;
+    colors?: never;
     interactionSource?: never;
     query?: never;
     onQueryChange?: never;
@@ -4296,6 +4609,7 @@ export type InputFieldProps =
     prefix?: never;
     suffix?: never;
     shape?: never;
+    colors?: never;
     interactionSource?: never;
     query?: never;
     onQueryChange?: never;
@@ -4322,6 +4636,7 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     inputTransformation?: never;
+    colors?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -4342,8 +4657,35 @@ export type InputFieldProps =
     prefix: ReactNode;
     suffix: ReactNode;
     inputTransformation: ComposeInputTransformation | null;
-    outputTransformation?: ComposeOutputTransformation | null;
     shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    textFieldState?: never;
+    searchBarState?: never;
+    outputTransformation?: never;
+    colors?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    onSearch: (value: string) => void;
+    expanded: boolean;
+    onExpandedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     textFieldState?: never;
     searchBarState?: never;
@@ -4363,6 +4705,7 @@ export type InputFieldProps =
     placeholder?: ReactNode;
     leadingIcon?: ReactNode;
     trailingIcon?: ReactNode;
+    colors?: ComposeTextFieldColorsValue;
     interactionSource?: ComposeInteractionSource | null;
     textFieldState?: never;
     searchBarState?: never;
@@ -4378,15 +4721,15 @@ export type InputFieldProps =
 ;
 export const InputField = createComposableComponent<InputFieldProps>({
   name: "InputField",
-  props: ["textFieldState","searchBarState","modifier","enabled","readOnly","textStyle","inputTransformation","outputTransformation","shape","interactionSource","state","expanded","query"],
-  objectProps: ["textFieldState","searchBarState","textStyle","inputTransformation","outputTransformation","shape","interactionSource","state"],
+  props: ["textFieldState","searchBarState","modifier","enabled","readOnly","textStyle","inputTransformation","outputTransformation","shape","colors","interactionSource","state","expanded","query"],
+  objectProps: ["textFieldState","searchBarState","textStyle","inputTransformation","outputTransformation","shape","colors","interactionSource","state"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix"],
   events: ["onSearch","onExpandedChange","onQueryChange"],
   children: false,
   overloads: [
-    { id: "InputField", children: false, parameters: [["textFieldState","object",false,false],["searchBarState","object",false,false],["onSearch","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["shape","shape",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3072,3073,3074,3075,3076,3077,3078,3079,3080,3081,3082,3083,3084,3085,3086,3087,3088,3089,3090,3091,3092,3093,3094,3095,3096,3097,3098,3099,3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,3160,3161,3162,3163,3164,3165,3166,3167,3168,3169,3170,3171,3172,3173,3174,3175,3176,3177,3178,3179,3180,3181,3182,3183,3184,3185,3186,3187,3188,3189,3190,3191,3192,3193,3194,3195,3196,3197,3198,3199,3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3583,3839,4095] },
-    { id: "InputField#1", children: false, parameters: [["state","object",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["shape","shape",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3072,3073,3074,3075,3076,3077,3078,3079,3080,3081,3082,3083,3084,3085,3086,3087,3088,3089,3090,3091,3092,3093,3094,3095,3096,3097,3098,3099,3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,3160,3161,3162,3163,3164,3165,3166,3167,3168,3169,3170,3171,3172,3173,3174,3175,3176,3177,3178,3179,3180,3181,3182,3183,3184,3185,3186,3187,3188,3189,3190,3191,3192,3193,3194,3195,3196,3197,3198,3199,3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3583,3839,4095] },
-    { id: "InputField#2", children: false, parameters: [["query","string",false,false],["onQueryChange","function",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "InputField", children: false, parameters: [["textFieldState","object",false,false],["searchBarState","object",false,false],["onSearch","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,5120,5121,5122,5123,5124,5125,5126,5127,5128,5129,5130,5131,5132,5133,5134,5135,5136,5137,5138,5139,5140,5141,5142,5143,5144,5145,5146,5147,5148,5149,5150,5151,5152,5153,5154,5155,5156,5157,5158,5159,5160,5161,5162,5163,5164,5165,5166,5167,5168,5169,5170,5171,5172,5173,5174,5175,5176,5177,5178,5179,5180,5181,5182,5183,5184,5185,5186,5187,5188,5189,5190,5191,5192,5193,5194,5195,5196,5197,5198,5199,5200,5201,5202,5203,5204,5205,5206,5207,5208,5209,5210,5211,5212,5213,5214,5215,5216,5217,5218,5219,5220,5221,5222,5223,5224,5225,5226,5227,5228,5229,5230,5231,5232,5233,5234,5235,5236,5237,5238,5239,5240,5241,5242,5243,5244,5245,5246,5247,5248,5249,5250,5251,5252,5253,5254,5255,5256,5257,5258,5259,5260,5261,5262,5263,5264,5265,5266,5267,5268,5269,5270,5271,5272,5273,5274,5275,5276,5277,5278,5279,5280,5281,5282,5283,5284,5285,5286,5287,5288,5289,5290,5291,5292,5293,5294,5295,5296,5297,5298,5299,5300,5301,5302,5303,5304,5305,5306,5307,5308,5309,5310,5311,5312,5313,5314,5315,5316,5317,5318,5319,5320,5321,5322,5323,5324,5325,5326,5327,5328,5329,5330,5331,5332,5333,5334,5335,5336,5337,5338,5339,5340,5341,5342,5343,5344,5345,5346,5347,5348,5349,5350,5351,5352,5353,5354,5355,5356,5357,5358,5359,5360,5361,5362,5363,5364,5365,5366,5367,5368,5369,5370,5371,5372,5373,5374,5375,5631,5887,6143,8191] },
+    { id: "InputField#1", children: false, parameters: [["state","object",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,5120,5121,5122,5123,5124,5125,5126,5127,5128,5129,5130,5131,5132,5133,5134,5135,5136,5137,5138,5139,5140,5141,5142,5143,5144,5145,5146,5147,5148,5149,5150,5151,5152,5153,5154,5155,5156,5157,5158,5159,5160,5161,5162,5163,5164,5165,5166,5167,5168,5169,5170,5171,5172,5173,5174,5175,5176,5177,5178,5179,5180,5181,5182,5183,5184,5185,5186,5187,5188,5189,5190,5191,5192,5193,5194,5195,5196,5197,5198,5199,5200,5201,5202,5203,5204,5205,5206,5207,5208,5209,5210,5211,5212,5213,5214,5215,5216,5217,5218,5219,5220,5221,5222,5223,5224,5225,5226,5227,5228,5229,5230,5231,5232,5233,5234,5235,5236,5237,5238,5239,5240,5241,5242,5243,5244,5245,5246,5247,5248,5249,5250,5251,5252,5253,5254,5255,5256,5257,5258,5259,5260,5261,5262,5263,5264,5265,5266,5267,5268,5269,5270,5271,5272,5273,5274,5275,5276,5277,5278,5279,5280,5281,5282,5283,5284,5285,5286,5287,5288,5289,5290,5291,5292,5293,5294,5295,5296,5297,5298,5299,5300,5301,5302,5303,5304,5305,5306,5307,5308,5309,5310,5311,5312,5313,5314,5315,5316,5317,5318,5319,5320,5321,5322,5323,5324,5325,5326,5327,5328,5329,5330,5331,5332,5333,5334,5335,5336,5337,5338,5339,5340,5341,5342,5343,5344,5345,5346,5347,5348,5349,5350,5351,5352,5353,5354,5355,5356,5357,5358,5359,5360,5361,5362,5363,5364,5365,5366,5367,5368,5369,5370,5371,5372,5373,5374,5375,5631,5887,6143,8191] },
+    { id: "InputField#2", children: false, parameters: [["query","string",false,false],["onQueryChange","function",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
 });
 
@@ -5758,6 +6101,7 @@ export interface LeadingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -5765,8 +6109,8 @@ export interface LeadingButtonProps {
 }
 export const LeadingButton = createComposableComponent<LeadingButtonProps>({
   name: "LeadingButton",
-  props: ["modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -5873,12 +6217,14 @@ export interface ListItemProps {
   supportingContent?: ReactNode;
   leadingContent?: ReactNode;
   trailingContent?: ReactNode;
+  colors?: ComposeListItemColorsValue;
   tonalElevation?: number;
   shadowElevation?: number;
 }
 export const ListItem = createComposableComponent<ListItemProps>({
   name: "ListItem",
-  props: ["modifier","tonalElevation","shadowElevation"],
+  props: ["modifier","colors","tonalElevation","shadowElevation"],
+  objectProps: ["colors"],
   slots: ["headlineContent","overlineContent","supportingContent","leadingContent","trailingContent"],
   children: false,
 });
@@ -6140,25 +6486,59 @@ export const ModalNavigationDrawer = createComposableComponent<ModalNavigationDr
   children: true,
 });
 
-export interface ModalWideNavigationRailProps {
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  hideOnCollapse?: boolean;
-  collapsedShape?: ComposeShape;
-  expandedShape?: ComposeShape;
-  header?: ReactNode;
-  expandedHeaderTopPadding?: number;
-  windowInsets?: ComposeWindowInsets;
-  arrangement?: ComposeVerticalArrangement;
-  children?: ReactNode;
-}
+export type ModalWideNavigationRailProps =
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse?: boolean;
+    collapsedShape?: ComposeShape;
+    expandedShape?: ComposeShape;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    colors?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse?: boolean;
+    collapsedShape?: ComposeShape;
+    expandedShape?: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    children?: ReactNode;
+    windowInsets?: never;
+    arrangement?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    children?: ReactNode;
+    }
+;
 export const ModalWideNavigationRail = createComposableComponent<ModalWideNavigationRailProps>({
   name: "ModalWideNavigationRail",
-  props: ["modifier","hideOnCollapse","collapsedShape","expandedShape","expandedHeaderTopPadding","windowInsets","arrangement"],
-  objectProps: ["collapsedShape","expandedShape","windowInsets"],
+  props: ["modifier","hideOnCollapse","collapsedShape","expandedShape","colors","expandedHeaderTopPadding","windowInsets","arrangement"],
+  objectProps: ["collapsedShape","expandedShape","colors","windowInsets"],
   slots: ["header"],
   children: true,
+  overloads: [
+    { id: "ModalWideNavigationRail", children: true, parameters: [["modifier","ComposeModifier",true,false],["hideOnCollapse","boolean",true,false],["collapsedShape","shape",true,false],["expandedShape","shape",true,false],["colors","object",true,false],["header","ReactNode",true,true],["expandedHeaderTopPadding","number",true,false],["windowInsets","object",true,false],["arrangement","string",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,80,81,82,83,84,85,86,87,96,97,98,99,100,101,102,103,112,113,114,115,116,117,118,119,128,129,130,131,132,133,134,135,144,145,146,147,148,149,150,151,160,161,162,163,164,165,166,167,176,177,178,179,180,181,182,183,192,193,194,195,196,197,198,199,208,209,210,211,212,213,214,215,224,225,226,227,228,229,230,231,240,241,242,243,244,245,246,247,255] },
+  ],
 });
 
 export interface MultiChoiceSegmentedButtonRowProps {
@@ -6215,12 +6595,13 @@ export interface NavigationBarItemProps {
   enabled?: boolean;
   label?: ReactNode;
   alwaysShowLabel?: boolean;
+  colors?: ComposeNavigationBarItemColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const NavigationBarItem = createComposableComponent<NavigationBarItemProps>({
   name: "NavigationBarItem",
-  props: ["selected","modifier","enabled","alwaysShowLabel","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["selected","modifier","enabled","alwaysShowLabel","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   slots: ["icon","label"],
   events: ["onClick"],
   children: false,
@@ -6275,12 +6656,13 @@ export interface NavigationRailItemProps {
   enabled?: boolean;
   label?: ReactNode;
   alwaysShowLabel?: boolean;
+  colors?: ComposeNavigationRailItemColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const NavigationRailItem = createComposableComponent<NavigationRailItemProps>({
   name: "NavigationRailItem",
-  props: ["selected","modifier","enabled","alwaysShowLabel","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["selected","modifier","enabled","alwaysShowLabel","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   slots: ["icon","label"],
   events: ["onClick"],
   children: false,
@@ -6293,6 +6675,7 @@ export interface OutlinedButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -6300,8 +6683,8 @@ export interface OutlinedButtonProps {
 }
 export const OutlinedButton = createComposableComponent<OutlinedButtonProps>({
   name: "OutlinedButton",
-  props: ["modifier","enabled","shape","border","contentPadding","interactionSource"],
-  objectProps: ["shape","border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -6312,6 +6695,7 @@ export type OutlinedCardProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     shape?: ComposeShape;
+    colors?: ComposeCardColorsValue;
     border?: ComposeBorderStroke;
     children?: ReactNode;
     onClick?: never;
@@ -6325,6 +6709,7 @@ export type OutlinedCardProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     shape?: ComposeShape;
+    colors?: ComposeCardColorsValue;
     border?: ComposeBorderStroke;
     interactionSource?: ComposeInteractionSource | null;
     children?: ReactNode;
@@ -6332,13 +6717,13 @@ export type OutlinedCardProps =
 ;
 export const OutlinedCard = createComposableComponent<OutlinedCardProps>({
   name: "OutlinedCard",
-  props: ["modifier","shape","border","enabled","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","shape","colors","border","enabled","interactionSource"],
+  objectProps: ["shape","colors","border","interactionSource"],
   events: ["onClick"],
   children: true,
   overloads: [
-    { id: "OutlinedCard", children: true, parameters: [["modifier","ComposeModifier",true,false],["shape","shape",true,false],["border","object",true,false]], masks: [0,1,2,3] },
-    { id: "OutlinedCard#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["border","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "OutlinedCard", children: true, parameters: [["modifier","ComposeModifier",true,false],["shape","shape",true,false],["colors","object",true,false],["border","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "OutlinedCard#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["border","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
   ],
 });
 
@@ -6349,14 +6734,15 @@ export interface OutlinedIconButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeIconButtonColorsValue;
   border?: ComposeBorderStroke | null;
   interactionSource?: ComposeInteractionSource | null;
   children?: ReactNode;
 }
 export const OutlinedIconButton = createComposableComponent<OutlinedIconButtonProps>({
   name: "OutlinedIconButton",
-  props: ["modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","interactionSource"],
+  objectProps: ["shape","colors","border","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -6369,14 +6755,15 @@ export interface OutlinedIconToggleButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeIconToggleButtonColorsValue;
   border?: ComposeBorderStroke | null;
   interactionSource?: ComposeInteractionSource | null;
   children?: ReactNode;
 }
 export const OutlinedIconToggleButton = createComposableComponent<OutlinedIconToggleButtonProps>({
   name: "OutlinedIconToggleButton",
-  props: ["checked","modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["checked","modifier","enabled","shape","colors","border","interactionSource"],
+  objectProps: ["shape","colors","border","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -6387,6 +6774,7 @@ export interface OutlinedLeadingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -6394,8 +6782,8 @@ export interface OutlinedLeadingButtonProps {
 }
 export const OutlinedLeadingButton = createComposableComponent<OutlinedLeadingButtonProps>({
   name: "OutlinedLeadingButton",
-  props: ["modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -6420,6 +6808,7 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -6441,6 +6830,29 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    shape?: never;
+    contentPadding?: never;
     interactionSource?: never;
     }
   | {
@@ -6461,6 +6873,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6482,6 +6895,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6503,6 +6917,7 @@ export type OutlinedSecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6524,6 +6939,7 @@ export type OutlinedSecureTextFieldProps =
     supportingText?: never;
     isError?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6545,6 +6961,7 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6566,6 +6983,7 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6587,6 +7005,7 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6608,6 +7027,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6629,6 +7049,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6650,6 +7071,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6672,6 +7094,7 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -6693,6 +7116,7 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -6713,6 +7137,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -6736,6 +7161,7 @@ export type OutlinedSecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    colors?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -6757,6 +7183,7 @@ export type OutlinedSecureTextFieldProps =
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
     keyboardOptions?: never;
+    colors?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -6778,6 +7205,7 @@ export type OutlinedSecureTextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    colors?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -6797,19 +7225,20 @@ export type OutlinedSecureTextFieldProps =
     keyboardOptions: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     }
 ;
 export const OutlinedSecureTextField = createComposableComponent<OutlinedSecureTextFieldProps>({
   name: "OutlinedSecureTextField",
-  props: ["state","modifier","enabled","textStyle","isError","inputTransformation","keyboardOptions","shape","contentPadding","interactionSource"],
-  objectProps: ["state","textStyle","inputTransformation","keyboardOptions","shape","contentPadding","interactionSource"],
+  props: ["state","modifier","enabled","textStyle","isError","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
+  objectProps: ["state","textStyle","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText"],
   events: ["onKeyboardAction"],
   children: false,
   overloads: [
-    { id: "OutlinedSecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["shape","shape",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4100,4101,4104,4105,4108,4109,4112,4113,4116,4117,4120,4121,4124,4125,8192,8193,8196,8197,8200,8201,8204,8205,8208,8209,8212,8213,8216,8217,8220,8221,12799,16384,16385,16386,16387,16388,16389,16390,16391,16392,16393,16394,16395,16396,16397,16398,16399,16400,16401,16402,16403,16404,16405,16406,16407,16408,16409,16410,16411,16412,16413,16414,16415,16416,16417,16418,16419,16420,16421,16422,16423,16424,16425,16426,16427,16428,16429,16430,16431,16432,16433,16434,16435,16436,16437,16438,16439,16440,16441,16442,16443,16444,16445,16446,16447,29183,30207,31231,32255,32767] },
+    { id: "OutlinedSecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4100,4101,4104,4105,4108,4109,4112,4113,4116,4117,4120,4121,4124,4125,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,16384,16385,16388,16389,16392,16393,16396,16397,16400,16401,16404,16405,16408,16409,16412,16413,20991,32768,32769,32770,32771,32772,32773,32774,32775,32776,32777,32778,32779,32780,32781,32782,32783,32784,32785,32786,32787,32788,32789,32790,32791,32792,32793,32794,32795,32796,32797,32798,32799,32800,32801,32802,32803,32804,32805,32806,32807,32808,32809,32810,32811,32812,32813,32814,32815,32816,32817,32818,32819,32820,32821,32822,32823,32824,32825,32826,32827,32828,32829,32830,32831,53759,54783,55807,56831,57343,65535] },
   ],
 });
 
@@ -6836,6 +7265,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     value?: never;
     onValueChange?: never;
@@ -6868,6 +7298,40 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
+    contentPadding?: never;
     interactionSource?: never;
     value?: never;
     onValueChange?: never;
@@ -6899,6 +7363,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -6931,6 +7396,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -6963,6 +7429,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -6995,6 +7462,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7027,6 +7495,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7059,6 +7528,7 @@ export type OutlinedTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7091,6 +7561,7 @@ export type OutlinedTextFieldProps =
     supportingText?: never;
     isError?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7123,6 +7594,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7155,6 +7627,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7187,6 +7660,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7219,6 +7693,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7251,6 +7726,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7283,6 +7759,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7315,6 +7792,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7347,6 +7825,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7380,6 +7859,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     value?: never;
     onValueChange?: never;
@@ -7412,6 +7892,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     value?: never;
     onValueChange?: never;
@@ -7443,6 +7924,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7475,6 +7957,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7507,6 +7990,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7539,6 +8023,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -7573,6 +8058,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7605,6 +8091,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7637,6 +8124,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7669,6 +8157,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7693,7 +8182,6 @@ export type OutlinedTextFieldProps =
     suffix: ReactNode;
     supportingText: ReactNode;
     isError: boolean;
-    inputTransformation?: ComposeInputTransformation | null;
     outputTransformation?: ComposeOutputTransformation | null;
     keyboardOptions: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
@@ -7701,6 +8189,74 @@ export type OutlinedTextFieldProps =
     shape: ComposeShape;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    colors?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    shape: ComposeShape;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    outputTransformation?: never;
+    colors?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -7718,14 +8274,14 @@ export type OutlinedTextFieldProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    trailingIcon?: ReactNode;
-    prefix?: ReactNode;
-    shape?: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
-    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
     suffix?: never;
     supportingText?: never;
     isError?: never;
@@ -7734,6 +8290,40 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    shape?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    shape: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -7767,6 +8357,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -7799,6 +8390,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -7831,6 +8423,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -7863,6 +8456,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -7895,6 +8489,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -7926,6 +8521,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -7960,6 +8556,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -7990,6 +8587,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8022,6 +8620,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8054,6 +8653,106 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    prefix: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    trailingIcon: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8085,6 +8784,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -8118,6 +8818,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8137,9 +8838,9 @@ export type OutlinedTextFieldProps =
     textStyle: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    interactionSource?: ComposeInteractionSource | null;
+    interactionSource: ComposeInteractionSource | null;
     state?: never;
+    leadingIcon?: never;
     trailingIcon?: never;
     prefix?: never;
     suffix?: never;
@@ -8151,6 +8852,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -8182,6 +8884,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8214,8 +8917,42 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle: ComposeTextStyle;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    interactionSource?: ComposeInteractionSource | null;
+    state?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
     singleLine?: never;
@@ -8246,6 +8983,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8278,6 +9016,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8313,6 +9052,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8346,6 +9086,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -8379,6 +9120,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -8411,6 +9153,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -8439,6 +9182,7 @@ export type OutlinedTextFieldProps =
     minLines: number;
     interactionSource: ComposeInteractionSource | null;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
     inputTransformation?: never;
     outputTransformation?: never;
@@ -8454,14 +9198,14 @@ export type OutlinedTextFieldProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    trailingIcon?: ReactNode;
-    prefix?: ReactNode;
-    shape?: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
-    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
     suffix?: never;
     supportingText?: never;
     isError?: never;
@@ -8470,6 +9214,40 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    shape?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    shape: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8503,6 +9281,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -8535,6 +9314,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8567,6 +9347,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8599,6 +9380,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8631,6 +9413,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8662,6 +9445,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -8696,6 +9480,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -8726,6 +9511,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8758,6 +9544,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8790,6 +9577,106 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    prefix: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    trailingIcon: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8821,6 +9708,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -8854,6 +9742,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8873,9 +9762,9 @@ export type OutlinedTextFieldProps =
     textStyle: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    interactionSource?: ComposeInteractionSource | null;
+    interactionSource: ComposeInteractionSource | null;
     state?: never;
+    leadingIcon?: never;
     trailingIcon?: never;
     prefix?: never;
     suffix?: never;
@@ -8887,6 +9776,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -8918,6 +9808,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -8950,8 +9841,42 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle: ComposeTextStyle;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    interactionSource?: ComposeInteractionSource | null;
+    state?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
     singleLine?: never;
@@ -8982,6 +9907,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -9014,6 +9940,7 @@ export type OutlinedTextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -9049,6 +9976,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -9082,6 +10010,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -9115,6 +10044,7 @@ export type OutlinedTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -9147,6 +10077,7 @@ export type OutlinedTextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -9175,6 +10106,7 @@ export type OutlinedTextFieldProps =
     minLines: number;
     interactionSource: ComposeInteractionSource | null;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
     inputTransformation?: never;
     outputTransformation?: never;
@@ -9185,15 +10117,15 @@ export type OutlinedTextFieldProps =
 ;
 export const OutlinedTextField = createComposableComponent<OutlinedTextFieldProps>({
   name: "OutlinedTextField",
-  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
-  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
+  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
+  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText","label"],
   events: ["onKeyboardAction","onValueChange"],
   children: false,
   overloads: [
-    { id: "OutlinedTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["shape","shape",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,99327,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,230399,234495,238591,246783,259071,260095,261119,262143] },
-    { id: "OutlinedTextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287] },
-    { id: "OutlinedTextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287] },
+    { id: "OutlinedTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,131072,131073,131074,131075,131080,131081,131082,131083,131088,131089,131090,131091,131096,131097,131098,131099,164863,262144,262145,262146,262147,262148,262149,262150,262151,262152,262153,262154,262155,262156,262157,262158,262159,262160,262161,262162,262163,262164,262165,262166,262167,262168,262169,262170,262171,262172,262173,262174,262175,262176,262177,262178,262179,262180,262181,262182,262183,262184,262185,262186,262187,262188,262189,262190,262191,262192,262193,262194,262195,262196,262197,262198,262199,262200,262201,262202,262203,262204,262205,262206,262207,427007,431103,435199,443391,455679,456703,457727,458751,524287] },
+    { id: "OutlinedTextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
+    { id: "OutlinedTextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
   ],
 });
 
@@ -9204,6 +10136,7 @@ export interface OutlinedToggleButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeToggleButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -9211,8 +10144,8 @@ export interface OutlinedToggleButtonProps {
 }
 export const OutlinedToggleButton = createComposableComponent<OutlinedToggleButtonProps>({
   name: "OutlinedToggleButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -9224,6 +10157,7 @@ export interface OutlinedTrailingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -9231,8 +10165,8 @@ export interface OutlinedTrailingButtonProps {
 }
 export const OutlinedTrailingButton = createComposableComponent<OutlinedTrailingButtonProps>({
   name: "OutlinedTrailingButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -9409,12 +10343,13 @@ export interface RadioButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeRadioButtonColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const RadioButton = createComposableComponent<RadioButtonProps>({
   name: "RadioButton",
-  props: ["selected","modifier","enabled","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["selected","modifier","enabled","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   events: ["onClick"],
   children: false,
 });
@@ -9426,6 +10361,7 @@ export type RangeSliderProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSliderColorsValue;
     startInteractionSource?: ComposeInteractionSource;
     endInteractionSource?: ComposeInteractionSource;
     value?: never;
@@ -9444,6 +10380,7 @@ export type RangeSliderProps =
     valueRange?: ComposeFloatRange;
     steps?: number;
     onValueChangeFinished?: (() => void) | null;
+    colors?: ComposeSliderColorsValue;
     state?: never;
     startInteractionSource?: never;
     endInteractionSource?: never;
@@ -9457,6 +10394,7 @@ export type RangeSliderProps =
     enabled?: boolean;
     valueRange?: ComposeFloatRange;
     onValueChangeFinished?: (() => void) | null;
+    colors?: ComposeSliderColorsValue;
     endInteractionSource: ComposeInteractionSource;
     steps?: number;
     state?: never;
@@ -9471,6 +10409,7 @@ export type RangeSliderProps =
     enabled?: boolean;
     valueRange?: ComposeFloatRange;
     onValueChangeFinished?: (() => void) | null;
+    colors?: ComposeSliderColorsValue;
     startInteractionSource: ComposeInteractionSource;
     endInteractionSource?: ComposeInteractionSource;
     steps?: number;
@@ -9479,14 +10418,14 @@ export type RangeSliderProps =
 ;
 export const RangeSlider = createComposableComponent<RangeSliderProps>({
   name: "RangeSlider",
-  props: ["state","modifier","enabled","startInteractionSource","endInteractionSource","value","valueRange","steps"],
-  objectProps: ["state","startInteractionSource","endInteractionSource","value","valueRange"],
+  props: ["state","modifier","enabled","colors","startInteractionSource","endInteractionSource","value","valueRange","steps"],
+  objectProps: ["state","colors","startInteractionSource","endInteractionSource","value","valueRange"],
   events: ["onValueChange","onValueChangeFinished"],
   children: false,
   overloads: [
-    { id: "RangeSlider", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["startInteractionSource","object",true,false],["endInteractionSource","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
-    { id: "RangeSlider#1", children: false, parameters: [["value","tuple",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["steps","number",true,false],["onValueChangeFinished","function",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
-    { id: "RangeSlider#2", children: false, parameters: [["value","tuple",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["onValueChangeFinished","function",true,true],["startInteractionSource","object",true,false],["endInteractionSource","object",true,false],["steps","number",true,false]], masks: [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "RangeSlider", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["startInteractionSource","object",true,false],["endInteractionSource","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "RangeSlider#1", children: false, parameters: [["value","tuple",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["steps","number",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "RangeSlider#2", children: false, parameters: [["value","tuple",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["startInteractionSource","object",true,false],["endInteractionSource","object",true,false],["steps","number",true,false]], masks: [16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
   ],
 });
 
@@ -9688,6 +10627,7 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -9709,6 +10649,29 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    shape?: never;
+    contentPadding?: never;
     interactionSource?: never;
     }
   | {
@@ -9729,6 +10692,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9750,6 +10714,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9771,6 +10736,7 @@ export type SecureTextFieldProps =
     isError?: never;
     inputTransformation?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9792,6 +10758,7 @@ export type SecureTextFieldProps =
     supportingText?: never;
     isError?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9813,6 +10780,7 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9834,6 +10802,7 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9855,6 +10824,7 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9876,6 +10846,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9897,6 +10868,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9918,6 +10890,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -9940,6 +10913,7 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -9961,6 +10935,7 @@ export type SecureTextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     }
   | {
@@ -9981,6 +10956,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     }
@@ -10004,6 +10980,7 @@ export type SecureTextFieldProps =
     inputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    colors?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -10025,6 +11002,7 @@ export type SecureTextFieldProps =
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
     keyboardOptions?: never;
+    colors?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -10046,6 +11024,7 @@ export type SecureTextFieldProps =
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     inputTransformation?: never;
+    colors?: never;
     }
   | {
     state: ComposeTextFieldState;
@@ -10065,19 +11044,20 @@ export type SecureTextFieldProps =
     keyboardOptions: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
     }
 ;
 export const SecureTextField = createComposableComponent<SecureTextFieldProps>({
   name: "SecureTextField",
-  props: ["state","modifier","enabled","textStyle","isError","inputTransformation","keyboardOptions","shape","contentPadding","interactionSource"],
-  objectProps: ["state","textStyle","inputTransformation","keyboardOptions","shape","contentPadding","interactionSource"],
+  props: ["state","modifier","enabled","textStyle","isError","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
+  objectProps: ["state","textStyle","inputTransformation","keyboardOptions","shape","colors","contentPadding","interactionSource"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText"],
   events: ["onKeyboardAction"],
   children: false,
   overloads: [
-    { id: "SecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["shape","shape",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4100,4101,4104,4105,4108,4109,4112,4113,4116,4117,4120,4121,4124,4125,8192,8193,8196,8197,8200,8201,8204,8205,8208,8209,8212,8213,8216,8217,8220,8221,12799,16384,16385,16386,16387,16388,16389,16390,16391,16392,16393,16394,16395,16396,16397,16398,16399,16400,16401,16402,16403,16404,16405,16406,16407,16408,16409,16410,16411,16412,16413,16414,16415,16416,16417,16418,16419,16420,16421,16422,16423,16424,16425,16426,16427,16428,16429,16430,16431,16432,16433,16434,16435,16436,16437,16438,16439,16440,16441,16442,16443,16444,16445,16446,16447,29183,30207,31231,32255,32767] },
+    { id: "SecureTextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,48,49,52,53,56,57,60,61,64,65,68,69,72,73,76,77,80,81,84,85,88,89,92,93,128,129,132,133,136,137,140,141,144,145,148,149,152,153,156,157,256,257,260,261,264,265,268,269,272,273,276,277,280,281,284,285,512,513,514,515,1024,1025,1028,1029,1032,1033,1036,1037,1040,1041,1044,1045,1048,1049,1052,1053,1536,1537,1538,1539,2048,2049,2052,2053,2056,2057,2060,2061,2064,2065,2068,2069,2072,2073,2076,2077,2560,2561,2562,2563,3072,3584,3585,3586,3587,4096,4097,4100,4101,4104,4105,4108,4109,4112,4113,4116,4117,4120,4121,4124,4125,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,16384,16385,16388,16389,16392,16393,16396,16397,16400,16401,16404,16405,16408,16409,16412,16413,20991,32768,32769,32770,32771,32772,32773,32774,32775,32776,32777,32778,32779,32780,32781,32782,32783,32784,32785,32786,32787,32788,32789,32790,32791,32792,32793,32794,32795,32796,32797,32798,32799,32800,32801,32802,32803,32804,32805,32806,32807,32808,32809,32810,32811,32812,32813,32814,32815,32816,32817,32818,32819,32820,32821,32822,32823,32824,32825,32826,32827,32828,32829,32830,32831,53759,54783,55807,56831,57343,65535] },
   ],
 });
 
@@ -10090,6 +11070,7 @@ export type SegmentedButtonProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSegmentedButtonColorsValue;
     border?: ComposeBorderStroke;
     contentPadding?: ComposePaddingValues;
     interactionSource?: ComposeInteractionSource | null;
@@ -10106,6 +11087,7 @@ export type SegmentedButtonProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSegmentedButtonColorsValue;
     border?: ComposeBorderStroke;
     contentPadding?: ComposePaddingValues;
     interactionSource?: ComposeInteractionSource | null;
@@ -10117,14 +11099,14 @@ export type SegmentedButtonProps =
 ;
 export const SegmentedButton = createComposableComponent<SegmentedButtonProps>({
   name: "SegmentedButton",
-  props: ["checked","shape","modifier","enabled","border","contentPadding","interactionSource","selected"],
-  objectProps: ["shape","border","contentPadding","interactionSource"],
+  props: ["checked","shape","modifier","enabled","colors","border","contentPadding","interactionSource","selected"],
+  objectProps: ["shape","colors","border","contentPadding","interactionSource"],
   slots: ["icon","label"],
   events: ["onCheckedChange","onClick"],
   children: false,
   overloads: [
-    { id: "SegmentedButton", children: false, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shape","shape",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["border","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true],["icon","ReactNode",true,false],["label","ReactNode",false,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
-    { id: "SegmentedButton#1", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["shape","shape",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["border","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true],["icon","ReactNode",true,false],["label","ReactNode",false,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "SegmentedButton", children: false, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shape","shape",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["border","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true],["icon","ReactNode",true,false],["label","ReactNode",false,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "SegmentedButton#1", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["shape","shape",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["border","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true],["icon","ReactNode",true,false],["label","ReactNode",false,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
 });
 
@@ -10177,12 +11159,13 @@ export interface ShortNavigationBarItemProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeNavigationItemColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const ShortNavigationBarItem = createComposableComponent<ShortNavigationBarItemProps>({
   name: "ShortNavigationBarItem",
-  props: ["selected","modifier","enabled","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["selected","modifier","enabled","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   slots: ["icon","label"],
   events: ["onClick"],
   children: false,
@@ -10208,6 +11191,7 @@ export type SliderProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSliderColorsValue;
     interactionSource?: ComposeInteractionSource;
     value?: never;
     onValueChange?: never;
@@ -10225,19 +11209,20 @@ export type SliderProps =
     valueRange?: ComposeFloatRange;
     steps?: number;
     onValueChangeFinished?: (() => void) | null;
+    colors?: ComposeSliderColorsValue;
     interactionSource?: ComposeInteractionSource;
     state?: never;
     }
 ;
 export const Slider = createComposableComponent<SliderProps>({
   name: "Slider",
-  props: ["state","modifier","enabled","interactionSource","value","valueRange","steps"],
-  objectProps: ["state","interactionSource","valueRange"],
+  props: ["state","modifier","enabled","colors","interactionSource","value","valueRange","steps"],
+  objectProps: ["state","colors","interactionSource","valueRange"],
   events: ["onValueChange","onValueChangeFinished"],
   children: false,
   overloads: [
-    { id: "Slider", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["interactionSource","object",true,false]], masks: [0,1,2,3] },
-    { id: "Slider#1", children: false, parameters: [["value","number",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["steps","number",true,false],["onValueChangeFinished","function",true,true],["interactionSource","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "Slider", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Slider#1", children: false, parameters: [["value","number",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["steps","number",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["interactionSource","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
 });
 
@@ -10392,13 +11377,15 @@ export interface SuggestionChipProps {
   enabled?: boolean;
   icon?: ReactNode;
   shape?: ComposeShape;
+  colors?: ComposeChipColorsValue;
+  elevation?: ComposeChipElevationValue | null;
   border?: ComposeBorderStroke | null;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const SuggestionChip = createComposableComponent<SuggestionChipProps>({
   name: "SuggestionChip",
-  props: ["modifier","enabled","shape","border","interactionSource"],
-  objectProps: ["shape","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","interactionSource"],
   slots: ["label","icon"],
   events: ["onClick"],
   children: false,
@@ -10627,12 +11614,13 @@ export interface SwitchProps {
   modifier?: ComposeModifier;
   thumbContent?: ReactNode;
   enabled?: boolean;
+  colors?: ComposeSwitchColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const Switch = createComposableComponent<SwitchProps>({
   name: "Switch",
-  props: ["checked","modifier","enabled","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["checked","modifier","enabled","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   slots: ["thumbContent"],
   events: ["onCheckedChange"],
   children: false,
@@ -11092,6 +12080,7 @@ export interface TextButtonProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   shape?: ComposeShape;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -11099,8 +12088,8 @@ export interface TextButtonProps {
 }
 export const TextButton = createComposableComponent<TextButtonProps>({
   name: "TextButton",
-  props: ["modifier","enabled","shape","border","contentPadding","interactionSource"],
-  objectProps: ["shape","border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -11128,6 +12117,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     value?: never;
     onValueChange?: never;
@@ -11160,6 +12150,40 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    colors: ComposeTextFieldColorsValue;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
+    contentPadding?: never;
     interactionSource?: never;
     value?: never;
     onValueChange?: never;
@@ -11191,6 +12215,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11223,6 +12248,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11255,6 +12281,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11287,6 +12314,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11319,6 +12347,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11351,6 +12380,7 @@ export type TextFieldProps =
     isError?: never;
     inputTransformation?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11383,6 +12413,7 @@ export type TextFieldProps =
     supportingText?: never;
     isError?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11415,6 +12446,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11447,6 +12479,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11479,6 +12512,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11511,6 +12545,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11543,6 +12578,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11575,6 +12611,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11607,6 +12644,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11639,6 +12677,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11672,6 +12711,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     value?: never;
     onValueChange?: never;
@@ -11704,6 +12744,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     value?: never;
     onValueChange?: never;
@@ -11735,6 +12776,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11767,6 +12809,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11799,6 +12842,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11831,6 +12875,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     value?: never;
@@ -11865,6 +12910,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -11897,6 +12943,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     onKeyboardAction?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -11929,6 +12976,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     keyboardOptions?: never;
     lineLimits?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -11961,6 +13009,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -11985,7 +13034,6 @@ export type TextFieldProps =
     suffix: ReactNode;
     supportingText: ReactNode;
     isError: boolean;
-    inputTransformation?: ComposeInputTransformation | null;
     outputTransformation?: ComposeOutputTransformation | null;
     keyboardOptions: ComposeKeyboardOptions;
     onKeyboardAction: (() => void) | null;
@@ -11993,6 +13041,74 @@ export type TextFieldProps =
     shape: ComposeShape;
     contentPadding: ComposePaddingValues;
     interactionSource: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    colors?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    shape: ComposeShape;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    outputTransformation?: never;
+    colors?: never;
+    value?: never;
+    onValueChange?: never;
+    label?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    state: ComposeTextFieldState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    supportingText: ReactNode;
+    isError: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    onKeyboardAction: (() => void) | null;
+    lineLimits: ComposeTextFieldLineLimits;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
     value?: never;
     onValueChange?: never;
     label?: never;
@@ -12010,14 +13126,14 @@ export type TextFieldProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    trailingIcon?: ReactNode;
-    prefix?: ReactNode;
-    shape?: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
-    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
     suffix?: never;
     supportingText?: never;
     isError?: never;
@@ -12026,6 +13142,40 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    shape?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    shape: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12059,6 +13209,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -12091,6 +13242,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12123,6 +13275,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12155,6 +13308,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12187,6 +13341,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12218,6 +13373,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -12252,6 +13408,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -12282,6 +13439,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12314,6 +13472,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12346,6 +13505,106 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    prefix: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    trailingIcon: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12377,6 +13636,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -12410,6 +13670,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12429,9 +13690,9 @@ export type TextFieldProps =
     textStyle: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    interactionSource?: ComposeInteractionSource | null;
+    interactionSource: ComposeInteractionSource | null;
     state?: never;
+    leadingIcon?: never;
     trailingIcon?: never;
     prefix?: never;
     suffix?: never;
@@ -12443,6 +13704,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -12474,6 +13736,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12506,8 +13769,42 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: ComposeTextFieldValue;
+    onValueChange: (value: ComposeTextFieldSnapshot) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle: ComposeTextStyle;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    interactionSource?: ComposeInteractionSource | null;
+    state?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
     singleLine?: never;
@@ -12538,6 +13835,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12570,6 +13868,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12605,6 +13904,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12638,6 +13938,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -12671,6 +13972,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -12703,6 +14005,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -12731,6 +14034,7 @@ export type TextFieldProps =
     minLines: number;
     interactionSource: ComposeInteractionSource | null;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
     inputTransformation?: never;
     outputTransformation?: never;
@@ -12746,14 +14050,14 @@ export type TextFieldProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
+    textStyle?: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    trailingIcon?: ReactNode;
-    prefix?: ReactNode;
-    shape?: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
-    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
     suffix?: never;
     supportingText?: never;
     isError?: never;
@@ -12762,6 +14066,40 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    shape?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    shape: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12795,6 +14133,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -12827,6 +14166,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12859,6 +14199,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12891,6 +14232,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12923,6 +14265,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -12954,6 +14297,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -12988,6 +14332,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -13018,6 +14363,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13050,6 +14396,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13082,6 +14429,106 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    prefix: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    trailingIcon: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    leadingIcon?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    shape?: ComposeShape;
+    state?: never;
+    textStyle?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13113,6 +14560,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     label?: never;
@@ -13146,6 +14594,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13165,9 +14614,9 @@ export type TextFieldProps =
     textStyle: ComposeTextStyle;
     label?: ReactNode;
     placeholder?: ReactNode;
-    leadingIcon?: ReactNode;
-    interactionSource?: ComposeInteractionSource | null;
+    interactionSource: ComposeInteractionSource | null;
     state?: never;
+    leadingIcon?: never;
     trailingIcon?: never;
     prefix?: never;
     suffix?: never;
@@ -13179,6 +14628,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -13210,6 +14660,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13242,8 +14693,42 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
+    visualTransformation?: never;
+    keyboardActions?: never;
+    singleLine?: never;
+    maxLines?: never;
+    minLines?: never;
+    }
+  | {
+    value: string;
+    onValueChange: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle: ComposeTextStyle;
+    label?: ReactNode;
+    placeholder?: ReactNode;
+    leadingIcon: ReactNode;
+    interactionSource?: ComposeInteractionSource | null;
+    state?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    supportingText?: never;
+    isError?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    onKeyboardAction?: never;
+    lineLimits?: never;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
     singleLine?: never;
@@ -13274,6 +14759,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13306,6 +14792,7 @@ export type TextFieldProps =
     onKeyboardAction?: never;
     lineLimits?: never;
     shape?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13341,6 +14828,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     interactionSource?: never;
     visualTransformation?: never;
@@ -13374,6 +14862,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     keyboardActions?: never;
@@ -13407,6 +14896,7 @@ export type TextFieldProps =
     keyboardOptions?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -13439,6 +14929,7 @@ export type TextFieldProps =
     outputTransformation?: never;
     onKeyboardAction?: never;
     lineLimits?: never;
+    colors?: never;
     contentPadding?: never;
     visualTransformation?: never;
     }
@@ -13467,6 +14958,7 @@ export type TextFieldProps =
     minLines: number;
     interactionSource: ComposeInteractionSource | null;
     shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
     state?: never;
     inputTransformation?: never;
     outputTransformation?: never;
@@ -13477,15 +14969,15 @@ export type TextFieldProps =
 ;
 export const TextField = createComposableComponent<TextFieldProps>({
   name: "TextField",
-  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
-  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
+  props: ["state","modifier","enabled","readOnly","textStyle","isError","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions","singleLine","maxLines","minLines"],
+  objectProps: ["state","textStyle","inputTransformation","outputTransformation","keyboardOptions","lineLimits","shape","colors","contentPadding","interactionSource","value","visualTransformation","keyboardActions"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix","supportingText","label"],
   events: ["onKeyboardAction","onValueChange"],
   children: false,
   overloads: [
-    { id: "TextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["shape","shape",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,99327,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,230399,234495,238591,246783,259071,260095,261119,262143] },
-    { id: "TextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287] },
-    { id: "TextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287] },
+    { id: "TextField", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["keyboardOptions","object",true,false],["onKeyboardAction","function",true,true],["lineLimits","object",true,false],["shape","shape",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,40,41,42,43,48,49,50,51,56,57,58,59,64,65,66,67,72,73,74,75,80,81,82,83,88,89,90,91,128,129,130,131,136,137,138,139,144,145,146,147,152,153,154,155,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,1024,1025,2048,2049,3072,3073,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,5120,5121,6144,6145,7168,7169,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,9216,9217,10240,10241,11264,11265,12288,13312,13313,14336,14337,15360,15361,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,17408,17409,18432,18433,19456,19457,20480,21504,21505,22528,22529,23552,23553,24576,25600,25601,26624,26625,27648,27649,29696,29697,30720,30721,31744,31745,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,65536,65537,65538,65539,65540,65541,65542,65543,65544,65545,65546,65547,65548,65549,65550,65551,65552,65553,65554,65555,65556,65557,65558,65559,65560,65561,65562,65563,65564,65565,65566,65567,131072,131073,131074,131075,131080,131081,131082,131083,131088,131089,131090,131091,131096,131097,131098,131099,164863,262144,262145,262146,262147,262148,262149,262150,262151,262152,262153,262154,262155,262156,262157,262158,262159,262160,262161,262162,262163,262164,262165,262166,262167,262168,262169,262170,262171,262172,262173,262174,262175,262176,262177,262178,262179,262180,262181,262182,262183,262184,262185,262186,262187,262188,262189,262190,262191,262192,262193,262194,262195,262196,262197,262198,262199,262200,262201,262202,262203,262204,262205,262206,262207,427007,431103,435199,443391,455679,456703,457727,458751,524287] },
+    { id: "TextField#1", children: false, parameters: [["value","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
+    { id: "TextField#2", children: false, parameters: [["value","string",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["label","ReactNode",true,true],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["supportingText","ReactNode",true,true],["isError","boolean",true,false],["visualTransformation","object",true,false],["keyboardOptions","object",true,false],["keyboardActions","object",true,false],["singleLine","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["interactionSource","object",true,true],["shape","shape",true,false],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,264,265,266,267,272,273,274,275,280,281,282,283,288,289,290,291,296,297,298,299,304,305,306,307,312,313,314,315,320,321,322,323,328,329,330,331,336,337,338,339,344,345,346,347,352,353,354,355,360,361,362,363,368,369,370,371,376,377,378,379,384,385,386,387,392,393,394,395,400,401,402,403,408,409,410,411,416,417,418,419,424,425,426,427,432,433,434,435,440,441,442,443,448,449,450,451,456,457,458,459,464,465,466,467,472,473,474,475,480,481,482,483,488,489,490,491,496,497,498,499,504,505,506,507,512,513,514,515,520,521,522,523,528,529,530,531,536,537,538,539,544,545,546,547,552,553,554,555,560,561,562,563,568,569,570,571,576,577,578,579,584,585,586,587,592,593,594,595,600,601,602,603,608,609,610,611,616,617,618,619,624,625,626,627,632,633,634,635,640,641,642,643,648,649,650,651,656,657,658,659,664,665,666,667,672,673,674,675,680,681,682,683,688,689,690,691,696,697,698,699,704,705,706,707,712,713,714,715,720,721,722,723,728,729,730,731,736,737,738,739,744,745,746,747,752,753,754,755,760,761,762,763,1024,1025,1026,1027,1032,1033,1034,1035,1040,1041,1042,1043,1048,1049,1050,1051,1056,1057,1058,1059,1064,1065,1066,1067,1072,1073,1074,1075,1080,1081,1082,1083,1088,1089,1090,1091,1096,1097,1098,1099,1104,1105,1106,1107,1112,1113,1114,1115,1120,1121,1122,1123,1128,1129,1130,1131,1136,1137,1138,1139,1144,1145,1146,1147,1152,1153,1154,1155,1160,1161,1162,1163,1168,1169,1170,1171,1176,1177,1178,1179,1184,1185,1186,1187,1192,1193,1194,1195,1200,1201,1202,1203,1208,1209,1210,1211,1216,1217,1218,1219,1224,1225,1226,1227,1232,1233,1234,1235,1240,1241,1242,1243,1248,1249,1250,1251,1256,1257,1258,1259,1264,1265,1266,1267,1272,1273,1274,1275,2048,2049,4096,4097,4098,4099,4104,4105,4106,4107,4112,4113,4114,4115,4120,4121,4122,4123,6144,6145,8192,8193,8194,8195,8200,8201,8202,8203,8208,8209,8210,8211,8216,8217,8218,8219,10240,10241,12288,14336,14337,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16416,16417,16418,16419,16424,16425,16426,16427,16432,16433,16434,16435,16440,16441,16442,16443,16448,16449,16450,16451,16456,16457,16458,16459,16464,16465,16466,16467,16472,16473,16474,16475,16480,16481,16482,16483,16488,16489,16490,16491,16496,16497,16498,16499,16504,16505,16506,16507,16512,16513,16514,16515,16520,16521,16522,16523,16528,16529,16530,16531,16536,16537,16538,16539,16544,16545,16546,16547,16552,16553,16554,16555,16560,16561,16562,16563,16568,16569,16570,16571,16576,16577,16578,16579,16584,16585,16586,16587,16592,16593,16594,16595,16600,16601,16602,16603,16608,16609,16610,16611,16616,16617,16618,16619,16624,16625,16626,16627,16632,16633,16634,16635,18432,18433,22528,22529,26624,26625,30720,30721,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,32800,32801,32802,32803,32808,32809,32810,32811,32816,32817,32818,32819,32824,32825,32826,32827,32832,32833,32834,32835,32840,32841,32842,32843,32848,32849,32850,32851,32856,32857,32858,32859,32864,32865,32866,32867,32872,32873,32874,32875,32880,32881,32882,32883,32888,32889,32890,32891,32896,32897,32898,32899,32904,32905,32906,32907,32912,32913,32914,32915,32920,32921,32922,32923,32928,32929,32930,32931,32936,32937,32938,32939,32944,32945,32946,32947,32952,32953,32954,32955,32960,32961,32962,32963,32968,32969,32970,32971,32976,32977,32978,32979,32984,32985,32986,32987,32992,32993,32994,32995,33000,33001,33002,33003,33008,33009,33010,33011,33016,33017,33018,33019,65536,65537,65538,65539,65544,65545,65546,65547,65552,65553,65554,65555,65560,65561,65562,65563,65568,65569,65570,65571,65576,65577,65578,65579,65584,65585,65586,65587,65592,65593,65594,65595,65600,65601,65602,65603,65608,65609,65610,65611,65616,65617,65618,65619,65624,65625,65626,65627,65632,65633,65634,65635,65640,65641,65642,65643,65648,65649,65650,65651,65656,65657,65658,65659,65664,65665,65666,65667,65672,65673,65674,65675,65680,65681,65682,65683,65688,65689,65690,65691,65696,65697,65698,65699,65704,65705,65706,65707,65712,65713,65714,65715,65720,65721,65722,65723,65728,65729,65730,65731,65736,65737,65738,65739,65744,65745,65746,65747,65752,65753,65754,65755,65760,65761,65762,65763,65768,65769,65770,65771,65776,65777,65778,65779,65784,65785,65786,65787,131072,131073,131074,131075,131076,131077,131078,131079,131080,131081,131082,131083,131084,131085,131086,131087,131088,131089,131090,131091,131092,131093,131094,131095,131096,131097,131098,131099,131100,131101,131102,131103,131104,131105,131106,131107,131108,131109,131110,131111,131112,131113,131114,131115,131116,131117,131118,131119,131120,131121,131122,131123,131124,131125,131126,131127,131128,131129,131130,131131,131132,131133,131134,131135,262144,262145,262146,262147,262152,262153,262154,262155,262160,262161,262162,262163,262168,262169,262170,262171,262176,262177,262178,262179,262184,262185,262186,262187,262192,262193,262194,262195,262200,262201,262202,262203,262208,262209,262210,262211,262216,262217,262218,262219,262224,262225,262226,262227,262232,262233,262234,262235,262240,262241,262242,262243,262248,262249,262250,262251,262256,262257,262258,262259,262264,262265,262266,262267,262272,262273,262274,262275,262280,262281,262282,262283,262288,262289,262290,262291,262296,262297,262298,262299,262304,262305,262306,262307,262312,262313,262314,262315,262320,262321,262322,262323,262328,262329,262330,262331,262336,262337,262338,262339,262344,262345,262346,262347,262352,262353,262354,262355,262360,262361,262362,262363,262368,262369,262370,262371,262376,262377,262378,262379,262384,262385,262386,262387,262392,262393,262394,262395,378875,378879,509951,514047,518143,522239,524287,524288,524289,524290,524291,524292,524293,524294,524295,524296,524297,524298,524299,524300,524301,524302,524303,524304,524305,524306,524307,524308,524309,524310,524311,524312,524313,524314,524315,524316,524317,524318,524319,1048575] },
   ],
 });
 
@@ -13495,6 +14987,7 @@ export type ThumbProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    colors?: ComposeSliderColorsValue;
     enabled?: boolean;
     thumbSize?: ComposeDpSize;
     sliderState?: never;
@@ -13505,18 +14998,19 @@ export type ThumbProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    colors?: ComposeSliderColorsValue;
     enabled?: boolean;
     thumbSize?: ComposeDpSize;
     }
 ;
 export const Thumb = createComposableComponent<ThumbProps>({
   name: "Thumb",
-  props: ["interactionSource","modifier","enabled","thumbSize","sliderState"],
-  objectProps: ["interactionSource","thumbSize","sliderState"],
+  props: ["interactionSource","modifier","colors","enabled","thumbSize","sliderState"],
+  objectProps: ["interactionSource","colors","thumbSize","sliderState"],
   children: false,
   overloads: [
-    { id: "Thumb", children: false, parameters: [["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3] },
-    { id: "Thumb#1", children: false, parameters: [["interactionSource","object",false,false],["sliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3] },
+    { id: "Thumb", children: false, parameters: [["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Thumb#1", children: false, parameters: [["interactionSource","object",false,false],["sliderState","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
   ],
 });
 
@@ -13587,6 +15081,7 @@ export interface ToggleButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeToggleButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -13594,8 +15089,8 @@ export interface ToggleButtonProps {
 }
 export const ToggleButton = createComposableComponent<ToggleButtonProps>({
   name: "ToggleButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -13622,6 +15117,7 @@ export interface TonalLeadingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -13629,8 +15125,8 @@ export interface TonalLeadingButtonProps {
 }
 export const TonalLeadingButton = createComposableComponent<TonalLeadingButtonProps>({
   name: "TonalLeadingButton",
-  props: ["modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onClick"],
   children: true,
 });
@@ -13642,6 +15138,7 @@ export interface TonalToggleButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeToggleButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -13649,8 +15146,8 @@ export interface TonalToggleButtonProps {
 }
 export const TonalToggleButton = createComposableComponent<TonalToggleButtonProps>({
   name: "TonalToggleButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -13662,6 +15159,7 @@ export interface TonalTrailingButtonProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeButtonColorsValue;
   border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
@@ -13669,8 +15167,8 @@ export interface TonalTrailingButtonProps {
 }
 export const TonalTrailingButton = createComposableComponent<TonalTrailingButtonProps>({
   name: "TonalTrailingButton",
-  props: ["checked","modifier","enabled","border","contentPadding","interactionSource"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["checked","modifier","enabled","colors","border","contentPadding","interactionSource"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onCheckedChange"],
   children: true,
 });
@@ -13760,6 +15258,7 @@ export type TrackProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSliderColorsValue;
     thumbTrackGapSize?: number;
     trackInsideCornerSize?: number;
     sliderState?: never;
@@ -13771,6 +15270,7 @@ export type TrackProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSliderColorsValue;
     thumbTrackGapSize?: number;
     trackInsideCornerSize?: number;
     rangeSliderState?: never;
@@ -13783,6 +15283,7 @@ export type TrackProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeSliderColorsValue;
     thumbTrackGapSize?: number;
     trackInsideCornerSize?: number;
     rangeSliderState?: never;
@@ -13790,13 +15291,13 @@ export type TrackProps =
 ;
 export const Track = createComposableComponent<TrackProps>({
   name: "Track",
-  props: ["rangeSliderState","modifier","enabled","thumbTrackGapSize","trackInsideCornerSize","sliderState","trackCornerSize"],
-  objectProps: ["rangeSliderState","sliderState"],
+  props: ["rangeSliderState","modifier","enabled","colors","thumbTrackGapSize","trackInsideCornerSize","sliderState","trackCornerSize"],
+  objectProps: ["rangeSliderState","colors","sliderState"],
   children: false,
   overloads: [
-    { id: "Track", children: false, parameters: [["rangeSliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7] },
-    { id: "Track#1", children: false, parameters: [["sliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7] },
-    { id: "Track#2", children: false, parameters: [["sliderState","object",false,false],["trackCornerSize","number",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Track", children: false, parameters: [["rangeSliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "Track#1", children: false, parameters: [["sliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "Track#2", children: false, parameters: [["sliderState","object",false,false],["trackCornerSize","number",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
   ],
 });
 
@@ -13807,6 +15308,7 @@ export type TrailingButtonProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeButtonColorsValue;
     border?: ComposeBorderStroke | null;
     contentPadding?: ComposePaddingValues;
     interactionSource?: ComposeInteractionSource | null;
@@ -13821,6 +15323,7 @@ export type TrailingButtonProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    colors?: ComposeButtonColorsValue;
     border?: ComposeBorderStroke | null;
     contentPadding?: ComposePaddingValues;
     interactionSource?: ComposeInteractionSource | null;
@@ -13830,13 +15333,13 @@ export type TrailingButtonProps =
 ;
 export const TrailingButton = createComposableComponent<TrailingButtonProps>({
   name: "TrailingButton",
-  props: ["modifier","enabled","border","contentPadding","interactionSource","checked"],
-  objectProps: ["border","contentPadding","interactionSource"],
+  props: ["modifier","enabled","colors","border","contentPadding","interactionSource","checked"],
+  objectProps: ["colors","border","contentPadding","interactionSource"],
   events: ["onClick","onCheckedChange"],
   children: true,
   overloads: [
-    { id: "TrailingButton", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
-    { id: "TrailingButton#1", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "TrailingButton", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "TrailingButton#1", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
   ],
 });
 
@@ -13859,12 +15362,13 @@ export interface TriStateCheckboxProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
+  colors?: ComposeCheckboxColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const TriStateCheckbox = createComposableComponent<TriStateCheckboxProps>({
   name: "TriStateCheckbox",
-  props: ["state","modifier","enabled","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["state","modifier","enabled","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   events: ["onClick"],
   children: false,
 });
@@ -13886,12 +15390,13 @@ export interface VerticalDragHandleProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  colors?: ComposeDragHandleColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const VerticalDragHandle = createComposableComponent<VerticalDragHandleProps>({
   name: "VerticalDragHandle",
-  props: ["modifier","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["modifier","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   children: false,
 });
 
@@ -14417,12 +15922,13 @@ export interface VerticalSliderProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   reverseDirection?: boolean;
+  colors?: ComposeSliderColorsValue;
   interactionSource?: ComposeInteractionSource;
 }
 export const VerticalSlider = createComposableComponent<VerticalSliderProps>({
   name: "VerticalSlider",
-  props: ["state","modifier","enabled","reverseDirection","interactionSource"],
-  objectProps: ["state","interactionSource"],
+  props: ["state","modifier","enabled","reverseDirection","colors","interactionSource"],
+  objectProps: ["state","colors","interactionSource"],
   children: false,
 });
 
@@ -14450,6 +15956,7 @@ export interface WideNavigationRailProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   shape?: ComposeShape;
+  colors?: ComposeWideNavigationRailColorsValue;
   header?: ReactNode;
   windowInsets?: ComposeWindowInsets;
   arrangement?: ComposeVerticalArrangement;
@@ -14457,8 +15964,8 @@ export interface WideNavigationRailProps {
 }
 export const WideNavigationRail = createComposableComponent<WideNavigationRailProps>({
   name: "WideNavigationRail",
-  props: ["modifier","shape","windowInsets","arrangement"],
-  objectProps: ["shape","windowInsets"],
+  props: ["modifier","shape","colors","windowInsets","arrangement"],
+  objectProps: ["shape","colors","windowInsets"],
   slots: ["header"],
   children: true,
 });
@@ -14473,12 +15980,13 @@ export interface WideNavigationRailItemProps {
   modifier?: ComposeModifier;
   enabled?: boolean;
   railExpanded?: boolean;
+  colors?: ComposeNavigationItemColorsValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const WideNavigationRailItem = createComposableComponent<WideNavigationRailItemProps>({
   name: "WideNavigationRailItem",
-  props: ["selected","modifier","enabled","railExpanded","interactionSource"],
-  objectProps: ["interactionSource"],
+  props: ["selected","modifier","enabled","railExpanded","colors","interactionSource"],
+  objectProps: ["colors","interactionSource"],
   slots: ["icon","label"],
   events: ["onClick"],
   children: false,

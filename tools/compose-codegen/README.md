@@ -67,7 +67,9 @@ Kotlin supplies library defaults for omitted arguments. The generator preserves
 established call forms. It limits the number of new default-argument combinations for
 wide signatures, combining each new prop with the core props and considering the full
 call. The report counts the remaining combinations. Large Kotlin dispatch tables are
-written in separate source files to bound the compiler's work per file.
+written in separate source files to bound the compiler's work per file. Wide renderers
+share scalar decoders and unscoped slot lambdas across call forms. Each branch passes only the supplied
+named arguments, so Kotlin still evaluates the original default expressions.
 Compose and modifier signatures each have an outcome in [coverage.json](coverage.json),
 including unsupported bridges, omitted props, and ambiguous or shadowed argument forms.
 
@@ -111,18 +113,39 @@ cross the bridge. The runtime has small adapters for shape and brush values
 and preserves the existing `backgroundColor` and `backgroundBrush` aliases. The
 `modifier` prop remains available for existing callers.
 
-The extractor discovers immutable value records from public constructors or
-same-name factories with supported fields. That discovery generates both the
-TypeScript shape and native decoder for values such as `TransformOrigin` and
-`DpOffset`. It also discovers supported Foundation `StyleScope` properties
-from the Compose classpath.
+The extractor follows the types reachable from discovered props. It can build
+immutable values through public primary constructors and public same-name
+factories, and it discovers enum cases through Kotlin metadata. A field can be a
+primitive, an enum, or another constructible value. Generated TypeScript types
+and Kotlin decoders share the same field definitions. For constructor fields with
+defaults, omit the key to use Kotlin's default or pass `null` when the field is
+nullable. The extractor rejects construction paths with cycles, ambiguous calls,
+or fields requiring native owners. It also discovers supported Foundation
+`StyleScope` properties from the Compose classpath.
+
+Unit-returning callbacks with several supported arguments deliver a typed tuple
+in one JavaScript event. The `finishedListener` option on
+`Modifier.animateContentSize` receives `readonly [ComposeLayoutSize, ComposeLayoutSize]`
+with the start and end sizes in physical pixels.
 
 APIs that accept the same native handle or value type share a decoder. Requesters
 and interaction sources retain their identity within a Compose host. Animation
 specs use the same decoder for components and modifiers. Scroll and key policies
 run on Android so Compose can act on the result during the current event.
-Custom native interfaces and arbitrary return-valued JavaScript callbacks still
-need a native adapter.
+## Native bridge capabilities
+
+- Indexed content in `Crossfade` and `AnimatedContent` selects a mounted React
+  child by position. Keyed states and custom transition specs need a native
+  content selection and transition expression model.
+- `nestedScroll` synchronously consumes configured fractions of the available
+  scroll and fling. A custom connection or a programmatic dispatcher needs
+  native policies for callback arguments, results, and coroutine ownership.
+- The current requester and interaction source hooks retain identity within a
+  Compose host. List and sheet state inputs initialize native-owned state.
+  Reusable command and observation support needs generated operations and a
+  composition-scoped lifetime policy.
+- The animation spec adapter supports spring, tween, and snap. Keyframes need
+  a decoder for the animated value type, such as a float, offset, or size.
 
 ## Verify
 

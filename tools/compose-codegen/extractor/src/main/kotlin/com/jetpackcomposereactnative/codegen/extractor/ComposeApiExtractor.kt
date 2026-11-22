@@ -46,7 +46,7 @@ private class ComposeApiExtractor(
 ) : SymbolProcessor {
   private var generated = false
   private var valueTypes = emptyMap<String, ValueType>()
-  private var recordTypes: Map<String, RecordValue> = emptyMap()
+  private lateinit var structuredValues: StructuredValueResolver
 
   @OptIn(KspExperimental::class)
   override fun process(resolver: Resolver): List<KSAnnotated> {
@@ -54,7 +54,14 @@ private class ComposeApiExtractor(
     generated = true
 
     valueTypes = discoverValues(resolver)
-    recordTypes = discoverRecords(resolver)
+    structuredValues = StructuredValueResolver(
+      resolver,
+      valueKinds + componentValueKinds + modifierValueKinds,
+      valueTypes.mapValues { (_, value) -> value.name },
+      isDeprecated = { it.isDeprecated() },
+      hasOptIns = { it.optInMarkers().isNotEmpty() },
+      accepts = { fn, arguments -> accepts(fn, arguments) },
+    )
     val functions = declarationsInPackages(resolver, packages)
     val declarations = functions
       .filter { it.qualifiedName != null && it.getVisibility() == Visibility.PUBLIC }
@@ -105,45 +112,18 @@ private class ComposeApiExtractor(
 
     val modifiers = discoverModifiers(modifierDeclarations, coverage)
     val factories = discoverFactories(resolver)
-    val usedKinds = (components.flatMap { it.parameters } + modifiers.flatMap { it.parameters }).map { it.kind }.toSet()
     val styleProperties = discoverStyleProperties(resolver)
-    val records = recordTypes.values.filter { "record:" + it.name in usedKinds || styleProperties.any { prop -> prop.kind == "record:" + it.name } }
-    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList(), factories, records, styleProperties,
+    val usedKinds = (components.flatMap { it.parameters } + modifiers.flatMap { it.parameters } + styleProperties)
+      .map { it.kind }.toSet()
+    val records = structuredValues.recordsFor(usedKinds)
+    val enums = structuredValues.enumsFor(usedKinds + records.flatMap { record -> record.fields.map { it.kind } })
+    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList() + enums, factories, records, styleProperties,
       discovered.sortedWith(compareBy({ it.kind }, { it.signature })),
       coverage.sortedWith(compareBy({ it.kind }, { it.signature })))
     generator.createNewFile(Dependencies(aggregating = true), "", "compose-api-manifest", "json")
       .bufferedWriter().use { Gson().toJson(manifest, it) }
     logger.info("Discovered ${components.size} composable overloads and ${modifiers.size} modifier overloads")
     return emptyList()
-  }
-
-  @OptIn(KspExperimental::class)
-  private fun discoverRecords(resolver: Resolver): Map<String, RecordValue> {
-    val declarations = recordPackages.flatMap { resolver.getDeclarationsFromPackage(it).toList() }
-    val factories = declarations.filterIsInstance<KSFunctionDeclaration>()
-      .filter { fn ->
-        fn.extensionReceiver == null && fn.qualifiedName?.asString() == fn.returnType?.resolve()?.name
-      }
-      .mapNotNull { fn ->
-        val fullName = fn.qualifiedName?.asString() ?: return@mapNotNull null
-        recordValue(fn, fullName)
-      }
-    val constructors = declarations.filterIsInstance<KSClassDeclaration>().mapNotNull { type ->
-      val fullName = type.qualifiedName?.asString() ?: return@mapNotNull null
-      if (type.getVisibility() != Visibility.PUBLIC || type.classKind != ClassKind.CLASS ||
-        type.typeParameters.isNotEmpty() || type.modifiers.any { it.name == "ABSTRACT" }) return@mapNotNull null
-      val constructor = type.primaryConstructor ?: return@mapNotNull null
-      val properties = type.getAllProperties().filter { !it.isMutable && it.getVisibility() == Visibility.PUBLIC }
-        .map { it.simpleName.asString() }.toSet()
-      if (constructor.parameters.any { it.name?.asString() !in properties }) return@mapNotNull null
-      recordValue(constructor, fullName)
-    }
-    val candidates = (factories + constructors).filter { it.kotlinType !in valueKinds && it.kotlinType !in componentValueKinds }
-    return candidates.groupBy { it.kotlinType }.toSortedMap().mapNotNull { (type, options) ->
-      val width = options.maxOf { it.fields.size }
-      val binding = options.filter { it.fields.size == width }.distinct().singleOrNull()
-      binding?.let { type to it }
-    }.toMap()
   }
 
   private fun discoverStyleProperties(resolver: Resolver): List<Parameter> {
@@ -158,7 +138,7 @@ private class ComposeApiExtractor(
       val type = param.type.resolve()
       if (param.isVararg || type.isMarkedNullable) return@mapNotNull null
       val kind = valueKinds[type.name]?.takeIf { it in styleFieldKinds } ?: drawingValueKinds[type.name]
-        ?: valueTypes[type.name]?.name ?: type.recordKind() ?: return@mapNotNull null
+        ?: valueTypes[type.name]?.name ?: structuredValues.kind(type) ?: return@mapNotNull null
       Parameter(function.simpleName.asString(), kind, optional = true, nullable = false)
     }.toList()
     // Keep dimensions in dp and prefer color for the simple background/foreground form.
@@ -167,19 +147,6 @@ private class ComposeApiExtractor(
       val distinct = options.distinct()
       distinct.singleOrNull() ?: preferred.firstNotNullOfOrNull { kind -> distinct.singleOrNull { it.kind == kind } }
     }
-  }
-
-  private fun recordValue(fn: KSFunctionDeclaration, type: String): RecordValue? {
-    if (fn.getVisibility() != Visibility.PUBLIC || fn.isDeprecated() || fn.typeParameters.isNotEmpty() ||
-      fn.parameters.isEmpty() || fn.optInMarkers().isNotEmpty()) return null
-    val fields = fn.parameters.map { parameter ->
-      val label = parameter.name?.asString() ?: return null
-      val resolved = parameter.type.resolve()
-      if (parameter.hasDefault || parameter.isVararg || resolved.isMarkedNullable) return null
-      val kind = valueKinds[resolved.name]?.takeIf { it in recordFieldKinds } ?: return null
-      Parameter(label, kind, optional = false, nullable = false)
-    }
-    return RecordValue("Compose" + type.substringAfterLast('.'), type, fields)
   }
 
   private fun describe(
@@ -244,11 +211,12 @@ private class ComposeApiExtractor(
         name == "targetState" && indexedContent != null -> "int"
         else -> valueKinds[type.name] ?: componentValueKinds[type.name]
           ?: drawingValueKinds[type.name] ?: parameter.eventKind(type) ?: valueTypes[type.name]?.name
-          ?: type.recordKind() ?: type.rangeKind() ?: parameter.producerKind(type)
+          ?: type.rangeKind() ?: parameter.producerKind(type)
           ?: type.drawingKind()
           ?: "gridConfig".takeIf { type.name == "kotlin.Function1" &&
             type.arguments.first().type?.resolve()?.name == "androidx.compose.foundation.layout.GridConfigurationScope" &&
             type.arguments.last().type?.resolve()?.name == "kotlin.Unit" }
+          ?: structuredValues.kind(type)
       }
       if (kind == null) {
         omitted += OmittedParameter(name, type.signatureName(), when {
@@ -366,7 +334,8 @@ private class ComposeApiExtractor(
             parameter.isVararg -> modifierVarargKinds[type.name]
             qualifiedName == "androidx.compose.ui.layout.layoutId" && name == "layoutId" && type.name == "kotlin.Any" -> "string"
             else -> modifierValueKinds[type.name] ?: valueKinds[type.name] ?: valueTypes[type.name]?.name
-              ?: type.recordKind() ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind() ?: type.drawingKind() ?: parameter.producerKind(type)
+              ?: type.rangeKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind() ?: type.drawingKind() ?: parameter.producerKind(type)
+              ?: structuredValues.kind(type)
           }
           if (kind == null || kind == "modifier") {
             val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
@@ -416,6 +385,12 @@ private class ComposeApiExtractor(
   )
 
   private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
+    val inferred = optional.filter { structuredValues.isInferredKind(it.kind) || it.kind.startsWith("eventTuple:") }
+    if (inferred.isNotEmpty()) {
+      // First build the previous surface with the new types removed. Applying
+      // the budgets in the opposite order can drop existing prop combinations.
+      return extendCallForms(optional, inferred, newlyBridgeable, 128, 5)
+    }
     val textParameters = optional.filter { it.kind in textAdapterKinds }
     if (textParameters.isNotEmpty()) {
       return extendCallForms(optional, textParameters, newlyBridgeable, 128, 4, combineAdded = true)
@@ -629,8 +604,6 @@ private class ComposeApiExtractor(
     return "indexed:$scope"
   }
 
-  private fun KSType.recordKind(): String? = recordTypes[name]?.let { "record:" + it.name }
-
   private fun KSType.rangeKind(): String? =
     if (name == "kotlin.ranges.ClosedFloatingPointRange" &&
       arguments.singleOrNull()?.type?.resolve()?.name == "kotlin.Float") "floatRange" else null
@@ -651,8 +624,21 @@ private class ComposeApiExtractor(
 
   private fun KSValueParameter.eventKind(type: KSType): String? {
     val parameter = name?.asString().orEmpty()
-    if (!parameter.startsWith("on") && parameter != "callback" && parameter != "watcher") return null
     if (type.arguments.lastOrNull()?.type?.resolve()?.name != "kotlin.Unit") return null
+    if (!parameter.startsWith("on") && parameter != "callback" && parameter != "watcher" &&
+      !parameter.endsWith("Listener")) return null
+    if (type.name in callbackTupleTypes && (this.type.annotations + type.annotations).none {
+      it.annotationType.resolve().name in setOf(COMPOSABLE, "kotlin.ExtensionFunctionType")
+    }) {
+      val arguments = type.arguments.dropLast(1).map { argument ->
+        val value = argument.type?.resolve() ?: return null
+        val qualified = value.name?.takeIf { it in callbackTupleValues } ?: return null
+        qualified + if (value.isMarkedNullable) "?" else ""
+      }
+      return "eventTuple:" + arguments.joinToString(",")
+    }
+    // The other adapters carry one payload and retain their established JS signatures.
+    if (parameter.endsWith("Listener") && !parameter.startsWith("on")) return null
     if (type.name == "kotlin.coroutines.SuspendFunction2" &&
       type.arguments[0].type?.resolve()?.name == "kotlinx.coroutines.CoroutineScope") {
       return when (type.arguments[1].type?.resolve()?.name) {
@@ -753,7 +739,12 @@ private val objectKinds = setOf("colorScheme", "paddingValues", "windowInsets", 
   "lazyListState", "lazyGridState", "lazyStaggeredGridState", "pagerState", "textFieldState", "focusProperties", "semantics", "searchBarState", "basicTooltipState", "tooltipState",
   "popupPosition", "dateFormatter", "snackbarHostState")
 
-private val recordPackages = listOf("androidx.compose.ui.geometry", "androidx.compose.ui.graphics", "androidx.compose.ui.unit")
+private val callbackTupleTypes = setOf("kotlin.Function2", "kotlin.Function3", "kotlin.Function4")
+private val callbackTupleValues = setOf(
+  "kotlin.String", "kotlin.Boolean", "kotlin.Int", "kotlin.Long", "kotlin.Float", "kotlin.Double",
+  "androidx.compose.ui.unit.IntSize", "androidx.compose.ui.unit.DpSize",
+  "androidx.compose.ui.geometry.Offset", "androidx.compose.ui.unit.Velocity",
+)
 private val recordFieldKinds = setOf("float", "double", "int", "dp", "sp", "boolean")
 private val styleFieldKinds = recordFieldKinds + setOf("color", "textStyle")
 
@@ -980,9 +971,8 @@ private data class ModifierOverload(
   val staticOwner: String? = null
 )
 private data class ValueSource(val name: String, val owners: List<String>)
-private data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>, val optIns: List<String>)
-private data class RecordValue(val name: String, val kotlinType: String, val fields: List<Parameter>)
-private data class ValueCase(val name: String, val expression: String)
+internal data class ValueType(val name: String, val kotlinType: String, val cases: List<ValueCase>, val optIns: List<String>)
+internal data class ValueCase(val name: String, val expression: String)
 private data class Component(
   val signature: String,
   val name: String, val kotlinFunction: String, val parameters: List<Parameter>,
@@ -994,7 +984,7 @@ private data class Component(
     return parameters.filter { !it.optional || it.kind == "modifier" || (mask and (1 shl bit++)) != 0 }
   }
 }
-private data class Parameter(
+internal data class Parameter(
   val name: String, val kind: String, val optional: Boolean, val nullable: Boolean, val scope: String? = null,
   val nativeName: String? = null
 )

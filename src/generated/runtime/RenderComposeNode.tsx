@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type ComposeEventValue = string | number | boolean | null | readonly [number, number] | Record<string, unknown>;
+export type ComposeEventValue = string | number | boolean | null | readonly ComposeEventValue[] | Record<string, unknown>;
 
 export interface RenderComposeNodeProps {
   componentName?: string;
