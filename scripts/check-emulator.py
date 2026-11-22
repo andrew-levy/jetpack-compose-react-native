@@ -203,8 +203,9 @@ def verify():
         time.sleep(1.75)
 
     tap(nodes["Show collections"])
+    feed_heading = "Native list and layout callbacks"
     nodes = wait_for(
-        "Purple swatch", "Layout reported to React", "Native row 2", "Native row 3", "Modifiers",
+        feed_heading, "Purple swatch", "Layout reported to React", "Native row 2", "Native row 3", "Modifiers",
         "Pinned feed header", "Jump to row 6", "First row: 2", "Collapsing feed toolbar",
         # Compose may report a sliver of the preceding item in the content padding.
         layout_ready=lambda nodes: (
@@ -215,12 +216,16 @@ def verify():
     )
     capture("14-collections")
     toolbar_height = node_height(nodes["Collapsing feed toolbar"])
+    feed_top = bounds(nodes[feed_heading])[1]
     left, top, right, bottom = bounds(nodes["Native row 3"])
     x = str((left + right) // 2)
     adb("shell", "input", "swipe", x, str((top + bottom) // 2), x, str(top - 45), "350")
     nodes = wait_for(
-        "Pinned feed header", "Jump to row 6", "Collapsing feed toolbar", window=window,
-        layout_ready=lambda nodes: node_height(nodes["Collapsing feed toolbar"]) < toolbar_height,
+        feed_heading, "Pinned feed header", "Jump to row 6", "Collapsing feed toolbar", window=window,
+        layout_ready=lambda nodes: (
+            bounds(nodes[feed_heading])[1] == feed_top
+            and node_height(nodes["Collapsing feed toolbar"]) < toolbar_height
+        ),
     )
     tap(nodes["Jump to row 6"])
     wait_for("Native row 6", "Pinned feed header", "First row: 6", window=window)

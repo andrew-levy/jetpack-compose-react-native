@@ -1,6 +1,7 @@
 package com.jetpackcomposereactnative.generated
 
 import android.content.Context
+import android.view.MotionEvent
 import android.view.ViewGroup.LayoutParams
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.CompositionLocalProvider
@@ -48,6 +49,18 @@ internal class GeneratedComposeHostView(context: Context) : ComposeContainerView
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         requestLayout()
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        val handled = super.dispatchTouchEvent(event)
+        if (handled && event.actionMasked == MotionEvent.ACTION_DOWN) {
+            // The content view uses the point just dispatched to hit-test its scrollable areas.
+            val content = composeView.getChildAt(0)
+            if (content != null && (content.canScrollVertically(1) || content.canScrollVertically(-1))) {
+                parent?.requestDisallowInterceptTouchEvent(true)
+            }
+        }
+        return handled
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
