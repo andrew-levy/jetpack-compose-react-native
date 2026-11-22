@@ -4136,44 +4136,18 @@
   {
     "signature": "androidx.compose.material3.OutlinedSecureTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, labelPosition: androidx.compose.material3.TextFieldLabelPosition, label: kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, textObfuscationMode: androidx.compose.foundation.text.input.TextObfuscationMode, textObfuscationCharacter: kotlin.Char, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "labelPosition",
-        "kotlinType": "androidx.compose.material3.TextFieldLabelPosition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "label",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 523828
+    "budgetOmittedForms": 2096561
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, labelPosition: androidx.compose.material3.TextFieldLabelPosition, label: kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, outputTransformation: androidx.compose.foundation.text.input.OutputTransformation?, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, lineLimits: androidx.compose.foundation.text.input.TextFieldLineLimits, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, scrollState: androidx.compose.foundation.ScrollState, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "labelPosition",
-        "kotlinType": "androidx.compose.material3.TextFieldLabelPosition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "label",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 2096652
+    "budgetOmittedForms": 8387981
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
@@ -6375,52 +6349,14 @@
   {
     "signature": "androidx.compose.material3.RangeSlider(state: androidx.compose.material3.RangeSliderState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.SliderColors, startInteractionSource: androidx.compose.foundation.interaction.MutableInteractionSource, endInteractionSource: androidx.compose.foundation.interaction.MutableInteractionSource, startThumb: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, endThumb: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, track: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "startThumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "endThumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "track",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
   {
     "signature": "androidx.compose.material3.RangeSlider(value: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, onValueChange: kotlin.Function1<kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, valueRange: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, onValueChangeFinished: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.SliderColors, startInteractionSource: androidx.compose.foundation.interaction.MutableInteractionSource, endInteractionSource: androidx.compose.foundation.interaction.MutableInteractionSource, startThumb: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, endThumb: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, track: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, steps: kotlin.Int)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "startThumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "endThumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "track",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [
       {
         "props": [
@@ -6759,7 +6695,8 @@
         "reason": "Kotlin selects another overload or the call is ambiguous"
       }
     ],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 774
   },
   {
     "signature": "androidx.compose.material3.RangeSlider(value: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, onValueChange: kotlin.Function1<kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, valueRange: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, steps: kotlin.Int, onValueChangeFinished: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.SliderColors)",
@@ -6930,23 +6867,10 @@
   {
     "signature": "androidx.compose.material3.SecureTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, labelPosition: androidx.compose.material3.TextFieldLabelPosition, label: kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, textObfuscationMode: androidx.compose.foundation.text.input.TextObfuscationMode, textObfuscationCharacter: kotlin.Char, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "labelPosition",
-        "kotlinType": "androidx.compose.material3.TextFieldLabelPosition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "label",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 523828
+    "budgetOmittedForms": 2096561
   },
   {
     "signature": "androidx.compose.material3.SegmentedButton [receiver: androidx.compose.material3.MultiChoiceSegmentedButtonRowScope](checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, shape: androidx.compose.ui.graphics.Shape, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.SegmentedButtonColors, border: androidx.compose.foundation.BorderStroke, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, icon: kotlin.Function0<kotlin.Unit>, label: kotlin.Function0<kotlin.Unit>)",
@@ -7064,42 +6988,720 @@
   {
     "signature": "androidx.compose.material3.Slider(state: androidx.compose.material3.SliderState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.SliderColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource, thumb: kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>, track: kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "thumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "track",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
   {
     "signature": "androidx.compose.material3.Slider(value: kotlin.Float, onValueChange: kotlin.Function1<kotlin.Float, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, onValueChangeFinished: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.SliderColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource, steps: kotlin.Int, thumb: kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>, track: kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>, valueRange: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>)",
-    "status": "unsupported",
-    "reason": "No unambiguous Kotlin call forms",
-    "omittedParameters": [
+    "status": "generated",
+    "omittedParameters": [],
+    "omittedForms": [
       {
-        "name": "thumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
       },
       {
-        "name": "track",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource",
+          "steps"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "colors",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "colors",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
+      },
+      {
+        "props": [
+          "value",
+          "onValueChange",
+          "modifier",
+          "enabled",
+          "onValueChangeFinished",
+          "colors",
+          "interactionSource",
+          "steps",
+          "valueRange"
+        ],
+        "reason": "Kotlin selects another overload or the call is ambiguous"
       }
     ],
-    "omittedForms": [],
     "kind": "component"
   },
   {
@@ -7660,23 +8262,10 @@
   {
     "signature": "androidx.compose.material3.TextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, labelPosition: androidx.compose.material3.TextFieldLabelPosition, label: kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, outputTransformation: androidx.compose.foundation.text.input.OutputTransformation?, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, lineLimits: androidx.compose.foundation.text.input.TextFieldLineLimits, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, scrollState: androidx.compose.foundation.ScrollState, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "labelPosition",
-        "kotlinType": "androidx.compose.material3.TextFieldLabelPosition",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "label",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 2096652
+    "budgetOmittedForms": 8387981
   },
   {
     "signature": "androidx.compose.material3.TextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
@@ -8355,20 +8944,7 @@
   {
     "signature": "androidx.compose.material3.VerticalSlider(state: androidx.compose.material3.SliderState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, reverseDirection: kotlin.Boolean, colors: androidx.compose.material3.SliderColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource, thumb: kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>, track: kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "thumb",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "track",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SliderState, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },

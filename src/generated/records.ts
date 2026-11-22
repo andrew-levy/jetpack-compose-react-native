@@ -1,5 +1,5 @@
 // Generated from Compose value factories by generate.mjs.
-import type { ComposeBlendModeValue } from "./values";
+import type { ComposeBlendModeValue, ComposeHorizontalAlignment } from "./values";
 
 export type ComposeMarqueeSpacingValue = { spacing: number };
 
@@ -86,6 +86,11 @@ export type ComposeSplitButtonShapesValue =
 export type ComposeSwitchColorsValue = { checkedThumbColor: string; checkedTrackColor: string; checkedBorderColor: string; checkedIconColor: string; uncheckedThumbColor: string; uncheckedTrackColor: string; uncheckedBorderColor: string; uncheckedIconColor: string; disabledCheckedThumbColor: string; disabledCheckedTrackColor: string; disabledCheckedBorderColor: string; disabledCheckedIconColor: string; disabledUncheckedThumbColor: string; disabledUncheckedTrackColor: string; disabledUncheckedBorderColor: string; disabledUncheckedIconColor: string };
 
 export type ComposeTextFieldColorsValue = { focusedTextColor: string; unfocusedTextColor: string; disabledTextColor: string; errorTextColor: string; focusedContainerColor: string; unfocusedContainerColor: string; disabledContainerColor: string; errorContainerColor: string; cursorColor: string; errorCursorColor: string; textSelectionColors: ComposeTextSelectionColorsValue; focusedIndicatorColor: string; unfocusedIndicatorColor: string; disabledIndicatorColor: string; errorIndicatorColor: string; focusedLeadingIconColor: string; unfocusedLeadingIconColor: string; disabledLeadingIconColor: string; errorLeadingIconColor: string; focusedTrailingIconColor: string; unfocusedTrailingIconColor: string; disabledTrailingIconColor: string; errorTrailingIconColor: string; focusedLabelColor: string; unfocusedLabelColor: string; disabledLabelColor: string; errorLabelColor: string; focusedPlaceholderColor: string; unfocusedPlaceholderColor: string; disabledPlaceholderColor: string; errorPlaceholderColor: string; focusedSupportingTextColor: string; unfocusedSupportingTextColor: string; disabledSupportingTextColor: string; errorSupportingTextColor: string; focusedPrefixColor: string; unfocusedPrefixColor: string; disabledPrefixColor: string; errorPrefixColor: string; focusedSuffixColor: string; unfocusedSuffixColor: string; disabledSuffixColor: string; errorSuffixColor: string };
+
+export type ComposeTextFieldLabelPositionValue =
+  | { factory: "TextFieldLabelPosition.Above"; alignment?: ComposeHorizontalAlignment }
+  | { factory: "TextFieldLabelPosition.Attached"; alwaysMinimize?: boolean; minimizedAlignment?: ComposeHorizontalAlignment; expandedAlignment?: ComposeHorizontalAlignment }
+;
 
 export type ComposeTimePickerColorsValue = { clockDialColor: string; selectorColor: string; containerColor: string; periodSelectorBorderColor: string; clockDialSelectedContentColor: string; clockDialUnselectedContentColor: string; periodSelectorSelectedContainerColor: string; periodSelectorUnselectedContainerColor: string; periodSelectorSelectedContentColor: string; periodSelectorUnselectedContentColor: string; timeSelectorSelectedContainerColor: string; timeSelectorUnselectedContainerColor: string; timeSelectorSelectedContentColor: string; timeSelectorUnselectedContentColor: string };
 

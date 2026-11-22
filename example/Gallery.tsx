@@ -153,7 +153,12 @@ function Controls() {
           <SuggestionChip onClick={() => setMode("Weekly")} label={<Text text="Try weekly" />} />
         </FlowRow>
         <Text text={`Slider ${Math.round(level * 100)}%`} />
-        <Slider value={level} onValueChange={setLevel} />
+        <Slider
+          value={level}
+          onValueChange={setLevel}
+          thumb={<Box modifiers={Modifier.size(20).clip("circle").background("#69489b")
+            .semantics({ contentDescription: "Custom slider thumb" })} />}
+        />
         <Text text={`Range ${Math.round(range[0] * 100)}–${Math.round(range[1] * 100)}%`} />
         <RangeSlider value={range} onValueChange={setRange} />
       </Column>

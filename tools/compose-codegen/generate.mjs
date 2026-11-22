@@ -445,6 +445,7 @@ function renderSlot(children, scope) {
     return `androidx.compose.foundation.text.input.TextFieldDecorator { inner -> RenderComposeDecoration(${children}, inner) }`;
   }
   if (scope === "decoration:lambda") return `{ inner -> RenderComposeDecoration(${children}, inner) }`;
+  if (scope?.startsWith("argument:")) return `{ argument -> RenderComposeChildren(${children}, argument) }`;
   if (overflowMenuScopes.has(scope)) return `{ menu -> RenderComposeOverflowIndicator(${children}, menu::show) }`;
   if (lazyBuilderScopes.has(scope)) return `{ renderLazyComposeChildren(${children}) }`;
   if (scope?.startsWith("indexed:")) {
@@ -690,8 +691,10 @@ for (const [relative, content] of nativeFiles) {
   }
 }
 const surface = {
-  components: manifest.components.map(({ name, parameters, children, masks }) => ({ name, parameters, children, masks })),
-  modifiers: manifest.modifiers.map(({ name, parameters, scope, masks }) => ({ name, parameters, scope, masks })),
+  components: manifest.components.map(({ name, signature, parameters, children, ownerScope, masks }) =>
+    ({ name, signature, parameters, children, ownerScope, masks })),
+  modifiers: manifest.modifiers.map(({ name, signature, parameters, scope, masks }) =>
+    ({ name, signature, parameters, scope, masks })),
 };
 const files = [
   ...nativeFiles,

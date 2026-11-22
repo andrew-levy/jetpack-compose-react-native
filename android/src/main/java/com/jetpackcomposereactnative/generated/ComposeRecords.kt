@@ -758,6 +758,30 @@ internal fun JSONObject.decodeComposeTextFieldColorsValue(): androidx.compose.ma
   `errorSuffixColor` = parseComposeColor(getString("errorSuffixColor")),
 )
 
+internal fun JSONObject.decodeComposeTextFieldLabelPositionValue(): androidx.compose.material3.TextFieldLabelPosition = when (val factory = getString("factory")) {
+  "TextFieldLabelPosition.Above" -> decodeComposeTextFieldLabelPositionValueFactory0()
+  "TextFieldLabelPosition.Attached" -> decodeComposeTextFieldLabelPositionValueFactory1()
+  else -> error("Unknown ComposeTextFieldLabelPositionValue factory: " + factory)
+}
+
+private fun JSONObject.decodeComposeTextFieldLabelPositionValueFactory0(): androidx.compose.material3.TextFieldLabelPosition = when ((if (has("alignment")) 1 else 0)) {
+  0 -> androidx.compose.material3.TextFieldLabelPosition.Above()
+  1 -> androidx.compose.material3.TextFieldLabelPosition.Above(`alignment` = toComposeHorizontalAlignment(getString("alignment")))
+  else -> error("Invalid generated arguments for androidx.compose.material3.TextFieldLabelPosition.Above")
+}
+
+private fun JSONObject.decodeComposeTextFieldLabelPositionValueFactory1(): androidx.compose.material3.TextFieldLabelPosition = when ((if (has("alwaysMinimize")) 1 else 0) + (if (has("minimizedAlignment")) 2 else 0) + (if (has("expandedAlignment")) 4 else 0)) {
+  0 -> androidx.compose.material3.TextFieldLabelPosition.Attached()
+  1 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`alwaysMinimize` = getBoolean("alwaysMinimize"))
+  2 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`minimizedAlignment` = toComposeHorizontalAlignment(getString("minimizedAlignment")))
+  3 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`alwaysMinimize` = getBoolean("alwaysMinimize"), `minimizedAlignment` = toComposeHorizontalAlignment(getString("minimizedAlignment")))
+  4 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`expandedAlignment` = toComposeHorizontalAlignment(getString("expandedAlignment")))
+  5 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`alwaysMinimize` = getBoolean("alwaysMinimize"), `expandedAlignment` = toComposeHorizontalAlignment(getString("expandedAlignment")))
+  6 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`minimizedAlignment` = toComposeHorizontalAlignment(getString("minimizedAlignment")), `expandedAlignment` = toComposeHorizontalAlignment(getString("expandedAlignment")))
+  7 -> androidx.compose.material3.TextFieldLabelPosition.Attached(`alwaysMinimize` = getBoolean("alwaysMinimize"), `minimizedAlignment` = toComposeHorizontalAlignment(getString("minimizedAlignment")), `expandedAlignment` = toComposeHorizontalAlignment(getString("expandedAlignment")))
+  else -> error("Invalid generated arguments for androidx.compose.material3.TextFieldLabelPosition.Attached")
+}
+
 internal fun JSONObject.decodeComposeTimePickerColorsValue(): androidx.compose.material3.TimePickerColors = androidx.compose.material3.TimePickerColors(
   `clockDialColor` = parseComposeColor(getString("clockDialColor")),
   `selectorColor` = parseComposeColor(getString("selectorColor")),

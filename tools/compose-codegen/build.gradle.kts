@@ -58,9 +58,11 @@ val inventoryTool by configurations.creating {
   attributes.attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
 }
 val inventoryOutput = layout.buildDirectory.file("compose-binary-inventory.json")
+val publishedSurface = layout.projectDirectory.file("api-surface.json").asFile
 
 ksp {
   arg("inventoryPath", inventoryOutput.get().asFile.absolutePath)
+  if (publishedSurface.isFile) arg("publishedSurface", publishedSurface.absolutePath)
 }
 
 val artifacts = providers.provider {
@@ -86,6 +88,7 @@ tasks.register<JavaExec>("composeBinaryInventory") {
 tasks.matching { it.name == "kspDebugKotlin" }.configureEach {
   dependsOn("composeBinaryInventory")
   inputs.file(inventoryOutput)
+  if (publishedSurface.isFile) inputs.file(publishedSurface)
 }
 
 dependencies {

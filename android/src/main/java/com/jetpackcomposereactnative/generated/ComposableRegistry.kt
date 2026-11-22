@@ -242,6 +242,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "SingleChoiceSegmentedButtonRow" -> RendererSingleChoiceSegmentedButtonRow.render(node, scope)
     "Slider" -> RendererSlider.render(node, scope)
     "Slider#1" -> RendererSlider_1.render(node, scope)
+    "Slider#2" -> RendererSlider_2.render(node, scope)
     "SmallExtendedFloatingActionButton" -> RendererSmallExtendedFloatingActionButton.render(node, scope)
     "SmallExtendedFloatingActionButton#1" -> RendererSmallExtendedFloatingActionButton_1.render(node, scope)
     "SmallFloatingActionButton" -> RendererSmallFloatingActionButton.render(node, scope)

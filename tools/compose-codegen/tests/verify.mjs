@@ -134,6 +134,16 @@ if (mode === "audit") {
     "Discover Material defaults factories for value types with internal constructors");
   assert.ok(manifest.icons.some(({ style, name }) => style === "autoMirroredOutlined" && name === "ArrowBack"),
     "Discover directional Material icons from the Compose classpath");
+  for (const [name, slots] of [["Slider", ["thumb", "track"]], ["RangeSlider", ["startThumb", "endThumb", "track"]]]) {
+    assert.ok(manifest.components.some(component => component.name === name && slots.every(slot =>
+      component.parameters.some(({ name, scope }) => name === slot && scope?.startsWith("argument:")))),
+      `${name} must expose native-state content slots`);
+  }
+  const labelPosition = manifest.records.find(({ kotlinType }) =>
+    kotlinType === "androidx.compose.material3.TextFieldLabelPosition");
+  assert.deepEqual(labelPosition?.factories.map(({ name }) => name),
+    ["TextFieldLabelPosition.Above", "TextFieldLabelPosition.Attached"],
+    "Discover public variants of a closed Compose value");
   for (const [name, kind] of [["AlertDialog", "dialogProperties"], ["DropdownMenu", "popupProperties"]]) {
     assert.ok(manifest.components.some(component => component.name === name &&
       component.parameters.some(parameter => parameter.name === "properties" && parameter.kind === kind)),

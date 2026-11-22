@@ -182,7 +182,9 @@ def verify():
     nodes = wait_for("Saved from overflow", "Show inputs", window=window)
 
     tap(nodes["Show inputs"])
-    nodes = wait_for("Notifications off", "Save to favorites", "Slider 35%", "Show surfaces", window=window)
+    nodes = wait_for(
+        "Notifications off", "Save to favorites", "Slider 35%", "Custom slider thumb", "Show surfaces", window=window,
+    )
     capture("04-inputs")
     with record("inputs"):
         tap(nodes["Try weekly"])

@@ -81,7 +81,7 @@ internal class StructuredValueResolver(
           it.annotationType.resolve().declaration.qualifiedName?.asString() == "androidx.compose.runtime.Composable"
         }
         RecordFactory(label, function, fields, composable) to fn
-      }
+      } + nestedFactories(declaration)
     if (resolved.isEmpty()) {
       rejectedDefaults += qualified
       return null
@@ -92,6 +92,21 @@ internal class StructuredValueResolver(
     records[qualified] = record
     typeNames[name] = qualified
     return if (isUsable(record)) "record:$name" else null
+  }
+
+  private fun nestedFactories(type: KSClassDeclaration): List<Pair<RecordFactory, KSFunctionDeclaration>> {
+    if (Modifier.SEALED !in type.modifiers &&
+      !(Modifier.ABSTRACT in type.modifiers && type.primaryConstructor?.getVisibility() == Visibility.PRIVATE)) {
+      return emptyList()
+    }
+    val expected = type.asStarProjectedType()
+    return type.declarations.filterIsInstance<KSClassDeclaration>().mapNotNull { variant ->
+      if (variant.typeParameters.isNotEmpty() || !expected.isAssignableFrom(variant.asStarProjectedType())) return@mapNotNull null
+      val function = variant.qualifiedName?.asString() ?: return@mapNotNull null
+      val constructor = publicValueConstructor(variant)?.takeIf { hasBridgeVisibility(it) } ?: return@mapNotNull null
+      val fields = decodeFields(constructor) ?: return@mapNotNull null
+      RecordFactory(function.removePrefix(type.packageName.asString() + "."), function, fields, false) to constructor
+    }.toList()
   }
 
   private fun resolve(type: KSType, field: Boolean): String? {
@@ -178,13 +193,7 @@ internal class StructuredValueResolver(
     val constructors = if (Modifier.ABSTRACT in type.modifiers || type.classKind != ClassKind.CLASS) emptyList()
       else type.declarations.filterIsInstance<KSFunctionDeclaration>()
         .filter { it.simpleName.asString() == "<init>" && it.getVisibility() == Visibility.PUBLIC }.toList()
-    val immutableFields = type.getAllProperties()
-      .filter { it.getVisibility() == Visibility.PUBLIC && !it.isMutable }
-      .map { it.simpleName.asString() }.toSet()
-    val primary = type.primaryConstructor?.takeIf {
-      type.classKind == ClassKind.CLASS && Modifier.ABSTRACT !in type.modifiers &&
-        it.parameters.all { parameter -> parameter.name?.asString() in immutableFields }
-    }
+    val primary = publicValueConstructor(type)
     val candidates = (factories + listOfNotNull(primary)).mapNotNull { fn ->
       val parameters = fn.parameters
       if (!hasBridgeVisibility(fn) || parameters.isEmpty()) return@mapNotNull null
@@ -209,6 +218,16 @@ internal class StructuredValueResolver(
     }.distinct()
     val widest = candidates.maxOfOrNull { it.fields.size } ?: return null
     return candidates.singleOrNull { it.fields.size == widest }
+  }
+
+  private fun publicValueConstructor(type: KSClassDeclaration): KSFunctionDeclaration? {
+    if (type.classKind != ClassKind.CLASS || Modifier.ABSTRACT in type.modifiers) return null
+    val immutableFields = type.getAllProperties()
+      .filter { it.getVisibility() == Visibility.PUBLIC && !it.isMutable }
+      .map { it.simpleName.asString() }.toSet()
+    return type.primaryConstructor?.takeIf { constructor ->
+      constructor.parameters.all { parameter -> parameter.name?.asString() in immutableFields }
+    }
   }
 
   private fun decodeFields(fn: KSFunctionDeclaration, maxDefaults: Int = 5): List<Parameter>? {

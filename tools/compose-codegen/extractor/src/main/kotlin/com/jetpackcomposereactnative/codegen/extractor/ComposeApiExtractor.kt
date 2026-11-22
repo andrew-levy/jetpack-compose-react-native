@@ -33,7 +33,8 @@ class ComposeApiExtractorProvider : SymbolProcessorProvider {
     }
     fun packages(key: String) = inventory.getAsJsonArray(key).map { it.asString }
     return ComposeApiExtractor(
-      environment.codeGenerator, environment.logger, packages("composePackages"), packages("modifierPackages")
+      environment.codeGenerator, environment.logger, packages("composePackages"), packages("modifierPackages"),
+      PublishedSurface.read(environment.options["publishedSurface"]),
     )
   }
 }
@@ -42,7 +43,8 @@ private class ComposeApiExtractor(
   private val generator: CodeGenerator,
   private val logger: KSPLogger,
   private val packages: List<String>,
-  private val modifierPackages: List<String>
+  private val modifierPackages: List<String>,
+  private val publishedSurface: PublishedSurface,
 ) : SymbolProcessor {
   private var generated = false
   private var valueTypes = emptyMap<String, ValueType>()
@@ -274,7 +276,9 @@ private class ComposeApiExtractor(
     val optional = parameters.filter { it.optional && it.kind != "modifier" }
     val newlyBridgeable = parameters.any { !it.optional && (it.kind in expandedBridgeKinds || it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds) } ||
       childrenScope == PADDING_VALUES || childrenScope in lazyBuilderScopes
-    val forms = callForms(optional, newlyBridgeable)
+    val forms = callForms(optional, newlyBridgeable).retaining(
+      publishedSurface.componentMasks(component.name, component.signature, component.children, ownerScope, parameters)
+    )
     val (masks, blocked) = forms.masks.partition { mask ->
       val passed = component.passed(mask).associate { parameter ->
         val name = parameter.nativeName ?: parameter.name
@@ -385,7 +389,9 @@ private class ComposeApiExtractor(
         val optional = parameters.filter { it.optional }
         val forms = callForms(optional, parameters.any {
           !it.optional && (it.kind in expandedBridgeKinds || it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds)
-        })
+        }).retaining(
+          publishedSurface.modifierMasks(fn.simpleName.asString(), fn.signature(), receiver, parameters)
+        )
         val parameterTypes = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
         fun passed(mask: Int) = parameters.filter { !it.optional || (mask and (1 shl optional.indexOf(it))) != 0 }
         val (masks, blocked) = forms.masks.partition { mask ->
@@ -497,7 +503,8 @@ private class ComposeApiExtractor(
   }
 
   private fun Parameter.isInferredValue() =
-    kind in setOf("char", "dialogProperties", "popupProperties") || structuredValues.isInferredKind(kind)
+    kind in setOf("char", "dialogProperties", "popupProperties") || structuredValues.isInferredKind(kind) ||
+      scope?.startsWith("argument:") == true || scope == TEXT_FIELD_LABEL_SCOPE
 
   private fun previousCallForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
     require(optional.size < Int.SIZE_BITS - 1) { "Too many optional parameters for a Compose call mask" }
@@ -712,8 +719,12 @@ private class ComposeApiExtractor(
 
   private fun KSType.contentScope(): String? = when {
     indexedSlotScope() != null -> indexedSlotScope()
-    name == "kotlin.Function1" -> arguments.first().type?.resolve()?.name?.takeIf {
-      it in scopes || it in lazyBuilderScopes || it in overflowMenuScopes || it == PADDING_VALUES
+    name == "kotlin.Function1" -> arguments.first().type?.resolve()?.name?.let { scope ->
+      when {
+        scope in slotArgumentTypes -> "argument:$scope"
+        scope in scopes || scope in lazyBuilderScopes || scope in overflowMenuScopes || scope == PADDING_VALUES -> scope
+        else -> null
+      }
     }
     else -> null
   }
@@ -895,7 +906,9 @@ private val reservedProps = setOf("children", "key", "ref", "style", "testID", "
 
 private const val PAGER_SCOPE = "androidx.compose.foundation.pager.PagerScope"
 private const val CAROUSEL_SCOPE = "androidx.compose.material3.carousel.CarouselItemScope"
+private const val TEXT_FIELD_LABEL_SCOPE = "androidx.compose.material3.TextFieldLabelScope"
 private val indexedSlotScopes = setOf(PAGER_SCOPE, CAROUSEL_SCOPE)
+private val slotArgumentTypes = setOf("androidx.compose.material3.SliderState", "androidx.compose.material3.RangeSliderState")
 private val lazyBuilderScopes = setOf(
   "androidx.compose.foundation.lazy.LazyListScope",
   "androidx.compose.foundation.lazy.grid.LazyGridScope",
@@ -974,6 +987,7 @@ private val scopes = setOf(
   "androidx.compose.material3.SingleChoiceSegmentedButtonRowScope",
   "androidx.compose.material3.TooltipScope",
   "androidx.compose.material3.TabIndicatorScope",
+  TEXT_FIELD_LABEL_SCOPE,
   "androidx.compose.foundation.layout.GridScope",
   "androidx.compose.foundation.layout.FlexBoxScope",
   "androidx.compose.ui.layout.LookaheadScope",
@@ -1115,7 +1129,13 @@ private data class Candidate(
   val omitted: List<OmittedParameter>,
   val budgetOmittedForms: Int
 )
-private data class CallForms(val masks: List<Int>, val omittedCount: Int)
+private data class CallForms(val masks: List<Int>, val omittedCount: Int) {
+  fun retaining(previous: Set<Int>): CallForms {
+    if (previous.isEmpty()) return this
+    val combined = (masks + previous).distinct().sorted()
+    return CallForms(combined, omittedCount - (combined.size - masks.size))
+  }
+}
 private data class Coverage(
   val signature: String, val status: String, val reason: String?,
   val omittedParameters: List<OmittedParameter>, val omittedForms: List<OmittedForm> = emptyList(),

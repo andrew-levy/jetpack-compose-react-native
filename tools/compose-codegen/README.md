@@ -72,6 +72,9 @@ share scalar decoders and unscoped slot lambdas across call forms. Each branch p
 named arguments, so Kotlin still evaluates the original default expressions.
 Compose and modifier signatures each have an outcome in [coverage.json](coverage.json),
 including unsupported bridges, omitted props, and ambiguous or shadowed argument forms.
+The extractor also reads the last generated [API surface](api-surface.json).
+When a native signature gains a bridgeable parameter, it rechecks and retains
+compatible published call forms before compiling the new bindings.
 
 Structured props such as `contentPadding` and `windowInsets` take numbers in dp.
 `Image`, `Icon`, and `Modifier.paint` accept a built-in Material icon, a plain color,
@@ -128,6 +131,11 @@ accepts a `transitionSpec` with an enter and exit transition.
 
 Pass React content to `BasicTextField`'s `decorator` or `decorationBox`. Put one
 `<ComposeInnerContent />` inside that content to render the native editable control.
+Use React content in slider `thumb` and `track` slots. Compose positions and
+handles input for the thumb, while the slider's state binding provides the
+current value to React.
+A state-based text field accepts a React `label` and a generated
+`labelPosition` value such as `{ factory: "TextFieldLabelPosition.Above" }`.
 
 `Modifier.pointerInput` runs a native pointer policy with an event pass and
 consumption rules. Its optional `onEvent` sends a snapshot of pointer changes
