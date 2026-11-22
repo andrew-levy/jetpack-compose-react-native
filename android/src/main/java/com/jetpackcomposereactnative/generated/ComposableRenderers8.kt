@@ -4,12 +4,11 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
 
 // androidx.compose.material3.OutlinedTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)
 internal object RendererOutlinedTextField_1 {
@@ -26,13 +25,14 @@ internal object RendererOutlinedTextField_1 {
       (if (node.has("suffix")) 256 else 0) +
       (if (node.has("supportingText")) 512 else 0) +
       (if (node.has("isError")) 1024 else 0) +
-      (if (node.has("keyboardOptions")) 2048 else 0) +
-      (if (node.has("keyboardActions")) 4096 else 0) +
-      (if (node.has("singleLine")) 8192 else 0) +
-      (if (node.has("maxLines")) 16384 else 0) +
-      (if (node.has("minLines")) 32768 else 0) +
-      (if (node.has("interactionSource")) 65536 else 0) +
-      (if (node.has("shape")) 131072 else 0)
+      (if (node.has("visualTransformation")) 2048 else 0) +
+      (if (node.has("keyboardOptions")) 4096 else 0) +
+      (if (node.has("keyboardActions")) 8192 else 0) +
+      (if (node.has("singleLine")) 16384 else 0) +
+      (if (node.has("maxLines")) 32768 else 0) +
+      (if (node.has("minLines")) 65536 else 0) +
+      (if (node.has("interactionSource")) 131072 else 0) +
+      (if (node.has("shape")) 262144 else 0)
     when (mask / 32) {
       0 -> renderOutlinedTextField_1Group0(node, scope, mask)
       1 -> renderOutlinedTextField_1Group1(node, scope, mask)
@@ -70,13 +70,9 @@ internal object RendererOutlinedTextField_1 {
       128 -> renderOutlinedTextField_1Group128(node, scope, mask)
       192 -> renderOutlinedTextField_1Group192(node, scope, mask)
       256 -> renderOutlinedTextField_1Group256(node, scope, mask)
-      257 -> renderOutlinedTextField_1Group257(node, scope, mask)
-      258 -> renderOutlinedTextField_1Group258(node, scope, mask)
-      259 -> renderOutlinedTextField_1Group259(node, scope, mask)
-      260 -> renderOutlinedTextField_1Group260(node, scope, mask)
-      261 -> renderOutlinedTextField_1Group261(node, scope, mask)
-      262 -> renderOutlinedTextField_1Group262(node, scope, mask)
-      263 -> renderOutlinedTextField_1Group263(node, scope, mask)
+      320 -> renderOutlinedTextField_1Group320(node, scope, mask)
+      384 -> renderOutlinedTextField_1Group384(node, scope, mask)
+      448 -> renderOutlinedTextField_1Group448(node, scope, mask)
       512 -> renderOutlinedTextField_1Group512(node, scope, mask)
       513 -> renderOutlinedTextField_1Group513(node, scope, mask)
       514 -> renderOutlinedTextField_1Group514(node, scope, mask)
@@ -85,6 +81,10 @@ internal object RendererOutlinedTextField_1 {
       517 -> renderOutlinedTextField_1Group517(node, scope, mask)
       518 -> renderOutlinedTextField_1Group518(node, scope, mask)
       519 -> renderOutlinedTextField_1Group519(node, scope, mask)
+      576 -> renderOutlinedTextField_1Group576(node, scope, mask)
+      704 -> renderOutlinedTextField_1Group704(node, scope, mask)
+      832 -> renderOutlinedTextField_1Group832(node, scope, mask)
+      960 -> renderOutlinedTextField_1Group960(node, scope, mask)
       1024 -> renderOutlinedTextField_1Group1024(node, scope, mask)
       1025 -> renderOutlinedTextField_1Group1025(node, scope, mask)
       1026 -> renderOutlinedTextField_1Group1026(node, scope, mask)
@@ -95,19 +95,28 @@ internal object RendererOutlinedTextField_1 {
       1031 -> renderOutlinedTextField_1Group1031(node, scope, mask)
       2048 -> renderOutlinedTextField_1Group2048(node, scope, mask)
       2049 -> renderOutlinedTextField_1Group2049(node, scope, mask)
+      2050 -> renderOutlinedTextField_1Group2050(node, scope, mask)
+      2051 -> renderOutlinedTextField_1Group2051(node, scope, mask)
+      2052 -> renderOutlinedTextField_1Group2052(node, scope, mask)
+      2053 -> renderOutlinedTextField_1Group2053(node, scope, mask)
+      2054 -> renderOutlinedTextField_1Group2054(node, scope, mask)
+      2055 -> renderOutlinedTextField_1Group2055(node, scope, mask)
       4096 -> renderOutlinedTextField_1Group4096(node, scope, mask)
       4097 -> renderOutlinedTextField_1Group4097(node, scope, mask)
-      4098 -> renderOutlinedTextField_1Group4098(node, scope, mask)
-      4099 -> renderOutlinedTextField_1Group4099(node, scope, mask)
-      4100 -> renderOutlinedTextField_1Group4100(node, scope, mask)
-      4101 -> renderOutlinedTextField_1Group4101(node, scope, mask)
-      4102 -> renderOutlinedTextField_1Group4102(node, scope, mask)
-      4103 -> renderOutlinedTextField_1Group4103(node, scope, mask)
-      5951 -> renderOutlinedTextField_1Group5951(node, scope, mask)
-      7999 -> renderOutlinedTextField_1Group7999(node, scope, mask)
-      8063 -> renderOutlinedTextField_1Group8063(node, scope, mask)
-      8127 -> renderOutlinedTextField_1Group8127(node, scope, mask)
-      8191 -> renderOutlinedTextField_1Group8191(node, scope, mask)
+      8192 -> renderOutlinedTextField_1Group8192(node, scope, mask)
+      8193 -> renderOutlinedTextField_1Group8193(node, scope, mask)
+      8194 -> renderOutlinedTextField_1Group8194(node, scope, mask)
+      8195 -> renderOutlinedTextField_1Group8195(node, scope, mask)
+      8196 -> renderOutlinedTextField_1Group8196(node, scope, mask)
+      8197 -> renderOutlinedTextField_1Group8197(node, scope, mask)
+      8198 -> renderOutlinedTextField_1Group8198(node, scope, mask)
+      8199 -> renderOutlinedTextField_1Group8199(node, scope, mask)
+      11839 -> renderOutlinedTextField_1Group11839(node, scope, mask)
+      15935 -> renderOutlinedTextField_1Group15935(node, scope, mask)
+      16063 -> renderOutlinedTextField_1Group16063(node, scope, mask)
+      16191 -> renderOutlinedTextField_1Group16191(node, scope, mask)
+      16319 -> renderOutlinedTextField_1Group16319(node, scope, mask)
+      16383 -> renderOutlinedTextField_1Group16383(node, scope, mask)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -6295,129 +6304,14 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
       )
       2049 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2050 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2051 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2056 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2057 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2058 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2059 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2064 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2065 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2066 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2067 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2072 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2073 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2074 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      2075 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -6430,21 +6324,21 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4097 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4098 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4099 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6452,14 +6346,14 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4104 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4105 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6467,7 +6361,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4106 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6475,7 +6369,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4107 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6484,14 +6378,14 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4112 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4113 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6499,7 +6393,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4114 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6507,7 +6401,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4115 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6516,7 +6410,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4120 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6524,7 +6418,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4121 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6533,7 +6427,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4122 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6542,7 +6436,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       4123 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6552,7 +6446,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -6565,8 +6459,16 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+      )
+      6145 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -6579,21 +6481,21 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8193 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8194 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8195 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6601,14 +6503,14 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8200 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8201 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6616,7 +6518,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8202 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6624,7 +6526,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8203 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6633,14 +6535,14 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8208 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8209 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6648,7 +6550,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8210 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6656,7 +6558,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8211 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6665,7 +6567,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8216 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6673,7 +6575,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8217 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6682,7 +6584,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8218 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6691,7 +6593,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       8219 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -6701,1144 +6603,67 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group257(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group320(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      8224 -> androidx.compose.material3.OutlinedTextField(
+      10240 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
-      8225 -> androidx.compose.material3.OutlinedTextField(
+      10241 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8226 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8227 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8232 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8233 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8234 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8235 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8240 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8241 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8242 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8243 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8248 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8249 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8250 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8251 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group258(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group384(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      8256 -> androidx.compose.material3.OutlinedTextField(
+      12288 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8257 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8258 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8259 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8264 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8265 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8266 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8267 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8272 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8273 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8274 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8275 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8280 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8281 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8282 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8283 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group259(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group448(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      8288 -> androidx.compose.material3.OutlinedTextField(
+      14336 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
-      8289 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8290 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8291 -> androidx.compose.material3.OutlinedTextField(
+      14337 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8296 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8297 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8298 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8299 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8304 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8305 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8306 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8307 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8312 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8313 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8314 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8315 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group260(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      8320 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8321 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8322 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8323 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8328 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8329 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8330 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8331 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8336 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8337 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8338 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8339 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8344 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8345 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8346 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8347 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group261(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      8352 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8353 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8354 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8355 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8360 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8361 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8362 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8363 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8368 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8369 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8370 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8371 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8376 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8377 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8378 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8379 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group262(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      8384 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8385 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8386 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8387 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8392 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8393 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8394 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8395 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8400 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8401 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8402 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8403 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8408 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8409 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8410 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8411 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group263(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      8416 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8417 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8418 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8419 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8424 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8425 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8426 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8427 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8432 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8433 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8434 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8435 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8440 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8441 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8442 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
-      )
-      8443 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `singleLine` = node.boolean("singleLine"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -7851,21 +6676,21 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16385 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16386 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16387 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7873,14 +6698,14 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16392 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16393 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7888,7 +6713,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16394 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7896,7 +6721,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16395 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7905,14 +6730,14 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16400 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16401 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7920,7 +6745,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16402 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7928,7 +6753,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16403 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7937,7 +6762,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16408 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7945,7 +6770,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16409 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7954,7 +6779,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16410 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7963,7 +6788,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16411 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7973,7 +6798,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -7987,7 +6812,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16417 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -7995,7 +6820,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16418 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8003,7 +6828,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16419 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8012,7 +6837,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16424 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8020,7 +6845,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16425 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8029,7 +6854,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16426 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8038,7 +6863,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16427 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8048,7 +6873,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16432 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8056,7 +6881,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16433 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8065,7 +6890,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16434 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8074,7 +6899,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16435 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8084,7 +6909,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16440 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8093,7 +6918,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16441 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8103,7 +6928,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16442 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8113,7 +6938,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16443 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8124,7 +6949,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -8138,7 +6963,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16449 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8146,7 +6971,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16450 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8154,7 +6979,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16451 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8163,7 +6988,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16456 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8171,7 +6996,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16457 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8180,7 +7005,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16458 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8189,7 +7014,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16459 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8199,7 +7024,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16464 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8207,7 +7032,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16465 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8216,7 +7041,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16466 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8225,7 +7050,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16467 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8235,7 +7060,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16472 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8244,7 +7069,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16473 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8254,7 +7079,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16474 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8264,7 +7089,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16475 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8275,7 +7100,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -8290,7 +7115,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16481 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8299,7 +7124,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16482 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8308,7 +7133,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16483 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8318,7 +7143,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16488 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8327,7 +7152,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16489 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8337,7 +7162,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16490 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8347,7 +7172,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16491 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8358,7 +7183,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16496 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8367,7 +7192,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16497 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8377,7 +7202,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16498 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8387,7 +7212,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16499 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8398,7 +7223,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16504 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8408,7 +7233,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16505 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8419,7 +7244,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16506 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8430,7 +7255,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16507 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8442,7 +7267,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -8456,7 +7281,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16513 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8464,7 +7289,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16514 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8472,7 +7297,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16515 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8481,7 +7306,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16520 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8489,7 +7314,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16521 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8498,7 +7323,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16522 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8507,7 +7332,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16523 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8517,7 +7342,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16528 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8525,7 +7350,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16529 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8534,7 +7359,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16530 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8543,7 +7368,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16531 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8553,7 +7378,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16536 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8562,7 +7387,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16537 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8572,7 +7397,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16538 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8582,7 +7407,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16539 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8593,7 +7418,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -8608,7 +7433,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16545 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8617,7 +7442,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16546 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8626,7 +7451,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16547 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8636,7 +7461,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16552 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8645,7 +7470,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16553 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8655,7 +7480,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16554 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8665,7 +7490,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16555 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8676,7 +7501,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16560 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8685,7 +7510,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16561 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8695,7 +7520,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16562 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8705,7 +7530,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16563 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8716,7 +7541,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16568 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8726,7 +7551,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16569 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8737,7 +7562,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16570 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8748,7 +7573,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16571 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8760,7 +7585,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -8775,7 +7600,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16577 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8784,7 +7609,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16578 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8793,7 +7618,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16579 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8803,7 +7628,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16584 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8812,7 +7637,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16585 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8822,7 +7647,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16586 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8832,7 +7657,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16587 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8843,7 +7668,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16592 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8852,7 +7677,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16593 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8862,7 +7687,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16594 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8872,7 +7697,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16595 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8883,7 +7708,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16600 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8893,7 +7718,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16601 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8904,7 +7729,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16602 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8915,7 +7740,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16603 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8927,7 +7752,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -8943,7 +7768,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16609 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8953,7 +7778,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16610 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8963,7 +7788,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16611 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8974,7 +7799,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16616 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8984,7 +7809,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16617 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -8995,7 +7820,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16618 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9006,7 +7831,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16619 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9018,7 +7843,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16624 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9028,7 +7853,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16625 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9039,7 +7864,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16626 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9050,7 +7875,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16627 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9062,7 +7887,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16632 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9073,7 +7898,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16633 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9085,7 +7910,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16634 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9097,7 +7922,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
       )
       16635 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9110,7 +7935,103 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `maxLines` = node.number("maxLines").toInt(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group576(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      18432 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      18433 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group704(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      22528 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      22529 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group832(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      26624 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      26625 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group960(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      30720 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `singleLine` = node.boolean("singleLine"),
+      )
+      30721 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `singleLine` = node.boolean("singleLine"),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -9123,21 +8044,21 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32769 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32770 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32771 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9145,14 +8066,14 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32776 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32777 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9160,7 +8081,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32778 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9168,7 +8089,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32779 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9177,14 +8098,14 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32784 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32785 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9192,7 +8113,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32786 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9200,7 +8121,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32787 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9209,7 +8130,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32792 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9217,7 +8138,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32793 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9226,7 +8147,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32794 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9235,7 +8156,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32795 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9245,7 +8166,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -9259,7 +8180,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32801 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9267,7 +8188,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32802 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9275,7 +8196,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32803 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9284,7 +8205,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32808 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9292,7 +8213,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32809 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9301,7 +8222,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32810 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9310,7 +8231,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32811 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9320,7 +8241,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32816 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9328,7 +8249,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32817 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9337,7 +8258,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32818 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9346,7 +8267,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32819 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9356,7 +8277,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32824 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9365,7 +8286,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32825 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9375,7 +8296,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32826 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9385,7 +8306,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32827 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9396,7 +8317,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -9410,7 +8331,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32833 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9418,7 +8339,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32834 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9426,7 +8347,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32835 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9435,7 +8356,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32840 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9443,7 +8364,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32841 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9452,7 +8373,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32842 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9461,7 +8382,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32843 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9471,7 +8392,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32848 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9479,7 +8400,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32849 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9488,7 +8409,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32850 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9497,7 +8418,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32851 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9507,7 +8428,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32856 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9516,7 +8437,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32857 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9526,7 +8447,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32858 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9536,7 +8457,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32859 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9547,7 +8468,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -9562,7 +8483,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32865 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9571,7 +8492,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32866 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9580,7 +8501,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32867 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9590,7 +8511,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32872 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9599,7 +8520,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32873 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9609,7 +8530,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32874 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9619,7 +8540,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32875 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9630,7 +8551,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32880 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9639,7 +8560,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32881 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9649,7 +8570,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32882 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9659,7 +8580,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32883 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9670,7 +8591,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32888 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9680,7 +8601,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32889 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9691,7 +8612,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32890 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9702,7 +8623,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32891 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9714,7 +8635,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -9728,7 +8649,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32897 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9736,7 +8657,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32898 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9744,7 +8665,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32899 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9753,7 +8674,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32904 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9761,7 +8682,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32905 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9770,7 +8691,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32906 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9779,7 +8700,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32907 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9789,7 +8710,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32912 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9797,7 +8718,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32913 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9806,7 +8727,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32914 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9815,7 +8736,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32915 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9825,7 +8746,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32920 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9834,7 +8755,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32921 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9844,7 +8765,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32922 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9854,7 +8775,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32923 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9865,7 +8786,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -9880,7 +8801,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32929 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9889,7 +8810,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32930 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9898,7 +8819,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32931 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9908,7 +8829,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32936 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9917,7 +8838,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32937 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9927,7 +8848,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32938 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9937,7 +8858,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32939 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9948,7 +8869,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32944 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9957,7 +8878,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32945 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9967,7 +8888,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32946 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9977,7 +8898,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32947 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9988,7 +8909,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32952 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -9998,7 +8919,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32953 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10009,7 +8930,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32954 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10020,7 +8941,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32955 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10032,7 +8953,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -10047,7 +8968,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32961 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10056,7 +8977,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32962 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10065,7 +8986,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32963 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10075,7 +8996,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32968 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10084,7 +9005,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32969 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10094,7 +9015,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32970 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10104,7 +9025,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32971 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10115,7 +9036,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32976 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10124,7 +9045,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32977 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10134,7 +9055,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32978 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10144,7 +9065,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32979 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10155,7 +9076,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32984 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10165,7 +9086,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32985 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10176,7 +9097,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32986 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10187,7 +9108,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32987 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10199,7 +9120,7 @@ internal object RendererOutlinedTextField_1 {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -10215,7 +9136,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32993 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10225,7 +9146,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32994 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10235,7 +9156,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       32995 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10246,7 +9167,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33000 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10256,7 +9177,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33001 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10267,7 +9188,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33002 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10278,7 +9199,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33003 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10290,7 +9211,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33008 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10300,7 +9221,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33009 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10311,7 +9232,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33010 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10322,7 +9243,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33011 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10334,7 +9255,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33016 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10345,7 +9266,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33017 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10357,7 +9278,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33018 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10369,7 +9290,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       33019 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10382,7 +9303,7 @@ internal object RendererOutlinedTextField_1 {
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `minLines` = node.number("minLines").toInt(),
+        `maxLines` = node.number("maxLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -10395,21 +9316,21 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65537 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65538 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65539 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10417,46 +9338,14 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65540 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65541 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65542 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65543 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65544 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65545 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10464,7 +9353,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65546 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10472,7 +9361,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65547 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10481,50 +9370,14 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65548 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65549 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65550 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65551 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65552 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65553 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10532,7 +9385,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65554 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10540,7 +9393,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65555 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10549,43 +9402,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65556 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65557 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65558 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65559 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65560 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10593,7 +9410,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65561 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10602,7 +9419,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65562 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10611,7 +9428,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65563 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10621,47 +9438,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65564 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65565 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65566 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65567 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -10675,7 +9452,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65569 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10683,7 +9460,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65570 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10691,7 +9468,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65571 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10700,43 +9477,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65572 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65573 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65574 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65575 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65576 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10744,7 +9485,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65577 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10753,7 +9494,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65578 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10762,7 +9503,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65579 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10772,47 +9513,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65580 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65581 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65582 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65583 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65584 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10820,7 +9521,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65585 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10829,7 +9530,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65586 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10838,7 +9539,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65587 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10848,47 +9549,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65588 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65589 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65590 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      65591 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65592 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10897,7 +9558,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65593 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10907,7 +9568,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65594 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10917,7 +9578,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
       65595 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -10928,51 +9589,993 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `minLines` = node.number("minLines").toInt(),
       )
-      65596 -> androidx.compose.material3.OutlinedTextField(
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group2050(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      65600 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
       )
-      65597 -> androidx.compose.material3.OutlinedTextField(
+      65601 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
       )
-      65598 -> androidx.compose.material3.OutlinedTextField(
+      65602 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
       )
-      65599 -> androidx.compose.material3.OutlinedTextField(
+      65603 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65608 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65609 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65610 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65611 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65616 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65617 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65618 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65619 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65624 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65625 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65626 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65627 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group2051(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      65632 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65633 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65634 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65635 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65640 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65641 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65642 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65643 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65648 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65649 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65650 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65651 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65656 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65657 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65658 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65659 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group2052(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      65664 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65665 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65666 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65667 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65672 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65673 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65674 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65675 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65680 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65681 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65682 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65683 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65688 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65689 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65690 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65691 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group2053(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      65696 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65697 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65698 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65699 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65704 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65705 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65706 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65707 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65712 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65713 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65714 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65715 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65720 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65721 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65722 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65723 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group2054(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      65728 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65729 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65730 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65731 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65736 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65737 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65738 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65739 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65744 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65745 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65746 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65747 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65752 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65753 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65754 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65755 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group2055(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      65760 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65761 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65762 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65763 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65768 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65769 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65770 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65771 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65776 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65777 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65778 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65779 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65784 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65785 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65786 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
+      )
+      65787 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `minLines` = node.number("minLines").toInt(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -10985,21 +10588,21 @@ internal object RendererOutlinedTextField_1 {
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131073 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131074 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131075 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11007,14 +10610,46 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131076 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131077 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131078 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131079 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131080 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131081 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11022,7 +10657,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131082 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11030,7 +10665,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131083 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11039,14 +10674,50 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131084 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131085 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131086 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131087 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131088 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131089 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11054,7 +10725,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131090 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11062,7 +10733,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131091 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11071,7 +10742,43 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131092 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131093 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131094 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131095 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131096 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11079,7 +10786,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131097 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11088,7 +10795,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131098 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11097,7 +10804,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131099 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11107,7 +10814,47 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131100 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131101 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131102 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131103 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -11121,7 +10868,7 @@ internal object RendererOutlinedTextField_1 {
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131105 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11129,7 +10876,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131106 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11137,7 +10884,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131107 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11146,7 +10893,43 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131108 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131109 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131110 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131111 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131112 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11154,7 +10937,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131113 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11163,7 +10946,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131114 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11172,7 +10955,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131115 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11182,7 +10965,47 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131116 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131117 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131118 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131119 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131120 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11190,7 +11013,7 @@ internal object RendererOutlinedTextField_1 {
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131121 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11199,7 +11022,7 @@ internal object RendererOutlinedTextField_1 {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131122 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11208,7 +11031,7 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131123 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11218,7 +11041,47 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131124 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131125 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131126 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131127 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131128 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11227,7 +11090,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131129 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11237,7 +11100,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131130 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11247,7 +11110,7 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131131 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
@@ -11258,6 +11121,185 @@ internal object RendererOutlinedTextField_1 {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131132 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131133 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131134 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      131135 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group8192(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      262144 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262145 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262146 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262147 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262152 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262153 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262154 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262155 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262160 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262161 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262162 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262163 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262168 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262169 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262170 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262171 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `shape` = node.arguments().shape("shape"),
       )
       else -> error("Invalid generated arguments for " + node.name)
@@ -11265,16 +11307,167 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group4098(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group8193(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      131136 -> androidx.compose.material3.OutlinedTextField(
+      262176 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262177 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262178 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262179 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262184 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262185 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262186 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262187 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262192 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262193 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262194 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262195 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262200 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262201 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262202 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262203 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group8194(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      262208 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131137 -> androidx.compose.material3.OutlinedTextField(
+      262209 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11282,7 +11475,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131138 -> androidx.compose.material3.OutlinedTextField(
+      262210 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11290,7 +11483,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131139 -> androidx.compose.material3.OutlinedTextField(
+      262211 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11299,7 +11492,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131144 -> androidx.compose.material3.OutlinedTextField(
+      262216 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11307,7 +11500,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131145 -> androidx.compose.material3.OutlinedTextField(
+      262217 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11316,7 +11509,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131146 -> androidx.compose.material3.OutlinedTextField(
+      262218 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11325,7 +11518,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131147 -> androidx.compose.material3.OutlinedTextField(
+      262219 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11335,7 +11528,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131152 -> androidx.compose.material3.OutlinedTextField(
+      262224 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11343,7 +11536,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131153 -> androidx.compose.material3.OutlinedTextField(
+      262225 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11352,7 +11545,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131154 -> androidx.compose.material3.OutlinedTextField(
+      262226 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11361,7 +11554,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131155 -> androidx.compose.material3.OutlinedTextField(
+      262227 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11371,7 +11564,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131160 -> androidx.compose.material3.OutlinedTextField(
+      262232 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11380,7 +11573,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131161 -> androidx.compose.material3.OutlinedTextField(
+      262233 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11390,7 +11583,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131162 -> androidx.compose.material3.OutlinedTextField(
+      262234 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11400,7 +11593,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131163 -> androidx.compose.material3.OutlinedTextField(
+      262235 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11416,9 +11609,9 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group4099(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group8195(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      131168 -> androidx.compose.material3.OutlinedTextField(
+      262240 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11426,7 +11619,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131169 -> androidx.compose.material3.OutlinedTextField(
+      262241 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11435,7 +11628,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131170 -> androidx.compose.material3.OutlinedTextField(
+      262242 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11444,7 +11637,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131171 -> androidx.compose.material3.OutlinedTextField(
+      262243 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11454,7 +11647,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131176 -> androidx.compose.material3.OutlinedTextField(
+      262248 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11463,7 +11656,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131177 -> androidx.compose.material3.OutlinedTextField(
+      262249 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11473,7 +11666,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131178 -> androidx.compose.material3.OutlinedTextField(
+      262250 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11483,7 +11676,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131179 -> androidx.compose.material3.OutlinedTextField(
+      262251 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11494,7 +11687,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131184 -> androidx.compose.material3.OutlinedTextField(
+      262256 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11503,7 +11696,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131185 -> androidx.compose.material3.OutlinedTextField(
+      262257 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11513,7 +11706,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131186 -> androidx.compose.material3.OutlinedTextField(
+      262258 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11523,7 +11716,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131187 -> androidx.compose.material3.OutlinedTextField(
+      262259 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11534,7 +11727,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131192 -> androidx.compose.material3.OutlinedTextField(
+      262264 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11544,7 +11737,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131193 -> androidx.compose.material3.OutlinedTextField(
+      262265 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11555,7 +11748,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131194 -> androidx.compose.material3.OutlinedTextField(
+      262266 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11566,7 +11759,7 @@ internal object RendererOutlinedTextField_1 {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131195 -> androidx.compose.material3.OutlinedTextField(
+      262267 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11583,16 +11776,16 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group4100(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group8196(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      131200 -> androidx.compose.material3.OutlinedTextField(
+      262272 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131201 -> androidx.compose.material3.OutlinedTextField(
+      262273 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11600,7 +11793,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131202 -> androidx.compose.material3.OutlinedTextField(
+      262274 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11608,7 +11801,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131203 -> androidx.compose.material3.OutlinedTextField(
+      262275 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11617,7 +11810,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131208 -> androidx.compose.material3.OutlinedTextField(
+      262280 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11625,7 +11818,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131209 -> androidx.compose.material3.OutlinedTextField(
+      262281 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11634,7 +11827,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131210 -> androidx.compose.material3.OutlinedTextField(
+      262282 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11643,7 +11836,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131211 -> androidx.compose.material3.OutlinedTextField(
+      262283 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11653,7 +11846,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131216 -> androidx.compose.material3.OutlinedTextField(
+      262288 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11661,7 +11854,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131217 -> androidx.compose.material3.OutlinedTextField(
+      262289 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11670,7 +11863,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131218 -> androidx.compose.material3.OutlinedTextField(
+      262290 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11679,7 +11872,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131219 -> androidx.compose.material3.OutlinedTextField(
+      262291 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11689,7 +11882,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131224 -> androidx.compose.material3.OutlinedTextField(
+      262296 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11698,7 +11891,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131225 -> androidx.compose.material3.OutlinedTextField(
+      262297 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11708,7 +11901,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131226 -> androidx.compose.material3.OutlinedTextField(
+      262298 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11718,7 +11911,7 @@ internal object RendererOutlinedTextField_1 {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
-      131227 -> androidx.compose.material3.OutlinedTextField(
+      262299 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -11726,523 +11919,6 @@ internal object RendererOutlinedTextField_1 {
         `readOnly` = node.boolean("readOnly"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group4101(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      131232 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131233 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131234 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131235 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131240 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131241 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131242 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131243 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131248 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131249 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131250 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131251 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131256 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131257 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131258 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131259 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group4102(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      131264 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131265 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131266 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131267 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131272 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131273 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131274 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131275 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131280 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131281 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131282 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131283 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131288 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131289 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131290 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131291 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedTextField_1Group4103(node: ComposeNode, scope: Any?, mask: Int) {
-    when (mask) {
-      131296 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131297 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131298 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131299 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131304 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131305 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131306 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131307 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131312 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131313 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131314 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131315 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131320 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131321 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131322 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `shape` = node.arguments().shape("shape"),
-      )
-      131323 -> androidx.compose.material3.OutlinedTextField(
-        `value` = node.jsonObject("value").toComposeTextFieldValue(),
-        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `shape` = node.arguments().shape("shape"),
       )
@@ -12251,9 +11927,526 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group5951(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group8197(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      190459 -> androidx.compose.material3.OutlinedTextField(
+      262304 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262305 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262306 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262307 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262312 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262313 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262314 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262315 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262320 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262321 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262322 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262323 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262328 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262329 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262330 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262331 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group8198(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      262336 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262337 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262338 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262339 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262344 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262345 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262346 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262347 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262352 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262353 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262354 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262355 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262360 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262361 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262362 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262363 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group8199(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      262368 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262369 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262370 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262371 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262376 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262377 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262378 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262379 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262384 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262385 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262386 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262387 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262392 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262393 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262394 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      262395 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group11839(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      378875 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -12272,7 +12465,7 @@ internal object RendererOutlinedTextField_1 {
         `minLines` = node.number("minLines").toInt(),
         `shape` = node.arguments().shape("shape"),
       )
-      190463 -> androidx.compose.material3.OutlinedTextField(
+      378879 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -12297,9 +12490,9 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group7999(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group15935(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      255999 -> androidx.compose.material3.OutlinedTextField(
+      509951 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -12325,9 +12518,9 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group8063(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group16063(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      258047 -> androidx.compose.material3.OutlinedTextField(
+      514047 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -12354,9 +12547,9 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group8127(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group16191(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      260095 -> androidx.compose.material3.OutlinedTextField(
+      518143 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -12383,9 +12576,9 @@ internal object RendererOutlinedTextField_1 {
   }
 
   @Composable
-  private fun renderOutlinedTextField_1Group8191(node: ComposeNode, scope: Any?, mask: Int) {
+  private fun renderOutlinedTextField_1Group16319(node: ComposeNode, scope: Any?, mask: Int) {
     when (mask) {
-      262143 -> androidx.compose.material3.OutlinedTextField(
+      522239 -> androidx.compose.material3.OutlinedTextField(
         `value` = node.jsonObject("value").toComposeTextFieldValue(),
         `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
         `modifier` = node.modifier("modifier", scope),
@@ -12400,6 +12593,37 @@ internal object RendererOutlinedTextField_1 {
         `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
         `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
         `isError` = node.boolean("isError"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
+        `singleLine` = node.boolean("singleLine"),
+        `maxLines` = node.number("maxLines").toInt(),
+        `minLines` = node.number("minLines").toInt(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `shape` = node.arguments().shape("shape"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedTextField_1Group16383(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      524287 -> androidx.compose.material3.OutlinedTextField(
+        `value` = node.jsonObject("value").toComposeTextFieldValue(),
+        `onValueChange` = { value: androidx.compose.ui.text.input.TextFieldValue -> node.emit("onValueChange", value.toComposeSnapshot()) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
+        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
+        `isError` = node.boolean("isError"),
+        `visualTransformation` = node.jsonObject("visualTransformation").toComposeVisualTransformation(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `keyboardActions` = node.jsonObject("keyboardActions").toComposeKeyboardActions(node.arguments()),
         `singleLine` = node.boolean("singleLine"),

@@ -4,12 +4,11 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
 
 // androidx.compose.material3.SegmentedButtonDefaults.ActiveIcon()
 internal object RendererActiveIcon {
@@ -10571,59 +10570,59 @@ internal object RendererAnimatedContent {
   }
 }
 
-// androidx.compose.animation.AnimatedVisibility [receiver: androidx.compose.foundation.layout.RowScope](visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)
+// androidx.compose.animation.AnimatedVisibility(visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)
 internal object RendererAnimatedVisibility {
   @Composable
-  fun render(node: ComposeNode, scope: androidx.compose.foundation.layout.RowScope) {
+  fun render(node: ComposeNode, scope: Any?) {
     val mask = (if (node.has("enter")) 1 else 0) +
       (if (node.has("exit")) 2 else 0) +
       (if (node.has("label")) 4 else 0)
     when (mask) {
-      0 -> scope.composeScoped0(
+      0 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         content = { RenderComposeChildren(node.children, this) },
       )
-      1 -> scope.composeScoped0(
+      1 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `enter` = node.jsonObject("enter").toComposeEnterTransition(),
         content = { RenderComposeChildren(node.children, this) },
       )
-      2 -> scope.composeScoped0(
+      2 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `exit` = node.jsonObject("exit").toComposeExitTransition(),
         content = { RenderComposeChildren(node.children, this) },
       )
-      3 -> scope.composeScoped0(
+      3 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `enter` = node.jsonObject("enter").toComposeEnterTransition(),
         `exit` = node.jsonObject("exit").toComposeExitTransition(),
         content = { RenderComposeChildren(node.children, this) },
       )
-      4 -> scope.composeScoped0(
+      4 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `label` = node.string("label"),
         content = { RenderComposeChildren(node.children, this) },
       )
-      5 -> scope.composeScoped0(
+      5 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `enter` = node.jsonObject("enter").toComposeEnterTransition(),
         `label` = node.string("label"),
         content = { RenderComposeChildren(node.children, this) },
       )
-      6 -> scope.composeScoped0(
+      6 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `exit` = node.jsonObject("exit").toComposeExitTransition(),
         `label` = node.string("label"),
         content = { RenderComposeChildren(node.children, this) },
       )
-      7 -> scope.composeScoped0(
+      7 -> androidx.compose.animation.AnimatedVisibility(
         `visible` = node.boolean("visible"),
         `modifier` = node.modifier("modifier", scope),
         `enter` = node.jsonObject("enter").toComposeEnterTransition(),
@@ -11261,16 +11260,21 @@ internal object RendererBasicSecureTextField {
     val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeTextFieldState() else null
     val mask = (if (node.has("enabled")) 1 else 0) +
       (if (node.has("readOnly")) 2 else 0) +
-      (if (node.has("textStyle")) 4 else 0) +
-      (if (node.has("keyboardOptions")) 8 else 0) +
-      (if (node.has("onKeyboardAction")) 16 else 0) +
-      (if (node.has("interactionSource")) 32 else 0) +
-      (if (node.has("cursorBrush")) 64 else 0)
+      (if (node.has("inputTransformation")) 4 else 0) +
+      (if (node.has("textStyle")) 8 else 0) +
+      (if (node.has("keyboardOptions")) 16 else 0) +
+      (if (node.has("onKeyboardAction")) 32 else 0) +
+      (if (node.has("interactionSource")) 64 else 0) +
+      (if (node.has("cursorBrush")) 128 else 0)
     when (mask / 32) {
       0 -> renderBasicSecureTextFieldGroup0(node, scope, mask, stateValue)
       1 -> renderBasicSecureTextFieldGroup1(node, scope, mask, stateValue)
       2 -> renderBasicSecureTextFieldGroup2(node, scope, mask, stateValue)
       3 -> renderBasicSecureTextFieldGroup3(node, scope, mask, stateValue)
+      4 -> renderBasicSecureTextFieldGroup4(node, scope, mask, stateValue)
+      5 -> renderBasicSecureTextFieldGroup5(node, scope, mask, stateValue)
+      6 -> renderBasicSecureTextFieldGroup6(node, scope, mask, stateValue)
+      7 -> renderBasicSecureTextFieldGroup7(node, scope, mask, stateValue)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -11301,190 +11305,130 @@ internal object RendererBasicSecureTextField {
       4 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       5 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       6 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       7 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       8 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
       )
       9 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
       )
       10 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
       )
       11 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      12 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      13 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      14 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      15 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       16 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       17 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       18 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       19 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       20 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       21 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       22 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       23 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       24 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       25 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       26 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       27 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-      )
-      28 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-      )
-      29 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-      )
-      30 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-      )
-      31 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -11496,242 +11440,174 @@ internal object RendererBasicSecureTextField {
       32 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       33 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       34 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       35 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       36 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       37 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       38 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       39 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       40 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       41 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       42 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       43 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      44 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      45 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      46 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      47 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       48 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       49 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       50 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       51 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       52 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       53 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       54 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       55 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       56 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       57 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       58 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       59 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      60 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      61 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      62 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      63 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -11743,208 +11619,469 @@ internal object RendererBasicSecureTextField {
       64 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       65 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       66 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       67 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      68 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      69 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      70 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      71 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       72 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       73 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       74 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       75 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      76 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      77 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      78 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      79 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       80 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       81 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       82 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       83 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      84 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      85 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      86 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
-      )
-      87 -> androidx.compose.foundation.text.BasicSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       88 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       89 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       90 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       91 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicSecureTextFieldGroup3(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      96 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      97 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      98 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      99 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      104 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      105 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      106 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      107 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      112 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      113 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      114 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      115 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      120 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      121 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      122 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      123 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicSecureTextFieldGroup4(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      128 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      129 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      130 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      131 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      136 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      137 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      138 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      139 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      144 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      145 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      146 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      147 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      152 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      153 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      154 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      155 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicSecureTextFieldGroup5(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      160 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      161 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      162 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      163 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      168 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      169 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      170 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      171 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      176 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      92 -> androidx.compose.foundation.text.BasicSecureTextField(
+      177 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      178 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      179 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      184 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -11952,7 +12089,7 @@ internal object RendererBasicSecureTextField {
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      93 -> androidx.compose.foundation.text.BasicSecureTextField(
+      185 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -11961,7 +12098,7 @@ internal object RendererBasicSecureTextField {
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      94 -> androidx.compose.foundation.text.BasicSecureTextField(
+      186 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -11970,7 +12107,7 @@ internal object RendererBasicSecureTextField {
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      95 -> androidx.compose.foundation.text.BasicSecureTextField(
+      187 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -11985,29 +12122,29 @@ internal object RendererBasicSecureTextField {
   }
 
   @Composable
-  private fun renderBasicSecureTextFieldGroup3(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderBasicSecureTextFieldGroup6(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      96 -> androidx.compose.foundation.text.BasicSecureTextField(
+      192 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      97 -> androidx.compose.foundation.text.BasicSecureTextField(
+      193 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      98 -> androidx.compose.foundation.text.BasicSecureTextField(
+      194 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      99 -> androidx.compose.foundation.text.BasicSecureTextField(
+      195 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12015,14 +12152,14 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      100 -> androidx.compose.foundation.text.BasicSecureTextField(
+      200 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      101 -> androidx.compose.foundation.text.BasicSecureTextField(
+      201 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12030,7 +12167,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      102 -> androidx.compose.foundation.text.BasicSecureTextField(
+      202 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12038,7 +12175,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      103 -> androidx.compose.foundation.text.BasicSecureTextField(
+      203 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12047,14 +12184,14 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      104 -> androidx.compose.foundation.text.BasicSecureTextField(
+      208 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      105 -> androidx.compose.foundation.text.BasicSecureTextField(
+      209 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12062,7 +12199,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      106 -> androidx.compose.foundation.text.BasicSecureTextField(
+      210 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12070,7 +12207,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      107 -> androidx.compose.foundation.text.BasicSecureTextField(
+      211 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12079,7 +12216,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      108 -> androidx.compose.foundation.text.BasicSecureTextField(
+      216 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -12087,7 +12224,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      109 -> androidx.compose.foundation.text.BasicSecureTextField(
+      217 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12096,7 +12233,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      110 -> androidx.compose.foundation.text.BasicSecureTextField(
+      218 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12105,7 +12242,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      111 -> androidx.compose.foundation.text.BasicSecureTextField(
+      219 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12115,14 +12252,21 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      112 -> androidx.compose.foundation.text.BasicSecureTextField(
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicSecureTextFieldGroup7(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      224 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      113 -> androidx.compose.foundation.text.BasicSecureTextField(
+      225 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12130,7 +12274,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      114 -> androidx.compose.foundation.text.BasicSecureTextField(
+      226 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12138,7 +12282,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      115 -> androidx.compose.foundation.text.BasicSecureTextField(
+      227 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12147,7 +12291,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      116 -> androidx.compose.foundation.text.BasicSecureTextField(
+      232 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -12155,7 +12299,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      117 -> androidx.compose.foundation.text.BasicSecureTextField(
+      233 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12164,7 +12308,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      118 -> androidx.compose.foundation.text.BasicSecureTextField(
+      234 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12173,7 +12317,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      119 -> androidx.compose.foundation.text.BasicSecureTextField(
+      235 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12183,7 +12327,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      120 -> androidx.compose.foundation.text.BasicSecureTextField(
+      240 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
@@ -12191,7 +12335,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      121 -> androidx.compose.foundation.text.BasicSecureTextField(
+      241 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12200,7 +12344,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      122 -> androidx.compose.foundation.text.BasicSecureTextField(
+      242 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12209,7 +12353,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      123 -> androidx.compose.foundation.text.BasicSecureTextField(
+      243 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12219,7 +12363,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      124 -> androidx.compose.foundation.text.BasicSecureTextField(
+      248 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -12228,7 +12372,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      125 -> androidx.compose.foundation.text.BasicSecureTextField(
+      249 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -12238,7 +12382,7 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      126 -> androidx.compose.foundation.text.BasicSecureTextField(
+      250 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -12248,11 +12392,23 @@ internal object RendererBasicSecureTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      127 -> androidx.compose.foundation.text.BasicSecureTextField(
+      251 -> androidx.compose.foundation.text.BasicSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      255 -> androidx.compose.foundation.text.BasicSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
@@ -12717,20 +12873,32 @@ internal object RendererBasicTextField {
     val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeTextFieldState() else null
     val mask = (if (node.has("enabled")) 1 else 0) +
       (if (node.has("readOnly")) 2 else 0) +
-      (if (node.has("textStyle")) 4 else 0) +
-      (if (node.has("keyboardOptions")) 8 else 0) +
-      (if (node.has("onKeyboardAction")) 16 else 0) +
-      (if (node.has("lineLimits")) 32 else 0) +
-      (if (node.has("interactionSource")) 64 else 0) +
-      (if (node.has("cursorBrush")) 128 else 0)
+      (if (node.has("inputTransformation")) 4 else 0) +
+      (if (node.has("textStyle")) 8 else 0) +
+      (if (node.has("keyboardOptions")) 16 else 0) +
+      (if (node.has("onKeyboardAction")) 32 else 0) +
+      (if (node.has("lineLimits")) 64 else 0) +
+      (if (node.has("interactionSource")) 128 else 0) +
+      (if (node.has("cursorBrush")) 256 else 0) +
+      (if (node.has("outputTransformation")) 512 else 0)
     when (mask / 32) {
       0 -> renderBasicTextFieldGroup0(node, scope, mask, stateValue)
       1 -> renderBasicTextFieldGroup1(node, scope, mask, stateValue)
       2 -> renderBasicTextFieldGroup2(node, scope, mask, stateValue)
       3 -> renderBasicTextFieldGroup3(node, scope, mask, stateValue)
       4 -> renderBasicTextFieldGroup4(node, scope, mask, stateValue)
+      5 -> renderBasicTextFieldGroup5(node, scope, mask, stateValue)
       6 -> renderBasicTextFieldGroup6(node, scope, mask, stateValue)
-      7 -> renderBasicTextFieldGroup7(node, scope, mask, stateValue)
+      8 -> renderBasicTextFieldGroup8(node, scope, mask, stateValue)
+      12 -> renderBasicTextFieldGroup12(node, scope, mask, stateValue)
+      13 -> renderBasicTextFieldGroup13(node, scope, mask, stateValue)
+      14 -> renderBasicTextFieldGroup14(node, scope, mask, stateValue)
+      15 -> renderBasicTextFieldGroup15(node, scope, mask, stateValue)
+      16 -> renderBasicTextFieldGroup16(node, scope, mask, stateValue)
+      17 -> renderBasicTextFieldGroup17(node, scope, mask, stateValue)
+      18 -> renderBasicTextFieldGroup18(node, scope, mask, stateValue)
+      19 -> renderBasicTextFieldGroup19(node, scope, mask, stateValue)
+      31 -> renderBasicTextFieldGroup31(node, scope, mask, stateValue)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -12761,136 +12929,102 @@ internal object RendererBasicTextField {
       4 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       5 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-      )
-      6 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-      )
-      7 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       8 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
       )
       9 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
       )
       10 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
       )
       11 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      12 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      13 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      14 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      15 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       16 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       17 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       18 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       19 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       20 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       21 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
-      22 -> androidx.compose.foundation.text.BasicTextField(
+      24 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+      )
+      25 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+      )
+      26 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
-      23 -> androidx.compose.foundation.text.BasicTextField(
+      27 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-      )
-      24 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -12902,66 +13036,88 @@ internal object RendererBasicTextField {
       32 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       33 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       34 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       35 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       36 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       37 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
-      38 -> androidx.compose.foundation.text.BasicTextField(
+      40 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      41 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      42 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
-      39 -> androidx.compose.foundation.text.BasicTextField(
+      43 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-      )
-      40 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       48 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+      )
+      52 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      53 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -12973,174 +13129,88 @@ internal object RendererBasicTextField {
       64 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       65 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       66 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       67 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       68 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       69 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      70 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      71 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       72 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       73 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       74 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       75 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      76 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      77 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      78 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      79 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       80 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      81 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      82 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      83 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       84 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       85 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      86 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      87 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -13152,62 +13222,40 @@ internal object RendererBasicTextField {
       96 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      97 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      98 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      99 -> androidx.compose.foundation.text.BasicTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       100 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       101 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      102 -> androidx.compose.foundation.text.BasicTextField(
+      116 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      103 -> androidx.compose.foundation.text.BasicTextField(
+      117 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `readOnly` = node.boolean("readOnly"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -13219,54 +13267,181 @@ internal object RendererBasicTextField {
       128 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       129 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       130 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       131 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      132 -> androidx.compose.foundation.text.BasicTextField(
+      136 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      133 -> androidx.compose.foundation.text.BasicTextField(
+      137 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      134 -> androidx.compose.foundation.text.BasicTextField(
+      138 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      135 -> androidx.compose.foundation.text.BasicTextField(
+      139 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      144 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      145 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      146 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      147 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      152 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      153 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      154 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      155 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup5(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      160 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      161 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      162 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      163 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      168 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      169 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      170 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      171 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -13278,39 +13453,165 @@ internal object RendererBasicTextField {
       192 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       193 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       194 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-        `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
       195 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `readOnly` = node.boolean("readOnly"),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      200 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      201 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      202 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      203 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup8(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      256 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      257 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      258 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      259 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      264 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      265 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      266 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      267 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup12(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      384 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      196 -> androidx.compose.foundation.text.BasicTextField(
+      385 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      386 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      387 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      392 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      197 -> androidx.compose.foundation.text.BasicTextField(
+      393 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -13318,7 +13619,7 @@ internal object RendererBasicTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      198 -> androidx.compose.foundation.text.BasicTextField(
+      394 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `readOnly` = node.boolean("readOnly"),
@@ -13326,7 +13627,7 @@ internal object RendererBasicTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      199 -> androidx.compose.foundation.text.BasicTextField(
+      395 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -13335,7 +13636,7 @@ internal object RendererBasicTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      207 -> androidx.compose.foundation.text.BasicTextField(
+      411 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -13345,7 +13646,14 @@ internal object RendererBasicTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      215 -> androidx.compose.foundation.text.BasicTextField(
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup13(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      427 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -13360,9 +13668,9 @@ internal object RendererBasicTextField {
   }
 
   @Composable
-  private fun renderBasicTextFieldGroup7(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderBasicTextFieldGroup14(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      231 -> androidx.compose.foundation.text.BasicTextField(
+      459 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -13372,7 +13680,14 @@ internal object RendererBasicTextField {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
       )
-      255 -> androidx.compose.foundation.text.BasicTextField(
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup15(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      507 -> androidx.compose.foundation.text.BasicTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -13383,6 +13698,321 @@ internal object RendererBasicTextField {
         `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      511 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup16(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      512 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      513 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      516 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      517 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      528 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      529 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      532 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      533 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup17(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      544 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      545 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      548 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      549 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      560 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      561 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      564 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      565 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup18(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      576 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      577 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      580 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      581 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      592 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      593 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      596 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      597 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup19(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      608 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      609 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      612 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      613 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      624 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      625 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      628 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      629 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderBasicTextFieldGroup31(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      1019 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
+      )
+      1023 -> androidx.compose.foundation.text.BasicTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `readOnly` = node.boolean("readOnly"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `lineLimits` = node.jsonObject("lineLimits").toComposeTextFieldLineLimits(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `cursorBrush` = node.arguments().brush("cursorBrush"),
+        `outputTransformation` = if (node.isNull("outputTransformation")) null else (node.jsonObject("outputTransformation").toComposeOutputTransformation()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }

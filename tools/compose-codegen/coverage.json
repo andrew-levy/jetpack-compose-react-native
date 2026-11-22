@@ -53,28 +53,6 @@
   },
   {
     "signature": "androidx.compose.animation.AnimatedVisibility [receiver: androidx.compose.foundation.layout.RowScope](visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
-    "status": "generated",
-    "omittedParameters": [],
-    "omittedForms": [],
-    "kind": "component"
-  },
-  {
-    "signature": "androidx.compose.animation.AnimatedVisibility [receiver: androidx.compose.foundation.layout.RowScope](visibleState: androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "visibleState",
-        "kotlinType": "androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
-    "omittedForms": [],
-    "kind": "component"
-  },
-  {
-    "signature": "androidx.compose.animation.AnimatedVisibility(visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
     "status": "skipped",
     "reason": "All forms are shadowed by another overload",
     "omittedParameters": [],
@@ -148,6 +126,28 @@
         "reason": "Another overload has the same JavaScript argument shape"
       }
     ],
+    "kind": "component"
+  },
+  {
+    "signature": "androidx.compose.animation.AnimatedVisibility [receiver: androidx.compose.foundation.layout.RowScope](visibleState: androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
+    "status": "adapterRequired",
+    "reason": "Required parameter cannot cross the bridge",
+    "omittedParameters": [
+      {
+        "name": "visibleState",
+        "kotlinType": "androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>",
+        "reason": "Unsupported bridge type",
+        "required": true
+      }
+    ],
+    "omittedForms": [],
+    "kind": "component"
+  },
+  {
+    "signature": "androidx.compose.animation.AnimatedVisibility(visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
+    "status": "generated",
+    "omittedParameters": [],
+    "omittedForms": [],
     "kind": "component"
   },
   {
@@ -895,17 +895,9 @@
   },
   {
     "signature": "androidx.compose.foundation.layout.Box(modifier: androidx.compose.ui.Modifier)",
-    "status": "skipped",
-    "reason": "All forms are shadowed by another overload",
+    "status": "generated",
     "omittedParameters": [],
-    "omittedForms": [
-      {
-        "props": [
-          "modifier"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      }
-    ],
+    "omittedForms": [],
     "kind": "component"
   },
   {
@@ -1444,12 +1436,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?",
         "reason": "Unsupported bridge type",
@@ -1481,7 +1467,8 @@
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 111
   },
   {
     "signature": "androidx.compose.foundation.text.BasicText(text: androidx.compose.ui.text.AnnotatedString, modifier: androidx.compose.ui.Modifier, style: androidx.compose.ui.text.TextStyle, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?, overflow: androidx.compose.ui.text.style.TextOverflow, softWrap: kotlin.Boolean, maxLines: kotlin.Int, inlineContent: kotlin.collections.Map<kotlin.String, androidx.compose.foundation.text.InlineTextContent>)",
@@ -1594,20 +1581,8 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "outputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.OutputTransformation?",
         "reason": "Unsupported bridge type",
         "required": false
       },
@@ -1626,18 +1601,12 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 169
+    "budgetOmittedForms": 886
   },
   {
     "signature": "androidx.compose.foundation.text.BasicTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)",
     "status": "generated",
     "omittedParameters": [
-      {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
       {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>",
@@ -1653,7 +1622,7 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 732
+    "budgetOmittedForms": 1739
   },
   {
     "signature": "androidx.compose.foundation.text.BasicTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)",
@@ -1668,12 +1637,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>",
         "reason": "Unsupported bridge type",
@@ -1688,7 +1651,7 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 732
+    "budgetOmittedForms": 1739
   },
   {
     "signature": "androidx.compose.foundation.text.BasicTextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource, cursorBrush: androidx.compose.ui.graphics.Brush, decorationBox: kotlin.Function1<kotlin.Function0<kotlin.Unit>, kotlin.Unit>)",
@@ -5077,12 +5040,6 @@
         "required": false
       },
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "textObfuscationMode",
         "kotlinType": "androidx.compose.foundation.text.input.TextObfuscationMode",
         "reason": "Unsupported bridge type",
@@ -5109,7 +5066,7 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 16154
+    "budgetOmittedForms": 32521
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(state: androidx.compose.foundation.text.input.TextFieldState, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, labelPosition: androidx.compose.material3.TextFieldLabelPosition, label: kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, outputTransformation: androidx.compose.foundation.text.input.OutputTransformation?, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, onKeyboardAction: androidx.compose.foundation.text.input.KeyboardActionHandler?, lineLimits: androidx.compose.foundation.text.input.TextFieldLineLimits, onTextLayout: kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?, scrollState: androidx.compose.foundation.ScrollState, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)",
@@ -5124,18 +5081,6 @@
       {
         "name": "label",
         "kotlinType": "kotlin.Function1<androidx.compose.material3.TextFieldLabelScope, kotlin.Unit>?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "outputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.OutputTransformation?",
         "reason": "Unsupported bridge type",
         "required": false
       },
@@ -5160,19 +5105,13 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 65271
+    "budgetOmittedForms": 261828
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.TextFieldColors",
         "reason": "Unsupported bridge type",
@@ -5181,19 +5120,13 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 260889
+    "budgetOmittedForms": 523016
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.TextFieldColors",
         "reason": "Unsupported bridge type",
@@ -5202,7 +5135,7 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 260889
+    "budgetOmittedForms": 523016
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextFieldDefaults.Container(enabled: kotlin.Boolean, isError: kotlin.Boolean, interactionSource: androidx.compose.foundation.interaction.InteractionSource, modifier: androidx.compose.ui.Modifier, colors: androidx.compose.material3.TextFieldColors, shape: androidx.compose.ui.graphics.Shape, focusedBorderThickness: androidx.compose.ui.unit.Dp, unfocusedBorderThickness: androidx.compose.ui.unit.Dp)",
@@ -5234,15 +5167,8 @@
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextFieldDefaults.DecorationBox(value: kotlin.String, innerTextField: kotlin.Function0<kotlin.Unit>, enabled: kotlin.Boolean, singleLine: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, interactionSource: androidx.compose.foundation.interaction.InteractionSource, isError: kotlin.Boolean, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, container: kotlin.Function0<kotlin.Unit>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
+    "status": "generated",
     "omittedParameters": [
-      {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
       {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.TextFieldColors",
@@ -5250,8 +5176,1562 @@
         "required": false
       }
     ],
-    "omittedForms": [],
-    "kind": "component"
+    "omittedForms": [
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "trailingIcon"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "prefix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "suffix"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "supportingText"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "contentPadding"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "placeholder",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "placeholder",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "value",
+          "innerTextField",
+          "enabled",
+          "singleLine",
+          "visualTransformation",
+          "interactionSource",
+          "isError",
+          "label",
+          "placeholder",
+          "leadingIcon",
+          "container"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      }
+    ],
+    "kind": "component",
+    "budgetOmittedForms": 911
   },
   {
     "signature": "androidx.compose.material3.OutlinedTextFieldDefaults.colors()",
@@ -5758,18 +7238,6 @@
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "outputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.OutputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "scrollState",
         "kotlinType": "androidx.compose.foundation.ScrollState",
         "reason": "Unsupported bridge type",
@@ -5783,25 +7251,14 @@
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 3021
   },
   {
     "signature": "androidx.compose.material3.SearchBarDefaults.InputField(textFieldState: androidx.compose.foundation.text.input.TextFieldState, searchBarState: androidx.compose.material3.SearchBarState, onSearch: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, inputTransformation: androidx.compose.foundation.text.input.InputTransformation?, outputTransformation: androidx.compose.foundation.text.input.OutputTransformation?, scrollState: androidx.compose.foundation.ScrollState, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)",
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "outputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.OutputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "scrollState",
         "kotlinType": "androidx.compose.foundation.ScrollState",
         "reason": "Unsupported bridge type",
@@ -5815,7 +7272,8 @@
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 3021
   },
   {
     "signature": "androidx.compose.material3.SearchBarDefaults.colors(containerColor: androidx.compose.ui.graphics.Color, dividerColor: androidx.compose.ui.graphics.Color)",
@@ -5911,12 +7369,6 @@
         "required": false
       },
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "textObfuscationMode",
         "kotlinType": "androidx.compose.foundation.text.input.TextObfuscationMode",
         "reason": "Unsupported bridge type",
@@ -5943,7 +7395,7 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 16154
+    "budgetOmittedForms": 32521
   },
   {
     "signature": "androidx.compose.material3.SegmentedButton [receiver: androidx.compose.material3.MultiChoiceSegmentedButtonRowScope](checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, shape: androidx.compose.ui.graphics.Shape, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, colors: androidx.compose.material3.SegmentedButtonColors, border: androidx.compose.foundation.BorderStroke, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, icon: kotlin.Function0<kotlin.Unit>, label: kotlin.Function0<kotlin.Unit>)",
@@ -6828,171 +8280,9 @@
   },
   {
     "signature": "androidx.compose.material3.Tab(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, selectedContentColor: androidx.compose.ui.graphics.Color, unselectedContentColor: androidx.compose.ui.graphics.Color, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)",
-    "status": "skipped",
-    "reason": "All forms are shadowed by another overload",
+    "status": "generated",
     "omittedParameters": [],
-    "omittedForms": [
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "selectedContentColor"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "selectedContentColor"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "unselectedContentColor"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "unselectedContentColor"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "selectedContentColor",
-          "unselectedContentColor"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "selectedContentColor",
-          "unselectedContentColor"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "selectedContentColor",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "selectedContentColor",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "unselectedContentColor",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "unselectedContentColor",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "selectedContentColor",
-          "unselectedContentColor",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      },
-      {
-        "props": [
-          "selected",
-          "onClick",
-          "modifier",
-          "enabled",
-          "selectedContentColor",
-          "unselectedContentColor",
-          "interactionSource"
-        ],
-        "reason": "Another overload has the same JavaScript argument shape"
-      }
-    ],
+    "omittedForms": [],
     "kind": "component"
   },
   {
@@ -7217,18 +8507,6 @@
         "required": false
       },
       {
-        "name": "inputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.InputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
-        "name": "outputTransformation",
-        "kotlinType": "androidx.compose.foundation.text.input.OutputTransformation?",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "onTextLayout",
         "kotlinType": "kotlin.Function2<androidx.compose.ui.unit.Density, kotlin.Function0<androidx.compose.ui.text.TextLayoutResult?>, kotlin.Unit>?",
         "reason": "Unsupported bridge type",
@@ -7249,19 +8527,13 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 65271
+    "budgetOmittedForms": 261828
   },
   {
     "signature": "androidx.compose.material3.TextField(value: androidx.compose.ui.text.input.TextFieldValue, onValueChange: kotlin.Function1<androidx.compose.ui.text.input.TextFieldValue, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.TextFieldColors",
         "reason": "Unsupported bridge type",
@@ -7270,19 +8542,13 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 260889
+    "budgetOmittedForms": 523016
   },
   {
     "signature": "androidx.compose.material3.TextField(value: kotlin.String, onValueChange: kotlin.Function1<kotlin.String, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, readOnly: kotlin.Boolean, textStyle: androidx.compose.ui.text.TextStyle, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, isError: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, keyboardOptions: androidx.compose.foundation.text.KeyboardOptions, keyboardActions: androidx.compose.foundation.text.KeyboardActions, singleLine: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors)",
     "status": "generated",
     "omittedParameters": [
       {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": false
-      },
-      {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.TextFieldColors",
         "reason": "Unsupported bridge type",
@@ -7291,7 +8557,7 @@
     ],
     "omittedForms": [],
     "kind": "component",
-    "budgetOmittedForms": 260889
+    "budgetOmittedForms": 523016
   },
   {
     "signature": "androidx.compose.material3.TextFieldDefaults.Container(enabled: kotlin.Boolean, isError: kotlin.Boolean, interactionSource: androidx.compose.foundation.interaction.InteractionSource, modifier: androidx.compose.ui.Modifier, colors: androidx.compose.material3.TextFieldColors, shape: androidx.compose.ui.graphics.Shape, focusedIndicatorLineThickness: androidx.compose.ui.unit.Dp, unfocusedIndicatorLineThickness: androidx.compose.ui.unit.Dp)",
@@ -7344,15 +8610,8 @@
   },
   {
     "signature": "androidx.compose.material3.TextFieldDefaults.DecorationBox(value: kotlin.String, innerTextField: kotlin.Function0<kotlin.Unit>, enabled: kotlin.Boolean, singleLine: kotlin.Boolean, visualTransformation: androidx.compose.ui.text.input.VisualTransformation, interactionSource: androidx.compose.foundation.interaction.InteractionSource, isError: kotlin.Boolean, label: kotlin.Function0<kotlin.Unit>?, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, prefix: kotlin.Function0<kotlin.Unit>?, suffix: kotlin.Function0<kotlin.Unit>?, supportingText: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.TextFieldColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, container: kotlin.Function0<kotlin.Unit>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
+    "status": "generated",
     "omittedParameters": [
-      {
-        "name": "visualTransformation",
-        "kotlinType": "androidx.compose.ui.text.input.VisualTransformation",
-        "reason": "Unsupported bridge type",
-        "required": true
-      },
       {
         "name": "colors",
         "kotlinType": "androidx.compose.material3.TextFieldColors",
@@ -7361,7 +8620,8 @@
       }
     ],
     "omittedForms": [],
-    "kind": "component"
+    "kind": "component",
+    "budgetOmittedForms": 1919
   },
   {
     "signature": "androidx.compose.material3.TextFieldDefaults.colors()",
@@ -9297,16 +10557,8 @@
   },
   {
     "signature": "androidx.compose.ui.layout.Layout(content: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "measurePolicy",
-        "kotlinType": "androidx.compose.ui.layout.MeasurePolicy",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
@@ -9333,16 +10585,8 @@
   },
   {
     "signature": "androidx.compose.ui.layout.Layout(modifier: androidx.compose.ui.Modifier, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "measurePolicy",
-        "kotlinType": "androidx.compose.ui.layout.MeasurePolicy",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
@@ -9355,16 +10599,8 @@
   },
   {
     "signature": "androidx.compose.ui.layout.MultiMeasureLayout(modifier: androidx.compose.ui.Modifier, content: kotlin.Function0<kotlin.Unit>, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "measurePolicy",
-        "kotlinType": "androidx.compose.ui.layout.MeasurePolicy",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
@@ -12042,16 +13278,8 @@
   },
   {
     "signature": "androidx.compose.ui.layout.layout [receiver: androidx.compose.ui.Modifier](measure: kotlin.Function3<androidx.compose.ui.layout.MeasureScope, androidx.compose.ui.layout.Measurable, androidx.compose.ui.unit.Constraints, androidx.compose.ui.layout.MeasureResult>)",
-    "status": "adapterRequired",
-    "reason": "Required parameter cannot cross the bridge",
-    "omittedParameters": [
-      {
-        "name": "measure",
-        "kotlinType": "kotlin.Function3<androidx.compose.ui.layout.MeasureScope, androidx.compose.ui.layout.Measurable, androidx.compose.ui.unit.Constraints, androidx.compose.ui.layout.MeasureResult>",
-        "reason": "Unsupported bridge type",
-        "required": true
-      }
-    ],
+    "status": "generated",
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "modifier"
   },

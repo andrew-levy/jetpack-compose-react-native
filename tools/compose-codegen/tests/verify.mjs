@@ -79,6 +79,7 @@ if (mode === "audit") {
     ["sharedElement", "sharedContentState"],
     ["drawWithCache", "cachedDrawing"],
     ["dropShadow", "shadowValue"],
+    ["layout", "layoutModifierMeasure"],
     ["pointerInteropFilter", "touchPolicy"],
     ["onRotaryScrollEvent", "rotaryPolicy"],
   ]) {
@@ -99,6 +100,23 @@ if (mode === "audit") {
     assert.ok(manifest.components.some(component => component.name === name &&
       component.parameters.some(parameter => parameter.kind === kind)), name + " must use the shared adapter");
   }
+  assert.ok(manifest.components.some(({ name, ownerScope, parameters, masks }) =>
+    name === "AnimatedVisibility" && !ownerScope && masks.includes(0) &&
+    parameters.some(({ name }) => name === "visible")),
+    "AnimatedVisibility can render without a native RowScope");
+  assert.ok(manifest.components.some(({ name, children, parameters }) => name === "Layout" && children &&
+    parameters.some(({ kind }) => kind === "layoutMeasurePolicy")));
+  const forms = [...callForms(manifest)].map(JSON.parse);
+  for (const name of ["BasicTextField", "TextField", "OutlinedTextField"]) {
+    const fields = forms.filter(([component]) => component === name).map(([, , props]) =>
+      new Set(props.map(([prop]) => prop)));
+    assert.ok(fields.some(props => ["state", "inputTransformation", "outputTransformation", "keyboardOptions", "lineLimits"]
+      .every(prop => props.has(prop))), name + " must combine native input/output transformations with keyboard options");
+    assert.ok(fields.some(props => ["value", "onValueChange", "visualTransformation"].every(prop => props.has(prop))),
+      name + " must support visual transformations for the controlled overload");
+  }
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "DecorationBox" &&
+    parameters.some(({ kind }) => kind === "visualTransformation")));
   assert.ok(manifest.components.some(({ name, childrenScope }) => name === "Crossfade" && childrenScope === "indexed:"));
   assert.ok(manifest.components.some(({ name, ownerScope }) => name === "NavigationBarItem" && ownerScope?.endsWith(".RowScope")));
   assert.ok(manifest.components.some(component => component.name === "Text" &&

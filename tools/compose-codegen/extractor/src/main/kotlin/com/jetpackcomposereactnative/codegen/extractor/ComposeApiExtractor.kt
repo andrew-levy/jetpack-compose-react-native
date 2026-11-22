@@ -71,13 +71,16 @@ private class ComposeApiExtractor(
         val competing = overloads.groupBy { it.qualifiedName!!.asString() }
         val candidates = overloads.mapNotNull { fn ->
           describe(fn, competing.getValue(fn.qualifiedName!!.asString()), coverage)
-        }.sortedWith(compareBy({ it.declaration.parentDeclaration != null }, { 0 !in it.masks }, { it.component.parameters.count { p -> !p.optional } },
+        }.sortedWith(compareBy(
+          // A scoped overload must never claim a JSX call that also works without a native owner.
+          { it.component.ownerScope != null }, { it.declaration.parentDeclaration != null },
+          { 0 !in it.masks }, { it.component.parameters.count { p -> !p.optional } },
           { -it.component.parameters.size }, { it.declaration.parameters.size }, { it.declaration.signature() }))
-        val claimedForms = mutableSetOf<List<String>>()
+        val claimedForms = mutableSetOf<Pair<Boolean, List<String>>>()
         candidates.mapNotNull { candidate ->
           val component = candidate.component
           val masks = candidate.masks.filter { mask ->
-            claimedForms.add(component.passed(mask).map { "${it.name}:${it.kind.inputType()}" }.sorted())
+            claimedForms.add(component.children to component.passed(mask).map { "${it.name}:${it.kind.inputType()}" }.sorted())
           }
           val shadowed = candidate.masks.filterNot { it in masks }
           val omittedForms = candidate.blocked.map {
@@ -268,7 +271,7 @@ private class ComposeApiExtractor(
       childrenParameter = childrenParameter?.takeUnless { it == "content" }, ownerScope = ownerScope,
       scopedExtension = if (receiver != null) true else null)
     val optional = parameters.filter { it.optional && it.kind != "modifier" }
-    val newlyBridgeable = parameters.any { !it.optional && (it.kind in expandedBridgeKinds || it.kind in extendedCapabilityKinds) } ||
+    val newlyBridgeable = parameters.any { !it.optional && (it.kind in expandedBridgeKinds || it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds) } ||
       childrenScope == PADDING_VALUES || childrenScope in lazyBuilderScopes
     val forms = callForms(optional, newlyBridgeable)
     val (masks, blocked) = forms.masks.partition { mask ->
@@ -376,7 +379,7 @@ private class ComposeApiExtractor(
 
         val optional = parameters.filter { it.optional }
         val forms = callForms(optional, parameters.any {
-          !it.optional && (it.kind in expandedBridgeKinds || it.kind in extendedCapabilityKinds)
+          !it.optional && (it.kind in expandedBridgeKinds || it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds)
         })
         val parameterTypes = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
         fun passed(mask: Int) = parameters.filter { !it.optional || (mask and (1 shl optional.indexOf(it))) != 0 }
@@ -413,6 +416,10 @@ private class ComposeApiExtractor(
   )
 
   private fun callForms(optional: List<Parameter>, newlyBridgeable: Boolean): CallForms {
+    val textParameters = optional.filter { it.kind in textAdapterKinds }
+    if (textParameters.isNotEmpty()) {
+      return extendCallForms(optional, textParameters, newlyBridgeable, 128, 4, combineAdded = true)
+    }
     val newParameters = optional.filter { it.kind in extendedCapabilityKinds }
     if (newParameters.isNotEmpty()) {
       return extendCallForms(optional, newParameters, newlyBridgeable, 128, 4)
@@ -428,6 +435,7 @@ private class ComposeApiExtractor(
     newlyBridgeable: Boolean,
     exhaustiveLimit: Int = 1024,
     coreLimit: Int = 6,
+    combineAdded: Boolean = false,
   ): CallForms {
     val old = optional - added.toSet()
     val previous = callForms(old, newlyBridgeable)
@@ -439,15 +447,21 @@ private class ComposeApiExtractor(
     val previousMasks = previous.masks.map { mask ->
       old.filterIndexed { index, _ -> mask and (1 shl index) != 0 }.sumOf(::bit)
     }
-    val core = (old.filter { it.kind in preferredComponentKinds }.take(4).toSet() + old).take(coreLimit)
+    val preferred = if (combineAdded) old.filter { it.name in textFieldControlProps }
+      else old.filter { it.kind in preferredComponentKinds }.take(4)
+    val core = (preferred.toSet() + old).take(coreLimit)
     val coreMasks = core.fold(listOf(0)) { masks, parameter -> masks + masks.map { it or bit(parameter) } }
-    val newMasks = added.flatMap { parameter -> coreMasks.map { it or bit(parameter) } }
-    val pairedMasks = if (exhaustiveLimit < 1024) added.flatMapIndexed { index, first ->
+    val addedBits = if (combineAdded) {
+      added.fold(listOf(0)) { masks, parameter -> masks + masks.map { it or bit(parameter) } }.drop(1)
+    } else added.map(::bit)
+    val newMasks = addedBits.flatMap { mask -> coreMasks.map { it or mask } }
+    val pairedMasks = if (exhaustiveLimit < 1024 && !combineAdded) added.flatMapIndexed { index, first ->
       added.drop(index + 1).map { second -> bit(first) or bit(second) }
     } else emptyList()
     // Preserve the previously generated full form with each new option in isolation.
     val priorFull = old.sumOf(::bit)
-    val fullWithOne = added.filter { it.kind in extendedCapabilityKinds }.map { priorFull or bit(it) }
+    val fullWithOne = added.filter { it.kind in extendedCapabilityKinds || it.kind in textAdapterKinds }
+      .map { priorFull or bit(it) }
     val considered = (previousMasks + newMasks + pairedMasks + fullWithOne + (total - 1)).distinct().sorted()
     return CallForms(considered, total - considered.size)
   }
@@ -683,6 +697,9 @@ private class ComposeApiExtractor(
   }
 
   private fun KSType.modifierReceiverKind(): String? {
+    if (name == "kotlin.Function3" && arguments.map { it.type?.resolve()?.name } == layoutMeasureTypes) {
+      return "layoutModifierMeasure"
+    }
     if (name != "kotlin.Function1") return null
     val argument = arguments.first().type?.resolve()?.name
     val result = arguments.last().type?.resolve()?.name
@@ -724,7 +741,8 @@ private fun String.inputType(): String = when {
   this == "floatRange" -> "tuple"
   this in setOf("alignmentLine", "visibilityScope", "lookaheadScope") -> "string"
   startsWith("record:") -> "object"
-  this in objectKinds || (this in capabilityBridgeKinds || this in extendedCapabilityKinds) && !startsWith("event") -> "object"
+  this in objectKinds || this in textAdapterKinds ||
+    (this in capabilityBridgeKinds || this in extendedCapabilityKinds) && !startsWith("event") -> "object"
   startsWith("event") -> "function"
   else -> this
 }
@@ -755,6 +773,10 @@ private val capabilityBridgeKinds = setOf(
   "nestedScrollConnection", "keyPolicy", "textFieldValue", "eventTextFieldValue", "foundationStyle",
   "foundationStyleState", "interactionSource"
 )
+private val layoutMeasureTypes = listOf("androidx.compose.ui.layout.MeasureScope", "androidx.compose.ui.layout.Measurable",
+  "androidx.compose.ui.unit.Constraints", "androidx.compose.ui.layout.MeasureResult")
+private val textAdapterKinds = setOf("inputTransformation", "outputTransformation", "visualTransformation")
+private val textFieldControlProps = setOf("keyboardOptions", "lineLimits", "keyboardActions", "onKeyboardAction", "singleLine")
 private val extendedCapabilityKinds = setOf(
   "keyboardOptions", "textFieldLineLimits", "pageSize", "ComposeSnapPosition", "ComposeMenuAnchorType",
   "ComposeTimePickerDisplayMode", "shadowValue", "gridConfig", "flexBoxConfig", "flexConfig",
@@ -765,7 +787,7 @@ private val extendedCapabilityKinds = setOf(
   "sharedContentState", "boundsTransform", "visibilityScope", "lookaheadScope",
   "rotaryPolicy", "touchPolicy", "receiveContent", "indication", "rectRulers", "dpPoint", "keyboardActions",
   "eventKeyboardAction", "eventDpSize", "eventMotion", "ComposeFrameRateCategory",
-  "dragTypePolicy", "dragTransfer", "dragTarget", "eventInsets"
+  "dragTypePolicy", "dragTransfer", "dragTarget", "eventInsets", "layoutMeasurePolicy", "layoutModifierMeasure"
 )
 private val preferredComponentKinds = setOf("int", "float", "double", "dp", "sp", "string", "boolean", "color",
   "colorScheme", "slot", "event", "eventString", "eventBoolean", "eventInt", "eventDouble")
@@ -902,6 +924,10 @@ private val valueKinds = mapOf(
   "androidx.compose.foundation.OverscrollEffect" to "overscrollEffect",
   "androidx.compose.foundation.gestures.FlingBehavior" to "flingBehavior",
   "androidx.compose.foundation.text.input.TextFieldLineLimits" to "textFieldLineLimits",
+  "androidx.compose.ui.layout.MeasurePolicy" to "layoutMeasurePolicy",
+  "androidx.compose.foundation.text.input.InputTransformation" to "inputTransformation",
+  "androidx.compose.foundation.text.input.OutputTransformation" to "outputTransformation",
+  "androidx.compose.ui.text.input.VisualTransformation" to "visualTransformation",
   "androidx.compose.foundation.pager.PageSize" to "pageSize",
   "androidx.compose.ui.graphics.shadow.Shadow" to "shadowValue",
   "androidx.compose.foundation.layout.FlexBoxConfig" to "flexBoxConfig",

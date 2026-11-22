@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
   AlertDialog, AnimatedVisibility, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
-  Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
+  Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
   Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeTextFieldValue,
 } from "jetpack-compose-react-native";
@@ -302,11 +302,26 @@ function BridgeAdditions() {
           <Text text="Compose grid child" modifiers={Modifier.gridItem({ column: 1 })} />
           <RNText>React Native grid child</RNText>
         </Grid>
+        <Layout
+          modifiers={fullWidth}
+          measurePolicy={{ height: 40, children: [{}, { horizontalBias: 1, verticalBias: 1 }] }}
+        >
+          <Text text="Layout start" modifiers={Modifier.layout({ height: 28 })} />
+          <RNText>Layout end</RNText>
+        </Layout>
         <Button onClick={() => setDestination(1)}><Text text="Crossfade content" /></Button>
         <Crossfade targetState={destination} animationSpec={{ type: "tween", durationMillis: 200 }}>
           <Text key="first" text="First crossfade state" />
           <Text key="second" text="Second crossfade state" />
         </Crossfade>
+        <TextField
+          modifiers={fullWidth.semantics({ contentDescription: "Native phone input" })}
+          state={{ initialText: "1234" }}
+          keyboardOptions={{ keyboardType: "phone", showKeyboardOnFocus: false }}
+          lineLimits={{ type: "singleLine" }}
+          inputTransformation={{ digitsOnly: true, maxLength: 6 }}
+          outputTransformation={{ insertions: [{ offset: 3, text: "-" }] }}
+        />
       </Column>
     </Demo>
   );

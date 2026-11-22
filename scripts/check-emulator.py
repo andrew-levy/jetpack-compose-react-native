@@ -224,14 +224,29 @@ def verify():
     tap(nodes["Try new bindings"])
     nodes = wait_for(
         "Drag surface", "Compose grid child", "React Native grid child",
-        "Crossfade content", "First crossfade state", window=window,
+        "Crossfade content", "First crossfade state", "Layout start", "Layout end", window=window,
+        layout_ready=lambda nodes: (
+            bounds(nodes["Layout start"])[2] <= bounds(nodes["Layout end"])[0]
+            and bounds(nodes["Layout start"])[1] < bounds(nodes["Layout end"])[1]
+        ),
     )
     left, top, right, bottom = bounds(nodes["Drag surface"])
     drag_y = str((top + bottom) // 2)
     adb("shell", "input", "swipe", str(left + 16), drag_y, str(right - 16), drag_y, "300")
     nodes = wait_for("Drag reported to React", "Crossfade content", window=window)
     tap(nodes["Crossfade content"])
-    nodes = wait_for("Second crossfade state", "Modifiers", absent=("First crossfade state",), window=window)
+    nodes = wait_for(
+        "Second crossfade state", "Native phone input", "Modifiers", absent=("First crossfade state",), window=window,
+        layout_ready=lambda nodes: nodes["Native phone input"].get("text") == "123-4",
+    )
+
+    tap(nodes["Native phone input"])
+    adb("shell", "input", "keyevent", "KEYCODE_MOVE_END")
+    adb("shell", "input", "text", "a567")
+    nodes = wait_for(
+        "Native phone input", "Modifiers", window=window,
+        layout_ready=lambda nodes: nodes["Native phone input"].get("text") == "123-456",
+    )
 
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)

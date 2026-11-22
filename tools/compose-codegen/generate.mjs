@@ -28,6 +28,9 @@ const sharedTypes = {
   cachedDrawing: ["ComposeContentDrawing", "toComposeCachedDrawing"],
   keyboardOptions: ["ComposeKeyboardOptions", "toComposeKeyboardOptions"],
   textFieldLineLimits: ["ComposeTextFieldLineLimits", "toComposeTextFieldLineLimits"],
+  inputTransformation: ["ComposeInputTransformation", "toComposeInputTransformation"],
+  outputTransformation: ["ComposeOutputTransformation", "toComposeOutputTransformation"],
+  visualTransformation: ["ComposeVisualTransformation", "toComposeVisualTransformation"],
   pageSize: ["ComposePageSize", "toComposePageSize"],
   shadowValue: ["ComposeShadow", "toComposeShadow"],
   gridConfig: ["ComposeGridConfig", "toComposeGridConfig"],
@@ -91,6 +94,10 @@ const gestureStateKinds = {
 };
 
 const kinds = {
+  layoutMeasurePolicy: { type: "ComposeLayoutMeasurePolicy", input: "object", module: "../utils/composeValues",
+    expression: (key) => `node.jsonObject(${key}).toComposeLayoutMeasurePolicy()` },
+  layoutModifierMeasure: { type: "ComposeLayoutModifierMeasure", input: "object", module: "../utils/composeValues",
+    modifierExpression: (key) => `args.jsonObject(${key}).toComposeLayoutModifierMeasure()` },
   ...Object.fromEntries(Object.entries(gestureStateKinds).map(([kind, [type, factory]]) => [
     kind, { type, input: "object", module: "../utils/composeValues",
       modifierExpression: () => kind, composition: { value: kind, factory, emitsEvents: true } },

@@ -4,12 +4,11 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
 
 // androidx.compose.material3.ModalBottomSheet(onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, sheetState: androidx.compose.material3.SheetState, sheetMaxWidth: androidx.compose.ui.unit.Dp, sheetGesturesEnabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, scrimColor: androidx.compose.ui.graphics.Color, dragHandle: kotlin.Function0<kotlin.Unit>?, contentWindowInsets: kotlin.Function0<androidx.compose.foundation.layout.WindowInsets>, properties: androidx.compose.material3.ModalBottomSheetProperties, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
 internal object RendererModalBottomSheet {
@@ -11854,6 +11853,18 @@ internal object RendererMultiChoiceSegmentedButtonRow {
   }
 }
 
+// androidx.compose.ui.layout.MultiMeasureLayout(modifier: androidx.compose.ui.Modifier, content: kotlin.Function0<kotlin.Unit>, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)
+internal object RendererMultiMeasureLayout {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    androidx.compose.ui.layout.MultiMeasureLayout(
+      `modifier` = node.modifier("modifier", scope),
+      `measurePolicy` = node.jsonObject("measurePolicy").toComposeLayoutMeasurePolicy(),
+      content = { RenderComposeChildren(node.children) },
+    )
+  }
+}
+
 // androidx.compose.material3.NavigationBar(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
 internal object RendererNavigationBar {
   @Composable
@@ -11973,27 +11984,27 @@ internal object RendererNavigationBarItem {
       (if (node.has("alwaysShowLabel")) 4 else 0) +
       (if (node.has("interactionSource")) 8 else 0)
     when (mask) {
-      0 -> scope.composeScoped2(
+      0 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
       )
-      1 -> scope.composeScoped2(
+      1 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
       )
-      2 -> scope.composeScoped2(
+      2 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
       )
-      3 -> scope.composeScoped2(
+      3 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12001,14 +12012,14 @@ internal object RendererNavigationBarItem {
         `enabled` = node.boolean("enabled"),
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
       )
-      4 -> scope.composeScoped2(
+      4 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
       )
-      5 -> scope.composeScoped2(
+      5 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12016,7 +12027,7 @@ internal object RendererNavigationBarItem {
         `enabled` = node.boolean("enabled"),
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
       )
-      6 -> scope.composeScoped2(
+      6 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12024,7 +12035,7 @@ internal object RendererNavigationBarItem {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
       )
-      7 -> scope.composeScoped2(
+      7 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12033,14 +12044,14 @@ internal object RendererNavigationBarItem {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
       )
-      8 -> scope.composeScoped2(
+      8 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      9 -> scope.composeScoped2(
+      9 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12048,7 +12059,7 @@ internal object RendererNavigationBarItem {
         `enabled` = node.boolean("enabled"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      10 -> scope.composeScoped2(
+      10 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12056,7 +12067,7 @@ internal object RendererNavigationBarItem {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      11 -> scope.composeScoped2(
+      11 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12065,7 +12076,7 @@ internal object RendererNavigationBarItem {
         `label` = if (node.isNull("label")) null else ({ RenderComposeChildren(node.slot("label")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      12 -> scope.composeScoped2(
+      12 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12073,7 +12084,7 @@ internal object RendererNavigationBarItem {
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      13 -> scope.composeScoped2(
+      13 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12082,7 +12093,7 @@ internal object RendererNavigationBarItem {
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      14 -> scope.composeScoped2(
+      14 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -12091,7 +12102,7 @@ internal object RendererNavigationBarItem {
         `alwaysShowLabel` = node.boolean("alwaysShowLabel"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      15 -> scope.composeScoped2(
+      15 -> scope.composeScoped1(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
@@ -13322,11 +13333,12 @@ internal object RendererOutlinedSecureTextField {
       (if (node.has("suffix")) 64 else 0) +
       (if (node.has("supportingText")) 128 else 0) +
       (if (node.has("isError")) 256 else 0) +
-      (if (node.has("keyboardOptions")) 512 else 0) +
-      (if (node.has("onKeyboardAction")) 1024 else 0) +
-      (if (node.has("shape")) 2048 else 0) +
-      (if (node.has("contentPadding")) 4096 else 0) +
-      (if (node.has("interactionSource")) 8192 else 0)
+      (if (node.has("inputTransformation")) 512 else 0) +
+      (if (node.has("keyboardOptions")) 1024 else 0) +
+      (if (node.has("onKeyboardAction")) 2048 else 0) +
+      (if (node.has("shape")) 4096 else 0) +
+      (if (node.has("contentPadding")) 8192 else 0) +
+      (if (node.has("interactionSource")) 16384 else 0)
     when (mask / 32) {
       0 -> renderOutlinedSecureTextFieldGroup0(node, scope, mask, stateValue)
       1 -> renderOutlinedSecureTextFieldGroup1(node, scope, mask, stateValue)
@@ -13337,14 +13349,19 @@ internal object RendererOutlinedSecureTextField {
       32 -> renderOutlinedSecureTextFieldGroup32(node, scope, mask, stateValue)
       48 -> renderOutlinedSecureTextFieldGroup48(node, scope, mask, stateValue)
       64 -> renderOutlinedSecureTextFieldGroup64(node, scope, mask, stateValue)
+      80 -> renderOutlinedSecureTextFieldGroup80(node, scope, mask, stateValue)
+      96 -> renderOutlinedSecureTextFieldGroup96(node, scope, mask, stateValue)
+      112 -> renderOutlinedSecureTextFieldGroup112(node, scope, mask, stateValue)
       128 -> renderOutlinedSecureTextFieldGroup128(node, scope, mask, stateValue)
-      207 -> renderOutlinedSecureTextFieldGroup207(node, scope, mask, stateValue)
       256 -> renderOutlinedSecureTextFieldGroup256(node, scope, mask, stateValue)
-      257 -> renderOutlinedSecureTextFieldGroup257(node, scope, mask, stateValue)
-      463 -> renderOutlinedSecureTextFieldGroup463(node, scope, mask, stateValue)
-      479 -> renderOutlinedSecureTextFieldGroup479(node, scope, mask, stateValue)
-      495 -> renderOutlinedSecureTextFieldGroup495(node, scope, mask, stateValue)
-      511 -> renderOutlinedSecureTextFieldGroup511(node, scope, mask, stateValue)
+      399 -> renderOutlinedSecureTextFieldGroup399(node, scope, mask, stateValue)
+      512 -> renderOutlinedSecureTextFieldGroup512(node, scope, mask, stateValue)
+      513 -> renderOutlinedSecureTextFieldGroup513(node, scope, mask, stateValue)
+      911 -> renderOutlinedSecureTextFieldGroup911(node, scope, mask, stateValue)
+      943 -> renderOutlinedSecureTextFieldGroup943(node, scope, mask, stateValue)
+      975 -> renderOutlinedSecureTextFieldGroup975(node, scope, mask, stateValue)
+      1007 -> renderOutlinedSecureTextFieldGroup1007(node, scope, mask, stateValue)
+      1023 -> renderOutlinedSecureTextFieldGroup1023(node, scope, mask, stateValue)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -14046,114 +14063,26 @@ internal object RendererOutlinedSecureTextField {
       512 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       513 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
-      516 -> androidx.compose.material3.OutlinedSecureTextField(
+      514 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
-      517 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      520 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      521 -> androidx.compose.material3.OutlinedSecureTextField(
+      515 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      524 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      525 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      528 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      529 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      532 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      533 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      536 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      537 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      540 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      541 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -14165,46 +14094,46 @@ internal object RendererOutlinedSecureTextField {
       1024 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1025 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1028 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1029 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1032 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1033 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1036 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1037 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14212,27 +14141,27 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1040 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1041 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1044 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1045 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14240,14 +14169,14 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1048 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1049 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14255,7 +14184,7 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1052 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14263,7 +14192,7 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1053 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14272,7 +14201,7 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -14284,8 +14213,30 @@ internal object RendererOutlinedSecureTextField {
       1536 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      1537 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+      )
+      1538 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+      )
+      1539 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -14297,46 +14248,46 @@ internal object RendererOutlinedSecureTextField {
       2048 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2049 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2052 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2053 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2056 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2057 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2060 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2061 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14344,27 +14295,27 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2064 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2065 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2068 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2069 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14372,14 +14323,14 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2072 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2073 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14387,7 +14338,7 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2076 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14395,7 +14346,7 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2077 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14404,7 +14355,94 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedSecureTextFieldGroup80(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      2560 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      2561 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      2562 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      2563 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedSecureTextFieldGroup96(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      3072 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedSecureTextFieldGroup112(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      3584 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      3585 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      3586 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      3587 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -14416,46 +14454,46 @@ internal object RendererOutlinedSecureTextField {
       4096 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4097 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4100 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4101 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4104 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4105 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4108 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4109 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14463,27 +14501,27 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4112 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4113 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4116 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4117 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14491,14 +14529,14 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4120 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4121 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14506,7 +14544,7 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4124 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14514,7 +14552,7 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4125 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14523,29 +14561,7 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderOutlinedSecureTextFieldGroup207(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
-    when (mask) {
-      6655 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
-        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
-        `isError` = node.boolean("isError"),
         `shape` = node.arguments().shape("shape"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -14557,89 +14573,46 @@ internal object RendererOutlinedSecureTextField {
       8192 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8193 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8194 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8195 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8196 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8197 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8198 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8199 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8200 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8201 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8202 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8203 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8204 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8205 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14647,59 +14620,27 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8206 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8207 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8208 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8209 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8210 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8211 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8212 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8213 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14707,31 +14648,14 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8214 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8215 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8216 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8217 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14739,24 +14663,7 @@ internal object RendererOutlinedSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8218 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8219 -> androidx.compose.material3.OutlinedSecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8220 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14764,7 +14671,7 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8221 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
@@ -14773,9 +14680,259 @@ internal object RendererOutlinedSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedSecureTextFieldGroup399(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      12799 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
+        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
+        `isError` = node.boolean("isError"),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedSecureTextFieldGroup512(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      16384 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8222 -> androidx.compose.material3.OutlinedSecureTextField(
+      16385 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16386 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16387 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16388 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16389 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16390 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16391 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16392 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16393 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16394 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16395 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16396 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16397 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16398 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16399 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16400 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16401 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16402 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16403 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16404 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16405 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16406 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16407 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16408 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16409 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16410 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16411 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16412 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16413 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16414 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -14784,7 +14941,7 @@ internal object RendererOutlinedSecureTextField {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8223 -> androidx.compose.material3.OutlinedSecureTextField(
+      16415 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14799,29 +14956,29 @@ internal object RendererOutlinedSecureTextField {
   }
 
   @Composable
-  private fun renderOutlinedSecureTextFieldGroup257(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderOutlinedSecureTextFieldGroup513(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      8224 -> androidx.compose.material3.OutlinedSecureTextField(
+      16416 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8225 -> androidx.compose.material3.OutlinedSecureTextField(
+      16417 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8226 -> androidx.compose.material3.OutlinedSecureTextField(
+      16418 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8227 -> androidx.compose.material3.OutlinedSecureTextField(
+      16419 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14829,14 +14986,14 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8228 -> androidx.compose.material3.OutlinedSecureTextField(
+      16420 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8229 -> androidx.compose.material3.OutlinedSecureTextField(
+      16421 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14844,7 +15001,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8230 -> androidx.compose.material3.OutlinedSecureTextField(
+      16422 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -14852,7 +15009,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8231 -> androidx.compose.material3.OutlinedSecureTextField(
+      16423 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14861,14 +15018,14 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8232 -> androidx.compose.material3.OutlinedSecureTextField(
+      16424 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8233 -> androidx.compose.material3.OutlinedSecureTextField(
+      16425 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14876,7 +15033,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8234 -> androidx.compose.material3.OutlinedSecureTextField(
+      16426 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -14884,7 +15041,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8235 -> androidx.compose.material3.OutlinedSecureTextField(
+      16427 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14893,7 +15050,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8236 -> androidx.compose.material3.OutlinedSecureTextField(
+      16428 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
@@ -14901,7 +15058,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8237 -> androidx.compose.material3.OutlinedSecureTextField(
+      16429 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14910,7 +15067,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8238 -> androidx.compose.material3.OutlinedSecureTextField(
+      16430 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -14919,7 +15076,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8239 -> androidx.compose.material3.OutlinedSecureTextField(
+      16431 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14929,14 +15086,14 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8240 -> androidx.compose.material3.OutlinedSecureTextField(
+      16432 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8241 -> androidx.compose.material3.OutlinedSecureTextField(
+      16433 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14944,7 +15101,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8242 -> androidx.compose.material3.OutlinedSecureTextField(
+      16434 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -14952,7 +15109,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8243 -> androidx.compose.material3.OutlinedSecureTextField(
+      16435 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14961,7 +15118,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8244 -> androidx.compose.material3.OutlinedSecureTextField(
+      16436 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
@@ -14969,7 +15126,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8245 -> androidx.compose.material3.OutlinedSecureTextField(
+      16437 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14978,7 +15135,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8246 -> androidx.compose.material3.OutlinedSecureTextField(
+      16438 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -14987,7 +15144,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8247 -> androidx.compose.material3.OutlinedSecureTextField(
+      16439 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -14997,7 +15154,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8248 -> androidx.compose.material3.OutlinedSecureTextField(
+      16440 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
@@ -15005,7 +15162,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8249 -> androidx.compose.material3.OutlinedSecureTextField(
+      16441 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15014,7 +15171,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8250 -> androidx.compose.material3.OutlinedSecureTextField(
+      16442 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -15023,7 +15180,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8251 -> androidx.compose.material3.OutlinedSecureTextField(
+      16443 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15033,7 +15190,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8252 -> androidx.compose.material3.OutlinedSecureTextField(
+      16444 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
@@ -15042,7 +15199,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8253 -> androidx.compose.material3.OutlinedSecureTextField(
+      16445 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15052,7 +15209,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8254 -> androidx.compose.material3.OutlinedSecureTextField(
+      16446 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -15062,7 +15219,7 @@ internal object RendererOutlinedSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8255 -> androidx.compose.material3.OutlinedSecureTextField(
+      16447 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15078,9 +15235,9 @@ internal object RendererOutlinedSecureTextField {
   }
 
   @Composable
-  private fun renderOutlinedSecureTextFieldGroup463(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderOutlinedSecureTextFieldGroup911(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      14847 -> androidx.compose.material3.OutlinedSecureTextField(
+      29183 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15101,9 +15258,9 @@ internal object RendererOutlinedSecureTextField {
   }
 
   @Composable
-  private fun renderOutlinedSecureTextFieldGroup479(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderOutlinedSecureTextFieldGroup943(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      15359 -> androidx.compose.material3.OutlinedSecureTextField(
+      30207 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15125,9 +15282,9 @@ internal object RendererOutlinedSecureTextField {
   }
 
   @Composable
-  private fun renderOutlinedSecureTextFieldGroup495(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderOutlinedSecureTextFieldGroup975(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      15871 -> androidx.compose.material3.OutlinedSecureTextField(
+      31231 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15149,9 +15306,9 @@ internal object RendererOutlinedSecureTextField {
   }
 
   @Composable
-  private fun renderOutlinedSecureTextFieldGroup511(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderOutlinedSecureTextFieldGroup1007(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      16383 -> androidx.compose.material3.OutlinedSecureTextField(
+      32255 -> androidx.compose.material3.OutlinedSecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -15163,6 +15320,32 @@ internal object RendererOutlinedSecureTextField {
         `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
         `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
         `isError` = node.boolean("isError"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderOutlinedSecureTextFieldGroup1023(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      32767 -> androidx.compose.material3.OutlinedSecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
+        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
+        `isError` = node.boolean("isError"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `shape` = node.arguments().shape("shape"),

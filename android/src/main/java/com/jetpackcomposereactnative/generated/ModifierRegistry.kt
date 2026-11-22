@@ -132,19 +132,20 @@ import androidx.compose.ui.input.pointer.stylusHoverIcon as composeModifier121
 import androidx.compose.ui.input.rotary.onPreRotaryScrollEvent as composeModifier122
 import androidx.compose.ui.input.rotary.onRotaryScrollEvent as composeModifier123
 import androidx.compose.ui.keepScreenOn as composeModifier124
-import androidx.compose.ui.layout.layoutBounds as composeModifier125
-import androidx.compose.ui.layout.layoutId as composeModifier126
-import androidx.compose.ui.layout.onGloballyPositioned as composeModifier127
-import androidx.compose.ui.layout.onLayoutRectChanged as composeModifier128
-import androidx.compose.ui.layout.onPlaced as composeModifier129
-import androidx.compose.ui.layout.onSizeChanged as composeModifier130
-import androidx.compose.ui.layout.onVisibilityChanged as composeModifier131
-import androidx.compose.ui.platform.testTag as composeModifier132
-import androidx.compose.ui.preferredFrameRate as composeModifier133
-import androidx.compose.ui.semantics.clearAndSetSemantics as composeModifier134
-import androidx.compose.ui.semantics.semantics as composeModifier135
-import androidx.compose.ui.sensitiveContent as composeModifier136
-import androidx.compose.ui.zIndex as composeModifier137
+import androidx.compose.ui.layout.layout as composeModifier125
+import androidx.compose.ui.layout.layoutBounds as composeModifier126
+import androidx.compose.ui.layout.layoutId as composeModifier127
+import androidx.compose.ui.layout.onGloballyPositioned as composeModifier128
+import androidx.compose.ui.layout.onLayoutRectChanged as composeModifier129
+import androidx.compose.ui.layout.onPlaced as composeModifier130
+import androidx.compose.ui.layout.onSizeChanged as composeModifier131
+import androidx.compose.ui.layout.onVisibilityChanged as composeModifier132
+import androidx.compose.ui.platform.testTag as composeModifier133
+import androidx.compose.ui.preferredFrameRate as composeModifier134
+import androidx.compose.ui.semantics.clearAndSetSemantics as composeModifier135
+import androidx.compose.ui.semantics.semantics as composeModifier136
+import androidx.compose.ui.sensitiveContent as composeModifier137
+import androidx.compose.ui.zIndex as composeModifier138
 
 @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class, androidx.compose.foundation.layout.ExperimentalFlexBoxApi::class, androidx.compose.foundation.layout.ExperimentalGridApi::class, androidx.compose.foundation.layout.ExperimentalLayoutApi::class, androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModifierArguments, scope: Any?): Modifier? = when (id) {
@@ -353,6 +354,7 @@ internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModi
   202 -> apply202(modifier, args)
   203 -> apply203(modifier, args)
   204 -> apply204(modifier, args)
+  205 -> apply205(modifier, args)
   else -> error("Unknown generated Compose modifier: " + id)
 }
 
@@ -4238,93 +4240,97 @@ private fun apply189(modifier: Modifier, args: ComposeModifierArguments): Modifi
 private fun apply190(modifier: Modifier, args: ComposeModifierArguments): Modifier =
   modifier.composeModifier124()
 
-// androidx.compose.ui.layout.layoutBounds [receiver: androidx.compose.ui.Modifier](holder: androidx.compose.ui.layout.LayoutBoundsHolder)
+// androidx.compose.ui.layout.layout [receiver: androidx.compose.ui.Modifier](measure: kotlin.Function3<androidx.compose.ui.layout.MeasureScope, androidx.compose.ui.layout.Measurable, androidx.compose.ui.unit.Constraints, androidx.compose.ui.layout.MeasureResult>)
 private fun apply191(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composed { val layoutBoundsHolder = args.jsonObject("holder").rememberComposeLayoutBoundsHolder(); composeModifier125(`holder` = layoutBoundsHolder) }
+  modifier.composeModifier125(`measure` = args.jsonObject("measure").toComposeLayoutModifierMeasure())
+
+// androidx.compose.ui.layout.layoutBounds [receiver: androidx.compose.ui.Modifier](holder: androidx.compose.ui.layout.LayoutBoundsHolder)
+private fun apply192(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composed { val layoutBoundsHolder = args.jsonObject("holder").rememberComposeLayoutBoundsHolder(); composeModifier126(`holder` = layoutBoundsHolder) }
 
 // androidx.compose.ui.layout.layoutId [receiver: androidx.compose.ui.Modifier](layoutId: kotlin.Any)
-private fun apply192(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier126(`layoutId` = args.string("layoutId"))
+private fun apply193(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier127(`layoutId` = args.string("layoutId"))
 
 // androidx.compose.ui.layout.onGloballyPositioned [receiver: androidx.compose.ui.Modifier](onGloballyPositioned: kotlin.Function1<androidx.compose.ui.layout.LayoutCoordinates, kotlin.Unit>)
-private fun apply193(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier127(`onGloballyPositioned` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onGloballyPositioned", value.toComposeSnapshot()) })
+private fun apply194(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier128(`onGloballyPositioned` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onGloballyPositioned", value.toComposeSnapshot()) })
 
 // androidx.compose.ui.layout.onLayoutRectChanged [receiver: androidx.compose.ui.Modifier](throttleMillis: kotlin.Long, debounceMillis: kotlin.Long, callback: kotlin.Function1<androidx.compose.ui.spatial.RelativeLayoutBounds, kotlin.Unit>)
-private fun apply194(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply195(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("throttleMillis")) 1 else 0) +
     (if (args.has("debounceMillis")) 2 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier128(`callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
-    1 -> modifier.composeModifier128(`throttleMillis` = args.number("throttleMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
-    2 -> modifier.composeModifier128(`debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
-    3 -> modifier.composeModifier128(`throttleMillis` = args.number("throttleMillis").toLong(), `debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    0 -> modifier.composeModifier129(`callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    1 -> modifier.composeModifier129(`throttleMillis` = args.number("throttleMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    2 -> modifier.composeModifier129(`debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
+    3 -> modifier.composeModifier129(`throttleMillis` = args.number("throttleMillis").toLong(), `debounceMillis` = args.number("debounceMillis").toLong(), `callback` = { value: androidx.compose.ui.spatial.RelativeLayoutBounds -> args.emit("callback", value.toComposeSnapshot()) })
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.layout.onPlaced [receiver: androidx.compose.ui.Modifier](onPlaced: kotlin.Function1<androidx.compose.ui.layout.LayoutCoordinates, kotlin.Unit>)
-private fun apply195(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier129(`onPlaced` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onPlaced", value.toComposeSnapshot()) })
+private fun apply196(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier130(`onPlaced` = { value: androidx.compose.ui.layout.LayoutCoordinates -> args.emit("onPlaced", value.toComposeSnapshot()) })
 
 // androidx.compose.ui.layout.onSizeChanged [receiver: androidx.compose.ui.Modifier](onSizeChanged: kotlin.Function1<androidx.compose.ui.unit.IntSize, kotlin.Unit>)
-private fun apply196(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier130(`onSizeChanged` = { value: androidx.compose.ui.unit.IntSize -> args.emit("onSizeChanged", value.toComposeSnapshot()) })
+private fun apply197(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier131(`onSizeChanged` = { value: androidx.compose.ui.unit.IntSize -> args.emit("onSizeChanged", value.toComposeSnapshot()) })
 
 // androidx.compose.ui.layout.onVisibilityChanged [receiver: androidx.compose.ui.Modifier](minDurationMs: kotlin.Long, minFractionVisible: kotlin.Float, viewportBounds: androidx.compose.ui.layout.LayoutBoundsHolder?, callback: kotlin.Function1<kotlin.Boolean, kotlin.Unit>)
-private fun apply197(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply198(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("minDurationMs")) 1 else 0) +
     (if (args.has("minFractionVisible")) 2 else 0) +
     (if (args.has("viewportBounds")) 4 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier131(`callback` = { value: Boolean -> args.emit("callback", value) })
-    1 -> modifier.composeModifier131(`minDurationMs` = args.number("minDurationMs").toLong(), `callback` = { value: Boolean -> args.emit("callback", value) })
-    2 -> modifier.composeModifier131(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
-    3 -> modifier.composeModifier131(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
-    4 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier131(`viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
-    5 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier131(`minDurationMs` = args.number("minDurationMs").toLong(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
-    6 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier131(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
-    7 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier131(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    0 -> modifier.composeModifier132(`callback` = { value: Boolean -> args.emit("callback", value) })
+    1 -> modifier.composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `callback` = { value: Boolean -> args.emit("callback", value) })
+    2 -> modifier.composeModifier132(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
+    3 -> modifier.composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `callback` = { value: Boolean -> args.emit("callback", value) })
+    4 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    5 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    6 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
+    7 -> modifier.composed { val layoutBoundsHolder = if (args.isNull("viewportBounds")) null else args.jsonObject("viewportBounds").rememberComposeLayoutBoundsHolder(); composeModifier132(`minDurationMs` = args.number("minDurationMs").toLong(), `minFractionVisible` = args.number("minFractionVisible").toFloat(), `viewportBounds` = if (args.isNull("viewportBounds")) null else (layoutBoundsHolder), `callback` = { value: Boolean -> args.emit("callback", value) }) }
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.platform.testTag [receiver: androidx.compose.ui.Modifier](tag: kotlin.String)
-private fun apply198(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier132(`tag` = args.string("tag"))
+private fun apply199(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier133(`tag` = args.string("tag"))
 
 // androidx.compose.ui.preferredFrameRate [receiver: androidx.compose.ui.Modifier](frameRate: kotlin.Float)
-private fun apply199(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier133(`frameRate` = args.number("frameRate").toFloat())
+private fun apply200(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier134(`frameRate` = args.number("frameRate").toFloat())
 
 // androidx.compose.ui.preferredFrameRate [receiver: androidx.compose.ui.Modifier](frameRateCategory: androidx.compose.ui.FrameRateCategory)
-private fun apply200(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier133(`frameRateCategory` = toComposeFrameRateCategory(args.string("frameRateCategory")))
+private fun apply201(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier134(`frameRateCategory` = toComposeFrameRateCategory(args.string("frameRateCategory")))
 
 // androidx.compose.ui.semantics.clearAndSetSemantics [receiver: androidx.compose.ui.Modifier](properties: kotlin.Function1<androidx.compose.ui.semantics.SemanticsPropertyReceiver, kotlin.Unit>)
-private fun apply201(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier134(`properties` = args.jsonObject("properties").toSemantics())
+private fun apply202(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier135(`properties` = args.jsonObject("properties").toSemantics())
 
 // androidx.compose.ui.semantics.semantics [receiver: androidx.compose.ui.Modifier](mergeDescendants: kotlin.Boolean, properties: kotlin.Function1<androidx.compose.ui.semantics.SemanticsPropertyReceiver, kotlin.Unit>)
-private fun apply202(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply203(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("mergeDescendants")) 1 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier135(`properties` = args.jsonObject("properties").toSemantics())
-    1 -> modifier.composeModifier135(`mergeDescendants` = args.boolean("mergeDescendants"), `properties` = args.jsonObject("properties").toSemantics())
+    0 -> modifier.composeModifier136(`properties` = args.jsonObject("properties").toSemantics())
+    1 -> modifier.composeModifier136(`mergeDescendants` = args.boolean("mergeDescendants"), `properties` = args.jsonObject("properties").toSemantics())
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.sensitiveContent [receiver: androidx.compose.ui.Modifier](isContentSensitive: kotlin.Boolean)
-private fun apply203(modifier: Modifier, args: ComposeModifierArguments): Modifier {
+private fun apply204(modifier: Modifier, args: ComposeModifierArguments): Modifier {
   val mask = (if (args.has("isContentSensitive")) 1 else 0)
   return when (mask) {
-    0 -> modifier.composeModifier136()
-    1 -> modifier.composeModifier136(`isContentSensitive` = args.boolean("isContentSensitive"))
+    0 -> modifier.composeModifier137()
+    1 -> modifier.composeModifier137(`isContentSensitive` = args.boolean("isContentSensitive"))
     else -> error("Invalid generated modifier arguments: " + args)
   }
 }
 
 // androidx.compose.ui.zIndex [receiver: androidx.compose.ui.Modifier](zIndex: kotlin.Float)
-private fun apply204(modifier: Modifier, args: ComposeModifierArguments): Modifier =
-  modifier.composeModifier137(`zIndex` = args.number("zIndex").toFloat())
+private fun apply205(modifier: Modifier, args: ComposeModifierArguments): Modifier =
+  modifier.composeModifier138(`zIndex` = args.number("zIndex").toFloat())

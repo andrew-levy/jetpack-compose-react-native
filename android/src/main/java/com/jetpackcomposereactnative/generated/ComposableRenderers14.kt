@@ -4,12 +4,299 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
+
+// androidx.compose.material3.VerticalFloatingToolbar(expanded: kotlin.Boolean, floatingActionButton: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, colors: androidx.compose.material3.FloatingToolbarColors, contentPadding: androidx.compose.foundation.layout.PaddingValues, scrollBehavior: androidx.compose.material3.FloatingToolbarScrollBehavior?, shape: androidx.compose.ui.graphics.Shape, floatingActionButtonPosition: androidx.compose.material3.FloatingToolbarVerticalFabPosition, animationSpec: androidx.compose.animation.core.FiniteAnimationSpec<kotlin.Float>, expandedShadowElevation: androidx.compose.ui.unit.Dp, collapsedShadowElevation: androidx.compose.ui.unit.Dp, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererVerticalFloatingToolbar_1 {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("contentPadding")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("animationSpec")) 4 else 0) +
+      (if (node.has("expandedShadowElevation")) 8 else 0) +
+      (if (node.has("collapsedShadowElevation")) 16 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      16 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      17 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      18 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      19 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      20 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      21 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      22 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      23 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      24 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      25 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      26 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      27 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      28 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      29 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      30 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      31 -> androidx.compose.material3.VerticalFloatingToolbar(
+        `expanded` = node.boolean("expanded"),
+        `floatingActionButton` = { RenderComposeChildren(node.slot("floatingActionButton")) },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
+        `animationSpec` = node.jsonObject("animationSpec").toComposeAnimationSpec(),
+        `expandedShadowElevation` = node.number("expandedShadowElevation").dp,
+        `collapsedShadowElevation` = node.number("collapsedShadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
 
 // androidx.compose.foundation.pager.VerticalPager(state: androidx.compose.foundation.pager.PagerState, modifier: androidx.compose.ui.Modifier, contentPadding: androidx.compose.foundation.layout.PaddingValues, pageSize: androidx.compose.foundation.pager.PageSize, beyondViewportPageCount: kotlin.Int, pageSpacing: androidx.compose.ui.unit.Dp, horizontalAlignment: androidx.compose.ui.Alignment.Horizontal, flingBehavior: androidx.compose.foundation.gestures.TargetedFlingBehavior, userScrollEnabled: kotlin.Boolean, reverseLayout: kotlin.Boolean, key: kotlin.Function1<kotlin.Int, kotlin.Any>?, pageNestedScrollConnection: androidx.compose.ui.input.nestedscroll.NestedScrollConnection, snapPosition: androidx.compose.foundation.gestures.snapping.SnapPosition, overscrollEffect: androidx.compose.foundation.OverscrollEffect?, pageContent: kotlin.Function2<androidx.compose.foundation.pager.PagerScope, kotlin.Int, kotlin.Unit>)
 internal object RendererVerticalPager {

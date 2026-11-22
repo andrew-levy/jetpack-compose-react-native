@@ -4,12 +4,11 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
 
 // androidx.compose.material3.RangeSlider(value: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, onValueChange: kotlin.Function1<kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, valueRange: kotlin.ranges.ClosedFloatingPointRange<kotlin.Float>, onValueChangeFinished: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.SliderColors, startInteractionSource: androidx.compose.foundation.interaction.MutableInteractionSource, endInteractionSource: androidx.compose.foundation.interaction.MutableInteractionSource, startThumb: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, endThumb: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, track: kotlin.Function1<androidx.compose.material3.RangeSliderState, kotlin.Unit>, steps: kotlin.Int)
 internal object RendererRangeSlider_2 {
@@ -482,147 +481,147 @@ internal object RendererRichTooltip {
   @Composable
   private fun renderRichTooltipGroup0(node: ComposeNode, scope: androidx.compose.material3.TooltipScope, mask: Int) {
     when (mask) {
-      0 -> scope.composeScoped4(
+      0 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      1 -> scope.composeScoped4(
+      1 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      2 -> scope.composeScoped4(
+      2 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      3 -> scope.composeScoped4(
+      3 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      4 -> scope.composeScoped4(
+      4 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      5 -> scope.composeScoped4(
+      5 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      6 -> scope.composeScoped4(
+      6 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      7 -> scope.composeScoped4(
+      7 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      8 -> scope.composeScoped4(
+      8 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      9 -> scope.composeScoped4(
+      9 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      10 -> scope.composeScoped4(
+      10 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      11 -> scope.composeScoped4(
+      11 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      12 -> scope.composeScoped4(
+      12 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      13 -> scope.composeScoped4(
+      13 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      14 -> scope.composeScoped4(
+      14 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
-        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
-        `caretSize` = node.jsonObject("caretSize").toDpSize(),
-        `maxWidth` = node.number("maxWidth").dp,
-        `text` = { RenderComposeChildren(node.slot("text")) },
-      )
-      15 -> scope.composeScoped4(
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      16 -> scope.composeScoped4(
+      15 -> scope.composeScoped3(
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
+        `caretSize` = node.jsonObject("caretSize").toDpSize(),
+        `maxWidth` = node.number("maxWidth").dp,
+        `text` = { RenderComposeChildren(node.slot("text")) },
+      )
+      16 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      17 -> scope.composeScoped4(
+      17 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      18 -> scope.composeScoped4(
+      18 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      19 -> scope.composeScoped4(
+      19 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      20 -> scope.composeScoped4(
+      20 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      21 -> scope.composeScoped4(
+      21 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      22 -> scope.composeScoped4(
+      22 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      23 -> scope.composeScoped4(
+      23 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -630,27 +629,27 @@ internal object RendererRichTooltip {
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      24 -> scope.composeScoped4(
+      24 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      25 -> scope.composeScoped4(
+      25 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      26 -> scope.composeScoped4(
+      26 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      27 -> scope.composeScoped4(
+      27 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -658,14 +657,14 @@ internal object RendererRichTooltip {
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      28 -> scope.composeScoped4(
+      28 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      29 -> scope.composeScoped4(
+      29 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -673,7 +672,7 @@ internal object RendererRichTooltip {
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      30 -> scope.composeScoped4(
+      30 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -681,7 +680,7 @@ internal object RendererRichTooltip {
         `shape` = node.arguments().shape("shape"),
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      31 -> scope.composeScoped4(
+      31 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -698,51 +697,51 @@ internal object RendererRichTooltip {
   @Composable
   private fun renderRichTooltipGroup1(node: ComposeNode, scope: androidx.compose.material3.TooltipScope, mask: Int) {
     when (mask) {
-      32 -> scope.composeScoped4(
+      32 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      33 -> scope.composeScoped4(
+      33 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      34 -> scope.composeScoped4(
+      34 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      35 -> scope.composeScoped4(
+      35 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      36 -> scope.composeScoped4(
+      36 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      37 -> scope.composeScoped4(
+      37 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      38 -> scope.composeScoped4(
+      38 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      39 -> scope.composeScoped4(
+      39 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -750,27 +749,27 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      40 -> scope.composeScoped4(
+      40 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      41 -> scope.composeScoped4(
+      41 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      42 -> scope.composeScoped4(
+      42 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      43 -> scope.composeScoped4(
+      43 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -778,14 +777,14 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      44 -> scope.composeScoped4(
+      44 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      45 -> scope.composeScoped4(
+      45 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -793,44 +792,44 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      46 -> scope.composeScoped4(
+      46 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
-        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
-        `caretSize` = node.jsonObject("caretSize").toDpSize(),
-        `maxWidth` = node.number("maxWidth").dp,
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `text` = { RenderComposeChildren(node.slot("text")) },
-      )
-      47 -> scope.composeScoped4(
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      48 -> scope.composeScoped4(
+      47 -> scope.composeScoped3(
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
+        `caretSize` = node.jsonObject("caretSize").toDpSize(),
+        `maxWidth` = node.number("maxWidth").dp,
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `text` = { RenderComposeChildren(node.slot("text")) },
+      )
+      48 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      49 -> scope.composeScoped4(
+      49 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `shape` = node.arguments().shape("shape"),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      50 -> scope.composeScoped4(
+      50 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shape` = node.arguments().shape("shape"),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      51 -> scope.composeScoped4(
+      51 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -838,14 +837,14 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      52 -> scope.composeScoped4(
+      52 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shape` = node.arguments().shape("shape"),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      53 -> scope.composeScoped4(
+      53 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -853,7 +852,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      54 -> scope.composeScoped4(
+      54 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -861,7 +860,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      55 -> scope.composeScoped4(
+      55 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -870,14 +869,14 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      56 -> scope.composeScoped4(
+      56 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      57 -> scope.composeScoped4(
+      57 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -885,7 +884,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      58 -> scope.composeScoped4(
+      58 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -893,7 +892,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      59 -> scope.composeScoped4(
+      59 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -902,7 +901,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      60 -> scope.composeScoped4(
+      60 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
@@ -910,7 +909,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      61 -> scope.composeScoped4(
+      61 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -919,7 +918,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      62 -> scope.composeScoped4(
+      62 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -928,7 +927,7 @@ internal object RendererRichTooltip {
         `tonalElevation` = node.number("tonalElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      63 -> scope.composeScoped4(
+      63 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -946,51 +945,51 @@ internal object RendererRichTooltip {
   @Composable
   private fun renderRichTooltipGroup2(node: ComposeNode, scope: androidx.compose.material3.TooltipScope, mask: Int) {
     when (mask) {
-      64 -> scope.composeScoped4(
+      64 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      65 -> scope.composeScoped4(
+      65 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      66 -> scope.composeScoped4(
+      66 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      67 -> scope.composeScoped4(
+      67 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      68 -> scope.composeScoped4(
+      68 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      69 -> scope.composeScoped4(
+      69 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      70 -> scope.composeScoped4(
+      70 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      71 -> scope.composeScoped4(
+      71 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -998,27 +997,27 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      72 -> scope.composeScoped4(
+      72 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      73 -> scope.composeScoped4(
+      73 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      74 -> scope.composeScoped4(
+      74 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      75 -> scope.composeScoped4(
+      75 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1026,14 +1025,14 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      76 -> scope.composeScoped4(
+      76 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      77 -> scope.composeScoped4(
+      77 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1041,44 +1040,44 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      78 -> scope.composeScoped4(
+      78 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
-        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
-        `caretSize` = node.jsonObject("caretSize").toDpSize(),
-        `maxWidth` = node.number("maxWidth").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        `text` = { RenderComposeChildren(node.slot("text")) },
-      )
-      79 -> scope.composeScoped4(
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      80 -> scope.composeScoped4(
+      79 -> scope.composeScoped3(
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
+        `caretSize` = node.jsonObject("caretSize").toDpSize(),
+        `maxWidth` = node.number("maxWidth").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `text` = { RenderComposeChildren(node.slot("text")) },
+      )
+      80 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      81 -> scope.composeScoped4(
+      81 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `shape` = node.arguments().shape("shape"),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      82 -> scope.composeScoped4(
+      82 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shape` = node.arguments().shape("shape"),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      83 -> scope.composeScoped4(
+      83 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1086,14 +1085,14 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      84 -> scope.composeScoped4(
+      84 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shape` = node.arguments().shape("shape"),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      85 -> scope.composeScoped4(
+      85 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1101,7 +1100,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      86 -> scope.composeScoped4(
+      86 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1109,7 +1108,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      87 -> scope.composeScoped4(
+      87 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1118,14 +1117,14 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      88 -> scope.composeScoped4(
+      88 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      89 -> scope.composeScoped4(
+      89 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1133,7 +1132,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      90 -> scope.composeScoped4(
+      90 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1141,7 +1140,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      91 -> scope.composeScoped4(
+      91 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1150,7 +1149,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      92 -> scope.composeScoped4(
+      92 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1158,7 +1157,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      93 -> scope.composeScoped4(
+      93 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1167,7 +1166,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      94 -> scope.composeScoped4(
+      94 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1176,7 +1175,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      95 -> scope.composeScoped4(
+      95 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1194,27 +1193,27 @@ internal object RendererRichTooltip {
   @Composable
   private fun renderRichTooltipGroup3(node: ComposeNode, scope: androidx.compose.material3.TooltipScope, mask: Int) {
     when (mask) {
-      96 -> scope.composeScoped4(
+      96 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      97 -> scope.composeScoped4(
+      97 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      98 -> scope.composeScoped4(
+      98 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      99 -> scope.composeScoped4(
+      99 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1222,14 +1221,14 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      100 -> scope.composeScoped4(
+      100 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      101 -> scope.composeScoped4(
+      101 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1237,7 +1236,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      102 -> scope.composeScoped4(
+      102 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1245,7 +1244,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      103 -> scope.composeScoped4(
+      103 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1254,14 +1253,14 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      104 -> scope.composeScoped4(
+      104 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      105 -> scope.composeScoped4(
+      105 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1269,7 +1268,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      106 -> scope.composeScoped4(
+      106 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1277,7 +1276,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      107 -> scope.composeScoped4(
+      107 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1286,7 +1285,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      108 -> scope.composeScoped4(
+      108 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1294,7 +1293,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      109 -> scope.composeScoped4(
+      109 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1303,18 +1302,8 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      110 -> scope.composeScoped4(
+      110 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
-        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
-        `caretSize` = node.jsonObject("caretSize").toDpSize(),
-        `maxWidth` = node.number("maxWidth").dp,
-        `tonalElevation` = node.number("tonalElevation").dp,
-        `shadowElevation` = node.number("shadowElevation").dp,
-        `text` = { RenderComposeChildren(node.slot("text")) },
-      )
-      111 -> scope.composeScoped4(
-        `modifier` = node.modifier("modifier", scope),
-        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1322,14 +1311,24 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      112 -> scope.composeScoped4(
+      111 -> scope.composeScoped3(
+        `modifier` = node.modifier("modifier", scope),
+        `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
+        `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
+        `caretSize` = node.jsonObject("caretSize").toDpSize(),
+        `maxWidth` = node.number("maxWidth").dp,
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `text` = { RenderComposeChildren(node.slot("text")) },
+      )
+      112 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `shape` = node.arguments().shape("shape"),
         `tonalElevation` = node.number("tonalElevation").dp,
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      113 -> scope.composeScoped4(
+      113 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `shape` = node.arguments().shape("shape"),
@@ -1337,7 +1336,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      114 -> scope.composeScoped4(
+      114 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `shape` = node.arguments().shape("shape"),
@@ -1345,7 +1344,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      115 -> scope.composeScoped4(
+      115 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1354,7 +1353,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      116 -> scope.composeScoped4(
+      116 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `shape` = node.arguments().shape("shape"),
@@ -1362,7 +1361,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      117 -> scope.composeScoped4(
+      117 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1371,7 +1370,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      118 -> scope.composeScoped4(
+      118 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1380,7 +1379,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      119 -> scope.composeScoped4(
+      119 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1390,7 +1389,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      120 -> scope.composeScoped4(
+      120 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `maxWidth` = node.number("maxWidth").dp,
         `shape` = node.arguments().shape("shape"),
@@ -1398,7 +1397,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      121 -> scope.composeScoped4(
+      121 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1407,7 +1406,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      122 -> scope.composeScoped4(
+      122 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1416,7 +1415,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      123 -> scope.composeScoped4(
+      123 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -1426,7 +1425,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      124 -> scope.composeScoped4(
+      124 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
         `maxWidth` = node.number("maxWidth").dp,
@@ -1435,7 +1434,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      125 -> scope.composeScoped4(
+      125 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1445,7 +1444,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      126 -> scope.composeScoped4(
+      126 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
         `caretSize` = node.jsonObject("caretSize").toDpSize(),
@@ -1455,7 +1454,7 @@ internal object RendererRichTooltip {
         `shadowElevation` = node.number("shadowElevation").dp,
         `text` = { RenderComposeChildren(node.slot("text")) },
       )
-      127 -> scope.composeScoped4(
+      127 -> scope.composeScoped3(
         `modifier` = node.modifier("modifier", scope),
         `title` = if (node.isNull("title")) null else ({ RenderComposeChildren(node.slot("title")) }),
         `action` = if (node.isNull("action")) null else ({ RenderComposeChildren(node.slot("action")) }),
@@ -3576,11 +3575,12 @@ internal object RendererSecureTextField {
       (if (node.has("suffix")) 64 else 0) +
       (if (node.has("supportingText")) 128 else 0) +
       (if (node.has("isError")) 256 else 0) +
-      (if (node.has("keyboardOptions")) 512 else 0) +
-      (if (node.has("onKeyboardAction")) 1024 else 0) +
-      (if (node.has("shape")) 2048 else 0) +
-      (if (node.has("contentPadding")) 4096 else 0) +
-      (if (node.has("interactionSource")) 8192 else 0)
+      (if (node.has("inputTransformation")) 512 else 0) +
+      (if (node.has("keyboardOptions")) 1024 else 0) +
+      (if (node.has("onKeyboardAction")) 2048 else 0) +
+      (if (node.has("shape")) 4096 else 0) +
+      (if (node.has("contentPadding")) 8192 else 0) +
+      (if (node.has("interactionSource")) 16384 else 0)
     when (mask / 32) {
       0 -> renderSecureTextFieldGroup0(node, scope, mask, stateValue)
       1 -> renderSecureTextFieldGroup1(node, scope, mask, stateValue)
@@ -3591,14 +3591,19 @@ internal object RendererSecureTextField {
       32 -> renderSecureTextFieldGroup32(node, scope, mask, stateValue)
       48 -> renderSecureTextFieldGroup48(node, scope, mask, stateValue)
       64 -> renderSecureTextFieldGroup64(node, scope, mask, stateValue)
+      80 -> renderSecureTextFieldGroup80(node, scope, mask, stateValue)
+      96 -> renderSecureTextFieldGroup96(node, scope, mask, stateValue)
+      112 -> renderSecureTextFieldGroup112(node, scope, mask, stateValue)
       128 -> renderSecureTextFieldGroup128(node, scope, mask, stateValue)
-      207 -> renderSecureTextFieldGroup207(node, scope, mask, stateValue)
       256 -> renderSecureTextFieldGroup256(node, scope, mask, stateValue)
-      257 -> renderSecureTextFieldGroup257(node, scope, mask, stateValue)
-      463 -> renderSecureTextFieldGroup463(node, scope, mask, stateValue)
-      479 -> renderSecureTextFieldGroup479(node, scope, mask, stateValue)
-      495 -> renderSecureTextFieldGroup495(node, scope, mask, stateValue)
-      511 -> renderSecureTextFieldGroup511(node, scope, mask, stateValue)
+      399 -> renderSecureTextFieldGroup399(node, scope, mask, stateValue)
+      512 -> renderSecureTextFieldGroup512(node, scope, mask, stateValue)
+      513 -> renderSecureTextFieldGroup513(node, scope, mask, stateValue)
+      911 -> renderSecureTextFieldGroup911(node, scope, mask, stateValue)
+      943 -> renderSecureTextFieldGroup943(node, scope, mask, stateValue)
+      975 -> renderSecureTextFieldGroup975(node, scope, mask, stateValue)
+      1007 -> renderSecureTextFieldGroup1007(node, scope, mask, stateValue)
+      1023 -> renderSecureTextFieldGroup1023(node, scope, mask, stateValue)
       else -> error("Invalid generated arguments for " + node.name)
     }
   }
@@ -4300,114 +4305,26 @@ internal object RendererSecureTextField {
       512 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       513 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
-      516 -> androidx.compose.material3.SecureTextField(
+      514 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
-      517 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      520 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      521 -> androidx.compose.material3.SecureTextField(
+      515 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      524 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      525 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      528 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      529 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      532 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      533 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      536 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      537 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      540 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-      )
-      541 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -4419,46 +4336,46 @@ internal object RendererSecureTextField {
       1024 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1025 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1028 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1029 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1032 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1033 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1036 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1037 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4466,27 +4383,27 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1040 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1041 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1044 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1045 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4494,14 +4411,14 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1048 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1049 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4509,7 +4426,7 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1052 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4517,7 +4434,7 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       1053 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4526,7 +4443,7 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -4538,8 +4455,30 @@ internal object RendererSecureTextField {
       1536 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
-        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      1537 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+      )
+      1538 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+      )
+      1539 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -4551,46 +4490,46 @@ internal object RendererSecureTextField {
       2048 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2049 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2052 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2053 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2056 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2057 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2060 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2061 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4598,27 +4537,27 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2064 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2065 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2068 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2069 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4626,14 +4565,14 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2072 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2073 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4641,7 +4580,7 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2076 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4649,7 +4588,7 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       2077 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4658,7 +4597,94 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `shape` = node.arguments().shape("shape"),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSecureTextFieldGroup80(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      2560 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      2561 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      2562 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      2563 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSecureTextFieldGroup96(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      3072 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSecureTextFieldGroup112(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      3584 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      3585 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      3586 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+      )
+      3587 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -4670,46 +4696,46 @@ internal object RendererSecureTextField {
       4096 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4097 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4100 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4101 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4104 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4105 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4108 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4109 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4717,27 +4743,27 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4112 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4113 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4116 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4117 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4745,14 +4771,14 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4120 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4121 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4760,7 +4786,7 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4124 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4768,7 +4794,7 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `shape` = node.arguments().shape("shape"),
       )
       4125 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4777,29 +4803,7 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
-      )
-      else -> error("Invalid generated arguments for " + node.name)
-    }
-  }
-
-  @Composable
-  private fun renderSecureTextFieldGroup207(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
-    when (mask) {
-      6655 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
-        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
-        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
-        `isError` = node.boolean("isError"),
         `shape` = node.arguments().shape("shape"),
-        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
@@ -4811,89 +4815,46 @@ internal object RendererSecureTextField {
       8192 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8193 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8194 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8195 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8196 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8197 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8198 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8199 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8200 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8201 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8202 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8203 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8204 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8205 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4901,59 +4862,27 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8206 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8207 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8208 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8209 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8210 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8211 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8212 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8213 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4961,31 +4890,14 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8214 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8215 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8216 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8217 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -4993,24 +4905,7 @@ internal object RendererSecureTextField {
         `enabled` = node.boolean("enabled"),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8218 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
-      )
-      8219 -> androidx.compose.material3.SecureTextField(
-        `state` = requireNotNull(stateValue),
-        `modifier` = node.modifier("modifier", scope),
-        `enabled` = node.boolean("enabled"),
-        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
-        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
-        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8220 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -5018,7 +4913,7 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
-        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
       )
       8221 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
@@ -5027,9 +4922,259 @@ internal object RendererSecureTextField {
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSecureTextFieldGroup399(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      12799 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
+        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
+        `isError` = node.boolean("isError"),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSecureTextFieldGroup512(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      16384 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8222 -> androidx.compose.material3.SecureTextField(
+      16385 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16386 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16387 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16388 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16389 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16390 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16391 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16392 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16393 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16394 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16395 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16396 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16397 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16398 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16399 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16400 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16401 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16402 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16403 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16404 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16405 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16406 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16407 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16408 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16409 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16410 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16411 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16412 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16413 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      16414 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5038,7 +5183,7 @@ internal object RendererSecureTextField {
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8223 -> androidx.compose.material3.SecureTextField(
+      16415 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5053,29 +5198,29 @@ internal object RendererSecureTextField {
   }
 
   @Composable
-  private fun renderSecureTextFieldGroup257(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderSecureTextFieldGroup513(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      8224 -> androidx.compose.material3.SecureTextField(
+      16416 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8225 -> androidx.compose.material3.SecureTextField(
+      16417 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8226 -> androidx.compose.material3.SecureTextField(
+      16418 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8227 -> androidx.compose.material3.SecureTextField(
+      16419 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5083,14 +5228,14 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8228 -> androidx.compose.material3.SecureTextField(
+      16420 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8229 -> androidx.compose.material3.SecureTextField(
+      16421 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5098,7 +5243,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8230 -> androidx.compose.material3.SecureTextField(
+      16422 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5106,7 +5251,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8231 -> androidx.compose.material3.SecureTextField(
+      16423 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5115,14 +5260,14 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8232 -> androidx.compose.material3.SecureTextField(
+      16424 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8233 -> androidx.compose.material3.SecureTextField(
+      16425 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5130,7 +5275,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8234 -> androidx.compose.material3.SecureTextField(
+      16426 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5138,7 +5283,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8235 -> androidx.compose.material3.SecureTextField(
+      16427 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5147,7 +5292,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8236 -> androidx.compose.material3.SecureTextField(
+      16428 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
@@ -5155,7 +5300,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8237 -> androidx.compose.material3.SecureTextField(
+      16429 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5164,7 +5309,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8238 -> androidx.compose.material3.SecureTextField(
+      16430 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5173,7 +5318,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8239 -> androidx.compose.material3.SecureTextField(
+      16431 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5183,14 +5328,14 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8240 -> androidx.compose.material3.SecureTextField(
+      16432 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8241 -> androidx.compose.material3.SecureTextField(
+      16433 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5198,7 +5343,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8242 -> androidx.compose.material3.SecureTextField(
+      16434 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5206,7 +5351,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8243 -> androidx.compose.material3.SecureTextField(
+      16435 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5215,7 +5360,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8244 -> androidx.compose.material3.SecureTextField(
+      16436 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
@@ -5223,7 +5368,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8245 -> androidx.compose.material3.SecureTextField(
+      16437 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5232,7 +5377,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8246 -> androidx.compose.material3.SecureTextField(
+      16438 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5241,7 +5386,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8247 -> androidx.compose.material3.SecureTextField(
+      16439 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5251,7 +5396,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8248 -> androidx.compose.material3.SecureTextField(
+      16440 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
@@ -5259,7 +5404,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8249 -> androidx.compose.material3.SecureTextField(
+      16441 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5268,7 +5413,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8250 -> androidx.compose.material3.SecureTextField(
+      16442 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5277,7 +5422,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8251 -> androidx.compose.material3.SecureTextField(
+      16443 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5287,7 +5432,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8252 -> androidx.compose.material3.SecureTextField(
+      16444 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
@@ -5296,7 +5441,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8253 -> androidx.compose.material3.SecureTextField(
+      16445 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5306,7 +5451,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8254 -> androidx.compose.material3.SecureTextField(
+      16446 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `textStyle` = node.jsonObject("textStyle").toTextStyle(),
@@ -5316,7 +5461,7 @@ internal object RendererSecureTextField {
         `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
       )
-      8255 -> androidx.compose.material3.SecureTextField(
+      16447 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5332,9 +5477,9 @@ internal object RendererSecureTextField {
   }
 
   @Composable
-  private fun renderSecureTextFieldGroup463(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderSecureTextFieldGroup911(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      14847 -> androidx.compose.material3.SecureTextField(
+      29183 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5355,9 +5500,9 @@ internal object RendererSecureTextField {
   }
 
   @Composable
-  private fun renderSecureTextFieldGroup479(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderSecureTextFieldGroup943(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      15359 -> androidx.compose.material3.SecureTextField(
+      30207 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5379,9 +5524,9 @@ internal object RendererSecureTextField {
   }
 
   @Composable
-  private fun renderSecureTextFieldGroup495(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderSecureTextFieldGroup975(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      15871 -> androidx.compose.material3.SecureTextField(
+      31231 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5403,9 +5548,9 @@ internal object RendererSecureTextField {
   }
 
   @Composable
-  private fun renderSecureTextFieldGroup511(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+  private fun renderSecureTextFieldGroup1007(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
     when (mask) {
-      16383 -> androidx.compose.material3.SecureTextField(
+      32255 -> androidx.compose.material3.SecureTextField(
         `state` = requireNotNull(stateValue),
         `modifier` = node.modifier("modifier", scope),
         `enabled` = node.boolean("enabled"),
@@ -5417,6 +5562,32 @@ internal object RendererSecureTextField {
         `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
         `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
         `isError` = node.boolean("isError"),
+        `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
+        `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSecureTextFieldGroup1023(node: ComposeNode, scope: Any?, mask: Int, stateValue: androidx.compose.foundation.text.input.TextFieldState?) {
+    when (mask) {
+      32767 -> androidx.compose.material3.SecureTextField(
+        `state` = requireNotNull(stateValue),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `textStyle` = node.jsonObject("textStyle").toTextStyle(),
+        `placeholder` = if (node.isNull("placeholder")) null else ({ RenderComposeChildren(node.slot("placeholder")) }),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `prefix` = if (node.isNull("prefix")) null else ({ RenderComposeChildren(node.slot("prefix")) }),
+        `suffix` = if (node.isNull("suffix")) null else ({ RenderComposeChildren(node.slot("suffix")) }),
+        `supportingText` = if (node.isNull("supportingText")) null else ({ RenderComposeChildren(node.slot("supportingText")) }),
+        `isError` = node.boolean("isError"),
+        `inputTransformation` = if (node.isNull("inputTransformation")) null else (node.jsonObject("inputTransformation").toComposeInputTransformation()),
         `keyboardOptions` = node.jsonObject("keyboardOptions").toComposeKeyboardOptions(),
         `onKeyboardAction` = if (node.isNull("onKeyboardAction")) null else (androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit("onKeyboardAction") }),
         `shape` = node.arguments().shape("shape"),
@@ -5438,14 +5609,14 @@ internal object RendererSegmentedButton {
       (if (node.has("interactionSource")) 8 else 0) +
       (if (node.has("icon")) 16 else 0)
     when (mask) {
-      0 -> scope.composeScoped5(
+      0 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
         `modifier` = node.modifier("modifier", scope),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      1 -> scope.composeScoped5(
+      1 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5453,7 +5624,7 @@ internal object RendererSegmentedButton {
         `enabled` = node.boolean("enabled"),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      2 -> scope.composeScoped5(
+      2 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5461,7 +5632,7 @@ internal object RendererSegmentedButton {
         `border` = node.jsonObject("border").toComposeBorderStroke(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      3 -> scope.composeScoped5(
+      3 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5470,7 +5641,7 @@ internal object RendererSegmentedButton {
         `border` = node.jsonObject("border").toComposeBorderStroke(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      4 -> scope.composeScoped5(
+      4 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5478,7 +5649,7 @@ internal object RendererSegmentedButton {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      5 -> scope.composeScoped5(
+      5 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5487,7 +5658,7 @@ internal object RendererSegmentedButton {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      6 -> scope.composeScoped5(
+      6 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5496,7 +5667,7 @@ internal object RendererSegmentedButton {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      7 -> scope.composeScoped5(
+      7 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5506,7 +5677,7 @@ internal object RendererSegmentedButton {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      8 -> scope.composeScoped5(
+      8 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5514,7 +5685,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      9 -> scope.composeScoped5(
+      9 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5523,7 +5694,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      10 -> scope.composeScoped5(
+      10 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5532,7 +5703,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      11 -> scope.composeScoped5(
+      11 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5542,7 +5713,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      12 -> scope.composeScoped5(
+      12 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5551,7 +5722,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      13 -> scope.composeScoped5(
+      13 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5561,7 +5732,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      14 -> scope.composeScoped5(
+      14 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5571,7 +5742,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      15 -> scope.composeScoped5(
+      15 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5582,7 +5753,7 @@ internal object RendererSegmentedButton {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      16 -> scope.composeScoped5(
+      16 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5590,7 +5761,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      17 -> scope.composeScoped5(
+      17 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5599,7 +5770,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      18 -> scope.composeScoped5(
+      18 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5608,7 +5779,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      19 -> scope.composeScoped5(
+      19 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5618,7 +5789,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      20 -> scope.composeScoped5(
+      20 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5627,7 +5798,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      21 -> scope.composeScoped5(
+      21 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5637,7 +5808,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      22 -> scope.composeScoped5(
+      22 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5647,7 +5818,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      23 -> scope.composeScoped5(
+      23 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5658,7 +5829,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      24 -> scope.composeScoped5(
+      24 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5667,7 +5838,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      25 -> scope.composeScoped5(
+      25 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5677,7 +5848,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      26 -> scope.composeScoped5(
+      26 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5687,7 +5858,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      27 -> scope.composeScoped5(
+      27 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5698,7 +5869,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      28 -> scope.composeScoped5(
+      28 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5708,7 +5879,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      29 -> scope.composeScoped5(
+      29 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5719,7 +5890,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      30 -> scope.composeScoped5(
+      30 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5730,7 +5901,7 @@ internal object RendererSegmentedButton {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      31 -> scope.composeScoped5(
+      31 -> scope.composeScoped4(
         `checked` = node.boolean("checked"),
         `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
         `shape` = node.arguments().shape("shape"),
@@ -5757,14 +5928,14 @@ internal object RendererSegmentedButton_1 {
       (if (node.has("interactionSource")) 8 else 0) +
       (if (node.has("icon")) 16 else 0)
     when (mask) {
-      0 -> scope.composeScoped5(
+      0 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
         `modifier` = node.modifier("modifier", scope),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      1 -> scope.composeScoped5(
+      1 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5772,7 +5943,7 @@ internal object RendererSegmentedButton_1 {
         `enabled` = node.boolean("enabled"),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      2 -> scope.composeScoped5(
+      2 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5780,7 +5951,7 @@ internal object RendererSegmentedButton_1 {
         `border` = node.jsonObject("border").toComposeBorderStroke(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      3 -> scope.composeScoped5(
+      3 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5789,7 +5960,7 @@ internal object RendererSegmentedButton_1 {
         `border` = node.jsonObject("border").toComposeBorderStroke(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      4 -> scope.composeScoped5(
+      4 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5797,7 +5968,7 @@ internal object RendererSegmentedButton_1 {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      5 -> scope.composeScoped5(
+      5 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5806,7 +5977,7 @@ internal object RendererSegmentedButton_1 {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      6 -> scope.composeScoped5(
+      6 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5815,7 +5986,7 @@ internal object RendererSegmentedButton_1 {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      7 -> scope.composeScoped5(
+      7 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5825,7 +5996,7 @@ internal object RendererSegmentedButton_1 {
         `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      8 -> scope.composeScoped5(
+      8 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5833,7 +6004,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      9 -> scope.composeScoped5(
+      9 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5842,7 +6013,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      10 -> scope.composeScoped5(
+      10 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5851,7 +6022,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      11 -> scope.composeScoped5(
+      11 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5861,7 +6032,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      12 -> scope.composeScoped5(
+      12 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5870,7 +6041,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      13 -> scope.composeScoped5(
+      13 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5880,7 +6051,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      14 -> scope.composeScoped5(
+      14 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5890,7 +6061,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      15 -> scope.composeScoped5(
+      15 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5901,7 +6072,7 @@ internal object RendererSegmentedButton_1 {
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      16 -> scope.composeScoped5(
+      16 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5909,7 +6080,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      17 -> scope.composeScoped5(
+      17 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5918,7 +6089,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      18 -> scope.composeScoped5(
+      18 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5927,7 +6098,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      19 -> scope.composeScoped5(
+      19 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5937,7 +6108,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      20 -> scope.composeScoped5(
+      20 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5946,7 +6117,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      21 -> scope.composeScoped5(
+      21 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5956,7 +6127,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      22 -> scope.composeScoped5(
+      22 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5966,7 +6137,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      23 -> scope.composeScoped5(
+      23 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5977,7 +6148,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      24 -> scope.composeScoped5(
+      24 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5986,7 +6157,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      25 -> scope.composeScoped5(
+      25 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -5996,7 +6167,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      26 -> scope.composeScoped5(
+      26 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -6006,7 +6177,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      27 -> scope.composeScoped5(
+      27 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -6017,7 +6188,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      28 -> scope.composeScoped5(
+      28 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -6027,7 +6198,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      29 -> scope.composeScoped5(
+      29 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -6038,7 +6209,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      30 -> scope.composeScoped5(
+      30 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -6049,7 +6220,7 @@ internal object RendererSegmentedButton_1 {
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `label` = { RenderComposeChildren(node.slot("label")) },
       )
-      31 -> scope.composeScoped5(
+      31 -> scope.composeScoped4(
         `selected` = node.boolean("selected"),
         `onClick` = { node.emit("onClick") },
         `shape` = node.arguments().shape("shape"),
@@ -14929,6 +15100,148 @@ internal object RendererTab {
         `selectedContentColor` = node.color("selectedContentColor"),
         `unselectedContentColor` = node.color("unselectedContentColor"),
         `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Tab(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, selectedContentColor: androidx.compose.ui.graphics.Color, unselectedContentColor: androidx.compose.ui.graphics.Color, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererTab_1 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("selectedContentColor")) 2 else 0) +
+      (if (node.has("unselectedContentColor")) 4 else 0) +
+      (if (node.has("interactionSource")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
       )
       else -> error("Invalid generated arguments for " + node.name)
     }

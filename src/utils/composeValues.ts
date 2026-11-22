@@ -112,6 +112,25 @@ export type ComposeTextFieldLineLimits =
   | { type: "singleLine" }
   | { type: "multiLine"; minHeightInLines?: number; maxHeightInLines?: number };
 
+/** Filters user edits before they are written to native text state. */
+export type ComposeInputTransformation = {
+  /** Reject edits containing characters other than ASCII digits. */
+  digitsOnly?: boolean;
+  /** Reject edits that exceed this many UTF-16 code units. */
+  maxLength?: number;
+};
+
+/** Inserts display text after each offset once the backing text extends past it. */
+export type ComposeOutputTransformation = {
+  /** Offsets refer to the original text and must be positive, distinct UTF-16 offsets. */
+  insertions: readonly { offset: number; text: string }[];
+};
+
+/** Display transformation for the controlled string and TextFieldValue overloads. */
+export type ComposeVisualTransformation =
+  | { type: "none" }
+  | { type: "password"; mask?: string };
+
 export type ComposePageSize = { type: "fill" } | { type: "fixed"; size: number };
 
 export type ComposeShadow = {
@@ -120,6 +139,30 @@ export type ComposeShadow = {
   spread?: number;
   offset?: { x: number; y: number };
   alpha?: number;
+};
+
+export type ComposeLayoutChildPlacement = {
+  /** Child dimensions in dp. The child's available space caps explicit dimensions. */
+  width?: number;
+  height?: number;
+  /** Position in the available space on each axis, from 0 to 1. Defaults to 0. */
+  horizontalBias?: number;
+  verticalBias?: number;
+  /** Additional placement offsets in dp. Horizontal placement is relative to layout direction. */
+  x?: number;
+  y?: number;
+};
+
+type ComposeLayoutDimensions = { width?: number; height?: number };
+
+/** Measures direct children together and places them in declaration order. */
+export type ComposeLayoutMeasurePolicy = ComposeLayoutDimensions & {
+  children?: readonly ComposeLayoutChildPlacement[];
+};
+
+/** Measures and places the element wrapped by this modifier. */
+export type ComposeLayoutModifierMeasure = ComposeLayoutDimensions & {
+  child?: ComposeLayoutChildPlacement;
 };
 
 export type ComposeGridTrack = number | { fr: number } | { fraction: number } | "auto";

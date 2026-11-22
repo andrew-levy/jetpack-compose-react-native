@@ -4,12 +4,11 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
 
 @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -18,10 +17,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ActiveIcon" -> RendererActiveIcon.render(node)
     "AlertDialog" -> RendererAlertDialog.render(node, scope)
     "AnimatedContent" -> RendererAnimatedContent.render(node, scope)
-    "AnimatedVisibility" -> {
-      check(scope is androidx.compose.foundation.layout.RowScope) { "AnimatedVisibility requires RowScope" }
-      RendererAnimatedVisibility.render(node, scope)
-    }
+    "AnimatedVisibility" -> RendererAnimatedVisibility.render(node, scope)
     "AssistChip" -> RendererAssistChip.render(node, scope)
     "Badge" -> RendererBadge.render(node, scope)
     "BadgedBox" -> RendererBadgedBox.render(node, scope)
@@ -37,6 +33,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "BottomAppBar#1" -> RendererBottomAppBar_1.render(node, scope)
     "BottomSheetScaffold" -> RendererBottomSheetScaffold.render(node, scope)
     "Box" -> RendererBox.render(node, scope)
+    "Box#1" -> RendererBox_1.render(node, scope)
     "BoxWithConstraints" -> RendererBoxWithConstraints.render(node, scope)
     "Button" -> RendererButton.render(node, scope)
     "Canvas" -> RendererCanvas.render(node, scope)
@@ -67,6 +64,8 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "DateRangePicker" -> RendererDateRangePicker.render(node, scope)
     "DateRangePickerHeadline" -> RendererDateRangePickerHeadline.render(node, scope)
     "DateRangePickerTitle" -> RendererDateRangePickerTitle.render(node, scope)
+    "DecorationBox" -> RendererDecorationBox.render(node)
+    "DecorationBox#1" -> RendererDecorationBox_1.render(node)
     "Dialog" -> RendererDialog.render(node)
     "DisableSelection" -> RendererDisableSelection.render(node)
     "DismissibleDrawerSheet" -> RendererDismissibleDrawerSheet.render(node, scope)
@@ -136,6 +135,8 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "LargeFlexibleTopAppBar" -> RendererLargeFlexibleTopAppBar.render(node, scope)
     "LargeFloatingActionButton" -> RendererLargeFloatingActionButton.render(node, scope)
     "LargeTopAppBar" -> RendererLargeTopAppBar.render(node, scope)
+    "Layout" -> RendererLayout.render(node, scope)
+    "Layout#1" -> RendererLayout_1.render(node, scope)
     "LazyColumn" -> RendererLazyColumn.render(node, scope)
     "LazyHorizontalGrid" -> RendererLazyHorizontalGrid.render(node, scope)
     "LazyHorizontalStaggeredGrid" -> RendererLazyHorizontalStaggeredGrid.render(node, scope)
@@ -166,6 +167,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ModalNavigationDrawer" -> RendererModalNavigationDrawer.render(node, scope)
     "ModalWideNavigationRail" -> RendererModalWideNavigationRail.render(node, scope)
     "MultiChoiceSegmentedButtonRow" -> RendererMultiChoiceSegmentedButtonRow.render(node, scope)
+    "MultiMeasureLayout" -> RendererMultiMeasureLayout.render(node, scope)
     "NavigationBar" -> RendererNavigationBar.render(node, scope)
     "NavigationBarItem" -> {
       check(scope is androidx.compose.foundation.layout.RowScope) { "NavigationBarItem requires RowScope" }
@@ -248,6 +250,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "SwipeToDismissBox" -> RendererSwipeToDismissBox.render(node, scope)
     "Switch" -> RendererSwitch.render(node, scope)
     "Tab" -> RendererTab.render(node, scope)
+    "Tab#1" -> RendererTab_1.render(node, scope)
     "TabRow" -> RendererTabRow.render(node, scope)
     "Text" -> RendererText.render(node, scope)
     "Text#1" -> RendererText_1.render(node, scope)

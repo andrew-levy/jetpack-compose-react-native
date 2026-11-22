@@ -4,12 +4,2209 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
+
+// androidx.compose.material3.ExposedDropdownMenuBoxScope.ExposedDropdownMenu(expanded: kotlin.Boolean, onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, scrollState: androidx.compose.foundation.ScrollState, matchAnchorWidth: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererExposedDropdownMenu {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope) {
+    val mask = (if (node.has("matchAnchorWidth")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("containerColor")) 4 else 0) +
+      (if (node.has("tonalElevation")) 8 else 0) +
+      (if (node.has("shadowElevation")) 16 else 0) +
+      (if (node.has("border")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderExposedDropdownMenuGroup0(node, scope, mask)
+      1 -> renderExposedDropdownMenuGroup1(node, scope, mask)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderExposedDropdownMenuGroup0(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope, mask: Int) {
+    when (mask) {
+      0 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      16 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      17 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      18 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      19 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      20 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      21 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      22 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      23 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      24 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      25 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      26 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      27 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      28 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      29 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      30 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      31 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  private fun renderExposedDropdownMenuGroup1(node: ComposeNode, scope: androidx.compose.material3.ExposedDropdownMenuBoxScope, mask: Int) {
+    when (mask) {
+      32 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      33 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      34 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      35 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      36 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      37 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      38 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      39 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      40 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      41 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      42 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      43 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      44 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      45 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      46 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      47 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      48 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      49 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      50 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      51 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      52 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      53 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      54 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      55 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      56 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      57 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      58 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      59 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      60 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      61 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      62 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      63 -> scope.ExposedDropdownMenu(
+        `expanded` = node.boolean("expanded"),
+        `onDismissRequest` = { node.emit("onDismissRequest") },
+        `modifier` = node.modifier("modifier", scope),
+        `matchAnchorWidth` = node.boolean("matchAnchorWidth"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `tonalElevation` = node.number("tonalElevation").dp,
+        `shadowElevation` = node.number("shadowElevation").dp,
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.ExposedDropdownMenuBox(expanded: kotlin.Boolean, onExpandedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, content: kotlin.Function1<androidx.compose.material3.ExposedDropdownMenuBoxScope, kotlin.Unit>)
+internal object RendererExposedDropdownMenuBox {
+  @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    androidx.compose.material3.ExposedDropdownMenuBox(
+      `expanded` = node.boolean("expanded"),
+      `onExpandedChange` = { value: Boolean -> node.emit("onExpandedChange", value) },
+      `modifier` = node.modifier("modifier", scope),
+      content = { RenderComposeChildren(node.children, this) },
+    )
+  }
+}
+
+// androidx.compose.material3.ExtendedFloatingActionButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, elevation: androidx.compose.material3.FloatingActionButtonElevation, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
+internal object RendererExtendedFloatingActionButton {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("shape")) 1 else 0) +
+      (if (node.has("containerColor")) 2 else 0) +
+      (if (node.has("contentColor")) 4 else 0) +
+      (if (node.has("interactionSource")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `contentColor` = node.color("contentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.ExtendedFloatingActionButton(text: kotlin.Function0<kotlin.Unit>, icon: kotlin.Function0<kotlin.Unit>, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, expanded: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, elevation: androidx.compose.material3.FloatingActionButtonElevation, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
+internal object RendererExtendedFloatingActionButton_1 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("expanded")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("containerColor")) 4 else 0) +
+      (if (node.has("contentColor")) 8 else 0) +
+      (if (node.has("interactionSource")) 16 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+      )
+      2 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+      )
+      3 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+      )
+      4 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+      )
+      5 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `containerColor` = node.color("containerColor"),
+      )
+      6 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+      )
+      7 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+      )
+      8 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+      )
+      9 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `contentColor` = node.color("contentColor"),
+      )
+      10 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `contentColor` = node.color("contentColor"),
+      )
+      11 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `contentColor` = node.color("contentColor"),
+      )
+      12 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+      )
+      13 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+      )
+      14 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+      )
+      15 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+      )
+      16 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      17 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      18 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      19 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      20 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      21 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `containerColor` = node.color("containerColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      22 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      23 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      24 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      25 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      26 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      27 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      28 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      29 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      30 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      31 -> androidx.compose.material3.ExtendedFloatingActionButton(
+        `text` = { RenderComposeChildren(node.slot("text")) },
+        `icon` = { RenderComposeChildren(node.slot("icon")) },
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `expanded` = node.boolean("expanded"),
+        `shape` = node.arguments().shape("shape"),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.FilledIconButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.IconButtonColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererFilledIconButton {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("interactionSource")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children) },
+      )
+      1 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      2 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      3 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      4 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      5 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      6 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      7 -> androidx.compose.material3.FilledIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.FilledIconToggleButton(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.IconToggleButtonColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererFilledIconToggleButton {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("interactionSource")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children) },
+      )
+      1 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      2 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      3 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      4 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      5 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      6 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      7 -> androidx.compose.material3.FilledIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.FilledTonalButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.ButtonColors, elevation: androidx.compose.material3.ButtonElevation?, border: androidx.compose.foundation.BorderStroke?, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
+internal object RendererFilledTonalButton {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("border")) 4 else 0) +
+      (if (node.has("contentPadding")) 8 else 0) +
+      (if (node.has("interactionSource")) 16 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      16 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      17 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      18 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      19 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      20 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      21 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      22 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      23 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      24 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      25 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      26 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      27 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      28 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      29 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      30 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      31 -> androidx.compose.material3.FilledTonalButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `contentPadding` = node.jsonObject("contentPadding").toPaddingValues(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.FilledTonalIconButton(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.IconButtonColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererFilledTonalIconButton {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("interactionSource")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children) },
+      )
+      1 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      2 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      3 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      4 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      5 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      6 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      7 -> androidx.compose.material3.FilledTonalIconButton(
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.FilledTonalIconToggleButton(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.IconToggleButtonColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererFilledTonalIconToggleButton {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("interactionSource")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children) },
+      )
+      1 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      2 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      3 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        content = { RenderComposeChildren(node.children) },
+      )
+      4 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      5 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      6 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      7 -> androidx.compose.material3.FilledTonalIconToggleButton(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.FilterChip(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, label: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.SelectableChipColors, elevation: androidx.compose.material3.SelectableChipElevation?, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
+internal object RendererFilterChip {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("leadingIcon")) 2 else 0) +
+      (if (node.has("trailingIcon")) 4 else 0) +
+      (if (node.has("shape")) 8 else 0) +
+      (if (node.has("border")) 16 else 0) +
+      (if (node.has("interactionSource")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderFilterChipGroup0(node, scope, mask)
+      1 -> renderFilterChipGroup1(node, scope, mask)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderFilterChipGroup0(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      0 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+      )
+      2 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+      )
+      3 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+      )
+      4 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+      )
+      5 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+      )
+      6 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+      )
+      7 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+      )
+      8 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+      )
+      9 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+      )
+      10 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      11 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      12 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      13 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      14 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      15 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+      )
+      16 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      17 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      18 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      19 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      20 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      21 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      22 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      23 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      24 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      25 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      26 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      27 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      28 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      29 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      30 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      31 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderFilterChipGroup1(node: ComposeNode, scope: Any?, mask: Int) {
+    when (mask) {
+      32 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      33 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      34 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      35 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      36 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      37 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      38 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      39 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      40 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      41 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      42 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      43 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      44 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      45 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      46 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      47 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      48 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      49 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      50 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      51 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      52 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      53 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      54 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      55 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      56 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      57 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      58 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      59 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      60 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      61 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      62 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      63 -> androidx.compose.material3.FilterChip(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `label` = { RenderComposeChildren(node.slot("label")) },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `leadingIcon` = if (node.isNull("leadingIcon")) null else ({ RenderComposeChildren(node.slot("leadingIcon")) }),
+        `trailingIcon` = if (node.isNull("trailingIcon")) null else ({ RenderComposeChildren(node.slot("trailingIcon")) }),
+        `shape` = node.arguments().shape("shape"),
+        `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.foundation.layout.FlexBox(modifier: androidx.compose.ui.Modifier, config: androidx.compose.foundation.layout.FlexBoxConfig, content: kotlin.Function1<androidx.compose.foundation.layout.FlexBoxScope, kotlin.Unit>)
+internal object RendererFlexBox {
+  @OptIn(androidx.compose.foundation.layout.ExperimentalFlexBoxApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("config")) 1 else 0)
+    when (mask) {
+      0 -> androidx.compose.foundation.layout.FlexBox(
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.foundation.layout.FlexBox(
+        `modifier` = node.modifier("modifier", scope),
+        `config` = node.jsonObject("config").toComposeFlexBoxConfig(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
 
 // androidx.compose.material3.FlexibleBottomAppBar(modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, contentPadding: androidx.compose.foundation.layout.PaddingValues, horizontalArrangement: androidx.compose.foundation.layout.Arrangement.Horizontal, expandedHeight: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, scrollBehavior: androidx.compose.material3.BottomAppBarScrollBehavior?, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
 internal object RendererFlexibleBottomAppBar {
@@ -653,27 +2850,27 @@ internal object RendererFloatingActionButtonMenuItem {
     val mask = (if (node.has("containerColor")) 1 else 0) +
       (if (node.has("contentColor")) 2 else 0)
     when (mask) {
-      0 -> scope.composeScoped1(
+      0 -> scope.composeScoped0(
         `onClick` = { node.emit("onClick") },
         `text` = { RenderComposeChildren(node.slot("text")) },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
       )
-      1 -> scope.composeScoped1(
+      1 -> scope.composeScoped0(
         `onClick` = { node.emit("onClick") },
         `text` = { RenderComposeChildren(node.slot("text")) },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
         `containerColor` = node.color("containerColor"),
       )
-      2 -> scope.composeScoped1(
+      2 -> scope.composeScoped0(
         `onClick` = { node.emit("onClick") },
         `text` = { RenderComposeChildren(node.slot("text")) },
         `icon` = { RenderComposeChildren(node.slot("icon")) },
         `modifier` = node.modifier("modifier", scope),
         `contentColor` = node.color("contentColor"),
       )
-      3 -> scope.composeScoped1(
+      3 -> scope.composeScoped0(
         `onClick` = { node.emit("onClick") },
         `text` = { RenderComposeChildren(node.slot("text")) },
         `icon` = { RenderComposeChildren(node.slot("icon")) },

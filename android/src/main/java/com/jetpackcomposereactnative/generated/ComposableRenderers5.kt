@@ -4,12 +4,11 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.AnimatedVisibility as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
 
 // androidx.compose.material3.LargeFlexibleTopAppBar(title: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, subtitle: kotlin.Function0<kotlin.Unit>?, navigationIcon: kotlin.Function0<kotlin.Unit>, actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, titleHorizontalAlignment: androidx.compose.ui.Alignment.Horizontal, collapsedHeight: androidx.compose.ui.unit.Dp, expandedHeight: androidx.compose.ui.unit.Dp, windowInsets: androidx.compose.foundation.layout.WindowInsets, colors: androidx.compose.material3.TopAppBarColors, scrollBehavior: androidx.compose.material3.TopAppBarScrollBehavior?)
 internal object RendererLargeFlexibleTopAppBar {
@@ -1372,6 +1371,29 @@ internal object RendererLargeTopAppBar {
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
+  }
+}
+
+// androidx.compose.ui.layout.Layout(modifier: androidx.compose.ui.Modifier, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)
+internal object RendererLayout {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    androidx.compose.ui.layout.Layout(
+      `modifier` = node.modifier("modifier", scope),
+      `measurePolicy` = node.jsonObject("measurePolicy").toComposeLayoutMeasurePolicy(),
+    )
+  }
+}
+
+// androidx.compose.ui.layout.Layout(content: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, measurePolicy: androidx.compose.ui.layout.MeasurePolicy)
+internal object RendererLayout_1 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    androidx.compose.ui.layout.Layout(
+      `modifier` = node.modifier("modifier", scope),
+      `measurePolicy` = node.jsonObject("measurePolicy").toComposeLayoutMeasurePolicy(),
+      content = { RenderComposeChildren(node.children) },
+    )
   }
 }
 

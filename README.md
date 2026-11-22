@@ -80,7 +80,38 @@ function StyledFocusTarget() {
 }
 ```
 
+State-based text fields can filter and format edits on Android. The backing
+state stores the filtered text, and Compose keeps cursor and selection offsets
+in sync with the formatted display.
+
+```tsx
+<TextField
+  state={{ initialText: "" }}
+  keyboardOptions={{ keyboardType: "phone" }}
+  lineLimits={{ type: "singleLine" }}
+  inputTransformation={{ digitsOnly: true, maxLength: 10 }}
+  outputTransformation={{ insertions: [{ offset: 3, text: "-" }, { offset: 6, text: "-" }] }}
+/>
+```
+
+Controlled string and `TextFieldValue` overloads also support
+`visualTransformation={{ type: "password" }}` for display masking.
+
 ## Gestures, layouts, and transitions
+
+`Layout` and `Modifier.layout` accept native measurement rules. For example,
+this lays out a fixed-height region and places the second child at the end and center
+of its available space. Offsets and dimensions are in dp.
+
+```tsx
+<Layout
+  modifiers={Modifier.fillMaxWidth()}
+  measurePolicy={{ height: 64, children: [{}, { horizontalBias: 1, verticalBias: 0.5 }] }}
+>
+  <Text text="Title" />
+  <Text text="Detail" />
+</Layout>
+```
 
 Pass a state description to `Modifier.draggable`, `anchoredDraggable`,
 `scrollable`, or `transformable`. Android handles the gesture, and optional
