@@ -302,3 +302,8 @@ internal fun TextFieldValue.toComposeSnapshot(): JSONObject = JSONObject()
   .put("composition", composition?.toComposeSnapshot() ?: JSONObject.NULL)
 
 private fun TextRange.toComposeSnapshot() = JSONObject().put("start", start).put("end", end)
+
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeCarouselState(node: ComposeNode): androidx.compose.material3.carousel.CarouselState =
+  androidx.compose.material3.carousel.rememberCarouselState(initialItem = optInt("initialItem")) { node.children.size }

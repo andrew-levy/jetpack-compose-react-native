@@ -1,6 +1,73 @@
 // Generated from Compose declarations by generate.mjs.
 package com.jetpackcomposereactnative.generated
 
+internal fun toComposeFrameRateCategory(value: String): androidx.compose.ui.FrameRateCategory = when (value) {
+  "default" -> androidx.compose.ui.FrameRateCategory.Default
+  "high" -> androidx.compose.ui.FrameRateCategory.High
+  "normal" -> androidx.compose.ui.FrameRateCategory.Normal
+  else -> error("Unknown ComposeFrameRateCategory: " + value)
+}
+
+internal fun toComposeAutofillContentType(value: String): androidx.compose.ui.autofill.ContentType = when (value) {
+  "addressAuxiliaryDetails" -> androidx.compose.ui.autofill.ContentType.AddressAuxiliaryDetails
+  "addressCountry" -> androidx.compose.ui.autofill.ContentType.AddressCountry
+  "addressLocality" -> androidx.compose.ui.autofill.ContentType.AddressLocality
+  "addressRegion" -> androidx.compose.ui.autofill.ContentType.AddressRegion
+  "addressStreet" -> androidx.compose.ui.autofill.ContentType.AddressStreet
+  "birthDateDay" -> androidx.compose.ui.autofill.ContentType.BirthDateDay
+  "birthDateFull" -> androidx.compose.ui.autofill.ContentType.BirthDateFull
+  "birthDateMonth" -> androidx.compose.ui.autofill.ContentType.BirthDateMonth
+  "birthDateYear" -> androidx.compose.ui.autofill.ContentType.BirthDateYear
+  "creditCardExpirationDate" -> androidx.compose.ui.autofill.ContentType.CreditCardExpirationDate
+  "creditCardExpirationDay" -> androidx.compose.ui.autofill.ContentType.CreditCardExpirationDay
+  "creditCardExpirationMonth" -> androidx.compose.ui.autofill.ContentType.CreditCardExpirationMonth
+  "creditCardExpirationYear" -> androidx.compose.ui.autofill.ContentType.CreditCardExpirationYear
+  "creditCardNumber" -> androidx.compose.ui.autofill.ContentType.CreditCardNumber
+  "creditCardSecurityCode" -> androidx.compose.ui.autofill.ContentType.CreditCardSecurityCode
+  "emailAddress" -> androidx.compose.ui.autofill.ContentType.EmailAddress
+  "gender" -> androidx.compose.ui.autofill.ContentType.Gender
+  "newPassword" -> androidx.compose.ui.autofill.ContentType.NewPassword
+  "newUsername" -> androidx.compose.ui.autofill.ContentType.NewUsername
+  "password" -> androidx.compose.ui.autofill.ContentType.Password
+  "personFirstName" -> androidx.compose.ui.autofill.ContentType.PersonFirstName
+  "personFullName" -> androidx.compose.ui.autofill.ContentType.PersonFullName
+  "personLastName" -> androidx.compose.ui.autofill.ContentType.PersonLastName
+  "personMiddleInitial" -> androidx.compose.ui.autofill.ContentType.PersonMiddleInitial
+  "personMiddleName" -> androidx.compose.ui.autofill.ContentType.PersonMiddleName
+  "personNamePrefix" -> androidx.compose.ui.autofill.ContentType.PersonNamePrefix
+  "personNameSuffix" -> androidx.compose.ui.autofill.ContentType.PersonNameSuffix
+  "phoneCountryCode" -> androidx.compose.ui.autofill.ContentType.PhoneCountryCode
+  "phoneNumber" -> androidx.compose.ui.autofill.ContentType.PhoneNumber
+  "phoneNumberDevice" -> androidx.compose.ui.autofill.ContentType.PhoneNumberDevice
+  "phoneNumberNational" -> androidx.compose.ui.autofill.ContentType.PhoneNumberNational
+  "postalAddress" -> androidx.compose.ui.autofill.ContentType.PostalAddress
+  "postalCode" -> androidx.compose.ui.autofill.ContentType.PostalCode
+  "postalCodeExtended" -> androidx.compose.ui.autofill.ContentType.PostalCodeExtended
+  "smsOtpCode" -> androidx.compose.ui.autofill.ContentType.SmsOtpCode
+  "username" -> androidx.compose.ui.autofill.ContentType.Username
+  else -> error("Unknown ComposeAutofillContentType: " + value)
+}
+
+internal fun toComposeSnapPosition(value: String): androidx.compose.foundation.gestures.snapping.SnapPosition = when (value) {
+  "center" -> androidx.compose.foundation.gestures.snapping.SnapPosition.Center
+  "end" -> androidx.compose.foundation.gestures.snapping.SnapPosition.End
+  "start" -> androidx.compose.foundation.gestures.snapping.SnapPosition.Start
+  else -> error("Unknown ComposeSnapPosition: " + value)
+}
+
+internal fun toComposeMenuAnchorType(value: String): androidx.compose.material3.ExposedDropdownMenuAnchorType = when (value) {
+  "primaryEditable" -> androidx.compose.material3.ExposedDropdownMenuAnchorType.PrimaryEditable
+  "primaryNotEditable" -> androidx.compose.material3.ExposedDropdownMenuAnchorType.PrimaryNotEditable
+  "secondaryEditable" -> androidx.compose.material3.ExposedDropdownMenuAnchorType.SecondaryEditable
+  else -> error("Unknown ComposeMenuAnchorType: " + value)
+}
+
+internal fun toComposeTimePickerDisplayMode(value: String): androidx.compose.material3.TimePickerDisplayMode = when (value) {
+  "input" -> androidx.compose.material3.TimePickerDisplayMode.Input
+  "picker" -> androidx.compose.material3.TimePickerDisplayMode.Picker
+  else -> error("Unknown ComposeTimePickerDisplayMode: " + value)
+}
+
 internal fun toComposeAlignment(value: String): androidx.compose.ui.Alignment = when (value) {
   "bottomCenter" -> androidx.compose.ui.Alignment.BottomCenter
   "bottomEnd" -> androidx.compose.ui.Alignment.BottomEnd

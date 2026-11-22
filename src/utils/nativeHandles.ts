@@ -50,6 +50,48 @@ export type ComposeInteractionSource = NativeHandle<"interactionSource", never>;
 
 /** Share one native interaction source between modifiers and components in a Compose host. */
 export function useInteractionSource(): ComposeInteractionSource {
+  return useHandleToken("interactionSource");
+}
+
+export type ComposeLayoutBoundsHolder = NativeHandle<"layoutBoundsHolder", never>;
+export type ComposePullToRefreshState = NativeHandle<"pullToRefreshState", never>;
+
+export type ComposeSliderOptions = {
+  initialValue?: number;
+  valueRange?: readonly [number, number];
+  steps?: number;
+};
+export type ComposeSliderState = NativeHandle<"sliderState", never> & ComposeSliderOptions;
+export type ComposeRangeSliderOptions = {
+  initialRange?: readonly [number, number];
+  valueRange?: readonly [number, number];
+  steps?: number;
+};
+export type ComposeRangeSliderState = NativeHandle<"rangeSliderState", never> & ComposeRangeSliderOptions;
+
+function useHandleToken<Kind extends string>(kind: Kind): NativeHandle<Kind, never> {
   const token = useId();
-  return useMemo(() => ({ kind: "interactionSource", token }), [token]);
+  return useMemo(() => ({ kind, token }), [kind, token]);
+}
+
+/** Attach the same holder to a viewport and the visibility observer, within one host. */
+export function useLayoutBoundsHolder(): ComposeLayoutBoundsHolder {
+  return useHandleToken("layoutBoundsHolder");
+}
+
+/** Share pull-to-refresh state between a gesture modifier and its indicator. */
+export function usePullToRefreshState(): ComposePullToRefreshState {
+  return useHandleToken("pullToRefreshState");
+}
+
+/** The initial options are applied when the native state first mounts. */
+export function useSliderState(options: ComposeSliderOptions = {}): ComposeSliderState {
+  const handle = useHandleToken("sliderState");
+  return { ...handle, ...options };
+}
+
+/** The initial options are applied when the native state first mounts. */
+export function useRangeSliderState(options: ComposeRangeSliderOptions = {}): ComposeRangeSliderState {
+  const handle = useHandleToken("rangeSliderState");
+  return { ...handle, ...options };
 }

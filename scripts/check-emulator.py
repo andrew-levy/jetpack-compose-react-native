@@ -220,6 +220,19 @@ def verify():
         tap(nodes["Run animation"])
         nodes = wait_for("Native animation complete", "Modifiers", window=window)
 
+    nodes = wait_for("Try new bindings", window=window)
+    tap(nodes["Try new bindings"])
+    nodes = wait_for(
+        "Drag surface", "Compose grid child", "React Native grid child",
+        "Crossfade content", "First crossfade state", window=window,
+    )
+    left, top, right, bottom = bounds(nodes["Drag surface"])
+    drag_y = str((top + bottom) // 2)
+    adb("shell", "input", "swipe", str(left + 16), drag_y, str(right - 16), drag_y, "300")
+    nodes = wait_for("Drag reported to React", "Crossfade content", window=window)
+    tap(nodes["Crossfade content"])
+    nodes = wait_for("Second crossfade state", "Modifiers", absent=("First crossfade state",), window=window)
+
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)
     capture("07-modifiers")

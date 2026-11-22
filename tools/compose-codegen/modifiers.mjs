@@ -115,10 +115,10 @@ function typeOf({ kind, nullable }, kinds) {
 
 function kotlin(overloads, kinds) {
   const imports = new Map();
-  for (const { kotlinFunction, scope } of overloads) {
-    if (!scope && !imports.has(kotlinFunction)) imports.set(kotlinFunction, `composeModifier${imports.size}`);
+  for (const { kotlinFunction, scope, staticOwner } of overloads) {
+    if (!scope && !staticOwner && !imports.has(kotlinFunction)) imports.set(kotlinFunction, `composeModifier${imports.size}`);
   }
-  const functions = overloads.flatMap(({ signature: sourceSignature, id, name, kotlinFunction, parameters, argumentLists, scope, optIns, composable }) => {
+  const functions = overloads.flatMap(({ signature: sourceSignature, id, name, kotlinFunction, parameters, argumentLists, scope, staticOwner, optIns, composable }) => {
     const annotations = [
       `// ${sourceSignature}`,
       ...(optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : []),
@@ -131,20 +131,20 @@ function kotlin(overloads, kinds) {
         const argument = nullable ? `if (args.isNull(${key})) null else (${value})` : value;
         return `\`${name}\` = ${kinds[kind].spread ? "*" : ""}${argument}`;
       });
-      const functionName = scope ? name : imports.get(kotlinFunction);
+      const functionName = scope || staticOwner ? name : imports.get(kotlinFunction);
       const compositionValues = passed.flatMap(({ name, kind, nullable }) => {
         const composition = kinds[kind].composition;
         if (!composition) return [];
-        const { value, factory } = composition;
+        const { value, factory, emitsEvents, nativeExpression } = composition;
         const key = quote(name);
-        const factoryCall = `args.jsonObject(${key}).${factory}()`;
+        const factoryCall = nativeExpression?.(key) ?? `args.jsonObject(${key}).${factory}(${emitsEvents ? "args" : ""})`;
         return [`val ${value} = ${nullable ? `if (args.isNull(${key})) null else ${factoryCall}` : factoryCall}`];
       });
       const call = `${functionName}(${args.join(", ")})`;
       const invocation = composable || compositionValues.length
         ? `modifier.composed { ${[...compositionValues, call].join("; ")} }`
         : `modifier.${call}`;
-      return scope ? `with(scope) { ${invocation} }` : invocation;
+      return scope || staticOwner ? `with(${staticOwner ?? "scope"}) { ${invocation} }` : invocation;
     };
     if (argumentLists.length === 1) {
       const [passed] = argumentLists;
@@ -195,7 +195,8 @@ function kotlin(overloads, kinds) {
     "package com.jetpackcomposereactnative.generated",
     "",
     "import androidx.compose.ui.Modifier",
-    ...(overloads.some(({ parameters, composable }) => composable || parameters.some(({ kind }) => kinds[kind].composition))
+    ...(overloads.some(({ parameters, composable, scope }) => composable || scope === "androidx.compose.animation.SharedTransitionScope" ||
+      parameters.some(({ kind }) => kinds[kind].composition))
       ? ["import androidx.compose.ui.composed"] : []),
     "import androidx.compose.ui.unit.dp",
     "import androidx.compose.ui.unit.sp",
@@ -204,9 +205,13 @@ function kotlin(overloads, kinds) {
     ...([...new Set(overloads.flatMap(({ optIns }) => optIns))].sort().length
       ? [`@OptIn(${[...new Set(overloads.flatMap(({ optIns }) => optIns))].sort().map((marker) => `${marker}::class`).join(", ")})`] : []),
     "internal fun applyComposeModifier(id: Int, modifier: Modifier, args: ComposeModifierArguments, scope: Any?): Modifier? = when (id) {",
-    ...overloads.map(({ id, scope }) => scope
-      ? `  ${id} -> if (scope is ${scope}) apply${id}(modifier, args, scope) else null`
-      : `  ${id} -> apply${id}(modifier, args)`),
+    ...overloads.map(({ id, scope }) => {
+      if (scope === "androidx.compose.animation.SharedTransitionScope") {
+        return `  ${id} -> modifier.composed { apply${id}(this, args, currentComposeSharedTransitionScope()) }`;
+      }
+      if (scope) return `  ${id} -> if (scope is ${scope}) apply${id}(modifier, args, scope) else null`;
+      return `  ${id} -> apply${id}(modifier, args)`;
+    }),
     '  else -> error("Unknown generated Compose modifier: " + id)',
     "}",
     "",

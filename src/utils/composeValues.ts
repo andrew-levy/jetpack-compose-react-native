@@ -99,3 +99,148 @@ export type ComposeTextFieldSnapshot = {
   selection: ComposeTextRange;
   composition: ComposeTextRange | null;
 };
+
+export type ComposeKeyboardOptions = {
+  capitalization?: "none" | "characters" | "words" | "sentences";
+  keyboardType?: "text" | "ascii" | "number" | "phone" | "uri" | "email" | "password" | "numberPassword" | "decimal";
+  imeAction?: "default" | "none" | "go" | "search" | "send" | "previous" | "next" | "done";
+  autoCorrectEnabled?: boolean;
+  showKeyboardOnFocus?: boolean;
+};
+
+export type ComposeTextFieldLineLimits =
+  | { type: "singleLine" }
+  | { type: "multiLine"; minHeightInLines?: number; maxHeightInLines?: number };
+
+export type ComposePageSize = { type: "fill" } | { type: "fixed"; size: number };
+
+export type ComposeShadow = {
+  radius: number;
+  color?: string;
+  spread?: number;
+  offset?: { x: number; y: number };
+  alpha?: number;
+};
+
+export type ComposeGridTrack = number | { fr: number } | { fraction: number } | "auto";
+export type ComposeGridConfig = {
+  columns: readonly ComposeGridTrack[];
+  rows: readonly ComposeGridTrack[];
+  flow?: "row" | "column";
+  gap?: number;
+  rowGap?: number;
+  columnGap?: number;
+};
+
+export type ComposeFlexBoxConfig = {
+  direction?: "row" | "rowReverse" | "column" | "columnReverse";
+  wrap?: "noWrap" | "wrap" | "wrapReverse";
+  gap?: number;
+  rowGap?: number;
+  columnGap?: number;
+};
+
+export type ComposeFlexConfig = {
+  grow?: number;
+  shrink?: number;
+  order?: number;
+  basis?: number | { fraction: number };
+};
+
+/** Gesture deltas and offsets are in physical pixels. Events are delivered to React asynchronously. */
+export type ComposeDragState = { onDelta: (deltaPx: number) => void };
+export type ComposeDrag2DState = { onDelta: (deltaPx: import("../generated/records").ComposeOffset) => void };
+export type ComposeScrollableState = {
+  /** Fraction of each available delta consumed on Android. Defaults to one. */
+  consumeFraction?: number;
+  onDelta?: (consumedPx: number) => void;
+};
+export type ComposeScrollable2DState = {
+  consumeFraction?: ComposeAxisConsumption;
+  onDelta?: (consumedPx: import("../generated/records").ComposeOffset) => void;
+};
+export type ComposeTransformableState = {
+  onTransform: (event: {
+    centroid: import("../generated/records").ComposeOffset | null;
+    pan: import("../generated/records").ComposeOffset;
+    zoom: number;
+    rotation: number;
+  }) => void;
+};
+
+export type ComposeAnchoredDragState = {
+  /** Named anchors and their positions in physical pixels. */
+  anchors: Readonly<Record<string, number>>;
+  initialValue: string;
+  onOffsetChange?: (offsetPx: number) => void;
+  onSettled?: (anchor: string) => void;
+};
+
+type ComposeDrawPoint = { x: number; y: number };
+
+export type ComposeDrawCommand =
+  | { type: "rect"; color: string; x?: number; y?: number; width?: number; height?: number; cornerRadius?: number }
+  | { type: "circle"; color: string; center?: ComposeDrawPoint; radius: number }
+  | { type: "line"; color: string; start: ComposeDrawPoint; end: ComposeDrawPoint; strokeWidth?: number }
+  | { type: "path"; color: string; points: readonly ComposeDrawPoint[]; closed?: boolean; strokeWidth?: number };
+
+export type ComposeDrawing = { commands: readonly ComposeDrawCommand[] };
+export type ComposeContentDrawing = { before?: readonly ComposeDrawCommand[]; after?: readonly ComposeDrawCommand[] };
+
+export type ComposeBorderStroke = { width: number; color: string };
+export type ComposeCarouselState = { initialItem?: number };
+export type ComposeOverscrollEffect = { type: "platform" };
+export type ComposeFlingBehavior = { type: "platform" | "none" };
+
+/** A stable key shared by the source and destination inside one SharedTransitionLayout. */
+export type ComposeSharedContent = { key: string };
+
+export type ComposeMotionEvent = {
+  action: number;
+  x: number;
+  y: number;
+  pointerCount: number;
+};
+
+export type ComposeTouchPolicy = {
+  /** Android MotionEvent action codes. Include action 0 to claim a touch sequence. */
+  actions: readonly number[];
+  onEvent?: (event: ComposeMotionEvent) => void;
+};
+
+export type ComposeRotaryPolicy = {
+  consume?: boolean;
+  onScroll?: (event: { horizontalPixels: number; verticalPixels: number }) => void;
+};
+
+export type ComposeReceiveContent = {
+  /** Consume received text and leave non-text items in the native chain. Defaults to true. */
+  consume?: boolean;
+  onText: (text: string) => void;
+};
+
+export type ComposeIndication = {
+  type: "ripple";
+  bounded?: boolean;
+  radius?: number;
+  color?: string;
+};
+
+export type ComposeRectRulers = {
+  type: "safeDrawing" | "safeGestures" | "safeContent" | "systemBars" | "ime";
+  maximum?: boolean;
+};
+
+export type ComposeKeyboardActions = {
+  onDone?: () => void;
+  onGo?: () => void;
+  onNext?: () => void;
+  onPrevious?: () => void;
+  onSearch?: () => void;
+  onSend?: () => void;
+  performDefaultAction?: boolean;
+};
+
+export type ComposeDragTransfer = { text: string; label?: string };
+export type ComposeDragTypes = { mimeTypes: readonly string[] };
+export type ComposeDragTarget = { onDrop: (text: string) => void };

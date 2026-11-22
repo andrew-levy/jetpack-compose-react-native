@@ -3,12 +3,17 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.RangeSliderState
+import androidx.compose.material3.SliderState
+import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.layout.LayoutBoundsHolder
 import java.lang.ref.WeakReference
 import org.json.JSONObject
 
@@ -90,3 +95,46 @@ internal fun JSONObject.rememberComposeBringIntoViewRequester(): BringIntoViewRe
 @Composable
 internal fun JSONObject.rememberComposeInteractionSource(): MutableInteractionSource =
   rememberHandleEntry("interactionSource", { MutableInteractionSource() }).value
+
+@Composable
+internal fun JSONObject.rememberComposeLayoutBoundsHolder(): LayoutBoundsHolder =
+  rememberHandleEntry("layoutBoundsHolder", ::LayoutBoundsHolder).value
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposePullToRefreshHandle(): PullToRefreshState =
+  rememberHandleEntry("pullToRefreshState") { PullToRefreshState() }.value
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeSliderHandle(): SliderState =
+  rememberHandleEntry("sliderState") {
+    val bounds = sliderRange("valueRange", 0f..1f)
+    SliderState(
+      value = optDouble("initialValue", bounds.start.toDouble()).toFloat().coerceIn(bounds),
+      steps = optInt("steps"),
+      valueRange = bounds,
+    )
+  }.value
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun JSONObject.rememberComposeRangeSliderHandle(): RangeSliderState =
+  rememberHandleEntry("rangeSliderState") {
+    val bounds = sliderRange("valueRange", 0f..1f)
+    val initial = sliderRange("initialRange", bounds)
+    RangeSliderState(
+      activeRangeStart = initial.start.coerceIn(bounds),
+      activeRangeEnd = initial.endInclusive.coerceIn(bounds),
+      steps = optInt("steps"),
+      valueRange = bounds,
+    )
+  }.value
+
+private fun JSONObject.sliderRange(name: String, default: ClosedFloatingPointRange<Float>): ClosedFloatingPointRange<Float> {
+  val values = optJSONArray(name) ?: return default
+  val start = values.getDouble(0).toFloat()
+  val end = values.getDouble(1).toFloat()
+  require(start.isFinite() && end.isFinite() && start <= end) { "Expected an ordered Compose slider range" }
+  return start..end
+}

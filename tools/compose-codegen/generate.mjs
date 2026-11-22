@@ -19,6 +19,20 @@ const approvedDir = process.env.COMPOSE_APPROVED_KOTLIN;
 const quote = JSON.stringify;
 
 const sharedTypes = {
+  indication: ["ComposeIndication", "toComposeIndication"],
+  rectRulers: ["ComposeRectRulers", "toComposeRectRulers"],
+
+  drawing: ["ComposeDrawing", "toComposeDrawing"],
+  borderStroke: ["ComposeBorderStroke", "toComposeBorderStroke"],
+  contentDrawing: ["ComposeContentDrawing", "toComposeContentDrawing"],
+  cachedDrawing: ["ComposeContentDrawing", "toComposeCachedDrawing"],
+  keyboardOptions: ["ComposeKeyboardOptions", "toComposeKeyboardOptions"],
+  textFieldLineLimits: ["ComposeTextFieldLineLimits", "toComposeTextFieldLineLimits"],
+  pageSize: ["ComposePageSize", "toComposePageSize"],
+  shadowValue: ["ComposeShadow", "toComposeShadow"],
+  gridConfig: ["ComposeGridConfig", "toComposeGridConfig"],
+  flexBoxConfig: ["ComposeFlexBoxConfig", "toComposeFlexBoxConfig"],
+  flexConfig: ["ComposeFlexConfig", "toComposeFlexConfig"],
   dpSize: ["ComposeDpSize", "toDpSize"],
   paddingValues: ["ComposePaddingValues", "toPaddingValues"],
   windowInsets: ["ComposeWindowInsets", "toWindowInsets"],
@@ -47,7 +61,8 @@ const stateKinds = {
   lazyListState: ["ComposeLazyState", "androidx.compose.foundation.lazy.LazyListState", "rememberComposeLazyListState"],
   lazyGridState: ["ComposeLazyState", "androidx.compose.foundation.lazy.grid.LazyGridState", "rememberComposeLazyGridState"],
   lazyStaggeredGridState: ["ComposeLazyState", "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState", "rememberComposeLazyStaggeredGridState"],
-  pagerState: ["ComposePagerState", "androidx.compose.foundation.pager.PagerState", "rememberComposePagerState"],
+  pagerState: ["ComposePagerState", "androidx.compose.foundation.pager.PagerState", "rememberComposePagerState", true],
+  carouselState: ["ComposeCarouselState", "androidx.compose.material3.carousel.CarouselState", "rememberComposeCarouselState", true],
   textFieldState: ["ComposeTextFieldState", "androidx.compose.foundation.text.input.TextFieldState", "rememberComposeTextFieldState"],
   searchBarState: ["ComposeSearchBarState", "androidx.compose.material3.SearchBarState", "rememberComposeSearchBarState"],
   basicTooltipState: ["ComposeTooltipState", "androidx.compose.foundation.BasicTooltipState", "rememberComposeBasicTooltipState"],
@@ -57,12 +72,69 @@ const stateKinds = {
 };
 
 const handleKinds = {
+  sliderState: ["ComposeSliderState", "rememberComposeSliderHandle"],
+  rangeSliderState: ["ComposeRangeSliderState", "rememberComposeRangeSliderHandle"],
+  layoutBoundsHolder: ["ComposeLayoutBoundsHolder", "rememberComposeLayoutBoundsHolder"],
+  pullToRefreshState: ["ComposePullToRefreshState", "rememberComposePullToRefreshHandle"],
   focusRequester: ["ComposeFocusRequester", "rememberComposeFocusRequester"],
   bringIntoViewRequester: ["ComposeBringIntoViewRequester", "rememberComposeBringIntoViewRequester"],
   interactionSource: ["ComposeInteractionSource", "rememberComposeInteractionSource"],
 };
 
+const gestureStateKinds = {
+  dragState: ["ComposeDragState", "rememberComposeDragState"],
+  drag2DState: ["ComposeDrag2DState", "rememberComposeDrag2DState"],
+  scrollableState: ["ComposeScrollableState", "rememberComposeScrollableState"],
+  scrollable2DState: ["ComposeScrollable2DState", "rememberComposeScrollable2DState"],
+  transformableState: ["ComposeTransformableState", "rememberComposeTransformableState"],
+  anchoredDragState: ["ComposeAnchoredDragState", "rememberComposeAnchoredDragState"],
+};
+
 const kinds = {
+  ...Object.fromEntries(Object.entries(gestureStateKinds).map(([kind, [type, factory]]) => [
+    kind, { type, input: "object", module: "../utils/composeValues",
+      modifierExpression: () => kind, composition: { value: kind, factory, emitsEvents: true } },
+  ])),
+  sharedContentState: { type: "ComposeSharedContent", input: "object", module: "../utils/composeValues",
+    modifierExpression: () => "sharedContentState",
+    composition: { value: "sharedContentState", factory: "rememberComposeSharedContentState" } },
+  boundsTransform: { type: "ComposeAnimationSpec", input: "object", module: "../utils/composeValues",
+    modifierExpression: (key) => "args.jsonObject(" + key + ").toComposeBoundsTransform()" },
+  visibilityScope: { type: '"current"', input: "string",
+    modifierExpression: () => "visibilityScope",
+    composition: { value: "visibilityScope", nativeExpression: () => "currentComposeVisibilityScope()" } },
+  lookaheadScope: { type: '"current"', input: "string",
+    modifierExpression: () => "lookaheadScope",
+    composition: { value: "lookaheadScope", nativeExpression: () => "currentComposeLookaheadScope()" } },
+  dpPoint: { type: "ComposeOffset", input: "object", module: "./records",
+    modifierExpression: (key) => "args.jsonObject(" + key + ").toComposeDpPoint()" },
+  keyboardActions: { type: "ComposeKeyboardActions", input: "object", module: "../utils/composeValues",
+    expression: (key) => "node.jsonObject(" + key + ").toComposeKeyboardActions(node.arguments())" },
+  eventKeyboardAction: { type: "() => void", input: "function",
+    expression: (key) => "androidx.compose.foundation.text.input.KeyboardActionHandler { defaultAction -> defaultAction(); node.emit(" + key + ") }" },
+  ...Object.fromEntries([
+    ["touchPolicy", "ComposeTouchPolicy", "toComposeTouchPolicy"],
+    ["rotaryPolicy", "ComposeRotaryPolicy", "toComposeRotaryPolicy"],
+    ["receiveContent", "ComposeReceiveContent", "toComposeReceiveContent"],
+    ["dragTarget", "ComposeDragTarget", "toComposeDragTarget"],
+  ].map(([kind, type, decoder]) => [kind, { type, input: "object", module: "../utils/composeValues",
+    modifierExpression: (key) => "args.jsonObject(" + key + ")." + decoder + "(args)" }])),
+  dragTypePolicy: { type: "ComposeDragTypes", input: "object", module: "../utils/composeValues",
+    modifierExpression: (key) => "args.jsonObject(" + key + ").toComposeDragTypePolicy()" },
+  dragTransfer: { type: "ComposeDragTransfer", input: "object", module: "../utils/composeValues",
+    modifierExpression: (key) => "args.jsonObject(" + key + ").toComposeDragTransfer()" },
+  eventInsets: { type: "(insets: ComposeWindowInsets) => void", input: "function", module: "../utils/composeValues",
+    imports: ["ComposeWindowInsets"],
+    modifierExpression: () => "eventInsets",
+    composition: { value: "eventInsets", nativeExpression: (key) => "args.rememberComposeInsetsEvent(" + key + ")" } },
+  overscrollEffect: { type: "ComposeOverscrollEffect", input: "object", module: "../utils/composeValues",
+    expression: (key) => `node.jsonObject(${key}).rememberComposeOverscrollEffect()`,
+    modifierExpression: () => "overscrollEffect",
+    composition: { value: "overscrollEffect", factory: "rememberComposeOverscrollEffect" } },
+  flingBehavior: { type: "ComposeFlingBehavior", input: "object", module: "../utils/composeValues",
+    expression: (key) => `node.jsonObject(${key}).rememberComposeFlingBehavior()`,
+    modifierExpression: () => "flingBehavior",
+    composition: { value: "flingBehavior", factory: "rememberComposeFlingBehavior" } },
   foundationStyle: { type: "ComposeFoundationStyle", input: "object", module: "./styles",
     expression: (key) => "node.jsonObject(" + key + ").toComposeFoundationStyle()" },
   foundationStyles: { type: "readonly ComposeFoundationStyle[]", input: "tuple", module: "./styles",
@@ -121,6 +193,10 @@ const kinds = {
   eventLayoutSize: eventSnapshot("ComposeLayoutSize", "androidx.compose.ui.unit.IntSize"),
   eventLayoutPosition: eventSnapshot("ComposeLayoutPosition", "androidx.compose.ui.layout.LayoutCoordinates"),
   eventNullableLayoutPosition: eventSnapshot("ComposeLayoutPosition", "androidx.compose.ui.layout.LayoutCoordinates", true),
+  eventMotion: eventSnapshot("ComposeMotionEvent", "android.view.MotionEvent"),
+  eventDpSize: eventSnapshot("ComposeDpSize", "androidx.compose.ui.unit.DpSize"),
+  eventOffset: eventSnapshot("ComposeOffset", "androidx.compose.ui.geometry.Offset", false, "./records"),
+  eventVelocity: eventSnapshot("ComposeOffset", "androidx.compose.ui.unit.Velocity", false, "./records"),
   eventFocusState: eventSnapshot("ComposeFocusState", "androidx.compose.ui.focus.FocusState"),
   eventTextFieldValue: eventSnapshot("ComposeTextFieldSnapshot", "androidx.compose.ui.text.input.TextFieldValue"),
   eventInt: { type: "(value: number) => void", input: "function", expression: emitValue("Int") },
@@ -136,11 +212,11 @@ for (const { name } of manifest.values ?? []) {
   kinds[name] = { type: name, input: "string", expression: (key) => `to${name}(node.string(${key}))` };
 }
 
-function eventSnapshot(snapshot, native, nullable = false) {
+function eventSnapshot(snapshot, native, nullable = false, module = "../utils/composeValues") {
   return {
     type: `(value: ${snapshot}${nullable ? " | null" : ""}) => void`,
     input: "function",
-    module: "../utils/composeValues",
+    module,
     imports: [snapshot],
     expression: (key) => `{ value: ${native}${nullable ? "?" : ""} -> node.emit(${key}, ${nullable ? "value?.toComposeSnapshot() ?: org.json.JSONObject.NULL" : "value.toComposeSnapshot()"}) }`,
   };
@@ -302,7 +378,10 @@ function typeScript({ components, values, factories }) {
   ].join("\n");
 }
 
-const pagerScope = "androidx.compose.foundation.pager.PagerScope";
+const indexedSlotScopes = new Set([
+  "androidx.compose.foundation.pager.PagerScope",
+  "androidx.compose.material3.carousel.CarouselItemScope",
+]);
 const lazyBuilderScopes = new Set([
   "androidx.compose.foundation.lazy.LazyListScope",
   "androidx.compose.foundation.lazy.grid.LazyGridScope",
@@ -311,8 +390,8 @@ const lazyBuilderScopes = new Set([
 
 function renderSlot(children, scope) {
   if (lazyBuilderScopes.has(scope)) return `{ renderLazyComposeChildren(${children}) }`;
-  if (scope === pagerScope) {
-    return `{ index -> ${children}.getOrNull(index)?.let { RenderComposeChild(it, this) } }`;
+  if (indexedSlotScopes.has(scope) || scope?.startsWith("indexed:")) {
+    return `{ index -> ${children}.getOrNull(index)?.let { RenderComposeChild(it${scope === "indexed:" ? "" : ", this"}) } }`;
   }
   if (scope === "androidx.compose.foundation.layout.PaddingValues") {
     return `{ padding -> RenderPaddedComposeChildren(${children}, padding) }`;
@@ -370,7 +449,7 @@ function kotlin({ components }) {
     const state = parameters.filter(({ kind }) => Object.hasOwn(stateKinds, kind));
     const stateArguments = state.map(({ name }) => `, ${name}Value`).join("");
     const stateValues = state.map(({ name, kind }) =>
-      `  val ${name}Value = if (node.has(${quote(name)}) && !node.isNull(${quote(name)})) node.jsonObject(${quote(name)}).${stateKinds[kind][2]}(${kind === "pagerState" ? "node" : ""}) else null`
+      `  val ${name}Value = if (node.has(${quote(name)}) && !node.isNull(${quote(name)})) node.jsonObject(${quote(name)}).${stateKinds[kind][2]}(${stateKinds[kind][3] ? "node" : ""}) else null`
     );
     const invalid = '    else -> error("Invalid generated arguments for " + node.name)';
     const groupSize = 32;

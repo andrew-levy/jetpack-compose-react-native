@@ -9,16 +9,33 @@ export type ComposeModifier = ComposeChain;
 
 type ComposeCallback = (value?: ComposeEventValue) => void;
 
+function serializeBridgeValue(
+  value: unknown,
+  callbacks: Map<string, ComposeCallback>,
+  path: readonly (string | number)[],
+  allowCallback = false,
+): unknown {
+  if (typeof value === "function" && allowCallback) {
+    const event = JSON.stringify(path);
+    callbacks.set(event, value as ComposeCallback);
+    return event;
+  }
+  if (Array.isArray(value)) {
+    return value.map((element, index) => serializeBridgeValue(element, callbacks, [...path, index]));
+  }
+  if (value === null || typeof value !== "object" || Object.getPrototypeOf(value) !== Object.prototype) return value;
+  return Object.fromEntries(Object.entries(value).map(([name, element]) =>
+    [name, serializeBridgeValue(element, callbacks, [...path, name], /^on[A-Z]/.test(name))]
+  ));
+}
+
 function serializeModifier(modifier: ComposeModifier, callbacks: Map<string, ComposeCallback>) {
-  return modifier.build().map((call, index) => {
-    const args = Object.fromEntries(Object.entries(call.args).map(([name, value]) => {
-      if (typeof value !== "function") return [name, value];
-      const event = `modifier.${index}.${name}`;
-      callbacks.set(event, value as ComposeCallback);
-      return [name, event];
-    }));
-    return { ...call, args };
-  });
+  return modifier.build().map((call, index) => ({
+    ...call,
+    args: Object.fromEntries(Object.entries(call.args).map(([name, value]) =>
+      [name, serializeBridgeValue(value, callbacks, ["modifier", index, name], true)]
+    )),
+  }));
 }
 
 type OverloadParameter = readonly [
@@ -91,7 +108,7 @@ export function createComposableComponent<P extends object>(
     const hasHost = React.useContext(ComposeHostContext);
 
     const values: Record<string, unknown> = {};
-    const modifierCallbacks = new Map<string, ComposeCallback>();
+    const valueCallbacks = new Map<string, ComposeCallback>();
     const input = props as Record<string, unknown>;
     const overload = description.overloads && selectOverload(description, allNames, input);
     if (overload) values.$overload = overload.id;
@@ -105,9 +122,9 @@ export function createComposableComponent<P extends object>(
         continue;
       }
       if (name === "modifier") {
-        values[name] = serializeModifier(value as ComposeModifier, modifierCallbacks);
+        values[name] = serializeModifier(value as ComposeModifier, valueCallbacks);
       } else if (objectProps.has(name) && typeof value === "object") {
-        values[name] = value;
+        values[name] = serializeBridgeValue(value, valueCallbacks, ["prop", name]);
       } else if (typeof value === "string" || typeof value === "boolean" || typeof value === "number") {
         values[name] = value;
       }
@@ -133,7 +150,7 @@ export function createComposableComponent<P extends object>(
         onComposeEvent={({ nativeEvent: { name, value } }) => {
           const callback = eventNames.has(name)
             ? input[name] as ComposeCallback | undefined
-            : modifierCallbacks.get(name);
+            : valueCallbacks.get(name);
           if (value === undefined) callback?.();
           else callback?.(value);
         }}

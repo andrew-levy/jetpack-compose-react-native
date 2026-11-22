@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
   AlertDialog, AnimatedVisibility, AssistChip, Badge, BasicText, BadgedBox, BottomAppBar, Box, BoxWithConstraints, Button, Card, Checkbox,
   CircularProgressIndicator, Column, ContainedLoadingIndicator, DropdownMenu, DropdownMenuItem, ElevatedButton, ElevatedCard, FilterChip, FlowRow,
-  DatePicker, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
+  Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Image, InputChip, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
   Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeTextFieldValue,
 } from "jetpack-compose-react-native";
@@ -229,14 +229,19 @@ function BridgeCapabilities() {
   const requester = useFocusRequester();
   const interactionSource = useInteractionSource();
   const [focused, setFocused] = useState(false);
+  const [showNewBindings, setShowNewBindings] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(true);
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState<ComposeTextFieldValue>({ text: "Compose selection", selection: { start: 0, end: 7 } });
+  if (showNewBindings) return <BridgeAdditions />;
   return (
     <>
       <Demo title="Native handles and input policy">
         <Column modifiers={fullWidth}>
-          <Button onClick={requester.requestFocus}><Text text="Request native focus" /></Button>
+          <Row>
+            <Button onClick={requester.requestFocus}><Text text="Request native focus" /></Button>
+            <TextButton onClick={() => setShowNewBindings(true)}><Text text="Try new bindings" /></TextButton>
+          </Row>
           <Box modifiers={Modifier
             .styleable({
               style: { background: "#ede5fc", contentPadding: 8, whenFocused: { background: "#c1f2e7" } },
@@ -271,10 +276,39 @@ function BridgeCapabilities() {
           >
             <Text text="Native animation complete" />
           </AnimatedVisibility>
-          <TextField value={value} onValueChange={setValue} />
+          <TextField value={value} onValueChange={setValue} keyboardOptions={{ imeAction: "done" }} />
         </Column>
       </Demo>
     </>
+  );
+}
+
+function BridgeAdditions() {
+  const [dragged, setDragged] = useState(false);
+  const [destination, setDestination] = useState(0);
+
+  return (
+    <Demo title="Native gestures and layout">
+      <Column modifiers={fullWidth}>
+        <Box
+          contentAlignment="center"
+          modifiers={fullWidth.height(56).background("#e0d5fa")
+            .semantics({ contentDescription: "Drag surface" })
+            .draggable({ orientation: "horizontal", state: { onDelta: () => setDragged(true) } })}
+        >
+          <Text text={dragged ? "Drag reported to React" : "Drag horizontally"} />
+        </Box>
+        <Grid config={{ columns: [{ fr: 1 }, { fr: 1 }], rows: ["auto"], gap: 8 }} modifiers={fullWidth.padding(8)}>
+          <Text text="Compose grid child" modifiers={Modifier.gridItem({ column: 1 })} />
+          <RNText>React Native grid child</RNText>
+        </Grid>
+        <Button onClick={() => setDestination(1)}><Text text="Crossfade content" /></Button>
+        <Crossfade targetState={destination} animationSpec={{ type: "tween", durationMillis: 200 }}>
+          <Text key="first" text="First crossfade state" />
+          <Text key="second" text="Second crossfade state" />
+        </Crossfade>
+      </Column>
+    </Demo>
   );
 }
 

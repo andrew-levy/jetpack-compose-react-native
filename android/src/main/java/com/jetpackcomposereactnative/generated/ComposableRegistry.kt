@@ -4,17 +4,24 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.PlainTooltip as composeScoped0
-import androidx.compose.material3.RichTooltip as composeScoped1
-import androidx.compose.material3.SegmentedButton as composeScoped2
+import androidx.compose.animation.AnimatedVisibility as composeScoped0
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
+import androidx.compose.material3.NavigationBarItem as composeScoped2
+import androidx.compose.material3.PlainTooltip as composeScoped3
+import androidx.compose.material3.RichTooltip as composeScoped4
+import androidx.compose.material3.SegmentedButton as composeScoped5
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun RenderComposable(node: ComposeNode, scope: Any?) {
   when (node.name) {
     "ActiveIcon" -> RendererActiveIcon.render(node)
     "AlertDialog" -> RendererAlertDialog.render(node, scope)
-    "AnimatedVisibility" -> RendererAnimatedVisibility.render(node, scope)
+    "AnimatedContent" -> RendererAnimatedContent.render(node, scope)
+    "AnimatedVisibility" -> {
+      check(scope is androidx.compose.foundation.layout.RowScope) { "AnimatedVisibility requires RowScope" }
+      RendererAnimatedVisibility.render(node, scope)
+    }
     "AssistChip" -> RendererAssistChip.render(node, scope)
     "Badge" -> RendererBadge.render(node, scope)
     "BadgedBox" -> RendererBadgedBox.render(node, scope)
@@ -32,9 +39,12 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "Box" -> RendererBox.render(node, scope)
     "BoxWithConstraints" -> RendererBoxWithConstraints.render(node, scope)
     "Button" -> RendererButton.render(node, scope)
+    "Canvas" -> RendererCanvas.render(node, scope)
+    "Canvas#1" -> RendererCanvas_1.render(node, scope)
     "Card" -> RendererCard.render(node, scope)
     "Card#1" -> RendererCard_1.render(node, scope)
     "CenterAlignedTopAppBar" -> RendererCenterAlignedTopAppBar.render(node, scope)
+    "CenteredTrack" -> RendererCenteredTrack.render(node, scope)
     "Checkbox" -> RendererCheckbox.render(node, scope)
     "CircularProgressIndicator" -> RendererCircularProgressIndicator.render(node, scope)
     "CircularProgressIndicator#1" -> RendererCircularProgressIndicator_1.render(node, scope)
@@ -48,6 +58,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "Container" -> RendererContainer.render(node, scope)
     "Container#1" -> RendererContainer_1.render(node, scope)
     "ContainerBox" -> RendererContainerBox.render(node)
+    "Crossfade" -> RendererCrossfade.render(node, scope)
     "CustomizedLookaheadAnimationVisualDebugging" -> RendererCustomizedLookaheadAnimationVisualDebugging.render(node)
     "DatePicker" -> RendererDatePicker.render(node, scope)
     "DatePickerDialog" -> RendererDatePickerDialog.render(node, scope)
@@ -60,6 +71,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "DisableSelection" -> RendererDisableSelection.render(node)
     "DismissibleDrawerSheet" -> RendererDismissibleDrawerSheet.render(node, scope)
     "DismissibleNavigationDrawer" -> RendererDismissibleNavigationDrawer.render(node, scope)
+    "DisplayModeToggle" -> RendererDisplayModeToggle.render(node, scope)
     "Divider" -> RendererDivider.render(node, scope)
     "DockedSearchBar" -> RendererDockedSearchBar.render(node, scope)
     "DragHandle" -> RendererDragHandle.render(node, scope)
@@ -89,21 +101,31 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "FilledTonalIconButton" -> RendererFilledTonalIconButton.render(node, scope)
     "FilledTonalIconToggleButton" -> RendererFilledTonalIconToggleButton.render(node, scope)
     "FilterChip" -> RendererFilterChip.render(node, scope)
+    "FlexBox" -> RendererFlexBox.render(node, scope)
     "FlexibleBottomAppBar" -> RendererFlexibleBottomAppBar.render(node, scope)
     "FloatingActionButton" -> RendererFloatingActionButton.render(node, scope)
     "FloatingActionButtonMenu" -> RendererFloatingActionButtonMenu.render(node, scope)
+    "FloatingActionButtonMenuItem" -> {
+      check(scope is androidx.compose.material3.FloatingActionButtonMenuScope) { "FloatingActionButtonMenuItem requires FloatingActionButtonMenuScope" }
+      RendererFloatingActionButtonMenuItem.render(node, scope)
+    }
     "FlowColumn" -> RendererFlowColumn.render(node, scope)
     "FlowRow" -> RendererFlowRow.render(node, scope)
+    "Grid" -> RendererGrid.render(node, scope)
     "HorizontalDivider" -> RendererHorizontalDivider.render(node, scope)
     "HorizontalFloatingToolbar" -> RendererHorizontalFloatingToolbar.render(node, scope)
     "HorizontalFloatingToolbar#1" -> RendererHorizontalFloatingToolbar_1.render(node, scope)
+    "HorizontalMultiBrowseCarousel" -> RendererHorizontalMultiBrowseCarousel.render(node, scope)
     "HorizontalPager" -> RendererHorizontalPager.render(node, scope)
+    "HorizontalUncontainedCarousel" -> RendererHorizontalUncontainedCarousel.render(node, scope)
     "Icon" -> RendererIcon.render(node, scope)
     "Icon#1" -> RendererIcon_1.render(node)
     "IconButton" -> RendererIconButton.render(node, scope)
     "IconToggleButton" -> RendererIconToggleButton.render(node, scope)
     "Image" -> RendererImage.render(node, scope)
     "Indicator" -> RendererIndicator.render(node, scope)
+    "Indicator#1" -> RendererIndicator_1.render(node, scope)
+    "IndicatorBox" -> RendererIndicatorBox.render(node, scope)
     "InputChip" -> RendererInputChip.render(node, scope)
     "InputField" -> RendererInputField.render(node, scope)
     "InputField#1" -> RendererInputField_1.render(node, scope)
@@ -129,6 +151,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ListItem" -> RendererListItem.render(node, scope)
     "LoadingIndicator" -> RendererLoadingIndicator.render(node, scope)
     "LoadingIndicator#1" -> RendererLoadingIndicator_1.render(node, scope)
+    "LoadingIndicator#2" -> RendererLoadingIndicator_2.render(node, scope)
     "LookaheadAnimationVisualDebugging" -> RendererLookaheadAnimationVisualDebugging.render(node)
     "LookaheadScope" -> RendererLookaheadScope.render(node)
     "MaterialExpressiveTheme" -> RendererMaterialExpressiveTheme.render(node)
@@ -144,6 +167,10 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ModalWideNavigationRail" -> RendererModalWideNavigationRail.render(node, scope)
     "MultiChoiceSegmentedButtonRow" -> RendererMultiChoiceSegmentedButtonRow.render(node, scope)
     "NavigationBar" -> RendererNavigationBar.render(node, scope)
+    "NavigationBarItem" -> {
+      check(scope is androidx.compose.foundation.layout.RowScope) { "NavigationBarItem requires RowScope" }
+      RendererNavigationBarItem.render(node, scope)
+    }
     "NavigationDrawerItem" -> RendererNavigationDrawerItem.render(node, scope)
     "NavigationRail" -> RendererNavigationRail.render(node, scope)
     "NavigationRailItem" -> RendererNavigationRailItem.render(node, scope)
@@ -175,6 +202,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "RadioButton" -> RendererRadioButton.render(node, scope)
     "RangeSlider" -> RendererRangeSlider.render(node, scope)
     "RangeSlider#1" -> RendererRangeSlider_1.render(node, scope)
+    "RangeSlider#2" -> RendererRangeSlider_2.render(node, scope)
     "ReusableContentHost" -> RendererReusableContentHost.render(node)
     "RichTooltip" -> {
       check(scope is androidx.compose.material3.TooltipScope) { "RichTooltip requires TooltipScope" }
@@ -203,6 +231,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ShortNavigationBarItem" -> RendererShortNavigationBarItem.render(node, scope)
     "SingleChoiceSegmentedButtonRow" -> RendererSingleChoiceSegmentedButtonRow.render(node, scope)
     "Slider" -> RendererSlider.render(node, scope)
+    "Slider#1" -> RendererSlider_1.render(node, scope)
     "SmallExtendedFloatingActionButton" -> RendererSmallExtendedFloatingActionButton.render(node, scope)
     "SmallExtendedFloatingActionButton#1" -> RendererSmallExtendedFloatingActionButton_1.render(node, scope)
     "SmallFloatingActionButton" -> RendererSmallFloatingActionButton.render(node, scope)
@@ -227,9 +256,11 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "TextField#1" -> RendererTextField_1.render(node, scope)
     "TextField#2" -> RendererTextField_2.render(node, scope)
     "Thumb" -> RendererThumb.render(node, scope)
+    "Thumb#1" -> RendererThumb_1.render(node, scope)
     "TimeInput" -> RendererTimeInput.render(node, scope)
     "TimePicker" -> RendererTimePicker.render(node, scope)
     "TimePickerDialog" -> RendererTimePickerDialog.render(node, scope)
+    "Title" -> RendererTitle.render(node, scope)
     "ToggleButton" -> RendererToggleButton.render(node, scope)
     "ToggleFloatingActionButton" -> RendererToggleFloatingActionButton.render(node, scope)
     "TonalLeadingButton" -> RendererTonalLeadingButton.render(node, scope)
@@ -239,6 +270,9 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "TopAppBar" -> RendererTopAppBar.render(node, scope)
     "TopAppBar#1" -> RendererTopAppBar_1.render(node, scope)
     "TopSearchBar" -> RendererTopSearchBar.render(node, scope)
+    "Track" -> RendererTrack.render(node, scope)
+    "Track#1" -> RendererTrack_1.render(node, scope)
+    "Track#2" -> RendererTrack_2.render(node, scope)
     "TrailingButton" -> RendererTrailingButton.render(node, scope)
     "TrailingButton#1" -> RendererTrailingButton_1.render(node, scope)
     "TrailingIcon" -> RendererTrailingIcon.render(node, scope)
@@ -248,6 +282,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "VerticalFloatingToolbar" -> RendererVerticalFloatingToolbar.render(node, scope)
     "VerticalFloatingToolbar#1" -> RendererVerticalFloatingToolbar_1.render(node, scope)
     "VerticalPager" -> RendererVerticalPager.render(node, scope)
+    "VerticalSlider" -> RendererVerticalSlider.render(node, scope)
     "VibrantFloatingActionButton" -> RendererVibrantFloatingActionButton.render(node, scope)
     "WideNavigationRail" -> RendererWideNavigationRail.render(node, scope)
     "WideNavigationRailItem" -> RendererWideNavigationRailItem.render(node, scope)

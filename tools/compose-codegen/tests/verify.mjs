@@ -71,12 +71,36 @@ if (mode === "audit") {
     ["styleable", "foundationStyle"],
     ["styleable", "foundationStyleState"],
     ["styleable", "foundationStyles"],
+    ["anchoredDraggable", "anchoredDragState"],
+    ["draggable", "dragState"],
+    ["scrollable2D", "scrollable2DState"],
+    ["transformable", "transformableState"],
+    ["layoutBounds", "layoutBoundsHolder"],
+    ["sharedElement", "sharedContentState"],
+    ["drawWithCache", "cachedDrawing"],
+    ["dropShadow", "shadowValue"],
+    ["pointerInteropFilter", "touchPolicy"],
+    ["onRotaryScrollEvent", "rotaryPolicy"],
   ]) {
     assert.ok(manifest.modifiers.some(modifier => modifier.name === name &&
       modifier.parameters.some(parameter => parameter.kind === kind)), name + " must use the shared adapter");
   }
   assert.ok(manifest.components.some(component => component.name === "TextField" &&
     component.parameters.some(parameter => parameter.kind === "eventTextFieldValue")));
+  for (const [name, kind] of [
+    ["Grid", "gridConfig"],
+    ["VerticalSlider", "sliderState"],
+    ["HorizontalMultiBrowseCarousel", "carouselState"],
+    ["Canvas", "drawing"],
+    ["TextField", "keyboardOptions"],
+    ["TextField", "eventKeyboardAction"],
+    ["HorizontalPager", "pageSize"],
+  ]) {
+    assert.ok(manifest.components.some(component => component.name === name &&
+      component.parameters.some(parameter => parameter.kind === kind)), name + " must use the shared adapter");
+  }
+  assert.ok(manifest.components.some(({ name, childrenScope }) => name === "Crossfade" && childrenScope === "indexed:"));
+  assert.ok(manifest.components.some(({ name, ownerScope }) => name === "NavigationBarItem" && ownerScope?.endsWith(".RowScope")));
   assert.ok(manifest.components.some(component => component.name === "Text" &&
     component.parameters.some(parameter => parameter.name === "composeTextStyle" && parameter.nativeName === "style")));
   assert.ok(manifest.records.some(record => record.name === "ComposeTransformOrigin"));
@@ -125,7 +149,11 @@ if (mode === "audit") {
         props.filter(([prop]) => prop !== "caretSize"), kind, scope]));
     }
     if (name !== "WideNavigationRailItem" || children) return true;
-    return !expected.some((shape) => shape.join() === names.join());
+    const legacyNames = names.filter((prop) => prop !== "interactionSource");
+    if (!expected.some((shape) => shape.join() === legacyNames.join())) return true;
+    const replacement = [...props, ["railExpanded", "boolean", false, false]]
+      .sort(([left], [right]) => left.localeCompare(right));
+    return !upgradedForms.has(JSON.stringify([name, children, replacement, kind, scope]));
   });
   for (const form of lost) console.log(`Removed JSX call form ${form}`);
   assert.deepEqual(unexpected, [], "A Compose upgrade unexpectedly dropped a JSX call form");

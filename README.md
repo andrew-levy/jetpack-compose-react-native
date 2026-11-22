@@ -80,6 +80,35 @@ function StyledFocusTarget() {
 }
 ```
 
+## Gestures, layouts, and transitions
+
+Pass a state description to `Modifier.draggable`, `anchoredDraggable`,
+`scrollable`, or `transformable`. Android handles the gesture, and optional
+callbacks report deltas in physical pixels to React. Scroll consumption is
+configured up front and runs on Android during the gesture.
+
+```tsx
+Modifier.draggable({
+  orientation: "horizontal",
+  state: { onDelta: (pixels) => console.log(pixels) },
+})
+```
+
+`Grid` and `FlexBox` take a `config` object and can contain React Native
+children. Apply `Modifier.gridItem` or `Modifier.flex` to direct Compose
+children of the corresponding layout. `Canvas` and `Modifier.drawBehind`
+take a `{ commands: [...] }` drawing description in dp. The content-drawing
+modifiers accept `before` and `after` command lists.
+
+`Crossfade` and `AnimatedContent` use a zero-based child index as
+`targetState`. Keep the children and their keys stable through the transition.
+For shared elements inside a `SharedTransitionLayout`, reuse the same
+`sharedContentState: { key }` on both elements and set
+`animatedVisibilityScope: "current"` inside `AnimatedContent` or
+`AnimatedVisibility`. Use `useSliderState`, `useRangeSliderState`,
+`usePullToRefreshState`, and `useLayoutBoundsHolder` to share native state
+between consumers in the same Compose host.
+
 ## Customize the theme
 
 Wrap a Compose subtree in `MaterialTheme` and pass a Material 3 color scheme.

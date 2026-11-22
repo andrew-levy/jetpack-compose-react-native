@@ -20,7 +20,7 @@ internal fun RenderComposeChildren(children: List<ComposeChild>, scope: Any? = n
 internal fun RenderComposeChild(child: ComposeChild, scope: Any? = null) {
   key(child) {
     when (child) {
-      is ComposeNode -> if (child.name.isNotEmpty()) RenderComposable(child, scope)
+      is ComposeNode -> if (child.name.isNotEmpty()) WithComposeOwners(scope) { RenderComposable(child, scope) }
       is ReactChildSlot -> RenderReactChild(child)
     }
   }

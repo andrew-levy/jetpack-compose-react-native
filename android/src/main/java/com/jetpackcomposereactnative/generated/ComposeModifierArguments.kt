@@ -29,6 +29,10 @@ internal class ComposeModifierArguments(
   fun color(name: String) = parseComposeColor(string(name))
   fun emit(name: String, value: Any? = null) = emitEvent(string(name), value)
 
+  fun emitValueEvent(dictionary: JSONObject, name: String, value: Any?) {
+    if (!dictionary.isNull(name)) emitEvent(dictionary.getString(name), value)
+  }
+
   fun shape(name: String): Shape = when (val value = values.get(name)) {
     is JSONObject -> {
       val radius = value.optJSONObject("rect")?.getDouble("cornerRadius") ?: value.getDouble("radius")

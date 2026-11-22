@@ -1,5 +1,10 @@
 // Generated from Compose declarations by generate.mjs.
 
+export type ComposeFrameRateCategory = "default" | "high" | "normal";
+export type ComposeAutofillContentType = "addressAuxiliaryDetails" | "addressCountry" | "addressLocality" | "addressRegion" | "addressStreet" | "birthDateDay" | "birthDateFull" | "birthDateMonth" | "birthDateYear" | "creditCardExpirationDate" | "creditCardExpirationDay" | "creditCardExpirationMonth" | "creditCardExpirationYear" | "creditCardNumber" | "creditCardSecurityCode" | "emailAddress" | "gender" | "newPassword" | "newUsername" | "password" | "personFirstName" | "personFullName" | "personLastName" | "personMiddleInitial" | "personMiddleName" | "personNamePrefix" | "personNameSuffix" | "phoneCountryCode" | "phoneNumber" | "phoneNumberDevice" | "phoneNumberNational" | "postalAddress" | "postalCode" | "postalCodeExtended" | "smsOtpCode" | "username";
+export type ComposeSnapPosition = "center" | "end" | "start";
+export type ComposeMenuAnchorType = "primaryEditable" | "primaryNotEditable" | "secondaryEditable";
+export type ComposeTimePickerDisplayMode = "input" | "picker";
 export type ComposeAlignment = "bottomCenter" | "bottomEnd" | "bottomStart" | "center" | "centerEnd" | "centerStart" | "topCenter" | "topEnd" | "topStart";
 export type ComposeHorizontalAlignment = "centerHorizontally" | "end" | "start";
 export type ComposeVerticalAlignment = "bottom" | "centerVertically" | "top";
