@@ -78,6 +78,8 @@ const stateKinds = {
   tooltipState: ["ComposeTooltipState", "androidx.compose.material3.TooltipState", "rememberComposeTooltipState"],
   popupPosition: ["ComposePopupPosition", "androidx.compose.ui.window.PopupPositionProvider", "rememberComposePopupPosition"],
   snackbarHostState: ["ComposeSnackbarHostState", "androidx.compose.material3.SnackbarHostState", "rememberComposeSnackbarHostState"],
+  drawerState: ["ComposeDrawerStateHandle", "androidx.compose.material3.DrawerState", "rememberComposeDrawerState", "node.arguments()"],
+  wideNavigationRailState: ["ComposeWideNavigationRailStateHandle", "androidx.compose.material3.WideNavigationRailState", "rememberComposeWideNavigationRailState", "node.arguments()"],
 };
 
 const handleKinds = {
@@ -177,7 +179,8 @@ const kinds = {
       modifierExpression: () => kind, composition: { value: kind, factory } },
   ])),
   ...Object.fromEntries(Object.entries(stateKinds).map(([kind, [type]]) => [
-    kind, { type, input: "object", module: kind === "sheetState" ? "./components" : "../utils/composeValues" },
+    kind, { type, input: "object", module: kind === "sheetState" ? "./components"
+      : type.endsWith("Handle") ? "../utils/nativeHandles" : "../utils/composeValues" },
   ])),
   alignmentLine: { type: "ComposeAlignmentLine", input: "string", module: "../utils/composeValues",
     expression: (key) => `toComposeAlignmentLine(node.string(${key}))` },
@@ -211,6 +214,8 @@ const kinds = {
   brush: { ...modifierKinds.brush, expression: (key) => `node.arguments().brush(${key})` },
   floatRange: { type: "ComposeFloatRange", input: "tuple", module: "./components", expression: (key) => `node.arguments().floatRange(${key})`,
     modifierExpression: (key) => `args.floatRange(${key})` },
+  intRange: { type: "readonly [first: number, last: number]", input: "tuple", expression: (key) => `node.arguments().intRange(${key})`,
+    modifierExpression: (key) => `args.intRange(${key})` },
   floatProducer: { type: "number", expression: (key) => `{ node.number(${key}).toFloat() }` },
   modifier: { type: "ComposeModifier", expression: (key) => `node.modifier(${key}, scope)` },
   event: { type: "() => void", input: "function", expression: (key) => `{ node.emit(${key}) }` },
@@ -249,6 +254,19 @@ for (const { name } of manifest.values ?? []) {
 
 for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
   if (kind.startsWith("eventTuple:") && !Object.hasOwn(kinds, kind)) kinds[kind] = eventTupleDescriptor(kind);
+}
+
+// `producer:<kind>`: a lambda that returns the current value of the prop each time Compose calls it.
+for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
+  if (!kind.startsWith("producer:") || Object.hasOwn(kinds, kind)) continue;
+  const inner = kinds[kind.slice("producer:".length)];
+  if (!inner) throw Error(`Unknown produced kind: ${kind}`);
+  kinds[kind] = {
+    ...inner,
+    composition: undefined,
+    expression: (key) => `{ ${inner.expression(key)} }`,
+    modifierExpression: (key) => `{ ${(inner.modifierExpression ?? inner.expression)(key).replaceAll("node.", "args.")} }`,
+  };
 }
 
 function eventSnapshot(snapshot, native, nullable = false, module = "../utils/composeValues") {
