@@ -6,12 +6,23 @@ import androidx.compose.foundation.style.ExperimentalFoundationStyleApi
 import androidx.compose.foundation.style.Style
 import androidx.compose.foundation.style.StyleState
 import androidx.compose.foundation.style.rememberUpdatedStyleState
+import androidx.compose.foundation.style.animate
 import androidx.compose.foundation.style.disabled
 import androidx.compose.foundation.style.checked
 import androidx.compose.foundation.style.selected
 import androidx.compose.foundation.style.focused
 import androidx.compose.foundation.style.hovered
 import androidx.compose.foundation.style.pressed
+import androidx.compose.foundation.style.contentPadding
+import androidx.compose.foundation.style.contentPaddingHorizontal
+import androidx.compose.foundation.style.contentPaddingVertical
+import androidx.compose.foundation.style.externalPadding
+import androidx.compose.foundation.style.externalPaddingHorizontal
+import androidx.compose.foundation.style.externalPaddingVertical
+import androidx.compose.foundation.style.scale
+import androidx.compose.foundation.style.size
+import androidx.compose.foundation.style.transformOrigin
+import androidx.compose.foundation.style.translation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.json.JSONArray
@@ -44,6 +55,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val externalPaddingStartValue = if (args.isNull("externalPaddingStart")) null else args.number("externalPaddingStart").dp
   val externalPaddingTopValue = if (args.isNull("externalPaddingTop")) null else args.number("externalPaddingTop").dp
   val externalPaddingVerticalValue = if (args.isNull("externalPaddingVertical")) null else args.number("externalPaddingVertical").dp
+  val fontFamilyValue = if (args.isNull("fontFamily")) null else args.jsonObject("fontFamily").decodeComposeFontFamilyValue()
   val fontSizeValue = if (args.isNull("fontSize")) null else args.number("fontSize").sp
   val fontStyleValue = if (args.isNull("fontStyle")) null else toComposeFontStyleValue(args.string("fontStyle"))
   val fontSynthesisValue = if (args.isNull("fontSynthesis")) null else toComposeFontSynthesisValue(args.string("fontSynthesis"))
@@ -72,9 +84,12 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
   val textDecorationValue = if (args.isNull("textDecoration")) null else toComposeTextDecorationValue(args.string("textDecoration"))
   val textDirectionValue = if (args.isNull("textDirection")) null else toComposeTextDirectionValue(args.string("textDirection"))
   val textIndentValue = if (args.isNull("textIndent")) null else args.jsonObject("textIndent").decodeComposeTextIndentValue()
+  val textMotionValue = if (args.isNull("textMotion")) null else toComposeTextMotionValue(args.string("textMotion"))
   val textStyleValue = if (args.isNull("textStyle")) null else args.jsonObject("textStyle").toTextStyle()
   val topValue = if (args.isNull("top")) null else args.number("top").dp
   val transformOriginValue = if (args.isNull("transformOrigin")) null else args.jsonObject("transformOrigin").decodeComposeTransformOrigin()
+  val transformOriginXValue = if (args.isNull("transformOriginX")) null else args.number("transformOriginX").toFloat()
+  val transformOriginYValue = if (args.isNull("transformOriginY")) null else args.number("transformOriginY").toFloat()
   val translationValue = if (args.isNull("translation")) null else args.jsonObject("translation").decodeComposeOffset()
   val translationXValue = if (args.isNull("translationX")) null else args.number("translationX").toFloat()
   val translationYValue = if (args.isNull("translationY")) null else args.number("translationY").toFloat()
@@ -111,6 +126,7 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
     externalPaddingStartValue?.let { externalPaddingStart(it) }
     externalPaddingTopValue?.let { externalPaddingTop(it) }
     externalPaddingVerticalValue?.let { externalPaddingVertical(it) }
+    fontFamilyValue?.let { fontFamily(it) }
     fontSizeValue?.let { fontSize(it) }
     fontStyleValue?.let { fontStyle(it) }
     fontSynthesisValue?.let { fontSynthesis(it) }
@@ -139,23 +155,26 @@ internal fun JSONObject.toComposeFoundationStyle(): Style {
     textDecorationValue?.let { textDecoration(it) }
     textDirectionValue?.let { textDirection(it) }
     textIndentValue?.let { textIndent(it) }
+    textMotionValue?.let { textMotion(it) }
     textStyleValue?.let { textStyle(it) }
     topValue?.let { top(it) }
     transformOriginValue?.let { transformOrigin(it) }
+    transformOriginXValue?.let { transformOriginX(it) }
+    transformOriginYValue?.let { transformOriginY(it) }
     translationValue?.let { translation(it) }
     translationXValue?.let { translationX(it) }
     translationYValue?.let { translationY(it) }
     widthValue?.let { width(it) }
     zIndexValue?.let { zIndex(it) }
-    disabledValue?.let { disabled(it) }
-    checkedValue?.let { checked(it) }
-    selectedValue?.let { selected(it) }
-    focusedValue?.let { focused(it) }
-    hoveredValue?.let { hovered(it) }
-    pressedValue?.let { pressed(it) }
+    disabledValue?.let { nested -> disabled { with(nested) { applyStyle() } } }
+    checkedValue?.let { nested -> checked { with(nested) { applyStyle() } } }
+    selectedValue?.let { nested -> selected { with(nested) { applyStyle() } } }
+    focusedValue?.let { nested -> focused { with(nested) { applyStyle() } } }
+    hoveredValue?.let { nested -> hovered { with(nested) { applyStyle() } } }
+    pressedValue?.let { nested -> pressed { with(nested) { applyStyle() } } }
   }
   val animation = optJSONObject("animationSpec")?.toComposeFloatAnimationSpec() ?: return style
-  return Style { animate(animation, style) }
+  return Style { animate(animation) { with(style) { applyStyle() } } }
 }
 
 @OptIn(ExperimentalFoundationStyleApi::class)
