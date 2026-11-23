@@ -26,12 +26,12 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: '9.4.1'
           cache-read-only: false
       - name: Install Android build tools
         run: |
           sdk_root="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-          "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-34' 'build-tools;34.0.0' 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
+          "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-37.1' 'build-tools;37.0.0' 'ndk;27.1.12297006' 'cmake;3.22.1'
       - name: Audit pinned Compose and verify compiler-approved bindings
         run: |
           node tools/compose-codegen/pipeline.mjs --check
@@ -45,14 +45,15 @@ jobs:
           if [ -n "$BASE_SHA" ] && git cat-file -e "$BASE_SHA:tools/compose-codegen/api-surface.json" 2>/dev/null; then
             previous=$(mktemp)
             git show "$BASE_SHA:tools/compose-codegen/api-surface.json" > "$previous"
-            node tools/compose-codegen/tests/verify.mjs surface "$previous" tools/compose-codegen/api-surface.json
+            node tools/compose-codegen/tests/verify.mjs surface "$previous" tools/compose-codegen/api-surface.json \
+              tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json
           fi
       - name: Compare coverage after upgrading Material 3
         run: |
           manifest=tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json
           pinned=$(mktemp)
           cp "$manifest" "$pinned"
-          COMPOSE_GENERATED_OUTPUT="$(mktemp -d)" node tools/compose-codegen/pipeline.mjs -PcomposeMaterial3Version=1.5.0-alpha01
+          COMPOSE_GENERATED_OUTPUT="$(mktemp -d)" node tools/compose-codegen/pipeline.mjs -PcomposeMaterial3Version=1.6.0-alpha01
           node tools/compose-codegen/tests/verify.mjs upgrade "$pinned" "$manifest"
       - name: Discover and compile fixture overloads with no manual catalog
         run: |
@@ -86,6 +87,7 @@ jobs:
           fs.writeFileSync(`${consumer}/package.json`, JSON.stringify({ private: true, workspaces: ['example'] }));
           JS
           npm install --prefix "$consumer" --no-audit --no-fund
+          (cd "$consumer/example" && CI=1 npx expo prebuild -p android --no-install)
           "$consumer/example/android/gradlew" -p "$consumer/example/android" :app:assembleRelease -PreactNativeArchitectures=x86_64
       - name: Ensure FFmpeg is available for gallery previews
         run: |
