@@ -1563,7 +1563,7 @@ internal object RendererAnimatedVisibility {
   }
 }
 
-// androidx.compose.material3.AppBarColumn(overflowIndicator: kotlin.Function1<androidx.compose.material3.AppBarMenuState, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, maxItemCount: kotlin.Int, content: kotlin.Function1<androidx.compose.material3.AppBarColumnScope, kotlin.Unit>)
+// androidx.compose.material3.AppBarColumn(modifier: androidx.compose.ui.Modifier, overflowIndicator: kotlin.Function1<androidx.compose.material3.AppBarMenuState, kotlin.Unit>, maxItemCount: kotlin.Int, content: kotlin.Function1<androidx.compose.material3.AppBarColumnScope, kotlin.Unit>)
 internal object RendererAppBarColumn {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
@@ -1576,8 +1576,8 @@ internal object RendererAppBarColumn {
         `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
       )
       1 -> androidx.compose.material3.AppBarColumn(
-        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `modifier` = node.modifier("modifier", scope),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `content` = node.arguments().toComposeAppBarItems("items"),
       )
       2 -> androidx.compose.material3.AppBarColumn(
@@ -1587,8 +1587,8 @@ internal object RendererAppBarColumn {
         `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
       )
       3 -> androidx.compose.material3.AppBarColumn(
-        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `modifier` = node.modifier("modifier", scope),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `maxItemCount` = node.number("maxItemCount").toInt(),
         `content` = node.arguments().toComposeAppBarItems("items"),
       )
@@ -1597,7 +1597,7 @@ internal object RendererAppBarColumn {
   }
 }
 
-// androidx.compose.material3.AppBarRow(overflowIndicator: kotlin.Function1<androidx.compose.material3.AppBarMenuState, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, maxItemCount: kotlin.Int, content: kotlin.Function1<androidx.compose.material3.AppBarRowScope, kotlin.Unit>)
+// androidx.compose.material3.AppBarRow(modifier: androidx.compose.ui.Modifier, overflowIndicator: kotlin.Function1<androidx.compose.material3.AppBarMenuState, kotlin.Unit>, maxItemCount: kotlin.Int, content: kotlin.Function1<androidx.compose.material3.AppBarRowScope, kotlin.Unit>)
 internal object RendererAppBarRow {
   @Composable
   fun render(node: ComposeNode, scope: Any?) {
@@ -1610,8 +1610,8 @@ internal object RendererAppBarRow {
         `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
       )
       1 -> androidx.compose.material3.AppBarRow(
-        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `modifier` = node.modifier("modifier", scope),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `content` = node.arguments().toComposeAppBarItems("items"),
       )
       2 -> androidx.compose.material3.AppBarRow(
@@ -1621,8 +1621,8 @@ internal object RendererAppBarRow {
         `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
       )
       3 -> androidx.compose.material3.AppBarRow(
-        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `modifier` = node.modifier("modifier", scope),
+        `overflowIndicator` = { menu -> RenderComposeOverflowIndicator(node.slot("overflowIndicator"), menu::show) },
         `maxItemCount` = node.number("maxItemCount").toInt(),
         `content` = node.arguments().toComposeAppBarItems("items"),
       )
