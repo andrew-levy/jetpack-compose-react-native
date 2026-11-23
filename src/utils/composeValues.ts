@@ -1,4 +1,6 @@
+import type { ComposeParagraphStyleValue, ComposeSpanStyleValue, ComposeTextStyleValue } from "../generated/records";
 import type { ComposeFontWeight, ComposeRole } from "../generated/values";
+import type { ComposeBrush } from "./modifier";
 import type { ComposeMaterialIcon } from "../generated/icons";
 
 /** Dimensions are expressed in dp. */
@@ -31,30 +33,35 @@ export type ComposePopupProperties = ComposeWindowProperties & {
 /** Span and annotation bounds are UTF-16 offsets with an exclusive end. */
 export type ComposeAnnotatedString = {
   text: string;
+  /** SpanStyle ranges, in UTF-16 offsets: `{ start, end, color, fontWeight, ... }`. */
   spans?: readonly ComposeTextSpan[];
+  /** ParagraphStyle ranges, in UTF-16 offsets: `{ start, end, textAlign, lineHeight, ... }`. */
+  paragraphs?: readonly ComposeTextParagraph[];
   annotations?: readonly { start: number; end: number; tag: string; value: string }[];
 };
 
-export type ComposeTextSpan = {
-  start: number;
-  end: number;
-  color?: string;
-  background?: string;
-  fontSize?: number;
-  fontWeight?: ComposeFontWeight;
+/** A SpanStyle applied to `start..end`. Every SpanStyle field is generated from Compose. */
+export type ComposeTextSpan = { start: number; end: number } & ComposeSpanStyleValue & {
+  /** @deprecated Use `fontStyle: "italic"`. */
   italic?: boolean;
+  /** @deprecated Use `textDecoration`. */
   decoration?: "none" | "underline" | "lineThrough";
 };
 
-export type ComposeTextStyle = {
-  color?: string;
-  fontSize?: number;
-  lineHeight?: number;
-  letterSpacing?: number;
-};
+/** A ParagraphStyle applied to `start..end`. */
+export type ComposeTextParagraph = { start: number; end: number } & ComposeParagraphStyleValue;
 
-/** A built-in Material icon, a color fill, or a drawable bundled in the Android app. */
-export type ComposePainter = ComposeMaterialIcon | { color: string } | { drawable: string };
+/** A TextStyle. Every TextStyle field is generated from Compose. Sizes are in sp. */
+export type ComposeTextStyle = ComposeTextStyleValue;
+
+/**
+ * An image a painter loads: a `require()` asset or `{ uri }` (http, https, file, content or asset).
+ * Width and height in dp size the painter before the image loads.
+ */
+export type ComposeImageSource = number | { uri: string; width?: number; height?: number; scale?: number };
+
+/** A built-in Material icon, a color fill, a drawable bundled in the Android app, or an image source. */
+export type ComposePainter = ComposeMaterialIcon | { color: string } | { drawable: string } | { source: ComposeImageSource };
 export type ComposeTextFieldState = { initialText?: string };
 
 export type ComposeDatePickerState = { initialSelectedDateMillis?: number; initialDisplayedMonthMillis?: number };
@@ -312,11 +319,42 @@ export type ComposeAnchoredDragState = {
 
 type ComposeDrawPoint = { x: number; y: number };
 
+/** Fill with `color` or `brush`; a `strokeWidth` strokes the outline instead. Units are dp. */
+type ComposeDrawPaint = ({ color: string; brush?: never } | { brush: ComposeBrush; color?: never }) & {
+  alpha?: number;
+  strokeWidth?: number;
+  strokeCap?: "butt" | "round" | "square";
+  strokeJoin?: "miter" | "round" | "bevel";
+};
+/** A box in dp. A missing width or height fills the rest of the drawing area. */
+type ComposeDrawBounds = { x?: number; y?: number; width?: number; height?: number };
+export type ComposePathSegment =
+  | { op: "moveTo" | "lineTo"; x: number; y: number }
+  | { op: "quadTo"; x1: number; y1: number; x2: number; y2: number }
+  | { op: "cubicTo"; x1: number; y1: number; x2: number; y2: number; x3: number; y3: number }
+  | { op: "arcTo"; x: number; y: number; width: number; height: number; startAngle: number; sweepAngle: number; forceMoveTo?: boolean }
+  | { op: "close" };
+type ComposeDrawPath = { points: readonly ComposeDrawPoint[]; segments?: never; closed?: boolean }
+  | { segments: readonly ComposePathSegment[]; points?: never; closed?: boolean };
+type ComposeDrawGroup = { commands?: readonly ComposeDrawCommand[] };
+
 export type ComposeDrawCommand =
-  | { type: "rect"; color: string; x?: number; y?: number; width?: number; height?: number; cornerRadius?: number }
-  | { type: "circle"; color: string; center?: ComposeDrawPoint; radius: number }
-  | { type: "line"; color: string; start: ComposeDrawPoint; end: ComposeDrawPoint; strokeWidth?: number }
-  | { type: "path"; color: string; points: readonly ComposeDrawPoint[]; closed?: boolean; strokeWidth?: number };
+  | ({ type: "rect"; cornerRadius?: number } & ComposeDrawBounds & ComposeDrawPaint)
+  | ({ type: "oval" } & ComposeDrawBounds & ComposeDrawPaint)
+  | ({ type: "circle"; center?: ComposeDrawPoint; radius: number } & ComposeDrawPaint)
+  | ({ type: "arc"; startAngle: number; sweepAngle: number; useCenter?: boolean } & ComposeDrawBounds & ComposeDrawPaint)
+  | ({ type: "line"; start: ComposeDrawPoint; end: ComposeDrawPoint } & ComposeDrawPaint)
+  | ({ type: "points"; points: readonly ComposeDrawPoint[]; pointMode?: "points" | "lines" | "polygon" } & ComposeDrawPaint)
+  | ({ type: "path" } & ComposeDrawPath & ComposeDrawPaint)
+  /** `y` is the text baseline. `fontSize` is in sp. */
+  | { type: "text"; text: string; x?: number; y?: number; color?: string; alpha?: number; fontSize?: number;
+      fontWeight?: "normal" | "bold"; textAlign?: "start" | "center" | "end" }
+  | ({ type: "translate"; x?: number; y?: number } & ComposeDrawGroup)
+  | ({ type: "rotate"; degrees: number; pivot?: ComposeDrawPoint } & ComposeDrawGroup)
+  | ({ type: "scale"; scale?: number; x?: number; y?: number; pivot?: ComposeDrawPoint } & ComposeDrawGroup)
+  | ({ type: "inset"; all?: number; left?: number; top?: number; right?: number; bottom?: number } & ComposeDrawGroup)
+  | ({ type: "clipRect" } & ComposeDrawBounds & ComposeDrawGroup)
+  | ({ type: "clipPath" } & ComposeDrawPath & ComposeDrawGroup);
 
 export type ComposeDrawing = { commands: readonly ComposeDrawCommand[] };
 export type ComposeContentDrawing = { before?: readonly ComposeDrawCommand[]; after?: readonly ComposeDrawCommand[] };
