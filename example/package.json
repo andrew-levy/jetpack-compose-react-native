@@ -4,16 +4,20 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "react-native start",
-    "android": "react-native run-android"
+    "start": "expo start",
+    "android": "expo run:android",
+    "prebuild": "expo prebuild -p android --clean",
+    "ios": "expo run:ios"
   },
   "dependencies": {
+    "expo": "~58.0.26",
+    "expo-build-properties": "~58.0.12",
     "jetpack-compose-react-native": "file:..",
-    "react": "18.2.0",
-    "react-native": "0.74.5"
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-safe-area-context": "~5.11.1"
   },
   "devDependencies": {
-    "@react-native/babel-preset": "0.74.87",
-    "@react-native/metro-config": "0.74.87"
+    "babel-preset-expo": "~58.0.26"
   }
 }
