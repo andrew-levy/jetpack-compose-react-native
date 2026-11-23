@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "jetpack-compose-react-native-example",
+    "slug": "jetpack-compose-react-native-example",
+    "version": "1.0.0",
+    "platforms": [
+      "android"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#ffffff"
+    },
+    "android": {
+      "package": "com.jetpackcomposereactnative.example",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "kotlinVersion": "2.2.20"
+          }
+        }
+      ],
+      "./plugins/withComposeExample"
+    ]
+  }
+}
