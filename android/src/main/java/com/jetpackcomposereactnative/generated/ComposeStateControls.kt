@@ -11,7 +11,14 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.BottomSheetScaffoldState
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.WideNavigationRailState
+import androidx.compose.material3.WideNavigationRailValue
+import androidx.compose.material3.rememberDrawerState
+import androidx.compose.material3.rememberWideNavigationRailState
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -212,3 +219,41 @@ internal fun JSONObject.rememberComposeBottomSheetScaffoldState(args: ComposeMod
   ) { state, command -> state.runCommand(command, allowHide = !skipHiddenState) }
   return rememberBottomSheetScaffoldState(bottomSheetState = sheet)
 }
+
+private data class ValueSnapshot(val current: String, val target: String) {
+  fun json(): JSONObject = JSONObject().put("currentValue", current).put("targetValue", target)
+}
+
+private fun Enum<*>.jsName() = name.replaceFirstChar { it.lowercaseChar() }
+
+@Composable
+internal fun JSONObject.rememberComposeDrawerState(args: ComposeModifierArguments): DrawerState =
+  controlledState(
+    "drawer", args,
+    { rememberDrawerState(if (optString("initialValue") == "open") DrawerValue.Open else DrawerValue.Closed) },
+    { ValueSnapshot(it.currentValue.jsName(), it.targetValue.jsName()) }, ValueSnapshot::json,
+  ) { state, command ->
+    when (command.operation) {
+      "open" -> state.open()
+      "close" -> state.close()
+    }
+  }
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+internal fun JSONObject.rememberComposeWideNavigationRailState(args: ComposeModifierArguments): WideNavigationRailState =
+  controlledState(
+    "wideNavigationRail", args,
+    {
+      rememberWideNavigationRailState(
+        if (optString("initialValue") == "expanded") WideNavigationRailValue.Expanded else WideNavigationRailValue.Collapsed,
+      )
+    },
+    { ValueSnapshot(it.currentValue.jsName(), it.targetValue.jsName()) }, ValueSnapshot::json,
+  ) { state, command ->
+    when (command.operation) {
+      "expand" -> state.expand()
+      "collapse" -> state.collapse()
+      "toggle" -> state.toggle()
+    }
+  }
