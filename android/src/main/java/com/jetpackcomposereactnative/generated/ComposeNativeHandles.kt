@@ -125,7 +125,7 @@ internal fun JSONObject.rememberComposeSliderHandle(): SliderState =
     SliderState(
       value = optDouble("initialValue", bounds.start.toDouble()).toFloat().coerceIn(bounds),
       steps = optInt("steps"),
-      valueRange = bounds,
+      trackRange = bounds,
     )
   }.value
 
@@ -136,10 +136,10 @@ internal fun JSONObject.rememberComposeRangeSliderHandle(): RangeSliderState =
     val bounds = sliderRange("valueRange", 0f..1f)
     val initial = sliderRange("initialRange", bounds)
     RangeSliderState(
-      activeRangeStart = initial.start.coerceIn(bounds),
-      activeRangeEnd = initial.endInclusive.coerceIn(bounds),
+      startValue = initial.start.coerceIn(bounds),
+      endValue = initial.endInclusive.coerceIn(bounds),
       steps = optInt("steps"),
-      valueRange = bounds,
+      trackRange = bounds,
     )
   }.value
 
