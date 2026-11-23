@@ -1,13 +1,15 @@
 plugins {
-  id("com.android.library") version "8.7.3"
-  id("org.jetbrains.kotlin.android") version "2.0.21"
-  id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
-  id("com.google.devtools.ksp") version "2.0.21-1.0.27"
+  id("com.android.library") version "9.2.1"
+  id("org.jetbrains.kotlin.android") version "2.2.20"
+  id("org.jetbrains.kotlin.plugin.compose") version "2.2.20"
+  id("com.google.devtools.ksp") version "2.2.20-2.0.4"
 }
 
 android {
   namespace = "com.jetpackcomposereactnative.codegen"
-  compileSdk = 35
+  compileSdk = 37
+  // Compose UI and Foundation 1.13 are compiled against Android API 37.1.
+  compileSdkMinor = 1
   defaultConfig {
     minSdk = 24
   }
@@ -40,6 +42,7 @@ if (candidateDir.isPresent) {
         "generated/ComposeOverflowActions.kt",
         "generated/ComposePointerPolicy.kt",
         "generated/ComposeModifierArguments.kt",
+        "generated/ComposeImages.kt",
         "generated/ComposeNode.kt",
         "generated/RenderComposeChildren.kt"
       )
@@ -94,10 +97,9 @@ tasks.matching { it.name == "kspDebugKotlin" }.configureEach {
 dependencies {
   ksp(project(":extractor"))
   inventoryTool(project(":extractor"))
-  implementation("androidx.compose.ui:ui:1.11.0")
-  implementation("androidx.compose.foundation:foundation:1.11.0")
+  implementation("androidx.compose.ui:ui:1.13.0")
+  implementation("androidx.compose.foundation:foundation:1.13.0")
   implementation("androidx.compose.material:material-icons-core:1.7.8")
-  // This release exposes MaterialExpressiveTheme publicly.
-  val material3Version = providers.gradleProperty("composeMaterial3Version").getOrElse("1.4.0-alpha15")
+  val material3Version = providers.gradleProperty("composeMaterial3Version").getOrElse("1.5.0")
   implementation("androidx.compose.material3:material3:$material3Version")
 }
