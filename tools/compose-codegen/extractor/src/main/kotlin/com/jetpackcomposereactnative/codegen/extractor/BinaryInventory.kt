@@ -165,6 +165,15 @@ object BinaryInventory {
         val prefix = if (parameter.varargElementType != null) "vararg " else ""
         "$prefix${parameter.name}: ${(parameter.varargElementType ?: parameter.type).typeName(names)}"
       })
+      // Matches ComposeApiExtractor.signature: only bounds other than the implicit `Any?` are written.
+      val bounded = typeParameters.filterNot { parameter ->
+        parameter.upperBounds.isEmpty() || parameter.upperBounds.singleOrNull()?.let {
+          (it.classifier as? KmClassifier.Class)?.name == "kotlin/Any" && it.isNullable
+        } == true
+      }.map { parameter ->
+        parameter.upperBounds.joinToString(" & ", prefix = "${parameter.name} : ") { it.typeName(names) }
+      }
+      if (bounded.isNotEmpty()) append(bounded.joinToString(prefix = " where "))
     }
   }
 
