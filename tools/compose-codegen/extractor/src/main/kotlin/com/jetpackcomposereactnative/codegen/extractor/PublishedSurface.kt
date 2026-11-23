@@ -9,10 +9,18 @@ internal class PublishedSurface private constructor(
 ) {
   private data class Snapshot(val components: List<Overload>, val modifiers: List<Overload>)
 
+  // Signatures of the declarations the generator still binds. A published overload whose signature is no
+  // longer among them was changed or removed upstream (hidden for binary compatibility) (for example Material 3 added a parameter); its call
+  // forms carry over to the current overload of the same function when every prop still fits.
+  var currentSignatures: Set<String> = emptySet()
+
   private data class Overload(
     val name: String, val signature: String?, val children: Boolean, val scope: String?, val ownerScope: String?,
     val parameters: List<Parameter>, val masks: List<Int>,
   )
+
+  fun publishes(signature: String): Boolean =
+    components.values.any { overloads -> overloads.any { it.signature == signature } }
 
   fun componentMasks(name: String, signature: String, children: Boolean, scope: String?, parameters: List<Parameter>) =
     retainedMasks(components[name].orEmpty(), signature, children, scope, parameters)
@@ -30,7 +38,9 @@ internal class PublishedSurface private constructor(
     val matching = overloads.filter {
       val publishedScope = it.scope ?: it.ownerScope
       it.children == children && (it.signature == signature && publishedScope == scope ||
-        it.signature == null && (publishedScope == null || publishedScope == scope))
+        it.signature == null && (publishedScope == null || publishedScope == scope) ||
+        it.signature != null && it.signature !in currentSignatures && publishedScope == scope &&
+        it.signature.functionName() == signature.functionName())
     }
     return matching.flatMap { overload ->
       overload.masks.mapNotNull { oldMask ->
@@ -48,6 +58,9 @@ internal class PublishedSurface private constructor(
   }
 
   private fun Parameter.hasMaskBit() = optional && kind != "modifier"
+
+  // The qualified function name and receiver, without the parameter list.
+  private fun String.functionName() = substringBefore('(')
 
   companion object {
     fun read(path: String?): PublishedSurface {
