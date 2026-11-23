@@ -1,8 +1,21 @@
-export type ComposeShape = string | { radius: number } | { rect: { cornerRadius: number } };
+import type { ComposeBrushValue, ComposeShapeValue } from "../generated/records";
+import type { ComposeMaterialShape } from "../generated/values";
+
+/**
+ * A Compose Shape: `"circle"`, `"rect"`, a corner radius in dp, any shape factory
+ * (`{ factory: "CutCornerShape", size: 8 }`, `{ factory: "RoundedCornerShape", topStart: 16, ... }`),
+ * or a Material 3 shape (`{ material: "cookie9Sided" }`).
+ */
+export type ComposeShape = string | { radius: number } | { rect: { cornerRadius: number } } | ComposeShapeValue
+  | { material: ComposeMaterialShape };
+/**
+ * A Compose Brush: a color, an evenly spaced gradient, or any Brush factory
+ * (`{ factory: "Brush.radialGradient", colors: [...], center: { x, y }, radius }`). Offsets and radii are in px.
+ */
 export type ComposeBrush = string | {
   colors: readonly string[];
   direction?: "horizontal" | "vertical";
-};
+} | ComposeBrushValue;
 
 interface Padding {
   horizontal?: number;
@@ -74,9 +87,12 @@ function matches(value: unknown, type: ArgumentType, nullable: boolean): boolean
   if (type === "tuple") return Array.isArray(value);
   if (type === "shape") {
     return typeof value === "string" || (isObject(value) &&
-      (typeof value.radius === "number" || (isObject(value.rect) && typeof value.rect.cornerRadius === "number")));
+      (typeof value.radius === "number" || (isObject(value.rect) && typeof value.rect.cornerRadius === "number") ||
+        typeof value.factory === "string" || typeof value.material === "string"));
   }
-  if (type === "brush") return typeof value === "string" || (isObject(value) && Array.isArray(value.colors));
+  if (type === "brush") {
+    return typeof value === "string" || (isObject(value) && (Array.isArray(value.colors) || typeof value.factory === "string"));
+  }
   return type === "number" ? typeof value === "number" && Number.isFinite(value) : typeof value === type;
 }
 
