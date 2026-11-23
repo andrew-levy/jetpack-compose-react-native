@@ -35,7 +35,8 @@ verify the demo from a fresh checkout.
 
 ## Generate
 
-With Android SDK 35, JDK 17, Gradle 8.9, and Node 22 installed, run these commands
+With Android SDK 37.1, JDK 17, Gradle 9.4 (set `COMPOSE_GRADLE` to its `gradle` when it is not on
+`PATH`), and Node 22 installed, run these commands
 from the repository root.
 
 ```sh
