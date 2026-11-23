@@ -122,27 +122,20 @@ internal fun JSONObject.toDpSize(): DpSize = DpSize(getDouble("width").dp, getDo
 
 internal fun JSONObject.toAnnotatedString(): AnnotatedString {
   val text = getString("text")
-  if (!has("spans") && !has("annotations")) return AnnotatedString(text)
+  if (!has("spans") && !has("paragraphs") && !has("annotations")) return AnnotatedString(text)
   val builder = AnnotatedString.Builder(text)
   optJSONArray("spans")?.let { spans ->
     for (index in 0 until spans.length()) {
       val span = spans.getJSONObject(index)
       val (start, end) = span.textBounds(text.length)
-      builder.addStyle(SpanStyle(
-        color = span.textColor("color"),
-        background = span.textColor("background"),
-        fontSize = span.textUnit("fontSize"),
-        fontWeight = span.optString("fontWeight").takeIf { it.isNotEmpty() }?.let(::toComposeFontWeight),
-        fontStyle = if (span.has("italic")) {
-          if (span.getBoolean("italic")) FontStyle.Italic else FontStyle.Normal
-        } else null,
-        textDecoration = when (span.optString("decoration")) {
-          "underline" -> TextDecoration.Underline
-          "lineThrough" -> TextDecoration.LineThrough
-          "none" -> TextDecoration.None
-          else -> null
-        },
-      ), start, end)
+      builder.addStyle(span.toComposeSpanStyle(), start, end)
+    }
+  }
+  optJSONArray("paragraphs")?.let { paragraphs ->
+    for (index in 0 until paragraphs.length()) {
+      val paragraph = paragraphs.getJSONObject(index)
+      val (start, end) = paragraph.textBounds(text.length)
+      builder.addStyle(paragraph.decodeComposeParagraphStyleValue(), start, end)
     }
   }
   optJSONArray("annotations")?.let { annotations ->
@@ -155,6 +148,18 @@ internal fun JSONObject.toAnnotatedString(): AnnotatedString {
   return builder.toAnnotatedString()
 }
 
+// Every SpanStyle field is generated from Compose. Spans written before that use `italic` and `decoration`.
+private fun JSONObject.toComposeSpanStyle(): SpanStyle {
+  var style = decodeComposeSpanStyleValue()
+  if (has("italic")) style = style.copy(fontStyle = if (getBoolean("italic")) FontStyle.Italic else FontStyle.Normal)
+  when (optString("decoration")) {
+    "underline" -> style = style.copy(textDecoration = TextDecoration.Underline)
+    "lineThrough" -> style = style.copy(textDecoration = TextDecoration.LineThrough)
+    "none" -> style = style.copy(textDecoration = TextDecoration.None)
+  }
+  return style
+}
+
 private fun JSONObject.textBounds(length: Int): Pair<Int, Int> {
   val start = getInt("start")
   val end = getInt("end")
@@ -162,21 +167,13 @@ private fun JSONObject.textBounds(length: Int): Pair<Int, Int> {
   return start to end
 }
 
-private fun JSONObject.textColor(name: String): Color =
-  if (isNull(name)) Color.Unspecified else parseComposeColor(getString(name))
+// Every TextStyle field is generated from Compose (records.ts `ComposeTextStyleValue`).
+internal fun JSONObject.toTextStyle(): TextStyle = decodeComposeTextStyleValue()
 
-internal fun JSONObject.toTextStyle(): TextStyle = TextStyle(
-  color = optString("color").takeIf { it.isNotEmpty() }?.let(::parseComposeColor) ?: Color.Unspecified,
-  fontSize = textUnit("fontSize"),
-  lineHeight = textUnit("lineHeight"),
-  letterSpacing = textUnit("letterSpacing"),
-)
-
-private fun JSONObject.textUnit(name: String): TextUnit =
-  if (isNull(name)) TextUnit.Unspecified else getDouble(name).sp
 
 @Composable
 internal fun JSONObject.rememberComposePainter(): Painter {
+  optJSONObject("source")?.let { return it.rememberComposeImagePainter() }
   if (has("icon")) return rememberVectorPainter(
     composeMaterialIcon(optString("style", "filled"), getString("icon")),
   )
