@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 
 
 PACKAGE = "com.jetpackcomposereactnative.example"
+MAIN_WINDOW = re.compile(r"^\s*Window #\d+ Window\{(\S+) u\d+ " + re.escape(PACKAGE) + r"/\S*MainActivity\}:", re.M)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--preview-dir", type=Path)
@@ -79,11 +80,12 @@ def adb(*args):
 
 def activity_window():
     windows = adb("shell", "dumpsys", "window", "windows")
-    focus = re.search(r"mCurrentFocus=Window\{(\S+) .* " + re.escape(PACKAGE) + r"/[^}]+\}", windows)
-    return focus.group(1) if focus else None
+    # The activity window keeps its identity while a native popup has focus.
+    match = MAIN_WINDOW.search(windows)
+    return match.group(1) if match else None
 
 
-def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, timeout=90):
+def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, timeout=90, node_filter=lambda node: True):
     deadline = time.monotonic() + timeout
     nodes = {}
     while time.monotonic() < deadline:
@@ -91,11 +93,13 @@ def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, t
             adb("shell", "uiautomator", "dump", "/sdcard/compose-bridge.xml")
             contents = adb("shell", "cat", "/sdcard/compose-bridge.xml")
             if window is not None:
-                focused = activity_window()
-                if focused is not None and focused != window:
+                current_window = activity_window()
+                if current_window is not None and current_window != window:
                     raise ActivityRecreated("Android recreated the demo activity during verification")
             nodes = {}
             for node in ET.fromstring(contents).iter("node"):
+                if not node_filter(node):
+                    continue
                 for label in (node.get("text"), node.get("content-desc")):
                     if label and (label not in nodes or nodes[label].get("selected") != "true"):
                         nodes[label] = node
@@ -168,7 +172,10 @@ def start_gallery():
                 "Compose Gallery", "Buttons", "Filled", "Button presses: 0", "Modifiers",
                 window=window, timeout=35 if attempt == 0 else 90,
             )
-            return nodes, window or activity_window()
+            window = window or activity_window()
+            if window is None:
+                raise ActivityRecreated("Unable to identify the gallery activity after startup")
+            return nodes, window
         except (ActivityRecreated, MissingUiUpdate) as error:
             if attempt == 1:
                 raise
@@ -389,6 +396,9 @@ def verify_catalog():
     adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity")
     window = activity_window()
     nodes = wait_for("Compose Catalog", "Light", "Dark", "Search catalog", window=window)
+    window = window or activity_window()
+    if window is None:
+        raise ActivityRecreated("Unable to identify the catalog activity after startup")
     tap(nodes["Light"])
     nodes = wait_for("Light", "Dark", window=window,
                      layout_ready=lambda n: n["Light"].get("selected") == "true")
@@ -406,7 +416,12 @@ def verify_catalog():
         wait_for("Search catalog", window=window,
                  layout_ready=lambda n: n["Search catalog"].get("focused") == "true")
         adb("shell", "input", "text", name)
-        matches = wait_for(name, window=window)
+        wait_for("Search catalog", window=window, layout_ready=lambda n: n["Search catalog"].get("text") == name)
+        adb("shell", "input", "keyevent", "KEYCODE_ENTER")
+        matches = wait_for(name, window=window, node_filter=lambda node: (
+            node.get("content-desc") == name and node.get("class") == "android.widget.Button"
+            and node.get("clickable") == "true"
+        ))
         tap(matches[name])
 
     open_demo("AnimatedVisibility")
