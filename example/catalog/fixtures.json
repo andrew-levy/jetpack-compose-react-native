@@ -83,8 +83,23 @@
       "parent": null
     },
     {
+      "name": "AppBarWithSearch",
+      "overload": "AppBarWithSearch",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "AssistChip",
-      "overload": null,
+      "overload": "AssistChip",
       "props": {
         "onClick": "$fn"
       },
@@ -189,6 +204,15 @@
       "parent": null
     },
     {
+      "name": "BottomSheet",
+      "overload": "BottomSheet",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "BottomSheetScaffold",
       "overload": "BottomSheetScaffold",
       "props": {},
@@ -262,6 +286,17 @@
       "parent": null
     },
     {
+      "name": "CapturedAnimatedVisibility",
+      "overload": null,
+      "props": {
+        "visible": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "Card",
       "overload": "Card",
       "props": {},
@@ -293,8 +328,23 @@
       "parent": null
     },
     {
+      "name": "CheckableDropdownMenuItem",
+      "overload": "CheckableDropdownMenuItem",
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn",
+        "shapes": {}
+      },
+      "slots": [
+        "text"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "Checkbox",
-      "overload": null,
+      "overload": "Checkbox",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -540,7 +590,7 @@
     },
     {
       "name": "DismissibleDrawerSheet",
-      "overload": null,
+      "overload": "DismissibleDrawerSheet",
       "props": {},
       "slots": [],
       "children": true,
@@ -581,7 +631,7 @@
     },
     {
       "name": "DockedSearchBar",
-      "overload": null,
+      "overload": "DockedSearchBar",
       "props": {
         "expanded": true,
         "onExpandedChange": "$fn"
@@ -615,8 +665,28 @@
       "parent": null
     },
     {
-      "name": "DropdownMenuItem",
+      "name": "DropdownMenuGroup",
       "overload": null,
+      "props": {
+        "shapes": {}
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DropdownMenuGroupLabel",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DropdownMenuItem",
+      "overload": "DropdownMenuItem",
       "props": {
         "onClick": "$fn"
       },
@@ -628,8 +698,29 @@
       "parent": null
     },
     {
-      "name": "ElevatedAssistChip",
+      "name": "DropdownMenuItemTrailingLabel",
       "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DropdownMenuPopup",
+      "overload": null,
+      "props": {
+        "expanded": true,
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedAssistChip",
+      "overload": "ElevatedAssistChip",
       "props": {
         "onClick": "$fn"
       },
@@ -662,7 +753,7 @@
     },
     {
       "name": "ElevatedFilterChip",
-      "overload": null,
+      "overload": "ElevatedFilterChip",
       "props": {
         "selected": true,
         "onClick": "$fn"
@@ -687,7 +778,7 @@
     },
     {
       "name": "ElevatedSuggestionChip",
-      "overload": null,
+      "overload": "ElevatedSuggestionChip",
       "props": {
         "onClick": "$fn"
       },
@@ -700,7 +791,7 @@
     },
     {
       "name": "ElevatedToggleButton",
-      "overload": null,
+      "overload": "ElevatedToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -738,7 +829,7 @@
       "parent": null
     },
     {
-      "name": "ExpandedFullScreenSearchBar",
+      "name": "ExpandedDockedSearchBarWithGap",
       "overload": null,
       "props": {
         "state": {
@@ -753,16 +844,34 @@
       "parent": null
     },
     {
-      "name": "ExposedDropdownMenu",
+      "name": "ExpandedFullScreenContainedSearchBar",
       "overload": null,
       "props": {
-        "expanded": true,
-        "onDismissRequest": "$fn"
+        "state": {
+          "initialText": "Hello"
+        }
       },
-      "slots": [],
+      "slots": [
+        "inputField"
+      ],
       "children": true,
       "keyedChildren": false,
-      "parent": "ExposedDropdownMenuBox"
+      "parent": null
+    },
+    {
+      "name": "ExpandedFullScreenSearchBar",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
     },
     {
       "name": "ExposedDropdownMenuBox",
@@ -789,7 +898,7 @@
     },
     {
       "name": "FilledIconButton",
-      "overload": null,
+      "overload": "FilledIconButton",
       "props": {
         "onClick": "$fn"
       },
@@ -800,7 +909,7 @@
     },
     {
       "name": "FilledIconToggleButton",
-      "overload": null,
+      "overload": "FilledIconToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -823,7 +932,7 @@
     },
     {
       "name": "FilledTonalIconButton",
-      "overload": null,
+      "overload": "FilledTonalIconButton",
       "props": {
         "onClick": "$fn"
       },
@@ -834,7 +943,19 @@
     },
     {
       "name": "FilledTonalIconToggleButton",
-      "overload": null,
+      "overload": "FilledTonalIconToggleButton",
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilledTonalToggleButton",
+      "overload": "FilledTonalToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -846,7 +967,7 @@
     },
     {
       "name": "FilterChip",
-      "overload": null,
+      "overload": "FilterChip",
       "props": {
         "selected": true,
         "onClick": "$fn"
@@ -951,6 +1072,19 @@
       "parent": null
     },
     {
+      "name": "HorizontalCenteredHeroCarousel",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "HorizontalDivider",
       "overload": null,
       "props": {},
@@ -1013,7 +1147,7 @@
     },
     {
       "name": "Icon",
-      "overload": "Icon#1",
+      "overload": "Icon#2",
       "props": {
         "active": true
       },
@@ -1024,7 +1158,7 @@
     },
     {
       "name": "IconButton",
-      "overload": null,
+      "overload": "IconButton",
       "props": {
         "onClick": "$fn"
       },
@@ -1035,7 +1169,7 @@
     },
     {
       "name": "IconToggleButton",
-      "overload": null,
+      "overload": "IconToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -1047,11 +1181,9 @@
     },
     {
       "name": "Image",
-      "overload": null,
+      "overload": "Image",
       "props": {
-        "painter": {
-          "color": "#6750a4"
-        },
+        "bitmap": {},
         "contentDescription": "Sample"
       },
       "slots": [],
@@ -1082,7 +1214,7 @@
     },
     {
       "name": "InputChip",
-      "overload": null,
+      "overload": "InputChip",
       "props": {
         "selected": true,
         "onClick": "$fn"
@@ -1101,6 +1233,18 @@
         "textFieldState": {},
         "searchBarState": {},
         "onSearch": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Item",
+      "overload": null,
+      "props": {
+        "index": 0,
+        "selected": true
       },
       "slots": [],
       "children": false,
@@ -1294,12 +1438,10 @@
     },
     {
       "name": "ListItem",
-      "overload": null,
+      "overload": "ListItem",
       "props": {},
-      "slots": [
-        "headlineContent"
-      ],
-      "children": false,
+      "slots": [],
+      "children": true,
       "keyedChildren": false,
       "parent": null
     },
@@ -1405,7 +1547,7 @@
     },
     {
       "name": "ModalDrawerSheet",
-      "overload": null,
+      "overload": "ModalDrawerSheet",
       "props": {},
       "slots": [],
       "children": true,
@@ -1425,7 +1567,7 @@
     },
     {
       "name": "ModalWideNavigationRail",
-      "overload": null,
+      "overload": "ModalWideNavigationRail",
       "props": {},
       "slots": [],
       "children": true,
@@ -1539,7 +1681,7 @@
     },
     {
       "name": "OutlinedIconButton",
-      "overload": null,
+      "overload": "OutlinedIconButton",
       "props": {
         "onClick": "$fn"
       },
@@ -1550,7 +1692,7 @@
     },
     {
       "name": "OutlinedIconToggleButton",
-      "overload": null,
+      "overload": "OutlinedIconToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -1599,7 +1741,7 @@
     },
     {
       "name": "OutlinedToggleButton",
-      "overload": null,
+      "overload": "OutlinedToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -1733,7 +1875,8 @@
       "name": "RangeSlider",
       "overload": "RangeSlider",
       "props": {
-        "state": "$rangeSliderState"
+        "state": "$rangeSliderState",
+        "onValueChange": "$fn"
       },
       "slots": [],
       "children": false,
@@ -1781,6 +1924,17 @@
       "parent": null
     },
     {
+      "name": "Scrim",
+      "overload": null,
+      "props": {
+        "contentDescription": "Sample"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "ScrollableTabRow",
       "overload": null,
       "props": {
@@ -1789,6 +1943,18 @@
       "slots": [
         "tabs"
       ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ScrollDisplayModeToggle",
+      "overload": null,
+      "props": {
+        "onDisplayModeChange": "$fn",
+        "displayMode": "picker"
+      },
+      "slots": [],
       "children": false,
       "keyedChildren": false,
       "parent": null
@@ -1872,6 +2038,32 @@
       "parent": "MultiChoiceSegmentedButtonRow"
     },
     {
+      "name": "SegmentedListItem",
+      "overload": "SegmentedListItem",
+      "props": {
+        "shapes": {}
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SelectableDropdownMenuItem",
+      "overload": "SelectableDropdownMenuItem",
+      "props": {
+        "selected": true,
+        "onClick": "$fn",
+        "shapes": {}
+      },
+      "slots": [
+        "text"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "SelectionContainer",
       "overload": null,
       "props": {},
@@ -1926,7 +2118,8 @@
       "name": "Slider",
       "overload": "Slider",
       "props": {
-        "state": "$sliderState"
+        "state": "$sliderState",
+        "onValueChange": "$fn"
       },
       "slots": [],
       "children": false,
@@ -1976,6 +2169,17 @@
       "parent": null
     },
     {
+      "name": "SoundEffectOnInteraction",
+      "overload": null,
+      "props": {
+        "enabled": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "Spacer",
       "overload": null,
       "props": {},
@@ -2009,7 +2213,7 @@
     },
     {
       "name": "SuggestionChip",
-      "overload": null,
+      "overload": "SuggestionChip",
       "props": {
         "onClick": "$fn"
       },
@@ -2129,7 +2333,7 @@
     },
     {
       "name": "TimeInput",
-      "overload": null,
+      "overload": "TimeInput",
       "props": {
         "state": {
           "initialText": "Hello"
@@ -2142,7 +2346,7 @@
     },
     {
       "name": "TimePicker",
-      "overload": null,
+      "overload": "TimePicker",
       "props": {
         "state": {
           "initialText": "Hello"
@@ -2168,6 +2372,20 @@
       "parent": null
     },
     {
+      "name": "TimeScroll",
+      "overload": "TimeScroll",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        },
+        "shapes": {}
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "Title",
       "overload": null,
       "props": {
@@ -2180,7 +2398,7 @@
     },
     {
       "name": "ToggleButton",
-      "overload": null,
+      "overload": "ToggleButton",
       "props": {
         "checked": true,
         "onCheckedChange": "$fn"
@@ -2207,18 +2425,6 @@
       "overload": null,
       "props": {
         "onClick": "$fn"
-      },
-      "slots": [],
-      "children": true,
-      "keyedChildren": false,
-      "parent": null
-    },
-    {
-      "name": "TonalToggleButton",
-      "overload": null,
-      "props": {
-        "checked": true,
-        "onCheckedChange": "$fn"
       },
       "slots": [],
       "children": true,
@@ -2314,7 +2520,7 @@
     },
     {
       "name": "TriStateCheckbox",
-      "overload": null,
+      "overload": "TriStateCheckbox",
       "props": {
         "state": "off",
         "onClick": "$fn"
@@ -2370,7 +2576,8 @@
       "name": "VerticalSlider",
       "overload": null,
       "props": {
-        "state": "$sliderState"
+        "state": "$sliderState",
+        "onValueChange": "$fn"
       },
       "slots": [],
       "children": false,
@@ -2389,6 +2596,19 @@
       "parent": null
     },
     {
+      "name": "VibrantTimePickerDialog",
+      "overload": null,
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [
+        "confirmButton"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "WideNavigationRail",
       "overload": null,
       "props": {},
@@ -2402,7 +2622,8 @@
       "overload": null,
       "props": {
         "selected": true,
-        "onClick": "$fn"
+        "onClick": "$fn",
+        "railExpanded": true
       },
       "slots": [
         "icon",
@@ -2502,6 +2723,13 @@
       "scope": "lazy"
     },
     {
+      "name": "appearance",
+      "args": {
+        "block": {}
+      },
+      "scope": null
+    },
+    {
       "name": "aspectRatio",
       "args": {
         "ratio": 0.5
@@ -2542,7 +2770,30 @@
     {
       "name": "blur",
       "args": {
-        "radius": 8
+        "block": {
+          "blurRadiusSpec": {
+            "factory": "BlurRadiusSpec.verticalGradient",
+            "stops": [
+              {
+                "fraction": 0,
+                "radius": 24
+              },
+              {
+                "fraction": 0.25,
+                "radius": 0
+              },
+              {
+                "fraction": 0.75,
+                "radius": 0
+              },
+              {
+                "fraction": 1,
+                "radius": 24
+              }
+            ]
+          },
+          "edgeTreatment": "rectangle"
+        }
       },
       "scope": null
     },
@@ -2717,9 +2968,14 @@
       "name": "dropShadow",
       "args": {
         "shape": "rect",
-        "shadow": {
-          "radius": 4,
-          "color": "#6750a4"
+        "block": {
+          "radius": 12,
+          "spread": 2,
+          "color": "#6750a4",
+          "offset": {
+            "x": 0,
+            "y": 4
+          }
         }
       },
       "scope": null
@@ -2920,9 +3176,14 @@
       "name": "innerShadow",
       "args": {
         "shape": "rect",
-        "shadow": {
-          "radius": 4,
-          "color": "#6750a4"
+        "block": {
+          "radius": 12,
+          "spread": 2,
+          "color": "#6750a4",
+          "offset": {
+            "x": 0,
+            "y": 4
+          }
         }
       },
       "scope": null
@@ -3038,13 +3299,6 @@
       "name": "onFocusChanged",
       "args": {
         "onFocusChanged": "$fn"
-      },
-      "scope": null
-    },
-    {
-      "name": "onFocusedBoundsChanged",
-      "args": {
-        "onPositioned": "$fn"
       },
       "scope": null
     },
@@ -3187,6 +3441,13 @@
         "painter": {
           "color": "#6750a4"
         }
+      },
+      "scope": null
+    },
+    {
+      "name": "placement",
+      "args": {
+        "block": {}
       },
       "scope": null
     },
