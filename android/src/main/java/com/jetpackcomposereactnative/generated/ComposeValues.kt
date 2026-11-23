@@ -65,6 +65,7 @@ internal fun toComposeMenuAnchorType(value: String): androidx.compose.material3.
 internal fun toComposeTimePickerDisplayMode(value: String): androidx.compose.material3.TimePickerDisplayMode = when (value) {
   "input" -> androidx.compose.material3.TimePickerDisplayMode.Input
   "picker" -> androidx.compose.material3.TimePickerDisplayMode.Picker
+  "scroll" -> androidx.compose.material3.TimePickerDisplayMode.Scroll
   else -> error("Unknown ComposeTimePickerDisplayMode: " + value)
 }
 
@@ -195,7 +196,6 @@ internal fun toComposePointerIcon(value: String): androidx.compose.ui.input.poin
   else -> error("Unknown ComposePointerIcon: " + value)
 }
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 internal fun toComposeDisplayMode(value: String): androidx.compose.material3.DisplayMode = when (value) {
   "input" -> androidx.compose.material3.DisplayMode.Input
   "picker" -> androidx.compose.material3.DisplayMode.Picker
@@ -215,6 +215,46 @@ internal fun toComposeRole(value: String): androidx.compose.ui.semantics.Role = 
   else -> error("Unknown ComposeRole: " + value)
 }
 
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+internal fun toComposeMaterialShape(value: String): androidx.graphics.shapes.RoundedPolygon = when (value) {
+  "arch" -> androidx.compose.material3.MaterialShapes.Arch
+  "arrow" -> androidx.compose.material3.MaterialShapes.Arrow
+  "boom" -> androidx.compose.material3.MaterialShapes.Boom
+  "bun" -> androidx.compose.material3.MaterialShapes.Bun
+  "burst" -> androidx.compose.material3.MaterialShapes.Burst
+  "circle" -> androidx.compose.material3.MaterialShapes.Circle
+  "clamShell" -> androidx.compose.material3.MaterialShapes.ClamShell
+  "clover4Leaf" -> androidx.compose.material3.MaterialShapes.Clover4Leaf
+  "clover8Leaf" -> androidx.compose.material3.MaterialShapes.Clover8Leaf
+  "cookie12Sided" -> androidx.compose.material3.MaterialShapes.Cookie12Sided
+  "cookie4Sided" -> androidx.compose.material3.MaterialShapes.Cookie4Sided
+  "cookie6Sided" -> androidx.compose.material3.MaterialShapes.Cookie6Sided
+  "cookie7Sided" -> androidx.compose.material3.MaterialShapes.Cookie7Sided
+  "cookie9Sided" -> androidx.compose.material3.MaterialShapes.Cookie9Sided
+  "diamond" -> androidx.compose.material3.MaterialShapes.Diamond
+  "fan" -> androidx.compose.material3.MaterialShapes.Fan
+  "flower" -> androidx.compose.material3.MaterialShapes.Flower
+  "gem" -> androidx.compose.material3.MaterialShapes.Gem
+  "ghostish" -> androidx.compose.material3.MaterialShapes.Ghostish
+  "heart" -> androidx.compose.material3.MaterialShapes.Heart
+  "oval" -> androidx.compose.material3.MaterialShapes.Oval
+  "pentagon" -> androidx.compose.material3.MaterialShapes.Pentagon
+  "pill" -> androidx.compose.material3.MaterialShapes.Pill
+  "pixelCircle" -> androidx.compose.material3.MaterialShapes.PixelCircle
+  "pixelTriangle" -> androidx.compose.material3.MaterialShapes.PixelTriangle
+  "puffy" -> androidx.compose.material3.MaterialShapes.Puffy
+  "puffyDiamond" -> androidx.compose.material3.MaterialShapes.PuffyDiamond
+  "semiCircle" -> androidx.compose.material3.MaterialShapes.SemiCircle
+  "slanted" -> androidx.compose.material3.MaterialShapes.Slanted
+  "softBoom" -> androidx.compose.material3.MaterialShapes.SoftBoom
+  "softBurst" -> androidx.compose.material3.MaterialShapes.SoftBurst
+  "square" -> androidx.compose.material3.MaterialShapes.Square
+  "sunny" -> androidx.compose.material3.MaterialShapes.Sunny
+  "triangle" -> androidx.compose.material3.MaterialShapes.Triangle
+  "verySunny" -> androidx.compose.material3.MaterialShapes.VerySunny
+  else -> error("Unknown ComposeMaterialShape: " + value)
+}
+
 internal fun toComposeSharedTransitionScopePlaceholderSizeValue(value: String): androidx.compose.animation.SharedTransitionScope.PlaceholderSize = when (value) {
   "animatedSize" -> androidx.compose.animation.SharedTransitionScope.PlaceholderSize.`AnimatedSize`
   "contentSize" -> androidx.compose.animation.SharedTransitionScope.PlaceholderSize.`ContentSize`
@@ -232,9 +272,28 @@ internal fun toComposeMarqueeAnimationModeValue(value: String): androidx.compose
   else -> error("Unknown ComposeMarqueeAnimationModeValue: " + value)
 }
 
+@OptIn(androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class)
+internal fun toComposeBreadthValue(value: String): androidx.compose.foundation.style.Breadth = when (value) {
+  "none" -> androidx.compose.foundation.style.Breadth.`None`
+  else -> error("Unknown ComposeBreadthValue: " + value)
+}
+
+@OptIn(androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class)
+internal fun toComposeFillValue(value: String): androidx.compose.foundation.style.Fill = when (value) {
+  "none" -> androidx.compose.foundation.style.Fill.`None`
+  else -> error("Unknown ComposeFillValue: " + value)
+}
+
+@OptIn(androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class)
+internal fun toComposeShadowsValue(value: String): androidx.compose.foundation.style.Shadows = when (value) {
+  "none" -> androidx.compose.foundation.style.Shadows.`None`
+  else -> error("Unknown ComposeShadowsValue: " + value)
+}
+
 internal fun toComposeTextObfuscationModeValue(value: String): androidx.compose.foundation.text.input.TextObfuscationMode = when (value) {
   "hidden" -> androidx.compose.foundation.text.input.TextObfuscationMode.`Hidden`
   "revealLastTyped" -> androidx.compose.foundation.text.input.TextObfuscationMode.`RevealLastTyped`
+  "system" -> androidx.compose.foundation.text.input.TextObfuscationMode.`System`
   "visible" -> androidx.compose.foundation.text.input.TextObfuscationMode.`Visible`
   else -> error("Unknown ComposeTextObfuscationModeValue: " + value)
 }
@@ -247,21 +306,36 @@ internal fun toComposeFabPositionValue(value: String): androidx.compose.material
   else -> error("Unknown ComposeFabPositionValue: " + value)
 }
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+internal fun toComposeFloatingToolbarExitDirectionValue(value: String): androidx.compose.material3.FloatingToolbarExitDirection = when (value) {
+  "bottom" -> androidx.compose.material3.FloatingToolbarExitDirection.`Bottom`
+  "end" -> androidx.compose.material3.FloatingToolbarExitDirection.`End`
+  "start" -> androidx.compose.material3.FloatingToolbarExitDirection.`Start`
+  "top" -> androidx.compose.material3.FloatingToolbarExitDirection.`Top`
+  else -> error("Unknown ComposeFloatingToolbarExitDirectionValue: " + value)
+}
+
 internal fun toComposeFloatingToolbarHorizontalFabPositionValue(value: String): androidx.compose.material3.FloatingToolbarHorizontalFabPosition = when (value) {
   "end" -> androidx.compose.material3.FloatingToolbarHorizontalFabPosition.`End`
   "start" -> androidx.compose.material3.FloatingToolbarHorizontalFabPosition.`Start`
   else -> error("Unknown ComposeFloatingToolbarHorizontalFabPositionValue: " + value)
 }
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 internal fun toComposeFloatingToolbarVerticalFabPositionValue(value: String): androidx.compose.material3.FloatingToolbarVerticalFabPosition = when (value) {
   "bottom" -> androidx.compose.material3.FloatingToolbarVerticalFabPosition.`Bottom`
   "top" -> androidx.compose.material3.FloatingToolbarVerticalFabPosition.`Top`
   else -> error("Unknown ComposeFloatingToolbarVerticalFabPositionValue: " + value)
 }
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+internal fun toComposeMenuAnchorPositionValue(value: String): androidx.compose.material3.MenuAnchorPosition = when (value) {
+  "above" -> androidx.compose.material3.MenuAnchorPosition.`Above`
+  "below" -> androidx.compose.material3.MenuAnchorPosition.`Below`
+  "end" -> androidx.compose.material3.MenuAnchorPosition.`End`
+  "left" -> androidx.compose.material3.MenuAnchorPosition.`Left`
+  "right" -> androidx.compose.material3.MenuAnchorPosition.`Right`
+  "start" -> androidx.compose.material3.MenuAnchorPosition.`Start`
+  else -> error("Unknown ComposeMenuAnchorPositionValue: " + value)
+}
+
 internal fun toComposeNavigationItemIconPositionValue(value: String): androidx.compose.material3.NavigationItemIconPosition = when (value) {
   "start" -> androidx.compose.material3.NavigationItemIconPosition.`Start`
   "top" -> androidx.compose.material3.NavigationItemIconPosition.`Top`
@@ -274,11 +348,19 @@ internal fun toComposeShortNavigationBarArrangementValue(value: String): android
   else -> error("Unknown ComposeShortNavigationBarArrangementValue: " + value)
 }
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 internal fun toComposeTimePickerLayoutTypeValue(value: String): androidx.compose.material3.TimePickerLayoutType = when (value) {
   "horizontal" -> androidx.compose.material3.TimePickerLayoutType.`Horizontal`
   "vertical" -> androidx.compose.material3.TimePickerLayoutType.`Vertical`
   else -> error("Unknown ComposeTimePickerLayoutTypeValue: " + value)
+}
+
+internal fun toComposeToggleButtonSizeValue(value: String): androidx.compose.material3.ToggleButtonSize = when (value) {
+  "extraLarge" -> androidx.compose.material3.ToggleButtonSize.`ExtraLarge`
+  "extraSmall" -> androidx.compose.material3.ToggleButtonSize.`ExtraSmall`
+  "large" -> androidx.compose.material3.ToggleButtonSize.`Large`
+  "medium" -> androidx.compose.material3.ToggleButtonSize.`Medium`
+  "small" -> androidx.compose.material3.ToggleButtonSize.`Small`
+  else -> error("Unknown ComposeToggleButtonSizeValue: " + value)
 }
 
 internal fun toComposeBlurredEdgeTreatmentValue(value: String): androidx.compose.ui.draw.BlurredEdgeTreatment = when (value) {
@@ -327,11 +409,53 @@ internal fun toComposeCompositingStrategyValue(value: String): androidx.compose.
   else -> error("Unknown ComposeCompositingStrategyValue: " + value)
 }
 
+internal fun toComposeFilterQualityValue(value: String): androidx.compose.ui.graphics.FilterQuality = when (value) {
+  "high" -> androidx.compose.ui.graphics.FilterQuality.`High`
+  "low" -> androidx.compose.ui.graphics.FilterQuality.`Low`
+  "medium" -> androidx.compose.ui.graphics.FilterQuality.`Medium`
+  "none" -> androidx.compose.ui.graphics.FilterQuality.`None`
+  else -> error("Unknown ComposeFilterQualityValue: " + value)
+}
+
+internal fun toComposeImageBitmapConfigValue(value: String): androidx.compose.ui.graphics.ImageBitmapConfig = when (value) {
+  "alpha8" -> androidx.compose.ui.graphics.ImageBitmapConfig.`Alpha8`
+  "argb8888" -> androidx.compose.ui.graphics.ImageBitmapConfig.`Argb8888`
+  "f16" -> androidx.compose.ui.graphics.ImageBitmapConfig.`F16`
+  "gpu" -> androidx.compose.ui.graphics.ImageBitmapConfig.`Gpu`
+  "rgb565" -> androidx.compose.ui.graphics.ImageBitmapConfig.`Rgb565`
+  else -> error("Unknown ComposeImageBitmapConfigValue: " + value)
+}
+
 internal fun toComposeStrokeCapValue(value: String): androidx.compose.ui.graphics.StrokeCap = when (value) {
   "butt" -> androidx.compose.ui.graphics.StrokeCap.`Butt`
   "round" -> androidx.compose.ui.graphics.StrokeCap.`Round`
   "square" -> androidx.compose.ui.graphics.StrokeCap.`Square`
   else -> error("Unknown ComposeStrokeCapValue: " + value)
+}
+
+internal fun toComposeStrokeJoinValue(value: String): androidx.compose.ui.graphics.StrokeJoin = when (value) {
+  "bevel" -> androidx.compose.ui.graphics.StrokeJoin.`Bevel`
+  "miter" -> androidx.compose.ui.graphics.StrokeJoin.`Miter`
+  "round" -> androidx.compose.ui.graphics.StrokeJoin.`Round`
+  else -> error("Unknown ComposeStrokeJoinValue: " + value)
+}
+
+internal fun toComposeTileModeValue(value: String): androidx.compose.ui.graphics.TileMode = when (value) {
+  "clamp" -> androidx.compose.ui.graphics.TileMode.`Clamp`
+  "decal" -> androidx.compose.ui.graphics.TileMode.`Decal`
+  "mirror" -> androidx.compose.ui.graphics.TileMode.`Mirror`
+  "repeated" -> androidx.compose.ui.graphics.TileMode.`Repeated`
+  else -> error("Unknown ComposeTileModeValue: " + value)
+}
+
+internal fun toComposePlatformParagraphStyleValue(value: String): androidx.compose.ui.text.PlatformParagraphStyle = when (value) {
+  "default" -> androidx.compose.ui.text.PlatformParagraphStyle.`Default`
+  else -> error("Unknown ComposePlatformParagraphStyleValue: " + value)
+}
+
+internal fun toComposePlatformSpanStyleValue(value: String): androidx.compose.ui.text.PlatformSpanStyle = when (value) {
+  "default" -> androidx.compose.ui.text.PlatformSpanStyle.`Default`
+  else -> error("Unknown ComposePlatformSpanStyleValue: " + value)
 }
 
 internal fun toComposeFontStyleValue(value: String): androidx.compose.ui.text.font.FontStyle = when (value) {
@@ -346,6 +470,11 @@ internal fun toComposeFontSynthesisValue(value: String): androidx.compose.ui.tex
   "style" -> androidx.compose.ui.text.font.FontSynthesis.`Style`
   "weight" -> androidx.compose.ui.text.font.FontSynthesis.`Weight`
   else -> error("Unknown ComposeFontSynthesisValue: " + value)
+}
+
+internal fun toComposeLocaleListValue(value: String): androidx.compose.ui.text.intl.LocaleList = when (value) {
+  "empty" -> androidx.compose.ui.text.intl.LocaleList.`Empty`
+  else -> error("Unknown ComposeLocaleListValue: " + value)
 }
 
 internal fun toComposeHyphensValue(value: String): androidx.compose.ui.text.style.Hyphens = when (value) {
@@ -363,6 +492,22 @@ internal fun toComposeLineBreakValue(value: String): androidx.compose.ui.text.st
   else -> error("Unknown ComposeLineBreakValue: " + value)
 }
 
+internal fun toComposeLineHeightStyleModeValue(value: String): androidx.compose.ui.text.style.LineHeightStyle.Mode = when (value) {
+  "fixed" -> androidx.compose.ui.text.style.LineHeightStyle.Mode.`Fixed`
+  "minimum" -> androidx.compose.ui.text.style.LineHeightStyle.Mode.`Minimum`
+  "perLine" -> androidx.compose.ui.text.style.LineHeightStyle.Mode.`PerLine`
+  "tight" -> androidx.compose.ui.text.style.LineHeightStyle.Mode.`Tight`
+  else -> error("Unknown ComposeLineHeightStyleModeValue: " + value)
+}
+
+internal fun toComposeLineHeightStyleTrimValue(value: String): androidx.compose.ui.text.style.LineHeightStyle.Trim = when (value) {
+  "both" -> androidx.compose.ui.text.style.LineHeightStyle.Trim.`Both`
+  "firstLineTop" -> androidx.compose.ui.text.style.LineHeightStyle.Trim.`FirstLineTop`
+  "lastLineBottom" -> androidx.compose.ui.text.style.LineHeightStyle.Trim.`LastLineBottom`
+  "none" -> androidx.compose.ui.text.style.LineHeightStyle.Trim.`None`
+  else -> error("Unknown ComposeLineHeightStyleTrimValue: " + value)
+}
+
 internal fun toComposeTextDecorationValue(value: String): androidx.compose.ui.text.style.TextDecoration = when (value) {
   "lineThrough" -> androidx.compose.ui.text.style.TextDecoration.`LineThrough`
   "none" -> androidx.compose.ui.text.style.TextDecoration.`None`
@@ -378,4 +523,10 @@ internal fun toComposeTextDirectionValue(value: String): androidx.compose.ui.tex
   "rtl" -> androidx.compose.ui.text.style.TextDirection.`Rtl`
   "unspecified" -> androidx.compose.ui.text.style.TextDirection.`Unspecified`
   else -> error("Unknown ComposeTextDirectionValue: " + value)
+}
+
+internal fun toComposeTextMotionValue(value: String): androidx.compose.ui.text.style.TextMotion = when (value) {
+  "animated" -> androidx.compose.ui.text.style.TextMotion.`Animated`
+  "static" -> androidx.compose.ui.text.style.TextMotion.`Static`
+  else -> error("Unknown ComposeTextMotionValue: " + value)
 }
