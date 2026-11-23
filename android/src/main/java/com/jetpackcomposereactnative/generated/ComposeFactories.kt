@@ -169,7 +169,6 @@ private fun decodeDarkColorScheme(colors: JSONObject): androidx.compose.material
   )
 }
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 private fun decodeExpressiveLightColorScheme(): androidx.compose.material3.ColorScheme = androidx.compose.material3.expressiveLightColorScheme()
 
 private fun decodeLightColorScheme(colors: JSONObject): androidx.compose.material3.ColorScheme {
