@@ -186,6 +186,41 @@ export function useBottomSheetScaffoldState(options: ComposeBottomSheetScaffoldS
   return { ...options, ...useSheetCommands("sheetScaffold") };
 }
 
+export type ComposeValueSnapshot<Value extends string> = { currentValue: Value; targetValue: Value };
+type ObservedValue<Value extends string> = { onStateChange?: (state: ComposeValueSnapshot<Value>) => void };
+
+export type ComposeDrawerValue = "closed" | "open";
+export type ComposeDrawerStateOptions = ObservedValue<ComposeDrawerValue> & { initialValue?: ComposeDrawerValue };
+export type ComposeDrawerStateHandle = ComposeDrawerStateOptions & NativeHandle<"drawer", "open" | "close"> & {
+  open(): void;
+  close(): void;
+};
+
+/** A navigation drawer's state: pass it to ModalNavigationDrawer, DismissibleNavigationDrawer or a drawer sheet. */
+export function useDrawerState(options: ComposeDrawerStateOptions = {}): ComposeDrawerStateHandle {
+  const [handle, send] = useNativeHandle<"drawer", "open" | "close">("drawer");
+  const actions = useMemo(() => ({ open: () => send("open"), close: () => send("close") }), [send]);
+  return { ...options, ...handle, ...actions };
+}
+
+export type ComposeWideNavigationRailValue = "collapsed" | "expanded";
+export type ComposeWideNavigationRailStateOptions = ObservedValue<ComposeWideNavigationRailValue> & {
+  initialValue?: ComposeWideNavigationRailValue;
+};
+type RailCommand = "expand" | "collapse" | "toggle";
+export type ComposeWideNavigationRailStateHandle = ComposeWideNavigationRailStateOptions &
+  NativeHandle<"wideNavigationRail", RailCommand> & { expand(): void; collapse(): void; toggle(): void };
+
+export function useWideNavigationRailState(
+  options: ComposeWideNavigationRailStateOptions = {},
+): ComposeWideNavigationRailStateHandle {
+  const [handle, send] = useNativeHandle<"wideNavigationRail", RailCommand>("wideNavigationRail");
+  const actions = useMemo(() => ({
+    expand: () => send("expand"), collapse: () => send("collapse"), toggle: () => send("toggle"),
+  }), [send]);
+  return { ...options, ...handle, ...actions };
+}
+
 /** Pass the same behavior to a top app bar and Modifier.nestedScroll in one Compose host. */
 export function useTopAppBarScrollBehavior(mode: ComposeTopAppBarScrollMode = "enterAlways"): ComposeTopAppBarScrollBehavior {
   const token = useId();
