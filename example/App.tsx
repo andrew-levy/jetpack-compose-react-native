@@ -1,103 +1,24 @@
-import { useEffect, useRef, useState } from "react";
-import { BackHandler, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StatusBar, View, useColorScheme } from "react-native";
 
+import BridgeChecks from "./BridgeChecks";
 import { Catalog } from "./catalog/Catalog";
-import { Components, Expressive, Interop, Modifiers, Overlays } from "./Gallery";
+import { CatalogPaletteContext, palettes, type ThemeMode } from "./catalog/theme";
 
-const screens = [
-  { title: "Components", View: Components },
-  { title: "Modifiers", View: Modifiers },
-  { title: "Overlays", View: Overlays },
-  { title: "Interop", View: Interop },
-  { title: "Expressive", View: Expressive },
-  { title: "Catalog", View: Catalog },
-] as const;
+export default function App({ catalogStart, bridgeChecks }: { catalogStart?: number; bridgeChecks?: boolean }) {
+  const [mode, setMode] = useState<ThemeMode>("System");
+  const systemScheme = useColorScheme();
+  const dark = mode === "Dark" || (mode === "System" && systemScheme === "dark");
+  const palette = dark ? palettes.dark : palettes.light;
 
-export default function App({ catalogStart }: { catalogStart?: number }) {
-  const catalogScreen = screens.findIndex((item) => item.title === "Catalog");
-  const [screen, setScreen] = useState(catalogStart == null ? 0 : catalogScreen);
-  const scroll = useRef<ScrollView>(null);
-  const Gallery = screens[screen].View;
-  const showingCatalog = Gallery === Catalog;
-
-  function selectScreen(index: number) {
-    scroll.current?.scrollTo({ y: 0, animated: false });
-    setScreen(index);
-  }
-
-  useEffect(() => {
-    const subscription = BackHandler.addEventListener("hardwareBackPress", () => {
-      if (screen === 0) return false;
-      selectScreen(0);
-      return true;
-    });
-    return () => subscription.remove();
-  }, [screen]);
+  if (bridgeChecks) return <BridgeChecks />;
 
   return (
-    <View style={styles.screen}>
-      <StatusBar barStyle="dark-content" backgroundColor="#f5f3fa" />
-      <View style={styles.header}>
-        <View style={styles.identity}>
-          <View style={styles.mark}><Text style={styles.markText}>C</Text></View>
-          <Text accessibilityRole="header" style={styles.title}>Compose Gallery</Text>
-        </View>
+    <CatalogPaletteContext.Provider value={palette}>
+      <View style={{ flex: 1, backgroundColor: palette.page }}>
+        <StatusBar barStyle={dark ? "light-content" : "dark-content"} backgroundColor={palette.page} />
+        <Catalog startIndex={catalogStart} mode={mode} onModeChange={setMode} />
       </View>
-      <ScrollView
-        horizontal
-        accessibilityRole="tablist"
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.tabs}
-        style={styles.tabScroll}
-      >
-        {screens.map(({ title }, index) => (
-          <Pressable
-            key={title}
-            accessibilityRole="tab"
-            accessibilityState={{ selected: screen === index }}
-            onPress={() => selectScreen(index)}
-            style={[styles.tab, screen === index && styles.selectedTab]}
-          >
-            <Text
-              numberOfLines={1}
-              adjustsFontSizeToFit
-              style={[styles.tabLabel, screen === index && styles.selectedLabel]}
-            >
-              {title}
-            </Text>
-          </Pressable>
-        ))}
-      </ScrollView>
-      {showingCatalog ? (
-        <View style={styles.catalog}>
-          <Catalog startIndex={catalogStart} />
-        </View>
-      ) : (
-        <ScrollView
-          ref={scroll}
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={styles.content}
-        >
-          <Gallery />
-        </ScrollView>
-      )}
-    </View>
+    </CatalogPaletteContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: "#f5f3fa" },
-  header: { minHeight: 50, paddingHorizontal: 16, flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  identity: { flex: 1, flexDirection: "row", gap: 9, alignItems: "center" },
-  mark: { backgroundColor: "#3e275f", width: 30, height: 30, borderRadius: 9, justifyContent: "center", alignItems: "center" },
-  markText: { color: "#f1e5ff", fontWeight: "800", fontSize: 19 },
-  title: { color: "#261b3a", fontSize: 21, fontWeight: "800", letterSpacing: -0.65, flexShrink: 1 },
-  tabScroll: { flexGrow: 0, marginHorizontal: 16 },
-  tabs: { borderRadius: 14, backgroundColor: "#eae4f3", padding: 4, flexDirection: "row", gap: 4 },
-  tab: { minHeight: 44, paddingHorizontal: 12, borderRadius: 10, alignItems: "center", justifyContent: "center" },
-  selectedTab: { backgroundColor: "#fff" },
-  tabLabel: { color: "#5c4b70", fontSize: 13, fontWeight: "600" },
-  selectedLabel: { color: "#3e275f", fontWeight: "800" },
-  content: { padding: 12, paddingBottom: 24, gap: 10 },
-  catalog: { flex: 1, padding: 12, paddingBottom: 8 },
-});

@@ -1,170 +1,275 @@
 import { Component, useEffect, useMemo, useState, type ReactNode } from "react";
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  BackHandler, FlatList, Keyboard, Pressable, ScrollView, StyleSheet, Text, TextInput, View,
+} from "react-native";
 
 import fixtures from "./fixtures.json";
-import {
-  ComponentPreview, ModifierPreview, useCatalogHandles,
-  type ComponentFixture, type ModifierFixture,
-} from "./preview";
+import { componentDemos } from "./demos";
+import { ComponentPreview, ModifierPreview, useCatalogHandles, type ComponentFixture, type ModifierFixture } from "./preview";
+import { themeModes, useCatalogPalette, type ThemeMode } from "./theme";
 
 type Entry =
-  | { kind: "component"; name: string; detail: string; spec: ComponentFixture }
-  | { kind: "modifier"; name: string; detail: string; spec: ModifierFixture };
-
-type Failure = { name: string; message: string };
+  | { kind: "Component"; name: string; spec: ComponentFixture }
+  | { kind: "Modifier"; name: string; spec: ModifierFixture };
+type Filter = "All" | "Components" | "Modifiers";
 
 const entries: Entry[] = [
-  ...(fixtures.components as ComponentFixture[]).map((spec) => ({
-    kind: "component" as const,
-    name: spec.name,
-    detail: spec.parent ? `inside ${spec.parent}` : spec.overload ?? "component",
-    spec,
-  })),
-  ...(fixtures.modifiers as ModifierFixture[]).map((spec) => ({
-    kind: "modifier" as const,
-    name: spec.name,
-    detail: spec.scope ? `${spec.scope} scope` : "modifier",
-    spec,
-  })),
+  ...(fixtures.components as ComponentFixture[]).map(spec => ({ kind: "Component" as const, name: spec.name, spec })),
+  ...(fixtures.modifiers as ModifierFixture[]).map(spec => ({ kind: "Modifier" as const, name: spec.name, spec })),
 ];
+const filters: readonly Filter[] = ["All", "Components", "Modifiers"];
 
-function statusFor(running: boolean, finished: boolean, index: number, failures: number) {
-  const current = entries[index];
-  if (finished && !running) return `Sweep finished: ${failures} JavaScript failures`;
-  if (running && current) return `Catalog sweep: ${index + 1}/${entries.length} ${current.name}`;
-  return "Catalog ready";
+function entryInstruction(entry: Entry) {
+  if (entry.kind === "Modifier") {
+    if (entry.name === "animateContentSize") return "Grow or shrink both samples to compare how their size changes.";
+    if (entry.name === "verticalScroll" || entry.name === "horizontalScroll") return "Swipe the second sample to reveal the remaining items.";
+    if (/^(clickable|combinedClickable|selectable|toggleable|triStateToggleable)$/.test(entry.name)) return "Tap the second sample and check the event below.";
+    if (/^(draggable|draggable2D|anchoredDraggable|scrollable|pointerInput|pointerInteropFilter)$/.test(entry.name)) return "Drag across the second sample to exercise the gesture handler.";
+    return entry.spec.scope
+      ? `Compare the samples inside the ${entry.spec.scope} scope.`
+      : "Compare the reference with the modified sample.";
+  }
+  const demo = componentDemos[entry.name];
+  if (demo) return demo.instruction;
+  if (entry.spec.parent === "TooltipBox") return "Press and hold the anchor to show the tooltip.";
+  if (/^Lazy|Pager$|Carousel$/.test(entry.name)) return "Swipe through the items to see how this collection lays them out.";
+  if (/Dialog$|^Dialog$|^Popup$|^ModalBottomSheet$|^(Exposed)?DropdownMenu$/.test(entry.name)) {
+    return "Open the preview and dismiss it when you’re done.";
+  }
+  if (/TextField|^InputField$|^TimeInput$/.test(entry.name)) return "Tap the field and edit its contents.";
+  if (Object.values(entry.spec.props).includes("$fn")) return "Try the control and watch for the event below the preview.";
+  return undefined;
 }
 
-export function Catalog({ startIndex }: { startIndex?: number }) {
-  const shouldSweep = startIndex != null && Number.isInteger(startIndex) && startIndex >= 0 && startIndex < entries.length;
-  const initial = shouldSweep ? startIndex : 0;
+function sweepName(index: number) {
+  return `Catalog sweep: ${index + 1}/${entries.length} ${entries[index].name}`;
+}
+
+export function Catalog({ startIndex, mode, onModeChange }: {
+  startIndex?: number; mode: ThemeMode; onModeChange: (mode: ThemeMode) => void;
+}) {
+  const palette = useCatalogPalette();
+  const initialSweep = startIndex != null && Number.isInteger(startIndex) && startIndex >= 0 && startIndex < entries.length
+    ? startIndex : null;
   const [query, setQuery] = useState("");
-  const [index, setIndex] = useState(initial);
-  const [running, setRunning] = useState(shouldSweep);
+  const [filter, setFilter] = useState<Filter>("All");
+  const [selected, setSelected] = useState<number | null>(null);
+  const [sweepIndex, setSweepIndex] = useState<number | null>(initialSweep);
   const [finished, setFinished] = useState(false);
-  const [failures, setFailures] = useState<Failure[]>([]);
+  const [reviewed, setReviewed] = useState<ReadonlySet<number>>(new Set());
+  const [failures, setFailures] = useState<ReadonlyMap<number, string>>(new Map());
+  const running = sweepIndex !== null;
+  const activeIndex = sweepIndex ?? selected;
+  const current = activeIndex === null ? null : entries[activeIndex];
+  const detailOpen = current !== null;
+
   const visible = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return entries
-      .map((entry, entryIndex) => ({ entry, entryIndex }))
-      .filter(({ entry }) => !needle || entry.name.toLowerCase().includes(needle) || entry.detail.toLowerCase().includes(needle));
-  }, [query]);
-  const current = entries[index];
+    const needle = query.toLowerCase().trim();
+    return entries.flatMap((entry, index) => {
+      const matchesKind = filter === "All" || filter === `${entry.kind}s`;
+      const matchesText = !needle || entry.name.toLowerCase().includes(needle);
+      return matchesKind && matchesText ? [{ entry, index }] : [];
+    });
+  }, [filter, query]);
 
   useEffect(() => {
-    if (!running) return undefined;
-    if (index >= entries.length) {
-      setRunning(false);
-      setFinished(true);
-      return undefined;
-    }
-    console.warn(statusFor(true, false, index, 0));
+    if (sweepIndex === null) return;
+    console.warn(sweepName(sweepIndex));
     const timer = setTimeout(() => {
-      const next = index + 1;
-      // Log before mounting so a native crash can be attributed to this entry.
-      if (next < entries.length) console.warn(statusFor(true, false, next, 0));
-      setIndex(next);
+      const next = sweepIndex + 1;
+      if (next === entries.length) {
+        setFinished(true);
+        setSweepIndex(null);
+      } else {
+        // Make the next entry identifiable even if native composition crashes on mount.
+        console.warn(sweepName(next));
+        setSweepIndex(next);
+      }
     }, 700);
     return () => clearTimeout(timer);
-  }, [running, index]);
+  }, [sweepIndex]);
 
-  function recordFailure(name: string, error: Error) {
-    const message = error.message || "Render failed";
-    console.warn(`CATALOG_FAIL\t${name}\t${message}`);
-    setFailures((currentFailures) => {
-      const without = currentFailures.filter((failure) => failure.name !== name);
-      return [...without, { name, message }];
-    });
-  }
-
-  function show(next: number) {
-    setRunning(false);
-    setFinished(false);
-    setIndex(Math.min(Math.max(next, 0), entries.length - 1));
-  }
-
-  const status = statusFor(running, finished, index, failures.length);
+  const sweepSummary = `Sweep finished: ${failures.size} JavaScript failures`;
+  useEffect(() => {
+    if (finished) console.warn(sweepSummary);
+  }, [finished, sweepSummary]);
 
   useEffect(() => {
-    if (finished) console.warn(status);
-  }, [finished, status]);
+    if (!detailOpen) return;
+    const subscription = BackHandler.addEventListener("hardwareBackPress", () => {
+      setSweepIndex(null);
+      setSelected(null);
+      return true;
+    });
+    return () => subscription.remove();
+  }, [detailOpen]);
+
+  function recordFailure(index: number, error: Error) {
+    const message = error.message || "Render failed";
+    console.warn(`CATALOG_FAIL\t${entries[index].name}\t${message}`);
+    setFailures(previous => new Map(previous).set(index, message));
+  }
+
+  function open(index: number) {
+    Keyboard.dismiss();
+    setSelected(index);
+  }
+
+  if (current && activeIndex !== null) {
+    const position = visible.findIndex(item => item.index === activeIndex);
+    const previous = position > 0 ? visible[position - 1] : undefined;
+    const next = position >= 0 ? visible[position + 1] : undefined;
+    const isReviewed = reviewed.has(activeIndex);
+    const instruction = entryInstruction(current);
+    return (
+      <>
+        <View style={[styles.detailHeader, { borderColor: palette.line }]}>
+          <Action label={running ? "Stop sweep" : "‹ Catalog"} onPress={() => {
+            if (running) { setSweepIndex(null); setQuery(""); setFilter("All"); setSelected(activeIndex); }
+            else setSelected(null);
+          }} />
+          <Text style={{ color: palette.muted }}>{running
+            ? `${activeIndex + 1} of ${entries.length}`
+            : `${position + 1} of ${visible.length} results`}</Text>
+        </View>
+        <ScrollView key={activeIndex} contentContainerStyle={styles.detail} keyboardShouldPersistTaps="handled">
+          <Text style={[styles.kind, { color: palette.accent }]}>{current.kind}</Text>
+          <Text accessibilityRole="header" style={[styles.title, { color: palette.ink }]}>{current.name}</Text>
+          {instruction && <Text style={[styles.instruction, { color: palette.muted }]}>{instruction}</Text>}
+          {!running && <Segmented choices={themeModes} selected={mode} onChange={onModeChange} />}
+          <View style={[styles.preview, { backgroundColor: palette.stage, borderColor: palette.line }]}>
+            <PreviewBoundary paletteError={palette.error} onError={error => recordFailure(activeIndex, error)}>
+              <LivePreview entry={current} sweeping={running} />
+            </PreviewBoundary>
+          </View>
+        </ScrollView>
+        {!running && (
+          <View style={[styles.footer, { borderColor: palette.line }]}>
+            <Action label="Previous" disabled={!previous} onPress={() => previous && open(previous.index)} />
+            <Action label={isReviewed ? "✓ Reviewed" : "Mark reviewed"} primary onPress={() => {
+              setReviewed(items => {
+                const update = new Set(items);
+                if (isReviewed) update.delete(activeIndex);
+                else update.add(activeIndex);
+                return update;
+              });
+            }} />
+            <Action label="Next" disabled={!next} onPress={() => next && open(next.index)} />
+          </View>
+        )}
+      </>
+    );
+  }
 
   return (
     <View style={styles.screen}>
-      <Text testID="catalog-status" style={styles.status}>{status}</Text>
-      <Text style={styles.count}>{entries.filter((entry) => entry.kind === "component").length} components · {entries.filter((entry) => entry.kind === "modifier").length} modifiers</Text>
-      <View style={styles.actions}>
-        <Pressable accessibilityRole="button" onPress={() => { setFailures([]); setFinished(false); setIndex(0); setRunning(true); }} style={styles.action}>
-          <Text style={styles.actionLabel}>{running ? "Restart sweep" : "Sweep all"}</Text>
-        </Pressable>
-        {running ? (
-          <Pressable accessibilityRole="button" onPress={() => setRunning(false)} style={styles.action}>
-            <Text style={styles.actionLabel}>Stop</Text>
-          </Pressable>
-        ) : (
-          <>
-            <Pressable accessibilityRole="button" onPress={() => show(index - 1)} style={styles.action}>
-              <Text style={styles.actionLabel}>Previous</Text>
-            </Pressable>
-            <Pressable accessibilityRole="button" onPress={() => show(index + 1)} style={styles.action}>
-              <Text style={styles.actionLabel}>Next</Text>
-            </Pressable>
-          </>
-        )}
-      </View>
-      {failures.length > 0 && (
-        <View style={styles.failures}>
-          {failures.slice(-3).map((failure) => (
-            <Text key={failure.name} style={styles.failure}>{failure.name}: {failure.message}</Text>
-          ))}
+      <View style={styles.header}>
+        <View style={styles.headingRow}>
+          <Text accessibilityRole="header" style={[styles.title, { color: palette.ink }]}>Compose Catalog</Text>
+          <Action label="Run sweep" onPress={() => {
+            Keyboard.dismiss();
+            setFailures(new Map());
+            setFinished(false);
+            setSweepIndex(0);
+          }} />
         </View>
-      )}
-      <View style={styles.preview}>
-        {current ? (
-          <PreviewBoundary key={`${current.kind}:${current.name}:${index}`} name={current.name} onError={(error) => recordFailure(current.name, error)}>
-            <LivePreview entry={current} sweeping={running} />
-          </PreviewBoundary>
-        ) : (
-          <Text style={styles.detail}>Sweep complete</Text>
-        )}
-        {current && <Text style={styles.detail}>{current.name} · {current.detail}</Text>}
-      </View>
-      {!running && (
-        <>
+        <View style={styles.themeRow}>
+          <Text style={{ color: palette.muted }}>Appearance</Text>
+          <Segmented choices={themeModes} selected={mode} onChange={onModeChange} />
+        </View>
+        <View style={styles.searchRow}>
           <TextInput
             value={query}
             onChangeText={setQuery}
+            accessibilityLabel="Search catalog"
             placeholder="Search components and modifiers"
-            placeholderTextColor="#8a7b9b"
+            placeholderTextColor={palette.muted}
+            selectionColor={palette.accent}
             autoCorrect={false}
             autoCapitalize="none"
-            style={styles.search}
+            style={[styles.search, { backgroundColor: palette.surface, color: palette.ink, borderColor: palette.line }]}
           />
-          <FlatList
-            data={visible}
-            keyboardShouldPersistTaps="handled"
-            keyExtractor={(item) => `${item.entry.kind}:${item.entry.name}`}
-            renderItem={({ item }) => (
-              <Pressable onPress={() => show(item.entryIndex)} style={[styles.row, item.entryIndex === index && styles.selectedRow]}>
-                <Text style={styles.rowName}>{item.entry.name}</Text>
-                <Text style={styles.rowDetail}>{item.entry.detail}</Text>
-              </Pressable>
-            )}
-          />
-        </>
-      )}
+          {!!query && <Action label="Clear" onPress={() => setQuery("")} />}
+        </View>
+        <Segmented choices={filters} selected={filter} onChange={setFilter} />
+        <Text style={[styles.summary, { color: palette.muted }]}>
+          {visible.length} {visible.length === 1 ? "result" : "results"} · {reviewed.size} reviewed
+        </Text>
+        {finished && <Text accessibilityLiveRegion="polite" style={{ color: failures.size ? palette.error : palette.accent }}>
+          {sweepSummary}
+        </Text>}
+      </View>
+      <FlatList
+        data={visible}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={styles.list}
+        keyExtractor={item => `${item.entry.kind}:${item.entry.name}`}
+        ListEmptyComponent={<Text style={[styles.empty, { color: palette.muted }]}>No matches. Try another search.</Text>}
+        renderItem={({ item }) => (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={item.entry.name}
+            accessibilityHint={reviewed.has(item.index) ? "Reviewed" : undefined}
+            onPress={() => open(item.index)}
+            style={({ pressed }) => [styles.row, { borderColor: palette.line, backgroundColor: pressed ? palette.stage : palette.surface }]}
+          >
+            <View style={styles.rowMain}>
+              <Text style={[styles.rowName, { color: palette.ink }]}>{item.entry.name}</Text>
+              <Text style={[styles.rowKind, { color: palette.muted }]}>{item.entry.kind}</Text>
+              {finished && failures.has(item.index) && <Text style={{ color: palette.error }}>{failures.get(item.index)}</Text>}
+            </View>
+            <Text accessible={false} style={{ color: palette.accent, fontSize: 20 }}>
+              {reviewed.has(item.index) ? "✓" : "›"}
+            </Text>
+          </Pressable>
+        )}
+      />
+    </View>
+  );
+}
+
+function Action({ label, onPress, disabled = false, primary = false }: {
+  label: string; onPress: () => void; disabled?: boolean; primary?: boolean;
+}) {
+  const palette = useCatalogPalette();
+  return (
+    <Pressable
+      accessibilityRole="button" accessibilityState={{ disabled }} disabled={disabled} onPress={onPress}
+      style={({ pressed }) => [styles.action, {
+        opacity: disabled ? 0.45 : 1,
+        backgroundColor: primary ? palette.accent : pressed ? palette.raised : palette.stage,
+      }]}
+    >
+      <Text style={[styles.actionLabel, { color: primary ? palette.accentText : palette.accent }]}>{label}</Text>
+    </Pressable>
+  );
+}
+
+function Segmented<T extends string>({ choices, selected, onChange }: {
+  choices: readonly T[]; selected: T; onChange: (value: T) => void;
+}) {
+  const palette = useCatalogPalette();
+  return (
+    <View style={[styles.segments, { backgroundColor: palette.stage }]}>
+      {choices.map(choice => (
+        <Pressable key={choice} accessibilityRole="button" accessibilityState={{ selected: choice === selected }}
+          onPress={() => onChange(choice)}
+          style={[styles.segment, { backgroundColor: choice === selected ? palette.accent : palette.stage }]}>
+          <Text style={[styles.actionLabel, { color: choice === selected ? palette.accentText : palette.muted }]}>{choice}</Text>
+        </Pressable>
+      ))}
     </View>
   );
 }
 
 function LivePreview({ entry, sweeping }: { entry: Entry; sweeping: boolean }) {
   const handles = useCatalogHandles();
-  return entry.kind === "component"
+  return entry.kind === "Component"
     ? <ComponentPreview spec={entry.spec} handles={handles} sweeping={sweeping} />
-    : <ModifierPreview spec={entry.spec} handles={handles} />;
+    : <ModifierPreview spec={entry.spec} handles={handles} sweeping={sweeping} />;
 }
 
-class PreviewBoundary extends Component<{ name: string; onError: (error: Error) => void; children: ReactNode }, { error: Error | null }> {
+class PreviewBoundary extends Component<{ paletteError: string; onError: (error: Error) => void; children: ReactNode }, { error: Error | null }> {
   state = { error: null as Error | null };
 
   static getDerivedStateFromError(error: Error) {
@@ -176,25 +281,40 @@ class PreviewBoundary extends Component<{ name: string; onError: (error: Error) 
   }
 
   render() {
-    if (this.state.error) return <Text style={styles.failure}>{this.props.name} failed: {this.state.error.message}</Text>;
+    if (this.state.error) return <Text style={{ color: this.props.paletteError }}>{this.state.error.message}</Text>;
     return this.props.children;
   }
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, gap: 8 },
-  status: { color: "#261b3a", fontSize: 15, fontWeight: "800" },
-  count: { color: "#5c4b70", fontSize: 13, fontWeight: "600" },
-  actions: { flexDirection: "row", gap: 8 },
-  action: { minHeight: 40, paddingHorizontal: 12, borderRadius: 10, backgroundColor: "#e0d3f4", alignItems: "center", justifyContent: "center" },
-  actionLabel: { color: "#3e275f", fontSize: 13, fontWeight: "800" },
-  failures: { gap: 4 },
-  failure: { color: "#8c2f39", fontSize: 13, fontWeight: "700" },
-  preview: { minHeight: 120, padding: 12, backgroundColor: "#fff", borderColor: "#e9e2f1", borderWidth: 1, borderRadius: 14, gap: 8 },
-  detail: { color: "#5d4b73", fontSize: 13, fontWeight: "700" },
-  search: { minHeight: 44, borderRadius: 12, paddingHorizontal: 12, backgroundColor: "#fff", color: "#261b3a", borderColor: "#e0d3f4", borderWidth: 1 },
-  row: { minHeight: 48, paddingHorizontal: 12, paddingVertical: 8, borderBottomColor: "#efeaf5", borderBottomWidth: 1, flexDirection: "row", justifyContent: "space-between", gap: 8, alignItems: "center" },
-  selectedRow: { backgroundColor: "#f3ecfb" },
-  rowName: { color: "#261b3a", fontSize: 15, fontWeight: "700", flexShrink: 1 },
-  rowDetail: { color: "#7b6b8d", fontSize: 12, fontWeight: "600" },
+  screen: { flex: 1 },
+  header: { paddingHorizontal: 18, paddingTop: 16, paddingBottom: 10, gap: 12 },
+  headingRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 10 },
+  title: { fontSize: 28, fontWeight: "800", letterSpacing: -0.85, flexShrink: 1 },
+  themeRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 10 },
+  segments: { flexDirection: "row", alignSelf: "flex-start", borderRadius: 12, padding: 3, gap: 2 },
+  segment: { minHeight: 42, justifyContent: "center", paddingHorizontal: 12, borderRadius: 9 },
+  searchRow: { flexDirection: "row", gap: 8, alignItems: "center" },
+  search: { flex: 1, borderWidth: 1, borderRadius: 12, minHeight: 50, paddingHorizontal: 14, fontSize: 15 },
+  summary: { fontSize: 13, fontWeight: "600" },
+  list: { paddingHorizontal: 18, paddingBottom: 18 },
+  row: {
+    minHeight: 64, paddingHorizontal: 14, paddingVertical: 10, borderWidth: 1, borderRadius: 12,
+    flexDirection: "row", alignItems: "center", gap: 12, marginBottom: 8,
+  },
+  rowMain: { flex: 1, gap: 3 },
+  rowName: { fontSize: 16, fontWeight: "700" },
+  rowKind: { fontSize: 13 },
+  empty: { paddingVertical: 22, textAlign: "center" },
+  detailHeader: {
+    paddingHorizontal: 18, paddingVertical: 9, flexDirection: "row", alignItems: "center",
+    justifyContent: "space-between", borderBottomWidth: 1,
+  },
+  detail: { padding: 18, paddingBottom: 24, gap: 10 },
+  kind: { fontSize: 13, fontWeight: "700" },
+  instruction: { fontSize: 15, lineHeight: 22 },
+  preview: { borderRadius: 16, borderWidth: 1, padding: 14, minHeight: 88, marginTop: 6 },
+  action: { minHeight: 44, paddingHorizontal: 12, borderRadius: 10, alignItems: "center", justifyContent: "center" },
+  actionLabel: { fontSize: 13, fontWeight: "700" },
+  footer: { flexDirection: "row", justifyContent: "space-between", gap: 6, padding: 12, borderTopWidth: 1 },
 });

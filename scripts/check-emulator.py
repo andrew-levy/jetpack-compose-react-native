@@ -94,12 +94,11 @@ def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, t
                 focused = activity_window()
                 if focused is not None and focused != window:
                     raise ActivityRecreated("Android recreated the demo activity during verification")
-            nodes = {
-                label: node
-                for node in ET.fromstring(contents).iter("node")
-                for label in (node.get("text"), node.get("content-desc"))
-                if label
-            }
+            nodes = {}
+            for node in ET.fromstring(contents).iter("node"):
+                for label in (node.get("text"), node.get("content-desc")):
+                    if label and (label not in nodes or nodes[label].get("selected") != "true"):
+                        nodes[label] = node
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired, ET.ParseError):
             time.sleep(1)
             continue
@@ -162,7 +161,7 @@ def following_view_top(nodes):
 def start_gallery():
     for attempt in range(2):
         adb("shell", "am", "force-stop", PACKAGE)
-        print(adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity"), flush=True)
+        print(adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity", "--ez", "bridgeChecks", "true"), flush=True)
         window = activity_window()
         try:
             nodes = wait_for(
@@ -382,22 +381,63 @@ def verify():
         tap(nodes["Undo"])
         wait_for("Open menu", absent=("Change saved",), window=window)
 
-    verify_catalog(window)
+    verify_catalog()
 
 
-def verify_catalog(window):
-    tap_tab("Catalog", window)
-    nodes = wait_for("Catalog ready", "Next", window=window)
-    tap(nodes["Next"])
-    nodes = wait_for("Open AlertDialog", "Search components and modifiers", window=window)
+def verify_catalog():
+    adb("shell", "am", "force-stop", PACKAGE)
+    adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity")
+    window = activity_window()
+    nodes = wait_for("Compose Catalog", "Light", "Dark", "Search catalog", window=window)
+    tap(nodes["Light"])
+    nodes = wait_for("Light", "Dark", window=window,
+                     layout_ready=lambda n: n["Light"].get("selected") == "true")
+    capture("16-catalog-list")
+    tap(nodes["Dark"])
+    nodes = wait_for("Dark", "Search catalog", window=window,
+                     layout_ready=lambda n: n["Dark"].get("selected") == "true")
+    capture("17-catalog-dark")
+
+    def open_demo(name):
+        nodes = wait_for("Search catalog", window=window)
+        if "Clear" in nodes:
+            tap(nodes["Clear"])
+        tap(nodes["Search catalog"])
+        wait_for("Search catalog", window=window,
+                 layout_ready=lambda n: n["Search catalog"].get("focused") == "true")
+        adb("shell", "input", "text", name)
+        matches = wait_for(name, window=window)
+        tap(matches[name])
+
+    open_demo("AnimatedVisibility")
+    nodes = wait_for("Show panel", "Mark reviewed", "Dark", window=window,
+                     layout_ready=lambda n: n["Dark"].get("selected") == "true")
+    with record("catalog-animated-visibility"):
+        tap(nodes["Show panel"])
+        nodes = wait_for("Hide panel", "Visibility panel", window=window)
+        tap(nodes["Hide panel"])
+        nodes = wait_for("Show panel", "Mark reviewed", absent=("Visibility panel",), window=window)
+    tap(nodes["Mark reviewed"])
+    nodes = wait_for("✓ Reviewed", "‹ Catalog", window=window)
+    tap(nodes["‹ Catalog"])
+
+    open_demo("Column")
+    nodes = wait_for("First", "Second", "Third", "‹ Catalog", window=window,
+                     layout_ready=lambda n: bounds(n["First"])[3] <= bounds(n["Second"])[1]
+                     and bounds(n["Second"])[3] <= bounds(n["Third"])[1])
+    capture("18-catalog-column")
+    tap(nodes["‹ Catalog"])
+
+    open_demo("AlertDialog")
+    nodes = wait_for("Open AlertDialog", window=window)
     tap(nodes["Open AlertDialog"])
-    nodes = wait_for("Close preview")
+    nodes = wait_for("Save this draft?", "Close preview")
     tap(nodes["Close preview"])
-    nodes = wait_for("Open AlertDialog", "Search components and modifiers", absent=("Close preview",), window=window)
+    nodes = wait_for("Open AlertDialog", absent=("Close preview",), window=window)
     tap(nodes["Open AlertDialog"])
     wait_for("Close preview")
     adb("shell", "input", "keyevent", "KEYCODE_BACK")
-    wait_for("Open AlertDialog", "Search components and modifiers", absent=("Close preview",), window=window)
+    wait_for("Open AlertDialog", absent=("Close preview",), window=window)
 
 
 def main():
@@ -416,7 +456,7 @@ def main():
             adb("shell", "settings", "delete", "global", "animator_duration_scale")
         elif animation_scale is not None:
             adb("shell", "settings", "put", "global", "animator_duration_scale", animation_scale)
-    print("Verified themes, controls, tabs, modifier order, mixed children, and native overlays.")
+    print("Verified catalog search, themes, transitions, layout, controls, interop, and native overlays.")
 
 
 if __name__ == "__main__":

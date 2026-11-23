@@ -13,8 +13,12 @@ class MainActivity : ReactActivity() {
         object : DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled) {
             override fun getLaunchOptions(): Bundle? {
                 val start = intent?.getIntExtra("catalogStart", -1) ?: -1
-                if (start < 0) return null
-                return Bundle().apply { putInt("catalogStart", start) }
+                val bridgeChecks = intent?.getBooleanExtra("bridgeChecks", false) ?: false
+                if (start < 0 && !bridgeChecks) return null
+                return Bundle().apply {
+                    if (start >= 0) putInt("catalogStart", start)
+                    if (bridgeChecks) putBoolean("bridgeChecks", true)
+                }
             }
         }
 }

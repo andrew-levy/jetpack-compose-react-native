@@ -185,16 +185,16 @@ import { Button, MaterialExpressiveTheme, Text } from "jetpack-compose-react-nat
 
 ## Compose Gallery
 
-Use the tabs in the [example app](example/App.tsx) to spot-check generated bindings.
+The [example app](example/App.tsx) opens to a searchable catalog. Filter by
+component or modifier, then open an entry to try it. Previous and Next follow
+your current search results. Use **Mark reviewed** to track your manual pass
+during the current app session. Switch between System, Light, and Dark on the
+list or while a preview is open.
 
-| Tab | What to try |
-| --- | --- |
-| **Components** | Switch between buttons, inputs, surfaces, progress, and collections. In Bridge, try native focus and styles, nested scroll, and animation specs. |
-| **Modifiers** | Swap chain order and compare gradients, borders, clipping, shadows, size, offset, layering, and scoped weight. |
-| **Overlays** | Open the bottom sheet or alert dialog. Choose a dropdown action, then undo it in the snackbar. |
-| **Interop** | Tap either button to insert or remove a React Native child in a Compose layout. |
-| **Expressive** | Compare the standard spinner and Expressive morphing indicator side by side. |
-| **Catalog** | Search components and modifiers or sweep the full list. Open dialogs and other overlays from the preview card. Recent failures appear under the status line. |
+Try **AnimatedVisibility** for the show and hide transition, **Column** for a
+three-child stack, and **AlertDialog** for opening and dismissing a native
+dialog. Modifier previews show a reference sample and the result in the
+same layout context.
 
 `npm test` checks representative JavaScript call forms against the generated
 Kotlin registry and verifies that the catalog fixtures are current. Regenerate
@@ -202,9 +202,9 @@ them with `npm run catalog:fixtures` after changing the generated API.
 CI builds the demo from `npm pack` in a separate React Native project.
 
 With the current release APK installed on a connected Android device or emulator,
-`python3 scripts/sweep-catalog.py` mounts one preview per catalog entry. It
+`python3 scripts/sweep-catalog.py` mounts one preview per catalog entry and drives selected animations and overlays. It
 continues after an app crash, writes `catalog-sweep-report.json`, and fails on
-errors or incomplete coverage. `npm run android:verify` exercises interactions
+errors or incomplete coverage. `npm run android:verify` exercises catalog search and theme switching, along with native interactions
 such as Compose gestures, event delivery, and mixed Compose and React Native layout.
 
 The **Compose Bridge** workflow publishes screenshots and individual GIFs in the
