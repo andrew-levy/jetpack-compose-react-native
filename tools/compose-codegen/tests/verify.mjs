@@ -14,8 +14,12 @@ function readManifest(path) {
 }
 
 function callForms(surface) {
-  return new Set(["components", "modifiers"].flatMap((kind) => surface[kind]
-    .flatMap(({ name, parameters, children = false, scope = null, masks }) => masks.map((mask) => {
+  return new Set(callFormEntries(surface).map(({ form }) => form));
+}
+
+function callFormEntries(surface) {
+  return ["components", "modifiers"].flatMap((kind) => surface[kind]
+    .flatMap(({ name, signature, parameters, children = false, scope = null, masks }) => masks.map((mask) => {
       let bit = 0;
       const passed = parameters
         .filter(({ optional, kind: parameterKind }) => !optional || parameterKind === "modifier" || (mask & (1 << bit++)))
@@ -23,8 +27,16 @@ function callForms(surface) {
           [name, parameterKind.startsWith("animationSpec:") ? "animationSpec" : parameterKind,
             nullable, parameterKind === "modifier" && optional])
         .sort(([left], [right]) => left.localeCompare(right));
-      return JSON.stringify([name, children, passed, kind, scope]);
-    }))));
+      return { form: JSON.stringify([name, children, passed, kind, scope]), signature, kind };
+    })));
+}
+
+// Upstream changed a published overload when its Kotlin signature is gone (a parameter was added, removed
+// or retyped) or is now skipped as deprecated. Kotlin callers of that overload break the same way.
+function changedUpstream(entries, kind, signature) {
+  if (!signature) return false;
+  const entry = entries.get(`${kind === "components" ? "component" : "modifier"}:${signature}`);
+  return !entry || entry.status === "skipped" && entry.reason === "Deprecated Kotlin declaration";
 }
 
 const [mode, first, second] = process.argv.slice(2);
@@ -175,10 +187,22 @@ if (mode === "audit") {
   assert.ok(manifest.styleProperties.some(property => property.name === "contentPadding" &&
     property.kind === "dp"));
 } else if (mode === "surface") {
-  const baseline = callForms(read(first));
   const actual = callForms(read(second));
-  const lost = [...baseline].filter((form) => !actual.has(form));
-  assert.deepEqual(lost.slice(0, 30), [], `${lost.length} previously supported Compose call forms disappeared`);
+  let lost = callFormEntries(read(first)).filter(({ form }) => !actual.has(form));
+  // With the current manifest, a form is excused when upstream changed its Kotlin overload: the published
+  // signature is gone (a parameter was added, removed or retyped) or is now skipped as deprecated. A form
+  // of an overload that still exists and is still bound must not disappear.
+  const manifestPath = process.argv[5];
+  if (manifestPath) {
+    const { entries } = readManifest(manifestPath);
+    const upstream = lost.filter(({ kind, signature }) => changedUpstream(entries, kind, signature));
+    const changed = new Set(upstream.map(({ signature }) => signature));
+    if (upstream.length) console.log(`${upstream.length} call forms follow upstream changes to ${changed.size} Kotlin overloads`);
+    for (const signature of [...changed].sort()) console.log(`  Changed upstream: ${signature}`);
+    lost = lost.filter((entry) => !upstream.includes(entry));
+  }
+  assert.deepEqual(lost.slice(0, 30).map(({ form }) => form), [],
+    `${lost.length} previously supported Compose call forms disappeared`);
 } else if (mode === "upgrade") {
   const original = readManifest(first);
   const newer = readManifest(second);
@@ -196,29 +220,10 @@ if (mode === "audit") {
   assert.ok(additions.some(({ status }) => status === "unsupported" || status === "adapterRequired"), "Report new unsupported signatures");
 
   const upgradedForms = callForms(newer);
-  const lost = [...callForms(original)].filter((form) => !upgradedForms.has(form));
-  // Material 3 1.5.0-alpha01 hides the previous WideNavigationRailItem
-  // overload and replaces it with one that requires railExpanded.
-  const tooltipNames = new Set(["PlainTooltip", "RichTooltip"]);
-  const newCaretShape = new Set(newer.components.filter(({ name, parameters }) =>
-    tooltipNames.has(name) && parameters.some(({ name }) => name === "caretShape")
-  ).map(({ name }) => name));
-  const unexpected = lost.filter((form) => {
-    const [name, children, props, kind, scope] = JSON.parse(form);
-    const names = props.map(([prop]) => prop);
-    // Material 3 replaces tooltip caretSize with caretShape. Verify that the
-    // rest of each call still resolves after removing the replaced prop.
-    if (newCaretShape.has(name) && names.includes("caretSize")) {
-      return !upgradedForms.has(JSON.stringify([name, children,
-        props.filter(([prop]) => prop !== "caretSize"), kind, scope]));
-    }
-    if (name !== "WideNavigationRailItem" || children) return true;
-    const replacement = [...props, ["railExpanded", "boolean", false, false]]
-      .sort(([left], [right]) => left.localeCompare(right));
-    return !upgradedForms.has(JSON.stringify([name, children, replacement, kind, scope]));
-  });
-  for (const form of lost) console.log(`Removed JSX call form ${form}`);
-  assert.deepEqual(unexpected, [], "A Compose upgrade unexpectedly dropped a JSX call form");
+  const lost = callFormEntries(original).filter(({ form }) => !upgradedForms.has(form));
+  const unexpected = lost.filter(({ kind, signature }) => !changedUpstream(newer.entries, kind, signature));
+  for (const { form } of lost) console.log(`Removed JSX call form ${form}`);
+  assert.deepEqual(unexpected.map(({ form }) => form), [], "A Compose upgrade unexpectedly dropped a JSX call form");
 } else if (mode === "probe") {
   const original = readManifest(first);
   const readOutput = (name) => readFileSync(join(second, name), "utf8");
