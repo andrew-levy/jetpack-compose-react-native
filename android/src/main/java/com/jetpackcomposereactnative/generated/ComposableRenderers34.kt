@@ -1,0 +1,1248 @@
+// Generated from Compose declarations by generate.mjs.
+package com.jetpackcomposereactnative.generated
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
+import androidx.compose.material3.NavigationBarItem as composeScoped1
+import androidx.compose.material3.PlainTooltip as composeScoped2
+import androidx.compose.material3.RichTooltip as composeScoped3
+import androidx.compose.material3.SegmentedButton as composeScoped4
+
+// androidx.compose.material3.Surface(onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, color: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererSurface_1 {
+  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
+  private fun decode_color(node: ComposeNode) = node.color("color")
+  private fun decode_contentColor(node: ComposeNode) = node.color("contentColor")
+  private fun decode_tonalElevation(node: ComposeNode) = node.number("tonalElevation").dp
+  private fun decode_shadowElevation(node: ComposeNode) = node.number("shadowElevation").dp
+
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val renderChildren: @Composable () -> Unit = { RenderComposeChildren(node.children) }
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("color")) 4 else 0) +
+      (if (node.has("contentColor")) 8 else 0) +
+      (if (node.has("tonalElevation")) 16 else 0) +
+      (if (node.has("shadowElevation")) 32 else 0) +
+      (if (node.has("border")) 64 else 0) +
+      (if (node.has("interactionSource")) 128 else 0)
+    when (mask / 32) {
+      0 -> renderSurface_1Group0(node, scope, mask, renderChildren)
+      1 -> renderSurface_1Group1(node, scope, mask, renderChildren)
+      2 -> renderSurface_1Group2(node, scope, mask, renderChildren)
+      3 -> renderSurface_1Group3(node, scope, mask, renderChildren)
+      4 -> renderSurface_1Group4(node, scope, mask, renderChildren)
+      5 -> renderSurface_1Group5(node, scope, mask, renderChildren)
+      6 -> renderSurface_1Group6(node, scope, mask, renderChildren)
+      7 -> renderSurface_1Group7(node, scope, mask, renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group0(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      0 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), content = renderChildren)
+      1 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), content = renderChildren)
+      2 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), content = renderChildren)
+      3 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), content = renderChildren)
+      4 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), content = renderChildren)
+      5 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), content = renderChildren)
+      6 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), content = renderChildren)
+      7 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), content = renderChildren)
+      8 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), content = renderChildren)
+      9 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      10 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = renderChildren)
+      11 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = renderChildren)
+      12 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      13 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      14 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      15 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      16 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      17 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      18 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      19 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      20 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      21 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      22 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      23 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      24 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      25 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      26 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      27 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      28 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      29 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      30 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      31 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group1(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      32 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      33 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      34 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      35 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      36 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      37 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      38 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      39 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      40 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      41 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      42 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      43 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      44 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      45 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      46 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      47 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      48 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      49 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      50 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      51 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      52 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      53 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      54 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      55 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      56 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      57 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      58 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      59 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      60 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      61 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      62 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      63 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group2(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      64 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      65 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      68 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      69 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      72 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      73 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      76 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      77 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      80 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      81 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      84 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      85 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      88 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      89 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      92 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      93 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group3(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      127 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group4(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      128 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      129 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      130 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      131 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      132 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      133 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      134 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      135 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      136 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      137 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      138 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      139 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      140 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      141 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      142 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      143 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      144 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      145 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      146 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      147 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      148 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      149 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      150 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      151 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      152 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      153 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      154 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      155 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      156 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      157 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      158 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      159 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group5(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      160 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      161 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      162 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      163 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      164 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      165 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      166 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      167 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      168 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      169 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      170 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      171 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      172 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      173 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      174 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      175 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      176 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      177 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      178 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      179 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      180 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      181 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      182 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      183 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      184 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      185 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      186 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      187 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      188 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      189 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      190 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      191 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group6(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      223 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_1Group7(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      239 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      247 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      251 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      253 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      254 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      255 -> androidx.compose.material3.Surface(`onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Surface(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, color: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererSurface_2 {
+  private fun decode_checked(node: ComposeNode) = node.boolean("checked")
+  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
+  private fun decode_color(node: ComposeNode) = node.color("color")
+  private fun decode_contentColor(node: ComposeNode) = node.color("contentColor")
+  private fun decode_tonalElevation(node: ComposeNode) = node.number("tonalElevation").dp
+  private fun decode_shadowElevation(node: ComposeNode) = node.number("shadowElevation").dp
+
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val renderChildren: @Composable () -> Unit = { RenderComposeChildren(node.children) }
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("color")) 4 else 0) +
+      (if (node.has("contentColor")) 8 else 0) +
+      (if (node.has("tonalElevation")) 16 else 0) +
+      (if (node.has("shadowElevation")) 32 else 0) +
+      (if (node.has("border")) 64 else 0) +
+      (if (node.has("interactionSource")) 128 else 0)
+    when (mask / 32) {
+      0 -> renderSurface_2Group0(node, scope, mask, renderChildren)
+      1 -> renderSurface_2Group1(node, scope, mask, renderChildren)
+      2 -> renderSurface_2Group2(node, scope, mask, renderChildren)
+      3 -> renderSurface_2Group3(node, scope, mask, renderChildren)
+      4 -> renderSurface_2Group4(node, scope, mask, renderChildren)
+      5 -> renderSurface_2Group5(node, scope, mask, renderChildren)
+      6 -> renderSurface_2Group6(node, scope, mask, renderChildren)
+      7 -> renderSurface_2Group7(node, scope, mask, renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group0(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      0 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), content = renderChildren)
+      1 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), content = renderChildren)
+      2 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), content = renderChildren)
+      3 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), content = renderChildren)
+      4 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), content = renderChildren)
+      5 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), content = renderChildren)
+      6 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), content = renderChildren)
+      7 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), content = renderChildren)
+      8 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), content = renderChildren)
+      9 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      10 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = renderChildren)
+      11 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = renderChildren)
+      12 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      13 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      14 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      15 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      16 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      17 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      18 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      19 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      20 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      21 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      22 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      23 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      24 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      25 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      26 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      27 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      28 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      29 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      30 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      31 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group1(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      32 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      33 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      34 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      35 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      36 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      37 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      38 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      39 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      40 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      41 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      42 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      43 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      44 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      45 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      46 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      47 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      48 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      49 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      50 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      51 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      52 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      53 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      54 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      55 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      56 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      57 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      58 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      59 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      60 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      61 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      62 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      63 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group2(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      64 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      65 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      68 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      69 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      72 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      73 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      76 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      77 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      80 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      81 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      84 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      85 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      88 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      89 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      92 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      93 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group3(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      127 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group4(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      128 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      129 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      130 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      131 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      132 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      133 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      134 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      135 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      136 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      137 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      138 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      139 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      140 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      141 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      142 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      143 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      144 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      145 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      146 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      147 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      148 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      149 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      150 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      151 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      152 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      153 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      154 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      155 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      156 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      157 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      158 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      159 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group5(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      160 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      161 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      162 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      163 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      164 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      165 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      166 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      167 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      168 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      169 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      170 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      171 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      172 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      173 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      174 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      175 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      176 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      177 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      178 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      179 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      180 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      181 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      182 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      183 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      184 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      185 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      186 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      187 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      188 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      189 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      190 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      191 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group6(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      223 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_2Group7(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      239 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      247 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      251 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      253 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      254 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      255 -> androidx.compose.material3.Surface(`checked` = decode_checked(node), `onCheckedChange` = { value: Boolean -> node.emit("onCheckedChange", value) }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Surface(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, color: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function0<kotlin.Unit>)
+internal object RendererSurface_3 {
+  private fun decode_selected(node: ComposeNode) = node.boolean("selected")
+  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
+  private fun decode_color(node: ComposeNode) = node.color("color")
+  private fun decode_contentColor(node: ComposeNode) = node.color("contentColor")
+  private fun decode_tonalElevation(node: ComposeNode) = node.number("tonalElevation").dp
+  private fun decode_shadowElevation(node: ComposeNode) = node.number("shadowElevation").dp
+
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val renderChildren: @Composable () -> Unit = { RenderComposeChildren(node.children) }
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("shape")) 2 else 0) +
+      (if (node.has("color")) 4 else 0) +
+      (if (node.has("contentColor")) 8 else 0) +
+      (if (node.has("tonalElevation")) 16 else 0) +
+      (if (node.has("shadowElevation")) 32 else 0) +
+      (if (node.has("border")) 64 else 0) +
+      (if (node.has("interactionSource")) 128 else 0)
+    when (mask / 32) {
+      0 -> renderSurface_3Group0(node, scope, mask, renderChildren)
+      1 -> renderSurface_3Group1(node, scope, mask, renderChildren)
+      2 -> renderSurface_3Group2(node, scope, mask, renderChildren)
+      3 -> renderSurface_3Group3(node, scope, mask, renderChildren)
+      4 -> renderSurface_3Group4(node, scope, mask, renderChildren)
+      5 -> renderSurface_3Group5(node, scope, mask, renderChildren)
+      6 -> renderSurface_3Group6(node, scope, mask, renderChildren)
+      7 -> renderSurface_3Group7(node, scope, mask, renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group0(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      0 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), content = renderChildren)
+      1 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), content = renderChildren)
+      2 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), content = renderChildren)
+      3 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), content = renderChildren)
+      4 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), content = renderChildren)
+      5 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), content = renderChildren)
+      6 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), content = renderChildren)
+      7 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), content = renderChildren)
+      8 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), content = renderChildren)
+      9 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      10 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = renderChildren)
+      11 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), content = renderChildren)
+      12 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      13 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      14 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      15 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), content = renderChildren)
+      16 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      17 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      18 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      19 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      20 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      21 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      22 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      23 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      24 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      25 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      26 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      27 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      28 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      29 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      30 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      31 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group1(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      32 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      33 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      34 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      35 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      36 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      37 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      38 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      39 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      40 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      41 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      42 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      43 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      44 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      45 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      46 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      47 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      48 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      49 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      50 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      51 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      52 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      53 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      54 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      55 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      56 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      57 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      58 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      59 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      60 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      61 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      62 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      63 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group2(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      64 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      65 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      68 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      69 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      72 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      73 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      76 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      77 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      80 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      81 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      84 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      85 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      88 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      89 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      92 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      93 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group3(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      127 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group4(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      128 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      129 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      130 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      131 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      132 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      133 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      134 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      135 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      136 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      137 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      138 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      139 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      140 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      141 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      142 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      143 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      144 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      145 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      146 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      147 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      148 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      149 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      150 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      151 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      152 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      153 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      154 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      155 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      156 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      157 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      158 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      159 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group5(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      160 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      161 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      162 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      163 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      164 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      165 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      166 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      167 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      168 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      169 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      170 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      171 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      172 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      173 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      174 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      175 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      176 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      177 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      178 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      179 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      180 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      181 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      182 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      183 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      184 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      185 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      186 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      187 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      188 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      189 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      190 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      191 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group6(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      223 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderSurface_3Group7(node: ComposeNode, scope: Any?, mask: Int, renderChildren: @Composable () -> Unit) {
+    when (mask) {
+      239 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      247 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      251 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      253 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      254 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      255 -> androidx.compose.material3.Surface(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `shape` = node.arguments().shape("shape"), `color` = decode_color(node), `contentColor` = decode_contentColor(node), `tonalElevation` = decode_tonalElevation(node), `shadowElevation` = decode_shadowElevation(node), `border` = if (node.isNull("border")) null else (node.jsonObject("border").toComposeBorderStroke()), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()), content = renderChildren)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.SwipeToDismissBox(state: androidx.compose.material3.SwipeToDismissBoxState, backgroundContent: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enableDismissFromStartToEnd: kotlin.Boolean, enableDismissFromEndToStart: kotlin.Boolean, gesturesEnabled: kotlin.Boolean, onDismiss: kotlin.Function1<androidx.compose.material3.SwipeToDismissBoxValue, kotlin.Unit>, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)
+internal object RendererSwipeToDismissBox {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val stateValue = if (node.has("state") && !node.isNull("state")) node.jsonObject("state").rememberComposeSwipeToDismissState() else null
+    val mask = (if (node.has("enableDismissFromStartToEnd")) 1 else 0) +
+      (if (node.has("enableDismissFromEndToStart")) 2 else 0) +
+      (if (node.has("gesturesEnabled")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `enableDismissFromStartToEnd` = node.boolean("enableDismissFromStartToEnd"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `enableDismissFromEndToStart` = node.boolean("enableDismissFromEndToStart"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `enableDismissFromStartToEnd` = node.boolean("enableDismissFromStartToEnd"),
+        `enableDismissFromEndToStart` = node.boolean("enableDismissFromEndToStart"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `gesturesEnabled` = node.boolean("gesturesEnabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `enableDismissFromStartToEnd` = node.boolean("enableDismissFromStartToEnd"),
+        `gesturesEnabled` = node.boolean("gesturesEnabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `enableDismissFromEndToStart` = node.boolean("enableDismissFromEndToStart"),
+        `gesturesEnabled` = node.boolean("gesturesEnabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.SwipeToDismissBox(
+        `state` = requireNotNull(stateValue),
+        `backgroundContent` = { RenderComposeChildren(node.slot("backgroundContent"), this) },
+        `modifier` = node.modifier("modifier", scope),
+        `enableDismissFromStartToEnd` = node.boolean("enableDismissFromStartToEnd"),
+        `enableDismissFromEndToStart` = node.boolean("enableDismissFromEndToStart"),
+        `gesturesEnabled` = node.boolean("gesturesEnabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Switch(checked: kotlin.Boolean, onCheckedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>?, modifier: androidx.compose.ui.Modifier, thumbContent: kotlin.Function0<kotlin.Unit>?, enabled: kotlin.Boolean, colors: androidx.compose.material3.SwitchColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
+internal object RendererSwitch {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("thumbContent")) 1 else 0) +
+      (if (node.has("enabled")) 2 else 0) +
+      (if (node.has("colors")) 4 else 0) +
+      (if (node.has("interactionSource")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+      )
+      1 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+      )
+      2 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+      )
+      3 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `enabled` = node.boolean("enabled"),
+      )
+      4 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+      )
+      5 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+      )
+      6 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+      )
+      7 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `enabled` = node.boolean("enabled"),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+      )
+      8 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      9 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      10 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      11 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      12 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      13 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      14 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      15 -> androidx.compose.material3.Switch(
+        `checked` = node.boolean("checked"),
+        `onCheckedChange` = if (node.isNull("onCheckedChange")) null else ({ value: Boolean -> node.emit("onCheckedChange", value) }),
+        `modifier` = node.modifier("modifier", scope),
+        `thumbContent` = if (node.isNull("thumbContent")) null else ({ RenderComposeChildren(node.slot("thumbContent")) }),
+        `enabled` = node.boolean("enabled"),
+        `colors` = node.jsonObject("colors").decodeComposeSwitchColorsValue(),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Tab(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, text: kotlin.Function0<kotlin.Unit>?, icon: kotlin.Function0<kotlin.Unit>?, selectedContentColor: androidx.compose.ui.graphics.Color, unselectedContentColor: androidx.compose.ui.graphics.Color, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
+internal object RendererTab {
+  private fun decode_selected(node: ComposeNode) = node.boolean("selected")
+  private fun decode_enabled(node: ComposeNode) = node.boolean("enabled")
+  private fun decode_selectedContentColor(node: ComposeNode) = node.color("selectedContentColor")
+  private fun decode_unselectedContentColor(node: ComposeNode) = node.color("unselectedContentColor")
+
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val content_text: @Composable () -> Unit = { RenderComposeChildren(node.slot("text")) }
+    val slot_text = if (node.isNull("text")) null else content_text
+    val content_icon: @Composable () -> Unit = { RenderComposeChildren(node.slot("icon")) }
+    val slot_icon = if (node.isNull("icon")) null else content_icon
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("text")) 2 else 0) +
+      (if (node.has("icon")) 4 else 0) +
+      (if (node.has("selectedContentColor")) 8 else 0) +
+      (if (node.has("unselectedContentColor")) 16 else 0) +
+      (if (node.has("interactionSource")) 32 else 0)
+    when (mask / 32) {
+      0 -> renderTabGroup0(node, scope, mask, slot_text, slot_icon)
+      1 -> renderTabGroup1(node, scope, mask, slot_text, slot_icon)
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderTabGroup0(node: ComposeNode, scope: Any?, mask: Int, slot_text: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?) {
+    when (mask) {
+      0 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope))
+      1 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node))
+      2 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text)
+      3 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text)
+      4 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon)
+      5 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon)
+      6 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon)
+      7 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon)
+      8 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `selectedContentColor` = decode_selectedContentColor(node))
+      9 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `selectedContentColor` = decode_selectedContentColor(node))
+      10 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node))
+      11 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node))
+      12 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node))
+      13 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node))
+      14 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node))
+      15 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node))
+      16 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `unselectedContentColor` = decode_unselectedContentColor(node))
+      17 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      18 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `unselectedContentColor` = decode_unselectedContentColor(node))
+      19 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `unselectedContentColor` = decode_unselectedContentColor(node))
+      20 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node))
+      21 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node))
+      22 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node))
+      23 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node))
+      24 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      25 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      26 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      27 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      28 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      29 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      30 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      31 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node))
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+
+  @Composable
+  private fun renderTabGroup1(node: ComposeNode, scope: Any?, mask: Int, slot_text: (@Composable () -> Unit)?, slot_icon: (@Composable () -> Unit)?) {
+    when (mask) {
+      32 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      33 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      34 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      35 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      36 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      37 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      38 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      39 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      40 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      41 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      42 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      43 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      44 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      45 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      46 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      47 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      48 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      49 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      50 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      51 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      52 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      53 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      54 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      55 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      56 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      57 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      58 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      59 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      60 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      61 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      62 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      63 -> androidx.compose.material3.Tab(`selected` = decode_selected(node), `onClick` = { node.emit("onClick") }, `modifier` = node.modifier("modifier", scope), `enabled` = decode_enabled(node), `text` = slot_text, `icon` = slot_icon, `selectedContentColor` = decode_selectedContentColor(node), `unselectedContentColor` = decode_unselectedContentColor(node), `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()))
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.Tab(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, selectedContentColor: androidx.compose.ui.graphics.Color, unselectedContentColor: androidx.compose.ui.graphics.Color, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)
+internal object RendererTab_1 {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("enabled")) 1 else 0) +
+      (if (node.has("selectedContentColor")) 2 else 0) +
+      (if (node.has("unselectedContentColor")) 4 else 0) +
+      (if (node.has("interactionSource")) 8 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      8 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      9 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      10 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      11 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      12 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      13 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      14 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      15 -> androidx.compose.material3.Tab(
+        `selected` = node.boolean("selected"),
+        `onClick` = { node.emit("onClick") },
+        `modifier` = node.modifier("modifier", scope),
+        `enabled` = node.boolean("enabled"),
+        `selectedContentColor` = node.color("selectedContentColor"),
+        `unselectedContentColor` = node.color("unselectedContentColor"),
+        `interactionSource` = if (node.isNull("interactionSource")) null else (node.jsonObject("interactionSource").rememberComposeInteractionSource()),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.TabRow(selectedTabIndex: kotlin.Int, modifier: androidx.compose.ui.Modifier, containerColor: androidx.compose.ui.graphics.Color, contentColor: androidx.compose.ui.graphics.Color, indicator: kotlin.Function1<kotlin.collections.List<androidx.compose.material3.TabPosition>, kotlin.Unit>, divider: kotlin.Function0<kotlin.Unit>, tabs: kotlin.Function0<kotlin.Unit>)
+internal object RendererTabRow {
+  @Composable
+  fun render(node: ComposeNode, scope: Any?) {
+    val mask = (if (node.has("containerColor")) 1 else 0) +
+      (if (node.has("contentColor")) 2 else 0) +
+      (if (node.has("divider")) 4 else 0)
+    when (mask) {
+      0 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      1 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      2 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      3 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      4 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `divider` = { RenderComposeChildren(node.slot("divider")) },
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      5 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `divider` = { RenderComposeChildren(node.slot("divider")) },
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      6 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `contentColor` = node.color("contentColor"),
+        `divider` = { RenderComposeChildren(node.slot("divider")) },
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      7 -> androidx.compose.material3.TabRow(
+        `selectedTabIndex` = node.number("selectedTabIndex").toInt(),
+        `modifier` = node.modifier("modifier", scope),
+        `containerColor` = node.color("containerColor"),
+        `contentColor` = node.color("contentColor"),
+        `divider` = { RenderComposeChildren(node.slot("divider")) },
+        `tabs` = { RenderComposeChildren(node.slot("tabs")) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
