@@ -5,12 +5,12 @@ import type { ColorScheme } from "./factories";
 import type { ComposeShape, ComposeBrush } from "../utils/modifier";
 export type ComposeFloatRange = readonly [start: number, endInclusive: number];
 import type { ComposeAnimationSpec, ComposeAnnotatedString, ComposeAppBarItem, ComposeBorderStroke, ComposeBottomSheetScaffoldState, ComposeButtonGroupItem, ComposeCarouselState, ComposeContentTransition, ComposeDatePickerFormatter, ComposeDatePickerState, ComposeDateRangePickerState, ComposeDialogProperties, ComposeDpSize, ComposeDrawing, ComposeFlexBoxConfig, ComposeFlingBehavior, ComposeGridCells, ComposeGridConfig, ComposeInputTransformation, ComposeKeyboardActions, ComposeKeyboardOptions, ComposeLayoutMeasurePolicy, ComposeLazyState, ComposeNestedScrollBehavior, ComposeOutputTransformation, ComposeOverscrollEffect, ComposePaddingValues, ComposePageSize, ComposePagerState, ComposePainter, ComposePopupPosition, ComposePopupProperties, ComposeScrollState, ComposeSearchBarState, ComposeSnackbarHostState, ComposeSwipeToDismissState, ComposeTextFieldLineLimits, ComposeTextFieldSnapshot, ComposeTextFieldState, ComposeTextFieldValue, ComposeTextLayout, ComposeTextStyle, ComposeTimePickerState, ComposeTooltipState, ComposeTopAppBarScrollBehavior, ComposeVisibilityTransition, ComposeVisualTransformation, ComposeWindowInsets } from "../utils/composeValues";
-import type { ComposeButtonColorsValue, ComposeButtonElevationValue, ComposeButtonShapesValue, ComposeCardColorsValue, ComposeCardElevationValue, ComposeCheckboxColorsValue, ComposeChipColorsValue, ComposeChipElevationValue, ComposeColorFilterValue, ComposeDatePickerColorsValue, ComposeDpOffset, ComposeDragHandleColorsValue, ComposeFloatingActionButtonElevationValue, ComposeFloatingToolbarColorsValue, ComposeIconButtonColorsValue, ComposeIconToggleButtonColorsValue, ComposeIntOffset, ComposeListItemColorsValue, ComposeMenuItemColorsValue, ComposeMotionSchemeValue, ComposeNavigationBarItemColorsValue, ComposeNavigationItemColorsValue, ComposeNavigationRailItemColorsValue, ComposeRadioButtonColorsValue, ComposeRichTooltipColorsValue, ComposeSearchBarColorsValue, ComposeSegmentedButtonColorsValue, ComposeSelectableChipElevationValue, ComposeSliderColorsValue, ComposeSplitButtonShapesValue, ComposeSwitchColorsValue, ComposeTextAutoSizeValue, ComposeTextFieldColorsValue, ComposeTextFieldLabelPositionValue, ComposeTimePickerColorsValue, ComposeToggleButtonColorsValue, ComposeToggleButtonShapesValue, ComposeTopAppBarColorsValue, ComposeWideNavigationRailColorsValue } from "./records";
-import type { ComposeFocusRequester, ComposeInteractionSource, ComposePullToRefreshState, ComposeRangeSliderState, ComposeSliderState } from "../utils/nativeHandles";
+import type { ComposeAppBarWithSearchColorsValue, ComposeBottomAppBarScrollBehaviorValue, ComposeButtonColorsValue, ComposeButtonElevationValue, ComposeButtonShapesValue, ComposeCardColorsValue, ComposeCardElevationValue, ComposeCheckboxColorsValue, ComposeChipColorsValue, ComposeChipElevationValue, ComposeChipShapesValue, ComposeColorFilterValue, ComposeDatePickerColorsValue, ComposeDpOffset, ComposeDragHandleColorsValue, ComposeDragHandleShapesValue, ComposeDropdownMenuPopupPositionProviderValue, ComposeFloatingActionButtonElevationValue, ComposeFloatingToolbarColorsValue, ComposeFloatingToolbarScrollBehaviorValue, ComposeFontFamilyValue, ComposeIconButtonColorsValue, ComposeIconButtonShapesValue, ComposeIconToggleButtonColorsValue, ComposeIconToggleButtonShapesValue, ComposeImageBitmapValue, ComposeIntOffset, ComposeLazyLayoutCacheWindowValue, ComposeListItemColorsValue, ComposeListItemElevationValue, ComposeListItemShapesValue, ComposeMenuGroupShapesValue, ComposeMenuItemColorsValue, ComposeMenuItemShapesValue, ComposeMotionSchemeValue, ComposeNavigationBarItemColorsValue, ComposeNavigationItemColorsValue, ComposeNavigationRailItemColorsValue, ComposeRadioButtonColorsValue, ComposeRichTooltipColorsValue, ComposeScrollFieldColorsValue, ComposeSearchBarColorsValue, ComposeSearchBarScrollBehaviorValue, ComposeSegmentedButtonColorsValue, ComposeSelectableChipColorsValue, ComposeSelectableChipElevationValue, ComposeSelectableMenuItemColorsValue, ComposeShapesValue, ComposeSliderColorsValue, ComposeSplitButtonShapesValue, ComposeStrokeValue, ComposeSwitchColorsValue, ComposeTextAutoSizeValue, ComposeTextFieldColorsValue, ComposeTextFieldLabelPositionValue, ComposeTimeInputColorsValue, ComposeTimePickerColorsValue, ComposeTimePickerShapesValue, ComposeToggleButtonColorsValue, ComposeToggleButtonElevationValue, ComposeToggleButtonShapesValue, ComposeTopAppBarColorsValue, ComposeTypographyValue, ComposeWideNavigationRailColorsValue } from "./records";
+import type { ComposeDrawerStateHandle, ComposeFocusRequester, ComposeInteractionSource, ComposePullToRefreshState, ComposeRangeSliderState, ComposeSliderState, ComposeWideNavigationRailStateHandle } from "../utils/nativeHandles";
 export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";
 import type { ComposeModalSheetState } from "../utils/composeValues";
 export type ComposeSheetState = ComposeModalSheetState;
-import type { ComposeSnapPosition, ComposeTimePickerDisplayMode, ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight, ComposeToggleableState, ComposeContentScale, ComposeDisplayMode, ComposeTextObfuscationModeValue, ComposeFabPositionValue, ComposeFloatingToolbarHorizontalFabPositionValue, ComposeFloatingToolbarVerticalFabPositionValue, ComposeNavigationItemIconPositionValue, ComposeShortNavigationBarArrangementValue, ComposeTimePickerLayoutTypeValue, ComposeStrokeCapValue, ComposeFontStyleValue, ComposeTextDecorationValue } from "./values";
+import type { ComposeSnapPosition, ComposeTimePickerDisplayMode, ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight, ComposeToggleableState, ComposeContentScale, ComposeDisplayMode, ComposeTextObfuscationModeValue, ComposeFabPositionValue, ComposeFloatingToolbarHorizontalFabPositionValue, ComposeFloatingToolbarVerticalFabPositionValue, ComposeNavigationItemIconPositionValue, ComposeShortNavigationBarArrangementValue, ComposeTimePickerLayoutTypeValue, ComposeToggleButtonSizeValue, ComposeFilterQualityValue, ComposeStrokeCapValue, ComposeFontStyleValue, ComposeTextDecorationValue } from "./values";
 
 export interface ActiveIconProps {
 }
@@ -1114,10 +1114,10 @@ export const AnimatedVisibility = createComposableComponent<AnimatedVisibilityPr
 });
 
 export interface AppBarColumnProps {
-  overflowIndicator?: ReactNode;
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  overflowIndicator?: ReactNode;
   maxItemCount?: number;
   items: readonly ComposeAppBarItem[];
 }
@@ -1130,10 +1130,10 @@ export const AppBarColumn = createComposableComponent<AppBarColumnProps>({
 });
 
 export interface AppBarRowProps {
-  overflowIndicator?: ReactNode;
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  overflowIndicator?: ReactNode;
   maxItemCount?: number;
   items: readonly ComposeAppBarItem[];
 }
@@ -1145,28 +1145,1060 @@ export const AppBarRow = createComposableComponent<AppBarRowProps>({
   children: false,
 });
 
-export interface AssistChipProps {
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  colors?: ComposeChipColorsValue;
-  elevation?: ComposeChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type AppBarWithSearchProps =
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    shape?: ComposeShape;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    colors?: never;
+    contentPadding?: never;
+    windowInsets?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon?: ReactNode;
+    actions?: ReactNode;
+    shape?: ComposeShape;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    windowInsets: ComposeWindowInsets;
+    colors?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions?: ReactNode;
+    shape?: ComposeShape;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    colors?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeAppBarWithSearchColorsValue;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    navigationIcon?: never;
+    actions?: never;
+    shape?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    contentPadding?: never;
+    windowInsets?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeAppBarWithSearchColorsValue;
+    windowInsets: ComposeWindowInsets;
+    navigationIcon?: never;
+    actions?: never;
+    shape?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeAppBarWithSearchColorsValue;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    actions?: never;
+    shape?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    actions?: never;
+    shape?: never;
+    tonalElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    actions?: never;
+    shape?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    actions?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    shape?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    tonalElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    shadowElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    windowInsets?: ComposeWindowInsets;
+    navigationIcon?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    navigationIcon?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    navigationIcon?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    shape?: ComposeShape;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    colors?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    shape?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    tonalElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    shadowElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    windowInsets?: ComposeWindowInsets;
+    actions?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    actions?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    actions?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    shape?: never;
+    colors?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation?: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    shape?: never;
+    tonalElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    shape?: never;
+    shadowElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    windowInsets?: ComposeWindowInsets;
+    shape?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    shape?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    shape?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    shadowElevation?: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    colors?: never;
+    tonalElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    tonalElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    colors?: never;
+    shadowElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    colors?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    colors?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    contentPadding?: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation: number;
+    windowInsets?: ComposeWindowInsets;
+    tonalElevation?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    tonalElevation?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    tonalElevation?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    windowInsets?: ComposeWindowInsets;
+    shadowElevation?: never;
+    contentPadding?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    contentPadding: ComposePaddingValues;
+    shadowElevation?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    shadowElevation?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding?: never;
+    windowInsets?: never;
+    scrollBehavior?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    windowInsets: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    contentPadding?: never;
+    }
+  | {
+    state: ComposeSearchBarState;
+    inputField: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    navigationIcon: ReactNode;
+    actions: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeAppBarWithSearchColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    contentPadding: ComposePaddingValues;
+    windowInsets?: ComposeWindowInsets;
+    scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
+    }
+;
+export const AppBarWithSearch = createComposableComponent<AppBarWithSearchProps>({
+  name: "AppBarWithSearch",
+  props: ["state","modifier","shape","colors","tonalElevation","shadowElevation","contentPadding","windowInsets","scrollBehavior"],
+  objectProps: ["state","shape","colors","contentPadding","windowInsets","scrollBehavior"],
+  slots: ["inputField","navigationIcon","actions"],
+  children: false,
+  overloads: [
+    { id: "AppBarWithSearch", children: false, parameters: [["state","object",false,false],["inputField","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,true],["actions","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["tonalElevation","number",true,false],["shadowElevation","number",true,false],["contentPadding","object",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,272,273,274,275,276,277,278,279,288,289,290,291,292,293,294,295,304,305,306,307,308,309,310,311,383,447,479,495,503,507,509,510,511] },
+  ],
+});
+
+export type AssistChipProps =
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation?: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
 export const AssistChip = createComposableComponent<AssistChipProps>({
   name: "AssistChip",
-  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
-  objectProps: ["shape","colors","elevation","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "AssistChip", children: false, parameters: [["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,463,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,719,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,847,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,959,967,971,973,974,975,991,1007,1015,1019,1021,1022,1023] },
+  ],
 });
 
 export interface BadgeProps {
@@ -7092,6 +8124,7 @@ export type BottomAppBarProps =
     tonalElevation?: number;
     contentPadding?: ComposePaddingValues;
     windowInsets?: ComposeWindowInsets;
+    scrollBehavior?: ComposeBottomAppBarScrollBehaviorValue | null;
     children?: ReactNode;
     actions?: never;
     floatingActionButton?: never;
@@ -7107,18 +8140,118 @@ export type BottomAppBarProps =
     tonalElevation?: number;
     contentPadding?: ComposePaddingValues;
     windowInsets?: ComposeWindowInsets;
+    scrollBehavior?: ComposeBottomAppBarScrollBehaviorValue | null;
     children?: never;
     }
 ;
 export const BottomAppBar = createComposableComponent<BottomAppBarProps>({
   name: "BottomAppBar",
-  props: ["modifier","containerColor","contentColor","tonalElevation","contentPadding","windowInsets"],
-  objectProps: ["contentPadding","windowInsets"],
+  props: ["modifier","containerColor","contentColor","tonalElevation","contentPadding","windowInsets","scrollBehavior"],
+  objectProps: ["contentPadding","windowInsets","scrollBehavior"],
   slots: ["actions","floatingActionButton"],
   children: true,
   overloads: [
-    { id: "BottomAppBar", children: true, parameters: [["modifier","ComposeModifier",true,false],["containerColor","string",true,false],["contentColor","string",true,false],["tonalElevation","number",true,false],["contentPadding","object",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
-    { id: "BottomAppBar#1", children: false, parameters: [["actions","ReactNode",false,false],["modifier","ComposeModifier",true,false],["floatingActionButton","ReactNode",true,true],["containerColor","string",true,false],["contentColor","string",true,false],["tonalElevation","number",true,false],["contentPadding","object",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "BottomAppBar", children: true, parameters: [["modifier","ComposeModifier",true,false],["containerColor","string",true,false],["contentColor","string",true,false],["tonalElevation","number",true,false],["contentPadding","object",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "BottomAppBar#1", children: false, parameters: [["actions","ReactNode",false,false],["modifier","ComposeModifier",true,false],["floatingActionButton","ReactNode",true,true],["containerColor","string",true,false],["contentColor","string",true,false],["tonalElevation","number",true,false],["contentPadding","object",true,false],["windowInsets","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+  ],
+});
+
+export type BottomSheetProps =
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeSheetState;
+    onDismissRequest?: () => void;
+    maxWidth?: number;
+    gesturesEnabled?: boolean;
+    backHandlerEnabled?: boolean;
+    dragHandle?: ReactNode;
+    shape?: ComposeShape;
+    shadowElevation?: number;
+    children?: ReactNode;
+    containerColor?: never;
+    contentColor?: never;
+    tonalElevation?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeSheetState;
+    onDismissRequest?: () => void;
+    maxWidth?: number;
+    gesturesEnabled?: boolean;
+    backHandlerEnabled?: boolean;
+    dragHandle?: ReactNode;
+    shape?: ComposeShape;
+    tonalElevation: number;
+    children?: ReactNode;
+    containerColor?: never;
+    contentColor?: never;
+    shadowElevation?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeSheetState;
+    onDismissRequest?: () => void;
+    maxWidth?: number;
+    gesturesEnabled?: boolean;
+    backHandlerEnabled?: boolean;
+    dragHandle?: ReactNode;
+    shape?: ComposeShape;
+    contentColor: string;
+    children?: ReactNode;
+    containerColor?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeSheetState;
+    onDismissRequest?: () => void;
+    maxWidth?: number;
+    gesturesEnabled?: boolean;
+    backHandlerEnabled?: boolean;
+    dragHandle?: ReactNode;
+    shape?: ComposeShape;
+    containerColor: string;
+    children?: ReactNode;
+    contentColor?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeSheetState;
+    onDismissRequest: () => void;
+    maxWidth: number;
+    gesturesEnabled: boolean;
+    backHandlerEnabled: boolean;
+    dragHandle: ReactNode;
+    shape: ComposeShape;
+    containerColor: string;
+    contentColor: string;
+    tonalElevation: number;
+    shadowElevation: number;
+    children?: ReactNode;
+    }
+;
+export const BottomSheet = createComposableComponent<BottomSheetProps>({
+  name: "BottomSheet",
+  props: ["modifier","state","maxWidth","gesturesEnabled","backHandlerEnabled","shape","containerColor","contentColor","tonalElevation","shadowElevation"],
+  objectProps: ["state","shape"],
+  slots: ["dragHandle"],
+  events: ["onDismissRequest"],
+  children: true,
+  overloads: [
+    { id: "BottomSheet", children: true, parameters: [["modifier","ComposeModifier",true,false],["state","object",true,false],["onDismissRequest","function",true,false],["maxWidth","number",true,false],["gesturesEnabled","boolean",true,false],["backHandlerEnabled","boolean",true,false],["dragHandle","ReactNode",true,true],["shape","shape",true,false],["containerColor","string",true,false],["contentColor","string",true,false],["tonalElevation","number",true,false],["shadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,2047] },
   ],
 });
 
@@ -7428,11 +8561,12 @@ export interface ButtonGroupProps {
   modifier?: ComposeModifier;
   expandedRatio?: number;
   horizontalArrangement?: ComposeHorizontalArrangement;
+  verticalAlignment?: ComposeVerticalAlignment;
   items: readonly ComposeButtonGroupItem[];
 }
 export const ButtonGroup = createComposableComponent<ButtonGroupProps>({
   name: "ButtonGroup",
-  props: ["modifier","expandedRatio","horizontalArrangement","items"],
+  props: ["modifier","expandedRatio","horizontalArrangement","verticalAlignment","items"],
   objectProps: ["items"],
   slots: ["overflowIndicator"],
   children: false,
@@ -7463,6 +8597,23 @@ export const Canvas = createComposableComponent<CanvasProps>({
     { id: "Canvas", children: false, parameters: [["modifier","ComposeModifier",false,false],["onDraw","object",false,false]], masks: [0] },
     { id: "Canvas#1", children: false, parameters: [["modifier","ComposeModifier",false,false],["contentDescription","string",false,false],["onDraw","object",false,false]], masks: [0] },
   ],
+});
+
+export interface CapturedAnimatedVisibilityProps {
+  visible: boolean;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  enter?: ComposeVisibilityTransition;
+  exit?: ComposeVisibilityTransition;
+  label?: string;
+  children?: ReactNode;
+}
+export const CapturedAnimatedVisibility = createComposableComponent<CapturedAnimatedVisibilityProps>({
+  name: "CapturedAnimatedVisibility",
+  props: ["visible","modifier","enter","exit","label"],
+  objectProps: ["enter","exit"],
+  children: true,
 });
 
 export type CardProps =
@@ -7516,11 +8667,12 @@ export interface CenterAlignedTopAppBarProps {
   windowInsets?: ComposeWindowInsets;
   colors?: ComposeTopAppBarColorsValue;
   scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+  contentPadding?: ComposePaddingValues;
 }
 export const CenterAlignedTopAppBar = createComposableComponent<CenterAlignedTopAppBarProps>({
   name: "CenterAlignedTopAppBar",
-  props: ["modifier","expandedHeight","windowInsets","colors","scrollBehavior"],
-  objectProps: ["windowInsets","colors","scrollBehavior"],
+  props: ["modifier","expandedHeight","windowInsets","colors","scrollBehavior","contentPadding"],
+  objectProps: ["windowInsets","colors","scrollBehavior","contentPadding"],
   slots: ["title","navigationIcon","actions"],
   children: false,
 });
@@ -7543,22 +8695,236 @@ export const CenteredTrack = createComposableComponent<CenteredTrackProps>({
   children: false,
 });
 
-export interface CheckboxProps {
-  checked: boolean;
-  onCheckedChange: ((value: boolean) => void) | null;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  colors?: ComposeCheckboxColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-}
-export const Checkbox = createComposableComponent<CheckboxProps>({
-  name: "Checkbox",
-  props: ["checked","modifier","enabled","colors","interactionSource"],
-  objectProps: ["colors","interactionSource"],
+export type CheckableDropdownMenuItemProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon?: ReactNode;
+    checkedLeadingIcon?: ReactNode;
+    trailingContent?: ReactNode;
+    supportingText?: ReactNode;
+    enabled?: boolean;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon?: ReactNode;
+    checkedLeadingIcon?: ReactNode;
+    trailingContent?: ReactNode;
+    supportingText?: ReactNode;
+    enabled?: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    checkedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    checkedLeadingIcon?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    checkedLeadingIcon: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingContent?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    checkedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    supportingText?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    checkedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    checkedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    checkedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    checkedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
+export const CheckableDropdownMenuItem = createComposableComponent<CheckableDropdownMenuItemProps>({
+  name: "CheckableDropdownMenuItem",
+  props: ["checked","shapes","modifier","enabled","colors","horizontalArrangement","contentPadding","interactionSource"],
+  objectProps: ["shapes","colors","contentPadding","interactionSource"],
+  slots: ["text","leadingIcon","checkedLeadingIcon","trailingContent","supportingText"],
   events: ["onCheckedChange"],
   children: false,
+  overloads: [
+    { id: "CheckableDropdownMenuItem", children: false, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["text","ReactNode",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["leadingIcon","ReactNode",true,true],["checkedLeadingIcon","ReactNode",true,true],["trailingContent","ReactNode",true,true],["supportingText","ReactNode",true,true],["enabled","boolean",true,false],["colors","object",true,false],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,495,503,507,509,510,511] },
+  ],
+});
+
+export type CheckboxProps =
+  | {
+    checked: boolean;
+    onCheckedChange: ((value: boolean) => void) | null;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeCheckboxColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    checkmarkStroke?: never;
+    outlineStroke?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: ((value: boolean) => void) | null;
+    checkmarkStroke: ComposeStrokeValue;
+    outlineStroke: ComposeStrokeValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeCheckboxColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
+export const Checkbox = createComposableComponent<CheckboxProps>({
+  name: "Checkbox",
+  props: ["checked","modifier","enabled","colors","interactionSource","checkmarkStroke","outlineStroke"],
+  objectProps: ["colors","interactionSource","checkmarkStroke","outlineStroke"],
+  events: ["onCheckedChange"],
+  children: false,
+  overloads: [
+    { id: "Checkbox", children: false, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,true],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Checkbox#1", children: false, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,true],["checkmarkStroke","object",false,false],["outlineStroke","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
 export type CircularProgressIndicatorProps =
@@ -7602,6 +8968,8 @@ export type CircularWavyProgressIndicatorProps =
     modifier?: ComposeModifier;
     color?: string;
     trackColor?: string;
+    stroke?: ComposeStrokeValue;
+    trackStroke?: ComposeStrokeValue;
     gapSize?: number;
     amplitude?: number;
     wavelength?: number;
@@ -7615,6 +8983,8 @@ export type CircularWavyProgressIndicatorProps =
     modifier?: ComposeModifier;
     color?: string;
     trackColor?: string;
+    stroke?: ComposeStrokeValue;
+    trackStroke?: ComposeStrokeValue;
     gapSize?: number;
     wavelength?: number;
     waveSpeed?: number;
@@ -7623,11 +8993,12 @@ export type CircularWavyProgressIndicatorProps =
 ;
 export const CircularWavyProgressIndicator = createComposableComponent<CircularWavyProgressIndicatorProps>({
   name: "CircularWavyProgressIndicator",
-  props: ["modifier","color","trackColor","gapSize","amplitude","wavelength","waveSpeed","progress"],
+  props: ["modifier","color","trackColor","stroke","trackStroke","gapSize","amplitude","wavelength","waveSpeed","progress"],
+  objectProps: ["stroke","trackStroke"],
   children: false,
   overloads: [
-    { id: "CircularWavyProgressIndicator", children: false, parameters: [["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["gapSize","number",true,false],["amplitude","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
-    { id: "CircularWavyProgressIndicator#1", children: false, parameters: [["progress","number",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["gapSize","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "CircularWavyProgressIndicator", children: false, parameters: [["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["stroke","object",true,false],["trackStroke","object",true,false],["gapSize","number",true,false],["amplitude","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
+    { id: "CircularWavyProgressIndicator#1", children: false, parameters: [["progress","number",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["stroke","object",true,false],["trackStroke","object",true,false],["gapSize","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
   ],
 });
 
@@ -8580,22 +9951,41 @@ export const DisableSelection = createComposableComponent<DisableSelectionProps>
   children: true,
 });
 
-export interface DismissibleDrawerSheetProps {
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  drawerShape?: ComposeShape;
-  drawerContainerColor?: string;
-  drawerContentColor?: string;
-  drawerTonalElevation?: number;
-  windowInsets?: ComposeWindowInsets;
-  children?: ReactNode;
-}
+export type DismissibleDrawerSheetProps =
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    drawerShape?: ComposeShape;
+    drawerContainerColor?: string;
+    drawerContentColor?: string;
+    drawerTonalElevation?: number;
+    windowInsets?: ComposeWindowInsets;
+    children?: ReactNode;
+    drawerState?: never;
+    }
+  | {
+    drawerState: ComposeDrawerStateHandle;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    drawerShape?: ComposeShape;
+    drawerContainerColor?: string;
+    drawerContentColor?: string;
+    drawerTonalElevation?: number;
+    windowInsets?: ComposeWindowInsets;
+    children?: ReactNode;
+    }
+;
 export const DismissibleDrawerSheet = createComposableComponent<DismissibleDrawerSheetProps>({
   name: "DismissibleDrawerSheet",
-  props: ["modifier","drawerShape","drawerContainerColor","drawerContentColor","drawerTonalElevation","windowInsets"],
-  objectProps: ["drawerShape","windowInsets"],
+  props: ["modifier","drawerShape","drawerContainerColor","drawerContentColor","drawerTonalElevation","windowInsets","drawerState"],
+  objectProps: ["drawerShape","windowInsets","drawerState"],
   children: true,
+  overloads: [
+    { id: "DismissibleDrawerSheet", children: true, parameters: [["modifier","ComposeModifier",true,false],["drawerShape","shape",true,false],["drawerContainerColor","string",true,false],["drawerContentColor","string",true,false],["drawerTonalElevation","number",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "DismissibleDrawerSheet#1", children: true, parameters: [["drawerState","object",false,false],["modifier","ComposeModifier",true,false],["drawerShape","shape",true,false],["drawerContainerColor","string",true,false],["drawerContentColor","string",true,false],["drawerTonalElevation","number",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+  ],
 });
 
 export interface DismissibleNavigationDrawerProps {
@@ -8603,12 +9993,14 @@ export interface DismissibleNavigationDrawerProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  drawerState?: ComposeDrawerStateHandle;
   gesturesEnabled?: boolean;
   children?: ReactNode;
 }
 export const DismissibleNavigationDrawer = createComposableComponent<DismissibleNavigationDrawerProps>({
   name: "DismissibleNavigationDrawer",
-  props: ["modifier","gesturesEnabled"],
+  props: ["modifier","drawerState","gesturesEnabled"],
+  objectProps: ["drawerState"],
   slots: ["drawerContent"],
   children: true,
 });
@@ -8640,26 +10032,272 @@ export const Divider = createComposableComponent<DividerProps>({
   children: false,
 });
 
-export interface DockedSearchBarProps {
-  inputField: ReactNode;
-  expanded: boolean;
-  onExpandedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  shape?: ComposeShape;
-  colors?: ComposeSearchBarColorsValue;
-  tonalElevation?: number;
-  shadowElevation?: number;
-  children?: ReactNode;
-}
+export type DockedSearchBarProps =
+  | {
+    inputField: ReactNode;
+    expanded: boolean;
+    onExpandedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shape?: ComposeShape;
+    colors?: ComposeSearchBarColorsValue;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    children?: ReactNode;
+    query?: never;
+    onQueryChange?: never;
+    onSearch?: never;
+    active?: never;
+    onActiveChange?: never;
+    enabled?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    interactionSource?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    colors?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    interactionSource?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    enabled?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    placeholder?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    placeholder: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    leadingIcon?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    trailingIcon?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    shape?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    shadowElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    tonalElevation?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    shadowElevation?: never;
+    }
+  | {
+    query: string;
+    onQueryChange: (value: string) => void;
+    onSearch: (value: string) => void;
+    active: boolean;
+    onActiveChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSearchBarColorsValue;
+    tonalElevation: number;
+    shadowElevation: number;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    inputField?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    }
+;
 export const DockedSearchBar = createComposableComponent<DockedSearchBarProps>({
   name: "DockedSearchBar",
-  props: ["expanded","modifier","shape","colors","tonalElevation","shadowElevation"],
-  objectProps: ["shape","colors"],
-  slots: ["inputField"],
-  events: ["onExpandedChange"],
+  props: ["expanded","modifier","shape","colors","tonalElevation","shadowElevation","query","active","enabled","interactionSource"],
+  objectProps: ["shape","colors","interactionSource"],
+  slots: ["inputField","placeholder","leadingIcon","trailingIcon"],
+  events: ["onExpandedChange","onQueryChange","onSearch","onActiveChange"],
   children: true,
+  overloads: [
+    { id: "DockedSearchBar", children: true, parameters: [["inputField","ReactNode",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["shape","shape",true,false],["colors","object",true,false],["tonalElevation","number",true,false],["shadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "DockedSearchBar#1", children: true, parameters: [["query","string",false,false],["onQueryChange","function",false,false],["onSearch","function",false,false],["active","boolean",false,false],["onActiveChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["tonalElevation","number",true,false],["shadowElevation","number",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,495,503,507,509,510,511] },
+  ],
 });
 
 export interface DragHandleProps {
@@ -8702,50 +10340,491 @@ export const DropdownMenu = createComposableComponent<DropdownMenuProps>({
   children: true,
 });
 
-export interface DropdownMenuItemProps {
-  text: ReactNode;
-  onClick: () => void;
+export interface DropdownMenuGroupProps {
+  shapes: ComposeMenuGroupShapesValue;
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  enabled?: boolean;
-  colors?: ComposeMenuItemColorsValue;
+  containerColor?: string;
+  tonalElevation?: number;
+  shadowElevation?: number;
+  border?: ComposeBorderStroke | null;
   contentPadding?: ComposePaddingValues;
   interactionSource?: ComposeInteractionSource | null;
+  children?: ReactNode;
 }
-export const DropdownMenuItem = createComposableComponent<DropdownMenuItemProps>({
-  name: "DropdownMenuItem",
-  props: ["modifier","enabled","colors","contentPadding","interactionSource"],
-  objectProps: ["colors","contentPadding","interactionSource"],
-  slots: ["text","leadingIcon","trailingIcon"],
-  events: ["onClick"],
-  children: false,
+export const DropdownMenuGroup = createComposableComponent<DropdownMenuGroupProps>({
+  name: "DropdownMenuGroup",
+  props: ["shapes","modifier","containerColor","tonalElevation","shadowElevation","border","contentPadding","interactionSource"],
+  objectProps: ["shapes","border","contentPadding","interactionSource"],
+  children: true,
 });
 
-export interface ElevatedAssistChipProps {
-  onClick: () => void;
-  label: ReactNode;
+export interface DropdownMenuGroupLabelProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  colors?: ComposeChipColorsValue;
-  elevation?: ComposeChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
+  contentAlignment?: ComposeAlignment;
+  padding?: ComposePaddingValues;
+  children?: ReactNode;
 }
+export const DropdownMenuGroupLabel = createComposableComponent<DropdownMenuGroupLabelProps>({
+  name: "DropdownMenuGroupLabel",
+  props: ["modifier","contentAlignment","padding"],
+  objectProps: ["padding"],
+  children: true,
+});
+
+export type DropdownMenuItemProps =
+  | {
+    text: ReactNode;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    enabled?: boolean;
+    colors?: ComposeMenuItemColorsValue;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    trailingContent?: never;
+    supportingText?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    text: ReactNode;
+    shape: ComposeShape;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon?: ReactNode;
+    trailingContent?: ReactNode;
+    supportingText?: ReactNode;
+    enabled?: boolean;
+    colors?: ComposeMenuItemColorsValue;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    }
+;
+export const DropdownMenuItem = createComposableComponent<DropdownMenuItemProps>({
+  name: "DropdownMenuItem",
+  props: ["modifier","enabled","colors","contentPadding","interactionSource","shape","horizontalArrangement"],
+  objectProps: ["colors","contentPadding","interactionSource","shape"],
+  slots: ["text","leadingIcon","trailingIcon","trailingContent","supportingText"],
+  events: ["onClick"],
+  children: false,
+  overloads: [
+    { id: "DropdownMenuItem", children: false, parameters: [["text","ReactNode",false,false],["onClick","function",false,false],["modifier","ComposeModifier",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["enabled","boolean",true,false],["colors","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "DropdownMenuItem#1", children: false, parameters: [["onClick","function",false,false],["text","ReactNode",false,false],["shape","shape",false,false],["modifier","ComposeModifier",true,false],["leadingIcon","ReactNode",true,true],["trailingContent","ReactNode",true,true],["supportingText","ReactNode",true,true],["enabled","boolean",true,false],["colors","object",true,false],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
+  ],
+});
+
+export interface DropdownMenuItemTrailingLabelProps {
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  padding?: ComposePaddingValues;
+  children?: ReactNode;
+}
+export const DropdownMenuItemTrailingLabel = createComposableComponent<DropdownMenuItemTrailingLabelProps>({
+  name: "DropdownMenuItemTrailingLabel",
+  props: ["modifier","padding"],
+  objectProps: ["padding"],
+  children: true,
+});
+
+export interface DropdownMenuPopupProps {
+  expanded: boolean;
+  onDismissRequest: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  popupPositionProvider?: ComposeDropdownMenuPopupPositionProviderValue;
+  properties?: ComposePopupProperties;
+  children?: ReactNode;
+}
+export const DropdownMenuPopup = createComposableComponent<DropdownMenuPopupProps>({
+  name: "DropdownMenuPopup",
+  props: ["expanded","modifier","popupPositionProvider","properties"],
+  objectProps: ["popupPositionProvider","properties"],
+  events: ["onDismissRequest"],
+  children: true,
+});
+
+export type ElevatedAssistChipProps =
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation?: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
 export const ElevatedAssistChip = createComposableComponent<ElevatedAssistChipProps>({
   name: "ElevatedAssistChip",
-  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
-  objectProps: ["shape","colors","elevation","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "ElevatedAssistChip", children: false, parameters: [["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,463,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,719,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,847,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,959,967,971,973,974,975,991,1007,1015,1019,1021,1022,1023] },
+  ],
 });
 
 export type ElevatedButtonProps =
@@ -8830,28 +10909,684 @@ export const ElevatedCard = createComposableComponent<ElevatedCardProps>({
   ],
 });
 
-export interface ElevatedFilterChipProps {
-  selected: boolean;
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  elevation?: ComposeSelectableChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type ElevatedFilterChipProps =
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    shape?: never;
+    elevation?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    border?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    contentPadding?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    }
+;
 export const ElevatedFilterChip = createComposableComponent<ElevatedFilterChipProps>({
   name: "ElevatedFilterChip",
-  props: ["selected","modifier","enabled","shape","elevation","border","interactionSource"],
-  objectProps: ["shape","elevation","border","interactionSource"],
+  props: ["selected","modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource","shapes"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource","shapes"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "ElevatedFilterChip", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,463,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,719,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,847,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,959,967,971,973,974,975,991,1007,1015,1019,1021,1022,1023] },
+    { id: "ElevatedFilterChip#1", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,255,256,257,258,259,260,261,262,263,288,289,290,291,292,293,294,295,320,321,322,323,324,325,326,327,352,353,354,355,356,357,358,359,383,384,385,386,387,388,389,390,391,416,417,418,419,420,421,422,423,447,448,449,450,451,452,453,454,455,479,480,481,482,483,484,485,486,487,495,503,507,509,510,511] },
+  ],
 });
 
 export interface ElevatedLeadingButtonProps {
@@ -8876,50 +11611,630 @@ export const ElevatedLeadingButton = createComposableComponent<ElevatedLeadingBu
   children: true,
 });
 
-export interface ElevatedSuggestionChipProps {
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  icon?: ReactNode;
-  shape?: ComposeShape;
-  colors?: ComposeChipColorsValue;
-  elevation?: ComposeChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type ElevatedSuggestionChipProps =
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation?: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    elevation?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    icon?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
 export const ElevatedSuggestionChip = createComposableComponent<ElevatedSuggestionChipProps>({
   name: "ElevatedSuggestionChip",
-  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
-  objectProps: ["shape","colors","elevation","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource"],
   slots: ["label","icon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "ElevatedSuggestionChip", children: false, parameters: [["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["icon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,352,353,354,355,356,357,358,359,383,384,385,386,387,388,389,390,391,416,417,418,419,420,421,422,423,447,448,449,450,451,452,453,454,455,479,480,481,482,483,484,485,486,487,495,503,507,509,510,511] },
+  ],
 });
 
-export interface ElevatedToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shapes?: ComposeToggleButtonShapesValue;
-  colors?: ComposeToggleButtonColorsValue;
-  elevation?: ComposeButtonElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  contentPadding?: ComposePaddingValues;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type ElevatedToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors?: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    icon?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled?: boolean;
+    icon?: ReactNode;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    colors: ComposeToggleButtonColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    shapes: ComposeToggleButtonShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    icon?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    border?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    }
+;
 export const ElevatedToggleButton = createComposableComponent<ElevatedToggleButtonProps>({
   name: "ElevatedToggleButton",
-  props: ["checked","modifier","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
+  props: ["checked","modifier","buttonSize","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
   objectProps: ["shapes","colors","elevation","border","contentPadding","interactionSource"],
+  slots: ["icon"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "ElevatedToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["buttonSize","string",true,false],["enabled","boolean",true,false],["icon","ReactNode",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,14,16,17,18,20,22,24,26,32,33,34,36,38,40,48,64,65,66,67,68,69,70,71,72,74,76,78,80,82,84,86,88,90,96,98,100,102,128,129,130,131,132,133,134,135,136,138,140,142,144,146,148,150,152,154,160,162,164,166,192,193,194,195,196,197,198,199,200,202,204,206,208,210,212,214,216,218,224,226,228,230,255,256,257,258,259,260,261,262,263,264,266,268,270,272,274,276,278,280,282,288,290,292,294,320,321,322,323,324,325,326,327,328,330,332,334,336,338,340,342,344,346,352,354,356,358,383,384,385,386,387,388,389,390,391,392,394,396,398,400,402,404,406,408,410,416,418,420,422,447,448,449,450,451,452,453,454,455,456,458,460,462,463,464,466,468,470,471,472,474,478,479,480,482,484,486,487,494,495,502,503,507,509,510,511] },
+  ],
 });
 
 export interface ElevatedTrailingButtonProps {
@@ -8966,6 +12281,51 @@ export const ExpandedDockedSearchBar = createComposableComponent<ExpandedDockedS
   children: true,
 });
 
+export interface ExpandedDockedSearchBarWithGapProps {
+  state: ComposeSearchBarState;
+  inputField: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  shape?: ComposeShape;
+  dropdownShape?: ComposeShape;
+  dropdownGapSize?: number;
+  dropdownScrimColor?: string;
+  colors?: ComposeSearchBarColorsValue;
+  tonalElevation?: number;
+  shadowElevation?: number;
+  properties?: ComposePopupProperties;
+  children?: ReactNode;
+}
+export const ExpandedDockedSearchBarWithGap = createComposableComponent<ExpandedDockedSearchBarWithGapProps>({
+  name: "ExpandedDockedSearchBarWithGap",
+  props: ["state","modifier","shape","dropdownShape","dropdownGapSize","dropdownScrimColor","colors","tonalElevation","shadowElevation","properties"],
+  objectProps: ["state","shape","dropdownShape","colors","properties"],
+  slots: ["inputField"],
+  children: true,
+});
+
+export interface ExpandedFullScreenContainedSearchBarProps {
+  state: ComposeSearchBarState;
+  inputField: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  collapsedShape?: ComposeShape;
+  colors?: ComposeSearchBarColorsValue;
+  tonalElevation?: number;
+  shadowElevation?: number;
+  properties?: ComposeDialogProperties;
+  children?: ReactNode;
+}
+export const ExpandedFullScreenContainedSearchBar = createComposableComponent<ExpandedFullScreenContainedSearchBarProps>({
+  name: "ExpandedFullScreenContainedSearchBar",
+  props: ["state","modifier","collapsedShape","colors","tonalElevation","shadowElevation","properties"],
+  objectProps: ["state","collapsedShape","colors","properties"],
+  slots: ["inputField"],
+  children: true,
+});
+
 export interface ExpandedFullScreenSearchBarProps {
   state: ComposeSearchBarState;
   inputField: ReactNode;
@@ -8976,38 +12336,14 @@ export interface ExpandedFullScreenSearchBarProps {
   colors?: ComposeSearchBarColorsValue;
   tonalElevation?: number;
   shadowElevation?: number;
-  windowInsets?: ComposeWindowInsets;
   properties?: ComposeDialogProperties;
   children?: ReactNode;
 }
 export const ExpandedFullScreenSearchBar = createComposableComponent<ExpandedFullScreenSearchBarProps>({
   name: "ExpandedFullScreenSearchBar",
-  props: ["state","modifier","collapsedShape","colors","tonalElevation","shadowElevation","windowInsets","properties"],
-  objectProps: ["state","collapsedShape","colors","windowInsets","properties"],
+  props: ["state","modifier","collapsedShape","colors","tonalElevation","shadowElevation","properties"],
+  objectProps: ["state","collapsedShape","colors","properties"],
   slots: ["inputField"],
-  children: true,
-});
-
-export interface ExposedDropdownMenuProps {
-  expanded: boolean;
-  onDismissRequest: () => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  scrollState?: ComposeScrollState;
-  matchAnchorWidth?: boolean;
-  shape?: ComposeShape;
-  containerColor?: string;
-  tonalElevation?: number;
-  shadowElevation?: number;
-  border?: ComposeBorderStroke | null;
-  children?: ReactNode;
-}
-export const ExposedDropdownMenu = createComposableComponent<ExposedDropdownMenuProps>({
-  name: "ExposedDropdownMenu",
-  props: ["expanded","modifier","scrollState","matchAnchorWidth","shape","containerColor","tonalElevation","shadowElevation","border"],
-  objectProps: ["scrollState","shape","border"],
-  events: ["onDismissRequest"],
   children: true,
 });
 
@@ -9071,43 +12407,82 @@ export const ExtendedFloatingActionButton = createComposableComponent<ExtendedFl
   ],
 });
 
-export interface FilledIconButtonProps {
-  onClick: () => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shape?: ComposeShape;
-  colors?: ComposeIconButtonColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type FilledIconButtonProps =
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shape?: ComposeShape;
+    colors?: ComposeIconButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeIconButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const FilledIconButton = createComposableComponent<FilledIconButtonProps>({
   name: "FilledIconButton",
-  props: ["modifier","enabled","shape","colors","interactionSource"],
-  objectProps: ["shape","colors","interactionSource"],
+  props: ["modifier","enabled","shape","colors","interactionSource","shapes"],
+  objectProps: ["shape","colors","interactionSource","shapes"],
   events: ["onClick"],
   children: true,
+  overloads: [
+    { id: "FilledIconButton", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "FilledIconButton#1", children: true, parameters: [["onClick","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
-export interface FilledIconToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shape?: ComposeShape;
-  colors?: ComposeIconToggleButtonColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type FilledIconToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shape?: ComposeShape;
+    colors?: ComposeIconToggleButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeIconToggleButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconToggleButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const FilledIconToggleButton = createComposableComponent<FilledIconToggleButtonProps>({
   name: "FilledIconToggleButton",
-  props: ["checked","modifier","enabled","shape","colors","interactionSource"],
-  objectProps: ["shape","colors","interactionSource"],
+  props: ["checked","modifier","enabled","shape","colors","interactionSource","shapes"],
+  objectProps: ["shape","colors","interactionSource","shapes"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "FilledIconToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "FilledIconToggleButton#1", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
 export type FilledTonalButtonProps =
@@ -9154,67 +12529,1150 @@ export const FilledTonalButton = createComposableComponent<FilledTonalButtonProp
   ],
 });
 
-export interface FilledTonalIconButtonProps {
-  onClick: () => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shape?: ComposeShape;
-  colors?: ComposeIconButtonColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type FilledTonalIconButtonProps =
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shape?: ComposeShape;
+    colors?: ComposeIconButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeIconButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const FilledTonalIconButton = createComposableComponent<FilledTonalIconButtonProps>({
   name: "FilledTonalIconButton",
-  props: ["modifier","enabled","shape","colors","interactionSource"],
-  objectProps: ["shape","colors","interactionSource"],
+  props: ["modifier","enabled","shape","colors","interactionSource","shapes"],
+  objectProps: ["shape","colors","interactionSource","shapes"],
   events: ["onClick"],
   children: true,
+  overloads: [
+    { id: "FilledTonalIconButton", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "FilledTonalIconButton#1", children: true, parameters: [["onClick","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
-export interface FilledTonalIconToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shape?: ComposeShape;
-  colors?: ComposeIconToggleButtonColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type FilledTonalIconToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shape?: ComposeShape;
+    colors?: ComposeIconToggleButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeIconToggleButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconToggleButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const FilledTonalIconToggleButton = createComposableComponent<FilledTonalIconToggleButtonProps>({
   name: "FilledTonalIconToggleButton",
-  props: ["checked","modifier","enabled","shape","colors","interactionSource"],
-  objectProps: ["shape","colors","interactionSource"],
+  props: ["checked","modifier","enabled","shape","colors","interactionSource","shapes"],
+  objectProps: ["shape","colors","interactionSource","shapes"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "FilledTonalIconToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "FilledTonalIconToggleButton#1", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
-export interface FilterChipProps {
-  selected: boolean;
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  elevation?: ComposeSelectableChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type FilledTonalToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled?: boolean;
+    icon?: ReactNode;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    colors: ComposeToggleButtonColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    shapes: ComposeToggleButtonShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    icon?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    border?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    }
+;
+export const FilledTonalToggleButton = createComposableComponent<FilledTonalToggleButtonProps>({
+  name: "FilledTonalToggleButton",
+  props: ["checked","modifier","buttonSize","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
+  objectProps: ["shapes","colors","elevation","border","contentPadding","interactionSource"],
+  slots: ["icon"],
+  events: ["onCheckedChange"],
+  children: true,
+  overloads: [
+    { id: "FilledTonalToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["buttonSize","string",true,false],["enabled","boolean",true,false],["icon","ReactNode",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,14,16,17,18,20,22,24,32,33,34,36,38,40,48,64,65,66,67,68,69,70,71,72,74,76,78,80,82,84,86,96,98,100,102,128,129,130,131,132,133,134,135,136,138,140,142,144,146,148,150,160,162,164,166,192,193,194,195,196,197,198,199,200,202,204,206,208,210,212,214,224,226,228,230,255,256,257,258,259,260,261,262,263,264,266,268,270,272,274,276,278,288,290,292,294,320,321,322,323,324,325,326,327,328,330,332,334,336,338,340,342,352,354,356,358,383,384,385,386,387,388,389,390,391,392,394,396,398,400,402,404,406,416,418,420,422,447,448,449,450,451,452,453,454,455,456,458,460,462,463,464,466,468,470,471,478,479,480,482,484,486,487,494,495,502,503,507,509,510,511] },
+  ],
+});
+
+export type FilterChipProps =
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    shape?: never;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    shape?: never;
+    elevation?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    border?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    contentPadding?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    }
+;
 export const FilterChip = createComposableComponent<FilterChipProps>({
   name: "FilterChip",
-  props: ["selected","modifier","enabled","shape","elevation","border","interactionSource"],
-  objectProps: ["shape","elevation","border","interactionSource"],
+  props: ["selected","modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource","shapes"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource","shapes"],
   slots: ["label","leadingIcon","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "FilterChip", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,463,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,719,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,847,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,959,967,971,973,974,975,991,1007,1015,1019,1021,1022,1023] },
+    { id: "FilterChip#1", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,255,256,257,258,259,260,261,262,263,288,289,290,291,292,293,294,295,320,321,322,323,324,325,326,327,352,353,354,355,356,357,358,359,383,384,385,386,387,388,389,390,391,416,417,418,419,420,421,422,423,447,448,449,450,451,452,453,454,455,479,480,481,482,483,484,485,486,487,495,503,507,509,510,511] },
+  ],
 });
 
 export interface FlexBoxProps {
@@ -9241,12 +13699,13 @@ export interface FlexibleBottomAppBarProps {
   horizontalArrangement?: ComposeHorizontalArrangement;
   expandedHeight?: number;
   windowInsets?: ComposeWindowInsets;
+  scrollBehavior?: ComposeBottomAppBarScrollBehaviorValue | null;
   children?: ReactNode;
 }
 export const FlexibleBottomAppBar = createComposableComponent<FlexibleBottomAppBarProps>({
   name: "FlexibleBottomAppBar",
-  props: ["modifier","containerColor","contentColor","contentPadding","horizontalArrangement","expandedHeight","windowInsets"],
-  objectProps: ["contentPadding","windowInsets"],
+  props: ["modifier","containerColor","contentColor","contentPadding","horizontalArrangement","expandedHeight","windowInsets","scrollBehavior"],
+  objectProps: ["contentPadding","windowInsets","scrollBehavior"],
   children: true,
 });
 
@@ -9352,6 +13811,26 @@ export const Grid = createComposableComponent<GridProps>({
   children: true,
 });
 
+export interface HorizontalCenteredHeroCarouselProps {
+  state: ComposeCarouselState;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  preferredItemWidth?: number;
+  itemSpacing?: number;
+  userScrollEnabled?: boolean;
+  minSmallItemWidth?: number;
+  maxSmallItemWidth?: number;
+  contentPadding?: ComposePaddingValues;
+  children?: ReactNode;
+}
+export const HorizontalCenteredHeroCarousel = createComposableComponent<HorizontalCenteredHeroCarouselProps>({
+  name: "HorizontalCenteredHeroCarousel",
+  props: ["state","modifier","preferredItemWidth","itemSpacing","userScrollEnabled","minSmallItemWidth","maxSmallItemWidth","contentPadding"],
+  objectProps: ["state","contentPadding"],
+  children: true,
+});
+
 export interface HorizontalDividerProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
@@ -9373,6 +13852,7 @@ export type HorizontalFloatingToolbarProps =
     modifier?: ComposeModifier;
     colors?: ComposeFloatingToolbarColorsValue;
     contentPadding?: ComposePaddingValues;
+    scrollBehavior?: ComposeFloatingToolbarScrollBehaviorValue | null;
     shape?: ComposeShape;
     leadingContent?: ReactNode;
     trailingContent?: ReactNode;
@@ -9391,6 +13871,7 @@ export type HorizontalFloatingToolbarProps =
     modifier?: ComposeModifier;
     colors?: ComposeFloatingToolbarColorsValue;
     contentPadding?: ComposePaddingValues;
+    scrollBehavior?: ComposeFloatingToolbarScrollBehaviorValue | null;
     shape?: ComposeShape;
     floatingActionButtonPosition?: ComposeFloatingToolbarHorizontalFabPositionValue;
     animationSpec?: ComposeAnimationSpec;
@@ -9403,13 +13884,13 @@ export type HorizontalFloatingToolbarProps =
 ;
 export const HorizontalFloatingToolbar = createComposableComponent<HorizontalFloatingToolbarProps>({
   name: "HorizontalFloatingToolbar",
-  props: ["expanded","modifier","colors","contentPadding","shape","expandedShadowElevation","collapsedShadowElevation","floatingActionButtonPosition","animationSpec"],
-  objectProps: ["colors","contentPadding","shape","animationSpec"],
+  props: ["expanded","modifier","colors","contentPadding","scrollBehavior","shape","expandedShadowElevation","collapsedShadowElevation","floatingActionButtonPosition","animationSpec"],
+  objectProps: ["colors","contentPadding","scrollBehavior","shape","animationSpec"],
   slots: ["leadingContent","trailingContent","floatingActionButton"],
   children: true,
   overloads: [
-    { id: "HorizontalFloatingToolbar", children: true, parameters: [["expanded","boolean",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["shape","shape",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
-    { id: "HorizontalFloatingToolbar#1", children: true, parameters: [["expanded","boolean",false,false],["floatingActionButton","ReactNode",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["shape","shape",true,false],["floatingActionButtonPosition","string",true,false],["animationSpec","object",true,false],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+    { id: "HorizontalFloatingToolbar", children: true, parameters: [["expanded","boolean",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["scrollBehavior","object",true,true],["shape","shape",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
+    { id: "HorizontalFloatingToolbar#1", children: true, parameters: [["expanded","boolean",false,false],["floatingActionButton","ReactNode",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["scrollBehavior","object",true,true],["shape","shape",true,false],["floatingActionButtonPosition","string",true,false],["animationSpec","object",true,false],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
   ],
 });
 
@@ -9420,6 +13901,7 @@ export interface HorizontalMultiBrowseCarouselProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   itemSpacing?: number;
+  userScrollEnabled?: boolean;
   minSmallItemWidth?: number;
   maxSmallItemWidth?: number;
   contentPadding?: ComposePaddingValues;
@@ -9427,7 +13909,7 @@ export interface HorizontalMultiBrowseCarouselProps {
 }
 export const HorizontalMultiBrowseCarousel = createComposableComponent<HorizontalMultiBrowseCarouselProps>({
   name: "HorizontalMultiBrowseCarousel",
-  props: ["state","preferredItemWidth","modifier","itemSpacing","minSmallItemWidth","maxSmallItemWidth","contentPadding"],
+  props: ["state","preferredItemWidth","modifier","itemSpacing","userScrollEnabled","minSmallItemWidth","maxSmallItemWidth","contentPadding"],
   objectProps: ["state","contentPadding"],
   children: true,
 });
@@ -9978,17 +14460,30 @@ export interface HorizontalUncontainedCarouselProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   itemSpacing?: number;
+  userScrollEnabled?: boolean;
   contentPadding?: ComposePaddingValues;
   children?: ReactNode;
 }
 export const HorizontalUncontainedCarousel = createComposableComponent<HorizontalUncontainedCarouselProps>({
   name: "HorizontalUncontainedCarousel",
-  props: ["state","itemWidth","modifier","itemSpacing","contentPadding"],
+  props: ["state","itemWidth","modifier","itemSpacing","userScrollEnabled","contentPadding"],
   objectProps: ["state","contentPadding"],
   children: true,
 });
 
 export type IconProps =
+  | {
+    bitmap: ComposeImageBitmapValue;
+    contentDescription: string | null;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    tint?: string;
+    painter?: never;
+    active?: never;
+    activeContent?: never;
+    inactiveContent?: never;
+    }
   | {
     painter: ComposePainter;
     contentDescription: string | null;
@@ -9996,6 +14491,7 @@ export type IconProps =
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     tint?: string;
+    bitmap?: never;
     active?: never;
     activeContent?: never;
     inactiveContent?: never;
@@ -10004,80 +14500,142 @@ export type IconProps =
     active: boolean;
     activeContent?: ReactNode;
     inactiveContent?: ReactNode;
-    painter?: never;
+    bitmap?: never;
     contentDescription?: never;
     modifier?: never;
     modifiers?: never;
     tint?: never;
+    painter?: never;
     }
 ;
 export const Icon = createComposableComponent<IconProps>({
   name: "Icon",
-  props: ["painter","contentDescription","modifier","tint","active"],
-  objectProps: ["painter"],
+  props: ["bitmap","contentDescription","modifier","tint","painter","active"],
+  objectProps: ["bitmap","painter"],
   slots: ["activeContent","inactiveContent"],
   children: false,
   overloads: [
-    { id: "Icon", children: false, parameters: [["painter","object",false,false],["contentDescription","string",false,true],["modifier","ComposeModifier",true,false],["tint","string",true,false]], masks: [0,1] },
-    { id: "Icon#1", children: false, parameters: [["active","boolean",false,false],["activeContent","ReactNode",true,false],["inactiveContent","ReactNode",true,true]], masks: [0,1,2,3] },
+    { id: "Icon", children: false, parameters: [["bitmap","object",false,false],["contentDescription","string",false,true],["modifier","ComposeModifier",true,false],["tint","string",true,false]], masks: [0,1] },
+    { id: "Icon#1", children: false, parameters: [["painter","object",false,false],["contentDescription","string",false,true],["modifier","ComposeModifier",true,false],["tint","string",true,false]], masks: [0,1] },
+    { id: "Icon#2", children: false, parameters: [["active","boolean",false,false],["activeContent","ReactNode",true,false],["inactiveContent","ReactNode",true,true]], masks: [0,1,2,3] },
   ],
 });
 
-export interface IconButtonProps {
-  onClick: () => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  colors?: ComposeIconButtonColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-  shape?: ComposeShape;
-  children?: ReactNode;
-}
+export type IconButtonProps =
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: ComposeShape;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeIconButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const IconButton = createComposableComponent<IconButtonProps>({
   name: "IconButton",
-  props: ["modifier","enabled","colors","interactionSource","shape"],
-  objectProps: ["colors","interactionSource","shape"],
+  props: ["modifier","enabled","colors","interactionSource","shape","shapes"],
+  objectProps: ["colors","interactionSource","shape","shapes"],
   events: ["onClick"],
   children: true,
+  overloads: [
+    { id: "IconButton", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true],["shape","shape",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "IconButton#1", children: true, parameters: [["onClick","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
-export interface IconToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  colors?: ComposeIconToggleButtonColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-  shape?: ComposeShape;
-  children?: ReactNode;
-}
+export type IconToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconToggleButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: ComposeShape;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeIconToggleButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconToggleButtonColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const IconToggleButton = createComposableComponent<IconToggleButtonProps>({
   name: "IconToggleButton",
-  props: ["checked","modifier","enabled","colors","interactionSource","shape"],
-  objectProps: ["colors","interactionSource","shape"],
+  props: ["checked","modifier","enabled","colors","interactionSource","shape","shapes"],
+  objectProps: ["colors","interactionSource","shape","shapes"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "IconToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true],["shape","shape",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "IconToggleButton#1", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
-export interface ImageProps {
-  painter: ComposePainter;
-  contentDescription: string | null;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  alignment?: ComposeAlignment;
-  contentScale?: ComposeContentScale;
-  alpha?: number;
-  colorFilter?: ComposeColorFilterValue | null;
-}
+export type ImageProps =
+  | {
+    bitmap: ComposeImageBitmapValue;
+    contentDescription: string | null;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    alignment?: ComposeAlignment;
+    contentScale?: ComposeContentScale;
+    alpha?: number;
+    colorFilter?: ComposeColorFilterValue | null;
+    filterQuality?: ComposeFilterQualityValue;
+    painter?: never;
+    }
+  | {
+    painter: ComposePainter;
+    contentDescription: string | null;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    alignment?: ComposeAlignment;
+    contentScale?: ComposeContentScale;
+    alpha?: number;
+    colorFilter?: ComposeColorFilterValue | null;
+    bitmap?: never;
+    filterQuality?: never;
+    }
+;
 export const Image = createComposableComponent<ImageProps>({
   name: "Image",
-  props: ["painter","contentDescription","modifier","alignment","contentScale","alpha","colorFilter"],
-  objectProps: ["painter","colorFilter"],
+  props: ["bitmap","contentDescription","modifier","alignment","contentScale","alpha","colorFilter","filterQuality","painter"],
+  objectProps: ["bitmap","colorFilter","painter"],
   children: false,
+  overloads: [
+    { id: "Image", children: false, parameters: [["bitmap","object",false,false],["contentDescription","string",false,true],["modifier","ComposeModifier",true,false],["alignment","string",true,false],["contentScale","string",true,false],["alpha","number",true,false],["colorFilter","object",true,true],["filterQuality","string",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "Image#1", children: false, parameters: [["painter","object",false,false],["contentDescription","string",false,true],["modifier","ComposeModifier",true,false],["alignment","string",true,false],["contentScale","string",true,false],["alpha","number",true,false],["colorFilter","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+  ],
 });
 
 export type IndicatorProps =
@@ -10090,7 +14648,7 @@ export type IndicatorProps =
     state?: never;
     isRefreshing?: never;
     containerColor?: never;
-    threshold?: never;
+    maxDistance?: never;
     }
   | {
     state: ComposePullToRefreshState;
@@ -10100,18 +14658,18 @@ export type IndicatorProps =
     modifier?: ComposeModifier;
     containerColor?: string;
     color?: string;
-    threshold?: number;
+    maxDistance?: number;
     height?: never;
     }
 ;
 export const Indicator = createComposableComponent<IndicatorProps>({
   name: "Indicator",
-  props: ["modifier","height","color","state","isRefreshing","containerColor","threshold"],
+  props: ["modifier","height","color","state","isRefreshing","containerColor","maxDistance"],
   objectProps: ["state"],
   children: false,
   overloads: [
     { id: "Indicator", children: false, parameters: [["modifier","ComposeModifier",true,false],["height","number",true,false],["color","string",true,false]], masks: [0,1,2,3] },
-    { id: "Indicator#1", children: false, parameters: [["state","object",false,false],["isRefreshing","boolean",false,false],["modifier","ComposeModifier",true,false],["containerColor","string",true,false],["color","string",true,false],["threshold","number",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Indicator#1", children: false, parameters: [["state","object",false,false],["isRefreshing","boolean",false,false],["modifier","ComposeModifier",true,false],["containerColor","string",true,false],["color","string",true,false],["maxDistance","number",true,false]], masks: [0,1,2,3,4,5,6,7] },
   ],
 });
 
@@ -10121,7 +14679,7 @@ export interface IndicatorBoxProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
-  threshold?: number;
+  maxDistance?: number;
   shape?: ComposeShape;
   containerColor?: string;
   elevation?: number;
@@ -10129,34 +14687,1024 @@ export interface IndicatorBoxProps {
 }
 export const IndicatorBox = createComposableComponent<IndicatorBoxProps>({
   name: "IndicatorBox",
-  props: ["state","isRefreshing","modifier","threshold","shape","containerColor","elevation"],
+  props: ["state","isRefreshing","modifier","maxDistance","shape","containerColor","elevation"],
   objectProps: ["state","shape"],
   children: true,
 });
 
-export interface InputChipProps {
-  selected: boolean;
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  leadingIcon?: ReactNode;
-  avatar?: ReactNode;
-  trailingIcon?: ReactNode;
-  shape?: ComposeShape;
-  elevation?: ComposeSelectableChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type InputChipProps =
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    border: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeSelectableChipColorsValue;
+    elevation?: ComposeSelectableChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    avatar?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    enabled?: never;
+    leadingIcon?: never;
+    avatar?: never;
+    trailingIcon?: never;
+    elevation?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingIcon: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    enabled?: never;
+    leadingIcon?: never;
+    avatar?: never;
+    elevation?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    avatar: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    enabled?: never;
+    leadingIcon?: never;
+    elevation?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    enabled?: never;
+    elevation?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    avatar?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    avatar?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shapes?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    border: ComposeBorderStroke | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    shape?: never;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingIcon?: ReactNode;
+    avatar?: ReactNode;
+    trailingIcon?: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    shape?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    enabled?: never;
+    leadingIcon?: never;
+    avatar?: never;
+    trailingIcon?: never;
+    shape?: never;
+    border?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    avatar?: never;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    avatar?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    shape?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    colors?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    elevation?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    border?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    horizontalArrangement?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    contentPadding?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    label: ReactNode;
+    shapes: ComposeChipShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingIcon: ReactNode;
+    avatar: ReactNode;
+    trailingIcon: ReactNode;
+    colors: ComposeSelectableChipColorsValue;
+    elevation: ComposeSelectableChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    shape?: never;
+    }
+;
 export const InputChip = createComposableComponent<InputChipProps>({
   name: "InputChip",
-  props: ["selected","modifier","enabled","shape","elevation","border","interactionSource"],
-  objectProps: ["shape","elevation","border","interactionSource"],
+  props: ["selected","modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource","shapes"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource","shapes"],
   slots: ["label","leadingIcon","avatar","trailingIcon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "InputChip", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["avatar","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,927,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290,1291,1292,1293,1294,1295,1296,1297,1298,1299,1300,1301,1302,1303,1304,1305,1306,1307,1308,1309,1310,1311,1439,1535,1536,1537,1538,1539,1540,1541,1542,1543,1544,1545,1546,1547,1548,1549,1550,1551,1552,1553,1554,1555,1556,1557,1558,1559,1560,1561,1562,1563,1564,1565,1566,1567,1695,1791,1792,1793,1794,1795,1796,1797,1798,1799,1800,1801,1802,1803,1804,1805,1806,1807,1808,1809,1810,1811,1812,1813,1814,1815,1816,1817,1818,1819,1820,1821,1822,1823,1919,1935,1943,1947,1949,1950,1951,1983,2015,2031,2039,2043,2045,2046,2047] },
+    { id: "InputChip#1", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["label","ReactNode",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingIcon","ReactNode",true,true],["avatar","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,463,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,719,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,847,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,959,967,971,973,974,975,991,1007,1015,1019,1021,1022,1023] },
+  ],
 });
 
 export type InputFieldProps =
@@ -10167,20 +15715,51 @@ export type InputFieldProps =
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
+    inputTransformation?: ComposeInputTransformation | null;
+    outputTransformation?: ComposeOutputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
-    textStyle?: ComposeTextStyle;
     placeholder?: ReactNode;
     leadingIcon?: ReactNode;
-    trailingIcon?: ReactNode;
-    prefix?: ReactNode;
-    suffix?: ReactNode;
-    shape?: ComposeShape;
-    interactionSource?: ComposeInteractionSource | null;
+    interactionSource: ComposeInteractionSource | null;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
     inputTransformation?: never;
     outputTransformation?: never;
     scrollState?: never;
+    shape?: never;
     colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10208,6 +15787,37 @@ export type InputFieldProps =
     scrollState?: never;
     shape?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    shape: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10235,6 +15845,8 @@ export type InputFieldProps =
     shape?: never;
     colors?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10250,7 +15862,297 @@ export type InputFieldProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
-    textStyle?: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    suffix: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    prefix: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    textStyle?: never;
+    trailingIcon?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    textStyle?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    lineLimits?: ComposeTextFieldLineLimits;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    keyboardOptions: ComposeKeyboardOptions;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    placeholder?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    placeholder: ReactNode;
+    leadingIcon?: ReactNode;
+    lineLimits?: ComposeTextFieldLineLimits;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    placeholder: ReactNode;
+    leadingIcon?: ReactNode;
+    keyboardOptions: ComposeKeyboardOptions;
+    enabled?: never;
+    readOnly?: never;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    placeholder: ReactNode;
+    outputTransformation: ComposeOutputTransformation | null;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    placeholder: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation?: ComposeOutputTransformation | null;
+    textStyle?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly?: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    enabled?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    readOnly?: boolean;
+    textStyle: ComposeTextStyle;
     placeholder?: ReactNode;
     outputTransformation: ComposeOutputTransformation | null;
     leadingIcon?: never;
@@ -10262,6 +16164,8 @@ export type InputFieldProps =
     shape?: never;
     colors?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10277,7 +16181,7 @@ export type InputFieldProps =
     modifier?: ComposeModifier;
     enabled?: boolean;
     readOnly?: boolean;
-    textStyle?: ComposeTextStyle;
+    textStyle: ComposeTextStyle;
     placeholder?: ReactNode;
     inputTransformation: ComposeInputTransformation | null;
     outputTransformation?: ComposeOutputTransformation | null;
@@ -10289,6 +16193,153 @@ export type InputFieldProps =
     shape?: never;
     colors?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    lineLimits?: ComposeTextFieldLineLimits;
+    enabled?: never;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    keyboardOptions: ComposeKeyboardOptions;
+    enabled?: never;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
+    enabled?: never;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation?: ComposeOutputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
+    enabled?: never;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    enabled?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10314,6 +16365,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     enabled?: never;
     scrollState?: never;
     state?: never;
@@ -10343,6 +16425,211 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     enabled?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    enabled?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    lineLimits?: ComposeTextFieldLineLimits;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    keyboardOptions: ComposeKeyboardOptions;
+    textStyle?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    outputTransformation: ComposeOutputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    inputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly?: boolean;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation?: ComposeOutputTransformation | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
+    textStyle?: never;
+    placeholder?: never;
+    leadingIcon?: never;
+    trailingIcon?: never;
+    prefix?: never;
+    suffix?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder?: ReactNode;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    readOnly?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    readOnly?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10368,6 +16655,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    readOnly?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     readOnly?: never;
     scrollState?: never;
     state?: never;
@@ -10397,6 +16715,66 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     readOnly?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    readOnly?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    textStyle?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10422,6 +16800,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    textStyle?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     textStyle?: never;
     scrollState?: never;
     state?: never;
@@ -10451,6 +16860,95 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     textStyle?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    textStyle?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    leadingIcon?: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    placeholder?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    placeholder?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10476,6 +16974,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    placeholder?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     placeholder?: never;
     scrollState?: never;
     state?: never;
@@ -10505,6 +17034,95 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     placeholder?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    placeholder?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    trailingIcon?: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    leadingIcon?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10530,6 +17148,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     leadingIcon?: never;
     scrollState?: never;
     state?: never;
@@ -10559,6 +17208,95 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     leadingIcon?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    leadingIcon?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    prefix?: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    trailingIcon?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10584,6 +17322,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    trailingIcon?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     trailingIcon?: never;
     scrollState?: never;
     state?: never;
@@ -10613,6 +17382,95 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     trailingIcon?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    trailingIcon?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    suffix?: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    prefix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    prefix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10638,6 +17496,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    prefix?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     prefix?: never;
     scrollState?: never;
     state?: never;
@@ -10667,6 +17556,95 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     prefix?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    prefix?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    shape?: ComposeShape;
+    interactionSource?: ComposeInteractionSource | null;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    suffix?: never;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10692,6 +17670,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    suffix?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     suffix?: never;
     scrollState?: never;
     state?: never;
@@ -10721,6 +17730,182 @@ export type InputFieldProps =
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
     suffix?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    suffix?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    interactionSource?: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    shape?: never;
+    colors?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
+    inputTransformation?: never;
+    outputTransformation?: never;
+    scrollState?: never;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10746,6 +17931,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     inputTransformation?: never;
     scrollState?: never;
     state?: never;
@@ -10774,6 +17990,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    inputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     inputTransformation?: never;
     state?: never;
     expanded?: never;
@@ -10802,6 +18049,37 @@ export type InputFieldProps =
     interactionSource: ComposeInteractionSource | null;
     outputTransformation?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    outputTransformation?: never;
+    scrollState?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10828,6 +18106,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    outputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     outputTransformation?: never;
     state?: never;
     expanded?: never;
@@ -10856,6 +18165,37 @@ export type InputFieldProps =
     interactionSource: ComposeInteractionSource | null;
     scrollState?: never;
     shape?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    scrollState?: never;
+    shape?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10881,7 +18221,67 @@ export type InputFieldProps =
     outputTransformation: ComposeOutputTransformation | null;
     shape: ComposeShape;
     colors?: ComposeTextFieldColorsValue;
-    interactionSource?: ComposeInteractionSource | null;
+    scrollState?: never;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    scrollState?: never;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    shape: ComposeShape;
+    colors?: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
     scrollState?: never;
     state?: never;
     expanded?: never;
@@ -10909,6 +18309,37 @@ export type InputFieldProps =
     scrollState: ComposeScrollState;
     colors: ComposeTextFieldColorsValue;
     interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
     shape?: never;
     state?: never;
     expanded?: never;
@@ -10937,6 +18368,37 @@ export type InputFieldProps =
     shape: ComposeShape;
     interactionSource: ComposeInteractionSource | null;
     colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    colors?: never;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10963,7 +18425,67 @@ export type InputFieldProps =
     scrollState: ComposeScrollState;
     shape: ComposeShape;
     colors: ComposeTextFieldColorsValue;
-    interactionSource?: ComposeInteractionSource | null;
+    interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    keyboardOptions: ComposeKeyboardOptions;
+    lineLimits: ComposeTextFieldLineLimits;
+    interactionSource?: never;
+    state?: never;
+    expanded?: never;
+    onExpandedChange?: never;
+    query?: never;
+    onQueryChange?: never;
+    }
+  | {
+    textFieldState: ComposeTextFieldState;
+    searchBarState: ComposeSearchBarState;
+    onSearch: (value: string) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    readOnly: boolean;
+    textStyle: ComposeTextStyle;
+    placeholder: ReactNode;
+    leadingIcon: ReactNode;
+    trailingIcon: ReactNode;
+    prefix: ReactNode;
+    suffix: ReactNode;
+    inputTransformation: ComposeInputTransformation | null;
+    outputTransformation: ComposeOutputTransformation | null;
+    scrollState: ComposeScrollState;
+    shape: ComposeShape;
+    colors: ComposeTextFieldColorsValue;
+    interactionSource: ComposeInteractionSource | null;
+    keyboardOptions?: ComposeKeyboardOptions;
+    lineLimits?: ComposeTextFieldLineLimits;
     state?: never;
     expanded?: never;
     onExpandedChange?: never;
@@ -10994,6 +18516,8 @@ export type InputFieldProps =
     outputTransformation?: never;
     scrollState?: never;
     colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11021,6 +18545,8 @@ export type InputFieldProps =
     scrollState?: never;
     shape?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11048,6 +18574,8 @@ export type InputFieldProps =
     shape?: never;
     colors?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11075,6 +18603,8 @@ export type InputFieldProps =
     shape?: never;
     colors?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11102,6 +18632,8 @@ export type InputFieldProps =
     shape?: never;
     colors?: never;
     interactionSource?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11129,6 +18661,8 @@ export type InputFieldProps =
     searchBarState?: never;
     enabled?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11156,6 +18690,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     enabled?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11183,6 +18719,8 @@ export type InputFieldProps =
     searchBarState?: never;
     readOnly?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11210,6 +18748,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     readOnly?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11237,6 +18777,8 @@ export type InputFieldProps =
     searchBarState?: never;
     textStyle?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11264,6 +18806,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     textStyle?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11291,6 +18835,8 @@ export type InputFieldProps =
     searchBarState?: never;
     placeholder?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11318,6 +18864,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     placeholder?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11345,6 +18893,8 @@ export type InputFieldProps =
     searchBarState?: never;
     leadingIcon?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11372,6 +18922,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     leadingIcon?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11399,6 +18951,8 @@ export type InputFieldProps =
     searchBarState?: never;
     trailingIcon?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11426,6 +18980,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     trailingIcon?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11453,6 +19009,8 @@ export type InputFieldProps =
     searchBarState?: never;
     prefix?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11480,6 +19038,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     prefix?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11507,6 +19067,8 @@ export type InputFieldProps =
     searchBarState?: never;
     suffix?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11534,6 +19096,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     suffix?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11561,6 +19125,8 @@ export type InputFieldProps =
     searchBarState?: never;
     inputTransformation?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11588,6 +19154,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     inputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11615,6 +19183,8 @@ export type InputFieldProps =
     searchBarState?: never;
     outputTransformation?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11642,6 +19212,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     outputTransformation?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11669,6 +19241,8 @@ export type InputFieldProps =
     searchBarState?: never;
     scrollState?: never;
     shape?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11696,6 +19270,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     scrollState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11723,6 +19299,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     shape?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11750,6 +19328,8 @@ export type InputFieldProps =
     textFieldState?: never;
     searchBarState?: never;
     colors?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11777,6 +19357,8 @@ export type InputFieldProps =
     interactionSource?: ComposeInteractionSource | null;
     textFieldState?: never;
     searchBarState?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     query?: never;
     onQueryChange?: never;
     }
@@ -11805,21 +19387,36 @@ export type InputFieldProps =
     outputTransformation?: never;
     scrollState?: never;
     shape?: never;
+    keyboardOptions?: never;
+    lineLimits?: never;
     state?: never;
     }
 ;
 export const InputField = createComposableComponent<InputFieldProps>({
   name: "InputField",
-  props: ["textFieldState","searchBarState","modifier","enabled","readOnly","textStyle","inputTransformation","outputTransformation","scrollState","shape","colors","interactionSource","state","expanded","query"],
-  objectProps: ["textFieldState","searchBarState","textStyle","inputTransformation","outputTransformation","scrollState","shape","colors","interactionSource","state"],
+  props: ["textFieldState","searchBarState","modifier","enabled","readOnly","textStyle","inputTransformation","outputTransformation","scrollState","shape","colors","interactionSource","keyboardOptions","lineLimits","state","expanded","query"],
+  objectProps: ["textFieldState","searchBarState","textStyle","inputTransformation","outputTransformation","scrollState","shape","colors","interactionSource","keyboardOptions","lineLimits","state"],
   slots: ["placeholder","leadingIcon","trailingIcon","prefix","suffix"],
   events: ["onSearch","onExpandedChange","onQueryChange"],
   children: false,
   overloads: [
-    { id: "InputField", children: false, parameters: [["textFieldState","object",false,false],["searchBarState","object",false,false],["onSearch","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3071,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,7167,8191,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,8224,8225,8226,8227,8228,8229,8230,8231,8232,8233,8234,8235,8236,8237,8238,8239,8240,8241,8242,8243,8244,8245,8246,8247,8248,8249,8250,8251,8252,8253,8254,8255,8256,8257,8258,8259,8260,8261,8262,8263,8264,8265,8266,8267,8268,8269,8270,8271,8272,8273,8274,8275,8276,8277,8278,8279,8280,8281,8282,8283,8284,8285,8286,8287,8288,8289,8290,8291,8292,8293,8294,8295,8296,8297,8298,8299,8300,8301,8302,8303,8304,8305,8306,8307,8308,8309,8310,8311,8312,8313,8314,8315,8316,8317,8318,8319,8320,8321,8322,8323,8324,8325,8326,8327,8328,8329,8330,8331,8332,8333,8334,8335,8336,8337,8338,8339,8340,8341,8342,8343,8344,8345,8346,8347,8348,8349,8350,8351,8352,8353,8354,8355,8356,8357,8358,8359,8360,8361,8362,8363,8364,8365,8366,8367,8368,8369,8370,8371,8372,8373,8374,8375,8376,8377,8378,8379,8380,8381,8382,8383,8384,8385,8386,8387,8388,8389,8390,8391,8392,8393,8394,8395,8396,8397,8398,8399,8400,8401,8402,8403,8404,8405,8406,8407,8408,8409,8410,8411,8412,8413,8414,8415,8416,8417,8418,8419,8420,8421,8422,8423,8424,8425,8426,8427,8428,8429,8430,8431,8432,8433,8434,8435,8436,8437,8438,8439,8440,8441,8442,8443,8444,8445,8446,8447,9215,10240,10241,10242,10243,10244,10245,10246,10247,10248,10249,10250,10251,10252,10253,10254,10255,10256,10257,10258,10259,10260,10261,10262,10263,10264,10265,10266,10267,10268,10269,10270,10271,10272,10273,10274,10275,10276,10277,10278,10279,10280,10281,10282,10283,10284,10285,10286,10287,10288,10289,10290,10291,10292,10293,10294,10295,10296,10297,10298,10299,10300,10301,10302,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314,10315,10316,10317,10318,10319,10320,10321,10322,10323,10324,10325,10326,10327,10328,10329,10330,10331,10332,10333,10334,10335,10336,10337,10338,10339,10340,10341,10342,10343,10344,10345,10346,10347,10348,10349,10350,10351,10352,10353,10354,10355,10356,10357,10358,10359,10360,10361,10362,10363,10364,10365,10366,10367,10368,10369,10370,10371,10372,10373,10374,10375,10376,10377,10378,10379,10380,10381,10382,10383,10384,10385,10386,10387,10388,10389,10390,10391,10392,10393,10394,10395,10396,10397,10398,10399,10400,10401,10402,10403,10404,10405,10406,10407,10408,10409,10410,10411,10412,10413,10414,10415,10416,10417,10418,10419,10420,10421,10422,10423,10424,10425,10426,10427,10428,10429,10430,10431,10432,10433,10434,10435,10436,10437,10438,10439,10440,10441,10442,10443,10444,10445,10446,10447,10448,10449,10450,10451,10452,10453,10454,10455,10456,10457,10458,10459,10460,10461,10462,10463,10464,10465,10466,10467,10468,10469,10470,10471,10472,10473,10474,10475,10476,10477,10478,10479,10480,10481,10482,10483,10484,10485,10486,10487,10488,10489,10490,10491,10492,10493,10494,10495,10751,11007,11135,11199,11231,11247,11255,11259,11261,11262,11263,12287,13311,14335,14847,15103,15231,15295,15327,15343,15351,15355,15357,15358,15359,15871,16127,16255,16319,16351,16367,16375,16379,16381,16382,16383] },
+    { id: "InputField", children: false, parameters: [["textFieldState","object",false,false],["searchBarState","object",false,false],["onSearch","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true],["keyboardOptions","object",true,false],["lineLimits","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3071,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,7167,8191,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,8224,8225,8226,8227,8228,8229,8230,8231,8232,8233,8234,8235,8236,8237,8238,8239,8240,8241,8242,8243,8244,8245,8246,8247,8248,8249,8250,8251,8252,8253,8254,8255,8256,8257,8258,8259,8260,8261,8262,8263,8264,8265,8266,8267,8268,8269,8270,8271,8272,8273,8274,8275,8276,8277,8278,8279,8280,8281,8282,8283,8284,8285,8286,8287,8288,8289,8290,8291,8292,8293,8294,8295,8296,8297,8298,8299,8300,8301,8302,8303,8304,8305,8306,8307,8308,8309,8310,8311,8312,8313,8314,8315,8316,8317,8318,8319,8320,8321,8322,8323,8324,8325,8326,8327,8328,8329,8330,8331,8332,8333,8334,8335,8336,8337,8338,8339,8340,8341,8342,8343,8344,8345,8346,8347,8348,8349,8350,8351,8352,8353,8354,8355,8356,8357,8358,8359,8360,8361,8362,8363,8364,8365,8366,8367,8368,8369,8370,8371,8372,8373,8374,8375,8376,8377,8378,8379,8380,8381,8382,8383,8384,8385,8386,8387,8388,8389,8390,8391,8392,8393,8394,8395,8396,8397,8398,8399,8400,8401,8402,8403,8404,8405,8406,8407,8408,8409,8410,8411,8412,8413,8414,8415,8416,8417,8418,8419,8420,8421,8422,8423,8424,8425,8426,8427,8428,8429,8430,8431,8432,8433,8434,8435,8436,8437,8438,8439,8440,8441,8442,8443,8444,8445,8446,8447,9215,10240,10241,10242,10243,10244,10245,10246,10247,10248,10249,10250,10251,10252,10253,10254,10255,10256,10257,10258,10259,10260,10261,10262,10263,10264,10265,10266,10267,10268,10269,10270,10271,10272,10273,10274,10275,10276,10277,10278,10279,10280,10281,10282,10283,10284,10285,10286,10287,10288,10289,10290,10291,10292,10293,10294,10295,10296,10297,10298,10299,10300,10301,10302,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314,10315,10316,10317,10318,10319,10320,10321,10322,10323,10324,10325,10326,10327,10328,10329,10330,10331,10332,10333,10334,10335,10336,10337,10338,10339,10340,10341,10342,10343,10344,10345,10346,10347,10348,10349,10350,10351,10352,10353,10354,10355,10356,10357,10358,10359,10360,10361,10362,10363,10364,10365,10366,10367,10368,10369,10370,10371,10372,10373,10374,10375,10376,10377,10378,10379,10380,10381,10382,10383,10384,10385,10386,10387,10388,10389,10390,10391,10392,10393,10394,10395,10396,10397,10398,10399,10400,10401,10402,10403,10404,10405,10406,10407,10408,10409,10410,10411,10412,10413,10414,10415,10416,10417,10418,10419,10420,10421,10422,10423,10424,10425,10426,10427,10428,10429,10430,10431,10432,10433,10434,10435,10436,10437,10438,10439,10440,10441,10442,10443,10444,10445,10446,10447,10448,10449,10450,10451,10452,10453,10454,10455,10456,10457,10458,10459,10460,10461,10462,10463,10464,10465,10466,10467,10468,10469,10470,10471,10472,10473,10474,10475,10476,10477,10478,10479,10480,10481,10482,10483,10484,10485,10486,10487,10488,10489,10490,10491,10492,10493,10494,10495,10751,11007,11135,11199,11231,11247,11255,11259,11261,11262,11263,12287,13311,14335,14847,15103,15231,15295,15327,15343,15351,15355,15357,15358,15359,15871,16127,16255,16319,16351,16367,16375,16379,16381,16382,16383,16384,16385,16386,16387,16392,16393,16394,16395,16400,16401,16402,16403,16408,16409,16410,16411,16640,16641,16642,16643,16896,16897,16898,16899,17152,17153,17154,17155,26879,27647,31743,32767,32768,32769,32770,32771,32776,32777,32778,32779,32784,32785,32786,32787,32792,32793,32794,32795,33024,33025,33026,33027,33280,33281,33282,33283,33536,33537,33538,33539,43263,44031,48127,49151,49152,49408,49409,49410,49411,49664,49665,49666,49667,49920,49921,49922,49923,51455,52223,56319,57343,57599,58367,59519,59583,59615,59631,59639,59643,59645,59646,59647,59903,60159,60287,60351,60383,60399,60407,60411,60413,60414,60415,61439,62463,63487,63999,64255,64383,64447,64479,64495,64503,64507,64509,64510,64511,65023,65279,65407,65471,65503,65519,65527,65531,65533,65534,65535] },
     { id: "InputField#1", children: false, parameters: [["state","object",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["readOnly","boolean",true,false],["textStyle","object",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["prefix","ReactNode",true,true],["suffix","ReactNode",true,true],["inputTransformation","object",true,true],["outputTransformation","object",true,true],["scrollState","object",true,false],["shape","shape",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3071,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,7167,8191,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8203,8204,8205,8206,8207,8208,8209,8210,8211,8212,8213,8214,8215,8216,8217,8218,8219,8220,8221,8222,8223,8224,8225,8226,8227,8228,8229,8230,8231,8232,8233,8234,8235,8236,8237,8238,8239,8240,8241,8242,8243,8244,8245,8246,8247,8248,8249,8250,8251,8252,8253,8254,8255,8256,8257,8258,8259,8260,8261,8262,8263,8264,8265,8266,8267,8268,8269,8270,8271,8272,8273,8274,8275,8276,8277,8278,8279,8280,8281,8282,8283,8284,8285,8286,8287,8288,8289,8290,8291,8292,8293,8294,8295,8296,8297,8298,8299,8300,8301,8302,8303,8304,8305,8306,8307,8308,8309,8310,8311,8312,8313,8314,8315,8316,8317,8318,8319,8320,8321,8322,8323,8324,8325,8326,8327,8328,8329,8330,8331,8332,8333,8334,8335,8336,8337,8338,8339,8340,8341,8342,8343,8344,8345,8346,8347,8348,8349,8350,8351,8352,8353,8354,8355,8356,8357,8358,8359,8360,8361,8362,8363,8364,8365,8366,8367,8368,8369,8370,8371,8372,8373,8374,8375,8376,8377,8378,8379,8380,8381,8382,8383,8384,8385,8386,8387,8388,8389,8390,8391,8392,8393,8394,8395,8396,8397,8398,8399,8400,8401,8402,8403,8404,8405,8406,8407,8408,8409,8410,8411,8412,8413,8414,8415,8416,8417,8418,8419,8420,8421,8422,8423,8424,8425,8426,8427,8428,8429,8430,8431,8432,8433,8434,8435,8436,8437,8438,8439,8440,8441,8442,8443,8444,8445,8446,8447,9215,10240,10241,10242,10243,10244,10245,10246,10247,10248,10249,10250,10251,10252,10253,10254,10255,10256,10257,10258,10259,10260,10261,10262,10263,10264,10265,10266,10267,10268,10269,10270,10271,10272,10273,10274,10275,10276,10277,10278,10279,10280,10281,10282,10283,10284,10285,10286,10287,10288,10289,10290,10291,10292,10293,10294,10295,10296,10297,10298,10299,10300,10301,10302,10303,10304,10305,10306,10307,10308,10309,10310,10311,10312,10313,10314,10315,10316,10317,10318,10319,10320,10321,10322,10323,10324,10325,10326,10327,10328,10329,10330,10331,10332,10333,10334,10335,10336,10337,10338,10339,10340,10341,10342,10343,10344,10345,10346,10347,10348,10349,10350,10351,10352,10353,10354,10355,10356,10357,10358,10359,10360,10361,10362,10363,10364,10365,10366,10367,10368,10369,10370,10371,10372,10373,10374,10375,10376,10377,10378,10379,10380,10381,10382,10383,10384,10385,10386,10387,10388,10389,10390,10391,10392,10393,10394,10395,10396,10397,10398,10399,10400,10401,10402,10403,10404,10405,10406,10407,10408,10409,10410,10411,10412,10413,10414,10415,10416,10417,10418,10419,10420,10421,10422,10423,10424,10425,10426,10427,10428,10429,10430,10431,10432,10433,10434,10435,10436,10437,10438,10439,10440,10441,10442,10443,10444,10445,10446,10447,10448,10449,10450,10451,10452,10453,10454,10455,10456,10457,10458,10459,10460,10461,10462,10463,10464,10465,10466,10467,10468,10469,10470,10471,10472,10473,10474,10475,10476,10477,10478,10479,10480,10481,10482,10483,10484,10485,10486,10487,10488,10489,10490,10491,10492,10493,10494,10495,10751,11007,11135,11199,11231,11247,11255,11259,11261,11262,11263,12287,13311,14335,14847,15103,15231,15295,15327,15343,15351,15355,15357,15358,15359,15871,16127,16255,16319,16351,16367,16375,16379,16381,16382,16383] },
     { id: "InputField#2", children: false, parameters: [["query","string",false,false],["onQueryChange","function",false,false],["onSearch","function",false,false],["expanded","boolean",false,false],["onExpandedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["placeholder","ReactNode",true,true],["leadingIcon","ReactNode",true,true],["trailingIcon","ReactNode",true,true],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
   ],
+});
+
+export interface ItemProps {
+  index: number;
+  selected: boolean;
+  enabled?: boolean;
+  colors?: ComposeScrollFieldColorsValue;
+}
+export const Item = createComposableComponent<ItemProps>({
+  name: "Item",
+  props: ["index","selected","enabled","colors"],
+  objectProps: ["colors"],
+  children: false,
 });
 
 export interface LabelProps {
@@ -12528,39 +20125,12 @@ export type LazyColumnProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
+    verticalArrangement?: ComposeVerticalArrangement;
     userScrollEnabled?: boolean;
-    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
-    verticalArrangement?: never;
     horizontalAlignment?: never;
     flingBehavior?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    overscrollEffect?: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    verticalArrangement?: never;
-    horizontalAlignment?: never;
-    userScrollEnabled?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    verticalArrangement?: never;
-    horizontalAlignment?: never;
     overscrollEffect?: never;
     }
   | {
@@ -12570,208 +20140,193 @@ export type LazyColumnProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
-    horizontalAlignment: ComposeHorizontalAlignment;
     userScrollEnabled?: boolean;
-    children?: ReactNode;
-    verticalArrangement?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment?: ComposeHorizontalAlignment;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    reverseLayout: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    verticalArrangement?: never;
-    horizontalAlignment?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    verticalArrangement?: never;
-    horizontalAlignment?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment: ComposeHorizontalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    verticalArrangement?: never;
-    horizontalAlignment?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout?: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment?: ComposeHorizontalAlignment;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    contentPadding?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment: ComposeHorizontalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    contentPadding?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment?: ComposeHorizontalAlignment;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    reverseLayout?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment: ComposeHorizontalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    reverseLayout?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalAlignment: ComposeHorizontalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     verticalArrangement?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
     horizontalAlignment?: never;
     flingBehavior?: never;
-    overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
     flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    horizontalAlignment?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment: ComposeHorizontalAlignment;
-    children?: ReactNode;
-    flingBehavior?: never;
-    userScrollEnabled?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalAlignment: ComposeHorizontalAlignment;
-    flingBehavior?: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    verticalArrangement?: never;
+    horizontalAlignment?: never;
+    userScrollEnabled?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    verticalArrangement?: never;
+    horizontalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    verticalArrangement?: ComposeVerticalArrangement;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    flingBehavior?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    reverseLayout: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    verticalArrangement?: never;
+    horizontalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    verticalArrangement?: never;
+    horizontalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    horizontalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    reverseLayout?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalAlignment?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    flingBehavior?: never;
     }
   | {
     modifiers?: ComposeModifier;
@@ -12784,17 +20339,33 @@ export type LazyColumnProps =
     horizontalAlignment: ComposeHorizontalAlignment;
     flingBehavior: ComposeFlingBehavior;
     overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
     userScrollEnabled?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalAlignment: ComposeHorizontalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
     }
 ;
 export const LazyColumn = createComposableComponent<LazyColumnProps>({
   name: "LazyColumn",
-  props: ["modifier","state","contentPadding","reverseLayout","verticalArrangement","horizontalAlignment","flingBehavior","userScrollEnabled","overscrollEffect"],
-  objectProps: ["state","contentPadding","flingBehavior","overscrollEffect"],
+  props: ["modifier","state","contentPadding","reverseLayout","verticalArrangement","horizontalAlignment","flingBehavior","userScrollEnabled","overscrollEffect","cacheWindow"],
+  objectProps: ["state","contentPadding","flingBehavior","overscrollEffect","cacheWindow"],
   children: true,
   overloads: [
-    { id: "LazyColumn", children: true, parameters: [["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalArrangement","string",true,false],["horizontalAlignment","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255] },
+    { id: "LazyColumn", children: true, parameters: [["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalArrangement","string",true,false],["horizontalAlignment","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true],["cacheWindow","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,383,447,479,495,503,507,509,510,511] },
   ],
 });
 
@@ -12807,41 +20378,12 @@ export type LazyHorizontalGridProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
+    horizontalArrangement?: ComposeHorizontalArrangement;
     userScrollEnabled?: boolean;
-    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
-    horizontalArrangement?: never;
     verticalArrangement?: never;
     flingBehavior?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    overscrollEffect?: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    horizontalArrangement?: never;
-    verticalArrangement?: never;
-    userScrollEnabled?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    horizontalArrangement?: never;
-    verticalArrangement?: never;
     overscrollEffect?: never;
     }
   | {
@@ -12852,222 +20394,205 @@ export type LazyHorizontalGridProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
     userScrollEnabled?: boolean;
-    children?: ReactNode;
-    horizontalArrangement?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement?: ComposeVerticalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    reverseLayout: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    horizontalArrangement?: never;
-    verticalArrangement?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    horizontalArrangement?: never;
-    verticalArrangement?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement: ComposeVerticalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    horizontalArrangement?: never;
-    verticalArrangement?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout?: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement?: ComposeVerticalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    contentPadding?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement: ComposeVerticalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    contentPadding?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement?: ComposeVerticalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    reverseLayout?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement: ComposeVerticalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    reverseLayout?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     horizontalArrangement?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
     verticalArrangement?: never;
     flingBehavior?: never;
-    overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
     flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    verticalArrangement?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement: ComposeVerticalArrangement;
-    children?: ReactNode;
-    flingBehavior?: never;
-    userScrollEnabled?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    rows: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalArrangement: ComposeVerticalArrangement;
-    flingBehavior?: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    horizontalArrangement?: never;
+    verticalArrangement?: never;
+    userScrollEnabled?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    horizontalArrangement?: never;
+    verticalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    verticalArrangement: ComposeVerticalArrangement;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    flingBehavior?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    reverseLayout: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    horizontalArrangement?: never;
+    verticalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    horizontalArrangement?: never;
+    verticalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    verticalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    reverseLayout?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalArrangement: ComposeVerticalArrangement;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    flingBehavior?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13081,17 +20606,34 @@ export type LazyHorizontalGridProps =
     verticalArrangement: ComposeVerticalArrangement;
     flingBehavior: ComposeFlingBehavior;
     overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
     userScrollEnabled?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
     }
 ;
 export const LazyHorizontalGrid = createComposableComponent<LazyHorizontalGridProps>({
   name: "LazyHorizontalGrid",
-  props: ["rows","modifier","state","contentPadding","reverseLayout","horizontalArrangement","verticalArrangement","flingBehavior","userScrollEnabled","overscrollEffect"],
-  objectProps: ["rows","state","contentPadding","flingBehavior","overscrollEffect"],
+  props: ["rows","modifier","state","contentPadding","reverseLayout","horizontalArrangement","verticalArrangement","flingBehavior","userScrollEnabled","overscrollEffect","cacheWindow"],
+  objectProps: ["rows","state","contentPadding","flingBehavior","overscrollEffect","cacheWindow"],
   children: true,
   overloads: [
-    { id: "LazyHorizontalGrid", children: true, parameters: [["rows","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["horizontalArrangement","string",true,false],["verticalArrangement","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255] },
+    { id: "LazyHorizontalGrid", children: true, parameters: [["rows","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["horizontalArrangement","string",true,false],["verticalArrangement","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true],["cacheWindow","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,383,447,479,495,503,507,509,510,511] },
   ],
 });
 
@@ -13110,6 +20652,7 @@ export type LazyHorizontalStaggeredGridProps =
     contentPadding?: never;
     verticalArrangement?: never;
     flingBehavior?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13125,6 +20668,7 @@ export type LazyHorizontalStaggeredGridProps =
     verticalArrangement?: never;
     horizontalItemSpacing?: never;
     userScrollEnabled?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13140,6 +20684,7 @@ export type LazyHorizontalStaggeredGridProps =
     verticalArrangement?: never;
     horizontalItemSpacing?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13155,6 +20700,7 @@ export type LazyHorizontalStaggeredGridProps =
     reverseLayout?: never;
     verticalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13170,6 +20716,7 @@ export type LazyHorizontalStaggeredGridProps =
     contentPadding?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13185,6 +20732,7 @@ export type LazyHorizontalStaggeredGridProps =
     contentPadding?: never;
     verticalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13200,6 +20748,7 @@ export type LazyHorizontalStaggeredGridProps =
     state?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13215,6 +20764,7 @@ export type LazyHorizontalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     state?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13230,6 +20780,7 @@ export type LazyHorizontalStaggeredGridProps =
     contentPadding?: never;
     verticalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13245,6 +20796,7 @@ export type LazyHorizontalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     contentPadding?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13260,6 +20812,7 @@ export type LazyHorizontalStaggeredGridProps =
     reverseLayout?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13275,6 +20828,7 @@ export type LazyHorizontalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     reverseLayout?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13290,6 +20844,7 @@ export type LazyHorizontalStaggeredGridProps =
     verticalArrangement?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13305,6 +20860,7 @@ export type LazyHorizontalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     verticalArrangement?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13320,6 +20876,7 @@ export type LazyHorizontalStaggeredGridProps =
     horizontalItemSpacing?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13335,6 +20892,7 @@ export type LazyHorizontalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     horizontalItemSpacing?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13350,6 +20908,7 @@ export type LazyHorizontalStaggeredGridProps =
     flingBehavior?: never;
     userScrollEnabled?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13365,6 +20924,7 @@ export type LazyHorizontalStaggeredGridProps =
     userScrollEnabled: boolean;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
+    cacheWindow?: never;
     }
   | {
     rows: ComposeGridCells;
@@ -13380,15 +20940,161 @@ export type LazyHorizontalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     userScrollEnabled?: never;
+    cacheWindow?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    horizontalItemSpacing?: number;
+    userScrollEnabled?: boolean;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    flingBehavior?: never;
+    overscrollEffect?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    reverseLayout?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalItemSpacing?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalItemSpacing: number;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    flingBehavior?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    userScrollEnabled?: never;
+    }
+  | {
+    rows: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
     }
 ;
 export const LazyHorizontalStaggeredGrid = createComposableComponent<LazyHorizontalStaggeredGridProps>({
   name: "LazyHorizontalStaggeredGrid",
-  props: ["rows","modifier","state","contentPadding","reverseLayout","verticalArrangement","horizontalItemSpacing","flingBehavior","userScrollEnabled","overscrollEffect"],
-  objectProps: ["rows","state","contentPadding","flingBehavior","overscrollEffect"],
+  props: ["rows","modifier","state","contentPadding","reverseLayout","verticalArrangement","horizontalItemSpacing","flingBehavior","userScrollEnabled","overscrollEffect","cacheWindow"],
+  objectProps: ["rows","state","contentPadding","flingBehavior","overscrollEffect","cacheWindow"],
   children: true,
   overloads: [
     { id: "LazyHorizontalStaggeredGrid", children: true, parameters: [["rows","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalArrangement","string",true,false],["horizontalItemSpacing","number",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,48,49,52,53,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,100,101,112,113,116,117,127,128,129,132,133,144,145,148,149,160,191,192,193,196,197,208,209,212,213,223,239,247,251,253,254,255] },
+    { id: "LazyHorizontalStaggeredGrid#1", children: true, parameters: [["rows","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalArrangement","string",true,false],["horizontalItemSpacing","number",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true],["cacheWindow","object",true,false]], masks: [256,257,258,259,260,261,262,263,272,273,274,275,276,277,278,279,320,321,322,323,324,325,326,327,336,337,338,339,340,341,342,343,383,447,479,495,503,507,509,510,511] },
   ],
 });
 
@@ -13400,39 +21106,12 @@ export type LazyRowProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
+    horizontalArrangement?: ComposeHorizontalArrangement;
     userScrollEnabled?: boolean;
-    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
-    horizontalArrangement?: never;
     verticalAlignment?: never;
     flingBehavior?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    overscrollEffect?: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    horizontalArrangement?: never;
-    verticalAlignment?: never;
-    userScrollEnabled?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    horizontalArrangement?: never;
-    verticalAlignment?: never;
     overscrollEffect?: never;
     }
   | {
@@ -13442,208 +21121,193 @@ export type LazyRowProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
-    verticalAlignment: ComposeVerticalAlignment;
     userScrollEnabled?: boolean;
-    children?: ReactNode;
-    horizontalArrangement?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment?: ComposeVerticalAlignment;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    reverseLayout: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    horizontalArrangement?: never;
-    verticalAlignment?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    horizontalArrangement?: never;
-    verticalAlignment?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment: ComposeVerticalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    horizontalArrangement?: never;
-    verticalAlignment?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout?: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment?: ComposeVerticalAlignment;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    contentPadding?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment: ComposeVerticalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    contentPadding?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment?: ComposeVerticalAlignment;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    reverseLayout?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment: ComposeVerticalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    reverseLayout?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalAlignment: ComposeVerticalAlignment;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     horizontalArrangement?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
     verticalAlignment?: never;
     flingBehavior?: never;
-    overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
     flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    verticalAlignment?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment: ComposeVerticalAlignment;
-    children?: ReactNode;
-    flingBehavior?: never;
-    userScrollEnabled?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    verticalAlignment: ComposeVerticalAlignment;
-    flingBehavior?: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    horizontalArrangement?: never;
+    verticalAlignment?: never;
+    userScrollEnabled?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    horizontalArrangement?: never;
+    verticalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    verticalAlignment: ComposeVerticalAlignment;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    flingBehavior?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    reverseLayout: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    horizontalArrangement?: never;
+    verticalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    horizontalArrangement?: never;
+    verticalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalAlignment: ComposeVerticalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    verticalAlignment?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalAlignment: ComposeVerticalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalAlignment: ComposeVerticalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    reverseLayout?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalAlignment: ComposeVerticalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalAlignment: ComposeVerticalAlignment;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    flingBehavior?: never;
     }
   | {
     modifiers?: ComposeModifier;
@@ -13656,17 +21320,33 @@ export type LazyRowProps =
     verticalAlignment: ComposeVerticalAlignment;
     flingBehavior: ComposeFlingBehavior;
     overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
     userScrollEnabled?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    verticalAlignment: ComposeVerticalAlignment;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
     }
 ;
 export const LazyRow = createComposableComponent<LazyRowProps>({
   name: "LazyRow",
-  props: ["modifier","state","contentPadding","reverseLayout","horizontalArrangement","verticalAlignment","flingBehavior","userScrollEnabled","overscrollEffect"],
-  objectProps: ["state","contentPadding","flingBehavior","overscrollEffect"],
+  props: ["modifier","state","contentPadding","reverseLayout","horizontalArrangement","verticalAlignment","flingBehavior","userScrollEnabled","overscrollEffect","cacheWindow"],
+  objectProps: ["state","contentPadding","flingBehavior","overscrollEffect","cacheWindow"],
   children: true,
   overloads: [
-    { id: "LazyRow", children: true, parameters: [["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["horizontalArrangement","string",true,false],["verticalAlignment","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255] },
+    { id: "LazyRow", children: true, parameters: [["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["horizontalArrangement","string",true,false],["verticalAlignment","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true],["cacheWindow","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,383,447,479,495,503,507,509,510,511] },
   ],
 });
 
@@ -13679,41 +21359,12 @@ export type LazyVerticalGridProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
+    verticalArrangement?: ComposeVerticalArrangement;
     userScrollEnabled?: boolean;
-    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
-    verticalArrangement?: never;
     horizontalArrangement?: never;
     flingBehavior?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    overscrollEffect?: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    verticalArrangement?: never;
-    horizontalArrangement?: never;
-    userScrollEnabled?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    reverseLayout?: never;
-    verticalArrangement?: never;
-    horizontalArrangement?: never;
     overscrollEffect?: never;
     }
   | {
@@ -13724,222 +21375,205 @@ export type LazyVerticalGridProps =
     state?: ComposeLazyState;
     contentPadding?: ComposePaddingValues;
     reverseLayout?: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
     userScrollEnabled?: boolean;
-    children?: ReactNode;
-    verticalArrangement?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement?: ComposeHorizontalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    reverseLayout: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    contentPadding?: never;
-    verticalArrangement?: never;
-    horizontalArrangement?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    state?: never;
-    verticalArrangement?: never;
-    horizontalArrangement?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    state?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding?: ComposePaddingValues;
-    reverseLayout?: boolean;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    verticalArrangement?: never;
-    horizontalArrangement?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout?: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement?: ComposeHorizontalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    contentPadding?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    contentPadding?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement?: ComposeHorizontalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
-    reverseLayout?: never;
-    flingBehavior?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    reverseLayout?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     verticalArrangement?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    userScrollEnabled?: boolean;
-    children?: ReactNode;
     horizontalArrangement?: never;
     flingBehavior?: never;
-    overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
     flingBehavior: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
-    overscrollEffect: ComposeOverscrollEffect | null;
-    children?: ReactNode;
-    horizontalArrangement?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    children?: ReactNode;
-    flingBehavior?: never;
-    userScrollEnabled?: never;
-    overscrollEffect?: never;
-    }
-  | {
-    columns: ComposeGridCells;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    state: ComposeLazyState;
-    contentPadding: ComposePaddingValues;
-    reverseLayout: boolean;
-    verticalArrangement: ComposeVerticalArrangement;
-    horizontalArrangement: ComposeHorizontalArrangement;
-    flingBehavior?: ComposeFlingBehavior;
-    userScrollEnabled: boolean;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    verticalArrangement?: never;
+    horizontalArrangement?: never;
+    userScrollEnabled?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    reverseLayout?: never;
+    verticalArrangement?: never;
+    horizontalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    verticalArrangement?: ComposeVerticalArrangement;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    flingBehavior?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    reverseLayout: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    contentPadding?: never;
+    verticalArrangement?: never;
+    horizontalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    state?: never;
+    verticalArrangement?: never;
+    horizontalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled?: boolean;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    horizontalArrangement?: never;
+    overscrollEffect?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    reverseLayout?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalArrangement?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    flingBehavior?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -13953,17 +21587,34 @@ export type LazyVerticalGridProps =
     horizontalArrangement: ComposeHorizontalArrangement;
     flingBehavior: ComposeFlingBehavior;
     overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
     children?: ReactNode;
     userScrollEnabled?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalArrangement: ComposeVerticalArrangement;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow?: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
     }
 ;
 export const LazyVerticalGrid = createComposableComponent<LazyVerticalGridProps>({
   name: "LazyVerticalGrid",
-  props: ["columns","modifier","state","contentPadding","reverseLayout","verticalArrangement","horizontalArrangement","flingBehavior","userScrollEnabled","overscrollEffect"],
-  objectProps: ["columns","state","contentPadding","flingBehavior","overscrollEffect"],
+  props: ["columns","modifier","state","contentPadding","reverseLayout","verticalArrangement","horizontalArrangement","flingBehavior","userScrollEnabled","overscrollEffect","cacheWindow"],
+  objectProps: ["columns","state","contentPadding","flingBehavior","overscrollEffect","cacheWindow"],
   children: true,
   overloads: [
-    { id: "LazyVerticalGrid", children: true, parameters: [["columns","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalArrangement","string",true,false],["horizontalArrangement","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255] },
+    { id: "LazyVerticalGrid", children: true, parameters: [["columns","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalArrangement","string",true,false],["horizontalArrangement","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true],["cacheWindow","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,127,128,129,130,131,132,133,134,135,160,191,192,193,194,195,196,197,198,199,223,239,247,251,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,383,447,479,495,503,507,509,510,511] },
   ],
 });
 
@@ -13982,6 +21633,7 @@ export type LazyVerticalStaggeredGridProps =
     contentPadding?: never;
     horizontalArrangement?: never;
     flingBehavior?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -13997,6 +21649,7 @@ export type LazyVerticalStaggeredGridProps =
     verticalItemSpacing?: never;
     horizontalArrangement?: never;
     userScrollEnabled?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14012,6 +21665,7 @@ export type LazyVerticalStaggeredGridProps =
     verticalItemSpacing?: never;
     horizontalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14027,6 +21681,7 @@ export type LazyVerticalStaggeredGridProps =
     contentPadding?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14042,6 +21697,7 @@ export type LazyVerticalStaggeredGridProps =
     reverseLayout?: never;
     horizontalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14057,6 +21713,7 @@ export type LazyVerticalStaggeredGridProps =
     contentPadding?: never;
     horizontalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14072,6 +21729,7 @@ export type LazyVerticalStaggeredGridProps =
     state?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14087,6 +21745,7 @@ export type LazyVerticalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     state?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14102,6 +21761,7 @@ export type LazyVerticalStaggeredGridProps =
     contentPadding?: never;
     horizontalArrangement?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14117,6 +21777,7 @@ export type LazyVerticalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     contentPadding?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14132,6 +21793,7 @@ export type LazyVerticalStaggeredGridProps =
     reverseLayout?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14147,6 +21809,7 @@ export type LazyVerticalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     reverseLayout?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14162,6 +21825,7 @@ export type LazyVerticalStaggeredGridProps =
     verticalItemSpacing?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14177,6 +21841,7 @@ export type LazyVerticalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     verticalItemSpacing?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14192,6 +21857,7 @@ export type LazyVerticalStaggeredGridProps =
     horizontalArrangement?: never;
     flingBehavior?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14207,6 +21873,7 @@ export type LazyVerticalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     horizontalArrangement?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14222,6 +21889,7 @@ export type LazyVerticalStaggeredGridProps =
     flingBehavior?: never;
     userScrollEnabled?: never;
     overscrollEffect?: never;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14237,6 +21905,7 @@ export type LazyVerticalStaggeredGridProps =
     userScrollEnabled: boolean;
     overscrollEffect?: ComposeOverscrollEffect | null;
     children?: ReactNode;
+    cacheWindow?: never;
     }
   | {
     columns: ComposeGridCells;
@@ -14252,15 +21921,161 @@ export type LazyVerticalStaggeredGridProps =
     overscrollEffect: ComposeOverscrollEffect | null;
     children?: ReactNode;
     userScrollEnabled?: never;
+    cacheWindow?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeLazyState;
+    contentPadding?: ComposePaddingValues;
+    reverseLayout?: boolean;
+    verticalItemSpacing?: number;
+    userScrollEnabled?: boolean;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    flingBehavior?: never;
+    overscrollEffect?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalItemSpacing: number;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    reverseLayout: boolean;
+    verticalItemSpacing: number;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    verticalItemSpacing: number;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    reverseLayout?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    verticalItemSpacing?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalItemSpacing: number;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    horizontalArrangement?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalItemSpacing: number;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    userScrollEnabled: boolean;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    flingBehavior?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalItemSpacing: number;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    overscrollEffect: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
+    userScrollEnabled?: never;
+    }
+  | {
+    columns: ComposeGridCells;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeLazyState;
+    contentPadding: ComposePaddingValues;
+    reverseLayout: boolean;
+    verticalItemSpacing: number;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    flingBehavior: ComposeFlingBehavior;
+    userScrollEnabled: boolean;
+    overscrollEffect?: ComposeOverscrollEffect | null;
+    cacheWindow: ComposeLazyLayoutCacheWindowValue;
+    children?: ReactNode;
     }
 ;
 export const LazyVerticalStaggeredGrid = createComposableComponent<LazyVerticalStaggeredGridProps>({
   name: "LazyVerticalStaggeredGrid",
-  props: ["columns","modifier","state","contentPadding","reverseLayout","verticalItemSpacing","horizontalArrangement","flingBehavior","userScrollEnabled","overscrollEffect"],
-  objectProps: ["columns","state","contentPadding","flingBehavior","overscrollEffect"],
+  props: ["columns","modifier","state","contentPadding","reverseLayout","verticalItemSpacing","horizontalArrangement","flingBehavior","userScrollEnabled","overscrollEffect","cacheWindow"],
+  objectProps: ["columns","state","contentPadding","flingBehavior","overscrollEffect","cacheWindow"],
   children: true,
   overloads: [
     { id: "LazyVerticalStaggeredGrid", children: true, parameters: [["columns","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalItemSpacing","number",true,false],["horizontalArrangement","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,36,37,40,41,44,45,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,100,101,104,105,108,109,127,128,129,132,133,136,137,140,141,160,191,192,193,196,197,200,201,204,205,223,239,247,251,253,254,255] },
+    { id: "LazyVerticalStaggeredGrid#1", children: true, parameters: [["columns","object",false,false],["modifier","ComposeModifier",true,false],["state","object",true,false],["contentPadding","object",true,false],["reverseLayout","boolean",true,false],["verticalItemSpacing","number",true,false],["horizontalArrangement","string",true,false],["flingBehavior","object",true,false],["userScrollEnabled","boolean",true,false],["overscrollEffect","object",true,true],["cacheWindow","object",true,false]], masks: [256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,383,447,479,495,503,507,509,510,511] },
   ],
 });
 
@@ -14350,6 +22165,8 @@ export type LinearWavyProgressIndicatorProps =
     modifier?: ComposeModifier;
     color?: string;
     trackColor?: string;
+    stroke?: ComposeStrokeValue;
+    trackStroke?: ComposeStrokeValue;
     gapSize?: number;
     amplitude?: number;
     wavelength?: number;
@@ -14364,6 +22181,8 @@ export type LinearWavyProgressIndicatorProps =
     modifier?: ComposeModifier;
     color?: string;
     trackColor?: string;
+    stroke?: ComposeStrokeValue;
+    trackStroke?: ComposeStrokeValue;
     gapSize?: number;
     stopSize?: number;
     wavelength?: number;
@@ -14373,33 +22192,2995 @@ export type LinearWavyProgressIndicatorProps =
 ;
 export const LinearWavyProgressIndicator = createComposableComponent<LinearWavyProgressIndicatorProps>({
   name: "LinearWavyProgressIndicator",
-  props: ["modifier","color","trackColor","gapSize","amplitude","wavelength","waveSpeed","progress","stopSize"],
+  props: ["modifier","color","trackColor","stroke","trackStroke","gapSize","amplitude","wavelength","waveSpeed","progress","stopSize"],
+  objectProps: ["stroke","trackStroke"],
   children: false,
   overloads: [
-    { id: "LinearWavyProgressIndicator", children: false, parameters: [["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["gapSize","number",true,false],["amplitude","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
-    { id: "LinearWavyProgressIndicator#1", children: false, parameters: [["progress","number",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["gapSize","number",true,false],["stopSize","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
+    { id: "LinearWavyProgressIndicator", children: false, parameters: [["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["stroke","object",true,false],["trackStroke","object",true,false],["gapSize","number",true,false],["amplitude","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
+    { id: "LinearWavyProgressIndicator#1", children: false, parameters: [["progress","number",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["trackColor","string",true,false],["stroke","object",true,false],["trackStroke","object",true,false],["gapSize","number",true,false],["stopSize","number",true,false],["wavelength","number",true,false],["waveSpeed","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
   ],
 });
 
-export interface ListItemProps {
-  headlineContent: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  overlineContent?: ReactNode;
-  supportingContent?: ReactNode;
-  leadingContent?: ReactNode;
-  trailingContent?: ReactNode;
-  colors?: ComposeListItemColorsValue;
-  tonalElevation?: number;
-  shadowElevation?: number;
-}
+export type ListItemProps =
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    colors?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    enabled?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    leadingContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    trailingContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    overlineContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    supportingContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    shapes?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    colors?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    elevation?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    onLongClick?: (() => void) | null;
+    onLongClickLabel?: string | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    colors?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    leadingContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    trailingContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    overlineContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    supportingContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClickLabel?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    headlineContent: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    colors?: ComposeListItemColorsValue;
+    tonalElevation?: number;
+    shadowElevation?: number;
+    enabled?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    children?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    onLongClick?: (() => void) | null;
+    onLongClickLabel?: string | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    colors?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    leadingContent?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    trailingContent?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    overlineContent?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    supportingContent?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onClick?: never;
+    onLongClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onClick?: never;
+    onLongClickLabel?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    selected?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    onLongClick?: (() => void) | null;
+    onLongClickLabel?: string | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    colors?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    shapes?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    shapes: ComposeListItemShapesValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    leadingContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    trailingContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    overlineContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    supportingContent?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClick?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClickLabel?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    elevation?: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    shapes: ComposeListItemShapesValue;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    headlineContent?: never;
+    tonalElevation?: never;
+    shadowElevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+;
 export const ListItem = createComposableComponent<ListItemProps>({
   name: "ListItem",
-  props: ["modifier","colors","tonalElevation","shadowElevation"],
-  objectProps: ["colors"],
-  slots: ["headlineContent","overlineContent","supportingContent","leadingContent","trailingContent"],
-  children: false,
+  props: ["modifier","enabled","verticalAlignment","shapes","colors","elevation","contentPadding","onLongClickLabel","interactionSource","tonalElevation","shadowElevation","checked","selected"],
+  objectProps: ["shapes","colors","elevation","contentPadding","interactionSource"],
+  slots: ["leadingContent","trailingContent","overlineContent","supportingContent","headlineContent"],
+  events: ["onClick","onLongClick","onCheckedChange"],
+  children: true,
+  overloads: [
+    { id: "ListItem", children: true, parameters: [["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,320,384,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,639,703,767,831,895,959,991,1007,1015,1019,1021,1022,1023] },
+    { id: "ListItem#1", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["onLongClick","function",true,true],["onLongClickLabel","string",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1280,1536,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,4095,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,6143,6144,6145,6146,6147,6148,6149,6150,6151,6152,6153,6154,6155,6156,6157,6158,6159,6160,6161,6162,6163,6164,6165,6166,6167,6168,6169,6170,6171,6172,6173,6174,6175,6176,6177,6178,6179,6180,6181,6182,6183,6184,6185,6186,6187,6188,6189,6190,6191,6192,6193,6194,6195,6196,6197,6198,6199,6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211,6212,6213,6214,6215,6216,6217,6218,6219,6220,6221,6222,6223,6224,6225,6226,6227,6228,6229,6230,6231,6232,6233,6234,6235,6236,6237,6238,6239,6240,6241,6242,6243,6244,6245,6246,6247,6248,6249,6250,6251,6252,6253,6254,6255,6256,6257,6258,6259,6260,6261,6262,6263,6264,6265,6266,6267,6268,6269,6270,6271,6272,6273,6274,6275,6276,6277,6278,6279,6280,6281,6282,6283,6284,6285,6286,6287,6288,6289,6290,6291,6292,6293,6294,6295,6296,6297,6298,6299,6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310,6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321,6322,6323,6324,6325,6326,6327,6328,6329,6330,6331,6332,6333,6334,6335,6336,6337,6338,6339,6340,6341,6342,6343,6344,6345,6346,6347,6348,6349,6350,6351,6352,6353,6354,6355,6356,6357,6358,6359,6360,6361,6362,6363,6364,6365,6366,6367,6368,6369,6370,6371,6372,6373,6374,6375,6376,6377,6378,6379,6380,6381,6382,6383,6384,6385,6386,6387,6388,6389,6390,6391,6392,6393,6394,6395,6396,6397,6398,6399,6655,6911,7167,7423,7679,7935,8063,8127,8159,8175,8183,8187,8189,8190,8191] },
+    { id: "ListItem#2", children: false, parameters: [["headlineContent","ReactNode",false,false],["modifier","ComposeModifier",true,false],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["colors","object",true,false],["tonalElevation","number",true,false],["shadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+    { id: "ListItem#3", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["onLongClick","function",true,true],["onLongClickLabel","string",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1280,1536,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,4095,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,6143,6144,6145,6146,6147,6148,6149,6150,6151,6152,6153,6154,6155,6156,6157,6158,6159,6160,6161,6162,6163,6164,6165,6166,6167,6168,6169,6170,6171,6172,6173,6174,6175,6176,6177,6178,6179,6180,6181,6182,6183,6184,6185,6186,6187,6188,6189,6190,6191,6192,6193,6194,6195,6196,6197,6198,6199,6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211,6212,6213,6214,6215,6216,6217,6218,6219,6220,6221,6222,6223,6224,6225,6226,6227,6228,6229,6230,6231,6232,6233,6234,6235,6236,6237,6238,6239,6240,6241,6242,6243,6244,6245,6246,6247,6248,6249,6250,6251,6252,6253,6254,6255,6256,6257,6258,6259,6260,6261,6262,6263,6264,6265,6266,6267,6268,6269,6270,6271,6272,6273,6274,6275,6276,6277,6278,6279,6280,6281,6282,6283,6284,6285,6286,6287,6288,6289,6290,6291,6292,6293,6294,6295,6296,6297,6298,6299,6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310,6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321,6322,6323,6324,6325,6326,6327,6328,6329,6330,6331,6332,6333,6334,6335,6336,6337,6338,6339,6340,6341,6342,6343,6344,6345,6346,6347,6348,6349,6350,6351,6352,6353,6354,6355,6356,6357,6358,6359,6360,6361,6362,6363,6364,6365,6366,6367,6368,6369,6370,6371,6372,6373,6374,6375,6376,6377,6378,6379,6380,6381,6382,6383,6384,6385,6386,6387,6388,6389,6390,6391,6392,6393,6394,6395,6396,6397,6398,6399,6655,6911,7167,7423,7679,7935,8063,8127,8159,8175,8183,8187,8189,8190,8191] },
+    { id: "ListItem#4", children: true, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["onLongClick","function",true,true],["onLongClickLabel","string",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1280,1536,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,4095,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,6143,6144,6145,6146,6147,6148,6149,6150,6151,6152,6153,6154,6155,6156,6157,6158,6159,6160,6161,6162,6163,6164,6165,6166,6167,6168,6169,6170,6171,6172,6173,6174,6175,6176,6177,6178,6179,6180,6181,6182,6183,6184,6185,6186,6187,6188,6189,6190,6191,6192,6193,6194,6195,6196,6197,6198,6199,6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211,6212,6213,6214,6215,6216,6217,6218,6219,6220,6221,6222,6223,6224,6225,6226,6227,6228,6229,6230,6231,6232,6233,6234,6235,6236,6237,6238,6239,6240,6241,6242,6243,6244,6245,6246,6247,6248,6249,6250,6251,6252,6253,6254,6255,6256,6257,6258,6259,6260,6261,6262,6263,6264,6265,6266,6267,6268,6269,6270,6271,6272,6273,6274,6275,6276,6277,6278,6279,6280,6281,6282,6283,6284,6285,6286,6287,6288,6289,6290,6291,6292,6293,6294,6295,6296,6297,6298,6299,6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310,6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321,6322,6323,6324,6325,6326,6327,6328,6329,6330,6331,6332,6333,6334,6335,6336,6337,6338,6339,6340,6341,6342,6343,6344,6345,6346,6347,6348,6349,6350,6351,6352,6353,6354,6355,6356,6357,6358,6359,6360,6361,6362,6363,6364,6365,6366,6367,6368,6369,6370,6371,6372,6373,6374,6375,6376,6377,6378,6379,6380,6381,6382,6383,6384,6385,6386,6387,6388,6389,6390,6391,6392,6393,6394,6395,6396,6397,6398,6399,6655,6911,7167,7423,7679,7935,8063,8127,8159,8175,8183,8187,8189,8190,8191] },
+  ],
 });
 
 export type LoadingIndicatorProps =
@@ -14413,7 +25194,7 @@ export type LoadingIndicatorProps =
     isRefreshing?: never;
     containerColor?: never;
     elevation?: never;
-    threshold?: never;
+    maxDistance?: never;
     }
   | {
     progress: number;
@@ -14425,7 +25206,7 @@ export type LoadingIndicatorProps =
     isRefreshing?: never;
     containerColor?: never;
     elevation?: never;
-    threshold?: never;
+    maxDistance?: never;
     }
   | {
     state: ComposePullToRefreshState;
@@ -14436,19 +25217,19 @@ export type LoadingIndicatorProps =
     containerColor?: string;
     color?: string;
     elevation?: number;
-    threshold?: number;
+    maxDistance?: number;
     progress?: never;
     }
 ;
 export const LoadingIndicator = createComposableComponent<LoadingIndicatorProps>({
   name: "LoadingIndicator",
-  props: ["modifier","color","progress","state","isRefreshing","containerColor","elevation","threshold"],
+  props: ["modifier","color","progress","state","isRefreshing","containerColor","elevation","maxDistance"],
   objectProps: ["state"],
   children: false,
   overloads: [
     { id: "LoadingIndicator", children: false, parameters: [["modifier","ComposeModifier",true,false],["color","string",true,false]], masks: [0,1] },
     { id: "LoadingIndicator#1", children: false, parameters: [["progress","number",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false]], masks: [0,1] },
-    { id: "LoadingIndicator#2", children: false, parameters: [["state","object",false,false],["isRefreshing","boolean",false,false],["modifier","ComposeModifier",true,false],["containerColor","string",true,false],["color","string",true,false],["elevation","number",true,false],["threshold","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "LoadingIndicator#2", children: false, parameters: [["state","object",false,false],["isRefreshing","boolean",false,false],["modifier","ComposeModifier",true,false],["containerColor","string",true,false],["color","string",true,false],["elevation","number",true,false],["maxDistance","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
   ],
 });
 
@@ -14457,12 +25238,13 @@ export interface LookaheadAnimationVisualDebuggingProps {
   overlayColor?: string;
   multipleMatchesColor?: string;
   unmatchedElementColor?: string;
+  inactiveElementColor?: string;
   isShowKeyLabelEnabled?: boolean;
   children?: ReactNode;
 }
 export const LookaheadAnimationVisualDebugging = createComposableComponent<LookaheadAnimationVisualDebuggingProps>({
   name: "LookaheadAnimationVisualDebugging",
-  props: ["isEnabled","overlayColor","multipleMatchesColor","unmatchedElementColor","isShowKeyLabelEnabled"],
+  props: ["isEnabled","overlayColor","multipleMatchesColor","unmatchedElementColor","inactiveElementColor","isShowKeyLabelEnabled"],
   children: true,
 });
 
@@ -14478,35 +25260,41 @@ export const LookaheadScope = createComposableComponent<LookaheadScopeProps>({
 export interface MaterialExpressiveThemeProps {
   colorScheme?: ColorScheme | null;
   motionScheme?: ComposeMotionSchemeValue | null;
+  shapes?: ComposeShapesValue | null;
+  typography?: ComposeTypographyValue | null;
   children?: ReactNode;
 }
 export const MaterialExpressiveTheme = createComposableComponent<MaterialExpressiveThemeProps>({
   name: "MaterialExpressiveTheme",
-  props: ["colorScheme","motionScheme"],
-  objectProps: ["colorScheme","motionScheme"],
+  props: ["colorScheme","motionScheme","shapes","typography"],
+  objectProps: ["colorScheme","motionScheme","shapes","typography"],
   children: true,
 });
 
 export type MaterialThemeProps =
   | {
     colorScheme?: ColorScheme;
+    shapes?: ComposeShapesValue;
+    typography?: ComposeTypographyValue;
     children?: ReactNode;
     motionScheme?: never;
     }
   | {
     colorScheme?: ColorScheme;
     motionScheme: ComposeMotionSchemeValue;
+    shapes?: ComposeShapesValue;
+    typography?: ComposeTypographyValue;
     children?: ReactNode;
     }
 ;
 export const MaterialTheme = createComposableComponent<MaterialThemeProps>({
   name: "MaterialTheme",
-  props: ["colorScheme","motionScheme"],
-  objectProps: ["colorScheme","motionScheme"],
+  props: ["colorScheme","shapes","typography","motionScheme"],
+  objectProps: ["colorScheme","shapes","typography","motionScheme"],
   children: true,
   overloads: [
-    { id: "MaterialTheme", children: true, parameters: [["colorScheme","object",true,false]], masks: [0,1] },
-    { id: "MaterialTheme#1", children: true, parameters: [["colorScheme","object",true,false],["motionScheme","object",true,false]], masks: [2,3] },
+    { id: "MaterialTheme", children: true, parameters: [["colorScheme","object",true,false],["shapes","object",true,false],["typography","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "MaterialTheme#1", children: true, parameters: [["colorScheme","object",true,false],["motionScheme","object",true,false],["shapes","object",true,false],["typography","object",true,false]], masks: [2,3,6,7,10,11,14,15] },
   ],
 });
 
@@ -15178,34 +25966,52 @@ export interface ModalBottomSheetProps {
   tonalElevation?: number;
   scrimColor?: string;
   dragHandle?: ReactNode;
-  contentWindowInsets?: ComposeWindowInsets;
   children?: ReactNode;
 }
 export const ModalBottomSheet = createComposableComponent<ModalBottomSheetProps>({
   name: "ModalBottomSheet",
-  props: ["modifier","sheetState","sheetMaxWidth","sheetGesturesEnabled","shape","containerColor","contentColor","tonalElevation","scrimColor","contentWindowInsets"],
-  objectProps: ["sheetState","shape","contentWindowInsets"],
+  props: ["modifier","sheetState","sheetMaxWidth","sheetGesturesEnabled","shape","containerColor","contentColor","tonalElevation","scrimColor"],
+  objectProps: ["sheetState","shape"],
   slots: ["dragHandle"],
   events: ["onDismissRequest"],
   children: true,
 });
 
-export interface ModalDrawerSheetProps {
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  drawerShape?: ComposeShape;
-  drawerContainerColor?: string;
-  drawerContentColor?: string;
-  drawerTonalElevation?: number;
-  windowInsets?: ComposeWindowInsets;
-  children?: ReactNode;
-}
+export type ModalDrawerSheetProps =
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    drawerShape?: ComposeShape;
+    drawerContainerColor?: string;
+    drawerContentColor?: string;
+    drawerTonalElevation?: number;
+    windowInsets?: ComposeWindowInsets;
+    children?: ReactNode;
+    drawerState?: never;
+    }
+  | {
+    drawerState: ComposeDrawerStateHandle;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    drawerShape?: ComposeShape;
+    drawerContainerColor?: string;
+    drawerContentColor?: string;
+    drawerTonalElevation?: number;
+    windowInsets?: ComposeWindowInsets;
+    children?: ReactNode;
+    }
+;
 export const ModalDrawerSheet = createComposableComponent<ModalDrawerSheetProps>({
   name: "ModalDrawerSheet",
-  props: ["modifier","drawerShape","drawerContainerColor","drawerContentColor","drawerTonalElevation","windowInsets"],
-  objectProps: ["drawerShape","windowInsets"],
+  props: ["modifier","drawerShape","drawerContainerColor","drawerContentColor","drawerTonalElevation","windowInsets","drawerState"],
+  objectProps: ["drawerShape","windowInsets","drawerState"],
   children: true,
+  overloads: [
+    { id: "ModalDrawerSheet", children: true, parameters: [["modifier","ComposeModifier",true,false],["drawerShape","shape",true,false],["drawerContainerColor","string",true,false],["drawerContentColor","string",true,false],["drawerTonalElevation","number",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "ModalDrawerSheet#1", children: true, parameters: [["drawerState","object",false,false],["modifier","ComposeModifier",true,false],["drawerShape","shape",true,false],["drawerContainerColor","string",true,false],["drawerContentColor","string",true,false],["drawerTonalElevation","number",true,false],["windowInsets","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+  ],
 });
 
 export interface ModalNavigationDrawerProps {
@@ -15213,37 +26019,638 @@ export interface ModalNavigationDrawerProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  drawerState?: ComposeDrawerStateHandle;
   gesturesEnabled?: boolean;
   scrimColor?: string;
   children?: ReactNode;
 }
 export const ModalNavigationDrawer = createComposableComponent<ModalNavigationDrawerProps>({
   name: "ModalNavigationDrawer",
-  props: ["modifier","gesturesEnabled","scrimColor"],
+  props: ["modifier","drawerState","gesturesEnabled","scrimColor"],
+  objectProps: ["drawerState"],
   slots: ["drawerContent"],
   children: true,
 });
 
-export interface ModalWideNavigationRailProps {
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  hideOnCollapse?: boolean;
-  collapsedShape?: ComposeShape;
-  expandedShape?: ComposeShape;
-  colors?: ComposeWideNavigationRailColorsValue;
-  header?: ReactNode;
-  expandedHeaderTopPadding?: number;
-  windowInsets?: ComposeWindowInsets;
-  arrangement?: ComposeVerticalArrangement;
-  children?: ReactNode;
-}
+export type ModalWideNavigationRailProps =
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state?: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse?: boolean;
+    collapsedShape?: ComposeShape;
+    expandedShape?: ComposeShape;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    colors?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    expandedShape?: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    collapsedShape?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    expandedShape?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    header?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    expandedHeaderTopPadding?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    windowInsets?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    hideOnCollapse?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    colors: ComposeWideNavigationRailColorsValue;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    collapsedShape?: never;
+    expandedShape?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    collapsedShape?: never;
+    header?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    collapsedShape?: never;
+    expandedHeaderTopPadding?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    collapsedShape?: never;
+    windowInsets?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    children?: ReactNode;
+    state?: never;
+    collapsedShape?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    collapsedShape?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding?: number;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    expandedShape?: never;
+    header?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    expandedShape?: never;
+    expandedHeaderTopPadding?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    expandedShape?: never;
+    windowInsets?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    children?: ReactNode;
+    state?: never;
+    expandedShape?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    expandedShape?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    windowInsets?: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    header?: never;
+    expandedHeaderTopPadding?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding: number;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    header?: never;
+    windowInsets?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    children?: ReactNode;
+    state?: never;
+    header?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    header?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    arrangement?: ComposeVerticalArrangement;
+    children?: ReactNode;
+    state?: never;
+    expandedHeaderTopPadding?: never;
+    windowInsets?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    windowInsets: ComposeWindowInsets;
+    children?: ReactNode;
+    state?: never;
+    expandedHeaderTopPadding?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    expandedHeaderTopPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    children?: ReactNode;
+    state?: never;
+    windowInsets?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    windowInsets?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement?: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    state?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse?: boolean;
+    collapsedShape?: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header?: ReactNode;
+    expandedHeaderTopPadding?: number;
+    children?: ReactNode;
+    expandedShape?: never;
+    windowInsets?: never;
+    arrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    hideOnCollapse?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    collapsedShape?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    expandedShape?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    header?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    expandedHeaderTopPadding?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    windowInsets?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    arrangement?: never;
+    }
+  | {
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    state: ComposeWideNavigationRailStateHandle;
+    hideOnCollapse: boolean;
+    collapsedShape: ComposeShape;
+    expandedShape: ComposeShape;
+    colors: ComposeWideNavigationRailColorsValue;
+    header: ReactNode;
+    expandedHeaderTopPadding: number;
+    windowInsets: ComposeWindowInsets;
+    arrangement: ComposeVerticalArrangement;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    }
+;
 export const ModalWideNavigationRail = createComposableComponent<ModalWideNavigationRailProps>({
   name: "ModalWideNavigationRail",
-  props: ["modifier","hideOnCollapse","collapsedShape","expandedShape","colors","expandedHeaderTopPadding","windowInsets","arrangement"],
-  objectProps: ["collapsedShape","expandedShape","colors","windowInsets"],
+  props: ["modifier","state","hideOnCollapse","collapsedShape","expandedShape","colors","expandedHeaderTopPadding","windowInsets","arrangement","contentPadding"],
+  objectProps: ["state","collapsedShape","expandedShape","colors","windowInsets","contentPadding"],
   slots: ["header"],
   children: true,
+  overloads: [
+    { id: "ModalWideNavigationRail", children: true, parameters: [["modifier","ComposeModifier",true,false],["state","object",true,false],["hideOnCollapse","boolean",true,false],["collapsedShape","shape",true,false],["expandedShape","shape",true,false],["colors","object",true,false],["header","ReactNode",true,true],["expandedHeaderTopPadding","number",true,false],["windowInsets","object",true,false],["arrangement","string",true,false],["contentPadding","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,28,30,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,90,92,94,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,122,124,126,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,146,148,150,152,154,156,158,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,178,180,182,184,186,188,190,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,210,212,214,216,218,220,222,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,242,244,246,248,250,252,254,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,274,276,278,280,282,284,286,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,306,308,310,312,314,316,318,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,338,340,342,344,346,348,350,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,370,372,374,376,378,380,382,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,402,404,406,408,410,412,414,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,434,436,438,440,442,444,446,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,466,468,470,472,474,476,478,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,498,500,502,504,506,508,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,864,865,866,867,868,869,870,871,872,873,874,875,876,877,878,879,894,895,896,897,898,899,900,901,902,903,904,905,906,907,908,909,910,911,928,929,930,931,932,933,934,935,936,937,938,939,940,941,942,943,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,990,991,992,993,994,995,996,997,998,999,1000,1001,1002,1003,1004,1005,1006,1007,1014,1015,1018,1019,1020,1021,1022,1023] },
+  ],
 });
 
 export interface MultiChoiceSegmentedButtonRowProps {
@@ -15457,45 +26864,86 @@ export const OutlinedCard = createComposableComponent<OutlinedCardProps>({
   ],
 });
 
-export interface OutlinedIconButtonProps {
-  onClick: () => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shape?: ComposeShape;
-  colors?: ComposeIconButtonColorsValue;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type OutlinedIconButtonProps =
+  | {
+    onClick: () => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shape?: ComposeShape;
+    colors?: ComposeIconButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeIconButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const OutlinedIconButton = createComposableComponent<OutlinedIconButtonProps>({
   name: "OutlinedIconButton",
-  props: ["modifier","enabled","shape","colors","border","interactionSource"],
-  objectProps: ["shape","colors","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","border","interactionSource","shapes"],
+  objectProps: ["shape","colors","border","interactionSource","shapes"],
   events: ["onClick"],
   children: true,
+  overloads: [
+    { id: "OutlinedIconButton", children: true, parameters: [["onClick","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "OutlinedIconButton#1", children: true, parameters: [["onClick","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+  ],
 });
 
-export interface OutlinedIconToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shape?: ComposeShape;
-  colors?: ComposeIconToggleButtonColorsValue;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type OutlinedIconToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shape?: ComposeShape;
+    colors?: ComposeIconToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeIconToggleButtonShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeIconToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shape?: never;
+    }
+;
 export const OutlinedIconToggleButton = createComposableComponent<OutlinedIconToggleButtonProps>({
   name: "OutlinedIconToggleButton",
-  props: ["checked","modifier","enabled","shape","colors","border","interactionSource"],
-  objectProps: ["shape","colors","border","interactionSource"],
+  props: ["checked","modifier","enabled","shape","colors","border","interactionSource","shapes"],
+  objectProps: ["shape","colors","border","interactionSource","shapes"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "OutlinedIconToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["shape","shape",true,false],["colors","object",true,false],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "OutlinedIconToggleButton#1", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["border","object",true,true],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+  ],
 });
 
 export interface OutlinedLeadingButtonProps {
@@ -29761,27 +41209,392 @@ export const OutlinedTextField = createComposableComponent<OutlinedTextFieldProp
   ],
 });
 
-export interface OutlinedToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shapes?: ComposeToggleButtonShapesValue;
-  colors?: ComposeToggleButtonColorsValue;
-  elevation?: ComposeButtonElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  contentPadding?: ComposePaddingValues;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type OutlinedToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors?: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    icon?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled?: boolean;
+    icon?: ReactNode;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    colors: ComposeToggleButtonColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    shapes: ComposeToggleButtonShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    icon?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    border?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    }
+;
 export const OutlinedToggleButton = createComposableComponent<OutlinedToggleButtonProps>({
   name: "OutlinedToggleButton",
-  props: ["checked","modifier","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
+  props: ["checked","modifier","buttonSize","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
   objectProps: ["shapes","colors","elevation","border","contentPadding","interactionSource"],
+  slots: ["icon"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "OutlinedToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["buttonSize","string",true,false],["enabled","boolean",true,false],["icon","ReactNode",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,14,16,17,18,20,22,24,26,32,33,34,36,38,40,48,64,65,66,67,68,69,70,71,72,74,76,78,80,82,84,86,88,90,96,98,100,102,128,129,130,131,132,133,134,135,136,138,140,142,144,146,148,150,152,154,160,162,164,166,192,193,194,195,196,197,198,199,200,202,204,206,208,210,212,214,216,218,224,226,228,230,255,256,257,258,259,260,261,262,263,264,266,268,270,272,274,276,278,280,282,288,290,292,294,320,321,322,323,324,325,326,327,328,330,332,334,336,338,340,342,344,346,352,354,356,358,383,384,385,386,387,388,389,390,391,392,394,396,398,400,402,404,406,408,410,416,418,420,422,447,448,449,450,451,452,453,454,455,456,458,460,462,463,464,466,468,470,471,472,474,478,479,480,482,484,486,487,494,495,502,503,507,509,510,511] },
+  ],
 });
 
 export interface OutlinedTrailingButtonProps {
@@ -29843,7 +41656,7 @@ export interface PlainTooltipProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
-  caretSize?: ComposeDpSize;
+  caretShape?: ComposeShape | null;
   maxWidth?: number;
   shape?: ComposeShape;
   contentColor?: string;
@@ -29854,8 +41667,8 @@ export interface PlainTooltipProps {
 }
 export const PlainTooltip = createComposableComponent<PlainTooltipProps>({
   name: "PlainTooltip",
-  props: ["modifier","caretSize","maxWidth","shape","contentColor","containerColor","tonalElevation","shadowElevation"],
-  objectProps: ["caretSize","shape"],
+  props: ["modifier","caretShape","maxWidth","shape","contentColor","containerColor","tonalElevation","shadowElevation"],
+  objectProps: ["caretShape","shape"],
   children: true,
 });
 
@@ -29965,11 +41778,13 @@ export interface PullToRefreshBoxProps {
   state?: ComposePullToRefreshState;
   contentAlignment?: ComposeAlignment;
   indicator?: ReactNode;
+  enabled?: boolean;
+  threshold?: number;
   children?: ReactNode;
 }
 export const PullToRefreshBox = createComposableComponent<PullToRefreshBoxProps>({
   name: "PullToRefreshBox",
-  props: ["isRefreshing","modifier","state","contentAlignment"],
+  props: ["isRefreshing","modifier","state","contentAlignment","enabled","threshold"],
   objectProps: ["state"],
   slots: ["indicator"],
   events: ["onRefresh"],
@@ -29997,21 +41812,21 @@ export const RadioButton = createComposableComponent<RadioButtonProps>({
 export type RangeSliderProps =
   | {
     state: ComposeRangeSliderState;
+    onValueChange: (value: ComposeFloatRange) => void;
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    onValueChangeFinished?: (() => void) | null;
     colors?: ComposeSliderColorsValue;
-    startInteractionSource?: ComposeInteractionSource;
-    endInteractionSource?: ComposeInteractionSource;
+    startThumbInteractionSource?: ComposeInteractionSource;
+    endThumbInteractionSource?: ComposeInteractionSource;
     startThumb?: ReactNode;
     endThumb?: ReactNode;
     track?: ReactNode;
     value?: never;
-    onValueChange?: never;
     valueRange?: never;
     steps?: never;
-    onValueChangeFinished?: never;
     }
   | {
     value: ComposeFloatRange;
@@ -30025,456 +41840,23 @@ export type RangeSliderProps =
     onValueChangeFinished?: (() => void) | null;
     colors?: ComposeSliderColorsValue;
     state?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
+    startThumbInteractionSource?: never;
+    endThumbInteractionSource?: never;
     startThumb?: never;
     endThumb?: never;
     track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    track: ReactNode;
-    steps?: number;
-    state?: never;
-    colors?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    startThumb?: never;
-    endThumb?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    startInteractionSource?: ComposeInteractionSource;
-    endThumb: ReactNode;
-    steps?: number;
-    state?: never;
-    colors?: never;
-    endInteractionSource?: never;
-    startThumb?: never;
-    track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    endThumb: ReactNode;
-    track: ReactNode;
-    state?: never;
-    enabled?: never;
-    colors?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    startThumb?: never;
-    valueRange?: never;
-    steps?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    startInteractionSource?: ComposeInteractionSource;
-    startThumb: ReactNode;
-    steps?: number;
-    state?: never;
-    colors?: never;
-    endInteractionSource?: never;
-    endThumb?: never;
-    track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    startThumb: ReactNode;
-    track: ReactNode;
-    state?: never;
-    enabled?: never;
-    colors?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    endThumb?: never;
-    valueRange?: never;
-    steps?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    state?: never;
-    enabled?: never;
-    colors?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    track?: never;
-    valueRange?: never;
-    steps?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    startInteractionSource?: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    steps?: number;
-    state?: never;
-    colors?: never;
-    startThumb?: never;
-    endThumb?: never;
-    track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    startInteractionSource: ComposeInteractionSource;
-    track?: ReactNode;
-    steps?: number;
-    state?: never;
-    colors?: never;
-    endInteractionSource?: never;
-    startThumb?: never;
-    endThumb?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    colors: ComposeSliderColorsValue;
-    track: ReactNode;
-    state?: never;
-    enabled?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    startThumb?: never;
-    endThumb?: never;
-    valueRange?: never;
-    steps?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    colors: ComposeSliderColorsValue;
-    endThumb: ReactNode;
-    state?: never;
-    enabled?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    startThumb?: never;
-    track?: never;
-    valueRange?: never;
-    steps?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    colors: ComposeSliderColorsValue;
-    startThumb: ReactNode;
-    state?: never;
-    enabled?: never;
-    startInteractionSource?: never;
-    endInteractionSource?: never;
-    endThumb?: never;
-    track?: never;
-    valueRange?: never;
-    steps?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    endInteractionSource: ComposeInteractionSource;
-    steps?: number;
-    state?: never;
-    startInteractionSource?: never;
-    startThumb?: never;
-    endThumb?: never;
-    track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    valueRange?: ComposeFloatRange;
-    onValueChangeFinished?: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource?: ComposeInteractionSource;
-    steps?: number;
-    state?: never;
-    startThumb?: never;
-    endThumb?: never;
-    track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    track: ReactNode;
-    steps: number;
-    state?: never;
-    enabled?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    track: ReactNode;
-    steps: number;
-    state?: never;
-    valueRange?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    track: ReactNode;
-    steps: number;
-    state?: never;
-    onValueChangeFinished?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors?: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    track: ReactNode;
-    steps: number;
-    state?: never;
-    startThumb?: never;
-    endThumb?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors?: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    endThumb: ReactNode;
-    track?: ReactNode;
-    steps: number;
-    state?: never;
-    startThumb?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb?: ReactNode;
-    track?: ReactNode;
-    steps: number;
-    state?: never;
-    colors?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    track: ReactNode;
-    steps: number;
-    state?: never;
-    startInteractionSource?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    track: ReactNode;
-    steps: number;
-    state?: never;
-    endInteractionSource?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    track?: ReactNode;
-    steps: number;
-    state?: never;
-    endThumb?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    steps: number;
-    state?: never;
-    track?: never;
-    }
-  | {
-    value: ComposeFloatRange;
-    onValueChange: (value: ComposeFloatRange) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled: boolean;
-    valueRange: ComposeFloatRange;
-    onValueChangeFinished: (() => void) | null;
-    colors: ComposeSliderColorsValue;
-    startInteractionSource: ComposeInteractionSource;
-    endInteractionSource: ComposeInteractionSource;
-    startThumb: ReactNode;
-    endThumb: ReactNode;
-    track: ReactNode;
-    steps?: number;
-    state?: never;
     }
 ;
 export const RangeSlider = createComposableComponent<RangeSliderProps>({
   name: "RangeSlider",
-  props: ["state","modifier","enabled","colors","startInteractionSource","endInteractionSource","value","valueRange","steps"],
-  objectProps: ["state","colors","startInteractionSource","endInteractionSource","value","valueRange"],
+  props: ["state","modifier","enabled","colors","startThumbInteractionSource","endThumbInteractionSource","value","valueRange","steps"],
+  objectProps: ["state","colors","startThumbInteractionSource","endThumbInteractionSource","value","valueRange"],
   slots: ["startThumb","endThumb","track"],
   events: ["onValueChange","onValueChangeFinished"],
   children: false,
   overloads: [
-    { id: "RangeSlider", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["startInteractionSource","object",true,false],["endInteractionSource","object",true,false],["startThumb","ReactNode",true,false],["endThumb","ReactNode",true,false],["track","ReactNode",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+    { id: "RangeSlider", children: false, parameters: [["state","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["startThumbInteractionSource","object",true,false],["endThumbInteractionSource","object",true,false],["startThumb","ReactNode",true,false],["endThumb","ReactNode",true,false],["track","ReactNode",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
     { id: "RangeSlider#1", children: false, parameters: [["value","tuple",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["steps","number",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
-    { id: "RangeSlider#2", children: false, parameters: [["value","tuple",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["startInteractionSource","object",true,false],["endInteractionSource","object",true,false],["startThumb","ReactNode",true,false],["endThumb","ReactNode",true,false],["track","ReactNode",true,false],["steps","number",true,false]], masks: [16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,80,81,82,83,84,85,86,87,128,129,130,131,132,133,134,135,136,144,145,146,147,148,149,150,151,192,256,257,258,259,260,261,262,263,264,272,273,274,275,276,277,278,279,320,384,511,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,592,593,594,595,596,597,598,599,631,639,640,641,642,643,644,645,646,647,656,657,658,659,660,661,662,663,695,703,759,767,768,769,770,771,772,773,774,775,784,785,786,787,788,789,790,791,823,831,887,895,951,959,991,1007,1015,1019,1021,1022,1023] },
   ],
 });
 
@@ -30494,7 +41876,7 @@ export interface RichTooltipProps {
   modifier?: ComposeModifier;
   title?: ReactNode;
   action?: ReactNode;
-  caretSize?: ComposeDpSize;
+  caretShape?: ComposeShape | null;
   maxWidth?: number;
   shape?: ComposeShape;
   colors?: ComposeRichTooltipColorsValue;
@@ -30504,8 +41886,8 @@ export interface RichTooltipProps {
 }
 export const RichTooltip = createComposableComponent<RichTooltipProps>({
   name: "RichTooltip",
-  props: ["modifier","caretSize","maxWidth","shape","colors","tonalElevation","shadowElevation"],
-  objectProps: ["caretSize","shape","colors"],
+  props: ["modifier","caretShape","maxWidth","shape","colors","tonalElevation","shadowElevation"],
+  objectProps: ["caretShape","shape","colors"],
   slots: ["title","action","text"],
   children: false,
 });
@@ -30544,6 +41926,36 @@ export const Scaffold = createComposableComponent<ScaffoldProps>({
   objectProps: ["contentWindowInsets"],
   slots: ["topBar","bottomBar","snackbarHost","floatingActionButton"],
   children: true,
+});
+
+export interface ScrimProps {
+  contentDescription: string | null;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  onClick?: (() => void) | null;
+  alpha?: number;
+  color?: string;
+}
+export const Scrim = createComposableComponent<ScrimProps>({
+  name: "Scrim",
+  props: ["contentDescription","modifier","alpha","color"],
+  events: ["onClick"],
+  children: false,
+});
+
+export interface ScrollDisplayModeToggleProps {
+  onDisplayModeChange: () => void;
+  displayMode: ComposeTimePickerDisplayMode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+}
+export const ScrollDisplayModeToggle = createComposableComponent<ScrollDisplayModeToggleProps>({
+  name: "ScrollDisplayModeToggle",
+  props: ["displayMode","modifier"],
+  events: ["onDisplayModeChange"],
+  children: false,
 });
 
 export interface ScrollableTabRowProps {
@@ -33884,6 +45296,1988 @@ export const SegmentedButton = createComposableComponent<SegmentedButtonProps>({
   ],
 });
 
+export type SegmentedListItemProps =
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    colors?: never;
+    elevation?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    enabled?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    leadingContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    trailingContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    overlineContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    supportingContent?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    colors?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    children?: ReactNode;
+    elevation?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding?: ComposePaddingValues;
+    children?: ReactNode;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    onLongClick?: (() => void) | null;
+    onLongClickLabel?: string | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    elevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    leadingContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    trailingContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    overlineContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    supportingContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClick?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClickLabel?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    checked?: never;
+    onCheckedChange?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    onLongClick?: (() => void) | null;
+    onLongClickLabel?: string | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    elevation?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onClick?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    leadingContent?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    trailingContent?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    overlineContent?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    supportingContent?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onClick?: never;
+    onLongClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onClick?: never;
+    onLongClickLabel?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onClick?: never;
+    selected?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    verticalAlignment?: ComposeVerticalAlignment;
+    onLongClick?: (() => void) | null;
+    onLongClickLabel?: string | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    elevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    elevation: ComposeListItemElevationValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    colors?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeListItemColorsValue;
+    elevation?: ComposeListItemElevationValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    supportingContent?: never;
+    verticalAlignment?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    supportingContent: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    overlineContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    overlineContent: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    trailingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    trailingContent: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    leadingContent?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent?: ReactNode;
+    trailingContent?: ReactNode;
+    overlineContent?: ReactNode;
+    supportingContent?: ReactNode;
+    colors: ComposeListItemColorsValue;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    elevation?: never;
+    contentPadding?: never;
+    onLongClick?: never;
+    onLongClickLabel?: never;
+    interactionSource?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    leadingContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    trailingContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    overlineContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    supportingContent?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    verticalAlignment?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClick?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    onLongClickLabel?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    shapes: ComposeListItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    leadingContent: ReactNode;
+    trailingContent: ReactNode;
+    overlineContent: ReactNode;
+    supportingContent: ReactNode;
+    verticalAlignment: ComposeVerticalAlignment;
+    onLongClick: (() => void) | null;
+    onLongClickLabel: string | null;
+    colors: ComposeListItemColorsValue;
+    elevation: ComposeListItemElevationValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    checked?: never;
+    onCheckedChange?: never;
+    }
+;
+export const SegmentedListItem = createComposableComponent<SegmentedListItemProps>({
+  name: "SegmentedListItem",
+  props: ["shapes","modifier","enabled","verticalAlignment","colors","elevation","contentPadding","onLongClickLabel","interactionSource","checked","selected"],
+  objectProps: ["shapes","colors","elevation","contentPadding","interactionSource"],
+  slots: ["leadingContent","trailingContent","overlineContent","supportingContent"],
+  events: ["onClick","onLongClick","onCheckedChange"],
+  children: true,
+  overloads: [
+    { id: "SegmentedListItem", children: true, parameters: [["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,383,447,479,495,503,507,509,510,511] },
+    { id: "SegmentedListItem#1", children: true, parameters: [["onClick","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["onLongClick","function",true,true],["onLongClickLabel","string",true,true],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3071,3072,3073,3074,3075,3076,3077,3078,3079,3080,3081,3082,3083,3084,3085,3086,3087,3088,3089,3090,3091,3092,3093,3094,3095,3096,3097,3098,3099,3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,3160,3161,3162,3163,3164,3165,3166,3167,3168,3169,3170,3171,3172,3173,3174,3175,3176,3177,3178,3179,3180,3181,3182,3183,3184,3185,3186,3187,3188,3189,3190,3191,3192,3193,3194,3195,3196,3197,3198,3199,3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3583,3839,3967,4031,4063,4079,4087,4091,4093,4094,4095] },
+    { id: "SegmentedListItem#2", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["onLongClick","function",true,true],["onLongClickLabel","string",true,true],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3071,3072,3073,3074,3075,3076,3077,3078,3079,3080,3081,3082,3083,3084,3085,3086,3087,3088,3089,3090,3091,3092,3093,3094,3095,3096,3097,3098,3099,3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,3160,3161,3162,3163,3164,3165,3166,3167,3168,3169,3170,3171,3172,3173,3174,3175,3176,3177,3178,3179,3180,3181,3182,3183,3184,3185,3186,3187,3188,3189,3190,3191,3192,3193,3194,3195,3196,3197,3198,3199,3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3583,3839,3967,4031,4063,4079,4087,4091,4093,4094,4095] },
+    { id: "SegmentedListItem#3", children: true, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["overlineContent","ReactNode",true,true],["supportingContent","ReactNode",true,true],["verticalAlignment","string",true,false],["onLongClick","function",true,true],["onLongClickLabel","string",true,true],["colors","object",true,false],["elevation","object",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,768,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171,1172,1173,1174,1175,1176,1177,1178,1179,1180,1181,1182,1183,1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197,1198,1199,1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253,1254,1255,1256,1257,1258,1259,1260,1261,1262,1263,1264,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,2047,2048,2049,2050,2051,2052,2053,2054,2055,2056,2057,2058,2059,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079,2080,2081,2082,2083,2084,2085,2086,2087,2088,2089,2090,2091,2092,2093,2094,2095,2096,2097,2098,2099,2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145,2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174,2175,2176,2177,2178,2179,2180,2181,2182,2183,2184,2185,2186,2187,2188,2189,2190,2191,2192,2193,2194,2195,2196,2197,2198,2199,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221,2222,2223,2224,2225,2226,2227,2228,2229,2230,2231,2232,2233,2234,2235,2236,2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247,2248,2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260,2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272,2273,2274,2275,2276,2277,2278,2279,2280,2281,2282,2283,2284,2285,2286,2287,2288,2289,2290,2291,2292,2293,2294,2295,2296,2297,2298,2299,2300,2301,2302,2303,3071,3072,3073,3074,3075,3076,3077,3078,3079,3080,3081,3082,3083,3084,3085,3086,3087,3088,3089,3090,3091,3092,3093,3094,3095,3096,3097,3098,3099,3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,3160,3161,3162,3163,3164,3165,3166,3167,3168,3169,3170,3171,3172,3173,3174,3175,3176,3177,3178,3179,3180,3181,3182,3183,3184,3185,3186,3187,3188,3189,3190,3191,3192,3193,3194,3195,3196,3197,3198,3199,3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289,3290,3291,3292,3293,3294,3295,3296,3297,3298,3299,3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3583,3839,3967,4031,4063,4079,4087,4091,4093,4094,4095] },
+  ],
+});
+
+export type SelectableDropdownMenuItemProps =
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon?: ReactNode;
+    selectedLeadingIcon?: ReactNode;
+    trailingContent?: ReactNode;
+    supportingText?: ReactNode;
+    enabled?: boolean;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon?: ReactNode;
+    selectedLeadingIcon?: ReactNode;
+    trailingContent?: ReactNode;
+    supportingText?: ReactNode;
+    enabled?: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    selectedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    leadingIcon?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    selectedLeadingIcon?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    selectedLeadingIcon: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    trailingContent?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    selectedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    supportingText?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    selectedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    selectedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    selectedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    }
+  | {
+    selected: boolean;
+    onClick: () => void;
+    text: ReactNode;
+    shapes: ComposeMenuItemShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    leadingIcon: ReactNode;
+    selectedLeadingIcon: ReactNode;
+    trailingContent: ReactNode;
+    supportingText: ReactNode;
+    enabled: boolean;
+    colors: ComposeSelectableMenuItemColorsValue;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
+export const SelectableDropdownMenuItem = createComposableComponent<SelectableDropdownMenuItemProps>({
+  name: "SelectableDropdownMenuItem",
+  props: ["selected","shapes","modifier","enabled","colors","horizontalArrangement","contentPadding","interactionSource"],
+  objectProps: ["shapes","colors","contentPadding","interactionSource"],
+  slots: ["text","leadingIcon","selectedLeadingIcon","trailingContent","supportingText"],
+  events: ["onClick"],
+  children: false,
+  overloads: [
+    { id: "SelectableDropdownMenuItem", children: false, parameters: [["selected","boolean",false,false],["onClick","function",false,false],["text","ReactNode",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["leadingIcon","ReactNode",true,true],["selectedLeadingIcon","ReactNode",true,true],["trailingContent","ReactNode",true,true],["supportingText","ReactNode",true,true],["enabled","boolean",true,false],["colors","object",true,false],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,495,503,507,509,510,511] },
+  ],
+});
+
 export interface SelectionContainerProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
@@ -33963,19 +47357,19 @@ export const SingleChoiceSegmentedButtonRow = createComposableComponent<SingleCh
 export type SliderProps =
   | {
     state: ComposeSliderState;
+    onValueChange: (value: number) => void;
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
     enabled?: boolean;
+    onValueChangeFinished?: (() => void) | null;
     colors?: ComposeSliderColorsValue;
     interactionSource?: ComposeInteractionSource;
     thumb?: ReactNode;
     track?: ReactNode;
     value?: never;
-    onValueChange?: never;
     valueRange?: never;
     steps?: never;
-    onValueChangeFinished?: never;
     }
   | {
     value: number;
@@ -33993,38 +47387,6 @@ export type SliderProps =
     thumb?: never;
     track?: never;
     }
-  | {
-    value: number;
-    onValueChange: (value: number) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    onValueChangeFinished?: (() => void) | null;
-    colors?: ComposeSliderColorsValue;
-    interactionSource?: ComposeInteractionSource;
-    steps?: number;
-    track: ReactNode;
-    valueRange?: ComposeFloatRange;
-    state?: never;
-    thumb?: never;
-    }
-  | {
-    value: number;
-    onValueChange: (value: number) => void;
-    modifiers?: ComposeModifier;
-    /** @deprecated Use the modifiers prop. */
-    modifier?: ComposeModifier;
-    enabled?: boolean;
-    onValueChangeFinished?: (() => void) | null;
-    colors?: ComposeSliderColorsValue;
-    interactionSource?: ComposeInteractionSource;
-    steps?: number;
-    thumb: ReactNode;
-    track?: ReactNode;
-    valueRange?: ComposeFloatRange;
-    state?: never;
-    }
 ;
 export const Slider = createComposableComponent<SliderProps>({
   name: "Slider",
@@ -34034,9 +47396,8 @@ export const Slider = createComposableComponent<SliderProps>({
   events: ["onValueChange","onValueChangeFinished"],
   children: false,
   overloads: [
-    { id: "Slider", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,false],["thumb","ReactNode",true,false],["track","ReactNode",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31] },
+    { id: "Slider", children: false, parameters: [["state","object",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["interactionSource","object",true,false],["thumb","ReactNode",true,false],["track","ReactNode",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
     { id: "Slider#1", children: false, parameters: [["value","number",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["valueRange","tuple",true,false],["steps","number",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["interactionSource","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
-    { id: "Slider#2", children: false, parameters: [["value","number",false,false],["onValueChange","function",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["onValueChangeFinished","function",true,true],["colors","object",true,false],["interactionSource","object",true,false],["steps","number",true,false],["thumb","ReactNode",true,false],["track","ReactNode",true,false],["valueRange","tuple",true,false]], masks: [32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
   ],
 });
 
@@ -34140,6 +47501,16 @@ export const SnackbarHost = createComposableComponent<SnackbarHostProps>({
   children: false,
 });
 
+export interface SoundEffectOnInteractionProps {
+  enabled: boolean;
+  children?: ReactNode;
+}
+export const SoundEffectOnInteraction = createComposableComponent<SoundEffectOnInteractionProps>({
+  name: "SoundEffectOnInteraction",
+  props: ["enabled"],
+  children: true,
+});
+
 export interface SpacerProps {
   modifiers: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
@@ -34185,27 +47556,242 @@ export const StandardFloatingActionButton = createComposableComponent<StandardFl
   children: true,
 });
 
-export interface SuggestionChipProps {
-  onClick: () => void;
-  label: ReactNode;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  icon?: ReactNode;
-  shape?: ComposeShape;
-  colors?: ComposeChipColorsValue;
-  elevation?: ComposeChipElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type SuggestionChipProps =
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement?: ComposeHorizontalArrangement;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    colors?: never;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    colors?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation?: ComposeChipElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    interactionSource?: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    shape?: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border?: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    elevation?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    enabled?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    icon?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    shape?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    colors?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    elevation?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    border?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    horizontalArrangement?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    interactionSource: ComposeInteractionSource | null;
+    contentPadding?: never;
+    }
+  | {
+    onClick: () => void;
+    label: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shape: ComposeShape;
+    colors: ComposeChipColorsValue;
+    elevation: ComposeChipElevationValue | null;
+    border: ComposeBorderStroke | null;
+    horizontalArrangement: ComposeHorizontalArrangement;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
 export const SuggestionChip = createComposableComponent<SuggestionChipProps>({
   name: "SuggestionChip",
-  props: ["modifier","enabled","shape","colors","elevation","border","interactionSource"],
-  objectProps: ["shape","colors","elevation","border","interactionSource"],
+  props: ["modifier","enabled","shape","colors","elevation","border","horizontalArrangement","contentPadding","interactionSource"],
+  objectProps: ["shape","colors","elevation","border","contentPadding","interactionSource"],
   slots: ["label","icon"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "SuggestionChip", children: false, parameters: [["onClick","function",false,false],["label","ReactNode",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["icon","ReactNode",true,true],["shape","shape",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["horizontalArrangement","string",true,false],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,128,129,130,131,132,133,134,135,160,161,162,163,164,165,166,167,192,193,194,195,196,197,198,199,224,225,226,227,228,229,230,231,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,352,353,354,355,356,357,358,359,383,384,385,386,387,388,389,390,391,416,417,418,419,420,421,422,423,447,448,449,450,451,452,453,454,455,479,480,481,482,483,484,485,486,487,495,503,507,509,510,511] },
+  ],
 });
 
 export type SurfaceProps =
@@ -35112,6 +48698,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     softWrap?: never;
@@ -35132,6 +48719,7 @@ export type TextProps =
     onTextLayout: ((value: ComposeTextLayout) => void) | null;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -35154,6 +48742,7 @@ export type TextProps =
     minLines: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     softWrap?: never;
@@ -35176,6 +48765,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     softWrap?: never;
@@ -35198,6 +48788,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     onTextLayout?: never;
@@ -35220,6 +48811,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     composeTextStyle?: never;
@@ -35237,7 +48829,52 @@ export type TextProps =
     lineHeight?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textAlign?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color?: string;
+    fontSize?: number;
+    fontWeight?: ComposeFontWeight | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    letterSpacing?: number;
+    lineHeight?: number;
+    autoSize?: never;
+    fontStyle?: never;
+    textDecoration?: never;
+    textAlign?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    fontFamily: ComposeFontFamilyValue | null;
+    textDecoration: ComposeTextDecorationValue | null;
+    color?: never;
+    autoSize?: never;
+    fontSize?: never;
+    fontStyle?: never;
+    fontWeight?: never;
+    letterSpacing?: never;
+    textAlign?: never;
+    lineHeight?: never;
     overflow?: never;
     softWrap?: never;
     maxLines?: never;
@@ -35257,6 +48894,7 @@ export type TextProps =
     letterSpacing?: number;
     lineHeight?: number;
     autoSize?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -35277,7 +48915,30 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
+    textAlign?: never;
+    lineHeight?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    fontStyle: ComposeFontStyleValue | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    color?: never;
+    autoSize?: never;
+    fontSize?: never;
+    fontWeight?: never;
+    letterSpacing?: never;
+    textDecoration?: never;
     textAlign?: never;
     lineHeight?: never;
     overflow?: never;
@@ -35304,6 +48965,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     composeTextStyle?: never;
@@ -35324,6 +48986,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     onTextLayout?: never;
@@ -35345,6 +49008,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     onTextLayout?: never;
@@ -35366,6 +49030,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     onTextLayout?: never;
@@ -35387,6 +49052,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     onTextLayout?: never;
@@ -35408,6 +49074,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     maxLines?: never;
     onTextLayout?: never;
@@ -35429,6 +49096,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     minLines?: never;
     onTextLayout?: never;
@@ -35452,6 +49120,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -35467,6 +49136,7 @@ export type TextProps =
     letterSpacing?: number;
     lineHeight?: number;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -35487,7 +49157,30 @@ export type TextProps =
     fontSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
+    textAlign?: never;
+    lineHeight?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    autoSize: ComposeTextAutoSizeValue | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    color?: never;
+    fontSize?: never;
+    fontStyle?: never;
+    fontWeight?: never;
+    letterSpacing?: never;
+    textDecoration?: never;
     textAlign?: never;
     lineHeight?: never;
     overflow?: never;
@@ -35507,6 +49200,7 @@ export type TextProps =
     color?: never;
     fontSize?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     textAlign?: never;
@@ -35527,6 +49221,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -35555,6 +49250,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     onTextLayout?: never;
@@ -35577,6 +49273,7 @@ export type TextProps =
     fontSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     composeTextStyle?: never;
@@ -35597,6 +49294,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     onTextLayout?: never;
@@ -35618,6 +49316,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     onTextLayout?: never;
@@ -35639,6 +49338,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     onTextLayout?: never;
@@ -35660,6 +49360,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     onTextLayout?: never;
@@ -35681,6 +49382,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     maxLines?: never;
     onTextLayout?: never;
@@ -35702,6 +49404,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     minLines?: never;
     onTextLayout?: never;
@@ -35725,6 +49428,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -35744,6 +49448,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     onTextLayout?: never;
@@ -35765,6 +49470,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     onTextLayout?: never;
@@ -35786,6 +49492,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     onTextLayout?: never;
@@ -35807,6 +49514,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     onTextLayout?: never;
@@ -35828,6 +49536,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     onTextLayout?: never;
@@ -35849,6 +49558,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     maxLines?: never;
     onTextLayout?: never;
@@ -35870,6 +49580,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     minLines?: never;
     onTextLayout?: never;
@@ -35893,6 +49604,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -35911,6 +49623,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     overflow?: never;
@@ -35932,6 +49645,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     textAlign?: never;
@@ -35953,6 +49667,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     lineHeight?: never;
@@ -35974,6 +49689,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     softWrap?: never;
@@ -35995,6 +49711,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     maxLines?: never;
@@ -36016,6 +49733,7 @@ export type TextProps =
     maxLines: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     minLines?: never;
@@ -36039,6 +49757,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     onTextLayout?: never;
@@ -36058,6 +49777,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36079,6 +49799,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     lineHeight?: never;
@@ -36100,6 +49821,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     softWrap?: never;
@@ -36121,6 +49843,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     maxLines?: never;
@@ -36142,6 +49865,7 @@ export type TextProps =
     maxLines: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     minLines?: never;
@@ -36165,6 +49889,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     onTextLayout?: never;
@@ -36184,6 +49909,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     overflow?: never;
@@ -36205,6 +49931,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     softWrap?: never;
@@ -36226,6 +49953,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     maxLines?: never;
@@ -36247,6 +49975,7 @@ export type TextProps =
     maxLines: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     minLines?: never;
@@ -36270,6 +49999,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     onTextLayout?: never;
@@ -36289,6 +50019,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     maxLines?: never;
@@ -36310,6 +50041,7 @@ export type TextProps =
     maxLines: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     minLines?: never;
@@ -36333,6 +50065,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     onTextLayout?: never;
@@ -36352,6 +50085,7 @@ export type TextProps =
     minLines?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     maxLines?: never;
@@ -36373,6 +50107,7 @@ export type TextProps =
     maxLines: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     minLines?: never;
@@ -36396,6 +50131,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     onTextLayout?: never;
@@ -36415,6 +50151,7 @@ export type TextProps =
     softWrap: boolean;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     maxLines?: never;
     minLines?: never;
@@ -36438,6 +50175,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     maxLines?: never;
     onTextLayout?: never;
@@ -36460,6 +50198,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -36482,6 +50221,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     }
   | {
@@ -36504,6 +50244,29 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
+    }
+  | {
+    text: string;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color: string;
+    fontSize: number;
+    fontWeight: ComposeFontWeight | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    letterSpacing: number;
+    textDecoration?: ComposeTextDecorationValue | null;
+    textAlign: ComposeTextAlign | null;
+    lineHeight: number;
+    overflow: ComposeTextOverflow;
+    softWrap: boolean;
+    maxLines: number;
+    minLines: number;
+    onTextLayout?: ((value: ComposeTextLayout) => void) | null;
+    composeTextStyle: ComposeTextStyle;
+    autoSize?: never;
+    fontStyle?: never;
     }
   | {
     text: string;
@@ -36514,6 +50277,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration?: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36535,6 +50299,7 @@ export type TextProps =
     autoSize: ComposeTextAutoSizeValue | null;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36556,6 +50321,7 @@ export type TextProps =
     autoSize: ComposeTextAutoSizeValue | null;
     fontSize: number;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration?: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36577,6 +50343,7 @@ export type TextProps =
     autoSize: ComposeTextAutoSizeValue | null;
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36599,6 +50366,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
     lineHeight: number;
@@ -36620,6 +50388,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textAlign: ComposeTextAlign | null;
     lineHeight: number;
@@ -36641,6 +50410,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     lineHeight: number;
@@ -36662,6 +50432,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36683,6 +50454,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36704,6 +50476,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36725,6 +50498,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36746,6 +50520,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36767,6 +50542,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -36792,6 +50568,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     softWrap?: never;
@@ -36812,6 +50589,7 @@ export type TextProps =
     onTextLayout: (value: ComposeTextLayout) => void;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36833,6 +50611,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36854,6 +50633,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36875,6 +50655,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36896,6 +50677,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     softWrap?: never;
@@ -36917,7 +50699,52 @@ export type TextProps =
     lineHeight?: number;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textAlign?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color?: string;
+    fontSize?: number;
+    fontWeight?: ComposeFontWeight | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    letterSpacing?: number;
+    lineHeight?: number;
+    autoSize?: never;
+    fontStyle?: never;
+    textDecoration?: never;
+    textAlign?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    fontFamily: ComposeFontFamilyValue | null;
+    textDecoration: ComposeTextDecorationValue | null;
+    color?: never;
+    autoSize?: never;
+    fontSize?: never;
+    fontStyle?: never;
+    fontWeight?: never;
+    letterSpacing?: never;
+    textAlign?: never;
+    lineHeight?: never;
     overflow?: never;
     softWrap?: never;
     maxLines?: never;
@@ -36938,6 +50765,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36960,6 +50788,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     softWrap?: never;
@@ -36979,6 +50808,7 @@ export type TextProps =
     letterSpacing?: number;
     lineHeight?: number;
     autoSize?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -36999,7 +50829,30 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
+    textAlign?: never;
+    lineHeight?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    fontStyle: ComposeFontStyleValue | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    color?: never;
+    autoSize?: never;
+    fontSize?: never;
+    fontWeight?: never;
+    letterSpacing?: never;
+    textDecoration?: never;
     textAlign?: never;
     lineHeight?: never;
     overflow?: never;
@@ -37027,6 +50880,7 @@ export type TextProps =
     color?: never;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -37042,6 +50896,7 @@ export type TextProps =
     letterSpacing?: number;
     lineHeight?: number;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     overflow?: never;
@@ -37062,7 +50917,30 @@ export type TextProps =
     fontSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
+    textAlign?: never;
+    lineHeight?: never;
+    overflow?: never;
+    softWrap?: never;
+    maxLines?: never;
+    minLines?: never;
+    onTextLayout?: never;
+    composeTextStyle?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    autoSize: ComposeTextAutoSizeValue | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    color?: never;
+    fontSize?: never;
+    fontStyle?: never;
+    fontWeight?: never;
+    letterSpacing?: never;
+    textDecoration?: never;
     textAlign?: never;
     lineHeight?: never;
     overflow?: never;
@@ -37082,6 +50960,7 @@ export type TextProps =
     color?: never;
     fontSize?: never;
     fontWeight?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     textAlign?: never;
@@ -37102,6 +50981,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37132,6 +51012,7 @@ export type TextProps =
     autoSize?: never;
     fontSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -37153,6 +51034,7 @@ export type TextProps =
     autoSize?: never;
     fontStyle?: never;
     fontWeight?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -37173,6 +51055,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     letterSpacing?: never;
     textDecoration?: never;
     onTextLayout?: never;
@@ -37194,6 +51077,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     textAlign?: never;
     onTextLayout?: never;
@@ -37215,6 +51099,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     lineHeight?: never;
     onTextLayout?: never;
@@ -37236,6 +51121,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     overflow?: never;
     onTextLayout?: never;
@@ -37257,6 +51143,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     softWrap?: never;
     onTextLayout?: never;
@@ -37278,6 +51165,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     maxLines?: never;
     onTextLayout?: never;
@@ -37299,6 +51187,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     minLines?: never;
     onTextLayout?: never;
@@ -37321,6 +51210,7 @@ export type TextProps =
     composeTextStyle?: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     onTextLayout?: never;
     }
@@ -37343,6 +51233,7 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
     textDecoration?: never;
     }
   | {
@@ -37365,6 +51256,29 @@ export type TextProps =
     composeTextStyle: ComposeTextStyle;
     autoSize?: never;
     fontStyle?: never;
+    fontFamily?: never;
+    }
+  | {
+    text: ComposeAnnotatedString;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    color: string;
+    fontSize: number;
+    fontWeight: ComposeFontWeight | null;
+    fontFamily: ComposeFontFamilyValue | null;
+    letterSpacing: number;
+    textDecoration?: ComposeTextDecorationValue | null;
+    textAlign: ComposeTextAlign | null;
+    lineHeight: number;
+    overflow: ComposeTextOverflow;
+    softWrap: boolean;
+    maxLines: number;
+    minLines: number;
+    onTextLayout?: (value: ComposeTextLayout) => void;
+    composeTextStyle: ComposeTextStyle;
+    autoSize?: never;
+    fontStyle?: never;
     }
   | {
     text: ComposeAnnotatedString;
@@ -37375,6 +51289,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration?: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37396,6 +51311,7 @@ export type TextProps =
     autoSize: ComposeTextAutoSizeValue | null;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37417,6 +51333,7 @@ export type TextProps =
     autoSize: ComposeTextAutoSizeValue | null;
     fontSize: number;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration?: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37438,6 +51355,7 @@ export type TextProps =
     autoSize: ComposeTextAutoSizeValue | null;
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37460,6 +51378,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
     lineHeight: number;
@@ -37481,6 +51400,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textAlign: ComposeTextAlign | null;
     lineHeight: number;
@@ -37502,6 +51422,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     lineHeight: number;
@@ -37523,6 +51444,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37544,6 +51466,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37565,6 +51488,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37586,6 +51510,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37607,6 +51532,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37628,6 +51554,7 @@ export type TextProps =
     fontSize: number;
     fontStyle: ComposeFontStyleValue | null;
     fontWeight: ComposeFontWeight | null;
+    fontFamily?: ComposeFontFamilyValue | null;
     letterSpacing: number;
     textDecoration: ComposeTextDecorationValue | null;
     textAlign: ComposeTextAlign | null;
@@ -37642,13 +51569,13 @@ export type TextProps =
 ;
 export const Text = createComposableComponent<TextProps>({
   name: "Text",
-  props: ["text","modifier","color","autoSize","fontSize","fontStyle","fontWeight","letterSpacing","textDecoration","textAlign","lineHeight","overflow","softWrap","maxLines","minLines","composeTextStyle"],
-  objectProps: ["autoSize","composeTextStyle","text"],
+  props: ["text","modifier","color","autoSize","fontSize","fontStyle","fontWeight","fontFamily","letterSpacing","textDecoration","textAlign","lineHeight","overflow","softWrap","maxLines","minLines","composeTextStyle"],
+  objectProps: ["autoSize","fontFamily","composeTextStyle","text"],
   events: ["onTextLayout"],
   children: false,
   overloads: [
-    { id: "Text", children: false, parameters: [["text","string",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["autoSize","object",true,true],["fontSize","number",true,false],["fontStyle","string",true,true],["fontWeight","string",true,true],["letterSpacing","number",true,false],["textDecoration","string",true,true],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["onTextLayout","function",true,true],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,13,16,17,18,19,20,21,22,23,24,25,28,29,32,33,34,35,36,37,38,39,40,41,44,45,48,49,50,51,52,53,54,55,56,57,60,61,64,65,66,68,69,72,80,81,84,85,96,97,100,101,112,113,116,117,128,129,132,133,144,145,148,149,160,161,164,165,176,177,180,181,256,257,258,259,260,261,262,263,264,265,268,269,272,273,274,275,276,277,278,279,280,281,284,285,288,289,290,291,292,293,294,295,296,297,300,301,304,305,306,307,308,309,310,311,312,313,316,317,320,321,324,325,336,337,340,341,352,353,356,357,368,369,372,373,384,385,388,389,400,401,404,405,416,417,420,421,432,433,436,437,512,513,516,517,528,529,532,533,544,545,548,549,560,561,564,565,640,641,644,645,656,657,660,661,672,673,676,677,688,689,692,693,768,769,772,773,784,785,788,789,800,801,804,805,816,817,820,821,896,897,900,901,912,913,916,917,928,929,932,933,944,945,948,949,1024,1025,1028,1029,1040,1041,1044,1045,1056,1057,1060,1061,1072,1073,1076,1077,1152,1153,1156,1157,1168,1169,1172,1173,1184,1185,1188,1189,1200,1201,1204,1205,1280,1281,1284,1285,1296,1297,1300,1301,1312,1313,1316,1317,1328,1329,1332,1333,1408,1409,1412,1413,1424,1425,1428,1429,1440,1441,1444,1445,1456,1457,1460,1461,1536,1537,1540,1541,1552,1553,1556,1557,1568,1569,1572,1573,1584,1585,1588,1589,1664,1665,1668,1669,1680,1681,1684,1685,1696,1697,1700,1701,1712,1713,1716,1717,1792,1793,1796,1797,1808,1809,1812,1813,1824,1825,1828,1829,1840,1841,1844,1845,1920,1921,1924,1925,1936,1937,1940,1941,1952,1953,1956,1957,1968,1969,1972,1973,2048,2049,2052,2053,2064,2065,2068,2069,2080,2081,2084,2085,2096,2097,2100,2101,2176,2177,2180,2181,2192,2193,2196,2197,2208,2209,2212,2213,2224,2225,2228,2229,2304,2305,2308,2309,2320,2321,2324,2325,2336,2337,2340,2341,2352,2353,2356,2357,2432,2433,2436,2437,2448,2449,2452,2453,2464,2465,2468,2469,2480,2481,2484,2485,2560,2561,2564,2565,2576,2577,2580,2581,2592,2593,2596,2597,2608,2609,2612,2613,2688,2689,2692,2693,2704,2705,2708,2709,2720,2721,2724,2725,2736,2737,2740,2741,2816,2817,2820,2821,2832,2833,2836,2837,2848,2849,2852,2853,2864,2865,2868,2869,2944,2945,2948,2949,2960,2961,2964,2965,2976,2977,2980,2981,2992,2993,2996,2997,3072,3073,3076,3077,3088,3089,3092,3093,3104,3105,3108,3109,3120,3121,3124,3125,3200,3201,3204,3205,3216,3217,3220,3221,3232,3233,3236,3237,3248,3249,3252,3253,3328,3329,3332,3333,3344,3345,3348,3349,3360,3361,3364,3365,3376,3377,3380,3381,3456,3457,3460,3461,3472,3473,3476,3477,3488,3489,3492,3493,3504,3505,3508,3509,3584,3585,3588,3589,3600,3601,3604,3605,3616,3617,3620,3621,3632,3633,3636,3637,3712,3713,3716,3717,3728,3729,3732,3733,3744,3745,3748,3749,3760,3761,3764,3765,3840,3841,3844,3845,3856,3857,3860,3861,3872,3873,3876,3877,3888,3889,3892,3893,3968,3969,3972,3973,3984,3985,3988,3989,4000,4001,4004,4005,4016,4017,4020,4021,4096,4097,4100,4101,4112,4113,4116,4117,4128,4129,4132,4133,4144,4145,4148,4149,4224,4225,4228,4229,4240,4241,4244,4245,4256,4257,4260,4261,4272,4273,4276,4277,4352,4353,4356,4357,4368,4369,4372,4373,4384,4385,4388,4389,4400,4401,4404,4405,4480,4481,4484,4485,4496,4497,4500,4501,4512,4513,4516,4517,4528,4529,4532,4533,4608,4609,4612,4613,4624,4625,4628,4629,4640,4641,4644,4645,4656,4657,4660,4661,4736,4737,4740,4741,4752,4753,4756,4757,4768,4769,4772,4773,4784,4785,4788,4789,4864,4865,4868,4869,4880,4881,4884,4885,4896,4897,4900,4901,4912,4913,4916,4917,4992,4993,4996,4997,5008,5009,5012,5013,5024,5025,5028,5029,5040,5041,5044,5045,5120,5121,5124,5125,5136,5137,5140,5141,5152,5153,5156,5157,5168,5169,5172,5173,5248,5249,5252,5253,5264,5265,5268,5269,5280,5281,5284,5285,5296,5297,5300,5301,5376,5377,5380,5381,5392,5393,5396,5397,5408,5409,5412,5413,5424,5425,5428,5429,5504,5505,5508,5509,5520,5521,5524,5525,5536,5537,5540,5541,5552,5553,5556,5557,5632,5633,5636,5637,5648,5649,5652,5653,5664,5665,5668,5669,5680,5681,5684,5685,5760,5761,5764,5765,5776,5777,5780,5781,5792,5793,5796,5797,5808,5809,5812,5813,5888,5889,5892,5893,5904,5905,5908,5909,5920,5921,5924,5925,5936,5937,5940,5941,6016,6017,6020,6021,6032,6033,6036,6037,6048,6049,6052,6053,6064,6065,6068,6069,6144,6145,6148,6149,6160,6161,6164,6165,6176,6177,6180,6181,6192,6193,6196,6197,6272,6273,6276,6277,6288,6289,6292,6293,6304,6305,6308,6309,6320,6321,6324,6325,6400,6401,6404,6405,6416,6417,6420,6421,6432,6433,6436,6437,6448,6449,6452,6453,6528,6529,6532,6533,6544,6545,6548,6549,6560,6561,6564,6565,6576,6577,6580,6581,6656,6657,6660,6661,6672,6673,6676,6677,6688,6689,6692,6693,6704,6705,6708,6709,6784,6785,6788,6789,6800,6801,6804,6805,6816,6817,6820,6821,6832,6833,6836,6837,6912,6913,6916,6917,6928,6929,6932,6933,6944,6945,6948,6949,6960,6961,6964,6965,7040,7041,7044,7045,7056,7057,7060,7061,7072,7073,7076,7077,7088,7089,7092,7093,7168,7169,7172,7173,7184,7185,7188,7189,7200,7201,7204,7205,7216,7217,7220,7221,7296,7297,7300,7301,7312,7313,7316,7317,7328,7329,7332,7333,7344,7345,7348,7349,7424,7425,7428,7429,7440,7441,7444,7445,7456,7457,7460,7461,7472,7473,7476,7477,7552,7553,7556,7557,7568,7569,7572,7573,7584,7585,7588,7589,7600,7601,7604,7605,7680,7681,7684,7685,7696,7697,7700,7701,7712,7713,7716,7717,7728,7729,7732,7733,7808,7809,7812,7813,7824,7825,7828,7829,7840,7841,7844,7845,7856,7857,7860,7861,7936,7937,7940,7941,7952,7953,7956,7957,7968,7969,7972,7973,7984,7985,7988,7989,8064,8065,8068,8069,8080,8081,8084,8085,8096,8097,8100,8101,8112,8113,8116,8117,8191,8192,8193,8196,8197,8208,8209,8212,8213,8224,8225,8228,8229,8240,8241,8244,8245,8448,8449,8452,8453,8464,8465,8468,8469,8480,8481,8484,8485,8496,8497,8500,8501,16383,16384,16385,16388,16389,16400,16401,16404,16405,16416,16417,16420,16421,16432,16433,16436,16437,16512,16513,16516,16517,16528,16529,16532,16533,16544,16545,16548,16549,16560,16561,16564,16565,16640,16641,16644,16645,16656,16657,16660,16661,16672,16673,16676,16677,16688,16689,16692,16693,16768,16769,16772,16773,16784,16785,16788,16789,16800,16801,16804,16805,16816,16817,16820,16821,20405,20479,22453,22527,23477,23551,23989,24063,24245,24319,24373,24447,24469,24485,24497,24500,24501,24503,24509,24511,24543,24559,24565,24567,24571,24573,24574,24575,28671,30719,31743,32255,32511,32639,32693,32695,32701,32703,32735,32751,32757,32759,32763,32765,32766,32767] },
-    { id: "Text#1", children: false, parameters: [["text","object",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["autoSize","object",true,true],["fontSize","number",true,false],["fontStyle","string",true,true],["fontWeight","string",true,true],["letterSpacing","number",true,false],["textDecoration","string",true,true],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["onTextLayout","function",true,false],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,13,16,17,18,19,20,21,22,23,24,25,28,29,32,33,34,35,36,37,38,39,40,41,44,45,48,49,50,51,52,53,54,55,56,57,60,61,64,65,66,68,69,72,80,81,84,85,96,97,100,101,112,113,116,117,128,129,132,133,160,161,164,165,256,257,258,259,260,261,262,263,264,265,268,269,272,273,274,275,276,277,278,279,280,281,284,285,288,289,290,291,292,293,294,295,296,297,300,301,304,305,306,307,308,309,310,311,312,313,316,317,320,321,324,325,336,337,340,341,352,353,356,357,368,369,372,373,384,385,388,389,416,417,420,421,512,513,516,517,544,545,548,549,768,769,772,773,800,801,804,805,1024,1025,1028,1029,1056,1057,1060,1061,1280,1281,1284,1285,1312,1313,1316,1317,2048,2049,2052,2053,2080,2081,2084,2085,2304,2305,2308,2309,2336,2337,2340,2341,4096,4097,4100,4101,4128,4129,4132,4133,4352,4353,4356,4357,4384,4385,4388,4389,8117,8191,8192,8193,8196,8197,8208,8209,8212,8213,8224,8225,8228,8229,8240,8241,8244,8245,8448,8449,8452,8453,8464,8465,8468,8469,8480,8481,8484,8485,8496,8497,8500,8501,16383,16384,16385,16388,16389,16400,16401,16404,16405,16416,16417,16420,16421,16432,16433,16436,16437,16512,16513,16516,16517,16528,16529,16532,16533,16544,16545,16548,16549,16560,16561,16564,16565,16640,16641,16644,16645,16656,16657,16660,16661,16672,16673,16676,16677,16688,16689,16692,16693,16768,16769,16772,16773,16784,16785,16788,16789,16800,16801,16804,16805,16816,16817,16820,16821,20405,20479,22453,22527,23477,23551,23989,24063,24245,24319,24373,24447,24469,24485,24497,24500,24501,24503,24509,24511,24543,24559,24565,24567,24571,24573,24574,24575,28671,30719,31743,32255,32511,32639,32693,32695,32701,32703,32735,32751,32757,32759,32763,32765,32766,32767] },
+    { id: "Text", children: false, parameters: [["text","string",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["autoSize","object",true,true],["fontSize","number",true,false],["fontStyle","string",true,true],["fontWeight","string",true,true],["fontFamily","object",true,true],["letterSpacing","number",true,false],["textDecoration","string",true,true],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["onTextLayout","function",true,true],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,13,16,17,18,19,20,21,22,23,24,25,28,29,32,33,34,36,37,40,48,49,52,53,64,65,66,67,68,69,70,71,72,73,76,77,80,81,82,83,84,85,86,87,88,89,92,93,96,97,100,101,112,113,116,117,128,129,130,132,133,136,144,145,148,149,160,192,193,196,197,208,209,212,213,256,257,260,261,272,273,276,277,320,321,324,325,336,337,340,341,512,513,514,515,516,517,518,519,520,521,524,525,528,529,530,531,532,533,534,535,536,537,540,541,544,545,548,549,560,561,564,565,576,577,578,579,580,581,582,583,584,585,588,589,592,593,594,595,596,597,598,599,600,601,604,605,608,609,612,613,624,625,628,629,640,641,644,645,656,657,660,661,704,705,708,709,720,721,724,725,768,769,772,773,784,785,788,789,832,833,836,837,848,849,852,853,1024,1025,1028,1029,1040,1041,1044,1045,1088,1089,1092,1093,1104,1105,1108,1109,1280,1281,1284,1285,1296,1297,1300,1301,1344,1345,1348,1349,1360,1361,1364,1365,1536,1537,1540,1541,1552,1553,1556,1557,1600,1601,1604,1605,1616,1617,1620,1621,1792,1793,1796,1797,1808,1809,1812,1813,1856,1857,1860,1861,1872,1873,1876,1877,2048,2049,2052,2053,2064,2065,2068,2069,2112,2113,2116,2117,2128,2129,2132,2133,2304,2305,2308,2309,2320,2321,2324,2325,2368,2369,2372,2373,2384,2385,2388,2389,2560,2561,2564,2565,2576,2577,2580,2581,2624,2625,2628,2629,2640,2641,2644,2645,2816,2817,2820,2821,2832,2833,2836,2837,2880,2881,2884,2885,2896,2897,2900,2901,3072,3073,3076,3077,3088,3089,3092,3093,3136,3137,3140,3141,3152,3153,3156,3157,3328,3329,3332,3333,3344,3345,3348,3349,3392,3393,3396,3397,3408,3409,3412,3413,3584,3585,3588,3589,3600,3601,3604,3605,3648,3649,3652,3653,3664,3665,3668,3669,3840,3841,3844,3845,3856,3857,3860,3861,3904,3905,3908,3909,3920,3921,3924,3925,4096,4097,4100,4101,4112,4113,4116,4117,4160,4161,4164,4165,4176,4177,4180,4181,4352,4353,4356,4357,4368,4369,4372,4373,4416,4417,4420,4421,4432,4433,4436,4437,4608,4609,4612,4613,4624,4625,4628,4629,4672,4673,4676,4677,4688,4689,4692,4693,4864,4865,4868,4869,4880,4881,4884,4885,4928,4929,4932,4933,4944,4945,4948,4949,5120,5121,5124,5125,5136,5137,5140,5141,5184,5185,5188,5189,5200,5201,5204,5205,5376,5377,5380,5381,5392,5393,5396,5397,5440,5441,5444,5445,5456,5457,5460,5461,5632,5633,5636,5637,5648,5649,5652,5653,5696,5697,5700,5701,5712,5713,5716,5717,5888,5889,5892,5893,5904,5905,5908,5909,5952,5953,5956,5957,5968,5969,5972,5973,6144,6145,6148,6149,6160,6161,6164,6165,6208,6209,6212,6213,6224,6225,6228,6229,6400,6401,6404,6405,6416,6417,6420,6421,6464,6465,6468,6469,6480,6481,6484,6485,6656,6657,6660,6661,6672,6673,6676,6677,6720,6721,6724,6725,6736,6737,6740,6741,6912,6913,6916,6917,6928,6929,6932,6933,6976,6977,6980,6981,6992,6993,6996,6997,7168,7169,7172,7173,7184,7185,7188,7189,7232,7233,7236,7237,7248,7249,7252,7253,7424,7425,7428,7429,7440,7441,7444,7445,7488,7489,7492,7493,7504,7505,7508,7509,7680,7681,7684,7685,7696,7697,7700,7701,7744,7745,7748,7749,7760,7761,7764,7765,7936,7937,7940,7941,7952,7953,7956,7957,8000,8001,8004,8005,8016,8017,8020,8021,8192,8193,8196,8197,8208,8209,8212,8213,8256,8257,8260,8261,8272,8273,8276,8277,8448,8449,8452,8453,8464,8465,8468,8469,8512,8513,8516,8517,8528,8529,8532,8533,8704,8705,8708,8709,8720,8721,8724,8725,8768,8769,8772,8773,8784,8785,8788,8789,8960,8961,8964,8965,8976,8977,8980,8981,9024,9025,9028,9029,9040,9041,9044,9045,9216,9217,9220,9221,9232,9233,9236,9237,9280,9281,9284,9285,9296,9297,9300,9301,9472,9473,9476,9477,9488,9489,9492,9493,9536,9537,9540,9541,9552,9553,9556,9557,9728,9729,9732,9733,9744,9745,9748,9749,9792,9793,9796,9797,9808,9809,9812,9813,9984,9985,9988,9989,10000,10001,10004,10005,10048,10049,10052,10053,10064,10065,10068,10069,10240,10241,10244,10245,10256,10257,10260,10261,10304,10305,10308,10309,10320,10321,10324,10325,10496,10497,10500,10501,10512,10513,10516,10517,10560,10561,10564,10565,10576,10577,10580,10581,10752,10753,10756,10757,10768,10769,10772,10773,10816,10817,10820,10821,10832,10833,10836,10837,11008,11009,11012,11013,11024,11025,11028,11029,11072,11073,11076,11077,11088,11089,11092,11093,11264,11265,11268,11269,11280,11281,11284,11285,11328,11329,11332,11333,11344,11345,11348,11349,11520,11521,11524,11525,11536,11537,11540,11541,11584,11585,11588,11589,11600,11601,11604,11605,11776,11777,11780,11781,11792,11793,11796,11797,11840,11841,11844,11845,11856,11857,11860,11861,12032,12033,12036,12037,12048,12049,12052,12053,12096,12097,12100,12101,12112,12113,12116,12117,12288,12289,12292,12293,12304,12305,12308,12309,12352,12353,12356,12357,12368,12369,12372,12373,12544,12545,12548,12549,12560,12561,12564,12565,12608,12609,12612,12613,12624,12625,12628,12629,12800,12801,12804,12805,12816,12817,12820,12821,12864,12865,12868,12869,12880,12881,12884,12885,13056,13057,13060,13061,13072,13073,13076,13077,13120,13121,13124,13125,13136,13137,13140,13141,13312,13313,13316,13317,13328,13329,13332,13333,13376,13377,13380,13381,13392,13393,13396,13397,13568,13569,13572,13573,13584,13585,13588,13589,13632,13633,13636,13637,13648,13649,13652,13653,13824,13825,13828,13829,13840,13841,13844,13845,13888,13889,13892,13893,13904,13905,13908,13909,14080,14081,14084,14085,14096,14097,14100,14101,14144,14145,14148,14149,14160,14161,14164,14165,14336,14337,14340,14341,14352,14353,14356,14357,14400,14401,14404,14405,14416,14417,14420,14421,14592,14593,14596,14597,14608,14609,14612,14613,14656,14657,14660,14661,14672,14673,14676,14677,14848,14849,14852,14853,14864,14865,14868,14869,14912,14913,14916,14917,14928,14929,14932,14933,15104,15105,15108,15109,15120,15121,15124,15125,15168,15169,15172,15173,15184,15185,15188,15189,15360,15361,15364,15365,15376,15377,15380,15381,15424,15425,15428,15429,15440,15441,15444,15445,15616,15617,15620,15621,15632,15633,15636,15637,15680,15681,15684,15685,15696,15697,15700,15701,15872,15873,15876,15877,15888,15889,15892,15893,15936,15937,15940,15941,15952,15953,15956,15957,16128,16129,16132,16133,16144,16145,16148,16149,16192,16193,16196,16197,16208,16209,16212,16213,16351,16383,16384,16385,16388,16389,16400,16401,16404,16405,16448,16449,16452,16453,16464,16465,16468,16469,16896,16897,16900,16901,16912,16913,16916,16917,16960,16961,16964,16965,16976,16977,16980,16981,32735,32767,32768,32769,32772,32773,32784,32785,32788,32789,32832,32833,32836,32837,32848,32849,32852,32853,33024,33025,33028,33029,33040,33041,33044,33045,33088,33089,33092,33093,33104,33105,33108,33109,33280,33281,33284,33285,33296,33297,33300,33301,33344,33345,33348,33349,33360,33361,33364,33365,33536,33537,33540,33541,33552,33553,33556,33557,33600,33601,33604,33605,33616,33617,33620,33621,40789,40927,40959,44885,45023,45055,46933,47071,47103,47957,48095,48127,48469,48607,48639,48725,48863,48895,48917,48965,48977,48980,48981,48983,48989,48991,49013,49015,49021,49023,49055,49087,49103,49109,49111,49115,49117,49118,49119,49135,49141,49143,49147,49149,49150,49151,57311,57343,61407,61439,63455,63487,64479,64511,64991,65023,65247,65279,65365,65367,65373,65375,65397,65399,65405,65407,65439,65471,65487,65493,65495,65499,65501,65502,65503,65519,65525,65527,65531,65533,65534,65535] },
+    { id: "Text#1", children: false, parameters: [["text","object",false,false],["modifier","ComposeModifier",true,false],["color","string",true,false],["autoSize","object",true,true],["fontSize","number",true,false],["fontStyle","string",true,true],["fontWeight","string",true,true],["fontFamily","object",true,true],["letterSpacing","number",true,false],["textDecoration","string",true,true],["textAlign","string",true,true],["lineHeight","number",true,false],["overflow","string",true,false],["softWrap","boolean",true,false],["maxLines","number",true,false],["minLines","number",true,false],["onTextLayout","function",true,false],["composeTextStyle","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,13,16,17,18,19,20,21,22,23,24,25,28,29,32,33,34,36,37,40,48,49,52,53,64,65,66,67,68,69,70,71,72,73,76,77,80,81,82,83,84,85,86,87,88,89,92,93,96,97,100,101,112,113,116,117,128,129,130,132,133,136,144,145,148,149,160,192,193,196,197,208,209,212,213,256,257,260,261,320,321,324,325,512,513,514,515,516,517,518,519,520,521,524,525,528,529,530,531,532,533,534,535,536,537,540,541,544,545,548,549,560,561,564,565,576,577,578,579,580,581,582,583,584,585,588,589,592,593,594,595,596,597,598,599,600,601,604,605,608,609,612,613,624,625,628,629,640,641,644,645,656,657,660,661,704,705,708,709,720,721,724,725,768,769,772,773,832,833,836,837,1024,1025,1028,1029,1088,1089,1092,1093,1536,1537,1540,1541,1600,1601,1604,1605,2048,2049,2052,2053,2112,2113,2116,2117,2560,2561,2564,2565,2624,2625,2628,2629,4096,4097,4100,4101,4160,4161,4164,4165,4608,4609,4612,4613,4672,4673,4676,4677,8192,8193,8196,8197,8256,8257,8260,8261,8704,8705,8708,8709,8768,8769,8772,8773,16213,16351,16383,16384,16385,16388,16389,16400,16401,16404,16405,16448,16449,16452,16453,16464,16465,16468,16469,16896,16897,16900,16901,16912,16913,16916,16917,16960,16961,16964,16965,16976,16977,16980,16981,32735,32767,32768,32769,32772,32773,32784,32785,32788,32789,32832,32833,32836,32837,32848,32849,32852,32853,33024,33025,33028,33029,33040,33041,33044,33045,33088,33089,33092,33093,33104,33105,33108,33109,33280,33281,33284,33285,33296,33297,33300,33301,33344,33345,33348,33349,33360,33361,33364,33365,33536,33537,33540,33541,33552,33553,33556,33557,33600,33601,33604,33605,33616,33617,33620,33621,40789,40927,40959,44885,45023,45055,46933,47071,47103,47957,48095,48127,48469,48607,48639,48725,48863,48895,48917,48965,48977,48980,48981,48983,48989,48991,49013,49015,49021,49023,49055,49087,49103,49109,49111,49115,49117,49118,49119,49135,49141,49143,49147,49149,49150,49151,57311,57343,61407,61439,63455,63487,64479,64511,64991,65023,65247,65279,65365,65367,65373,65375,65397,65399,65405,65407,65439,65471,65487,65493,65495,65499,65501,65502,65503,65519,65525,65527,65531,65533,65534,65535] },
   ],
 });
 
@@ -48773,11 +62700,11 @@ export type ThumbProps =
     colors?: ComposeSliderColorsValue;
     enabled?: boolean;
     thumbSize?: ComposeDpSize;
-    sliderState?: never;
+    isVertical?: never;
     }
   | {
     interactionSource: ComposeInteractionSource;
-    sliderState: ComposeSliderState;
+    isVertical: boolean;
     modifiers?: ComposeModifier;
     /** @deprecated Use the modifiers prop. */
     modifier?: ComposeModifier;
@@ -48788,42 +62715,86 @@ export type ThumbProps =
 ;
 export const Thumb = createComposableComponent<ThumbProps>({
   name: "Thumb",
-  props: ["interactionSource","modifier","colors","enabled","thumbSize","sliderState"],
-  objectProps: ["interactionSource","colors","thumbSize","sliderState"],
+  props: ["interactionSource","modifier","colors","enabled","thumbSize","isVertical"],
+  objectProps: ["interactionSource","colors","thumbSize"],
   children: false,
   overloads: [
     { id: "Thumb", children: false, parameters: [["interactionSource","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
-    { id: "Thumb#1", children: false, parameters: [["interactionSource","object",false,false],["sliderState","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "Thumb#1", children: false, parameters: [["interactionSource","object",false,false],["isVertical","boolean",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["enabled","boolean",true,false],["thumbSize","object",true,false]], masks: [0,1,2,3,4,5,6,7] },
   ],
 });
 
-export interface TimeInputProps {
-  state: ComposeTimePickerState;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  colors?: ComposeTimePickerColorsValue;
-}
+export type TimeInputProps =
+  | {
+    state: ComposeTimePickerState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimeInputColorsValue;
+    shapes?: never;
+    toggle?: never;
+    }
+  | {
+    state: ComposeTimePickerState;
+    shapes: ComposeTimePickerShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimeInputColorsValue;
+    toggle?: never;
+    }
+  | {
+    state: ComposeTimePickerState;
+    shapes: ComposeTimePickerShapesValue;
+    toggle: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimeInputColorsValue;
+    }
+;
 export const TimeInput = createComposableComponent<TimeInputProps>({
   name: "TimeInput",
-  props: ["state","modifier","colors"],
-  objectProps: ["state","colors"],
+  props: ["state","modifier","colors","shapes"],
+  objectProps: ["state","colors","shapes"],
+  slots: ["toggle"],
   children: false,
+  overloads: [
+    { id: "TimeInput", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false]], masks: [0,1] },
+    { id: "TimeInput#1", children: false, parameters: [["state","object",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false]], masks: [0,1] },
+    { id: "TimeInput#2", children: false, parameters: [["state","object",false,false],["shapes","object",false,false],["toggle","ReactNode",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false]], masks: [0,1] },
+  ],
 });
 
-export interface TimePickerProps {
-  state: ComposeTimePickerState;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  colors?: ComposeTimePickerColorsValue;
-  layoutType?: ComposeTimePickerLayoutTypeValue;
-}
+export type TimePickerProps =
+  | {
+    state: ComposeTimePickerState;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimePickerColorsValue;
+    layoutType?: ComposeTimePickerLayoutTypeValue;
+    shapes?: never;
+    }
+  | {
+    state: ComposeTimePickerState;
+    shapes: ComposeTimePickerShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimePickerColorsValue;
+    layoutType?: ComposeTimePickerLayoutTypeValue;
+    }
+;
 export const TimePicker = createComposableComponent<TimePickerProps>({
   name: "TimePicker",
-  props: ["state","modifier","colors","layoutType"],
-  objectProps: ["state","colors"],
+  props: ["state","modifier","colors","layoutType","shapes"],
+  objectProps: ["state","colors","shapes"],
   children: false,
+  overloads: [
+    { id: "TimePicker", children: false, parameters: [["state","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["layoutType","string",true,false]], masks: [0,1,2,3] },
+    { id: "TimePicker#1", children: false, parameters: [["state","object",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["layoutType","string",true,false]], masks: [0,1,2,3] },
+  ],
 });
 
 export interface TimePickerDialogProps {
@@ -48849,6 +62820,38 @@ export const TimePickerDialog = createComposableComponent<TimePickerDialogProps>
   children: true,
 });
 
+export type TimeScrollProps =
+  | {
+    state: ComposeTimePickerState;
+    shapes: ComposeTimePickerShapesValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimePickerColorsValue;
+    toggle?: never;
+    }
+  | {
+    state: ComposeTimePickerState;
+    shapes: ComposeTimePickerShapesValue;
+    toggle: ReactNode;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors?: ComposeTimePickerColorsValue;
+    }
+;
+export const TimeScroll = createComposableComponent<TimeScrollProps>({
+  name: "TimeScroll",
+  props: ["state","shapes","modifier","colors"],
+  objectProps: ["state","shapes","colors"],
+  slots: ["toggle"],
+  children: false,
+  overloads: [
+    { id: "TimeScroll", children: false, parameters: [["state","object",false,false],["shapes","object",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false]], masks: [0,1] },
+    { id: "TimeScroll#1", children: false, parameters: [["state","object",false,false],["shapes","object",false,false],["toggle","ReactNode",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false]], masks: [0,1] },
+  ],
+});
+
 export interface TitleProps {
   displayMode: ComposeTimePickerDisplayMode;
   modifiers?: ComposeModifier;
@@ -48861,27 +62864,392 @@ export const Title = createComposableComponent<TitleProps>({
   children: false,
 });
 
-export interface ToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shapes?: ComposeToggleButtonShapesValue;
-  colors?: ComposeToggleButtonColorsValue;
-  elevation?: ComposeButtonElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  contentPadding?: ComposePaddingValues;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
+export type ToggleButtonProps =
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon?: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors?: ComposeToggleButtonColorsValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    icon?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    buttonSize?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled?: boolean;
+    icon?: ReactNode;
+    border?: ComposeBorderStroke | null;
+    contentPadding?: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    colors?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    colors: ComposeToggleButtonColorsValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    shapes?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    shapes: ComposeToggleButtonShapesValue;
+    children?: ReactNode;
+    enabled?: never;
+    icon?: never;
+    colors?: never;
+    elevation?: never;
+    border?: never;
+    contentPadding?: never;
+    interactionSource?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    enabled?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    icon?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    colors: ComposeToggleButtonColorsValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    shapes?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    elevation?: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    colors?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    elevation?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    border?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    interactionSource: ComposeInteractionSource | null;
+    children?: ReactNode;
+    contentPadding?: never;
+    }
+  | {
+    checked: boolean;
+    onCheckedChange: (value: boolean) => void;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    buttonSize: ComposeToggleButtonSizeValue;
+    enabled: boolean;
+    icon: ReactNode;
+    shapes: ComposeToggleButtonShapesValue;
+    colors: ComposeToggleButtonColorsValue;
+    elevation: ComposeToggleButtonElevationValue | null;
+    border: ComposeBorderStroke | null;
+    contentPadding: ComposePaddingValues;
+    interactionSource?: ComposeInteractionSource | null;
+    children?: ReactNode;
+    }
+;
 export const ToggleButton = createComposableComponent<ToggleButtonProps>({
   name: "ToggleButton",
-  props: ["checked","modifier","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
+  props: ["checked","modifier","buttonSize","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
   objectProps: ["shapes","colors","elevation","border","contentPadding","interactionSource"],
+  slots: ["icon"],
   events: ["onCheckedChange"],
   children: true,
+  overloads: [
+    { id: "ToggleButton", children: true, parameters: [["checked","boolean",false,false],["onCheckedChange","function",false,false],["modifier","ComposeModifier",true,false],["buttonSize","string",true,false],["enabled","boolean",true,false],["icon","ReactNode",true,true],["shapes","object",true,false],["colors","object",true,false],["elevation","object",true,true],["border","object",true,true],["contentPadding","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,12,14,16,17,18,20,22,24,26,32,33,34,36,38,40,48,64,65,66,67,68,69,70,71,72,74,76,78,80,82,84,86,88,90,96,98,100,102,128,129,130,131,132,133,134,135,136,138,140,142,144,146,148,150,152,154,160,162,164,166,192,193,194,195,196,197,198,199,200,202,204,206,208,210,212,214,216,218,224,226,228,230,255,256,257,258,259,260,261,262,263,264,266,268,270,272,274,276,278,280,282,288,290,292,294,320,321,322,323,324,325,326,327,328,330,332,334,336,338,340,342,344,346,352,354,356,358,383,384,385,386,387,388,389,390,391,392,394,396,398,400,402,404,406,408,410,416,418,420,422,447,448,449,450,451,452,453,454,455,456,458,460,462,463,464,466,468,470,471,472,474,478,479,480,482,484,486,487,494,495,502,503,507,509,510,511] },
+  ],
 });
 
 export interface ToggleFloatingActionButtonProps {
@@ -48922,29 +63290,6 @@ export const TonalLeadingButton = createComposableComponent<TonalLeadingButtonPr
   children: true,
 });
 
-export interface TonalToggleButtonProps {
-  checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  shapes?: ComposeToggleButtonShapesValue;
-  colors?: ComposeToggleButtonColorsValue;
-  elevation?: ComposeButtonElevationValue | null;
-  border?: ComposeBorderStroke | null;
-  contentPadding?: ComposePaddingValues;
-  interactionSource?: ComposeInteractionSource | null;
-  children?: ReactNode;
-}
-export const TonalToggleButton = createComposableComponent<TonalToggleButtonProps>({
-  name: "TonalToggleButton",
-  props: ["checked","modifier","enabled","shapes","colors","elevation","border","contentPadding","interactionSource"],
-  objectProps: ["shapes","colors","elevation","border","contentPadding","interactionSource"],
-  events: ["onCheckedChange"],
-  children: true,
-});
-
 export interface TonalTrailingButtonProps {
   checked: boolean;
   onCheckedChange: (value: boolean) => void;
@@ -48978,11 +63323,12 @@ export interface TooltipBoxProps {
   onDismissRequest?: (() => void) | null;
   focusable?: boolean;
   enableUserInput?: boolean;
+  hasAction?: boolean;
   children?: ReactNode;
 }
 export const TooltipBox = createComposableComponent<TooltipBoxProps>({
   name: "TooltipBox",
-  props: ["positionProvider","state","modifier","focusable","enableUserInput"],
+  props: ["positionProvider","state","modifier","focusable","enableUserInput","hasAction"],
   objectProps: ["positionProvider","state"],
   slots: ["tooltip"],
   events: ["onDismissRequest"],
@@ -49001,6 +63347,7 @@ export type TopAppBarProps =
     windowInsets?: ComposeWindowInsets;
     colors?: ComposeTopAppBarColorsValue;
     scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+    contentPadding?: ComposePaddingValues;
     subtitle?: never;
     titleHorizontalAlignment?: never;
     }
@@ -49017,17 +63364,18 @@ export type TopAppBarProps =
     windowInsets?: ComposeWindowInsets;
     colors?: ComposeTopAppBarColorsValue;
     scrollBehavior?: ComposeTopAppBarScrollBehavior | null;
+    contentPadding?: ComposePaddingValues;
     }
 ;
 export const TopAppBar = createComposableComponent<TopAppBarProps>({
   name: "TopAppBar",
-  props: ["modifier","expandedHeight","windowInsets","colors","scrollBehavior","titleHorizontalAlignment"],
-  objectProps: ["windowInsets","colors","scrollBehavior"],
+  props: ["modifier","expandedHeight","windowInsets","colors","scrollBehavior","contentPadding","titleHorizontalAlignment"],
+  objectProps: ["windowInsets","colors","scrollBehavior","contentPadding"],
   slots: ["title","navigationIcon","actions","subtitle"],
   children: false,
   overloads: [
-    { id: "TopAppBar", children: false, parameters: [["title","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["colors","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63] },
-    { id: "TopAppBar#1", children: false, parameters: [["title","ReactNode",false,false],["subtitle","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["titleHorizontalAlignment","string",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["colors","object",true,false],["scrollBehavior","object",true,true]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+    { id: "TopAppBar", children: false, parameters: [["title","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["colors","object",true,false],["scrollBehavior","object",true,true],["contentPadding","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+    { id: "TopAppBar#1", children: false, parameters: [["title","ReactNode",false,false],["subtitle","ReactNode",false,false],["modifier","ComposeModifier",true,false],["navigationIcon","ReactNode",true,false],["actions","ReactNode",true,false],["titleHorizontalAlignment","string",true,false],["expandedHeight","number",true,false],["windowInsets","object",true,false],["colors","object",true,false],["scrollBehavior","object",true,true],["contentPadding","object",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
   ],
 });
 
@@ -49042,11 +63390,12 @@ export interface TopSearchBarProps {
   tonalElevation?: number;
   shadowElevation?: number;
   windowInsets?: ComposeWindowInsets;
+  scrollBehavior?: ComposeSearchBarScrollBehaviorValue | null;
 }
 export const TopSearchBar = createComposableComponent<TopSearchBarProps>({
   name: "TopSearchBar",
-  props: ["state","modifier","shape","colors","tonalElevation","shadowElevation","windowInsets"],
-  objectProps: ["state","shape","colors","windowInsets"],
+  props: ["state","modifier","shape","colors","tonalElevation","shadowElevation","windowInsets","scrollBehavior"],
+  objectProps: ["state","shape","colors","windowInsets","scrollBehavior"],
   slots: ["inputField"],
   children: false,
 });
@@ -49077,6 +63426,18 @@ export type TrackProps =
     trackCornerSize?: never;
     }
   | {
+    rangeSliderState: ComposeRangeSliderState;
+    trackCornerSize: number;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeSliderColorsValue;
+    thumbTrackGapSize?: number;
+    trackInsideCornerSize?: number;
+    sliderState?: never;
+    }
+  | {
     sliderState: ComposeSliderState;
     trackCornerSize: number;
     modifiers?: ComposeModifier;
@@ -49097,7 +63458,8 @@ export const Track = createComposableComponent<TrackProps>({
   overloads: [
     { id: "Track", children: false, parameters: [["rangeSliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
     { id: "Track#1", children: false, parameters: [["sliderState","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
-    { id: "Track#2", children: false, parameters: [["sliderState","object",false,false],["trackCornerSize","number",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "Track#2", children: false, parameters: [["rangeSliderState","object",false,false],["trackCornerSize","number",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
+    { id: "Track#3", children: false, parameters: [["sliderState","object",false,false],["trackCornerSize","number",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["thumbTrackGapSize","number",true,false],["trackInsideCornerSize","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] },
   ],
 });
 
@@ -49159,22 +63521,42 @@ export const TrailingIcon = createComposableComponent<TrailingIconProps>({
   children: false,
 });
 
-export interface TriStateCheckboxProps {
-  state: ComposeToggleableState;
-  onClick: (() => void) | null;
-  modifiers?: ComposeModifier;
-  /** @deprecated Use the modifiers prop. */
-  modifier?: ComposeModifier;
-  enabled?: boolean;
-  colors?: ComposeCheckboxColorsValue;
-  interactionSource?: ComposeInteractionSource | null;
-}
+export type TriStateCheckboxProps =
+  | {
+    state: ComposeToggleableState;
+    onClick: (() => void) | null;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeCheckboxColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    checkmarkStroke?: never;
+    outlineStroke?: never;
+    }
+  | {
+    state: ComposeToggleableState;
+    onClick: (() => void) | null;
+    checkmarkStroke: ComposeStrokeValue;
+    outlineStroke: ComposeStrokeValue;
+    modifiers?: ComposeModifier;
+    /** @deprecated Use the modifiers prop. */
+    modifier?: ComposeModifier;
+    enabled?: boolean;
+    colors?: ComposeCheckboxColorsValue;
+    interactionSource?: ComposeInteractionSource | null;
+    }
+;
 export const TriStateCheckbox = createComposableComponent<TriStateCheckboxProps>({
   name: "TriStateCheckbox",
-  props: ["state","modifier","enabled","colors","interactionSource"],
-  objectProps: ["colors","interactionSource"],
+  props: ["state","modifier","enabled","colors","interactionSource","checkmarkStroke","outlineStroke"],
+  objectProps: ["colors","interactionSource","checkmarkStroke","outlineStroke"],
   events: ["onClick"],
   children: false,
+  overloads: [
+    { id: "TriStateCheckbox", children: false, parameters: [["state","string",false,false],["onClick","function",false,true],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+    { id: "TriStateCheckbox#1", children: false, parameters: [["state","string",false,false],["onClick","function",false,true],["checkmarkStroke","object",false,false],["outlineStroke","object",false,false],["modifier","ComposeModifier",true,false],["enabled","boolean",true,false],["colors","object",true,false],["interactionSource","object",true,true]], masks: [0,1,2,3,4,5,6,7] },
+  ],
 });
 
 export interface VerticalDividerProps {
@@ -49195,12 +63577,13 @@ export interface VerticalDragHandleProps {
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   colors?: ComposeDragHandleColorsValue;
+  shapes?: ComposeDragHandleShapesValue;
   interactionSource?: ComposeInteractionSource | null;
 }
 export const VerticalDragHandle = createComposableComponent<VerticalDragHandleProps>({
   name: "VerticalDragHandle",
-  props: ["modifier","colors","interactionSource"],
-  objectProps: ["colors","interactionSource"],
+  props: ["modifier","colors","shapes","interactionSource"],
+  objectProps: ["colors","shapes","interactionSource"],
   children: false,
 });
 
@@ -49212,6 +63595,7 @@ export type VerticalFloatingToolbarProps =
     modifier?: ComposeModifier;
     colors?: ComposeFloatingToolbarColorsValue;
     contentPadding?: ComposePaddingValues;
+    scrollBehavior?: ComposeFloatingToolbarScrollBehaviorValue | null;
     shape?: ComposeShape;
     leadingContent?: ReactNode;
     trailingContent?: ReactNode;
@@ -49230,6 +63614,7 @@ export type VerticalFloatingToolbarProps =
     modifier?: ComposeModifier;
     colors?: ComposeFloatingToolbarColorsValue;
     contentPadding?: ComposePaddingValues;
+    scrollBehavior?: ComposeFloatingToolbarScrollBehaviorValue | null;
     shape?: ComposeShape;
     floatingActionButtonPosition?: ComposeFloatingToolbarVerticalFabPositionValue;
     animationSpec?: ComposeAnimationSpec;
@@ -49242,13 +63627,13 @@ export type VerticalFloatingToolbarProps =
 ;
 export const VerticalFloatingToolbar = createComposableComponent<VerticalFloatingToolbarProps>({
   name: "VerticalFloatingToolbar",
-  props: ["expanded","modifier","colors","contentPadding","shape","expandedShadowElevation","collapsedShadowElevation","floatingActionButtonPosition","animationSpec"],
-  objectProps: ["colors","contentPadding","shape","animationSpec"],
+  props: ["expanded","modifier","colors","contentPadding","scrollBehavior","shape","expandedShadowElevation","collapsedShadowElevation","floatingActionButtonPosition","animationSpec"],
+  objectProps: ["colors","contentPadding","scrollBehavior","shape","animationSpec"],
   slots: ["leadingContent","trailingContent","floatingActionButton"],
   children: true,
   overloads: [
-    { id: "VerticalFloatingToolbar", children: true, parameters: [["expanded","boolean",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["shape","shape",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
-    { id: "VerticalFloatingToolbar#1", children: true, parameters: [["expanded","boolean",false,false],["floatingActionButton","ReactNode",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["shape","shape",true,false],["floatingActionButtonPosition","string",true,false],["animationSpec","object",true,false],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127] },
+    { id: "VerticalFloatingToolbar", children: true, parameters: [["expanded","boolean",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["scrollBehavior","object",true,true],["shape","shape",true,false],["leadingContent","ReactNode",true,true],["trailingContent","ReactNode",true,true],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
+    { id: "VerticalFloatingToolbar#1", children: true, parameters: [["expanded","boolean",false,false],["floatingActionButton","ReactNode",false,false],["modifier","ComposeModifier",true,false],["colors","object",true,false],["contentPadding","object",true,false],["scrollBehavior","object",true,true],["shape","shape",true,false],["floatingActionButtonPosition","string",true,false],["animationSpec","object",true,false],["expandedShadowElevation","number",true,false],["collapsedShadowElevation","number",true,false]], masks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255] },
   ],
 });
 
@@ -49793,11 +64178,13 @@ export const VerticalPager = createComposableComponent<VerticalPagerProps>({
 
 export interface VerticalSliderProps {
   state: ComposeSliderState;
+  onValueChange: (value: number) => void;
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
-  reverseDirection?: boolean;
+  onValueChangeFinished?: (() => void) | null;
+  topToBottom?: boolean;
   colors?: ComposeSliderColorsValue;
   interactionSource?: ComposeInteractionSource;
   thumb?: ReactNode;
@@ -49805,9 +64192,10 @@ export interface VerticalSliderProps {
 }
 export const VerticalSlider = createComposableComponent<VerticalSliderProps>({
   name: "VerticalSlider",
-  props: ["state","modifier","enabled","reverseDirection","colors","interactionSource"],
+  props: ["state","modifier","enabled","topToBottom","colors","interactionSource"],
   objectProps: ["state","colors","interactionSource"],
   slots: ["thumb","track"],
+  events: ["onValueChange","onValueChangeFinished"],
   children: false,
 });
 
@@ -49830,21 +64218,45 @@ export const VibrantFloatingActionButton = createComposableComponent<VibrantFloa
   children: true,
 });
 
+export interface VibrantTimePickerDialogProps {
+  onDismissRequest: () => void;
+  confirmButton: ReactNode;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  properties?: ComposeDialogProperties;
+  modeToggleButton?: ReactNode;
+  dismissButton?: ReactNode;
+  shape?: ComposeShape;
+  containerColor?: string;
+  children?: ReactNode;
+}
+export const VibrantTimePickerDialog = createComposableComponent<VibrantTimePickerDialogProps>({
+  name: "VibrantTimePickerDialog",
+  props: ["modifier","properties","shape","containerColor"],
+  objectProps: ["properties","shape"],
+  slots: ["confirmButton","modeToggleButton","dismissButton"],
+  events: ["onDismissRequest"],
+  children: true,
+});
+
 export interface WideNavigationRailProps {
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
+  state?: ComposeWideNavigationRailStateHandle;
   shape?: ComposeShape;
   colors?: ComposeWideNavigationRailColorsValue;
   header?: ReactNode;
   windowInsets?: ComposeWindowInsets;
   arrangement?: ComposeVerticalArrangement;
+  contentPadding?: ComposePaddingValues;
   children?: ReactNode;
 }
 export const WideNavigationRail = createComposableComponent<WideNavigationRailProps>({
   name: "WideNavigationRail",
-  props: ["modifier","shape","colors","windowInsets","arrangement"],
-  objectProps: ["shape","colors","windowInsets"],
+  props: ["modifier","state","shape","colors","windowInsets","arrangement","contentPadding"],
+  objectProps: ["state","shape","colors","windowInsets","contentPadding"],
   slots: ["header"],
   children: true,
 });
@@ -49854,19 +64266,20 @@ export interface WideNavigationRailItemProps {
   onClick: () => void;
   icon: ReactNode;
   label: ReactNode;
+  railExpanded: boolean;
   modifiers?: ComposeModifier;
   /** @deprecated Use the modifiers prop. */
   modifier?: ComposeModifier;
   enabled?: boolean;
-  railExpanded?: boolean;
   iconPosition?: ComposeNavigationItemIconPositionValue;
   colors?: ComposeNavigationItemColorsValue;
   interactionSource?: ComposeInteractionSource | null;
+  indicatorPadding?: ComposePaddingValues;
 }
 export const WideNavigationRailItem = createComposableComponent<WideNavigationRailItemProps>({
   name: "WideNavigationRailItem",
-  props: ["selected","modifier","enabled","railExpanded","iconPosition","colors","interactionSource"],
-  objectProps: ["colors","interactionSource"],
+  props: ["selected","railExpanded","modifier","enabled","iconPosition","colors","interactionSource","indicatorPadding"],
+  objectProps: ["colors","interactionSource","indicatorPadding"],
   slots: ["icon","label"],
   events: ["onClick"],
   children: false,
