@@ -43,7 +43,11 @@ export function styleOutputs(properties, kinds) {
     "import androidx.compose.foundation.style.Style",
     "import androidx.compose.foundation.style.StyleState",
     "import androidx.compose.foundation.style.rememberUpdatedStyleState",
+    "import androidx.compose.foundation.style.animate",
     ...states.map((name) => "import androidx.compose.foundation.style." + name),
+    ...[...new Set(properties.map(({ nativeName }) => nativeName).filter(Boolean))].sort()
+      .filter((name) => !states.some((state) => name.endsWith("." + state)))
+      .map((name) => "import " + name),
     "import androidx.compose.ui.unit.dp",
     "import androidx.compose.ui.unit.sp",
     "import org.json.JSONArray",
@@ -56,10 +60,11 @@ export function styleOutputs(properties, kinds) {
     ...states.map((name) => "  val " + name + "Value = optJSONObject(" + JSON.stringify("when" + name[0].toUpperCase() + name.slice(1)) + ")?.toComposeFoundationStyle()"),
     "  val style = Style {",
     ...bindings.map(({ name }) => "    " + name + "Value?.let { " + name + "(it) }"),
-    ...states.map((name) => "    " + name + "Value?.let { " + name + "(it) }"),
+    // Foundation 1.13 state functions take a block that runs in the same scope; apply the nested style there.
+    ...states.map((name) => "    " + name + "Value?.let { nested -> " + name + " { with(nested) { applyStyle() } } }"),
     "  }",
     '  val animation = optJSONObject("animationSpec")?.toComposeFloatAnimationSpec() ?: return style',
-    "  return Style { animate(animation, style) }",
+    "  return Style { animate(animation) { with(style) { applyStyle() } } }",
     "}",
     "",
     "@OptIn(ExperimentalFoundationStyleApi::class)",
