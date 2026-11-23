@@ -7,13 +7,14 @@ export type * from "./utils/composeValues";
 export {
   useFocusRequester, useBringIntoViewRequester, useInteractionSource, useLayoutBoundsHolder,
   usePullToRefreshState, useSliderState, useRangeSliderState,
-  useLazyListState, usePagerState, useScrollState, useModalBottomSheetState, useBottomSheetScaffoldState, useTopAppBarScrollBehavior,
+  useLazyListState, usePagerState, useScrollState, useModalBottomSheetState, useBottomSheetScaffoldState, useDrawerState, useWideNavigationRailState, useTopAppBarScrollBehavior,
 } from "./utils/nativeHandles";
 export type {
   ComposeFocusRequester, ComposeBringIntoViewRequester, ComposeInteractionSource, ComposeLayoutBoundsHolder,
   ComposePullToRefreshState, ComposeSliderState, ComposeRangeSliderState, ComposeSliderOptions, ComposeRangeSliderOptions,
   ComposeLazyStateHandle, ComposePagerStateHandle, ComposeScrollStateHandle,
-  ComposeModalSheetStateHandle, ComposeBottomSheetScaffoldStateHandle,
+  ComposeModalSheetStateHandle, ComposeBottomSheetScaffoldStateHandle, ComposeDrawerStateHandle, ComposeDrawerStateOptions,
+  ComposeWideNavigationRailStateHandle, ComposeWideNavigationRailStateOptions, ComposeValueSnapshot,
 } from "./utils/nativeHandles";
 export type { ComposeBrush, ComposeShape } from "./utils/modifier";
 
