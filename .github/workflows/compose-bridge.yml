@@ -107,16 +107,7 @@ jobs:
           disable-animations: true
           script: |
             adb install "$RUNNER_TEMP/compose-consumer/example/android/app/build/outputs/apk/release/app-release.apk"
-            smoke_status=0
-            python3 scripts/check-emulator.py --preview-dir compose-gallery || {
-              smoke_status=1
-              adb logcat -d > compose-emulator.log
-              adb exec-out screencap -p > compose-emulator.png
-              adb pull /sdcard/compose-bridge.xml compose-emulator.xml || true
-            }
-            sweep_status=0
-            python3 scripts/sweep-catalog.py || sweep_status=1
-            test "$smoke_status" -eq 0 && test "$sweep_status" -eq 0
+            sh scripts/verify-emulator-ci.sh
       - name: Save the verified Android APK
         uses: actions/upload-artifact@v4
         with:
