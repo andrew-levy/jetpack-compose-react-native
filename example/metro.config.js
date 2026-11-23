@@ -1,6 +1,15 @@
 const path = require('node:path');
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { getDefaultConfig } = require('expo/metro-config');
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), {
-  watchFolders: [path.resolve(__dirname, '..')],
-});
+const projectRoot = __dirname;
+const workspaceRoot = path.resolve(projectRoot, '..');
+
+const config = getDefaultConfig(projectRoot);
+// The library is the workspace root, so Metro must watch it and resolve its hoisted dependencies.
+config.watchFolders = [workspaceRoot];
+config.resolver.nodeModulesPaths = [
+  path.resolve(projectRoot, 'node_modules'),
+  path.resolve(workspaceRoot, 'node_modules'),
+];
+
+module.exports = config;
