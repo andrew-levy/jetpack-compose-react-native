@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Image } from "react-native";
 
 import type { ComposeChain } from "../modifiers";
 import { propValue, selectOverload, type ComposableDescription } from "../../utils/overloads";
@@ -11,12 +12,25 @@ export type ComposeModifier = ComposeChain;
 
 type ComposeCallback = (value?: ComposeEventValue) => void;
 
+// An image `source` (a `require()` asset or `{ uri }`) becomes the URI native code loads. Metro serves
+// assets over HTTP in development; release builds resolve them to bundled resources.
+function resolveImageSource(source: unknown) {
+  const resolved = Image.resolveAssetSource(source as Parameters<typeof Image.resolveAssetSource>[0]);
+  if (!resolved?.uri) throw new Error("Expected an image source with a uri or a require() asset");
+  const { uri, width, height, scale } = resolved;
+  return { uri, width, height, scale };
+}
+
 function serializeBridgeValue(
   value: unknown,
   callbacks: Map<string, ComposeCallback>,
   path: readonly (string | number)[],
   allowCallback = false,
 ): unknown {
+  if (path[path.length - 1] === "source" && (typeof value === "number" ||
+      (typeof value === "object" && value !== null && "uri" in value))) {
+    return resolveImageSource(value);
+  }
   if (typeof value === "function" && allowCallback) {
     const event = JSON.stringify(path);
     callbacks.set(event, value as ComposeCallback);
