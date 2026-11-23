@@ -6,10 +6,11 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "tsc -p tsconfig.json --pretty false && node --test tests/catalog.test.mjs",
+    "test": "tsc -p tsconfig.json --pretty false && node --test tests/catalog.test.mjs tests/records.test.mjs",
     "catalog:fixtures": "tsc -p tsconfig.json --pretty false && node scripts/generate-catalog-fixtures.mjs",
     "android": "bash scripts/run-android.sh",
     "android:verify": "bash scripts/run-android.sh --verify",
+    "example:prebuild": "npm --workspace example run prebuild",
     "start": "npm --workspace example run start",
     "prepack": "npm run build"
   },
@@ -26,14 +27,14 @@
   "license": "MIT",
   "homepage": "https://github.com/andrew-levy/jetpack-compose-react-native#readme",
   "devDependencies": {
-    "@types/react": "^18.2.79",
-    "react": "18.2.0",
-    "react-native": "0.74.5",
-    "typescript": "~5.4.5"
+    "@types/react": "~19.3.0",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "typescript": "~5.9.3"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": ">=0.74.5 <0.75"
+    "react-native": ">=0.87.0"
   },
   "react-native": "src/index.ts",
   "workspaces": [
@@ -49,6 +50,7 @@
   },
   "files": [
     "android",
+    "cpp",
     "src",
     "build",
     "react-native.config.js",
