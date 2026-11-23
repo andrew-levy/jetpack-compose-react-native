@@ -6,9 +6,11 @@ from AndroidX, and a top-level Compose component hosts its subtree automatically
 
 ## Quick start
 
-Install the package or a checkout of this repository in a React Native 0.74.5
-app with the New Architecture enabled, Android compile SDK 35, AGP 8.6.1,
-and Kotlin 2.0.21 with the matching Compose compiler Gradle plugin. Add
+The beta targets Android with React Native 0.74.5 and the New Architecture
+enabled. Use Android compile SDK 35, AGP 8.6.1, and Kotlin 2.0.21 with the
+matching Compose compiler Gradle plugin. To try a checkout, run `npm ci` and
+`npm pack` in this repository, then install the resulting tarball from your
+React Native app with `npm install /path/to/the-package.tgz`. Add
 `org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.21` to the root
 Android buildscript classpath, then rebuild Android. React Native
 autolinks the view managers and Fabric descriptors.
@@ -192,6 +194,18 @@ Use the tabs in the [example app](example/App.tsx) to spot-check generated bindi
 | **Overlays** | Open the bottom sheet or alert dialog. Choose a dropdown action, then undo it in the snackbar. |
 | **Interop** | Tap either button to insert or remove a React Native child in a Compose layout. |
 | **Expressive** | Compare the standard spinner and Expressive morphing indicator side by side. |
+| **Catalog** | Search components and modifiers or sweep the full list. Open dialogs and other overlays from the preview card. Recent failures appear under the status line. |
+
+`npm test` checks representative JavaScript call forms against the generated
+Kotlin registry and verifies that the catalog fixtures are current. Regenerate
+them with `npm run catalog:fixtures` after changing the generated API.
+CI builds the demo from `npm pack` in a separate React Native project.
+
+With the current release APK installed on a connected Android device or emulator,
+`python3 scripts/sweep-catalog.py` mounts one preview per catalog entry. It
+continues after an app crash, writes `catalog-sweep-report.json`, and fails on
+errors or incomplete coverage. `npm run android:verify` exercises interactions
+such as Compose gestures, event delivery, and mixed Compose and React Native layout.
 
 The **Compose Bridge** workflow publishes screenshots and individual GIFs in the
 `compose-gallery-previews` artifact. [Gallery workflow](https://github.com/andrew-levy/jetpack-compose-react-native/actions/workflows/compose-bridge.yml)

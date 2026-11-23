@@ -67,16 +67,21 @@ internal class GeneratedComposeHostView(context: Context) : ComposeContainerView
         if (composeView.isAttachedToWindow) {
             if (fitContent) {
                 // Before Yoga has received an intrinsic size, it may allocate zero width.
+                // An unbounded height becomes 2^31-1, which Compose cannot place.
                 val proposedWidth = MeasureSpec.getSize(widthMeasureSpec)
                     .takeIf { it > 0 } ?: resources.displayMetrics.widthPixels
+                val proposedHeight = resources.displayMetrics.heightPixels
                 composeView.measure(
                     MeasureSpec.makeMeasureSpec(proposedWidth, MeasureSpec.AT_MOST),
-                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+                    MeasureSpec.makeMeasureSpec(proposedHeight, MeasureSpec.AT_MOST)
                 )
                 reportMeasurement(IntSize(composeView.measuredWidth, composeView.measuredHeight), proposedWidth)
             } else {
                 composeView.measure(widthMeasureSpec, heightMeasureSpec)
             }
+            // Yoga can adopt the measured size on a later pass. Compose still has to be
+            // placed now, or the next measure crashes while the previous pass is open.
+            composeView.layout(0, 0, composeView.measuredWidth, composeView.measuredHeight)
         }
         setMeasuredDimension(resolveSize(0, widthMeasureSpec), resolveSize(0, heightMeasureSpec))
     }
@@ -89,7 +94,7 @@ internal class GeneratedComposeHostView(context: Context) : ComposeContainerView
 
     override fun requestLayout() {
         super.requestLayout()
-        // Compose can request measurement at the same Yoga bounds after its content changes.
+        // Compose can resize after React has committed the current Yoga bounds.
         if (layoutPending || !isAttachedToWindow) return
         layoutPending = true
         post {

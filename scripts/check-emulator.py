@@ -119,11 +119,12 @@ def bounds(node):
 
 def input_has_value(nodes, label, text):
     field = nodes.get(text)
+    description = nodes.get(label)
     return (
         field is not None
-        and label in nodes
+        and description is not None
         and field.get("class") == "android.widget.EditText"
-        and bounds(field) == bounds(nodes[label])
+        and (description in field.iter("node") or field in description.iter("node"))
     )
 
 
@@ -132,9 +133,26 @@ def node_height(node):
     return bottom - top
 
 
+def node_width(node):
+    left, _, right, _ = bounds(node)
+    return right - left
+
+
 def tap(node):
     left, top, right, bottom = bounds(node)
     adb("shell", "input", "tap", str((left + right) // 2), str((top + bottom) // 2))
+
+
+def tap_tab(label, window):
+    nodes = wait_for("Modifiers", "Interop", window=window)
+    left, _, _, _ = bounds(nodes["Modifiers"])
+    _, top, right, bottom = bounds(nodes["Interop"])
+    tab_width = node_width(nodes[label]) if label in nodes else 0
+    if tab_width < node_width(nodes["Interop"]) / 2:
+        y = str((top + bottom) // 2)
+        adb("shell", "input", "swipe", str(right - 8), y, str(left + 8), y, "400")
+        nodes = wait_for(label, window=window, timeout=15)
+    tap(nodes[label])
 
 
 def following_view_top(nodes):
@@ -204,14 +222,21 @@ def verify():
 
     tap(nodes["Show collections"])
     feed_heading = "Native list and layout callbacks"
+    previous_geometry = None
+
+    def feed_ready(nodes):
+        nonlocal previous_geometry
+        if "Native row 1" in nodes and node_height(nodes["Native row 1"]) >= node_height(nodes["Native row 2"]) / 2:
+            return False
+        geometry = tuple(bounds(nodes[label]) for label in (feed_heading, "Collapsing feed toolbar", "Native row 3"))
+        settled = geometry == previous_geometry
+        previous_geometry = geometry
+        return settled
+
     nodes = wait_for(
         feed_heading, "Purple swatch", "Layout reported to React", "Native row 2", "Native row 3", "Modifiers",
         "Pinned feed header", "Jump to row 6", "First row: 2", "Collapsing feed toolbar",
-        # Compose may report a sliver of the preceding item in the content padding.
-        layout_ready=lambda nodes: (
-            "Native row 1" not in nodes
-            or node_height(nodes["Native row 1"]) < node_height(nodes["Native row 2"]) / 2
-        ),
+        layout_ready=feed_ready,
         window=window,
     )
     capture("14-collections")
@@ -275,6 +300,7 @@ def verify():
     )
 
     tap(nodes["123-4"])
+    wait_for("123-4", window=window, layout_ready=lambda nodes: nodes["123-4"].get("focused") == "true")
     adb("shell", "input", "keyevent", "KEYCODE_MOVE_END")
     adb("shell", "input", "text", "a567")
     nodes = wait_for(
@@ -320,7 +346,7 @@ def verify():
         layout_ready=lambda nodes: following_view_top(nodes) > original_foot,
     )
 
-    tap(nodes["Expressive"])
+    tap_tab("Expressive", window)
     nodes = wait_for("Loading indicators", "Standard", "Expressive morph", "Overlays", window=window)
     capture("09-expressive")
     with record("expressive-loading"):
@@ -355,6 +381,23 @@ def verify():
         capture("13-snackbar")
         tap(nodes["Undo"])
         wait_for("Open menu", absent=("Change saved",), window=window)
+
+    verify_catalog(window)
+
+
+def verify_catalog(window):
+    tap_tab("Catalog", window)
+    nodes = wait_for("Catalog ready", "Next", window=window)
+    tap(nodes["Next"])
+    nodes = wait_for("Open AlertDialog", "Search components and modifiers", window=window)
+    tap(nodes["Open AlertDialog"])
+    nodes = wait_for("Close preview")
+    tap(nodes["Close preview"])
+    nodes = wait_for("Open AlertDialog", "Search components and modifiers", absent=("Close preview",), window=window)
+    tap(nodes["Open AlertDialog"])
+    wait_for("Close preview")
+    adb("shell", "input", "keyevent", "KEYCODE_BACK")
+    wait_for("Open AlertDialog", "Search components and modifiers", absent=("Close preview",), window=window)
 
 
 def main():

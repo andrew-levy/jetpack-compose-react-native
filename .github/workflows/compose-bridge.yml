@@ -12,7 +12,7 @@ permissions:
 jobs:
   verify-generated-bridge:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
@@ -67,12 +67,26 @@ jobs:
           node tools/compose-codegen/tests/verify.mjs probe \
             tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json \
             "$COMPOSE_GENERATED_OUTPUT"
-      - name: Build the library and the Fabric example
+      - name: Build the Fabric example from the packed npm package
         run: |
           npm ci
-          npm run build
+          npm test
           npm exec -- tsc -p example/tsconfig.json
-          example/android/gradlew -p example/android :app:assembleRelease -PreactNativeArchitectures=x86_64
+          tarball=$(npm pack --silent --pack-destination "$RUNNER_TEMP")
+          consumer="$RUNNER_TEMP/compose-consumer"
+          mkdir -p "$consumer"
+          cp -R example "$consumer/"
+          node - "$consumer" "$RUNNER_TEMP/$tarball" <<'JS'
+          const fs = require('node:fs');
+          const [consumer, tarball] = process.argv.slice(2);
+          const manifest = `${consumer}/example/package.json`;
+          const example = JSON.parse(fs.readFileSync(manifest));
+          example.dependencies['jetpack-compose-react-native'] = `file:${tarball}`;
+          fs.writeFileSync(manifest, JSON.stringify(example));
+          fs.writeFileSync(`${consumer}/package.json`, JSON.stringify({ private: true, workspaces: ['example'] }));
+          JS
+          npm install --prefix "$consumer" --no-audit --no-fund
+          "$consumer/example/android/gradlew" -p "$consumer/example/android" :app:assembleRelease -PreactNativeArchitectures=x86_64
       - name: Ensure FFmpeg is available for gallery previews
         run: |
           if ! command -v ffmpeg >/dev/null; then
@@ -92,19 +106,35 @@ jobs:
           arch: x86_64
           disable-animations: true
           script: |
-            adb install example/android/app/build/outputs/apk/release/app-release.apk
-            python3 scripts/check-emulator.py --preview-dir compose-gallery || { adb logcat -d > compose-emulator.log; adb exec-out screencap -p > compose-emulator.png; adb pull /sdcard/compose-bridge.xml compose-emulator.xml || true; exit 1; }
+            adb install "$RUNNER_TEMP/compose-consumer/example/android/app/build/outputs/apk/release/app-release.apk"
+            smoke_status=0
+            python3 scripts/check-emulator.py --preview-dir compose-gallery || {
+              smoke_status=1
+              adb logcat -d > compose-emulator.log
+              adb exec-out screencap -p > compose-emulator.png
+              adb pull /sdcard/compose-bridge.xml compose-emulator.xml || true
+            }
+            sweep_status=0
+            python3 scripts/sweep-catalog.py || sweep_status=1
+            test "$smoke_status" -eq 0 && test "$sweep_status" -eq 0
       - name: Save the verified Android APK
         uses: actions/upload-artifact@v4
         with:
           name: compose-bridge-android-x86_64
-          path: example/android/app/build/outputs/apk/release/app-release.apk
+          path: ${{ runner.temp }}/compose-consumer/example/android/app/build/outputs/apk/release/app-release.apk
       - name: Save gallery previews
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: compose-gallery-previews
           path: compose-gallery
+          if-no-files-found: ignore
+      - name: Save catalog sweep report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compose-catalog-sweep
+          path: catalog-sweep-report.json
           if-no-files-found: ignore
       - name: Save emulator diagnostics
         if: failure()

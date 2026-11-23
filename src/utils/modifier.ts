@@ -96,6 +96,7 @@ function normalize(name: string, args: Record<string, unknown>): Record<string, 
       return { horizontal: horizontal ?? 0, vertical: vertical ?? 0 };
     }
     case "border":
+      if (args.border !== undefined) return args;
       return { width: 1, ...(args.brush === undefined ? { color: "black" } : { shape: "rect" }), ...args };
     case "shadow":
       return { elevation: 0, ...args };

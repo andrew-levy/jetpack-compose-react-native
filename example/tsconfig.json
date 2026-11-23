@@ -3,6 +3,8 @@
   "compilerOptions": {
     "noEmit": true,
     "rootDir": "..",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
       "jetpack-compose-react-native": [
         "../src/index"

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BackHandler, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 
+import { Catalog } from "./catalog/Catalog";
 import { Components, Expressive, Interop, Modifiers, Overlays } from "./Gallery";
 
 const screens = [
@@ -9,12 +10,15 @@ const screens = [
   { title: "Overlays", View: Overlays },
   { title: "Interop", View: Interop },
   { title: "Expressive", View: Expressive },
+  { title: "Catalog", View: Catalog },
 ] as const;
 
-export default function App() {
-  const [screen, setScreen] = useState(0);
+export default function App({ catalogStart }: { catalogStart?: number }) {
+  const catalogScreen = screens.findIndex((item) => item.title === "Catalog");
+  const [screen, setScreen] = useState(catalogStart == null ? 0 : catalogScreen);
   const scroll = useRef<ScrollView>(null);
   const Gallery = screens[screen].View;
+  const showingCatalog = Gallery === Catalog;
 
   function selectScreen(index: number) {
     scroll.current?.scrollTo({ y: 0, animated: false });
@@ -39,7 +43,13 @@ export default function App() {
           <Text accessibilityRole="header" style={styles.title}>Compose Gallery</Text>
         </View>
       </View>
-      <View accessibilityRole="tablist" style={styles.tabs}>
+      <ScrollView
+        horizontal
+        accessibilityRole="tablist"
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.tabs}
+        style={styles.tabScroll}
+      >
         {screens.map(({ title }, index) => (
           <Pressable
             key={title}
@@ -57,14 +67,20 @@ export default function App() {
             </Text>
           </Pressable>
         ))}
-      </View>
-      <ScrollView
-        ref={scroll}
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={styles.content}
-      >
-        <Gallery />
       </ScrollView>
+      {showingCatalog ? (
+        <View style={styles.catalog}>
+          <Catalog startIndex={catalogStart} />
+        </View>
+      ) : (
+        <ScrollView
+          ref={scroll}
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={styles.content}
+        >
+          <Gallery />
+        </ScrollView>
+      )}
     </View>
   );
 }
@@ -76,10 +92,12 @@ const styles = StyleSheet.create({
   mark: { backgroundColor: "#3e275f", width: 30, height: 30, borderRadius: 9, justifyContent: "center", alignItems: "center" },
   markText: { color: "#f1e5ff", fontWeight: "800", fontSize: 19 },
   title: { color: "#261b3a", fontSize: 21, fontWeight: "800", letterSpacing: -0.65, flexShrink: 1 },
-  tabs: { marginHorizontal: 16, borderRadius: 14, backgroundColor: "#eae4f3", padding: 4, flexDirection: "row" },
-  tab: { flex: 1, minHeight: 44, borderRadius: 10, alignItems: "center", justifyContent: "center" },
+  tabScroll: { flexGrow: 0, marginHorizontal: 16 },
+  tabs: { borderRadius: 14, backgroundColor: "#eae4f3", padding: 4, flexDirection: "row", gap: 4 },
+  tab: { minHeight: 44, paddingHorizontal: 12, borderRadius: 10, alignItems: "center", justifyContent: "center" },
   selectedTab: { backgroundColor: "#fff" },
   tabLabel: { color: "#5c4b70", fontSize: 13, fontWeight: "600" },
   selectedLabel: { color: "#3e275f", fontWeight: "800" },
   content: { padding: 12, paddingBottom: 24, gap: 10 },
+  catalog: { flex: 1, padding: 12, paddingBottom: 8 },
 });
