@@ -85,9 +85,21 @@ def activity_window():
     return match.group(1) if match else None
 
 
+def settled_bounds(nodes, labels):
+    # What the caller is likely to tap: the labels it waited for and every clickable node.
+    return {
+        label: node.get("bounds") for label, node in nodes.items()
+        if label in labels or node.get("clickable") == "true"
+    }
+
+
 def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, timeout=90, node_filter=lambda node: True):
     deadline = time.monotonic() + timeout
     nodes = {}
+    # A tap goes to the coordinates of the last dump. Wait until they hold still across two dumps, so a
+    # scrolling tab row or a sheet that is still animating in does not send the tap to another control.
+    previous = None
+    unsettled = 0
     while time.monotonic() < deadline:
         try:
             adb("shell", "uiautomator", "dump", "/sdcard/compose-bridge.xml")
@@ -111,7 +123,16 @@ def wait_for(*labels, absent=(), layout_ready=lambda nodes: True, window=None, t
             and all(label not in nodes for label in absent)
             and layout_ready(nodes)
         ):
-            return nodes
+            bounds = settled_bounds(nodes, labels)
+            # Give up on settling after a few dumps: some controls animate continuously.
+            if bounds == previous or unsettled >= 3:
+                return nodes
+            previous = bounds
+            unsettled += 1
+            time.sleep(0.3)
+            continue
+        previous = None
+        unsettled = 0
         time.sleep(1)
     raise MissingUiUpdate(f"Missing UI update {labels}, found {list(nodes)}")
 
