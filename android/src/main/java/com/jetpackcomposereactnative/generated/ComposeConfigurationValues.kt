@@ -1,7 +1,5 @@
 package com.jetpackcomposereactnative.generated
 
-import androidx.compose.foundation.layout.ExperimentalFlexBoxApi
-import androidx.compose.foundation.layout.ExperimentalGridApi
 import androidx.compose.foundation.layout.FlexBoxConfig
 import androidx.compose.foundation.layout.FlexConfig
 import androidx.compose.foundation.layout.FlexDirection
@@ -80,7 +78,6 @@ internal fun JSONObject.toComposeShadow(): Shadow = Shadow(
   alpha = optDouble("alpha", 1.0).toFloat(),
 )
 
-@OptIn(ExperimentalGridApi::class)
 internal fun JSONObject.toComposeGridConfig(): GridConfigurationScope.() -> Unit = {
   val columnTracks = getJSONArray("columns")
   val rowTracks = getJSONArray("rows")
@@ -92,7 +89,6 @@ internal fun JSONObject.toComposeGridConfig(): GridConfigurationScope.() -> Unit
   if (!isNull("columnGap")) columnGap(getDouble("columnGap").dp)
 }
 
-@OptIn(ExperimentalGridApi::class)
 private fun GridConfigurationScope.decodeTrack(track: Any): GridTrackSize = when (track) {
   "auto" -> GridTrackSize.Auto
   is Number -> GridTrackSize.Fixed(track.toDouble().dp)
@@ -101,7 +97,6 @@ private fun GridConfigurationScope.decodeTrack(track: Any): GridTrackSize = when
   else -> error("Unknown Compose grid track: $track")
 }
 
-@OptIn(ExperimentalFlexBoxApi::class)
 internal fun JSONObject.toComposeFlexBoxConfig(): FlexBoxConfig = FlexBoxConfig {
   direction(when (optString("direction")) {
     "rowReverse" -> FlexDirection.RowReverse
@@ -119,7 +114,6 @@ internal fun JSONObject.toComposeFlexBoxConfig(): FlexBoxConfig = FlexBoxConfig 
   if (!isNull("columnGap")) columnGap(getDouble("columnGap").dp)
 }
 
-@OptIn(ExperimentalFlexBoxApi::class)
 internal fun JSONObject.toComposeFlexConfig(): FlexConfig = FlexConfig {
   if (!isNull("grow")) grow(getDouble("grow").toFloat())
   if (!isNull("shrink")) shrink(getDouble("shrink").toFloat())
