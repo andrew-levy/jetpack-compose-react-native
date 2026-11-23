@@ -6,7 +6,7 @@ import {
   Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Icon, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
   Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeLayoutSize, type ComposeTextFieldValue,
-  StickyHeader, MediumTopAppBar, useLazyListState, useModalBottomSheetState, usePagerState, useTopAppBarScrollBehavior,
+  StickyHeader, MediumTopAppBar, useLazyListState, useModalBottomSheetState, usePagerState, useSliderState, useTopAppBarScrollBehavior,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -125,6 +125,8 @@ function Controls() {
   const [notifications, setNotifications] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [level, setLevel] = useState(0.35);
+  // Material 3 1.5 takes custom thumbs and tracks only on the state-based Slider.
+  const sliderState = useSliderState({ initialValue: 0.35 });
   const [range, setRange] = useState<ComposeFloatRange>([0.25, 0.75]);
   const [mode, setMode] = useState<"Daily" | "Weekly">("Daily");
 
@@ -154,7 +156,7 @@ function Controls() {
         </FlowRow>
         <Text text={`Slider ${Math.round(level * 100)}%`} />
         <Slider
-          value={level}
+          state={sliderState}
           onValueChange={setLevel}
           thumb={<Box modifiers={Modifier.size(20).clip("circle").background("#69489b")
             .semantics({ contentDescription: "Custom slider thumb" })} />}
