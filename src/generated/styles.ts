@@ -1,8 +1,8 @@
 // Generated from Compose Foundation StyleScope by generate.mjs.
-import type { ComposeBaselineShiftValue, ComposeOffset, ComposeTextIndentValue, ComposeTransformOrigin } from "./records";
+import type { ComposeBaselineShiftValue, ComposeFontFamilyValue, ComposeOffset, ComposeTextIndentValue, ComposeTransformOrigin } from "./records";
 import type { ComposeAnimationSpec, ComposeTextStyle } from "../utils/composeValues";
 import type { ComposeInteractionSource } from '../utils/nativeHandles';
-import type { ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHyphensValue, ComposeLineBreakValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue } from './values';
+import type { ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHyphensValue, ComposeLineBreakValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue, ComposeTextMotionValue } from './values';
 import type { ComposeShape, ComposeBrush } from '../utils/modifier';
 
 export interface ComposeFoundationStyle {
@@ -30,6 +30,7 @@ export interface ComposeFoundationStyle {
   externalPaddingStart?: number;
   externalPaddingTop?: number;
   externalPaddingVertical?: number;
+  fontFamily?: ComposeFontFamilyValue;
   fontSize?: number;
   fontStyle?: ComposeFontStyleValue;
   fontSynthesis?: ComposeFontSynthesisValue;
@@ -58,9 +59,12 @@ export interface ComposeFoundationStyle {
   textDecoration?: ComposeTextDecorationValue;
   textDirection?: ComposeTextDirectionValue;
   textIndent?: ComposeTextIndentValue;
+  textMotion?: ComposeTextMotionValue;
   textStyle?: ComposeTextStyle;
   top?: number;
   transformOrigin?: ComposeTransformOrigin;
+  transformOriginX?: number;
+  transformOriginY?: number;
   translation?: ComposeOffset;
   translationX?: number;
   translationY?: number;
