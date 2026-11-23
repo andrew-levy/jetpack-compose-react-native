@@ -189,6 +189,22 @@ function sampleObject(name, owner = "") {
       if (owner === "transformable") return { onTransform: "$fn" };
       if (/^[a-z]/.test(owner)) return {};
       return { initialText: "Hello" };
+    // Configuration blocks (`Scope.() -> Unit`): set a few scope properties so the effect is visible.
+    case "block":
+      if (owner === "blur") {
+        return {
+          blurRadiusSpec: {
+            factory: "BlurRadiusSpec.verticalGradient",
+            stops: [{ fraction: 0, radius: 24 }, { fraction: 0.25, radius: 0 }, { fraction: 0.75, radius: 0 }, { fraction: 1, radius: 24 }],
+          },
+          edgeTreatment: "rectangle",
+        };
+      }
+      if (owner === "dropShadow" || owner === "innerShadow") {
+        return { radius: 12, spread: 2, color: "#6750a4", offset: { x: 0, y: 4 } };
+      }
+      if (owner === "graphicsLayer") return { rotationZ: 6, scaleX: 0.92, scaleY: 0.92, alpha: 0.9 };
+      return {};
     case "positionProvider": return {};
     case "interactionSource": return "$interactionSource";
     case "items": return { label: "Action", onClick: "$fn" };
