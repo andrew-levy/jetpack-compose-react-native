@@ -1,9 +1,16 @@
 {
-  "extends": "expo-module-scripts/tsconfig.base",
   "compilerOptions": {
-    "outDir": "./build",
-    "module": "commonjs"
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "rootDir": "src",
+    "outDir": "build"
   },
-  "include": ["./src"],
-  "exclude": ["**/__mocks__/*", "**/__tests__/*"]
+  "include": [
+    "src"
+  ]
 }

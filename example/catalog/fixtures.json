@@ -1,0 +1,3627 @@
+{
+  "components": [
+    {
+      "name": "ActiveIcon",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "AlertDialog",
+      "overload": "AlertDialog",
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [
+        "confirmButton"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "AnimatedContent",
+      "overload": null,
+      "props": {
+        "targetState": 0
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": true,
+      "parent": null
+    },
+    {
+      "name": "AnimatedVisibility",
+      "overload": null,
+      "props": {
+        "visible": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "AppBarColumn",
+      "overload": null,
+      "props": {
+        "items": [
+          {
+            "label": "Action",
+            "icon": {
+              "icon": "Settings"
+            },
+            "onClick": "$fn"
+          }
+        ]
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "AppBarRow",
+      "overload": null,
+      "props": {
+        "items": [
+          {
+            "label": "Action",
+            "icon": {
+              "icon": "Settings"
+            },
+            "onClick": "$fn"
+          }
+        ]
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "AssistChip",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Badge",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BadgedBox",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "badge"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BasicAlertDialog",
+      "overload": null,
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BasicSecureTextField",
+      "overload": "BasicSecureTextField",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BasicText",
+      "overload": "BasicText",
+      "props": {
+        "text": "Sample"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BasicTextField",
+      "overload": "BasicTextField",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BasicTooltipBox",
+      "overload": null,
+      "props": {
+        "positionProvider": {},
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "tooltip"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BottomAppBar",
+      "overload": "BottomAppBar",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BottomSheetScaffold",
+      "overload": "BottomSheetScaffold",
+      "props": {},
+      "slots": [
+        "sheetContent"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Box",
+      "overload": "Box",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "BoxWithConstraints",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Button",
+      "overload": "Button",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ButtonGroup",
+      "overload": null,
+      "props": {
+        "items": [
+          {
+            "label": "Action",
+            "icon": {
+              "icon": "Settings"
+            },
+            "onClick": "$fn"
+          }
+        ]
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Canvas",
+      "overload": "Canvas",
+      "props": {
+        "modifier": "$modifier",
+        "onDraw": {
+          "commands": []
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Card",
+      "overload": "Card",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "CenterAlignedTopAppBar",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "CenteredTrack",
+      "overload": null,
+      "props": {
+        "sliderState": "$sliderState"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Checkbox",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "CircularProgressIndicator",
+      "overload": "CircularProgressIndicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "CircularWavyProgressIndicator",
+      "overload": "CircularWavyProgressIndicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ClickableText",
+      "overload": null,
+      "props": {
+        "text": {
+          "text": "Sample"
+        },
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Column",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "CompositionLocalProvider",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ContainedLoadingIndicator",
+      "overload": "ContainedLoadingIndicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Container",
+      "overload": "Container",
+      "props": {
+        "enabled": true,
+        "isError": true,
+        "interactionSource": "$interactionSource"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ContainerBox",
+      "overload": null,
+      "props": {
+        "enabled": true,
+        "isError": true,
+        "interactionSource": "$interactionSource"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Crossfade",
+      "overload": null,
+      "props": {
+        "targetState": 0
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": true,
+      "parent": null
+    },
+    {
+      "name": "CustomizedLookaheadAnimationVisualDebugging",
+      "overload": null,
+      "props": {
+        "debugColor": "#6750a4"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DatePicker",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DatePickerDialog",
+      "overload": null,
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [
+        "confirmButton"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DatePickerHeadline",
+      "overload": null,
+      "props": {
+        "selectedDateMillis": 8,
+        "displayMode": "picker",
+        "dateFormatter": {}
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DatePickerTitle",
+      "overload": null,
+      "props": {
+        "displayMode": "picker"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DateRangePicker",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DateRangePickerHeadline",
+      "overload": null,
+      "props": {
+        "selectedStartDateMillis": 8,
+        "selectedEndDateMillis": 8,
+        "displayMode": "picker",
+        "dateFormatter": {}
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DateRangePickerTitle",
+      "overload": null,
+      "props": {
+        "displayMode": "picker"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DecorationBox",
+      "overload": "DecorationBox",
+      "props": {
+        "value": "Sample",
+        "enabled": true,
+        "singleLine": true,
+        "visualTransformation": {
+          "type": "none"
+        },
+        "interactionSource": "$interactionSource"
+      },
+      "slots": [
+        "innerTextField"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Dialog",
+      "overload": null,
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DisableSelection",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DismissibleDrawerSheet",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DismissibleNavigationDrawer",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "drawerContent"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DisplayModeToggle",
+      "overload": null,
+      "props": {
+        "onDisplayModeChange": "$fn",
+        "displayMode": "picker"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Divider",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DockedSearchBar",
+      "overload": null,
+      "props": {
+        "expanded": true,
+        "onExpandedChange": "$fn"
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DragHandle",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DropdownMenu",
+      "overload": null,
+      "props": {
+        "expanded": true,
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "DropdownMenuItem",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [
+        "text"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedAssistChip",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedButton",
+      "overload": "ElevatedButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedCard",
+      "overload": "ElevatedCard",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedFilterChip",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedLeadingButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedSuggestionChip",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ElevatedTrailingButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ExpandedDockedSearchBar",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ExpandedFullScreenSearchBar",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ExposedDropdownMenu",
+      "overload": null,
+      "props": {
+        "expanded": true,
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": "ExposedDropdownMenuBox"
+    },
+    {
+      "name": "ExposedDropdownMenuBox",
+      "overload": null,
+      "props": {
+        "expanded": true,
+        "onExpandedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ExtendedFloatingActionButton",
+      "overload": "ExtendedFloatingActionButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilledIconButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilledIconToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilledTonalButton",
+      "overload": "FilledTonalButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilledTonalIconButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilledTonalIconToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FilterChip",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FlexBox",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FlexibleBottomAppBar",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FloatingActionButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FloatingActionButtonMenu",
+      "overload": null,
+      "props": {
+        "expanded": true
+      },
+      "slots": [
+        "button"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FloatingActionButtonMenuItem",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [
+        "text",
+        "icon"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": "FloatingActionButtonMenu"
+    },
+    {
+      "name": "FlowColumn",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "FlowRow",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Grid",
+      "overload": null,
+      "props": {
+        "config": {
+          "columns": [
+            "auto"
+          ],
+          "rows": [
+            "auto"
+          ]
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "HorizontalDivider",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "HorizontalFloatingToolbar",
+      "overload": "HorizontalFloatingToolbar",
+      "props": {
+        "expanded": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "HorizontalMultiBrowseCarousel",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        },
+        "preferredItemWidth": 8
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "HorizontalPager",
+      "overload": "HorizontalPager",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "HorizontalUncontainedCarousel",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        },
+        "itemWidth": 8
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Icon",
+      "overload": "Icon#1",
+      "props": {
+        "active": true
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "IconButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "IconToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Image",
+      "overload": null,
+      "props": {
+        "painter": {
+          "color": "#6750a4"
+        },
+        "contentDescription": "Sample"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Indicator",
+      "overload": "Indicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "IndicatorBox",
+      "overload": null,
+      "props": {
+        "state": "$pullToRefreshState",
+        "isRefreshing": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "InputChip",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "InputField",
+      "overload": "InputField",
+      "props": {
+        "textFieldState": {},
+        "searchBarState": {},
+        "onSearch": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Label",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "label"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LargeExtendedFloatingActionButton",
+      "overload": "LargeExtendedFloatingActionButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LargeFlexibleTopAppBar",
+      "overload": "LargeFlexibleTopAppBar",
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LargeFloatingActionButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LargeTopAppBar",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Layout",
+      "overload": "Layout",
+      "props": {
+        "measurePolicy": {
+          "height": 48,
+          "children": [
+            {}
+          ]
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LazyColumn",
+      "overload": "LazyColumn",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LazyHorizontalGrid",
+      "overload": "LazyHorizontalGrid",
+      "props": {
+        "rows": {
+          "count": 2
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LazyHorizontalStaggeredGrid",
+      "overload": "LazyHorizontalStaggeredGrid",
+      "props": {
+        "rows": {
+          "count": 2
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LazyRow",
+      "overload": "LazyRow",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LazyVerticalGrid",
+      "overload": "LazyVerticalGrid",
+      "props": {
+        "columns": {
+          "count": 2
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LazyVerticalStaggeredGrid",
+      "overload": "LazyVerticalStaggeredGrid",
+      "props": {
+        "columns": {
+          "count": 2
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LeadingButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LeadingIconTab",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "text",
+        "icon"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LinearProgressIndicator",
+      "overload": "LinearProgressIndicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LinearWavyProgressIndicator",
+      "overload": "LinearWavyProgressIndicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ListItem",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "headlineContent"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LoadingIndicator",
+      "overload": "LoadingIndicator",
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LookaheadAnimationVisualDebugging",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "LookaheadScope",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MaterialExpressiveTheme",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MaterialTheme",
+      "overload": "MaterialTheme",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MediumExtendedFloatingActionButton",
+      "overload": "MediumExtendedFloatingActionButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MediumFlexibleTopAppBar",
+      "overload": "MediumFlexibleTopAppBar",
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MediumFloatingActionButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MediumTopAppBar",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ModalBottomSheet",
+      "overload": null,
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ModalDrawerSheet",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ModalNavigationDrawer",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "drawerContent"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ModalWideNavigationRail",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MultiChoiceSegmentedButtonRow",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "MultiMeasureLayout",
+      "overload": null,
+      "props": {
+        "measurePolicy": {
+          "height": 48,
+          "children": [
+            {}
+          ]
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationBar",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationBarItem",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "icon"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": "NavigationBar"
+    },
+    {
+      "name": "NavigationDrawerItem",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationRail",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationRailItem",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "icon"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedButton",
+      "overload": "OutlinedButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedCard",
+      "overload": "OutlinedCard",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedIconButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedIconToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedLeadingButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedSecureTextField",
+      "overload": "OutlinedSecureTextField",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedTextField",
+      "overload": "OutlinedTextField",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "OutlinedTrailingButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PermanentDrawerSheet",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PermanentNavigationDrawer",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "drawerContent"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PlainTooltip",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": "TooltipBox"
+    },
+    {
+      "name": "Popup",
+      "overload": "Popup",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PrimaryIndicator",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PrimaryScrollableTabRow",
+      "overload": null,
+      "props": {
+        "selectedTabIndex": 0
+      },
+      "slots": [
+        "tabs"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PrimaryTabRow",
+      "overload": null,
+      "props": {
+        "selectedTabIndex": 0
+      },
+      "slots": [
+        "tabs"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ProvideTextStyle",
+      "overload": null,
+      "props": {
+        "value": {}
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "PullToRefreshBox",
+      "overload": null,
+      "props": {
+        "isRefreshing": true,
+        "onRefresh": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "RadioButton",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "RangeSlider",
+      "overload": "RangeSlider",
+      "props": {
+        "state": "$rangeSliderState"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ReusableContentHost",
+      "overload": null,
+      "props": {
+        "active": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "RichTooltip",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "text"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": "TooltipBox"
+    },
+    {
+      "name": "Row",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Scaffold",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ScrollableTabRow",
+      "overload": null,
+      "props": {
+        "selectedTabIndex": 0
+      },
+      "slots": [
+        "tabs"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SearchBar",
+      "overload": "SearchBar",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SecondaryIndicator",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SecondaryScrollableTabRow",
+      "overload": null,
+      "props": {
+        "selectedTabIndex": 0
+      },
+      "slots": [
+        "tabs"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SecondaryTabRow",
+      "overload": null,
+      "props": {
+        "selectedTabIndex": 0
+      },
+      "slots": [
+        "tabs"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SecureTextField",
+      "overload": "SecureTextField",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SegmentedButton",
+      "overload": "SegmentedButton",
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn",
+        "shape": "rect"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": "MultiChoiceSegmentedButtonRow"
+    },
+    {
+      "name": "SelectionContainer",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SharedTransitionLayout",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ShortNavigationBar",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ShortNavigationBarItem",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "icon",
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SingleChoiceSegmentedButtonRow",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Slider",
+      "overload": "Slider",
+      "props": {
+        "state": "$sliderState"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SmallExtendedFloatingActionButton",
+      "overload": "SmallExtendedFloatingActionButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SmallFloatingActionButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Snackbar",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SnackbarHost",
+      "overload": null,
+      "props": {
+        "hostState": {}
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Spacer",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SplitButtonLayout",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "leadingButton",
+        "trailingButton"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "StandardFloatingActionButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SuggestionChip",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Surface",
+      "overload": "Surface",
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SwipeToDismissBox",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "backgroundContent"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Switch",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Tab",
+      "overload": "Tab",
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TabRow",
+      "overload": null,
+      "props": {
+        "selectedTabIndex": 0
+      },
+      "slots": [
+        "tabs"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Text",
+      "overload": "Text",
+      "props": {
+        "text": "Sample"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TextButton",
+      "overload": "TextButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TextField",
+      "overload": "TextField",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Thumb",
+      "overload": "Thumb",
+      "props": {
+        "interactionSource": "$interactionSource"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TimeInput",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TimePicker",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TimePickerDialog",
+      "overload": null,
+      "props": {
+        "onDismissRequest": "$fn"
+      },
+      "slots": [
+        "confirmButton",
+        "title"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Title",
+      "overload": null,
+      "props": {
+        "displayMode": "picker"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ToggleFloatingActionButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TonalLeadingButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TonalToggleButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TonalTrailingButton",
+      "overload": null,
+      "props": {
+        "checked": true,
+        "onCheckedChange": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TooltipBox",
+      "overload": null,
+      "props": {
+        "positionProvider": {},
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "tooltip"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TopAppBar",
+      "overload": "TopAppBar",
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TopSearchBar",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [
+        "inputField"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "Track",
+      "overload": "Track",
+      "props": {
+        "rangeSliderState": "$rangeSliderState"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TrailingButton",
+      "overload": "TrailingButton",
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TrailingIcon",
+      "overload": null,
+      "props": {
+        "expanded": true
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "TriStateCheckbox",
+      "overload": null,
+      "props": {
+        "state": "off",
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "VerticalDivider",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "VerticalDragHandle",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "VerticalFloatingToolbar",
+      "overload": "VerticalFloatingToolbar",
+      "props": {
+        "expanded": true
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "VerticalPager",
+      "overload": "VerticalPager",
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        }
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "VerticalSlider",
+      "overload": null,
+      "props": {
+        "state": "$sliderState"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "VibrantFloatingActionButton",
+      "overload": null,
+      "props": {
+        "onClick": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "WideNavigationRail",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "WideNavigationRailItem",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "icon",
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "absoluteOffset",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "absolutePadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "align",
+      "args": {
+        "alignment": "center"
+      },
+      "scope": "box"
+    },
+    {
+      "name": "alignBy",
+      "args": {
+        "alignmentLine": "firstBaseline"
+      },
+      "scope": "row"
+    },
+    {
+      "name": "alignByBaseline",
+      "args": {},
+      "scope": "row"
+    },
+    {
+      "name": "alpha",
+      "args": {
+        "alpha": 0.5
+      },
+      "scope": null
+    },
+    {
+      "name": "anchoredDraggable",
+      "args": {
+        "state": {
+          "anchors": {
+            "start": 0,
+            "end": 100
+          },
+          "initialValue": "start"
+        },
+        "orientation": "horizontal"
+      },
+      "scope": null
+    },
+    {
+      "name": "animateBounds",
+      "args": {
+        "lookaheadScope": "current"
+      },
+      "scope": "lookahead"
+    },
+    {
+      "name": "animateContentSize",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "animateEnterExit",
+      "args": {},
+      "scope": "visibility"
+    },
+    {
+      "name": "animateFloatingActionButton",
+      "args": {
+        "visible": true,
+        "alignment": "center"
+      },
+      "scope": null
+    },
+    {
+      "name": "animateIcon",
+      "args": {
+        "checkedProgress": 0.5
+      },
+      "scope": null
+    },
+    {
+      "name": "animateItem",
+      "args": {},
+      "scope": "lazy"
+    },
+    {
+      "name": "aspectRatio",
+      "args": {
+        "ratio": 0.5
+      },
+      "scope": null
+    },
+    {
+      "name": "background",
+      "args": {
+        "color": "#6750a4"
+      },
+      "scope": null
+    },
+    {
+      "name": "backgroundBrush",
+      "args": {
+        "brush": {
+          "colors": [
+            "#c7b2fa",
+            "#f5c6e4"
+          ]
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "backgroundColor",
+      "args": {
+        "color": "#6750a4"
+      },
+      "scope": null
+    },
+    {
+      "name": "basicMarquee",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "blur",
+      "args": {
+        "radius": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "border",
+      "args": {
+        "border": {
+          "width": 2,
+          "color": "#6750a4"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "bringIntoViewRequester",
+      "args": {
+        "bringIntoViewRequester": "$bringIntoViewRequester"
+      },
+      "scope": null
+    },
+    {
+      "name": "captionBarPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "clearAndSetSemantics",
+      "args": {
+        "properties": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "clickable",
+      "args": {
+        "onClick": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "clip",
+      "args": {
+        "shape": "rect"
+      },
+      "scope": null
+    },
+    {
+      "name": "clipScrollableContainer",
+      "args": {
+        "orientation": "horizontal"
+      },
+      "scope": null
+    },
+    {
+      "name": "clipToBounds",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "combinedClickable",
+      "args": {
+        "onClick": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "consumeWindowInsets",
+      "args": {
+        "insets": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "contentReceiver",
+      "args": {
+        "receiveContentListener": {
+          "onText": "$fn"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "contentType",
+      "args": {
+        "contentType": "username"
+      },
+      "scope": null
+    },
+    {
+      "name": "defaultMinSize",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "displayCutoutPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "dragAndDropSource",
+      "args": {
+        "transferData": {
+          "text": "Sample"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "dragAndDropTarget",
+      "args": {
+        "shouldStartDragAndDrop": {
+          "mimeTypes": [
+            "text/plain"
+          ]
+        },
+        "target": {
+          "onDrop": "$fn"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "draggable",
+      "args": {
+        "state": {
+          "onDelta": "$fn"
+        },
+        "orientation": "horizontal"
+      },
+      "scope": null
+    },
+    {
+      "name": "draggable2D",
+      "args": {
+        "state": {
+          "onDelta": "$fn"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "drawBehind",
+      "args": {
+        "onDraw": {
+          "commands": []
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "drawWithCache",
+      "args": {
+        "onBuildDrawCache": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "drawWithContent",
+      "args": {
+        "onDraw": {
+          "commands": []
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "dropShadow",
+      "args": {
+        "shape": "rect",
+        "shadow": {
+          "radius": 4,
+          "color": "#6750a4"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "exposedDropdownSize",
+      "args": {},
+      "scope": "menu"
+    },
+    {
+      "name": "fillMaxColumnWidth",
+      "args": {},
+      "scope": "flowColumn"
+    },
+    {
+      "name": "fillMaxHeight",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "fillMaxRowHeight",
+      "args": {},
+      "scope": "flowRow"
+    },
+    {
+      "name": "fillMaxSize",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "fillMaxWidth",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "fillParentMaxHeight",
+      "args": {},
+      "scope": "lazy"
+    },
+    {
+      "name": "fillParentMaxSize",
+      "args": {},
+      "scope": "lazy"
+    },
+    {
+      "name": "fillParentMaxWidth",
+      "args": {},
+      "scope": "lazy"
+    },
+    {
+      "name": "fitInside",
+      "args": {
+        "rulers": {
+          "type": "safeDrawing"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "fitOutside",
+      "args": {
+        "rulers": {
+          "type": "safeDrawing"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "flex",
+      "args": {
+        "flexConfig": {}
+      },
+      "scope": "flex"
+    },
+    {
+      "name": "floatingToolbarVerticalNestedScroll",
+      "args": {
+        "expanded": true,
+        "onExpand": "$fn",
+        "onCollapse": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "focusable",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "focusGroup",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "focusProperties",
+      "args": {
+        "scope": {
+          "canFocus": true
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "focusRequester",
+      "args": {
+        "focusRequester": "$focusRequester"
+      },
+      "scope": null
+    },
+    {
+      "name": "focusRestorer",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "focusTarget",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "graphicsLayer",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "gridItem",
+      "args": {},
+      "scope": "grid"
+    },
+    {
+      "name": "handwritingDetector",
+      "args": {
+        "callback": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "handwritingHandler",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "height",
+      "args": {
+        "height": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "heightIn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "horizontalScroll",
+      "args": {
+        "state": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "hoverable",
+      "args": {
+        "interactionSource": "$interactionSource"
+      },
+      "scope": null
+    },
+    {
+      "name": "imeNestedScroll",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "imePadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "indication",
+      "args": {
+        "interactionSource": "$interactionSource",
+        "indication": {
+          "type": "ripple"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "indicatorLine",
+      "args": {
+        "enabled": true,
+        "isError": true,
+        "interactionSource": "$interactionSource"
+      },
+      "scope": null
+    },
+    {
+      "name": "innerShadow",
+      "args": {
+        "shape": "rect",
+        "shadow": {
+          "radius": 4,
+          "color": "#6750a4"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "keepScreenOn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "layout",
+      "args": {
+        "measure": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "layoutBounds",
+      "args": {
+        "holder": "$layoutBoundsHolder"
+      },
+      "scope": null
+    },
+    {
+      "name": "layoutId",
+      "args": {
+        "layoutId": "Sample"
+      },
+      "scope": null
+    },
+    {
+      "name": "magnifier",
+      "args": {
+        "sourceCenter": {
+          "x": 16,
+          "y": 16
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "mandatorySystemGesturesPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "maskBorder",
+      "args": {
+        "border": {
+          "width": 2,
+          "color": "#6750a4"
+        },
+        "shape": "rect"
+      },
+      "scope": "carousel"
+    },
+    {
+      "name": "maskClip",
+      "args": {
+        "shape": "rect"
+      },
+      "scope": "carousel"
+    },
+    {
+      "name": "matchParentSize",
+      "args": {},
+      "scope": "box"
+    },
+    {
+      "name": "menuAnchor",
+      "args": {
+        "type": "primaryNotEditable"
+      },
+      "scope": "menu"
+    },
+    {
+      "name": "minimumInteractiveComponentSize",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "motionEventSpy",
+      "args": {
+        "watcher": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "navigationBarsPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "nestedScroll",
+      "args": {
+        "connection": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "offset",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "onConsumedWindowInsetsChanged",
+      "args": {
+        "block": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onFocusChanged",
+      "args": {
+        "onFocusChanged": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onFocusedBoundsChanged",
+      "args": {
+        "onPositioned": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onFocusEvent",
+      "args": {
+        "onFocusEvent": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onGloballyPositioned",
+      "args": {
+        "onGloballyPositioned": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onInterceptKeyBeforeSoftKeyboard",
+      "args": {
+        "onInterceptKeyBeforeSoftKeyboard": {
+          "keyCodes": [
+            4
+          ],
+          "event": "up"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "onKeyEvent",
+      "args": {
+        "onKeyEvent": {
+          "keyCodes": [
+            4
+          ],
+          "event": "up"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "onLayoutRectChanged",
+      "args": {
+        "callback": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onPlaced",
+      "args": {
+        "onPlaced": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onPreInterceptKeyBeforeSoftKeyboard",
+      "args": {
+        "onPreInterceptKeyBeforeSoftKeyboard": {
+          "keyCodes": [
+            4
+          ],
+          "event": "up"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "onPreRotaryScrollEvent",
+      "args": {
+        "onPreRotaryScrollEvent": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "onPreviewKeyEvent",
+      "args": {
+        "onPreviewKeyEvent": {
+          "keyCodes": [
+            4
+          ],
+          "event": "up"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "onRotaryScrollEvent",
+      "args": {
+        "onRotaryScrollEvent": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "onSizeChanged",
+      "args": {
+        "onSizeChanged": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "onVisibilityChanged",
+      "args": {
+        "callback": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "overscroll",
+      "args": {
+        "overscrollEffect": {
+          "type": "platform"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "padding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "paddingFrom",
+      "args": {
+        "alignmentLine": "firstBaseline",
+        "before": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "paddingFromBaseline",
+      "args": {
+        "top": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "paint",
+      "args": {
+        "painter": {
+          "color": "#6750a4"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "pointerHoverIcon",
+      "args": {
+        "icon": "hand"
+      },
+      "scope": null
+    },
+    {
+      "name": "pointerInput",
+      "args": {
+        "key1": "Sample",
+        "block": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "pointerInteropFilter",
+      "args": {
+        "onTouchEvent": {
+          "actions": [
+            0,
+            1
+          ]
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "preferKeepClear",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "preferredFrameRate",
+      "args": {
+        "frameRate": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "progressSemantics",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "pullToRefresh",
+      "args": {
+        "isRefreshing": true,
+        "state": "$pullToRefreshState",
+        "onRefresh": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "recalculateWindowInsets",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "renderInSharedTransitionScopeOverlay",
+      "args": {},
+      "scope": "shared"
+    },
+    {
+      "name": "requiredHeight",
+      "args": {
+        "height": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "requiredHeightIn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "requiredSize",
+      "args": {
+        "size": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "requiredSizeIn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "requiredWidth",
+      "args": {
+        "intrinsicSize": "max"
+      },
+      "scope": null
+    },
+    {
+      "name": "requiredWidthIn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "rotate",
+      "args": {
+        "degrees": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "safeContentPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "safeDrawingPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "safeGesturesPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "scale",
+      "args": {
+        "scale": 0.5
+      },
+      "scope": null
+    },
+    {
+      "name": "scrollable",
+      "args": {
+        "state": {},
+        "orientation": "horizontal"
+      },
+      "scope": null
+    },
+    {
+      "name": "scrollable2D",
+      "args": {
+        "state": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "scrollableArea",
+      "args": {
+        "state": {},
+        "orientation": "horizontal"
+      },
+      "scope": null
+    },
+    {
+      "name": "selectable",
+      "args": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "selectableGroup",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "semantics",
+      "args": {
+        "properties": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "sensitiveContent",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "shadow",
+      "args": {
+        "elevation": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "sharedBounds",
+      "args": {
+        "sharedContentState": {
+          "key": "demo"
+        },
+        "animatedVisibilityScope": "current"
+      },
+      "scope": "shared"
+    },
+    {
+      "name": "sharedElement",
+      "args": {
+        "sharedContentState": {
+          "key": "demo"
+        },
+        "animatedVisibilityScope": "current"
+      },
+      "scope": "shared"
+    },
+    {
+      "name": "sharedElementWithCallerManagedVisibility",
+      "args": {
+        "sharedContentState": {
+          "key": "demo"
+        },
+        "visible": true
+      },
+      "scope": "shared"
+    },
+    {
+      "name": "size",
+      "args": {
+        "size": 8
+      },
+      "scope": null
+    },
+    {
+      "name": "sizeIn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "skipToLookaheadPosition",
+      "args": {},
+      "scope": "shared"
+    },
+    {
+      "name": "skipToLookaheadSize",
+      "args": {},
+      "scope": "shared"
+    },
+    {
+      "name": "statusBarsPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "styleable",
+      "args": {
+        "style": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "stylusHoverIcon",
+      "args": {
+        "icon": "hand"
+      },
+      "scope": null
+    },
+    {
+      "name": "systemBarsPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "systemGestureExclusion",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "systemGesturesPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "tabIndicatorOffset",
+      "args": {
+        "selectedTabIndex": 0
+      },
+      "scope": "tab"
+    },
+    {
+      "name": "testTag",
+      "args": {
+        "tag": "demo"
+      },
+      "scope": null
+    },
+    {
+      "name": "toggleable",
+      "args": {
+        "value": true,
+        "onValueChange": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "toolingGraphicsLayer",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "transformable",
+      "args": {
+        "state": {
+          "onTransform": "$fn"
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "triStateToggleable",
+      "args": {
+        "state": "off",
+        "onClick": "$fn"
+      },
+      "scope": null
+    },
+    {
+      "name": "verticalScroll",
+      "args": {
+        "state": {}
+      },
+      "scope": null
+    },
+    {
+      "name": "visible",
+      "args": {
+        "visible": true
+      },
+      "scope": null
+    },
+    {
+      "name": "waterfallPadding",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "weight",
+      "args": {
+        "weight": 8
+      },
+      "scope": "row"
+    },
+    {
+      "name": "width",
+      "args": {
+        "intrinsicSize": "max"
+      },
+      "scope": null
+    },
+    {
+      "name": "widthIn",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "windowInsetsBottomHeight",
+      "args": {
+        "insets": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "windowInsetsEndWidth",
+      "args": {
+        "insets": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "windowInsetsPadding",
+      "args": {
+        "insets": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "windowInsetsStartWidth",
+      "args": {
+        "insets": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "windowInsetsTopHeight",
+      "args": {
+        "insets": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      "scope": null
+    },
+    {
+      "name": "wrapContentHeight",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "wrapContentSize",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "wrapContentWidth",
+      "args": {},
+      "scope": null
+    },
+    {
+      "name": "zIndex",
+      "args": {
+        "zIndex": 0
+      },
+      "scope": null
+    }
+  ]
+}

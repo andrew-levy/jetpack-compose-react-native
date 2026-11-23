@@ -1,0 +1,135 @@
+name: Compose Bridge
+
+on:
+  push:
+    branches: [poc/generated-compose-bridge, compose-generation-audit]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-generated-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+          cache-read-only: false
+      - name: Install Android build tools
+        run: |
+          sdk_root="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          "$sdk_root/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-34' 'build-tools;34.0.0' 'platforms;android-35' 'build-tools;35.0.0' 'ndk;26.1.10909125' 'cmake;3.22.1'
+      - name: Audit pinned Compose and verify compiler-approved bindings
+        run: |
+          node tools/compose-codegen/pipeline.mjs --check
+          node tools/compose-codegen/tests/verify.mjs audit \
+            tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json \
+            tools/compose-codegen/build/compose-binary-inventory.json
+      - name: Detect lost public call forms
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE_SHA" ] && git cat-file -e "$BASE_SHA:tools/compose-codegen/api-surface.json" 2>/dev/null; then
+            previous=$(mktemp)
+            git show "$BASE_SHA:tools/compose-codegen/api-surface.json" > "$previous"
+            node tools/compose-codegen/tests/verify.mjs surface "$previous" tools/compose-codegen/api-surface.json
+          fi
+      - name: Compare coverage after upgrading Material 3
+        run: |
+          manifest=tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json
+          pinned=$(mktemp)
+          cp "$manifest" "$pinned"
+          COMPOSE_GENERATED_OUTPUT="$(mktemp -d)" node tools/compose-codegen/pipeline.mjs -PcomposeMaterial3Version=1.5.0-alpha01
+          node tools/compose-codegen/tests/verify.mjs upgrade "$pinned" "$manifest"
+      - name: Discover and compile fixture overloads with no manual catalog
+        run: |
+          probe=tools/compose-codegen/src/debug/kotlin/DiscoveryProbe.kt
+          mkdir -p "$(dirname "$probe")"
+          trap 'rm -f "$probe"' EXIT
+          cp tools/compose-codegen/tests/DiscoveryProbe.kt "$probe"
+          export COMPOSE_GENERATED_OUTPUT="$(mktemp -d)"
+          node tools/compose-codegen/pipeline.mjs \
+            -PcomposePackages=com.jetpackcomposereactnative.codegen \
+            -PmodifierPackages=com.jetpackcomposereactnative.codegen
+          node tools/compose-codegen/tests/verify.mjs probe \
+            tools/compose-codegen/build/generated/ksp/debug/resources/compose-api-manifest.json \
+            "$COMPOSE_GENERATED_OUTPUT"
+      - name: Build the Fabric example from the packed npm package
+        run: |
+          npm ci
+          npm test
+          npm exec -- tsc -p example/tsconfig.json
+          tarball=$(npm pack --silent --pack-destination "$RUNNER_TEMP")
+          consumer="$RUNNER_TEMP/compose-consumer"
+          mkdir -p "$consumer"
+          cp -R example "$consumer/"
+          node - "$consumer" "$RUNNER_TEMP/$tarball" <<'JS'
+          const fs = require('node:fs');
+          const [consumer, tarball] = process.argv.slice(2);
+          const manifest = `${consumer}/example/package.json`;
+          const example = JSON.parse(fs.readFileSync(manifest));
+          example.dependencies['jetpack-compose-react-native'] = `file:${tarball}`;
+          fs.writeFileSync(manifest, JSON.stringify(example));
+          fs.writeFileSync(`${consumer}/package.json`, JSON.stringify({ private: true, workspaces: ['example'] }));
+          JS
+          npm install --prefix "$consumer" --no-audit --no-fund
+          "$consumer/example/android/gradlew" -p "$consumer/example/android" :app:assembleRelease -PreactNativeArchitectures=x86_64
+      - name: Ensure FFmpeg is available for gallery previews
+        run: |
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+      - name: Enable Android emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Verify rendering, updates and JavaScript events on Android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb install "$RUNNER_TEMP/compose-consumer/example/android/app/build/outputs/apk/release/app-release.apk"
+            sh scripts/verify-emulator-ci.sh
+      - name: Save the verified Android APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: compose-bridge-android-x86_64
+          path: ${{ runner.temp }}/compose-consumer/example/android/app/build/outputs/apk/release/app-release.apk
+      - name: Save gallery previews
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compose-gallery-previews
+          path: compose-gallery
+          if-no-files-found: ignore
+      - name: Save catalog sweep report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compose-catalog-sweep
+          path: catalog-sweep-report.json
+          if-no-files-found: ignore
+      - name: Save emulator diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compose-emulator-log
+          path: compose-emulator.*

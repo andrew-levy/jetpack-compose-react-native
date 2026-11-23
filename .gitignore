@@ -31,6 +31,7 @@ project.xcworkspace
 .classpath
 .cxx
 .gradle
+.kotlin/
 .idea
 .project
 .settings
@@ -53,5 +54,5 @@ npm-debug.log
 yarn-debug.log
 yarn-error.log
 
-# Expo
-.expo/*
+# Local catalog sweep output
+catalog-sweep-report.json
