@@ -178,6 +178,26 @@ function sampleObject(name, owner = "") {
     case "painter": return { color: "#6750a4" };
     case "text": return { text: "Sample" };
     case "visualTransformation": return { type: "none" };
+    case "shapes":
+      switch (owner) {
+        case "CheckableDropdownMenuItem":
+        case "SelectableDropdownMenuItem":
+          return { shape: { radius: 8 }, selectedShape: { radius: 16 } };
+        case "DropdownMenuGroup":
+          return { shape: { radius: 16 }, inactiveShape: { radius: 8 } };
+        case "SegmentedListItem":
+          return {
+            shape: { radius: 8 },
+            selectedShape: { radius: 16 },
+            pressedShape: { radius: 12 },
+            focusedShape: { radius: 12 },
+            hoveredShape: { radius: 12 },
+            draggedShape: { radius: 16 },
+          };
+        case "TimeScroll":
+          return { timeFieldShape: { radius: 12 }, periodSelectorShape: { radius: 8 } };
+        default: return {};
+      }
     case "sliderState": return "$sliderState";
     case "rangeSliderState": return "$rangeSliderState";
     case "state":

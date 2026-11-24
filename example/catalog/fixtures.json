@@ -333,7 +333,14 @@
       "props": {
         "checked": true,
         "onCheckedChange": "$fn",
-        "shapes": {}
+        "shapes": {
+          "shape": {
+            "radius": 8
+          },
+          "selectedShape": {
+            "radius": 16
+          }
+        }
       },
       "slots": [
         "text"
@@ -668,7 +675,14 @@
       "name": "DropdownMenuGroup",
       "overload": null,
       "props": {
-        "shapes": {}
+        "shapes": {
+          "shape": {
+            "radius": 16
+          },
+          "inactiveShape": {
+            "radius": 8
+          }
+        }
       },
       "slots": [],
       "children": true,
@@ -2041,7 +2055,26 @@
       "name": "SegmentedListItem",
       "overload": "SegmentedListItem",
       "props": {
-        "shapes": {}
+        "shapes": {
+          "shape": {
+            "radius": 8
+          },
+          "selectedShape": {
+            "radius": 16
+          },
+          "pressedShape": {
+            "radius": 12
+          },
+          "focusedShape": {
+            "radius": 12
+          },
+          "hoveredShape": {
+            "radius": 12
+          },
+          "draggedShape": {
+            "radius": 16
+          }
+        }
       },
       "slots": [],
       "children": true,
@@ -2054,7 +2087,14 @@
       "props": {
         "selected": true,
         "onClick": "$fn",
-        "shapes": {}
+        "shapes": {
+          "shape": {
+            "radius": 8
+          },
+          "selectedShape": {
+            "radius": 16
+          }
+        }
       },
       "slots": [
         "text"
@@ -2378,7 +2418,14 @@
         "state": {
           "initialText": "Hello"
         },
-        "shapes": {}
+        "shapes": {
+          "timeFieldShape": {
+            "radius": 12
+          },
+          "periodSelectorShape": {
+            "radius": 8
+          }
+        }
       },
       "slots": [],
       "children": false,
