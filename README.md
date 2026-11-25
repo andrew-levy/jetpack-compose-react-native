@@ -221,10 +221,37 @@ import { Button, MaterialExpressiveTheme, Text } from "jetpack-compose-react-nat
 </MaterialExpressiveTheme>
 ```
 
+## Fieldnote chat demo
+
+The Android example opens in Fieldnote, an offline chat built with JPC RN. Start
+an empty conversation, tap a prompt suggestion, or open a sample conversation
+from the drawer. Each new prompt moves to the top of the transcript with room
+below for its simulated streaming reply. Scroll back freely during generation
+and use the down arrow to return to the latest prompt.
+
+Long-press a message for its context menu, or tap the response's overflow button.
+You can copy and share replies, rate them, stop generation, or edit and retry
+the latest turn. The title and composer mode chip open chat settings. Use the
+plus button to attach a built-in sample file.
+
+Run from the repository root with an Android emulator or device connected and
+the SDK from Quick start installed.
+
+```sh
+npm ci
+npm run example:prebuild
+npm run android
+```
+
+Compose renders the transcript, multiline composer, drawer, menus, bottom
+sheets, progress indicator, and motion. React owns the conversation, draft,
+and simulated generation state. The demo keeps conversations for the app
+session and runs without an API key or an AI service.
+
 ## Compose Gallery
 
-The [example app](example/App.tsx) opens to a searchable catalog. Filter by
-component or modifier, then open an entry to try it. Previous and Next follow
+Choose **Compose Catalog** from the Fieldnote drawer to open the searchable
+catalog. Filter by component or modifier, then open an entry to try it. Previous and Next follow
 your current search results. Use **Mark reviewed** to track your manual pass
 during the current app session. Switch between System, Light, and Dark on the
 list or while a preview is open.

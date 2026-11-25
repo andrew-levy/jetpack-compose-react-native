@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "jetpack-compose-react-native-example",
+    "name": "Fieldnote",
     "slug": "jetpack-compose-react-native-example",
     "version": "1.0.0",
     "platforms": [
@@ -9,13 +9,13 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F6F5EF"
     },
     "android": {
       "package": "com.jetpackcomposereactnative.example",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#235B48"
       }
     },
     "plugins": [

@@ -414,7 +414,7 @@ def verify():
 
 def verify_catalog():
     adb("shell", "am", "force-stop", PACKAGE)
-    adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity")
+    adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity", "--ei", "catalogStart", "0")
     window = activity_window()
     nodes = wait_for("Compose Catalog", "Light", "Dark", "Search catalog", window=window)
     window = window or activity_window()
