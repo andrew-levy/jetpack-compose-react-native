@@ -414,8 +414,10 @@ def verify():
 
 def verify_catalog():
     adb("shell", "am", "force-stop", PACKAGE)
-    adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity", "--ei", "catalogStart", "0")
+    adb("shell", "am", "start", "-W", "-n", f"{PACKAGE}/.MainActivity")
     window = activity_window()
+    tap(wait_for("Open conversations", window=window)["Open conversations"])
+    tap(wait_for("Compose Catalog", window=window)["Compose Catalog"])
     nodes = wait_for("Compose Catalog", "Light", "Dark", "Search catalog", window=window)
     window = window or activity_window()
     if window is None:
