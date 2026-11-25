@@ -232,7 +232,9 @@ and use the down arrow to return to the latest prompt.
 Long-press a message for its context menu, or tap the response's overflow button.
 You can copy and share replies, rate them, stop generation, or edit and retry
 the latest turn. The title and composer mode chip open chat settings. Use the
-plus button to attach a built-in sample file.
+plus button to attach a built-in sample file. Settings offer System, Light,
+and Dark appearance, plus an independent Material Expressive switch with a
+different palette, larger corner radii, and native expressive motion.
 
 Run from the repository root with an Android emulator or device connected and
 the SDK from Quick start installed.

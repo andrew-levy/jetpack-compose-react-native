@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import {
   Box, Column, FilterChip, HorizontalDivider, LazyColumn, ListItem, ModalBottomSheet,
-  ModalDrawerSheet, Modifier, NavigationDrawerItem, RadioButton, Row, Spacer, Text,
+  ModalDrawerSheet, Modifier, NavigationDrawerItem, RadioButton, Row, Spacer, Switch, Text,
   useModalBottomSheetState, useScrollState, type ComposeDrawerStateHandle,
 } from "jetpack-compose-react-native";
 
@@ -58,10 +58,10 @@ export function ConversationDrawer({
 }
 
 export function ChatSheet({
-  kind, palette, mode, appearance, onMode, onAppearance, onAttach, onDismiss,
+  kind, palette, mode, appearance, expressive, onMode, onAppearance, onExpressive, onAttach, onDismiss,
 }: {
-  kind: Sheet; palette: Palette; mode: Mode; appearance: Appearance; onMode: (mode: Mode) => void;
-  onAppearance: (appearance: Appearance) => void; onAttach: (file: Attachment) => void; onDismiss: () => void;
+  kind: Sheet; palette: Palette; mode: Mode; appearance: Appearance; expressive: boolean; onMode: (mode: Mode) => void;
+  onAppearance: (appearance: Appearance) => void; onExpressive: (checked: boolean) => void; onAttach: (file: Attachment) => void; onDismiss: () => void;
 }) {
   const visible = useRef(false);
   const scroll = useScrollState();
@@ -78,6 +78,7 @@ export function ChatSheet({
   return (
     <ModalBottomSheet onDismissRequest={onDismiss} sheetState={sheet}
       containerColor={palette.surface} contentColor={palette.ink} scrimColor={palette.scrim} tonalElevation={0}
+      shape={rounded(palette.cornerRadius + 8)}
       dragHandle={<Box modifiers={Modifier.padding({ vertical: 12 }).size({ width: 34, height: 4 })
         .background(palette.edge, { in: rounded(3) })} />}>
       <Column modifiers={Modifier.fillMaxWidth().verticalScroll(scroll).padding({ horizontal: 18, bottom: 20 })}>
@@ -111,6 +112,14 @@ export function ChatSheet({
                   label={<Text text={theme} fontSize={13} />} />
               ))}
             </Row>
+            <ListItem leadingContent={<Symbol icon="Star" color={palette.accent} />}
+              supportingContent={<Text text="Bolder shapes and spring motion" color={palette.muted} fontSize={13} />}
+              trailingContent={
+                <Switch checked={expressive} onCheckedChange={onExpressive}
+                  modifiers={Modifier.semantics({ contentDescription: "Expressive mode" })} />
+              }>
+              <Text text="Expressive" color={palette.ink} fontSize={16} fontWeight="medium" />
+            </ListItem>
           </>
         ) : (
           <>

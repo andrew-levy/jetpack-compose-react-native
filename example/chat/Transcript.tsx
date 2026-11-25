@@ -42,7 +42,7 @@ function MessageTurn({ turn, palette, minHeight, latest, actions }: {
   };
   const ready = turn.status !== "streaming";
   const pending = !ready && turn.reply.length === 0;
-  const bubble = rounded(20);
+  const bubble = rounded(palette.cornerRadius + 4);
 
   return (
     <Box modifiers={Modifier.fillMaxWidth().animateItem({
@@ -66,7 +66,7 @@ function MessageTurn({ turn, palette, minHeight, latest, actions }: {
               )}
               <Text text={turn.prompt} color={palette.ink} fontSize={16} lineHeight={23} />
             </Column>
-            <DropdownMenu expanded={menu === "prompt"} onDismissRequest={close} shape={rounded(16)}
+            <DropdownMenu expanded={menu === "prompt"} onDismissRequest={close} shape={rounded(palette.cornerRadius)}
               containerColor={palette.surface} properties={{ focusable: true }}>
               <DropdownMenuItem text={<Text text="Copy message" />} onClick={run(() => actions.onCopy(turn.prompt))} />
               {latest && (
@@ -112,7 +112,7 @@ function MessageTurn({ turn, palette, minHeight, latest, actions }: {
                 modifiers={Modifier.padding({ top: 6 })} />
             )}
           </Column>
-          <DropdownMenu expanded={menu === "reply"} onDismissRequest={close} shape={rounded(16)}
+          <DropdownMenu expanded={menu === "reply"} onDismissRequest={close} shape={rounded(palette.cornerRadius)}
             containerColor={palette.surface} properties={{ focusable: true }}>
             <DropdownMenuItem text={<Text text="Copy response" />} enabled={!!turn.reply}
               onClick={run(() => actions.onCopy(turn.reply))} />

@@ -1,4 +1,4 @@
-import { darkColorScheme, lightColorScheme, type ComposeShape } from "jetpack-compose-react-native";
+import { darkColorScheme, lightColorScheme, type ComposeMotionSchemeValue, type ComposeShape } from "jetpack-compose-react-native";
 
 const light = {
   page: "#F6F5EF",
@@ -12,9 +12,11 @@ const light = {
   softAccent: "#DCEBDB",
   scrim: "#65112720",
   danger: "#97483C",
+  cornerRadius: 16,
 };
 
 const dark: typeof light = {
+  ...light,
   page: "#101C19",
   surface: "#172722",
   panel: "#1E3129",
@@ -46,9 +48,46 @@ function material(palette: Palette) {
   };
 }
 
+const expressiveLight: Palette = {
+  ...light,
+  page: "#F9F3FC",
+  surface: "#FFFAFF",
+  panel: "#F0E6F5",
+  ink: "#291A35",
+  muted: "#66546F",
+  edge: "#DFD0E7",
+  accent: "#713F93",
+  softAccent: "#ECD7FC",
+  scrim: "#65291A35",
+  cornerRadius: 26,
+};
+
+const expressiveDark: Palette = {
+  ...dark,
+  page: "#21172B",
+  surface: "#2C2038",
+  panel: "#392947",
+  ink: "#F6E7FF",
+  muted: "#CEB9D8",
+  edge: "#5D496B",
+  accent: "#E0B6FA",
+  accentInk: "#3D1757",
+  softAccent: "#4B2D61",
+  scrim: "#95130C1A",
+  cornerRadius: 26,
+};
+
+function theme(palette: Palette, dark: boolean, expressive: boolean) {
+  const scheme = dark ? darkColorScheme(material(palette)) : lightColorScheme(material(palette));
+  const motion: ComposeMotionSchemeValue = { factory: expressive ? "MotionScheme.expressive" : "MotionScheme.standard" };
+  return { palette, scheme, motion };
+}
+
 export const themes = {
-  light: { palette: light, scheme: lightColorScheme(material(light)) },
-  dark: { palette: dark, scheme: darkColorScheme(material(dark)) },
+  light: theme(light, false, false),
+  dark: theme(dark, true, false),
+  expressiveLight: theme(expressiveLight, false, true),
+  expressiveDark: theme(expressiveDark, true, true),
 };
 
 export function rounded(radius: number): ComposeShape {

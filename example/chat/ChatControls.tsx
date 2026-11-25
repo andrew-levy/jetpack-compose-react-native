@@ -21,7 +21,7 @@ export function Mark({ palette, large = false }: { palette: Palette; large?: boo
   const size = large ? 60 : 30;
   return (
     <Box
-      modifiers={Modifier.size(size).background(palette.softAccent, { in: rounded(large ? 20 : 10) })}
+      modifiers={Modifier.size(size).background(palette.softAccent, { in: rounded(large ? palette.cornerRadius + 4 : palette.cornerRadius / 2 + 2) })}
       contentAlignment="center"
     >
       <Canvas modifiers={Modifier.size(large ? 31 : 22)} onDraw={{ commands: [
@@ -130,9 +130,9 @@ export function Welcome({ palette, onPrompt }: { palette: Palette; onPrompt: (pr
             {group.map(({ label, icon, prompt }) => (
               <Box key={label} modifiers={Modifier.weight(1).padding({ horizontal: 4 })}>
                 <Column modifiers={Modifier.fillMaxWidth()
-                  .clip(rounded(16))
+                  .clip(rounded(palette.cornerRadius))
                   .background(palette.surface)
-                  .border(palette.edge, { width: 1, shape: rounded(16) })
+                  .border(palette.edge, { width: 1, shape: rounded(palette.cornerRadius) })
                   .clickable({ onClick: () => onPrompt(prompt), role: "button" })
                   .padding({ horizontal: 13, vertical: 12 })}>
                   <Symbol icon={icon} color={palette.accent} size={18} />
@@ -157,7 +157,7 @@ export function Composer({
   onSend: () => void; onStop: () => void; onCancelEdit: () => void; onOptions: () => void;
 }) {
   const canSend = !!draft.trim();
-  const shape = rounded(24);
+  const shape = rounded(palette.cornerRadius + 8);
   return (
     <Box modifiers={Modifier.fillMaxWidth().padding({ horizontal: 13, top: 8, bottom: 8 })} contentAlignment="center">
       <Column modifiers={Modifier.widthIn({ max: 760 }).fillMaxWidth()} horizontalAlignment="centerHorizontally">

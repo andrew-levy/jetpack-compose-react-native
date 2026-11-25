@@ -17,13 +17,15 @@ import { Transcript } from "./Transcript";
 type Generation = { conversationId: string; turnId: string };
 type Anchor = { conversationId: string; revision: number };
 
-export function ChatScreen({ appearance, onAppearance, theme, onCatalog }: {
+export function ChatScreen({ appearance, onAppearance, expressive, onExpressive, theme, onCatalog }: {
   appearance: Appearance;
   onAppearance: (appearance: Appearance) => void;
+  expressive: boolean;
+  onExpressive: (expressive: boolean) => void;
   theme: typeof themes.light;
   onCatalog: () => void;
 }) {
-  const { palette, scheme } = theme;
+  const { palette, scheme, motion } = theme;
   const [conversations, setConversations] = useState<Conversation[]>(sampleConversations);
   const [activeId, setActiveId] = useState<string>();
   const [anchor, setAnchor] = useState<Anchor>();
@@ -174,7 +176,7 @@ export function ChatScreen({ appearance, onAppearance, theme, onCatalog }: {
   }
 
   return (
-    <MaterialTheme style={{ flex: 1 }} colorScheme={scheme}>
+    <MaterialTheme style={{ flex: 1 }} colorScheme={scheme} motionScheme={motion}>
       <ModalNavigationDrawer
         drawerState={drawer}
         scrimColor={palette.scrim}
@@ -213,8 +215,9 @@ export function ChatScreen({ appearance, onAppearance, theme, onCatalog }: {
         </Column>
       </ModalNavigationDrawer>
       {sheet && (
-        <ChatSheet key={sheet} kind={sheet} palette={palette} mode={mode} appearance={appearance}
-          onMode={setMode} onAttach={setAttachment} onAppearance={onAppearance} onDismiss={() => setSheet(undefined)} />
+        <ChatSheet key={sheet} kind={sheet} palette={palette} mode={mode} appearance={appearance} expressive={expressive}
+          onMode={setMode} onAttach={setAttachment} onAppearance={onAppearance} onExpressive={onExpressive}
+          onDismiss={() => setSheet(undefined)} />
       )}
     </MaterialTheme>
   );

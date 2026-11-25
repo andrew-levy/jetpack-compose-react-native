@@ -13,12 +13,15 @@ import { CatalogPaletteContext, palettes, type ThemeMode } from "./catalog/theme
 // Android draws apps edge to edge (Expo SDK 58, target SDK 36), so keep content clear of the system bars.
 export default function App({ catalogStart, bridgeChecks }: { catalogStart?: number; bridgeChecks?: boolean }) {
   const [mode, setMode] = useState<ThemeMode>("System");
+  const [expressive, setExpressive] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(catalogStart !== undefined);
   const systemScheme = useColorScheme();
   const dark = mode === "Dark" || (mode === "System" && systemScheme === "dark");
   const palette = dark ? palettes.dark : palettes.light;
 
-  const theme = themes[dark ? "dark" : "light"];
+  const theme = expressive
+    ? themes[dark ? "expressiveDark" : "expressiveLight"]
+    : themes[dark ? "dark" : "light"];
 
   useEffect(() => {
     if (!catalogOpen || catalogStart !== undefined) return;
@@ -45,7 +48,8 @@ export default function App({ catalogStart, bridgeChecks }: { catalogStart?: num
       {catalogStart === undefined && (
         <SafeAreaView edges={["top", "left", "right"]}
           style={{ flex: 1, display: catalogOpen ? "none" : "flex", backgroundColor: theme.palette.page }}>
-          <ChatScreen appearance={mode} onAppearance={setMode} theme={theme} onCatalog={() => setCatalogOpen(true)} />
+          <ChatScreen appearance={mode} onAppearance={setMode} expressive={expressive} onExpressive={setExpressive}
+            theme={theme} onCatalog={() => setCatalogOpen(true)} />
         </SafeAreaView>
       )}
       {catalogOpen && (
