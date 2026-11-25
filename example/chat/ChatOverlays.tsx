@@ -2,7 +2,7 @@ import { useRef } from "react";
 import {
   Box, Column, HorizontalDivider, LazyColumn, ListItem, ModalBottomSheet,
   ModalDrawerSheet, Modifier, NavigationDrawerItem, RadioButton, Row, Spacer, Text,
-  useModalBottomSheetState, useScrollState, type ComposeDrawerStateHandle,
+  useModalBottomSheetState, type ComposeDrawerStateHandle,
 } from "jetpack-compose-react-native";
 
 import { rounded, type Palette } from "./appearance";
@@ -63,12 +63,17 @@ export function ChatSheet({
   onAttach: (file: Attachment) => void; onDismiss: () => void;
 }) {
   const visible = useRef(false);
-  const scroll = useScrollState();
+  const openedAt = useRef(Date.now());
   const sheet = useModalBottomSheetState({
     skipPartiallyExpanded: true,
     onStateChange: ({ isVisible, currentValue }) => {
       if (isVisible) visible.current = true;
-      if (currentValue === "hidden" && visible.current) onDismiss();
+      // The gesture that opens the sheet can also settle it hidden. Put it back instead of
+      // unmounting, so the sheet stays up after that opening tap.
+      if (currentValue === "hidden" && visible.current) {
+        if (Date.now() - openedAt.current < 500) sheet.show();
+        else onDismiss();
+      }
     },
   });
   const close = () => visible.current ? sheet.hide() : onDismiss();
@@ -80,7 +85,7 @@ export function ChatSheet({
       shape={rounded(palette.cornerRadius + 8)}
       dragHandle={<Box modifiers={Modifier.padding({ vertical: 12 }).size({ width: 34, height: 4 })
         .background(palette.edge, { in: rounded(3) })} />}>
-      <Column modifiers={Modifier.fillMaxWidth().verticalScroll(scroll).padding({ horizontal: 18, bottom: 20 })}>
+      <Column modifiers={Modifier.fillMaxWidth().padding({ horizontal: 18, bottom: 20 })}>
         <Row modifiers={Modifier.fillMaxWidth().padding({ start: 8 })} verticalAlignment="centerVertically">
           <Text text={options ? "Chat settings" : "Add a sample file"} color={palette.ink}
             fontSize={23} fontWeight="semiBold" letterSpacing={-0.4}
