@@ -188,8 +188,8 @@ export function ChatScreen({ appearance, onAppearance, expressive, onExpressive,
         }
       >
         <Column modifiers={Modifier.fillMaxSize()}>
-          <Header palette={palette} mode={mode} onHistory={drawer.open}
-            onOptions={() => setSheet("options")} onNew={() => select()} />
+          <Header palette={palette} appearance={appearance} expressive={expressive}
+            onAppearance={onAppearance} onExpressive={onExpressive} onHistory={drawer.open} onNew={() => select()} />
           <Box modifiers={Modifier.fillMaxWidth().weight(1)}>
             {active ? (
               <Transcript key={active.id} turns={active.turns} palette={palette}
@@ -215,9 +215,8 @@ export function ChatScreen({ appearance, onAppearance, expressive, onExpressive,
         </Column>
       </ModalNavigationDrawer>
       {sheet && (
-        <ChatSheet key={sheet} kind={sheet} palette={palette} mode={mode} appearance={appearance} expressive={expressive}
-          onMode={setMode} onAttach={setAttachment} onAppearance={onAppearance} onExpressive={onExpressive}
-          onDismiss={() => setSheet(undefined)} />
+        <ChatSheet key={sheet} kind={sheet} palette={palette} mode={mode}
+          onMode={setMode} onAttach={setAttachment} onDismiss={() => setSheet(undefined)} />
       )}
     </MaterialTheme>
   );

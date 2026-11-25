@@ -1,11 +1,12 @@
+import { useState } from "react";
 import {
   AnimatedVisibility, BasicTextField, Box, Canvas, Column, ComposeInnerContent,
-  Crossfade, FilledIconButton, HorizontalDivider, Icon, IconButton, Modifier, Row, Spacer,
+  Crossfade, FilledIconButton, FilterChip, HorizontalDivider, Icon, IconButton, Modifier, Row, Spacer, Switch,
   Text, useScrollState, type ComposeDrawCommand, type ComposeFocusRequester, type ComposeMaterialIcon,
 } from "jetpack-compose-react-native";
 
-import { rounded, type Palette } from "./appearance";
-import { modes, starters, type Attachment, type Mode } from "./conversations";
+import { rounded, type Appearance, type Palette } from "./appearance";
+import { starters, type Attachment, type Mode } from "./conversations";
 
 type IconName = Extract<ComposeMaterialIcon, { style: "outlined" }>["icon"];
 type Glyph = "up" | "down" | "stop" | "copy" | "thumbDown";
@@ -82,9 +83,15 @@ export function Action({ label, icon, glyph, onClick, color, enabled = true }: A
   );
 }
 
-export function Header({ palette, mode, onHistory, onOptions, onNew }: {
-  palette: Palette; mode: Mode; onHistory: () => void; onOptions: () => void; onNew: () => void;
+const appearances: readonly Appearance[] = ["System", "Light", "Dark"];
+
+export function Header({ palette, appearance, expressive, onAppearance, onExpressive, onHistory, onNew }: {
+  palette: Palette; appearance: Appearance; expressive: boolean;
+  onAppearance: (appearance: Appearance) => void; onExpressive: (checked: boolean) => void;
+  onHistory: () => void; onNew: () => void;
 }) {
+  const [appearanceOpen, setAppearanceOpen] = useState(false);
+
   return (
     <Column modifiers={Modifier.fillMaxWidth()}>
       <Row modifiers={Modifier.fillMaxWidth().height(60).padding("horizontal", 12)}
@@ -92,18 +99,41 @@ export function Header({ palette, mode, onHistory, onOptions, onNew }: {
         <Action icon="Menu" label="Open conversations" color={palette.ink} onClick={onHistory} />
         <Row
           modifiers={Modifier.clip(rounded(18))
-            .clickable({ onClick: onOptions, role: "button" })
-            .semantics({ contentDescription: `Response mode, ${modes.find((item) => item.id === mode)?.label}` })
+            .clickable({ onClick: () => setAppearanceOpen(!appearanceOpen), role: "button" })
+            .semantics({
+              contentDescription: "Appearance settings",
+              stateDescription: appearanceOpen ? "Expanded" : "Collapsed",
+            })
             .padding({ horizontal: 12, vertical: 8 })}
           verticalAlignment="centerVertically"
         >
           <Text text="Fieldnote" fontSize={21} fontWeight="semiBold" letterSpacing={-0.6} color={palette.ink} />
           <Spacer modifiers={Modifier.width(5)} />
-          <Symbol icon="KeyboardArrowDown" color={palette.muted} size={16} />
+          <Symbol icon={appearanceOpen ? "KeyboardArrowUp" : "KeyboardArrowDown"} color={palette.muted} size={16} />
         </Row>
         <Action icon="Create" label="New conversation" color={palette.ink} onClick={onNew} />
       </Row>
       <HorizontalDivider color={palette.edge} thickness={1} />
+      <AnimatedVisibility visible={appearanceOpen} enter={fade} exit={fade} modifiers={Modifier.fillMaxWidth()}>
+        <Column modifiers={Modifier.fillMaxWidth().background(palette.surface).padding({ horizontal: 20, vertical: 10 })}>
+          <Text text="Appearance" color={palette.muted} fontSize={13} fontWeight="semiBold"
+            modifiers={Modifier.semantics({ heading: true })} />
+          <Row verticalAlignment="centerVertically">
+            {appearances.map((theme) => (
+              <FilterChip key={theme} selected={theme === appearance} onClick={() => onAppearance(theme)}
+                modifiers={Modifier.padding({ end: 7 })} label={<Text text={theme} fontSize={13} />} />
+            ))}
+          </Row>
+          <Row modifiers={Modifier.fillMaxWidth()} verticalAlignment="centerVertically">
+            <Column modifiers={Modifier.weight(1)}>
+              <Text text="Expressive" color={palette.ink} fontSize={16} fontWeight="medium" />
+              <Text text="Bolder shapes and spring motion" color={palette.muted} fontSize={13} />
+            </Column>
+            <Switch checked={expressive} onCheckedChange={onExpressive}
+              modifiers={Modifier.semantics({ contentDescription: "Expressive mode" })} />
+          </Row>
+        </Column>
+      </AnimatedVisibility>
     </Column>
   );
 }

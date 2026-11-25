@@ -1,16 +1,15 @@
 import { useRef } from "react";
 import {
-  Box, Column, FilterChip, HorizontalDivider, LazyColumn, ListItem, ModalBottomSheet,
-  ModalDrawerSheet, Modifier, NavigationDrawerItem, RadioButton, Row, Spacer, Switch, Text,
+  Box, Column, HorizontalDivider, LazyColumn, ListItem, ModalBottomSheet,
+  ModalDrawerSheet, Modifier, NavigationDrawerItem, RadioButton, Row, Spacer, Text,
   useModalBottomSheetState, useScrollState, type ComposeDrawerStateHandle,
 } from "jetpack-compose-react-native";
 
-import { rounded, type Appearance, type Palette } from "./appearance";
+import { rounded, type Palette } from "./appearance";
 import { Action, Mark, Symbol } from "./ChatControls";
 import { attachments, modes, type Attachment, type Conversation, type Mode } from "./conversations";
 
 export type Sheet = "options" | "attachments";
-const appearances: readonly Appearance[] = ["System", "Light", "Dark"];
 
 export function ConversationDrawer({
   conversations, selectedId, drawer, palette, onNew, onSelect, onOptions, onCatalog,
@@ -58,10 +57,10 @@ export function ConversationDrawer({
 }
 
 export function ChatSheet({
-  kind, palette, mode, appearance, expressive, onMode, onAppearance, onExpressive, onAttach, onDismiss,
+  kind, palette, mode, onMode, onAttach, onDismiss,
 }: {
-  kind: Sheet; palette: Palette; mode: Mode; appearance: Appearance; expressive: boolean; onMode: (mode: Mode) => void;
-  onAppearance: (appearance: Appearance) => void; onExpressive: (checked: boolean) => void; onAttach: (file: Attachment) => void; onDismiss: () => void;
+  kind: Sheet; palette: Palette; mode: Mode; onMode: (mode: Mode) => void;
+  onAttach: (file: Attachment) => void; onDismiss: () => void;
 }) {
   const visible = useRef(false);
   const scroll = useScrollState();
@@ -102,24 +101,6 @@ export function ChatSheet({
                 <Text text={item.label} color={palette.ink} fontSize={16} fontWeight="medium" />
               </ListItem>
             ))}
-            <HorizontalDivider color={palette.edge} modifiers={Modifier.padding({ vertical: 12 })} />
-            <Text text="Appearance" color={palette.muted} fontSize={13} fontWeight="semiBold"
-              modifiers={Modifier.padding({ start: 8, bottom: 5 })} />
-            <Row modifiers={Modifier.fillMaxWidth().padding({ start: 4 })} verticalAlignment="centerVertically">
-              {appearances.map((theme) => (
-                <FilterChip key={theme} selected={theme === appearance} onClick={() => onAppearance(theme)}
-                  modifiers={Modifier.padding({ horizontal: 4 })}
-                  label={<Text text={theme} fontSize={13} />} />
-              ))}
-            </Row>
-            <ListItem leadingContent={<Symbol icon="Star" color={palette.accent} />}
-              supportingContent={<Text text="Bolder shapes and spring motion" color={palette.muted} fontSize={13} />}
-              trailingContent={
-                <Switch checked={expressive} onCheckedChange={onExpressive}
-                  modifiers={Modifier.semantics({ contentDescription: "Expressive mode" })} />
-              }>
-              <Text text="Expressive" color={palette.ink} fontSize={16} fontWeight="medium" />
-            </ListItem>
           </>
         ) : (
           <>
