@@ -1,39 +1,77 @@
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { useState } from "react";
+import { StatusBar, useColorScheme } from "react-native";
 import {
-  ListItem,
-  Text,
-  Icon,
-  SwipeToDismissBox,
-  Box,
-  Modifier,
-} from 'jetpack-compose-react-native';
+  AnimatedContent, Icon, IconButton, LargeFlexibleTopAppBar, MaterialExpressiveTheme, Modifier, NavigationBar,
+  NavigationBarItem, Scaffold, Text, useTopAppBarScrollBehavior,
+} from "jetpack-compose-react-native";
 
-StatusBar.setHidden(true);
+import { ComponentsScreen } from "./showcase/components";
+import { ControlsScreen, HomeScreen, MotionScreen, PaletteContext } from "./showcase/screens";
+import { colorSchemeFor, palettes } from "./showcase/theme";
+
+const tabs = [
+  { key: "home", label: "Home", icon: "Home", title: "Compose" },
+  { key: "components", label: "Components", icon: "Widgets", title: "Components" },
+  { key: "controls", label: "Controls", icon: "Tune", title: "Controls" },
+  { key: "motion", label: "Motion", icon: "Animation", title: "Motion" },
+] as const;
+type Tab = (typeof tabs)[number]["key"];
 
 export default function App() {
+  const [dark, setDark] = useState(useColorScheme() === "dark");
+  const [tab, setTab] = useState<Tab>("home");
+  const toolbar = useTopAppBarScrollBehavior("exitUntilCollapsed");
+  const p = dark ? palettes.dark : palettes.light;
+  const current = tabs.find(item => item.key === tab)!;
+
   return (
-    <View style={styles.container}>
-      <View style={{ padding: 16, paddingTop: 120 }}>
-        <SwipeToDismissBox
-          state={{ initialValue: 'settled' }}
-          enableDismissFromStartToEnd={false} // only allow swiping right-to-left
-          backgroundContent={
-            <Box
-              modifiers={Modifier.fillMaxSize()
-                .background('#040101')
-                .padding('horizontal', 16)}
-            >
-              <Text text="Delete" color="#ffffff" />
-            </Box>
+    <PaletteContext.Provider value={p}>
+      <StatusBar barStyle={dark ? "light-content" : "dark-content"} />
+      <MaterialExpressiveTheme colorScheme={colorSchemeFor(dark)} style={{ flex: 1 }}>
+        <Scaffold
+          modifiers={Modifier.fillMaxSize().nestedScroll(toolbar)}
+          containerColor={p.page}
+          topBar={
+            <LargeFlexibleTopAppBar
+              scrollBehavior={toolbar}
+              title={<Text text={current.title} />}
+              actions={
+                <IconButton onClick={() => setDark(!dark)}>
+                  <Icon painter={{ icon: dark ? "LightMode" : "DarkMode", style: "outlined" }}
+                    contentDescription={dark ? "Use light theme" : "Use dark theme"} />
+                </IconButton>
+              }
+            />
+          }
+          bottomBar={
+            <NavigationBar containerColor={p.page}>
+              {tabs.map(item => (
+                <NavigationBarItem
+                  key={item.key}
+                  selected={tab === item.key}
+                  onClick={() => setTab(item.key)}
+                  icon={<Icon painter={{ icon: item.icon, style: tab === item.key ? undefined : "outlined" }} contentDescription={null} />}
+                  label={<Text text={item.label} />}
+                />
+              ))}
+            </NavigationBar>
           }
         >
-          <ListItem supportingContent={<Text text="Swipe left to delete" />}>
-            <Text text="Inbox item" />
-          </ListItem>
-        </SwipeToDismissBox>
-      </View>
-    </View>
+          <AnimatedContent
+            targetState={tab}
+            modifiers={Modifier.fillMaxSize()}
+            transitionSpec={{
+              enter: { type: "fade", animationSpec: { type: "tween", durationMillis: 220 } },
+              exit: { type: "fade", animationSpec: { type: "tween", durationMillis: 120 } },
+            }}
+          >
+            <HomeScreen key="home" onStart={() => setTab("components")} />
+            <ComponentsScreen key="components" />
+            <ControlsScreen key="controls" />
+            <MotionScreen key="motion" />
+          </AnimatedContent>
+        </Scaffold>
+      </MaterialExpressiveTheme>
+    </PaletteContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({ container: { flex: 1 } });
