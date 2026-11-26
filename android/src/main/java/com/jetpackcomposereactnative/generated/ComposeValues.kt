@@ -348,6 +348,13 @@ internal fun toComposeShortNavigationBarArrangementValue(value: String): android
   else -> error("Unknown ComposeShortNavigationBarArrangementValue: " + value)
 }
 
+internal fun toComposeSwipeToDismissBoxValueOption(value: String): androidx.compose.material3.SwipeToDismissBoxValue = when (value) {
+  "endToStart" -> androidx.compose.material3.SwipeToDismissBoxValue.`EndToStart`
+  "settled" -> androidx.compose.material3.SwipeToDismissBoxValue.`Settled`
+  "startToEnd" -> androidx.compose.material3.SwipeToDismissBoxValue.`StartToEnd`
+  else -> error("Unknown ComposeSwipeToDismissBoxValueOption: " + value)
+}
+
 internal fun toComposeTimePickerLayoutTypeValue(value: String): androidx.compose.material3.TimePickerLayoutType = when (value) {
   "horizontal" -> androidx.compose.material3.TimePickerLayoutType.`Horizontal`
   "vertical" -> androidx.compose.material3.TimePickerLayoutType.`Vertical`
