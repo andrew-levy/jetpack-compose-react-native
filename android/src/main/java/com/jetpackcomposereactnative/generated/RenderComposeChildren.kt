@@ -10,13 +10,29 @@ import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
+import org.json.JSONArray
+import org.json.JSONObject
 
 @Composable
 internal fun RenderComposeChildren(children: List<ComposeChild>, scope: Any? = null) {
   for (child in children) RenderComposeChild(child, scope)
+}
+
+// A slot that Compose calls with values (`title: @Composable (expanded: Boolean) -> Unit`). While a call is composed,
+// React learns its encoded arguments and renders a function slot under `name(arguments)`. Plain React content
+// under `name` renders for every call.
+@Composable
+internal fun RenderComposeArgumentSlot(node: ComposeNode, name: String, arguments: JSONArray, scope: Any? = null) {
+  val key = arguments.toString()
+  DisposableEffect(node, name, key) {
+    node.emit("\$slot", JSONObject().put("slot", name).put("key", key).put("arguments", arguments).put("active", true))
+    onDispose { node.emit("\$slot", JSONObject().put("slot", name).put("key", key).put("active", false)) }
+  }
+  RenderComposeChildren(node.slot("$name($key)").ifEmpty { node.slot(name) }, scope)
 }
 
 @Composable
