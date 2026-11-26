@@ -1,16 +1,29 @@
 import * as React from "react";
 import { Image } from "react-native";
 
-import type { ComposeChain } from "../modifiers";
-import { propValue, selectOverload, type ComposableDescription } from "../../utils/overloads";
+import type { ComposeChain } from "../generated/modifiers";
+import { propValue, selectOverload, type ComposableDescription } from "../utils/overloads";
 import { AutomaticComposeHost } from "./ComposeHost";
 import { ComposeHostContext, type ComposableViewProps } from "./shared";
 import { RenderComposeNode, type ComposeEventValue, type RenderComposeNodeProps } from "./RenderComposeNode";
 
-export type { ComposableDescription } from "../../utils/overloads";
+export type { ComposableDescription } from "../utils/overloads";
 export type ComposeModifier = ComposeChain;
 
 type ComposeCallback = (value?: ComposeEventValue) => void;
+
+// Native code reports each argument list a render slot is called with while it is composed (`$slot`).
+type SlotEvent = { slot: string; key: string; arguments?: readonly unknown[]; active: boolean };
+type SlotCalls = Readonly<Record<string, ReadonlyMap<string, { arguments: readonly unknown[]; count: number }>>>;
+
+function updateSlotCalls(calls: SlotCalls, { slot, key, arguments: values, active }: SlotEvent): SlotCalls {
+  const entries = new Map(calls[slot]);
+  const entry = entries.get(key);
+  if (active) entries.set(key, { arguments: entry?.arguments ?? values ?? [], count: (entry?.count ?? 0) + 1 });
+  else if (entry && entry.count > 1) entries.set(key, { ...entry, count: entry.count - 1 });
+  else entries.delete(key);
+  return { ...calls, [slot]: entries };
+}
 
 // An image `source` (a `require()` asset or `{ uri }`) becomes the URI native code loads. Metro serves
 // assets over HTTP in development; release builds resolve them to bundled resources.
@@ -84,8 +97,10 @@ export function createComposableComponent<P extends object>(
   const eventNames = new Set(description.events);
   const objectProps = new Set(description.objectProps);
   const allNames = new Set([...description.props, ...eventNames, ...(description.slots ?? [])]);
+  const renderSlots = new Set(description.renderSlots);
   function Generated(props: P & ComposableViewProps & { children?: React.ReactNode }) {
     const hasHost = React.useContext(ComposeHostContext);
+    const [slotCalls, setSlotCalls] = React.useState<SlotCalls>({});
 
     const values: Record<string, unknown> = {};
     const valueCallbacks = new Map<string, ComposeCallback>();
@@ -114,19 +129,35 @@ export function createComposableComponent<P extends object>(
       if (selectedKinds && selectedKinds.get(name) !== "function") continue;
       if (input[name] !== undefined) values[name] = input[name] === null ? null : true;
     }
-    const slots = description.slots?.map((name) => {
-      if (selectedKinds && selectedKinds.get(name) !== "ReactNode") return null;
-      const child = input[name] as React.ReactNode;
-      if (child === undefined) return null;
+    const slots = description.slots?.flatMap((name) => {
+      if (selectedKinds && selectedKinds.get(name) !== "ReactNode") return [];
+      const child = input[name];
+      if (child === undefined) return [];
       values[name] = child === null ? null : true;
-      if (child === null) return null;
-      return <RenderComposeNode key={name} slotName={name}>{child}</RenderComposeNode>;
+      if (child === null) return [];
+      // A function renders once per argument list, under `name(arguments)`.
+      if (typeof child === "function" && renderSlots.has(name)) {
+        return [...(slotCalls[name] ?? [])].map(([key, { arguments: slotValues }]) => {
+          const slotName = `${name}(${key})`;
+          return (
+            <RenderComposeNode key={slotName} slotName={slotName}>
+              {(child as (...slotValues: readonly unknown[]) => React.ReactNode)(...slotValues)}
+            </RenderComposeNode>
+          );
+        });
+      }
+      return [<RenderComposeNode key={name} slotName={name}>{child as React.ReactNode}</RenderComposeNode>];
     });
     const usesKeys = (overload?.keyedChildren ?? description.keyedChildren) && typeof input.targetState === "string";
 
     const nodeProps: RenderComposeNodeProps = {
       componentName: description.name,
       onComposeEvent: ({ nativeEvent: { name, value } }) => {
+        if (name === "$slot") {
+          const event = value as unknown as SlotEvent;
+          setSlotCalls((calls) => updateSlotCalls(calls, event));
+          return;
+        }
         const callback = eventNames.has(name)
           ? input[name] as ComposeCallback | undefined
           : valueCallbacks.get(name);
