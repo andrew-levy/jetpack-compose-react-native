@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { parsePayloads, payloadCodec, payloadEventDescriptor, payloadOutputs } from "../tools/compose-codegen/payloads.mjs";
+import { mappingDescriptor, parsePayloads, payloadCodec, payloadEventDescriptor, payloadOutputs } from "../tools/compose-codegen/payloads.mjs";
 
 const TAB = "androidx.compose.material3.TabPosition";
 const DISMISS = "androidx.compose.material3.SwipeToDismissBoxValue";
@@ -78,11 +78,30 @@ test("snapshot types are generated from their properties", () => {
   const [typeScript, kotlin] = payloadOutputs(payloadTypes, codec);
   assert.match(typeScript, /import type \{ ComposeLayoutSize \} from "\.\.\/utils\/composeValues";/);
   assert.match(typeScript,
-    /export type ComposeTabPositionSnapshot = \{ left: number; label: string \| null; tint: string; size: ComposeLayoutSize \};/);
+    /export type ComposeTabPositionSnapshot = \{ readonly \$handle: number; left: number; label: string \| null; tint: string; size: ComposeLayoutSize \};/);
   assert.doesNotMatch(typeScript, /SwipeToDismissBoxValue/);
   assert.match(kotlin, /internal fun androidx\.compose\.material3\.TabPosition\.toComposeTabPositionSnapshot\(\): JSONObject = JSONObject\(\)/);
   assert.match(kotlin, /\.put\("left", this\.`left`\.value\.toDouble\(\)\)/);
   assert.match(kotlin, /\.put\("label", this\.`label` \?: org\.json\.JSONObject\.NULL\)/);
   assert.match(kotlin, /\.put\("tint", composePayloadColor\(this\.`tint`\)\)/);
   assert.match(kotlin, /\.put\("size", this\.`size`\.toComposeSnapshot\(\)\)/);
+  // The snapshot names its native object, which a prop of the same type resolves.
+  assert.match(kotlin, /\.put\("\\\$handle", ComposePayloadHandles\.handle\(this\)\)/);
+  assert.match(kotlin, /internal fun <T> JSONObject\.toComposePayloadValue\(\): T/);
+});
+
+test("pure mappings are described as data", () => {
+  const interpolation = mappingDescriptor("interpolation:dp");
+  assert.equal(interpolation.type, "readonly (readonly [at: number, value: number])[]");
+  assert.equal(interpolation.input, "tuple");
+  assert.equal(interpolation.expression('"containerSize"'),
+    'node.arguments().jsonArray("containerSize").toComposeInterpolation<androidx.compose.ui.unit.Dp>(' +
+    "{ array, index -> androidx.compose.ui.unit.Dp(array.getDouble(index).toFloat()) }, " +
+    "{ start, stop, fraction -> androidx.compose.ui.unit.lerp(start, stop, fraction) })");
+  assert.equal(interpolation.modifierExpression('"size"').startsWith('args.jsonArray("size").'), true);
+
+  const keys = mappingDescriptor("lookup:key");
+  assert.equal(keys.type, "readonly (string | number)[]");
+  assert.match(keys.expression('"key"'), /toComposeLookup<kotlin\.Any>\(\{ array, index -> array\.get\(index\) \}, \{ index -> index \}\)$/);
+  assert.throws(() => mappingDescriptor("interpolation:string"), /Unknown mapping kind/);
 });
