@@ -1,5 +1,5 @@
-import type { ComposeBrushValue, ComposeShapeValue } from "../generated/records";
-import type { ComposeMaterialShape } from "../generated/values";
+import type { ComposeBrushValue, ComposeShapeValue } from "../generated/values/records";
+import type { ComposeMaterialShape } from "../generated/values/enums";
 
 /**
  * A Compose Shape: `"circle"`, `"rect"`, a corner radius in dp, any shape factory
