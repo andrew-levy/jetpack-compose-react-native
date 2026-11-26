@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import { createRequire } from "module";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
@@ -24,6 +24,12 @@ const SCOPE_PREFERENCE = [
 
 function read(path) {
   return readFileSync(join(root, path), "utf8");
+}
+
+// Every generated component file, in name order (src/generated/components/<Name>.tsx).
+function readComponents() {
+  return readdirSync(join(root, "src/generated/components")).filter((file) => file.endsWith(".tsx")).sort()
+    .map((file) => read(`src/generated/components/${file}`)).join("\n");
 }
 
 function sliceBalanced(source, openIndex) {
@@ -61,7 +67,7 @@ function evaluate(expression) {
 }
 
 function stringTypes() {
-  return new Set([...read("src/generated/values.ts").matchAll(/export type (\w+)/g)].map((match) => match[1]));
+  return new Set([...read("src/generated/values/enums.ts").matchAll(/export type (\w+)/g)].map((match) => match[1]));
 }
 
 function kindOf(type, enums) {
@@ -462,7 +468,7 @@ function score(overload) {
 }
 
 function loadModifier() {
-  const source = read("src/generated/modifiers.ts");
+  const source = read("src/generated/modifiers/index.ts");
   const marker = "export const Modifier = createModifier(";
   const open = source.indexOf("{", source.indexOf(marker));
   const table = evaluate(sliceBalanced(source, open));
@@ -528,7 +534,7 @@ function registryNames(text) {
 export function assembleSurface() {
   const { selectOverload } = require(join(root, "build/utils/overloads.js"));
   const enums = stringTypes();
-  const source = stripComments(read("src/generated/components.tsx"));
+  const source = stripComments(readComponents());
   const problems = [];
   const components = [];
 
