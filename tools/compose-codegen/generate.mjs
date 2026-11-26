@@ -6,7 +6,7 @@ import { valueOutputs } from "./values.mjs";
 import { factoryOutputs } from "./factories.mjs";
 import { recordOutputs } from "./records.mjs";
 import { scalarKinds } from "./scalars.mjs";
-import { eventTupleDescriptor } from "./events.mjs";
+import { mappingDescriptor, payloadCodec, payloadEventDescriptor, payloadOutputs } from "./payloads.mjs";
 import { styleOutputs } from "./styles.mjs";
 import { iconOutputs } from "./icons.mjs";
 import { verifyInventory } from "./inventory.mjs";
@@ -252,8 +252,10 @@ for (const { name } of manifest.values ?? []) {
   kinds[name] = { type: name, input: "string", expression: (key) => `to${name}(node.string(${key}))` };
 }
 
+// Callbacks that deliver payload types (payloads.mjs): `eventPayload:<type>` and `eventTuple:<type>,<type>,...`.
+const payloads = payloadCodec(manifest.payloads ?? []);
 for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
-  if (kind.startsWith("eventTuple:") && !Object.hasOwn(kinds, kind)) kinds[kind] = eventTupleDescriptor(kind);
+  if (/^event(Payload|Tuple):/.test(kind) && !Object.hasOwn(kinds, kind)) kinds[kind] = payloadEventDescriptor(kind, payloads);
 }
 
 // `producer:<kind>`: a lambda that returns the current value of the prop each time Compose calls it.
@@ -266,6 +268,25 @@ for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap((
     composition: undefined,
     expression: (key) => `{ ${inner.expression(key)} }`,
     modifierExpression: (key) => `{ ${(inner.modifierExpression ?? inner.expression)(key).replaceAll("node.", "args.")} }`,
+  };
+}
+
+// `interpolation:<kind>` and `lookup:<kind>`: a pure mapping described as data (payloads.mjs).
+for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
+  if (/^(interpolation|lookup):/.test(kind) && !Object.hasOwn(kinds, kind)) kinds[kind] = mappingDescriptor(kind);
+}
+
+// `sam:<fun interface>:<kind>`: the interface's single method returns the current value of the prop.
+for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
+  if (!kind.startsWith("sam:") || Object.hasOwn(kinds, kind)) continue;
+  const [, type, innerKind] = /^sam:([^:]+):(.+)$/.exec(kind);
+  const inner = kinds[innerKind];
+  if (!inner) throw Error(`Unknown produced kind: ${kind}`);
+  kinds[kind] = {
+    ...inner,
+    composition: undefined,
+    expression: (key) => `${type} { ${inner.expression(key)} }`,
+    modifierExpression: (key) => `${type} { ${(inner.modifierExpression ?? inner.expression)(key).replaceAll("node.", "args.")} }`,
   };
 }
 
@@ -458,13 +479,14 @@ function typeScript({ components, values, factories }) {
     ...(usedKinds.has("floatRange") || usedKinds.has("eventFloatRange") ? [
       "export type ComposeFloatRange = readonly [start: number, endInclusive: number];",
     ] : []),
-    ...typeImports([...usedKinds].map((kind) => kinds[kind]), "./components"),
+    // Value types can be props and payload elements, so their imports share one statement.
+    ...typeImports([...[...usedKinds].map((kind) => kinds[kind]), ...(types.length ? [{ module: "./values", imports: types }] : [])],
+      "./components"),
     'export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";',
     ...(usedKinds.has("sheetState") ? [
       'import type { ComposeModalSheetState } from "../utils/composeValues";',
       "export type ComposeSheetState = ComposeModalSheetState;",
     ] : []),
-    ...(types.length ? [`import type { ${types.join(", ")} } from "./values";`] : []),
     "",
     ...declarations.flatMap((declaration) => [declaration, ""]),
   ].join("\n");
@@ -717,6 +739,7 @@ for (const [name, overloads] of Map.groupBy(manifest.components, ({ name }) => n
 const [modifierTypeScript, modifierKotlin] = modifierOutputs(manifest.modifiers, { ...kinds, ...modifierKinds });
 const [valueTypeScript, valueKotlin] = valueOutputs(manifest.values);
 const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? [], kinds);
+const [payloadTypeScript, payloadKotlin] = payloadOutputs(manifest.payloads ?? [], payloads);
 const [styleTypeScript, styleKotlin] = styleOutputs(manifest.styleProperties ?? [], { ...kinds, ...modifierKinds });
 const [iconTypeScript, iconKotlin] = iconOutputs(manifest.icons);
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
@@ -724,6 +747,7 @@ const nativeFiles = [
   [`${android}/ComposeMaterialIcons.kt`, iconKotlin],
   [`${android}/ComposeStyleValues.kt`, styleKotlin],
   [`${android}/ComposeRecords.kt`, recordKotlin],
+  [`${android}/ComposePayloads.kt`, payloadKotlin],
   [`${android}/ComposeFactories.kt`, factoryKotlin],
   ...kotlin(manifest).map(([file, content]) => [`${android}/${file}`, content]),
   [`${android}/ModifierRegistry.kt`, modifierKotlin],
@@ -753,6 +777,7 @@ const files = [
   ["src/generated/modifiers.ts", modifierTypeScript],
   ["src/generated/values.ts", valueTypeScript],
   ["src/generated/records.ts", recordTypeScript],
+  ["src/generated/payloads.ts", payloadTypeScript],
   ["src/generated/styles.ts", styleTypeScript],
   ["src/generated/icons.ts", iconTypeScript],
   ["src/generated/factories.ts", factoryTypeScript],
