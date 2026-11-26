@@ -82,9 +82,10 @@ function typeScript(overloads, kinds) {
     .flatMap(([, signatures]) => [...signatures]);
   const valueTypes = [...new Set(overloads.flatMap(({ parameters }) => parameters.map(({ kind }) => kind)))]
     .filter((kind) => kind.startsWith("Compose")).sort();
-  return [
+  // `chain.ts` declares the chain's methods; `index.ts` holds the overload table the runtime selects calls from.
+  const chain = [
     "// Generated from Compose declarations by generate.mjs.",
-    'import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
+    'import type { ComposeBrush, ComposeShape, ModifierCompatibility, ModifierPayload } from "../utils/modifier";',
     // Value types can be arguments and payload elements, so their imports share one statement.
     ...typeImports([...overloads.flatMap(({ parameters }) => parameters.map(({ kind }) => kinds[kind])),
       ...(valueTypes.length ? [{ module: "./values", imports: valueTypes }] : [])]),
@@ -95,6 +96,13 @@ function typeScript(overloads, kinds) {
     "",
     "export type ComposeChain = GeneratedModifiers & ModifierCompatibility<ComposeChain> & ModifierPayload;",
     "",
+  ].join("\n");
+  const index = [
+    "// Generated from Compose declarations by generate.mjs.",
+    'import { createModifier } from "../utils/modifier";',
+    'import type { ComposeChain } from "./modifiers/chain";',
+    "",
+    "export type { ComposeChain };",
     "export type Modifier = ComposeChain;",
     "",
     "export const Modifier = createModifier({",
@@ -106,6 +114,7 @@ function typeScript(overloads, kinds) {
     "}) as Modifier;",
     "",
   ].join("\n");
+  return { chain, index };
 }
 
 function typeOf({ kind, nullable }, kinds) {
