@@ -4,12 +4,13 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.adaptive.layout.AnimatedPane as composeScoped0
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped1
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped2
+import androidx.compose.material3.NavigationBarItem as composeScoped3
+import androidx.compose.material3.PlainTooltip as composeScoped4
+import androidx.compose.material3.RichTooltip as composeScoped5
+import androidx.compose.material3.SegmentedButton as composeScoped6
 
 // androidx.compose.material3.SearchBarDefaults.InputField(query: kotlin.String, onQueryChange: kotlin.Function1<kotlin.String, kotlin.Unit>, onSearch: kotlin.Function1<kotlin.String, kotlin.Unit>, expanded: kotlin.Boolean, onExpandedChange: kotlin.Function1<kotlin.Boolean, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, placeholder: kotlin.Function0<kotlin.Unit>?, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.TextFieldColors, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
 internal object RendererInputField_2 {
