@@ -6,7 +6,7 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "tsc -p tsconfig.json --pretty false && node --test tests/catalog.test.mjs tests/records.test.mjs",
+    "test": "tsc -p tsconfig.json --pretty false && node --test tests/catalog.test.mjs tests/records.test.mjs tests/payloads.test.mjs",
     "catalog:fixtures": "tsc -p tsconfig.json --pretty false && node scripts/generate-catalog-fixtures.mjs",
     "android": "bash scripts/run-android.sh",
     "android:verify": "bash scripts/run-android.sh --verify",
