@@ -1,7 +1,7 @@
-import type { ComposeParagraphStyleValue, ComposeSpanStyleValue, ComposeTextStyleValue } from "../generated/records";
-import type { ComposeFontWeight, ComposeRole } from "../generated/values";
+import type { ComposeParagraphStyleValue, ComposeSpanStyleValue, ComposeTextStyleValue } from "../generated/values/records";
+import type { ComposeFontWeight, ComposeRole } from "../generated/values/enums";
 import type { ComposeBrush } from "./modifier";
-import type { ComposeMaterialIcon } from "../generated/icons";
+import type { ComposeMaterialIcon } from "../generated/values/icons";
 
 /** Dimensions are expressed in dp. */
 export type ComposeDpSize = { width: number; height: number };
@@ -290,7 +290,7 @@ export type ComposeFlexConfig = {
 
 /** Gesture deltas and offsets are in physical pixels. Events are delivered to React asynchronously. */
 export type ComposeDragState = { onDelta: (deltaPx: number) => void };
-export type ComposeDrag2DState = { onDelta: (deltaPx: import("../generated/records").ComposeOffset) => void };
+export type ComposeDrag2DState = { onDelta: (deltaPx: import("../generated/values/records").ComposeOffset) => void };
 export type ComposeScrollableState = {
   /** Fraction of each available delta consumed on Android. Defaults to one. */
   consumeFraction?: number;
@@ -298,12 +298,12 @@ export type ComposeScrollableState = {
 };
 export type ComposeScrollable2DState = {
   consumeFraction?: ComposeAxisConsumption;
-  onDelta?: (consumedPx: import("../generated/records").ComposeOffset) => void;
+  onDelta?: (consumedPx: import("../generated/values/records").ComposeOffset) => void;
 };
 export type ComposeTransformableState = {
   onTransform: (event: {
-    centroid: import("../generated/records").ComposeOffset | null;
-    pan: import("../generated/records").ComposeOffset;
+    centroid: import("../generated/values/records").ComposeOffset | null;
+    pan: import("../generated/values/records").ComposeOffset;
     zoom: number;
     rotation: number;
   }) => void;
