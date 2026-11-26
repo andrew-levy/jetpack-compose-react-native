@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { verifyInventory } from "../inventory.mjs";
 
@@ -145,8 +145,10 @@ if (mode === "audit") {
   assert.ok(elevation?.factories.some(({ name, fields }) =>
     name === "ButtonDefaults.buttonElevation" && fields.some(({ name }) => name === "defaultElevation")),
     "Discover Material defaults factories for value types with internal constructors");
-  assert.ok(manifest.icons.some(({ style, name }) => style === "autoMirroredOutlined" && name === "ArrowBack"),
-    "Discover directional Material icons from the Compose classpath");
+  // Icons are looked up by name at run time, so only their styles (themes and packages) are discovered.
+  assert.ok(manifest.icons.some(({ style, packageName, theme }) => style === "autoMirroredOutlined" &&
+    packageName === "androidx.compose.material.icons.automirrored.outlined" && theme === "AutoMirrored.Outlined"),
+    "Discover directional Material icon styles from the Compose classpath");
   for (const [name, slots] of [["Slider", ["thumb", "track"]], ["RangeSlider", ["startThumb", "endThumb", "track"]]]) {
     assert.ok(manifest.components.some(component => component.name === name && slots.every(slot =>
       component.parameters.some(({ name, scope }) => name === slot && scope?.startsWith("argument:")))),
@@ -173,6 +175,41 @@ if (mode === "audit") {
   const dismissPayload = manifest.payloads.find(({ kotlinType }) => kotlinType === dismissValue);
   assert.ok(dismissPayload?.value && manifest.values.some(({ name }) => name === dismissPayload.name),
     "Enum payloads must use a generated value type");
+  // Slots that Compose calls with values render React content for each argument list.
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "TwoRowsTopAppBar" &&
+    parameters.some(({ name, kind, scope }) => name === "title" && kind === "slot" && scope === "arguments::kotlin.Boolean")),
+    "Argument slots must cross as payloads");
+  // Pages take their keys from the children's React keys.
+  assert.ok(manifest.components.some(({ name, childKeys, childrenScope }) => name === "HorizontalPager" &&
+    childKeys === "key" && childrenScope?.startsWith("items:")));
+  // State made by a public `remember*` factory.
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "ScrollField" &&
+    parameters.some(({ name, kind }) => name === "state" && kind.startsWith("record:"))));
+  // Pure mappings and `fun interface` producers.
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "LinearWavyProgressIndicator" &&
+    parameters.some(({ name, kind }) => name === "amplitude" && kind === "interpolation:float")));
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "Text" &&
+    parameters.some(({ kind }) => kind === "sam:androidx.compose.ui.graphics.ColorProducer:color")));
+  // Snapshot handles: a SnackbarHost slot passes SnackbarData, which Snackbar takes back.
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "Snackbar" &&
+    parameters.some(({ name, kind }) => name === "snackbarData" && kind === "handle:androidx.compose.material3.SnackbarData")));
+  // A state without public data crosses as a handle: the pane drag handle passes it to paneExpansionDraggable.
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "ListDetailPaneScaffold" &&
+    parameters.some(({ name, scope }) => name === "paneExpansionDragHandle" && scope?.startsWith("arguments:"))));
+  assert.ok(manifest.modifiers.some(({ name, parameters }) => name === "paneExpansionDraggable" &&
+    parameters.some(({ kind }) => kind === "handle:androidx.compose.material3.adaptive.layout.PaneExpansionState")));
+  // Generic receivers resolve to the scope that implements them.
+  assert.ok(manifest.components.some(({ name, ownerScope }) => name === "AnimatedPane" && ownerScope?.endsWith(".ThreePaneScaffoldPaneScope")));
+  // Supertypes of scopes, discovered CompositionLocals, lists, and scope member factories.
+  assert.ok(manifest.modifiers.some(({ name, scope }) => name === "preferredWidth" && scope?.endsWith(".PaneScaffoldScope")));
+  assert.ok(manifest.compositionLocals.some(({ name, kind }) => name === "LocalContentColor" && kind === "color"));
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "CompositionLocalProvider" &&
+    parameters.some(({ kind }) => kind === "providedValues")));
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "LoadingIndicator" &&
+    parameters.some(({ name, kind }) => name === "polygons" && kind.startsWith("list:"))));
+  assert.ok(manifest.records.some(({ kotlinType, scope }) => kotlinType.endsWith("SharedTransitionScope.OverlayClip") && scope));
+  assert.ok(manifest.modifiers.some(({ name, parameters }) => name === "nonInteractiveScrollbar" &&
+    parameters.some(({ kind }) => kind === "scrollIndicatorState")));
   assert.ok(manifest.components.some(({ name }) => name === "MaterialExpressiveTheme"));
   for (const name of ["ButtonGroup", "AppBarRow", "AppBarColumn"]) {
     assert.ok(manifest.components.some(component => component.name === name &&
@@ -235,7 +272,17 @@ if (mode === "audit") {
   assert.deepEqual(unexpected.map(({ form }) => form), [], "A Compose upgrade unexpectedly dropped a JSX call form");
 } else if (mode === "probe") {
   const original = readManifest(first);
-  const readOutput = (name) => readFileSync(join(second, name), "utf8");
+  // COMPOSE_GENERATED_OUTPUT mirrors the repository layout (src/generated and the Android generated package).
+  const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
+  const readTree = (directory) => readdirSync(join(second, directory)).filter((file) => /\.tsx?$/.test(file)).sort()
+    .map((file) => readFileSync(join(second, directory, file), "utf8")).join("\n");
+  const outputs = {
+    "components.tsx": () => readTree("src/generated/components"),
+    "modifiers.ts": () => readTree("src/generated/modifiers"),
+    "values.ts": () => readFileSync(join(second, "src/generated/values/enums.ts"), "utf8"),
+  };
+  const readOutput = (name) => outputs[name]?.() ?? readFileSync(join(second, name.endsWith(".kt") ? android
+    : "src/generated/values", name), "utf8");
   const name = "com.jetpackcomposereactnative.codegen";
   const overloads = original.components.filter(({ name }) => name === "DiscoveryProbe");
   assert.equal(overloads.length, 2);
