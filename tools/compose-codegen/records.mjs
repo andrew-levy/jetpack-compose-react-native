@@ -1,13 +1,14 @@
 import { scalarKinds } from "./scalars.mjs";
 
 // Reads one value of `kind` from the JSON receiver (a JSONObject, or a JSONArray for list elements).
-function decodeValue(kind, key) {
+export function decodeValue(kind, key) {
   if (kind.startsWith("list:")) {
     const element = decodeValue(kind.slice("list:".length), "index");
     return `getJSONArray(${key}).let { items -> List(items.length()) { index -> with(items) { ${element} } } }`;
   }
   if (kind === "shape") return `composeShape(${key})`;
   if (kind === "textStyle") return `getJSONObject(${key}).toTextStyle()`;
+  if (Object.hasOwn(sharedDecoders, kind)) return `getJSONObject(${key}).${sharedDecoders[kind]}()`;
   if (kind === "brush") return `composeBrush(${key})`;
   return scalarKinds[kind]?.jsonRead(key) ?? (kind.startsWith("record:")
     ? `getJSONObject(${key}).decode${kind.slice("record:".length)}()`
@@ -20,8 +21,13 @@ function decodeField({ kind, name, nullable }) {
   return nullable ? `if (get(${key}) === JSONObject.NULL) null else ${decode}` : decode;
 }
 
+// Bridge values with a shared JSON decoder (ComposeBridgeValues.kt).
+const sharedDecoders = { dpSize: "toDpSize", paddingValues: "toPaddingValues", windowInsets: "toWindowInsets" };
 const utilityTypes = { shape: "ComposeShape", brush: "ComposeBrush" };
-const valueTypes = { textStyle: "ComposeTextStyle" };
+const valueTypes = {
+  textStyle: "ComposeTextStyle", dpSize: "ComposeDpSize", paddingValues: "ComposePaddingValues",
+  windowInsets: "ComposeWindowInsets",
+};
 
 function fieldType(kind, kinds) {
   if (kind.startsWith("list:")) return `readonly ${fieldType(kind.slice("list:".length), kinds)}[]`;
@@ -57,21 +63,23 @@ export function recordOutputs(records, kinds) {
     `${name}${optional ? "?" : ""}: ${fieldType(kind, kinds)}${nullable ? " | null" : ""}`);
   // `markers`: an overload that shares its label is only chosen when JavaScript supplies one of the fields only
   // it declares, so call forms without one are never made (and may be ambiguous with the sibling overload).
-  function emitDecoder(signature, call, fields, label, markers = null) {
+  // `scope`: the factories are members of that scope and are called inside `with(scope)`.
+  function emitDecoder(signature, call, fields, label, markers = null, scope = null) {
     const optional = fields.filter((field) => field.optional);
     const argument = (field) => "`" + field.name + "` = " + decodeField(field);
+    const [open, close] = scope ? ["with(scope) { ", " }"] : ["", ""];
     if (!optional.length) {
-      kt.push(`${signature} = ${call}(`, ...fields.map((field) => `  ${argument(field)},`), ")");
+      kt.push(`${signature} = ${open}${call}(`, ...fields.map((field) => `  ${argument(field)},`), `)${close}`);
       return;
     }
     const mask = optional.map(({ name }, index) => `(if (has(${JSON.stringify(name)})) ${1 << index} else 0)`);
-    kt.push(`${signature} = when (${mask.join(" + ")}) {`);
+    kt.push(`${signature} = ${open}when (${mask.join(" + ")}) {`);
     for (let bits = 0; bits < 2 ** optional.length; bits++) {
       const passed = fields.filter((field) => !field.optional || (bits & (1 << optional.indexOf(field))));
       if (markers && !passed.some(({ name: passedName }) => markers.has(passedName))) continue;
       kt.push(`  ${bits} -> ${call}(${passed.map(argument).join(", ")})`);
     }
-    kt.push('  else -> error("Invalid generated arguments for ' + label + '")', "}");
+    kt.push('  else -> error("Invalid generated arguments for ' + label + '")', `}${close}`);
   }
   // A block decodes its supplied fields once, then returns the lambda Compose runs on the scope.
   function emitBlock(name, kotlinType, fields) {
@@ -100,8 +108,10 @@ export function recordOutputs(records, kinds) {
     }
     kt.push("  return value", "}");
   }
-  for (const { name, kotlinType, fields, factories = [], block, copy } of records) {
-    const signature = `internal fun JSONObject.decode${name}(): ${kotlinType}`;
+  for (const { name, kotlinType, fields, factories = [], block, copy, scope } of records) {
+    const scopeParameter = scope ? `scope: ${scope}` : "";
+    const scopeArgument = scope ? "scope" : "";
+    const signature = `internal fun JSONObject.decode${name}(${scopeParameter}): ${kotlinType}`;
     kt.push("");
     if (copy) {
       ts.push("", `export type ${name} = { ${typeFields(fields).join("; ")} };`);
@@ -127,7 +137,7 @@ export function recordOutputs(records, kinds) {
     const labels = [...new Set(factories.map(({ name: label }) => label))];
     const branch = (label) => {
       const overloads = factories.map((factory, index) => ({ ...factory, index })).filter((factory) => factory.name === label);
-      if (overloads.length === 1) return `decode${name}Factory${overloads[0].index}()`;
+      if (overloads.length === 1) return `decode${name}Factory${overloads[0].index}(${scopeArgument})`;
       // An overload is chosen when JavaScript supplies a field only it declares. Overloads with a required
       // marker are tested first, as such a field must be present.
       const choices = overloads.map(({ fields: own, index }) => {
@@ -136,7 +146,7 @@ export function recordOutputs(records, kinds) {
         const required = markers.some(({ optional }) => !optional);
         const test = (required ? markers.filter(({ optional }) => !optional) : markers)
           .map(({ name: marker }) => `has(${JSON.stringify(marker)})`).join(" || ");
-        return { required, branch: `${test} -> decode${name}Factory${index}()` };
+        return { required, branch: `${test} -> decode${name}Factory${index}(${scopeArgument})` };
       }).sort((a, b) => Number(b.required) - Number(a.required)).map(({ branch }) => branch);
       return `when { ${choices.join("; ")}; else -> error("No ${label} overload accepts these fields") }`;
     };
@@ -149,7 +159,8 @@ export function recordOutputs(records, kinds) {
       const siblings = factories.filter((factory, other) => other !== index && factory.name === factories[index].name);
       const markers = siblings.length === 0 ? null : new Set(fields.map(({ name: field }) => field)
         .filter((field) => siblings.every((sibling) => sibling.fields.every(({ name: other }) => other !== field))));
-      emitDecoder(`private fun JSONObject.decode${name}Factory${index}(): ${kotlinType}`, call, fields, call, markers);
+      emitDecoder(`private fun JSONObject.decode${name}Factory${index}(${scopeParameter}): ${kotlinType}`, call, fields, call, markers,
+        scope);
     }
   }
   if (records.length === 0) ts.push("", "export {};");
