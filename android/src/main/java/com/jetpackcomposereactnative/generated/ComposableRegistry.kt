@@ -4,11 +4,12 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
-import androidx.compose.material3.NavigationBarItem as composeScoped1
-import androidx.compose.material3.PlainTooltip as composeScoped2
-import androidx.compose.material3.RichTooltip as composeScoped3
-import androidx.compose.material3.SegmentedButton as composeScoped4
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
+import androidx.compose.material3.NavigationBarItem as composeScoped2
+import androidx.compose.material3.PlainTooltip as composeScoped3
+import androidx.compose.material3.RichTooltip as composeScoped4
+import androidx.compose.material3.SegmentedButton as composeScoped5
 
 @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
@@ -107,6 +108,10 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ExpandedDockedSearchBarWithGap" -> RendererExpandedDockedSearchBarWithGap.render(node, scope)
     "ExpandedFullScreenContainedSearchBar" -> RendererExpandedFullScreenContainedSearchBar.render(node, scope)
     "ExpandedFullScreenSearchBar" -> RendererExpandedFullScreenSearchBar.render(node, scope)
+    "ExposedDropdownMenu" -> {
+      check(scope is androidx.compose.material3.ExposedDropdownMenuBoxScope) { "ExposedDropdownMenu requires ExposedDropdownMenuBoxScope" }
+      RendererExposedDropdownMenu.render(node, scope)
+    }
     "ExposedDropdownMenuBox" -> RendererExposedDropdownMenuBox.render(node, scope)
     "ExtendedFloatingActionButton" -> RendererExtendedFloatingActionButton.render(node, scope)
     "ExtendedFloatingActionButton#1" -> RendererExtendedFloatingActionButton_1.render(node, scope)
