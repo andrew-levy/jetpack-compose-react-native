@@ -1,5 +1,5 @@
 // Generated from Compose value factories by generate.mjs.
-@file:OptIn(androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
+@file:OptIn(androidx.compose.foundation.style.ExperimentalFoundationStyleApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi::class)
 
 package com.jetpackcomposereactnative.generated
 
@@ -8,6 +8,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpackcomposereactnative.common.parseComposeColor
 import org.json.JSONObject
+
+internal fun JSONObject.decodeComposeSharedTransitionScopeOverlayClipValue(scope: androidx.compose.animation.SharedTransitionScope): androidx.compose.animation.SharedTransitionScope.OverlayClip = when (val factory = getString("factory")) {
+  "OverlayClip" -> decodeComposeSharedTransitionScopeOverlayClipValueFactory0(scope)
+  else -> error("Unknown ComposeSharedTransitionScopeOverlayClipValue factory: " + factory)
+}
+
+private fun JSONObject.decodeComposeSharedTransitionScopeOverlayClipValueFactory0(scope: androidx.compose.animation.SharedTransitionScope): androidx.compose.animation.SharedTransitionScope.OverlayClip = with(scope) { OverlayClip(
+  `clipShape` = composeShape("clipShape"),
+) }
 
 internal fun JSONObject.decodeComposeMarqueeSpacingValue(): androidx.compose.foundation.MarqueeSpacing = androidx.compose.foundation.MarqueeSpacing(
   `spacing` = getDouble("spacing").dp,
@@ -336,6 +345,16 @@ private fun JSONObject.decodeComposeTextAutoSizeValueFactory0(): androidx.compos
   7 -> androidx.compose.foundation.text.TextAutoSize.Companion.StepBased(`minFontSize` = getDouble("minFontSize").sp, `maxFontSize` = getDouble("maxFontSize").sp, `stepSize` = getDouble("stepSize").sp)
   else -> error("Invalid generated arguments for androidx.compose.foundation.text.TextAutoSize.Companion.StepBased")
 }
+
+@Composable
+internal fun JSONObject.decodeComposeSelectionStateValue(): androidx.compose.foundation.text.selection.SelectionState = when (val factory = getString("factory")) {
+  "rememberSelectionState" -> decodeComposeSelectionStateValueFactory0()
+  else -> error("Unknown ComposeSelectionStateValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeSelectionStateValueFactory0(): androidx.compose.foundation.text.selection.SelectionState = androidx.compose.foundation.text.selection.rememberSelectionState(
+)
 
 internal fun JSONObject.decodeComposeTextSelectionColorsValue(): androidx.compose.foundation.text.selection.TextSelectionColors = androidx.compose.foundation.text.selection.TextSelectionColors(
   `handleColor` = parseComposeColor(getString("handleColor")),
@@ -811,6 +830,12 @@ internal fun JSONObject.decodeComposeDragHandleShapesValue(): androidx.compose.m
   `draggedShape` = composeShape("draggedShape"),
 )
 
+internal fun JSONObject.decodeComposeDragHandleSizesValue(): androidx.compose.material3.DragHandleSizes = androidx.compose.material3.DragHandleSizes(
+  `size` = getJSONObject("size").toDpSize(),
+  `pressedSize` = getJSONObject("pressedSize").toDpSize(),
+  `draggedSize` = getJSONObject("draggedSize").toDpSize(),
+)
+
 @Composable
 internal fun JSONObject.decodeComposeDropdownMenuPopupPositionProviderValue(): androidx.compose.material3.DropdownMenuPopupPositionProvider = when (val factory = getString("factory")) {
   "MenuDefaults.rememberDropdownMenuPopupPositionProvider" -> decodeComposeDropdownMenuPopupPositionProviderValueFactory0()
@@ -1146,6 +1171,26 @@ internal fun JSONObject.decodeComposeMenuItemShapesValue(): androidx.compose.mat
   `selectedShape` = composeShape("selectedShape"),
 )
 
+internal fun JSONObject.decodeComposeModalBottomSheetPropertiesValue(): androidx.compose.material3.ModalBottomSheetProperties = when ((if (has("securePolicy")) 1 else 0) + (if (has("shouldDismissOnBackPress")) 2 else 0) + (if (has("shouldDismissOnClickOutside")) 4 else 0)) {
+  0 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"))
+  1 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `securePolicy` = toComposeSecureFlagPolicyOption(getString("securePolicy")))
+  2 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `shouldDismissOnBackPress` = getBoolean("shouldDismissOnBackPress"))
+  3 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `securePolicy` = toComposeSecureFlagPolicyOption(getString("securePolicy")), `shouldDismissOnBackPress` = getBoolean("shouldDismissOnBackPress"))
+  4 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `shouldDismissOnClickOutside` = getBoolean("shouldDismissOnClickOutside"))
+  5 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `securePolicy` = toComposeSecureFlagPolicyOption(getString("securePolicy")), `shouldDismissOnClickOutside` = getBoolean("shouldDismissOnClickOutside"))
+  6 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `shouldDismissOnBackPress` = getBoolean("shouldDismissOnBackPress"), `shouldDismissOnClickOutside` = getBoolean("shouldDismissOnClickOutside"))
+  7 -> androidx.compose.material3.ModalBottomSheetProperties(`isAppearanceLightStatusBars` = getBoolean("isAppearanceLightStatusBars"), `isAppearanceLightNavigationBars` = getBoolean("isAppearanceLightNavigationBars"), `securePolicy` = toComposeSecureFlagPolicyOption(getString("securePolicy")), `shouldDismissOnBackPress` = getBoolean("shouldDismissOnBackPress"), `shouldDismissOnClickOutside` = getBoolean("shouldDismissOnClickOutside"))
+  else -> error("Invalid generated arguments for ComposeModalBottomSheetPropertiesValue")
+}
+
+internal fun JSONObject.decodeComposeModalWideNavigationRailPropertiesValue(): androidx.compose.material3.ModalWideNavigationRailProperties = when ((if (has("securePolicy")) 1 else 0) + (if (has("shouldDismissOnBackPress")) 2 else 0)) {
+  0 -> androidx.compose.material3.ModalWideNavigationRailProperties()
+  1 -> androidx.compose.material3.ModalWideNavigationRailProperties(`securePolicy` = toComposeSecureFlagPolicyOption(getString("securePolicy")))
+  2 -> androidx.compose.material3.ModalWideNavigationRailProperties(`shouldDismissOnBackPress` = getBoolean("shouldDismissOnBackPress"))
+  3 -> androidx.compose.material3.ModalWideNavigationRailProperties(`securePolicy` = toComposeSecureFlagPolicyOption(getString("securePolicy")), `shouldDismissOnBackPress` = getBoolean("shouldDismissOnBackPress"))
+  else -> error("Invalid generated arguments for ComposeModalWideNavigationRailPropertiesValue")
+}
+
 internal fun JSONObject.decodeComposeMotionSchemeValue(): androidx.compose.material3.MotionScheme = when (val factory = getString("factory")) {
   "MotionScheme.expressive" -> decodeComposeMotionSchemeValueFactory0()
   "MotionScheme.standard" -> decodeComposeMotionSchemeValueFactory1()
@@ -1203,6 +1248,12 @@ internal fun JSONObject.decodeComposeRichTooltipColorsValue(): androidx.compose.
   `actionContentColor` = parseComposeColor(getString("actionContentColor")),
 )
 
+internal fun JSONObject.decodeComposeRippleConfigurationValue(): androidx.compose.material3.RippleConfiguration = when ((if (has("color")) 1 else 0)) {
+  0 -> androidx.compose.material3.RippleConfiguration()
+  1 -> androidx.compose.material3.RippleConfiguration(`color` = parseComposeColor(getString("color")))
+  else -> error("Invalid generated arguments for ComposeRippleConfigurationValue")
+}
+
 internal fun JSONObject.decodeComposeScrollFieldColorsValue(): androidx.compose.material3.ScrollFieldColors = androidx.compose.material3.ScrollFieldColors(
   `containerColor` = parseComposeColor(getString("containerColor")),
   `contentColor` = parseComposeColor(getString("contentColor")),
@@ -1211,6 +1262,19 @@ internal fun JSONObject.decodeComposeScrollFieldColorsValue(): androidx.compose.
   `disabledContentColor` = parseComposeColor(getString("disabledContentColor")),
   `disabledSelectedContentColor` = parseComposeColor(getString("disabledSelectedContentColor")),
 )
+
+@Composable
+internal fun JSONObject.decodeComposeScrollFieldStateValue(): androidx.compose.material3.ScrollFieldState = when (val factory = getString("factory")) {
+  "rememberScrollFieldState" -> decodeComposeScrollFieldStateValueFactory0()
+  else -> error("Unknown ComposeScrollFieldStateValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeScrollFieldStateValueFactory0(): androidx.compose.material3.ScrollFieldState = when ((if (has("index")) 1 else 0)) {
+  0 -> androidx.compose.material3.rememberScrollFieldState(`itemCount` = getInt("itemCount"))
+  1 -> androidx.compose.material3.rememberScrollFieldState(`itemCount` = getInt("itemCount"), `index` = getInt("index"))
+  else -> error("Invalid generated arguments for androidx.compose.material3.rememberScrollFieldState")
+}
 
 internal fun JSONObject.decodeComposeSearchBarColorsValue(): androidx.compose.material3.SearchBarColors = androidx.compose.material3.SearchBarColors(
   `containerColor` = parseComposeColor(getString("containerColor")),
@@ -1638,6 +1702,51 @@ internal fun JSONObject.decodeComposeWideNavigationRailColorsValue(): androidx.c
   `modalContentColor` = parseComposeColor(getString("modalContentColor")),
 )
 
+@Composable
+internal fun JSONObject.decodeComposePaneExpansionStateValue(): androidx.compose.material3.adaptive.layout.PaneExpansionState = when (val factory = getString("factory")) {
+  "rememberPaneExpansionState" -> decodeComposePaneExpansionStateValueFactory0()
+  else -> error("Unknown ComposePaneExpansionStateValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposePaneExpansionStateValueFactory0(): androidx.compose.material3.adaptive.layout.PaneExpansionState = when ((if (has("key")) 1 else 0) + (if (has("initialAnchoredIndex")) 2 else 0)) {
+  0 -> androidx.compose.material3.adaptive.layout.rememberPaneExpansionState()
+  1 -> androidx.compose.material3.adaptive.layout.rememberPaneExpansionState(`key` = toComposePaneExpansionStateKeyValue(getString("key")))
+  2 -> androidx.compose.material3.adaptive.layout.rememberPaneExpansionState(`initialAnchoredIndex` = getInt("initialAnchoredIndex"))
+  3 -> androidx.compose.material3.adaptive.layout.rememberPaneExpansionState(`key` = toComposePaneExpansionStateKeyValue(getString("key")), `initialAnchoredIndex` = getInt("initialAnchoredIndex"))
+  else -> error("Invalid generated arguments for androidx.compose.material3.adaptive.layout.rememberPaneExpansionState")
+}
+
+internal fun JSONObject.decodeComposePaneScaffoldDirectiveValue(): androidx.compose.material3.adaptive.layout.PaneScaffoldDirective = androidx.compose.material3.adaptive.layout.PaneScaffoldDirective(
+  `maxHorizontalPartitions` = getInt("maxHorizontalPartitions"),
+  `horizontalPartitionSpacerSize` = getDouble("horizontalPartitionSpacerSize").dp,
+  `maxVerticalPartitions` = getInt("maxVerticalPartitions"),
+  `verticalPartitionSpacerSize` = getDouble("verticalPartitionSpacerSize").dp,
+  `defaultPanePreferredWidth` = getDouble("defaultPanePreferredWidth").dp,
+  `defaultPanePreferredHeight` = getDouble("defaultPanePreferredHeight").dp,
+  `excludedBounds` = getJSONArray("excludedBounds").let { items -> List(items.length()) { index -> with(items) { getJSONObject(index).decodeComposeRectValue() } } },
+  `shouldAutoFocusCurrentDestination` = getBoolean("shouldAutoFocusCurrentDestination"),
+)
+
+internal fun JSONObject.decodeComposeThreePaneScaffoldValueValue(): androidx.compose.material3.adaptive.layout.ThreePaneScaffoldValue = androidx.compose.material3.adaptive.layout.ThreePaneScaffoldValue(
+  `primary` = toComposePaneAdaptedValueValue(getString("primary")),
+  `secondary` = toComposePaneAdaptedValueValue(getString("secondary")),
+  `tertiary` = toComposePaneAdaptedValueValue(getString("tertiary")),
+)
+
+@Composable
+internal fun JSONObject.decodeComposeNavigationSuiteScaffoldStateValue(): androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldState = when (val factory = getString("factory")) {
+  "rememberNavigationSuiteScaffoldState" -> decodeComposeNavigationSuiteScaffoldStateValueFactory0()
+  else -> error("Unknown ComposeNavigationSuiteScaffoldStateValue factory: " + factory)
+}
+
+@Composable
+private fun JSONObject.decodeComposeNavigationSuiteScaffoldStateValueFactory0(): androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldState = when ((if (has("initialValue")) 1 else 0)) {
+  0 -> androidx.compose.material3.adaptive.navigationsuite.rememberNavigationSuiteScaffoldState()
+  1 -> androidx.compose.material3.adaptive.navigationsuite.rememberNavigationSuiteScaffoldState(`initialValue` = toComposeNavigationSuiteScaffoldValueOption(getString("initialValue")))
+  else -> error("Invalid generated arguments for androidx.compose.material3.adaptive.navigationsuite.rememberNavigationSuiteScaffoldState")
+}
+
 internal fun JSONObject.decodeComposeBlurScopeBlock(): androidx.compose.ui.draw.BlurScope.() -> Unit {
   val hasAlpha = has("alpha")
   val `alpha` = if (has("alpha")) getDouble("alpha").toFloat() else null
@@ -1707,6 +1816,13 @@ internal fun JSONObject.decodeComposeInnerShadowScopeBlock(): androidx.compose.u
 internal fun JSONObject.decodeComposeOffset(): androidx.compose.ui.geometry.Offset = androidx.compose.ui.geometry.Offset(
   `x` = getDouble("x").toFloat(),
   `y` = getDouble("y").toFloat(),
+)
+
+internal fun JSONObject.decodeComposeRectValue(): androidx.compose.ui.geometry.Rect = androidx.compose.ui.geometry.Rect(
+  `left` = getDouble("left").toFloat(),
+  `top` = getDouble("top").toFloat(),
+  `right` = getDouble("right").toFloat(),
+  `bottom` = getDouble("bottom").toFloat(),
 )
 
 internal fun JSONObject.decodeComposeBrushValue(): androidx.compose.ui.graphics.Brush = when (val factory = getString("factory")) {
@@ -2218,6 +2334,11 @@ internal fun JSONObject.decodeComposeParagraphStyleValue(): androidx.compose.ui.
   return value
 }
 
+internal fun JSONObject.decodeComposePlatformTextStyleValue(): androidx.compose.ui.text.PlatformTextStyle = androidx.compose.ui.text.PlatformTextStyle(
+  `spanStyle` = if (get("spanStyle") === JSONObject.NULL) null else toComposePlatformSpanStyleValue(getString("spanStyle")),
+  `paragraphStyle` = if (get("paragraphStyle") === JSONObject.NULL) null else toComposePlatformParagraphStyleValue(getString("paragraphStyle")),
+)
+
 internal fun JSONObject.decodeComposeSpanStyleValue(): androidx.compose.ui.text.SpanStyle {
   var value = androidx.compose.ui.text.SpanStyle()
   if (has("color")) value = value.copy(`color` = parseComposeColor(getString("color")))
@@ -2230,7 +2351,7 @@ internal fun JSONObject.decodeComposeSpanStyleValue(): androidx.compose.ui.text.
   if (has("letterSpacing")) value = value.copy(`letterSpacing` = getDouble("letterSpacing").sp)
   if (has("baselineShift")) value = value.copy(`baselineShift` = if (get("baselineShift") === JSONObject.NULL) null else getJSONObject("baselineShift").decodeComposeBaselineShiftValue())
   if (has("textGeometricTransform")) value = value.copy(`textGeometricTransform` = if (get("textGeometricTransform") === JSONObject.NULL) null else getJSONObject("textGeometricTransform").decodeComposeTextGeometricTransformValue())
-  if (has("localeList")) value = value.copy(`localeList` = if (get("localeList") === JSONObject.NULL) null else toComposeLocaleListValue(getString("localeList")))
+  if (has("localeList")) value = value.copy(`localeList` = if (get("localeList") === JSONObject.NULL) null else getJSONObject("localeList").decodeComposeLocaleListValue())
   if (has("background")) value = value.copy(`background` = parseComposeColor(getString("background")))
   if (has("textDecoration")) value = value.copy(`textDecoration` = if (get("textDecoration") === JSONObject.NULL) null else toComposeTextDecorationValue(getString("textDecoration")))
   if (has("shadow")) value = value.copy(`shadow` = if (get("shadow") === JSONObject.NULL) null else getJSONObject("shadow").decodeComposeShadowValue())
@@ -2250,7 +2371,7 @@ internal fun JSONObject.decodeComposeTextStyleValue(): androidx.compose.ui.text.
   if (has("letterSpacing")) value = value.copy(`letterSpacing` = getDouble("letterSpacing").sp)
   if (has("baselineShift")) value = value.copy(`baselineShift` = if (get("baselineShift") === JSONObject.NULL) null else getJSONObject("baselineShift").decodeComposeBaselineShiftValue())
   if (has("textGeometricTransform")) value = value.copy(`textGeometricTransform` = if (get("textGeometricTransform") === JSONObject.NULL) null else getJSONObject("textGeometricTransform").decodeComposeTextGeometricTransformValue())
-  if (has("localeList")) value = value.copy(`localeList` = if (get("localeList") === JSONObject.NULL) null else toComposeLocaleListValue(getString("localeList")))
+  if (has("localeList")) value = value.copy(`localeList` = if (get("localeList") === JSONObject.NULL) null else getJSONObject("localeList").decodeComposeLocaleListValue())
   if (has("background")) value = value.copy(`background` = parseComposeColor(getString("background")))
   if (has("textDecoration")) value = value.copy(`textDecoration` = if (get("textDecoration") === JSONObject.NULL) null else toComposeTextDecorationValue(getString("textDecoration")))
   if (has("shadow")) value = value.copy(`shadow` = if (get("shadow") === JSONObject.NULL) null else getJSONObject("shadow").decodeComposeShadowValue())
@@ -2258,6 +2379,7 @@ internal fun JSONObject.decodeComposeTextStyleValue(): androidx.compose.ui.text.
   if (has("textDirection")) value = value.copy(`textDirection` = toComposeTextDirectionValue(getString("textDirection")))
   if (has("lineHeight")) value = value.copy(`lineHeight` = getDouble("lineHeight").sp)
   if (has("textIndent")) value = value.copy(`textIndent` = if (get("textIndent") === JSONObject.NULL) null else getJSONObject("textIndent").decodeComposeTextIndentValue())
+  if (has("platformStyle")) value = value.copy(`platformStyle` = if (get("platformStyle") === JSONObject.NULL) null else getJSONObject("platformStyle").decodeComposePlatformTextStyleValue())
   if (has("lineHeightStyle")) value = value.copy(`lineHeightStyle` = if (get("lineHeightStyle") === JSONObject.NULL) null else getJSONObject("lineHeightStyle").decodeComposeLineHeightStyleValue())
   if (has("lineBreak")) value = value.copy(`lineBreak` = toComposeLineBreakValue(getString("lineBreak")))
   if (has("hyphens")) value = value.copy(`hyphens` = toComposeHyphensValue(getString("hyphens")))
@@ -2279,6 +2401,14 @@ internal fun JSONObject.decodeComposeFontValue(): androidx.compose.ui.text.font.
 
 internal fun JSONObject.decodeComposeFontFamilyValue(): androidx.compose.ui.text.font.FontFamily = androidx.compose.ui.text.font.FontFamily(
   `fonts` = getJSONArray("fonts").let { items -> List(items.length()) { index -> with(items) { getJSONObject(index).decodeComposeFontValue() } } },
+)
+
+internal fun JSONObject.decodeComposeLocaleValue(): androidx.compose.ui.text.intl.Locale = androidx.compose.ui.text.intl.Locale(
+  `languageTag` = getString("languageTag"),
+)
+
+internal fun JSONObject.decodeComposeLocaleListValue(): androidx.compose.ui.text.intl.LocaleList = androidx.compose.ui.text.intl.LocaleList(
+  `localeList` = getJSONArray("localeList").let { items -> List(items.length()) { index -> with(items) { getJSONObject(index).decodeComposeLocaleValue() } } },
 )
 
 internal fun JSONObject.decodeComposeBaselineShiftValue(): androidx.compose.ui.text.style.BaselineShift = androidx.compose.ui.text.style.BaselineShift(
@@ -2309,6 +2439,12 @@ internal fun JSONObject.decodeComposeTextIndentValue(): androidx.compose.ui.text
   2 -> androidx.compose.ui.text.style.TextIndent(`restLine` = getDouble("restLine").sp)
   3 -> androidx.compose.ui.text.style.TextIndent(`firstLine` = getDouble("firstLine").sp, `restLine` = getDouble("restLine").sp)
   else -> error("Invalid generated arguments for ComposeTextIndentValue")
+}
+
+internal fun JSONObject.decodeComposeDensityValue(): androidx.compose.ui.unit.Density = when ((if (has("fontScale")) 1 else 0)) {
+  0 -> androidx.compose.ui.unit.Density(`density` = getDouble("density").toFloat())
+  1 -> androidx.compose.ui.unit.Density(`density` = getDouble("density").toFloat(), `fontScale` = getDouble("fontScale").toFloat())
+  else -> error("Invalid generated arguments for ComposeDensityValue")
 }
 
 internal fun JSONObject.decodeComposeDpOffset(): androidx.compose.ui.unit.DpOffset = androidx.compose.ui.unit.DpOffset(
