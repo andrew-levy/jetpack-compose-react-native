@@ -31,17 +31,93 @@
   },
   {
     "signature": "androidx.compose.animation.AnimatedVisibility [receiver: androidx.compose.foundation.layout.ColumnScope](visible: kotlin.Boolean, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
-    "status": "adapterRequired",
-    "reason": "Extension receiver requires a native scope",
+    "status": "skipped",
+    "reason": "All forms are shadowed by another overload",
     "omittedParameters": [],
-    "omittedForms": [],
+    "omittedForms": [
+      {
+        "props": [
+          "visible",
+          "modifier"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "enter"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "exit"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "enter",
+          "exit"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "label"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "enter",
+          "label"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "exit",
+          "label"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      },
+      {
+        "props": [
+          "visible",
+          "modifier",
+          "enter",
+          "exit",
+          "label"
+        ],
+        "reason": "Another overload has the same JavaScript argument shape"
+      }
+    ],
     "kind": "component"
   },
   {
     "signature": "androidx.compose.animation.AnimatedVisibility [receiver: androidx.compose.foundation.layout.ColumnScope](visibleState: androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>, modifier: androidx.compose.ui.Modifier, enter: androidx.compose.animation.EnterTransition, exit: androidx.compose.animation.ExitTransition, label: kotlin.String, content: kotlin.Function1<androidx.compose.animation.AnimatedVisibilityScope, kotlin.Unit>)",
     "status": "adapterRequired",
-    "reason": "Extension receiver requires a native scope",
-    "omittedParameters": [],
+    "reason": "Required parameter cannot cross the bridge",
+    "omittedParameters": [
+      {
+        "name": "visibleState",
+        "kotlinType": "androidx.compose.animation.core.MutableTransitionState<kotlin.Boolean>",
+        "reason": "Unsupported bridge type",
+        "required": true
+      }
+    ],
     "omittedForms": [],
     "kind": "component"
   },
@@ -5046,8 +5122,7 @@
   },
   {
     "signature": "androidx.compose.material3.ExposedDropdownMenu [receiver: androidx.compose.material3.ExposedDropdownMenuBoxScope](expanded: kotlin.Boolean, onDismissRequest: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, scrollState: androidx.compose.foundation.ScrollState, matchAnchorWidth: kotlin.Boolean, shape: androidx.compose.ui.graphics.Shape, containerColor: androidx.compose.ui.graphics.Color, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, border: androidx.compose.foundation.BorderStroke?, content: kotlin.Function1<androidx.compose.foundation.layout.ColumnScope, kotlin.Unit>)",
-    "status": "adapterRequired",
-    "reason": "Extension receiver requires a native scope",
+    "status": "generated",
     "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
@@ -9783,14 +9858,7 @@
   {
     "signature": "androidx.compose.material3.SwipeToDismissBox(state: androidx.compose.material3.SwipeToDismissBoxState, backgroundContent: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>, modifier: androidx.compose.ui.Modifier, enableDismissFromStartToEnd: kotlin.Boolean, enableDismissFromEndToStart: kotlin.Boolean, gesturesEnabled: kotlin.Boolean, onDismiss: kotlin.Function1<androidx.compose.material3.SwipeToDismissBoxValue, kotlin.Unit>, content: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>)",
     "status": "generated",
-    "omittedParameters": [
-      {
-        "name": "onDismiss",
-        "kotlinType": "kotlin.Function1<androidx.compose.material3.SwipeToDismissBoxValue, kotlin.Unit>",
-        "reason": "Unsupported bridge type",
-        "required": false
-      }
-    ],
+    "omittedParameters": [],
     "omittedForms": [],
     "kind": "component"
   },
