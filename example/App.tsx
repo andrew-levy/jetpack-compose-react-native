@@ -1,36 +1,39 @@
-import { useState } from "react";
-import { StatusBar, useColorScheme } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { View, StyleSheet, StatusBar } from 'react-native';
+import {
+  ListItem,
+  Text,
+  Icon,
+  SwipeToDismissBox,
+  Box,
+  Modifier,
+} from 'jetpack-compose-react-native';
 
-import BridgeChecks from "./BridgeChecks";
-import { Catalog } from "./catalog/Catalog";
-import { CatalogPaletteContext, palettes, type ThemeMode } from "./catalog/theme";
+StatusBar.setHidden(true);
 
-// Android draws apps edge to edge (Expo SDK 58, target SDK 36), so keep content clear of the system bars.
-export default function App({ catalogStart, bridgeChecks }: { catalogStart?: number; bridgeChecks?: boolean }) {
-  const [mode, setMode] = useState<ThemeMode>("System");
-  const systemScheme = useColorScheme();
-  const dark = mode === "Dark" || (mode === "System" && systemScheme === "dark");
-  const palette = dark ? palettes.dark : palettes.light;
-
-  if (bridgeChecks) {
-    return (
-      <SafeAreaProvider>
-        <SafeAreaView edges={["top", "bottom"]} style={{ flex: 1, backgroundColor: "#f5f3fa" }}>
-          <BridgeChecks />
-        </SafeAreaView>
-      </SafeAreaProvider>
-    );
-  }
-
+export default function App() {
   return (
-    <SafeAreaProvider>
-      <CatalogPaletteContext.Provider value={palette}>
-        <SafeAreaView edges={["top", "bottom"]} style={{ flex: 1, backgroundColor: palette.page }}>
-          <StatusBar barStyle={dark ? "light-content" : "dark-content"} />
-          <Catalog startIndex={catalogStart} mode={mode} onModeChange={setMode} />
-        </SafeAreaView>
-      </CatalogPaletteContext.Provider>
-    </SafeAreaProvider>
+    <View style={styles.container}>
+      <View style={{ padding: 16, paddingTop: 120 }}>
+        <SwipeToDismissBox
+          state={{ initialValue: 'settled' }}
+          enableDismissFromStartToEnd={false} // only allow swiping right-to-left
+          backgroundContent={
+            <Box
+              modifiers={Modifier.fillMaxSize()
+                .background('#040101')
+                .padding('horizontal', 16)}
+            >
+              <Text text="Delete" color="#ffffff" />
+            </Box>
+          }
+        >
+          <ListItem supportingContent={<Text text="Swipe left to delete" />}>
+            <Text text="Inbox item" />
+          </ListItem>
+        </SwipeToDismissBox>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({ container: { flex: 1 } });
