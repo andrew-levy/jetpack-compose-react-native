@@ -16,13 +16,13 @@ annotation class BridgeLayoutPreview
 @BridgePreview
 @BridgeLayoutPreview
 @Composable
-fun DiscoveryProbe(label: String, optionalMetadata: List<String> = emptyList(), scheme: ColorScheme? = null) {}
+fun DiscoveryProbe(label: String, optionalMetadata: Map<String, Int> = emptyMap(), scheme: ColorScheme? = null) {}
 
 @Composable
 fun DiscoveryProbe(count: Int) {}
 
 @Composable
-fun UnsupportedProbe(requiredMetadata: List<String>) {}
+fun UnsupportedProbe(requiredMetadata: Map<String, Int>) {}
 
 fun Modifier.discoveryProbe(inset: Dp): Modifier = padding(inset)
 
