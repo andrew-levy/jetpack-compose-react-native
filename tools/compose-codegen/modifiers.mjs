@@ -85,8 +85,9 @@ function typeScript(overloads, kinds) {
   return [
     "// Generated from Compose declarations by generate.mjs.",
     'import { createModifier, type ComposeBrush, type ComposeShape, type ModifierCompatibility, type ModifierPayload } from "../utils/modifier";',
-    ...typeImports(overloads.flatMap(({ parameters }) => parameters.map(({ kind }) => kinds[kind]))),
-    ...(valueTypes.length ? [`import type { ${valueTypes.join(", ")} } from "./values";`] : []),
+    // Value types can be arguments and payload elements, so their imports share one statement.
+    ...typeImports([...overloads.flatMap(({ parameters }) => parameters.map(({ kind }) => kinds[kind])),
+      ...(valueTypes.length ? [{ module: "./values", imports: valueTypes }] : [])]),
     "",
     "interface GeneratedModifiers {",
     ...methodDeclarations,
