@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 
-import NativeHost from "../../specs/JpcComposeHostNativeComponent";
+import NativeHost from "../specs/JpcComposeHostNativeComponent";
 import { ComposeHostContext, type ComposeHostProps } from "./shared";
 
 const styles = StyleSheet.create({
