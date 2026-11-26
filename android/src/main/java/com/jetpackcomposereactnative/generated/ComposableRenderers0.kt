@@ -4,12 +4,13 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.adaptive.layout.AnimatedPane as composeScoped0
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped1
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped2
+import androidx.compose.material3.NavigationBarItem as composeScoped3
+import androidx.compose.material3.PlainTooltip as composeScoped4
+import androidx.compose.material3.RichTooltip as composeScoped5
+import androidx.compose.material3.SegmentedButton as composeScoped6
 
 // androidx.compose.material3.SegmentedButtonDefaults.ActiveIcon()
 internal object RendererActiveIcon {
@@ -1493,6 +1494,64 @@ internal object RendererAnimatedContent {
         `contentAlignment` = toComposeAlignment(node.string("contentAlignment")),
         `label` = node.string("label"),
         content = { state -> RenderComposeAnimationChild(node, state, this) },
+      )
+      else -> error("Invalid generated arguments for " + node.name)
+    }
+  }
+}
+
+// androidx.compose.material3.adaptive.layout.AnimatedPane [receiver: androidx.compose.material3.adaptive.layout.ExtendedPaneScaffoldPaneScope<RoleT, ScaffoldValueT>](modifier: androidx.compose.ui.Modifier, enterTransition: androidx.compose.animation.EnterTransition, exitTransition: androidx.compose.animation.ExitTransition, boundsAnimationSpec: androidx.compose.animation.core.FiniteAnimationSpec<androidx.compose.ui.unit.IntRect>, dragToResizeHandle: kotlin.Function1<androidx.compose.material3.adaptive.layout.DragToResizeState, kotlin.Unit>?, content: kotlin.Function1<androidx.compose.material3.adaptive.layout.AnimatedPaneScope, kotlin.Unit>) where RoleT : androidx.compose.material3.adaptive.layout.PaneScaffoldRole, ScaffoldValueT : androidx.compose.material3.adaptive.layout.PaneScaffoldValue<RoleT>
+internal object RendererAnimatedPane {
+  @OptIn(androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi::class)
+  @Composable
+  fun render(node: ComposeNode, scope: androidx.compose.material3.adaptive.layout.ThreePaneScaffoldPaneScope) {
+    val mask = (if (node.has("enterTransition")) 1 else 0) +
+      (if (node.has("exitTransition")) 2 else 0) +
+      (if (node.has("dragToResizeHandle")) 4 else 0)
+    when (mask) {
+      0 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      1 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `enterTransition` = node.jsonObject("enterTransition").toComposeEnterTransition(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      2 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `exitTransition` = node.jsonObject("exitTransition").toComposeExitTransition(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      3 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `enterTransition` = node.jsonObject("enterTransition").toComposeEnterTransition(),
+        `exitTransition` = node.jsonObject("exitTransition").toComposeExitTransition(),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      4 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `dragToResizeHandle` = if (node.isNull("dragToResizeHandle")) null else ({ value1: androidx.compose.material3.adaptive.layout.DragToResizeState -> RenderComposeArgumentSlot(node, "dragToResizeHandle", org.json.JSONArray().put(value1.toComposeDragToResizeStateSnapshot())) }),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      5 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `enterTransition` = node.jsonObject("enterTransition").toComposeEnterTransition(),
+        `dragToResizeHandle` = if (node.isNull("dragToResizeHandle")) null else ({ value1: androidx.compose.material3.adaptive.layout.DragToResizeState -> RenderComposeArgumentSlot(node, "dragToResizeHandle", org.json.JSONArray().put(value1.toComposeDragToResizeStateSnapshot())) }),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      6 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `exitTransition` = node.jsonObject("exitTransition").toComposeExitTransition(),
+        `dragToResizeHandle` = if (node.isNull("dragToResizeHandle")) null else ({ value1: androidx.compose.material3.adaptive.layout.DragToResizeState -> RenderComposeArgumentSlot(node, "dragToResizeHandle", org.json.JSONArray().put(value1.toComposeDragToResizeStateSnapshot())) }),
+        content = { RenderComposeChildren(node.children, this) },
+      )
+      7 -> scope.composeScoped0(
+        `modifier` = node.modifier("modifier", scope),
+        `enterTransition` = node.jsonObject("enterTransition").toComposeEnterTransition(),
+        `exitTransition` = node.jsonObject("exitTransition").toComposeExitTransition(),
+        `dragToResizeHandle` = if (node.isNull("dragToResizeHandle")) null else ({ value1: androidx.compose.material3.adaptive.layout.DragToResizeState -> RenderComposeArgumentSlot(node, "dragToResizeHandle", org.json.JSONArray().put(value1.toComposeDragToResizeStateSnapshot())) }),
+        content = { RenderComposeChildren(node.children, this) },
       )
       else -> error("Invalid generated arguments for " + node.name)
     }
