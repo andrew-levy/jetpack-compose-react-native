@@ -23,7 +23,9 @@ import androidx.compose.material3.SheetState
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberStandardBottomSheetState
+import androidx.compose.foundation.ScrollIndicatorState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -46,6 +48,14 @@ private fun <T : Any, S> JSONObject.controlledState(
   execute: suspend (T, StateCommand) -> Unit,
 ): T = key(optString("token")) {
   val state = create()
+  val handles = LocalComposeNativeHandles.current
+  val token = optString("token")
+  if (token.isNotEmpty()) {
+    DisposableEffect(handles, kind, token, state) {
+      handles.publish(kind, token, state)
+      onDispose { handles.unpublish(kind, token, state) }
+    }
+  }
   val options by rememberUpdatedState(this)
   val eventArgs by rememberUpdatedState(args)
   val listener = optString("onStateChange")
@@ -257,3 +267,22 @@ internal fun JSONObject.rememberComposeWideNavigationRailState(args: ComposeModi
       "toggle" -> state.toggle()
     }
   }
+
+// `Modifier.nonInteractiveScrollbar(state = scroll)`: the indicator of the state that the scroll or lazy handle
+// controls in this host. Until that container composes, the indicator reports an empty viewport.
+@Composable
+internal fun JSONObject.rememberComposeScrollIndicatorState(): ScrollIndicatorState {
+  val state = LocalComposeNativeHandles.current.published(getString("kind"), getString("token"))
+  return when (state) {
+    is ScrollState -> state.scrollIndicatorState
+    is LazyListState -> state.scrollIndicatorState
+    is LazyGridState -> state.scrollIndicatorState
+    else -> null
+  } ?: EmptyScrollIndicatorState
+}
+
+private object EmptyScrollIndicatorState : ScrollIndicatorState {
+  override val scrollOffset = 0
+  override val contentSize = 0
+  override val viewportSize = 0
+}
