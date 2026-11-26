@@ -35,6 +35,7 @@ export type ComposeFloatingToolbarVerticalFabPositionValue = "bottom" | "top";
 export type ComposeMenuAnchorPositionValue = "above" | "below" | "end" | "left" | "right" | "start";
 export type ComposeNavigationItemIconPositionValue = "start" | "top";
 export type ComposeShortNavigationBarArrangementValue = "centered" | "equalWeight";
+export type ComposeSwipeToDismissBoxValueOption = "endToStart" | "settled" | "startToEnd";
 export type ComposeTimePickerLayoutTypeValue = "horizontal" | "vertical";
 export type ComposeToggleButtonSizeValue = "extraLarge" | "extraSmall" | "large" | "medium" | "small";
 export type ComposeBlurredEdgeTreatmentValue = "rectangle" | "unbounded";
