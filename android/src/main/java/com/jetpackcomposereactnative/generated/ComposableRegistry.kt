@@ -4,20 +4,25 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
-import androidx.compose.material3.NavigationBarItem as composeScoped2
-import androidx.compose.material3.PlainTooltip as composeScoped3
-import androidx.compose.material3.RichTooltip as composeScoped4
-import androidx.compose.material3.SegmentedButton as composeScoped5
+import androidx.compose.material3.adaptive.layout.AnimatedPane as composeScoped0
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped1
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped2
+import androidx.compose.material3.NavigationBarItem as composeScoped3
+import androidx.compose.material3.PlainTooltip as composeScoped4
+import androidx.compose.material3.RichTooltip as composeScoped5
+import androidx.compose.material3.SegmentedButton as composeScoped6
 
-@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 internal fun RenderComposable(node: ComposeNode, scope: Any?) {
   when (node.name) {
     "ActiveIcon" -> RendererActiveIcon.render(node)
     "AlertDialog" -> RendererAlertDialog.render(node, scope)
     "AnimatedContent" -> RendererAnimatedContent.render(node, scope)
+    "AnimatedPane" -> {
+      check(scope is androidx.compose.material3.adaptive.layout.ThreePaneScaffoldPaneScope) { "AnimatedPane requires ThreePaneScaffoldPaneScope" }
+      RendererAnimatedPane.render(node, scope)
+    }
     "AnimatedVisibility" -> RendererAnimatedVisibility.render(node, scope)
     "AppBarColumn" -> RendererAppBarColumn.render(node, scope)
     "AppBarRow" -> RendererAppBarRow.render(node, scope)
@@ -60,6 +65,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "ClickableText" -> RendererClickableText.render(node, scope)
     "Column" -> RendererColumn.render(node, scope)
     "CompositionLocalProvider" -> RendererCompositionLocalProvider.render(node)
+    "CompositionLocalProvider#1" -> RendererCompositionLocalProvider_1.render(node)
     "ContainedLoadingIndicator" -> RendererContainedLoadingIndicator.render(node, scope)
     "ContainedLoadingIndicator#1" -> RendererContainedLoadingIndicator_1.render(node, scope)
     "Container" -> RendererContainer.render(node, scope)
@@ -148,13 +154,15 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "HorizontalUncontainedCarousel" -> RendererHorizontalUncontainedCarousel.render(node, scope)
     "Icon" -> RendererIcon.render(node, scope)
     "Icon#1" -> RendererIcon_1.render(node, scope)
-    "Icon#2" -> RendererIcon_2.render(node)
+    "Icon#2" -> RendererIcon_2.render(node, scope)
+    "Icon#3" -> RendererIcon_3.render(node)
     "IconButton" -> RendererIconButton.render(node, scope)
     "IconButton#1" -> RendererIconButton_1.render(node, scope)
     "IconToggleButton" -> RendererIconToggleButton.render(node, scope)
     "IconToggleButton#1" -> RendererIconToggleButton_1.render(node, scope)
     "Image" -> RendererImage.render(node, scope)
     "Image#1" -> RendererImage_1.render(node, scope)
+    "Image#2" -> RendererImage_2.render(node, scope)
     "Indicator" -> RendererIndicator.render(node, scope)
     "Indicator#1" -> RendererIndicator_1.render(node, scope)
     "IndicatorBox" -> RendererIndicatorBox.render(node, scope)
@@ -182,10 +190,12 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "LazyVerticalStaggeredGrid#1" -> RendererLazyVerticalStaggeredGrid_1.render(node, scope)
     "LeadingButton" -> RendererLeadingButton.render(node, scope)
     "LeadingIconTab" -> RendererLeadingIconTab.render(node, scope)
+    "LevitatedPaneScrim" -> RendererLevitatedPaneScrim.render(node, scope)
     "LinearProgressIndicator" -> RendererLinearProgressIndicator.render(node, scope)
     "LinearProgressIndicator#1" -> RendererLinearProgressIndicator_1.render(node, scope)
     "LinearWavyProgressIndicator" -> RendererLinearWavyProgressIndicator.render(node, scope)
     "LinearWavyProgressIndicator#1" -> RendererLinearWavyProgressIndicator_1.render(node, scope)
+    "ListDetailPaneScaffold" -> RendererListDetailPaneScaffold.render(node, scope)
     "ListItem" -> RendererListItem.render(node, scope)
     "ListItem#1" -> RendererListItem_1.render(node, scope)
     "ListItem#2" -> RendererListItem_2.render(node, scope)
@@ -219,6 +229,11 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "NavigationDrawerItem" -> RendererNavigationDrawerItem.render(node, scope)
     "NavigationRail" -> RendererNavigationRail.render(node, scope)
     "NavigationRailItem" -> RendererNavigationRailItem.render(node, scope)
+    "NavigationSuite" -> RendererNavigationSuite.render(node, scope)
+    "NavigationSuiteItem" -> RendererNavigationSuiteItem.render(node, scope)
+    "NavigationSuiteScaffold" -> RendererNavigationSuiteScaffold.render(node, scope)
+    "NavigationSuiteScaffoldLayout" -> RendererNavigationSuiteScaffoldLayout.render(node)
+    "NavigationSuiteScaffoldLayout#1" -> RendererNavigationSuiteScaffoldLayout_1.render(node)
     "OutlinedButton" -> RendererOutlinedButton.render(node, scope)
     "OutlinedButton#1" -> RendererOutlinedButton_1.render(node, scope)
     "OutlinedCard" -> RendererOutlinedCard.render(node, scope)
@@ -259,6 +274,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "Scaffold" -> RendererScaffold.render(node, scope)
     "Scrim" -> RendererScrim.render(node, scope)
     "ScrollDisplayModeToggle" -> RendererScrollDisplayModeToggle.render(node, scope)
+    "ScrollField" -> RendererScrollField.render(node, scope)
     "ScrollableTabRow" -> RendererScrollableTabRow.render(node, scope)
     "SearchBar" -> RendererSearchBar.render(node, scope)
     "SearchBar#1" -> RendererSearchBar_1.render(node, scope)
@@ -280,6 +296,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "SegmentedListItem#3" -> RendererSegmentedListItem_3.render(node, scope)
     "SelectableDropdownMenuItem" -> RendererSelectableDropdownMenuItem.render(node, scope)
     "SelectionContainer" -> RendererSelectionContainer.render(node, scope)
+    "SelectionContainer#1" -> RendererSelectionContainer_1.render(node, scope)
     "SharedTransitionLayout" -> RendererSharedTransitionLayout.render(node, scope)
     "ShortNavigationBar" -> RendererShortNavigationBar.render(node, scope)
     "ShortNavigationBarItem" -> RendererShortNavigationBarItem.render(node, scope)
@@ -290,12 +307,14 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "SmallExtendedFloatingActionButton#1" -> RendererSmallExtendedFloatingActionButton_1.render(node, scope)
     "SmallFloatingActionButton" -> RendererSmallFloatingActionButton.render(node, scope)
     "Snackbar" -> RendererSnackbar.render(node, scope)
+    "Snackbar#1" -> RendererSnackbar_1.render(node, scope)
     "SnackbarHost" -> RendererSnackbarHost.render(node, scope)
     "SoundEffectOnInteraction" -> RendererSoundEffectOnInteraction.render(node)
     "Spacer" -> RendererSpacer.render(node, scope)
     "SplitButtonLayout" -> RendererSplitButtonLayout.render(node, scope)
     "StandardFloatingActionButton" -> RendererStandardFloatingActionButton.render(node, scope)
     "SuggestionChip" -> RendererSuggestionChip.render(node, scope)
+    "SupportingPaneScaffold" -> RendererSupportingPaneScaffold.render(node, scope)
     "Surface" -> RendererSurface.render(node, scope)
     "Surface#1" -> RendererSurface_1.render(node, scope)
     "Surface#2" -> RendererSurface_2.render(node, scope)
@@ -307,6 +326,8 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "TabRow" -> RendererTabRow.render(node, scope)
     "Text" -> RendererText.render(node, scope)
     "Text#1" -> RendererText_1.render(node, scope)
+    "Text#2" -> RendererText_2.render(node, scope)
+    "Text#3" -> RendererText_3.render(node, scope)
     "TextButton" -> RendererTextButton.render(node, scope)
     "TextButton#1" -> RendererTextButton_1.render(node, scope)
     "TextField" -> RendererTextField.render(node, scope)
@@ -340,6 +361,7 @@ internal fun RenderComposable(node: ComposeNode, scope: Any?) {
     "TrailingIcon" -> RendererTrailingIcon.render(node, scope)
     "TriStateCheckbox" -> RendererTriStateCheckbox.render(node, scope)
     "TriStateCheckbox#1" -> RendererTriStateCheckbox_1.render(node, scope)
+    "TwoRowsTopAppBar" -> RendererTwoRowsTopAppBar.render(node, scope)
     "VerticalDivider" -> RendererVerticalDivider.render(node, scope)
     "VerticalDragHandle" -> RendererVerticalDragHandle.render(node, scope)
     "VerticalFloatingToolbar" -> RendererVerticalFloatingToolbar.render(node, scope)
