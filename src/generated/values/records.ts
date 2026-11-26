@@ -1,7 +1,11 @@
 // Generated from Compose value factories by generate.mjs.
-import type { ComposeBlendModeValue, ComposeBlurredEdgeTreatmentValue, ComposeBreadthValue, ComposeCompositingStrategyValue, ComposeFillValue, ComposeFloatingToolbarExitDirectionValue, ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHorizontalAlignment, ComposeHyphensValue, ComposeImageBitmapConfigValue, ComposeLineBreakValue, ComposeLineHeightStyleModeValue, ComposeLineHeightStyleTrimValue, ComposeLocaleListValue, ComposeMenuAnchorPositionValue, ComposePlatformParagraphStyleValue, ComposePlatformSpanStyleValue, ComposeShadowsValue, ComposeStrokeCapValue, ComposeStrokeJoinValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue, ComposeTextMotionValue, ComposeTileModeValue } from "./values";
-import type { ComposeBrush, ComposeShape } from "../utils/modifier";
-import type { ComposeTextStyle } from "../utils/composeValues";
+import type { ComposeBlendModeValue, ComposeBlurredEdgeTreatmentValue, ComposeBreadthValue, ComposeCompositingStrategyValue, ComposeFillValue, ComposeFloatingToolbarExitDirectionValue, ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHorizontalAlignment, ComposeHyphensValue, ComposeImageBitmapConfigValue, ComposeLineBreakValue, ComposeLineHeightStyleModeValue, ComposeLineHeightStyleTrimValue, ComposeMenuAnchorPositionValue, ComposeNavigationSuiteScaffoldValueOption, ComposePaneAdaptedValueValue, ComposePaneExpansionStateKeyValue, ComposePlatformParagraphStyleValue, ComposePlatformSpanStyleValue, ComposeSecureFlagPolicyOption, ComposeShadowsValue, ComposeStrokeCapValue, ComposeStrokeJoinValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue, ComposeTextMotionValue, ComposeTileModeValue } from "./enums";
+import type { ComposeBrush, ComposeShape } from "../../utils/modifier";
+import type { ComposeDpSize, ComposeTextStyle } from "../../utils/composeValues";
+
+export type ComposeSharedTransitionScopeOverlayClipValue =
+  | { factory: "OverlayClip"; clipShape: ComposeShape }
+;
 
 export type ComposeMarqueeSpacingValue = { spacing: number };
 
@@ -46,6 +50,10 @@ export type ComposeTextAutoSizeValue =
   | { factory: "TextAutoSize.StepBased"; minFontSize?: number; maxFontSize?: number; stepSize?: number }
 ;
 
+export type ComposeSelectionStateValue =
+  | { factory: "rememberSelectionState" }
+;
+
 export type ComposeTextSelectionColorsValue = { handleColor: string; backgroundColor: string };
 
 export type ComposeAppBarWithSearchColorsValue = { searchBarColors: ComposeSearchBarColorsValue; scrolledSearchBarContainerColor: string; appBarContainerColor: string; scrolledAppBarContainerColor: string; appBarNavigationIconColor: string; appBarActionIconColor: string };
@@ -88,6 +96,8 @@ export type ComposeDragHandleColorsValue = { color: string; pressedColor: string
 
 export type ComposeDragHandleShapesValue = { shape: ComposeShape; pressedShape: ComposeShape; draggedShape: ComposeShape };
 
+export type ComposeDragHandleSizesValue = { size: ComposeDpSize; pressedSize: ComposeDpSize; draggedSize: ComposeDpSize };
+
 export type ComposeDropdownMenuPopupPositionProviderValue =
   | { factory: "MenuDefaults.rememberDropdownMenuPopupPositionProvider"; dropdownMenuAnchorPosition: ComposeMenuAnchorPositionValue; offset?: ComposeDpOffset }
 ;
@@ -129,6 +139,10 @@ export type ComposeMenuItemColorsValue =
 
 export type ComposeMenuItemShapesValue = { shape: ComposeShape; selectedShape: ComposeShape };
 
+export type ComposeModalBottomSheetPropertiesValue = { isAppearanceLightStatusBars: boolean; isAppearanceLightNavigationBars: boolean; securePolicy?: ComposeSecureFlagPolicyOption; shouldDismissOnBackPress?: boolean; shouldDismissOnClickOutside?: boolean };
+
+export type ComposeModalWideNavigationRailPropertiesValue = { securePolicy?: ComposeSecureFlagPolicyOption; shouldDismissOnBackPress?: boolean };
+
 export type ComposeMotionSchemeValue =
   | { factory: "MotionScheme.expressive" }
   | { factory: "MotionScheme.standard" }
@@ -144,7 +158,13 @@ export type ComposeRadioButtonColorsValue = { selectedColor: string; unselectedC
 
 export type ComposeRichTooltipColorsValue = { containerColor: string; contentColor: string; titleContentColor: string; actionContentColor: string };
 
+export type ComposeRippleConfigurationValue = { color?: string };
+
 export type ComposeScrollFieldColorsValue = { containerColor: string; contentColor: string; selectedContentColor: string; disabledContainerColor: string; disabledContentColor: string; disabledSelectedContentColor: string };
+
+export type ComposeScrollFieldStateValue =
+  | { factory: "rememberScrollFieldState"; itemCount: number; index?: number }
+;
 
 export type ComposeSearchBarColorsValue = { containerColor: string; dividerColor: string; inputFieldColors: ComposeTextFieldColorsValue };
 
@@ -198,6 +218,18 @@ export type ComposeTypographyValue = { displayLarge?: ComposeTextStyle; displayM
 
 export type ComposeWideNavigationRailColorsValue = { containerColor: string; contentColor: string; modalContainerColor: string; modalScrimColor: string; modalContentColor: string };
 
+export type ComposePaneExpansionStateValue =
+  | { factory: "rememberPaneExpansionState"; key?: ComposePaneExpansionStateKeyValue; initialAnchoredIndex?: number }
+;
+
+export type ComposePaneScaffoldDirectiveValue = { maxHorizontalPartitions: number; horizontalPartitionSpacerSize: number; maxVerticalPartitions: number; verticalPartitionSpacerSize: number; defaultPanePreferredWidth: number; defaultPanePreferredHeight: number; excludedBounds: readonly ComposeRectValue[]; shouldAutoFocusCurrentDestination: boolean };
+
+export type ComposeThreePaneScaffoldValueValue = { primary: ComposePaneAdaptedValueValue; secondary: ComposePaneAdaptedValueValue; tertiary: ComposePaneAdaptedValueValue };
+
+export type ComposeNavigationSuiteScaffoldStateValue =
+  | { factory: "rememberNavigationSuiteScaffoldState"; initialValue?: ComposeNavigationSuiteScaffoldValueOption }
+;
+
 export type ComposeBlurScopeBlock = { alpha?: number; blurRadiusSpec?: ComposeBlurRadiusSpecValue; edgeTreatment?: ComposeBlurredEdgeTreatmentValue };
 
 export type ComposeDropShadowScopeBlock = { alpha?: number; blendMode?: ComposeBlendModeValue; brush?: ComposeBrush | null; color?: string; offset?: ComposeOffset; radius?: number; spread?: number };
@@ -205,6 +237,8 @@ export type ComposeDropShadowScopeBlock = { alpha?: number; blendMode?: ComposeB
 export type ComposeInnerShadowScopeBlock = { alpha?: number; blendMode?: ComposeBlendModeValue; brush?: ComposeBrush | null; color?: string; offset?: ComposeOffset; radius?: number; spread?: number };
 
 export type ComposeOffset = { x: number; y: number };
+
+export type ComposeRectValue = { left: number; top: number; right: number; bottom: number };
 
 export type ComposeBrushValue =
   | { factory: "Brush.composite"; dstBrush: ComposeBrush; srcBrush: ComposeBrush; blendMode: ComposeBlendModeValue }
@@ -273,15 +307,21 @@ export type ComposeDpTouchBoundsExpansionValue = { start: number; top: number; e
 
 export type ComposeParagraphStyleValue = { textAlign?: ComposeTextAlign; textDirection?: ComposeTextDirectionValue; lineHeight?: number; textIndent?: ComposeTextIndentValue | null; platformStyle?: ComposePlatformParagraphStyleValue | null; lineHeightStyle?: ComposeLineHeightStyleValue | null; lineBreak?: ComposeLineBreakValue; hyphens?: ComposeHyphensValue; textMotion?: ComposeTextMotionValue | null };
 
+export type ComposePlatformTextStyleValue = { spanStyle: ComposePlatformSpanStyleValue | null; paragraphStyle: ComposePlatformParagraphStyleValue | null };
+
 export type ComposeSpanStyleValue = { color?: string; fontSize?: number; fontWeight?: ComposeFontWeight | null; fontStyle?: ComposeFontStyleValue | null; fontSynthesis?: ComposeFontSynthesisValue | null; fontFamily?: ComposeFontFamilyValue | null; fontFeatureSettings?: string | null; letterSpacing?: number; baselineShift?: ComposeBaselineShiftValue | null; textGeometricTransform?: ComposeTextGeometricTransformValue | null; localeList?: ComposeLocaleListValue | null; background?: string; textDecoration?: ComposeTextDecorationValue | null; shadow?: ComposeShadowValue | null; platformStyle?: ComposePlatformSpanStyleValue | null };
 
-export type ComposeTextStyleValue = { color?: string; fontSize?: number; fontWeight?: ComposeFontWeight | null; fontStyle?: ComposeFontStyleValue | null; fontSynthesis?: ComposeFontSynthesisValue | null; fontFamily?: ComposeFontFamilyValue | null; fontFeatureSettings?: string | null; letterSpacing?: number; baselineShift?: ComposeBaselineShiftValue | null; textGeometricTransform?: ComposeTextGeometricTransformValue | null; localeList?: ComposeLocaleListValue | null; background?: string; textDecoration?: ComposeTextDecorationValue | null; shadow?: ComposeShadowValue | null; textAlign?: ComposeTextAlign; textDirection?: ComposeTextDirectionValue; lineHeight?: number; textIndent?: ComposeTextIndentValue | null; lineHeightStyle?: ComposeLineHeightStyleValue | null; lineBreak?: ComposeLineBreakValue; hyphens?: ComposeHyphensValue; textMotion?: ComposeTextMotionValue | null };
+export type ComposeTextStyleValue = { color?: string; fontSize?: number; fontWeight?: ComposeFontWeight | null; fontStyle?: ComposeFontStyleValue | null; fontSynthesis?: ComposeFontSynthesisValue | null; fontFamily?: ComposeFontFamilyValue | null; fontFeatureSettings?: string | null; letterSpacing?: number; baselineShift?: ComposeBaselineShiftValue | null; textGeometricTransform?: ComposeTextGeometricTransformValue | null; localeList?: ComposeLocaleListValue | null; background?: string; textDecoration?: ComposeTextDecorationValue | null; shadow?: ComposeShadowValue | null; textAlign?: ComposeTextAlign; textDirection?: ComposeTextDirectionValue; lineHeight?: number; textIndent?: ComposeTextIndentValue | null; platformStyle?: ComposePlatformTextStyleValue | null; lineHeightStyle?: ComposeLineHeightStyleValue | null; lineBreak?: ComposeLineBreakValue; hyphens?: ComposeHyphensValue; textMotion?: ComposeTextMotionValue | null };
 
 export type ComposeDeviceFontFamilyNameValue = { name: string };
 
 export type ComposeFontValue = { familyName: ComposeDeviceFontFamilyNameValue; weight?: ComposeFontWeight; style?: ComposeFontStyleValue };
 
 export type ComposeFontFamilyValue = { fonts: readonly ComposeFontValue[] };
+
+export type ComposeLocaleValue = { languageTag: string };
+
+export type ComposeLocaleListValue = { localeList: readonly ComposeLocaleValue[] };
 
 export type ComposeBaselineShiftValue = { multiplier: number };
 
@@ -292,6 +332,8 @@ export type ComposeLineHeightStyleAlignmentValue = { topRatio: number };
 export type ComposeTextGeometricTransformValue = { scaleX?: number; skewX?: number };
 
 export type ComposeTextIndentValue = { firstLine?: number; restLine?: number };
+
+export type ComposeDensityValue = { density: number; fontScale?: number };
 
 export type ComposeDpOffset = { x: number; y: number };
 
