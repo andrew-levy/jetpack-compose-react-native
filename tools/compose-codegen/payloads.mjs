@@ -199,12 +199,13 @@ export function payloadOutputs(payloadTypes, codec) {
     }
     return `${field.name}: ${type}`;
   })]);
+  // `$handle` names the native object, so a snapshot passed back to Compose is that same object.
   const typeScript = [
     "// Generated from Compose declarations by generate.mjs.",
     ...[...imports].sort(([left], [right]) => left.localeCompare(right))
       .map(([module, names]) => `import type { ${[...names].sort().join(", ")} } from ${JSON.stringify(module)};`),
     "",
-    ...fields.map(([name, entries]) => `export type ${name} = { ${entries.join("; ")} };`),
+    ...fields.map(([name, entries]) => `export type ${name} = { readonly $handle: number; ${entries.join("; ")} };`),
     "",
   ].join("\n");
 
@@ -246,10 +247,33 @@ export function payloadOutputs(payloadTypes, codec) {
     "  val values = List(length()) { decode(this, it) }",
     "  return { index -> values.getOrNull(index) ?: fallback?.invoke(index) ?: values[index.coerceIn(0, values.lastIndex)] }",
     "}",
+    "",
+    "// Native objects behind payload snapshots, so `Snackbar(snackbarData = data)` receives the object Compose passed out.",
+    "// Equal objects share a handle, which keeps the keys of argument slots stable across recompositions.",
+    "internal object ComposePayloadHandles {",
+    "  private const val CAPACITY = 2048",
+    "  private val ids = object : LinkedHashMap<Any, Int>(16, 0.75f, true) {",
+    "    override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Any, Int>) = size > CAPACITY",
+    "  }",
+    "  private val values = object : LinkedHashMap<Int, Any>(16, 0.75f, true) {",
+    "    override fun removeEldestEntry(eldest: MutableMap.MutableEntry<Int, Any>) = size > CAPACITY",
+    "  }",
+    "  private var next = 0",
+    "",
+    "  @Synchronized",
+    "  fun handle(value: Any): Int = ids.getOrPut(value) { ++next }.also { values[it] = value }",
+    "",
+    "  @Synchronized",
+    '  fun value(handle: Int): Any = values[handle] ?: error("Compose payload $handle is no longer available")',
+    "}",
+    "",
+    '@Suppress("UNCHECKED_CAST")',
+    'internal fun <T> JSONObject.toComposePayloadValue(): T = ComposePayloadHandles.value(getInt("\\$handle")) as T',
     ...snapshotTypes.flatMap(({ name, kotlinType: type, fields, optIns }) => [
       "",
       ...(optIns.length ? [`@OptIn(${optIns.map((marker) => `${marker}::class`).join(", ")})`] : []),
       `internal fun ${type}.to${name}(): JSONObject = JSONObject()`,
+      '  .put("\\$handle", ComposePayloadHandles.handle(this))',
       ...fields.map((field) =>
         `  .put(${JSON.stringify(field.name)}, ${codec.encode(parsePayloads(field.type)[0], `this.\`${field.name}\``)})`),
     ]),
