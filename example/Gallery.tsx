@@ -389,7 +389,6 @@ function BridgeAdditions() {
           }}
           keyboardOptions={{ showKeyboardOnFocus: false }}
         />
-        <TextButton onClick={() => setCode("")}><Text text="Clear code" /></TextButton>
         <BasicTextField
           state={{ initialText: "Editable note" }}
           modifier={fullWidth}
