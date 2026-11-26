@@ -4,11 +4,12 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
-import androidx.compose.material3.NavigationBarItem as composeScoped1
-import androidx.compose.material3.PlainTooltip as composeScoped2
-import androidx.compose.material3.RichTooltip as composeScoped3
-import androidx.compose.material3.SegmentedButton as composeScoped4
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
+import androidx.compose.material3.NavigationBarItem as composeScoped2
+import androidx.compose.material3.PlainTooltip as composeScoped3
+import androidx.compose.material3.RichTooltip as composeScoped4
+import androidx.compose.material3.SegmentedButton as composeScoped5
 
 // androidx.compose.material3.AppBarWithSearch(state: androidx.compose.material3.SearchBarState, inputField: kotlin.Function0<kotlin.Unit>, modifier: androidx.compose.ui.Modifier, navigationIcon: kotlin.Function0<kotlin.Unit>?, actions: kotlin.Function1<androidx.compose.foundation.layout.RowScope, kotlin.Unit>?, shape: androidx.compose.ui.graphics.Shape, colors: androidx.compose.material3.AppBarWithSearchColors, tonalElevation: androidx.compose.ui.unit.Dp, shadowElevation: androidx.compose.ui.unit.Dp, contentPadding: androidx.compose.foundation.layout.PaddingValues, windowInsets: androidx.compose.foundation.layout.WindowInsets, scrollBehavior: androidx.compose.material3.SearchBarScrollBehavior?)
 internal object RendererAppBarWithSearch {
