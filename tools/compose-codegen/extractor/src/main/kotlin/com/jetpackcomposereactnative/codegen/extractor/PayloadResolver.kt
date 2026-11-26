@@ -81,8 +81,8 @@ internal class PayloadResolver(
     if (declaration.classKind != ClassKind.CLASS && declaration.classKind != ClassKind.INTERFACE) return null
     if (declaration.typeParameters.isNotEmpty() || !isVisible(declaration) ||
       !declaration.packageName.asString().startsWith("androidx.compose.")) return null
-    // Draw, measure and composition scopes are Density. They are receivers that are only valid during a call.
-    if (qualified == DENSITY || declaration.getAllSuperTypes().any { it.declaration.qualifiedName?.asString() == DENSITY }) {
+    // Scopes (draw, measure and composition scopes are also Density) are receivers that are only valid during a call.
+    if (declaration.isScopeType() || qualified == DENSITY || declaration.getAllSuperTypes().any { it.declaration.qualifiedName?.asString() == DENSITY }) {
       return null
     }
     val name = "Compose" + qualified.removePrefix(declaration.packageName.asString() + ".").replace(".", "") + "Snapshot"
@@ -97,7 +97,8 @@ internal class PayloadResolver(
     val fields = properties.mapNotNull { property ->
       kind(property.type.resolve())?.let { property to PayloadField(property.simpleName.asString(), it) }
     }
-    if (fields.isEmpty() || fields.size > MAX_FIELDS) return null
+    // A type without public data (`PaneExpansionState`) still crosses as its handle, so React can pass it back.
+    if (fields.size > MAX_FIELDS) return null
     owners[name] = qualified
     val markers = (optIns(declaration) + fields.flatMap { (property) -> optIns(property) })
       .mapNotNull { it.qualifiedName?.asString() }.distinct().sorted()
