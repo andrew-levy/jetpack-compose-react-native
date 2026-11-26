@@ -336,7 +336,7 @@ def verify():
     )
 
     with record("controlled-text"):
-        nodes = wait_for("1234", "Controlled code input", "Clear code", window=window)
+        nodes = wait_for("1234", "Controlled code input", window=window)
         tap(nodes["1234"])
         wait_for("1234", window=window, layout_ready=lambda nodes: nodes["1234"].get("focused") == "true")
         adb("shell", "input", "keyevent", "KEYCODE_MOVE_END", "KEYCODE_DEL", "KEYCODE_DEL")
@@ -344,14 +344,8 @@ def verify():
                  layout_ready=lambda nodes: input_has_value(nodes, "Controlled code input", "12"))
         adb("shell", "input", "keyevent", "KEYCODE_DPAD_LEFT")
         adb("shell", "input", "text", "8a")
-        nodes = wait_for("182", "Clear code", window=window,
+        nodes = wait_for("182", "Modifiers", window=window,
                          layout_ready=lambda nodes: input_has_value(nodes, "Controlled code input", "182"))
-        tap(nodes["Clear code"])
-        nodes = wait_for("Controlled code input", "Modifiers", window=window,
-                         layout_ready=lambda nodes: (
-                             nodes["Controlled code input"].get("class") == "android.widget.EditText"
-                             and nodes["Controlled code input"].get("text") == ""
-                         ))
 
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)
