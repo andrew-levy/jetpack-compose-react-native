@@ -1,9 +1,9 @@
 // Generated from Compose Foundation StyleScope by generate.mjs.
 import type { ComposeBaselineShiftValue, ComposeFontFamilyValue, ComposeOffset, ComposeTextIndentValue, ComposeTransformOrigin } from "./records";
-import type { ComposeAnimationSpec, ComposeTextStyle } from "../utils/composeValues";
-import type { ComposeInteractionSource } from '../utils/nativeHandles';
-import type { ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHyphensValue, ComposeLineBreakValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue, ComposeTextMotionValue } from './values';
-import type { ComposeShape, ComposeBrush } from '../utils/modifier';
+import type { ComposeAnimationSpec, ComposeTextStyle } from "../../utils/composeValues";
+import type { ComposeInteractionSource } from "../../utils/nativeHandles";
+import type { ComposeFontStyleValue, ComposeFontSynthesisValue, ComposeFontWeight, ComposeHyphensValue, ComposeLineBreakValue, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextDirectionValue, ComposeTextMotionValue } from "./enums";
+import type { ComposeShape, ComposeBrush } from "../../utils/modifier";
 
 export interface ComposeFoundationStyle {
   alpha?: number;
