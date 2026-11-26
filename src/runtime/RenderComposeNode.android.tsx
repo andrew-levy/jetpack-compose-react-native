@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import NativeNode from "../../specs/JpcComposeNodeNativeComponent";
+import NativeNode from "../specs/JpcComposeNodeNativeComponent";
 import type { RenderComposeNodeProps } from "./RenderComposeNode";
 
 export function RenderComposeNode({ onComposeEvent, ...props }: RenderComposeNodeProps) {
