@@ -26,5 +26,5 @@ internal interface ComposeNode : ComposeChild {
   fun color(name: String): Color
   fun jsonObject(name: String): JSONObject
   fun arguments(): ComposeModifierArguments
-  fun emit(name: String, value: Any? = null)
+  fun emit(name: String, value: Any? = null, revision: Int? = null)
 }

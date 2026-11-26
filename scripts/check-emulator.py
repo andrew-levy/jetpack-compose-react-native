@@ -335,6 +335,24 @@ def verify():
         layout_ready=lambda nodes: input_has_value(nodes, "Native phone input", "123-456"),
     )
 
+    with record("controlled-text"):
+        nodes = wait_for("1234", "Controlled code input", "Clear code", window=window)
+        tap(nodes["1234"])
+        wait_for("1234", window=window, layout_ready=lambda nodes: nodes["1234"].get("focused") == "true")
+        adb("shell", "input", "keyevent", "KEYCODE_MOVE_END", "KEYCODE_DEL", "KEYCODE_DEL")
+        wait_for("12", window=window,
+                 layout_ready=lambda nodes: input_has_value(nodes, "Controlled code input", "12"))
+        adb("shell", "input", "keyevent", "KEYCODE_DPAD_LEFT")
+        adb("shell", "input", "text", "8a")
+        nodes = wait_for("182", "Clear code", window=window,
+                         layout_ready=lambda nodes: input_has_value(nodes, "Controlled code input", "182"))
+        tap(nodes["Clear code"])
+        nodes = wait_for("Controlled code input", "Modifiers", window=window,
+                         layout_ready=lambda nodes: (
+                             nodes["Controlled code input"].get("class") == "android.widget.EditText"
+                             and nodes["Controlled code input"].get("text") == ""
+                         ))
+
     tap(nodes["Modifiers"])
     nodes = wait_for("Modifier playground", "Background → padding", "Swap order", window=window)
     capture("07-modifiers")
@@ -389,8 +407,8 @@ def verify():
         tap(nodes["Close generated sheet"])
         nodes = wait_for("Open dialog", "Open generated sheet", absent=("Native sheet state",), window=window)
     tap(nodes["Open generated sheet"])
-    nodes = wait_for("Native sheet state", "Close generated sheet")
-    tap(nodes["Close generated sheet"])
+    wait_for("Native sheet state", "Close generated sheet")
+    adb("shell", "input", "keyevent", "KEYCODE_BACK")
     nodes = wait_for("Open dialog", absent=("Native sheet state",), window=window)
 
     with record("alert-dialog"):

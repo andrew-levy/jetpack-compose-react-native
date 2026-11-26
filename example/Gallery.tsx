@@ -1,3 +1,4 @@
+import { useDismissibleSheet } from "./useDismissibleSheet";
 import { useRef, useState, type ReactNode } from "react";
 import { Pressable, StyleSheet, Text as RNText, View } from "react-native";
 import {
@@ -6,7 +7,7 @@ import {
   Crossfade, DatePicker, Grid, FilledIconButton, FilledTonalButton, HorizontalDivider, HorizontalPager, Icon, Image, InputChip, Layout, LazyColumn, LazyRow, LazyVerticalGrid, LinearProgressIndicator, ListItem, LoadingIndicator,
   MaterialExpressiveTheme, MaterialTheme, ModalBottomSheet, Modifier, OutlinedButton, OutlinedCard, OutlinedTextField, PrimaryTabRow, RadioButton, RangeSlider, Row, Slider, Snackbar, Spacer,
   Scaffold, SuggestionChip, Switch, Tab, Text, TextButton, TextField, TimeInput, TimePicker, ToggleButton, TriStateCheckbox, lightColorScheme, useFocusRequester, useInteractionSource, type ComposeChain, type ComposeFloatRange, type ComposeLayoutSize, type ComposeTextFieldValue,
-  StickyHeader, MediumTopAppBar, useLazyListState, useModalBottomSheetState, usePagerState, useSliderState, useTopAppBarScrollBehavior,
+  StickyHeader, MediumTopAppBar, useLazyListState, usePagerState, useSliderState, useTopAppBarScrollBehavior,
 } from "jetpack-compose-react-native";
 
 const rounded = { rect: { cornerRadius: 14 } };
@@ -311,6 +312,7 @@ function BridgeAdditions() {
   const [pointerSeen, setPointerSeen] = useState(false);
   const [destination, setDestination] = useState(0);
   const [sizeAnimationFinished, setSizeAnimationFinished] = useState(false);
+  const [code, setCode] = useState("1234");
 
   return (
     <Demo title="Native gestures and layout">
@@ -379,6 +381,15 @@ function BridgeAdditions() {
           inputTransformation={{ digitsOnly: true, maxLength: 6 }}
           outputTransformation={{ insertions: [{ offset: 3, text: "-" }] }}
         />
+        <BasicTextField
+          modifiers={fullWidth.semantics({ contentDescription: "Controlled code input" })}
+          value={code}
+          onValueChange={(text) => {
+            if (/^\d*$/.test(text)) setCode(text);
+          }}
+          keyboardOptions={{ showKeyboardOnFocus: false }}
+        />
+        <TextButton onClick={() => setCode("")}><Text text="Clear code" /></TextButton>
         <BasicTextField
           state={{ initialText: "Editable note" }}
           modifier={fullWidth}
@@ -637,14 +648,7 @@ export function Overlays() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [snackbar, setSnackbar] = useState(false);
-  const sheetWasVisible = useRef(false);
-  const sheet = useModalBottomSheetState({
-    skipPartiallyExpanded: true,
-    onStateChange: ({ currentValue, isVisible }) => {
-      if (isVisible) sheetWasVisible.current = true;
-      if (currentValue === "hidden" && sheetWasVisible.current) setOpen(false);
-    },
-  });
+  const { sheet, hide, dismiss } = useDismissibleSheet(() => setOpen(false));
   function chooseItem() {
     setMenu(false);
     setSnackbar(true);
@@ -659,20 +663,17 @@ export function Overlays() {
               <RNText>React Native inside Compose</RNText>
             </BoxWithConstraints>
           </BottomAppBar>
-          <Button onClick={() => {
-            sheetWasVisible.current = false;
-            setOpen(true);
-          }}><Text text="Open generated sheet" /></Button>
+          <Button onClick={() => setOpen(true)}><Text text="Open generated sheet" /></Button>
           {open && (
             <ModalBottomSheet
-              onDismissRequest={() => setOpen(false)}
+              onDismissRequest={dismiss}
               sheetState={sheet}
             >
               <Column modifiers={Modifier.fillMaxWidth().padding(20)}>
                 <Text text="Native sheet state" fontSize={23} fontWeight="bold" />
                 <RNText style={styles.marker}>React Native content in the sheet</RNText>
                 <Spacer modifiers={Modifier.height(12)} />
-                <Button onClick={sheet.hide}><Text text="Close generated sheet" /></Button>
+                <Button onClick={hide}><Text text="Close generated sheet" /></Button>
               </Column>
             </ModalBottomSheet>
           )}

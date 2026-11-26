@@ -3,6 +3,7 @@ export type OverloadParameter = readonly [
 ];
 
 export interface ComposableOverload {
+  controlledText?: boolean;
   id: string;
   children: boolean;
   keyedChildren?: boolean;
@@ -11,6 +12,7 @@ export interface ComposableOverload {
 }
 
 export interface ComposableDescription {
+  controlledText?: boolean;
   name: string;
   props: readonly string[];
   objectProps?: readonly string[];

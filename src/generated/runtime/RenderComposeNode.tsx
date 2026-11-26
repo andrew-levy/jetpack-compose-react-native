@@ -7,7 +7,7 @@ export interface RenderComposeNodeProps {
   slotName?: string;
   values?: string;
   onComposeEvent?: (event: {
-    nativeEvent: { name: string; value?: ComposeEventValue };
+    nativeEvent: { name: string; value?: ComposeEventValue; revision?: number };
   }) => void;
   children?: ReactNode;
 }

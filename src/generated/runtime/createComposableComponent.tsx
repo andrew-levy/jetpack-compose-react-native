@@ -5,7 +5,7 @@ import type { ComposeChain } from "../modifiers";
 import { propValue, selectOverload, type ComposableDescription } from "../../utils/overloads";
 import { AutomaticComposeHost } from "./ComposeHost";
 import { ComposeHostContext, type ComposableViewProps } from "./shared";
-import { RenderComposeNode, type ComposeEventValue } from "./RenderComposeNode";
+import { RenderComposeNode, type ComposeEventValue, type RenderComposeNodeProps } from "./RenderComposeNode";
 
 export type { ComposableDescription } from "../../utils/overloads";
 export type ComposeModifier = ComposeChain;
@@ -61,6 +61,23 @@ function animationChildren(children: React.ReactNode) {
   });
 }
 
+function ControlledTextNode({ values, onComposeEvent, ...props }:
+  Omit<RenderComposeNodeProps, "values"> & { values: Record<string, unknown> },
+) {
+  const [revision, setRevision] = React.useState(0);
+  return (
+    <RenderComposeNode
+      {...props}
+      values={JSON.stringify({ ...values, $textRevision: revision })}
+      onComposeEvent={(event) => {
+        onComposeEvent?.(event);
+        // A rejected edit still advances the acknowledgment even if value did not change.
+        if (event.nativeEvent.revision !== undefined) setRevision(event.nativeEvent.revision);
+      }}
+    />
+  );
+}
+
 export function createComposableComponent<P extends object>(
   description: ComposableDescription,
 ): React.ComponentType<P & ComposableViewProps> {
@@ -107,24 +124,27 @@ export function createComposableComponent<P extends object>(
     });
     const usesKeys = (overload?.keyedChildren ?? description.keyedChildren) && typeof input.targetState === "string";
 
-    const node = (
-      <RenderComposeNode
-        componentName={description.name}
-        values={JSON.stringify(values)}
-        onComposeEvent={({ nativeEvent: { name, value } }) => {
-          const callback = eventNames.has(name)
-            ? input[name] as ComposeCallback | undefined
-            : valueCallbacks.get(name);
-          if (value === undefined) callback?.();
-          else callback?.(value);
-        }}
-      >
-        {(overload?.children ?? description.children)
-          ? (usesKeys ? animationChildren(props.children) : props.children)
-          : null}
-        {slots}
-      </RenderComposeNode>
-    );
+    const nodeProps: RenderComposeNodeProps = {
+      componentName: description.name,
+      onComposeEvent: ({ nativeEvent: { name, value } }) => {
+        const callback = eventNames.has(name)
+          ? input[name] as ComposeCallback | undefined
+          : valueCallbacks.get(name);
+        if (value === undefined) callback?.();
+        else callback?.(value);
+      },
+      children: (
+        <>
+          {(overload?.children ?? description.children)
+            ? (usesKeys ? animationChildren(props.children) : props.children)
+            : null}
+          {slots}
+        </>
+      ),
+    };
+    const node = (overload?.controlledText ?? description.controlledText)
+      ? <ControlledTextNode {...nodeProps} values={values} />
+      : <RenderComposeNode {...nodeProps} values={JSON.stringify(values)} />;
 
     return hasHost ? node : (
       <AutomaticComposeHost style={props.style} testID={props.testID}>

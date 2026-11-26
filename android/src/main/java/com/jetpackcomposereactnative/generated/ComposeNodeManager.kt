@@ -1,7 +1,6 @@
 package com.jetpackcomposereactnative.generated
 
 import android.content.Context
-import android.os.SystemClock
 import android.view.View
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -35,10 +34,6 @@ internal class GeneratedComposeNodeView(context: Context) :
   ComposeContainerView(context), ComposeNode {
   override val composeChildId = nextComposeChildId()
   private var values by mutableStateOf(JSONObject())
-  // Controlled text fields report the full new string before React sends it back. Keep that
-  // edit on screen until the prop catches up, so a keystroke is not replaced by the stale value.
-  private var pendingText by mutableStateOf<String?>(null)
-  private val createdUptime = SystemClock.uptimeMillis()
   internal var componentName by mutableStateOf("")
   override val name: String get() = values.optString("\$overload", componentName)
   internal var slotName by mutableStateOf<String?>(null)
@@ -57,29 +52,11 @@ internal class GeneratedComposeNodeView(context: Context) :
   }
 
   internal fun updateValues(json: String) {
-    val next = JSONObject(json)
-    reconcilePendingText(values.optStringValue("value"), next.optStringValue("value"))
-    values = next
-  }
-
-  private fun reconcilePendingText(previous: String?, incoming: String?) {
-    val pending = pendingText ?: return
-    if (incoming == null || incoming == previous) return
-    // A longer local edit still starts with each value React confirms. Anything else is a new
-    // value from the app, including clearing the field, and replaces the pending edit.
-    val catchingUp = incoming.isNotEmpty() && pending.startsWith(incoming)
-    if (incoming == pending || !catchingUp) pendingText = null
+    values = JSONObject(json)
   }
 
   override fun has(name: String): Boolean = values.has(name)
-  override fun string(name: String): String {
-    val actual = values.getString(name)
-    if (name == "value") {
-      val pending = pendingText
-      if (pending != null && pending != actual) return pending
-    }
-    return actual
-  }
+  override fun string(name: String): String = values.getString(name)
   override fun boolean(name: String): Boolean = values.getBoolean(name)
   override fun number(name: String): Double = values.getDouble(name)
   override fun color(name: String) = parseComposeColor(string(name))
@@ -103,12 +80,8 @@ internal class GeneratedComposeNodeView(context: Context) :
     return modifier
   }
 
-  override fun emit(name: String, value: Any?) {
-    if (name == "onValueChange" && value is String) pendingText = value
-    // The tap that opens a dialog or sheet is delivered to the new window as an outside touch,
-    // and Material calls onDismissRequest for it. Ignore that opening tap.
-    if (name == "onDismissRequest" && SystemClock.uptimeMillis() - createdUptime < 400) return
-    val payload = JSONObject().put("name", name).put("value", value).toString()
+  override fun emit(name: String, value: Any?, revision: Int?) {
+    val payload = JSONObject().put("name", name).put("value", value).put("revision", revision).toString()
     dispatchComposeEvent("topComposeEvent", Arguments.createMap().apply {
       putString("payload", payload)
     })
@@ -119,9 +92,4 @@ internal class GeneratedComposeNodeView(context: Context) :
   }
 
   override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) = Unit
-}
-
-private fun JSONObject.optStringValue(name: String): String? {
-  if (!has(name) || isNull(name)) return null
-  return opt(name) as? String
 }
