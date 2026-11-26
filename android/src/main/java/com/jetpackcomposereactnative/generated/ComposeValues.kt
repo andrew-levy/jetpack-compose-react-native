@@ -348,6 +348,13 @@ internal fun toComposeShortNavigationBarArrangementValue(value: String): android
   else -> error("Unknown ComposeShortNavigationBarArrangementValue: " + value)
 }
 
+internal fun toComposeSnackbarDurationOption(value: String): androidx.compose.material3.SnackbarDuration = when (value) {
+  "indefinite" -> androidx.compose.material3.SnackbarDuration.`Indefinite`
+  "long" -> androidx.compose.material3.SnackbarDuration.`Long`
+  "short" -> androidx.compose.material3.SnackbarDuration.`Short`
+  else -> error("Unknown ComposeSnackbarDurationOption: " + value)
+}
+
 internal fun toComposeSwipeToDismissBoxValueOption(value: String): androidx.compose.material3.SwipeToDismissBoxValue = when (value) {
   "endToStart" -> androidx.compose.material3.SwipeToDismissBoxValue.`EndToStart`
   "settled" -> androidx.compose.material3.SwipeToDismissBoxValue.`Settled`
@@ -368,6 +375,37 @@ internal fun toComposeToggleButtonSizeValue(value: String): androidx.compose.mat
   "medium" -> androidx.compose.material3.ToggleButtonSize.`Medium`
   "small" -> androidx.compose.material3.ToggleButtonSize.`Small`
   else -> error("Unknown ComposeToggleButtonSizeValue: " + value)
+}
+
+@OptIn(androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi::class)
+internal fun toComposePaneAdaptedValueValue(value: String): androidx.compose.material3.adaptive.layout.PaneAdaptedValue = when (value) {
+  "expanded" -> androidx.compose.material3.adaptive.layout.PaneAdaptedValue.`Expanded`
+  "hidden" -> androidx.compose.material3.adaptive.layout.PaneAdaptedValue.`Hidden`
+  else -> error("Unknown ComposePaneAdaptedValueValue: " + value)
+}
+
+@OptIn(androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi::class)
+internal fun toComposePaneExpansionStateKeyValue(value: String): androidx.compose.material3.adaptive.layout.PaneExpansionStateKey = when (value) {
+  "default" -> androidx.compose.material3.adaptive.layout.PaneExpansionStateKey.`Default`
+  else -> error("Unknown ComposePaneExpansionStateKeyValue: " + value)
+}
+
+internal fun toComposeNavigationSuiteScaffoldValueOption(value: String): androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldValue = when (value) {
+  "hidden" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldValue.`Hidden`
+  "visible" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldValue.`Visible`
+  else -> error("Unknown ComposeNavigationSuiteScaffoldValueOption: " + value)
+}
+
+internal fun toComposeNavigationSuiteTypeValue(value: String): androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType = when (value) {
+  "navigationBar" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`NavigationBar`
+  "navigationDrawer" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`NavigationDrawer`
+  "navigationRail" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`NavigationRail`
+  "none" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`None`
+  "shortNavigationBarCompact" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`ShortNavigationBarCompact`
+  "shortNavigationBarMedium" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`ShortNavigationBarMedium`
+  "wideNavigationRailCollapsed" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`WideNavigationRailCollapsed`
+  "wideNavigationRailExpanded" -> androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType.`WideNavigationRailExpanded`
+  else -> error("Unknown ComposeNavigationSuiteTypeValue: " + value)
 }
 
 internal fun toComposeBlurredEdgeTreatmentValue(value: String): androidx.compose.ui.draw.BlurredEdgeTreatment = when (value) {
@@ -479,11 +517,6 @@ internal fun toComposeFontSynthesisValue(value: String): androidx.compose.ui.tex
   else -> error("Unknown ComposeFontSynthesisValue: " + value)
 }
 
-internal fun toComposeLocaleListValue(value: String): androidx.compose.ui.text.intl.LocaleList = when (value) {
-  "empty" -> androidx.compose.ui.text.intl.LocaleList.`Empty`
-  else -> error("Unknown ComposeLocaleListValue: " + value)
-}
-
 internal fun toComposeHyphensValue(value: String): androidx.compose.ui.text.style.Hyphens = when (value) {
   "auto" -> androidx.compose.ui.text.style.Hyphens.`Auto`
   "none" -> androidx.compose.ui.text.style.Hyphens.`None`
@@ -536,4 +569,17 @@ internal fun toComposeTextMotionValue(value: String): androidx.compose.ui.text.s
   "animated" -> androidx.compose.ui.text.style.TextMotion.`Animated`
   "static" -> androidx.compose.ui.text.style.TextMotion.`Static`
   else -> error("Unknown ComposeTextMotionValue: " + value)
+}
+
+internal fun toComposeLayoutDirectionOption(value: String): androidx.compose.ui.unit.LayoutDirection = when (value) {
+  "ltr" -> androidx.compose.ui.unit.LayoutDirection.`Ltr`
+  "rtl" -> androidx.compose.ui.unit.LayoutDirection.`Rtl`
+  else -> error("Unknown ComposeLayoutDirectionOption: " + value)
+}
+
+internal fun toComposeSecureFlagPolicyOption(value: String): androidx.compose.ui.window.SecureFlagPolicy = when (value) {
+  "inherit" -> androidx.compose.ui.window.SecureFlagPolicy.`Inherit`
+  "secureOff" -> androidx.compose.ui.window.SecureFlagPolicy.`SecureOff`
+  "secureOn" -> androidx.compose.ui.window.SecureFlagPolicy.`SecureOn`
+  else -> error("Unknown ComposeSecureFlagPolicyOption: " + value)
 }
