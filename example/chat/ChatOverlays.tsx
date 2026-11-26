@@ -1,10 +1,10 @@
-import { useRef } from "react";
 import {
   Box, Column, HorizontalDivider, LazyColumn, ListItem, ModalBottomSheet,
   ModalDrawerSheet, Modifier, NavigationDrawerItem, RadioButton, Row, Spacer, Text,
-  useModalBottomSheetState, type ComposeDrawerStateHandle,
+  type ComposeDrawerStateHandle,
 } from "jetpack-compose-react-native";
 
+import { useDismissibleSheet } from "../useDismissibleSheet";
 import { rounded, type Palette } from "./appearance";
 import { Action, Mark, Symbol } from "./ChatControls";
 import { attachments, modes, type Attachment, type Conversation, type Mode } from "./conversations";
@@ -62,25 +62,11 @@ export function ChatSheet({
   kind: Sheet; palette: Palette; mode: Mode; onMode: (mode: Mode) => void;
   onAttach: (file: Attachment) => void; onDismiss: () => void;
 }) {
-  const visible = useRef(false);
-  const openedAt = useRef(Date.now());
-  const sheet = useModalBottomSheetState({
-    skipPartiallyExpanded: true,
-    onStateChange: ({ isVisible, currentValue }) => {
-      if (isVisible) visible.current = true;
-      // The gesture that opens the sheet can also settle it hidden. Put it back instead of
-      // unmounting, so the sheet stays up after that opening tap.
-      if (currentValue === "hidden" && visible.current) {
-        if (Date.now() - openedAt.current < 500) sheet.show();
-        else onDismiss();
-      }
-    },
-  });
-  const close = () => visible.current ? sheet.hide() : onDismiss();
+  const { sheet, hide, dismiss } = useDismissibleSheet(onDismiss);
   const options = kind === "options";
 
   return (
-    <ModalBottomSheet onDismissRequest={onDismiss} sheetState={sheet}
+    <ModalBottomSheet onDismissRequest={dismiss} sheetState={sheet}
       containerColor={palette.surface} contentColor={palette.ink} scrimColor={palette.scrim} tonalElevation={0}
       shape={rounded(palette.cornerRadius + 8)}
       dragHandle={<Box modifiers={Modifier.padding({ vertical: 12 }).size({ width: 34, height: 4 })
@@ -90,7 +76,7 @@ export function ChatSheet({
           <Text text={options ? "Chat settings" : "Add a sample file"} color={palette.ink}
             fontSize={23} fontWeight="semiBold" letterSpacing={-0.4}
             modifiers={Modifier.weight(1).semantics({ heading: true })} />
-          <Action icon="Close" label="Close sheet" color={palette.muted} onClick={close} />
+          <Action icon="Close" label="Close sheet" color={palette.muted} onClick={hide} />
         </Row>
         {options ? (
           <>
@@ -113,7 +99,7 @@ export function ChatSheet({
               modifiers={Modifier.padding({ start: 8, bottom: 9 })} />
             {attachments.map((file) => (
               <ListItem key={file.name} modifiers={Modifier.clip(rounded(14))
-                .clickable({ onClick: () => { onAttach(file); close(); }, role: "button" })}
+                .clickable({ onClick: () => { onAttach(file); hide(); }, role: "button" })}
                 leadingContent={<Symbol icon="List" color={palette.accent} />}
                 trailingContent={<Symbol icon="Add" color={palette.accent} />}
                 supportingContent={<Text text={file.description} color={palette.muted} fontSize={13} />}>
