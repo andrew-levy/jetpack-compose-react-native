@@ -366,6 +366,31 @@ function propForms({ masks, parameters }) {
   }));
 }
 
+const textEditors = new Map([
+  ["androidx.compose.foundation.text.BasicTextField", ["value", "onValueChange"]],
+  ["androidx.compose.material3.OutlinedTextField", ["value", "onValueChange"]],
+  ["androidx.compose.material3.TextField", ["value", "onValueChange"]],
+  ["androidx.compose.material3.DockedSearchBar", ["query", "onQueryChange"]],
+  ["androidx.compose.material3.SearchBarDefaults.InputField", ["query", "onQueryChange"]],
+]);
+
+function controlledText({ kotlinFunction, parameters }) {
+  const binding = textEditors.get(kotlinFunction);
+  if (!binding) return null;
+  const [value, event] = binding;
+  const required = (name, kind) => parameters.some((parameter) =>
+    parameter.name === name && parameter.kind === kind && !parameter.optional && !parameter.nullable);
+  if (required(value, "string") && required(event, "eventString")) {
+    return { value, event, type: "String", encode: "{ it }" };
+  }
+  if (required(value, "textFieldValue") && required(event, "eventTextFieldValue")) {
+    return {
+      value, event, type: "androidx.compose.ui.text.input.TextFieldValue", encode: "{ it.toComposeSnapshot() }",
+    };
+  }
+  return null;
+}
+
 function typeScript({ components, values, factories }) {
   const usedKinds = new Set(components.flatMap(({ parameters }) => parameters.map(({ kind }) => kind)));
   const types = values.map(({ name }) => name).filter((name) => usedKinds.has(name));
@@ -404,6 +429,7 @@ function typeScript({ components, values, factories }) {
       ...(slots.length ? [`  slots: ${quote(slots)},`] : []),
       ...(events.length ? [`  events: ${quote(events)},`] : []),
       ...(simple && animationTarget(first, "targetState") ? ["  keyedChildren: true,"] : []),
+      ...(simple && controlledText(first) ? ["  controlledText: true,"] : []),
       `  children: ${overloads.some(({ children }) => children)},`,
       ...(!simple ? [
         "  overloads: [",
@@ -413,7 +439,8 @@ function typeScript({ components, values, factories }) {
             name, animationTarget(component, name) ? "animationTarget" : kinds[kind].input ?? kinds[kind].type, optional, nullable,
           ];
           const keyed = animationTarget(component, "targetState") ? ", keyedChildren: true" : "";
-          return `    { id: ${quote(id)}, children: ${children}${keyed}, parameters: ${quote(parameters.map(asInput))}, masks: ${quote(masks)} },`;
+          const text = controlledText(component) ? ", controlledText: true" : "";
+          return `    { id: ${quote(id)}, children: ${children}${keyed}${text}, parameters: ${quote(parameters.map(asInput))}, masks: ${quote(masks)} },`;
         }),
         "  ],",
       ] : []),
@@ -502,6 +529,9 @@ function kotlin({ components }) {
       : kotlinFunction;
     const optionals = parameters.filter(({ optional, kind }) => optional && kind !== "modifier");
     const bits = new Map(optionals.map(({ name }, index) => [name, 1 << index]));
+    const text = controlledText({ kotlinFunction, parameters });
+    const textArgument = text ? ", text" : "";
+    const textType = text ? `, text: ComposeControlledText<${text.type}>` : "";
     // Each mask still makes a statically resolved call so the Kotlin compiler owns
     // the defaults. Reuse decoders and slot lambdas across masks without rendering omitted slots.
     const compact = masks.length > 32;
@@ -517,7 +547,7 @@ function kotlin({ components }) {
       return nullable ? `if (node.isNull(${key})) null else (${value})` : value;
     };
     const shared = new Map(parameters.filter(({ kind, name }) =>
-      compact && Object.hasOwn(scalarKinds, kind) && !animationTarget({ childrenScope }, name))
+      compact && Object.hasOwn(scalarKinds, kind) && !animationTarget({ childrenScope }, name) && name !== text?.value)
       .map((parameter) => [parameter.name, parameter]));
     const call = (mask, indent) => {
       const passed = passedParameters({ parameters }, mask);
@@ -525,7 +555,9 @@ function kotlin({ components }) {
       if (overflow && !passed.includes(overflow)) passed.push(overflow);
       const args = passed.map((parameter) => {
         const { name, nativeName = name } = parameter;
-        const value = slotNames.has(name) ? `slot_${name}`
+        const value = name === text?.value ? "text.value"
+          : name === text?.event ? "text.onChange"
+          : slotNames.has(name) ? `slot_${name}`
           : shared.has(name) ? `decode_${name}(node)` : parameterValue(parameter);
         return `\`${nativeName}\` = ${value}`;
       });
@@ -570,7 +602,7 @@ function kotlin({ components }) {
       `  val mask = ${maskValue}`,
       split ? `  when (mask / ${groupSize}) {` : "  when (mask) {",
       ...(split ? [...groups.keys()].map((group) =>
-        `    ${group} -> render${renderer}Group${group}(node${modifierScope ? ", scope" : ""}, mask${stateArguments}${childrenArgument}${slotArguments})`
+        `    ${group} -> render${renderer}Group${group}(node${modifierScope ? ", scope" : ""}, mask${stateArguments}${childrenArgument}${slotArguments}${textArgument})`
       ) : masks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`)),
       invalid,
       "  }",
@@ -587,6 +619,7 @@ function kotlin({ components }) {
       ...annotations,
       `fun render(node: ComposeNode${modifierScope}) {`,
       ...stateValues,
+      ...(text ? [`  val text = rememberComposeControlledText(node, ${parameterValue(parameters.find(({ name }) => name === text.value))}, ${quote(text.event)}) ${text.encode}`] : []),
       ...slotValues,
       ...(shareChildren ? ["  val renderChildren: @Composable () -> Unit = { RenderComposeChildren(node.children) }"] : []),
       ...body,
@@ -594,7 +627,7 @@ function kotlin({ components }) {
       "",
       ...(split ? [...groups].flatMap(([group, groupMasks]) => [
         ...annotations,
-        `private fun render${renderer}Group${group}(node: ComposeNode${modifierScope}, mask: Int${stateTypes}${childrenType}${slotTypes}) {`,
+        `private fun render${renderer}Group${group}(node: ComposeNode${modifierScope}, mask: Int${stateTypes}${childrenType}${slotTypes}${textType}) {`,
         "  when (mask) {",
         ...groupMasks.map((mask) => `    ${mask} -> ${call(mask, "    ")}`),
         invalid,

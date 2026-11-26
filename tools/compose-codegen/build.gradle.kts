@@ -31,6 +31,7 @@ if (candidateDir.isPresent) {
         "generated/ComposeBridgeValues.kt",
         "generated/ComposeConfigurationValues.kt",
         "generated/ComposeTextTransformations.kt",
+        "generated/ComposeControlledText.kt",
         "generated/ComposeLayoutMeasure.kt",
         "generated/ComposeGestureValues.kt",
         "generated/ComposeDrawingValues.kt",
