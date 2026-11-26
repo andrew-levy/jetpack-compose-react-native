@@ -18,6 +18,8 @@ export interface ComposableDescription {
   objectProps?: readonly string[];
   events?: readonly string[];
   slots?: readonly string[];
+  // Slots that Compose calls with values. They accept React content or a function of those values.
+  renderSlots?: readonly string[];
   children: boolean;
   keyedChildren?: boolean;
   overloads?: readonly ComposableOverload[];
