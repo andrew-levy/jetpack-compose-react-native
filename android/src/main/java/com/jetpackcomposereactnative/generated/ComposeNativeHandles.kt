@@ -12,6 +12,7 @@ import androidx.compose.material3.TopAppBarState
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.runtime.withFrameNanos
@@ -22,6 +23,18 @@ import org.json.JSONObject
 
 internal class ComposeNativeHandles {
   private val entries = mutableMapOf<Pair<String, String>, WeakReference<Entry<*>>>()
+  // Controlled states (scroll, lazy, pager) by handle, so other APIs in the host can read the state a handle controls.
+  private val published = mutableStateMapOf<Pair<String, String>, Any>()
+
+  fun publish(kind: String, token: String, state: Any) {
+    published[kind to token] = state
+  }
+
+  fun unpublish(kind: String, token: String, state: Any) {
+    if (published[kind to token] === state) published.remove(kind to token)
+  }
+
+  fun published(kind: String, token: String): Any? = published[kind to token]
   private val controlRevisions = mutableMapOf<Pair<String, String>, Long>()
 
   // Keep the revision for commands issued to state that can leave and reenter the same host.
