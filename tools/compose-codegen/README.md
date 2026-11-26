@@ -182,10 +182,24 @@ Dialogs and popups accept a `properties` object for options such as outside-tap
 dismissal, back-button dismissal, and default window width. Popup properties also
 include focusability and clipping. Dialog properties include the window title.
 
-Unit-returning callbacks with several supported arguments deliver a typed tuple
-in one JavaScript event. The `finishedListener` option on
+Callback arguments are derived from their Kotlin types. A Unit-returning callback
+(`on*`, `*Listener`, `callback`, or `watcher`) whose arguments can be described
+receives one argument as its value, or several as a typed tuple in one JavaScript
+event. The extractor describes these types:
+
+- Strings, booleans, numbers, `Dp` (as a number), and `Color` (as `#AARRGGBB`).
+- Enums, as their generated case names.
+- Lists and sets as arrays. `Pair`, `Triple`, and ranges as labeled tuples, such as
+  `readonly [start: number, endInclusive: number]`.
+- The types in [snapshots.json](snapshots.json), which have hand-written encoders.
+- Other Compose classes and interfaces, as a `Compose<Type>Snapshot` object of their
+  public properties. Draw, measure, and composition scopes are excluded.
+
+For example, `SwipeToDismissBox`'s `onDismiss` receives a
+`ComposeSwipeToDismissBoxValueOption`. The `finishedListener` option on
 `Modifier.animateContentSize` receives `readonly [ComposeLayoutSize, ComposeLayoutSize]`
-with the start and end sizes in physical pixels.
+with the start and end sizes in physical pixels. To support a new type with its own
+encoder, add a `toComposeSnapshot()` extension and list the type in snapshots.json.
 
 APIs that accept the same native handle or value type share a decoder. Requesters
 and interaction sources retain their identity within a Compose host. Animation
