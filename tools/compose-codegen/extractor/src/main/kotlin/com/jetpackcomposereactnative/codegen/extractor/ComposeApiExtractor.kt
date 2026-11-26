@@ -32,9 +32,12 @@ class ComposeApiExtractorProvider : SymbolProcessorProvider {
       JsonParser.parseReader(it).asJsonObject
     }
     fun packages(key: String) = inventory.getAsJsonArray(key).map { it.asString }
+    val snapshots = File(environment.options.getValue("snapshotsPath")).reader().use {
+      JsonParser.parseReader(it).asJsonObject.keySet().toSet()
+    }
     return ComposeApiExtractor(
       environment.codeGenerator, environment.logger, packages("composePackages"), packages("modifierPackages"),
-      PublishedSurface.read(environment.options["publishedSurface"]),
+      PublishedSurface.read(environment.options["publishedSurface"]), snapshots,
     )
   }
 }
@@ -45,10 +48,15 @@ private class ComposeApiExtractor(
   private val packages: List<String>,
   private val modifierPackages: List<String>,
   private val publishedSurface: PublishedSurface,
+  private val snapshots: Set<String>,
 ) : SymbolProcessor {
   private var generated = false
   private var valueTypes = emptyMap<String, ValueType>()
   private lateinit var structuredValues: StructuredValueResolver
+  private lateinit var payloads: PayloadResolver
+  // Built-in scopes plus every receiver of a composable content lambda (`content: @Composable T.() -> Unit`).
+  // Generated children render with that receiver, so composables and modifiers declared on it can use it.
+  private var scopes = baseScopes
 
   @OptIn(KspExperimental::class)
   override fun process(resolver: Resolver): List<KSAnnotated> {
@@ -64,6 +72,12 @@ private class ComposeApiExtractor(
       optIns = { it.optInMarkers() },
       accepts = { fn, arguments -> accepts(fn, arguments) },
     )
+    payloads = PayloadResolver(
+      snapshots,
+      enumName = { type -> valueTypes[type.name]?.name ?: structuredValues.kind(type)?.takeUnless { it.startsWith("record:") } },
+      isVisible = structuredValues::hasBridgeVisibility,
+      optIns = { it.optInMarkers() },
+    )
     val functions = declarationsInPackages(resolver, packages)
     // Deprecated overloads are skipped, so one kept upstream for binary compatibility still hands its
     // published call forms to the overload that replaced it.
@@ -74,6 +88,7 @@ private class ComposeApiExtractor(
       .filter { it.qualifiedName != null && it.getVisibility() == Visibility.PUBLIC }
       .filter { fn -> fn.annotations.any { it.annotationType.resolve().name == COMPOSABLE } }
       .sortedBy { it.signature() }
+    scopes = baseScopes + declarations.flatMap { fn -> fn.parameters.mapNotNull { it.contentReceiver() } }
     val coverage = mutableListOf<Coverage>()
     val modifierDeclarations = declarationsInPackages(resolver, modifierPackages).filter {
       it.extensionReceiver?.resolve()?.name == MODIFIER && it.returnType?.resolve()?.name == MODIFIER
@@ -125,10 +140,11 @@ private class ComposeApiExtractor(
     // Text styles keep their published kinds; their fields are generated from the Compose declarations.
     val styleRecords = generatedAdapterRecords.mapNotNull { structuredValues.recordFor(it)?.let { record -> "record:" + record.name } }
     val records = structuredValues.recordsFor(usedKinds + styleRecords)
+    val payloadTypes = payloads.typesFor(usedKinds)
     val enums = structuredValues.enumsFor(usedKinds + records.flatMap { record ->
       (record.fields + record.factories.flatMap { it.fields }).map { it.kind }
-    })
-    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList() + enums, factories, records, styleProperties,
+    } + payloadTypes.filter { it.value }.map { it.name })
+    val manifest = Manifest(4, components, modifiers, valueTypes.values.toList() + enums, factories, records, payloadTypes, styleProperties,
       discoverIcons(resolver),
       discovered.sortedWith(compareBy({ it.kind }, { it.signature })),
       coverage.sortedWith(compareBy({ it.kind }, { it.signature })))
@@ -221,7 +237,7 @@ private class ComposeApiExtractor(
     val receiver = fn.extensionReceiver?.resolve()?.name
     // An unqualified call never competes with an extension overload on a native receiver.
     val ownerScope = owner?.qualifiedName?.asString()?.takeIf { it in scopes }
-      ?: receiver?.takeIf { it in scopedExtensionReceivers }
+      ?: receiver?.takeIf { it in scopes }
     if (fn.parentDeclaration != null && owner?.classKind != ClassKind.OBJECT && ownerScope == null) {
       return omit("adapterRequired", "Member composable requires a native owner")
     }
@@ -272,7 +288,7 @@ private class ComposeApiExtractor(
             type.arguments.first().type?.resolve()?.name == "androidx.compose.foundation.layout.GridConfigurationScope" &&
             type.arguments.last().type?.resolve()?.name == "kotlin.Unit" }
           ?: structuredValues.kind(type) ?: structuredValues.defaultsKind(type)
-          ?: parameter.blockKind(type)
+          ?: parameter.blockKind(type) ?: parameter.payloadEventKind(type) ?: parameter.mappingKind(type)
       }
       if (kind == null) {
         omitted += OmittedParameter(name, type.signatureName(), when {
@@ -398,7 +414,7 @@ private class ComposeApiExtractor(
               ?: type.rangeKind() ?: type.animationKind() ?: parameter.eventKind(type) ?: type.modifierReceiverKind()
               ?: type.drawingKind() ?: parameter.producerKind(type)
               ?: structuredValues.kind(type) ?: structuredValues.defaultsKind(type, allowComposable = false)
-              ?: parameter.blockKind(type)
+              ?: parameter.blockKind(type) ?: parameter.payloadEventKind(type) ?: parameter.mappingKind(type)
           }
           if (kind == null || kind == "modifier") {
             val reason = if (parameter.isVararg) "Vararg" else "Unsupported bridge type"
@@ -454,7 +470,7 @@ private class ComposeApiExtractor(
     if (runtime.isNotEmpty()) {
       return extendCallForms(optional, runtime, newlyBridgeable, 256, 5)
     }
-    val inferred = optional.filter { it.isInferredValue() || it.kind.startsWith("eventTuple:") }
+    val inferred = optional.filter { it.isInferredValue() || it.kind.isPayloadEvent() }
     if (inferred.isNotEmpty()) {
       // First build the previous surface with the new types removed. Applying
       // the budgets in the opposite order can drop existing prop combinations.
@@ -672,6 +688,17 @@ private class ComposeApiExtractor(
     sequenceOf(declaration) + arguments.asSequence().mapNotNull { it.type?.resolve() }
       .flatMap { it.declarationsInType() }
 
+  private fun KSValueParameter.contentReceiver(): String? {
+    val type = this.type.resolve()
+    if (type.name != "kotlin.Function1" || type.arguments.last().type?.resolve()?.name != "kotlin.Unit") return null
+    val markers = (this.type.annotations + type.annotations).map { it.annotationType.resolve().name }.toSet()
+    if (!markers.containsAll(listOf(COMPOSABLE, EXTENSION_FUNCTION))) return null
+    val receiver = type.arguments.first().type?.resolve()?.declaration as? KSClassDeclaration ?: return null
+    if (receiver.typeParameters.isNotEmpty() || receiver.classKind !in setOf(ClassKind.INTERFACE, ClassKind.CLASS) ||
+      !receiver.packageName.asString().startsWith("androidx.compose.") || !structuredValues.hasBridgeVisibility(receiver)) return null
+    return receiver.qualifiedName?.asString()
+  }
+
   private fun KSValueParameter.isContentSlot(type: KSType): Boolean {
     if (name?.asString() != "content" && type.indexedSlotScope() == null &&
       (this.type.annotations + type.annotations).none { it.annotationType.resolve().name == COMPOSABLE }) return false
@@ -764,11 +791,15 @@ private class ComposeApiExtractor(
     else -> null
   }
 
+  private fun KSValueParameter.isCallback(type: KSType): Boolean {
+    val parameter = name?.asString().orEmpty()
+    return type.arguments.lastOrNull()?.type?.resolve()?.name == "kotlin.Unit" &&
+      (parameter.startsWith("on") || parameter == "callback" || parameter == "watcher" || parameter.endsWith("Listener"))
+  }
+
   private fun KSValueParameter.eventKind(type: KSType): String? {
     val parameter = name?.asString().orEmpty()
-    if (type.arguments.lastOrNull()?.type?.resolve()?.name != "kotlin.Unit") return null
-    if (!parameter.startsWith("on") && parameter != "callback" && parameter != "watcher" &&
-      !parameter.endsWith("Listener")) return null
+    if (!isCallback(type)) return null
     if (type.name == "kotlin.Function2" && type.arguments[0].type?.resolve()?.name == "androidx.compose.ui.unit.Density") {
       val provider = type.arguments[1].type?.resolve()
       if (provider?.name == "kotlin.Function0" &&
@@ -776,17 +807,9 @@ private class ComposeApiExtractor(
         return "eventTextLayoutProvider"
       }
     }
-    if (type.name in callbackTupleTypes && (this.type.annotations + type.annotations).none {
-      it.annotationType.resolve().name in setOf(COMPOSABLE, "kotlin.ExtensionFunctionType")
-    }) {
-      val arguments = type.arguments.dropLast(1).map { argument ->
-        val value = argument.type?.resolve() ?: return null
-        val qualified = value.name?.takeIf { it in callbackTupleValues } ?: return null
-        qualified + if (value.isMarkedNullable) "?" else ""
-      }
-      return "eventTuple:" + arguments.joinToString(",")
-    }
-    // The other adapters carry one payload and retain their established JS signatures.
+    // Callbacks with several arguments are payload tuples (payloadEventKind).
+    if (type.name?.matches(functionType) == true && type.arguments.size > 2) return null
+    // These adapters carry one payload and retain their established JS signatures.
     if (parameter.endsWith("Listener") && !parameter.startsWith("on")) return null
     if (type.name == "kotlin.coroutines.SuspendFunction2" &&
       type.arguments[0].type?.resolve()?.name == "kotlinx.coroutines.CoroutineScope") {
@@ -818,6 +841,40 @@ private class ComposeApiExtractor(
         "androidx.compose.ui.text.TextLayoutResult" -> "eventTextLayout"
         else -> if (argument?.rangeKind() == "floatRange") "eventFloatRange" else null
       }
+      else -> null
+    }
+  }
+
+  // The last rule for a callback: Compose passes arguments that PayloadResolver can describe. One argument
+  // arrives as its value and several arrive as a tuple, in one JavaScript event.
+  private fun KSValueParameter.payloadEventKind(type: KSType): String? {
+    if (type.name?.matches(functionType) != true || !isCallback(type)) return null
+    if ((this.type.annotations + type.annotations).any {
+        it.annotationType.resolve().name in setOf(COMPOSABLE, "kotlin.ExtensionFunctionType")
+      }) return null
+    val arguments = type.arguments.dropLast(1).map { argument ->
+      if (argument.variance == Variance.STAR) return null
+      payloads.kind(argument.type?.resolve() ?: return null) ?: return null
+    }
+    return when (arguments.size) {
+      0 -> null
+      1 -> "eventPayload:" + arguments.single()
+      else -> "eventTuple:" + arguments.joinToString(",")
+    }
+  }
+
+  // A pure mapping that Compose evaluates while it composes, lays out or draws (`amplitude: (Float) -> Float`,
+  // `key: (Int) -> Any`). JavaScript describes it as data: stops interpolated over a number, or values by index.
+  private fun KSValueParameter.mappingKind(type: KSType): String? {
+    if (type.name != "kotlin.Function1" || (this.type.annotations + type.annotations).any {
+        it.annotationType.resolve().name in setOf(COMPOSABLE, EXTENSION_FUNCTION)
+      }) return null
+    val argument = type.arguments[0].type?.resolve()?.takeUnless { it.isMarkedNullable } ?: return null
+    val result = type.arguments[1].type?.resolve() ?: return null
+    return when (argument.name) {
+      "kotlin.Float" -> interpolatedKinds[result.name]?.takeUnless { result.isMarkedNullable }?.let { "interpolation:$it" }
+      "kotlin.Int" -> if (result.name == "kotlin.Any") "lookup:key" else
+        valueKinds[result.name]?.takeIf { it in lookupKinds && !result.isMarkedNullable }?.let { "lookup:$it" }
       else -> null
     }
   }
@@ -861,7 +918,13 @@ private class ComposeApiExtractor(
 
   private fun KSValueParameter.producerKind(type: KSType): String? {
     val composable = (this.type.annotations + type.annotations).any { it.annotationType.resolve().name == COMPOSABLE }
-    if (composable) return null
+    // `@Composable () -> T` (`contentWindowInsets`) produces a value the same way. Other composable lambdas are slots.
+    if (composable && type.name != "kotlin.Function0") return null
+    // A `fun interface` whose single method produces a value (`ColorProducer`) is built with its SAM constructor.
+    type.samProducerResult()?.let { result ->
+      val inner = producedKind(result) ?: return null
+      return "sam:${type.name}:$inner"
+    }
     if (type.name == "kotlin.Function0") when (type.arguments.singleOrNull()?.type?.resolve()?.name) {
       "androidx.compose.foundation.layout.WindowInsets" -> return "windowInsetsProducer"
       "kotlin.Float" -> return "floatProducer"
@@ -874,10 +937,22 @@ private class ComposeApiExtractor(
         type.arguments.firstOrNull()?.type?.resolve()?.name == "androidx.compose.ui.unit.Density" -> type.arguments.lastOrNull()
       else -> null
     }?.type?.resolve() ?: return null
+    return producedKind(result)?.let { "producer:$it" }
+  }
+
+  private fun producedKind(result: KSType): String? {
     if (result.name == "kotlin.Unit" || result.declaration is KSTypeParameter) return null
-    val inner = valueKinds[result.name]?.takeIf { it in producedValueKinds } ?: valueTypes[result.name]?.name
-      ?: structuredValues.kind(result) ?: return null
-    return "producer:$inner"
+    return valueKinds[result.name]?.takeIf { it in producedValueKinds } ?: valueTypes[result.name]?.name
+      ?: structuredValues.kind(result)
+  }
+
+  private fun KSType.samProducerResult(): KSType? {
+    val declaration = declaration as? KSClassDeclaration ?: return null
+    if (declaration.classKind != ClassKind.INTERFACE || com.google.devtools.ksp.symbol.Modifier.FUN !in declaration.modifiers ||
+      declaration.typeParameters.isNotEmpty() || !structuredValues.hasBridgeVisibility(declaration)) return null
+    val method = declaration.getAllFunctions().filter { it.isAbstract }.singleOrNull() ?: return null
+    if (method.parameters.isNotEmpty() || method.extensionReceiver != null) return null
+    return method.returnType?.resolve()
   }
 
   // Event callbacks such as `onPlaced: (LayoutCoordinates) -> Unit` are not configuration blocks, even when
@@ -893,6 +968,8 @@ private class ComposeApiExtractor(
 
 private fun String.inputType(): String = when {
   startsWith("producer:") -> removePrefix("producer:").inputType()
+  startsWith("sam:") -> substringAfterLast(':').inputType()
+  startsWith("interpolation:") || startsWith("lookup:") -> "tuple"
   this in setOf("int", "long", "float", "double", "dp", "sp", "floatProducer") -> "number"
   this == "char" || this == "color" || startsWith("Compose") -> "string"
   this in setOf("floatRange", "intRange", "buttonGroupItems", "appBarItems", "pointerKeys") -> "tuple"
@@ -926,12 +1003,10 @@ private val producedValueKinds = setOf("string", "boolean", "int", "long", "floa
 private val newRuntimeKinds = setOf(
   "topAppBarScrollBehavior", "contentTransition", "scrollState", "eventTextLayout", "eventTextLayoutProvider",
 )
-private val callbackTupleTypes = setOf("kotlin.Function2", "kotlin.Function3", "kotlin.Function4")
-private val callbackTupleValues = setOf(
-  "kotlin.String", "kotlin.Boolean", "kotlin.Int", "kotlin.Long", "kotlin.Float", "kotlin.Double",
-  "androidx.compose.ui.unit.IntSize", "androidx.compose.ui.unit.DpSize",
-  "androidx.compose.ui.geometry.Offset", "androidx.compose.ui.unit.Velocity",
-)
+private val functionType = Regex("kotlin\\.Function[0-9]+")
+private val interpolatedKinds = mapOf("kotlin.Float" to "float", "androidx.compose.ui.unit.Dp" to "dp", COLOR to "color")
+private val lookupKinds = setOf("string", "int", "float", "dp", "color", "boolean")
+private fun String.isPayloadEvent() = startsWith("eventPayload:") || startsWith("eventTuple:")
 private val recordFieldKinds = setOf("float", "double", "int", "dp", "sp", "boolean")
 private val styleFieldKinds = recordFieldKinds + setOf("color", "textStyle")
 
@@ -1040,7 +1115,8 @@ private val valueSources = mapOf(
   "androidx.graphics.shapes.RoundedPolygon" to ValueSource("ComposeMaterialShape", listOf("androidx.compose.material3.MaterialShapes"))
 )
 private const val COMPOSABLE = "androidx.compose.runtime.Composable"
-private val scopes = setOf(
+private const val EXTENSION_FUNCTION = "kotlin.ExtensionFunctionType"
+private val baseScopes = setOf(
   "androidx.compose.foundation.layout.RowScope",
   "androidx.compose.foundation.layout.ColumnScope",
   "androidx.compose.foundation.layout.BoxScope",
@@ -1066,13 +1142,6 @@ private val scopes = setOf(
   "androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridItemScope",
   PAGER_SCOPE,
   CAROUSEL_SCOPE
-)
-private val scopedExtensionReceivers = setOf(
-  "androidx.compose.foundation.layout.RowScope",
-  "androidx.compose.material3.FloatingActionButtonMenuScope",
-  "androidx.compose.material3.TooltipScope",
-  "androidx.compose.material3.MultiChoiceSegmentedButtonRowScope",
-  "androidx.compose.material3.SingleChoiceSegmentedButtonRowScope"
 )
 private val componentValueKinds = mapOf(
   "androidx.compose.material3.ColorScheme" to "colorScheme",
@@ -1158,6 +1227,7 @@ private data class Manifest(
   val values: List<ValueType>,
   val factories: List<ValueFactory>,
   val records: List<RecordValue>,
+  val payloads: List<PayloadType>,
   val styleProperties: List<Parameter>,
   val icons: List<MaterialIcon>,
   val discovered: List<Discovery>,
