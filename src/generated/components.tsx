@@ -7,10 +7,10 @@ export type ComposeFloatRange = readonly [start: number, endInclusive: number];
 import type { ComposeAnimationSpec, ComposeAnnotatedString, ComposeAppBarItem, ComposeBorderStroke, ComposeBottomSheetScaffoldState, ComposeButtonGroupItem, ComposeCarouselState, ComposeContentTransition, ComposeDatePickerFormatter, ComposeDatePickerState, ComposeDateRangePickerState, ComposeDialogProperties, ComposeDpSize, ComposeDrawing, ComposeFlexBoxConfig, ComposeFlingBehavior, ComposeGridCells, ComposeGridConfig, ComposeInputTransformation, ComposeKeyboardActions, ComposeKeyboardOptions, ComposeLayoutMeasurePolicy, ComposeLazyState, ComposeNestedScrollBehavior, ComposeOutputTransformation, ComposeOverscrollEffect, ComposePaddingValues, ComposePageSize, ComposePagerState, ComposePainter, ComposePopupPosition, ComposePopupProperties, ComposeScrollState, ComposeSearchBarState, ComposeSnackbarHostState, ComposeSwipeToDismissState, ComposeTextFieldLineLimits, ComposeTextFieldSnapshot, ComposeTextFieldState, ComposeTextFieldValue, ComposeTextLayout, ComposeTextStyle, ComposeTimePickerState, ComposeTooltipState, ComposeTopAppBarScrollBehavior, ComposeVisibilityTransition, ComposeVisualTransformation, ComposeWindowInsets } from "../utils/composeValues";
 import type { ComposeAppBarWithSearchColorsValue, ComposeBottomAppBarScrollBehaviorValue, ComposeButtonColorsValue, ComposeButtonElevationValue, ComposeButtonShapesValue, ComposeCardColorsValue, ComposeCardElevationValue, ComposeCheckboxColorsValue, ComposeChipColorsValue, ComposeChipElevationValue, ComposeChipShapesValue, ComposeColorFilterValue, ComposeDatePickerColorsValue, ComposeDpOffset, ComposeDragHandleColorsValue, ComposeDragHandleShapesValue, ComposeDropdownMenuPopupPositionProviderValue, ComposeFloatingActionButtonElevationValue, ComposeFloatingToolbarColorsValue, ComposeFloatingToolbarScrollBehaviorValue, ComposeFontFamilyValue, ComposeIconButtonColorsValue, ComposeIconButtonShapesValue, ComposeIconToggleButtonColorsValue, ComposeIconToggleButtonShapesValue, ComposeImageBitmapValue, ComposeIntOffset, ComposeLazyLayoutCacheWindowValue, ComposeListItemColorsValue, ComposeListItemElevationValue, ComposeListItemShapesValue, ComposeMenuGroupShapesValue, ComposeMenuItemColorsValue, ComposeMenuItemShapesValue, ComposeMotionSchemeValue, ComposeNavigationBarItemColorsValue, ComposeNavigationItemColorsValue, ComposeNavigationRailItemColorsValue, ComposeRadioButtonColorsValue, ComposeRichTooltipColorsValue, ComposeScrollFieldColorsValue, ComposeSearchBarColorsValue, ComposeSearchBarScrollBehaviorValue, ComposeSegmentedButtonColorsValue, ComposeSelectableChipColorsValue, ComposeSelectableChipElevationValue, ComposeSelectableMenuItemColorsValue, ComposeShapesValue, ComposeSliderColorsValue, ComposeSplitButtonShapesValue, ComposeStrokeValue, ComposeSwitchColorsValue, ComposeTextAutoSizeValue, ComposeTextFieldColorsValue, ComposeTextFieldLabelPositionValue, ComposeTimeInputColorsValue, ComposeTimePickerColorsValue, ComposeTimePickerShapesValue, ComposeToggleButtonColorsValue, ComposeToggleButtonElevationValue, ComposeToggleButtonShapesValue, ComposeTopAppBarColorsValue, ComposeTypographyValue, ComposeWideNavigationRailColorsValue } from "./records";
 import type { ComposeDrawerStateHandle, ComposeFocusRequester, ComposeInteractionSource, ComposePullToRefreshState, ComposeRangeSliderState, ComposeSliderState, ComposeWideNavigationRailStateHandle } from "../utils/nativeHandles";
+import type { ComposeAlignment, ComposeContentScale, ComposeDisplayMode, ComposeFabPositionValue, ComposeFilterQualityValue, ComposeFloatingToolbarHorizontalFabPositionValue, ComposeFloatingToolbarVerticalFabPositionValue, ComposeFontStyleValue, ComposeFontWeight, ComposeHorizontalAlignment, ComposeHorizontalArrangement, ComposeNavigationItemIconPositionValue, ComposeShortNavigationBarArrangementValue, ComposeSnapPosition, ComposeStrokeCapValue, ComposeSwipeToDismissBoxValueOption, ComposeTextAlign, ComposeTextDecorationValue, ComposeTextObfuscationModeValue, ComposeTextOverflow, ComposeTimePickerDisplayMode, ComposeTimePickerLayoutTypeValue, ComposeToggleButtonSizeValue, ComposeToggleableState, ComposeVerticalAlignment, ComposeVerticalArrangement } from "./values";
 export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";
 import type { ComposeModalSheetState } from "../utils/composeValues";
 export type ComposeSheetState = ComposeModalSheetState;
-import type { ComposeSnapPosition, ComposeTimePickerDisplayMode, ComposeAlignment, ComposeHorizontalAlignment, ComposeVerticalAlignment, ComposeHorizontalArrangement, ComposeVerticalArrangement, ComposeTextAlign, ComposeTextOverflow, ComposeFontWeight, ComposeToggleableState, ComposeContentScale, ComposeDisplayMode, ComposeTextObfuscationModeValue, ComposeFabPositionValue, ComposeFloatingToolbarHorizontalFabPositionValue, ComposeFloatingToolbarVerticalFabPositionValue, ComposeNavigationItemIconPositionValue, ComposeShortNavigationBarArrangementValue, ComposeTimePickerLayoutTypeValue, ComposeToggleButtonSizeValue, ComposeFilterQualityValue, ComposeStrokeCapValue, ComposeFontStyleValue, ComposeTextDecorationValue } from "./values";
 
 export interface ActiveIconProps {
 }
@@ -12344,6 +12344,29 @@ export const ExpandedFullScreenSearchBar = createComposableComponent<ExpandedFul
   props: ["state","modifier","collapsedShape","colors","tonalElevation","shadowElevation","properties"],
   objectProps: ["state","collapsedShape","colors","properties"],
   slots: ["inputField"],
+  children: true,
+});
+
+export interface ExposedDropdownMenuProps {
+  expanded: boolean;
+  onDismissRequest: () => void;
+  modifiers?: ComposeModifier;
+  /** @deprecated Use the modifiers prop. */
+  modifier?: ComposeModifier;
+  scrollState?: ComposeScrollState;
+  matchAnchorWidth?: boolean;
+  shape?: ComposeShape;
+  containerColor?: string;
+  tonalElevation?: number;
+  shadowElevation?: number;
+  border?: ComposeBorderStroke | null;
+  children?: ReactNode;
+}
+export const ExposedDropdownMenu = createComposableComponent<ExposedDropdownMenuProps>({
+  name: "ExposedDropdownMenu",
+  props: ["expanded","modifier","scrollState","matchAnchorWidth","shape","containerColor","tonalElevation","shadowElevation","border"],
+  objectProps: ["scrollState","shape","border"],
+  events: ["onDismissRequest"],
   children: true,
 });
 
@@ -48593,6 +48616,7 @@ export interface SwipeToDismissBoxProps {
   enableDismissFromStartToEnd?: boolean;
   enableDismissFromEndToStart?: boolean;
   gesturesEnabled?: boolean;
+  onDismiss?: (value: ComposeSwipeToDismissBoxValueOption) => void;
   children?: ReactNode;
 }
 export const SwipeToDismissBox = createComposableComponent<SwipeToDismissBoxProps>({
@@ -48600,6 +48624,7 @@ export const SwipeToDismissBox = createComposableComponent<SwipeToDismissBoxProp
   props: ["state","modifier","enableDismissFromStartToEnd","enableDismissFromEndToStart","gesturesEnabled"],
   objectProps: ["state"],
   slots: ["backgroundContent"],
+  events: ["onDismiss"],
   children: true,
 });
 
