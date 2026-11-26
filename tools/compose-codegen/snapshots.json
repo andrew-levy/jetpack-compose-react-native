@@ -1,0 +1,12 @@
+{
+  "androidx.compose.ui.unit.IntSize": { "type": "ComposeLayoutSize", "module": "../utils/composeValues" },
+  "androidx.compose.ui.unit.DpSize": { "type": "ComposeDpSize", "module": "../utils/composeValues" },
+  "androidx.compose.ui.geometry.Offset": { "type": "ComposeOffset", "module": "./records" },
+  "androidx.compose.ui.unit.Velocity": { "type": "ComposeOffset", "module": "./records" },
+  "androidx.compose.ui.layout.LayoutCoordinates": { "type": "ComposeLayoutPosition", "module": "../utils/composeValues" },
+  "androidx.compose.ui.spatial.RelativeLayoutBounds": { "type": "ComposeLayoutPosition", "module": "../utils/composeValues" },
+  "androidx.compose.ui.focus.FocusState": { "type": "ComposeFocusState", "module": "../utils/composeValues" },
+  "androidx.compose.ui.text.TextLayoutResult": { "type": "ComposeTextLayout", "module": "../utils/composeValues" },
+  "androidx.compose.ui.text.input.TextFieldValue": { "type": "ComposeTextFieldSnapshot", "module": "../utils/composeValues" },
+  "android.view.MotionEvent": { "type": "ComposeMotionEvent", "module": "../utils/composeValues" }
+}
