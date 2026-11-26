@@ -21,6 +21,9 @@ internal data class RecordValue(
   val block: Boolean? = null,
   // Set for a wide value type decoded by chained one-argument `copy` calls from its all-default constructor.
   val copy: Boolean? = null,
+  // Set when the factories are members of this scope (`SharedTransitionScope.OverlayClip(shape)`). The decoder takes
+  // the scope and calls them inside it.
+  val scope: String? = null,
 )
 internal data class RecordFactory(
   val name: String, val function: String, val fields: List<Parameter>, val composable: Boolean,
@@ -60,9 +63,14 @@ internal class StructuredValueResolver(
     val name = "Compose" + qualified.removePrefix("$namespace.").replace(".", "") + "Value"
     if (typeNames[name]?.let { it != qualified } == true) return null
     val candidates = defaultsByPackage.getOrPut(namespace) {
-      resolver.getDeclarationsFromPackage(namespace).filterIsInstance<KSClassDeclaration>()
+      val declarations = resolver.getDeclarationsFromPackage(namespace)
+      // `*Defaults` factories (`ButtonDefaults.buttonColors`) and state factories (`rememberScrollFieldState`).
+      val defaults = declarations.filterIsInstance<KSClassDeclaration>()
         .filter { it.classKind == ClassKind.OBJECT && it.simpleName.asString().endsWith("Defaults") }
         .flatMap { it.declarations.filterIsInstance<KSFunctionDeclaration>() }
+      val remembered = declarations.filterIsInstance<KSFunctionDeclaration>()
+        .filter { it.simpleName.asString().startsWith("remember") }
+      (defaults + remembered)
         .filter { it.extensionReceiver == null && it.typeParameters.isEmpty() && hasBridgeVisibility(it) }
         .groupBy { it.returnType?.resolve()?.declaration?.qualifiedName?.asString().orEmpty() }
     }[qualified].orEmpty()
@@ -212,7 +220,8 @@ internal class StructuredValueResolver(
             constantValue(declaration, qualified, name)
           } else null
           val copied = if (record == null && constants == null) {
-            copyRecord(declaration, qualified, name)
+            recordValue(declaration, qualified, name, secondary = true) ?: copyRecord(declaration, qualified, name)
+              ?: resolvedConstructorRecord(declaration, qualified, name)
               ?: factoryRecord(declaration, qualified, name, listOf(declaration.packageName.asString()))
           } else null
           when {
@@ -265,7 +274,9 @@ internal class StructuredValueResolver(
   }
 
   @OptIn(KspExperimental::class)
-  private fun recordValue(type: KSClassDeclaration, qualified: String, name: String): RecordValue? {
+  // `secondary`: also consider public secondary constructors. Callers try this only after the primary constructor
+  // and named constants, so a published encoding never changes.
+  private fun recordValue(type: KSClassDeclaration, qualified: String, name: String, secondary: Boolean = false): RecordValue? {
     if (Modifier.INNER in type.modifiers) return null
     val alternatives = factoriesByPackage.getOrPut(type.packageName.asString()) {
       resolver.getDeclarationsFromPackage(type.packageName.asString()).filterIsInstance<KSFunctionDeclaration>()
@@ -278,8 +289,7 @@ internal class StructuredValueResolver(
     val constructors = if (Modifier.ABSTRACT in type.modifiers || type.classKind != ClassKind.CLASS) emptyList()
       else type.declarations.filterIsInstance<KSFunctionDeclaration>()
         .filter { it.simpleName.asString() == "<init>" && it.getVisibility() == Visibility.PUBLIC }.toList()
-    val primary = publicValueConstructor(type)
-    val candidates = (factories + listOfNotNull(primary)).mapNotNull { fn ->
+    val candidates = (factories + valueConstructors(type, secondary)).mapNotNull { fn ->
       val parameters = fn.parameters
       if (!hasBridgeVisibility(fn) || parameters.isEmpty()) return@mapNotNull null
       val fields = decodeFields(fn) ?: return@mapNotNull null
@@ -303,6 +313,67 @@ internal class StructuredValueResolver(
     }.distinct()
     val widest = candidates.maxOfOrNull { it.fields.size } ?: return null
     return candidates.singleOrNull { it.fields.size == widest }
+  }
+
+  // The last construction path for an immutable class: any public constructor whose arguments decode, kept only when
+  // Kotlin resolves every call form to exactly one overload. Among applicable overloads Kotlin picks the one that leaves
+  // the fewest defaults unspecified (`ModalBottomSheetProperties(shouldDismissOnBackPress = false)`).
+  @OptIn(KspExperimental::class)
+  private fun resolvedConstructorRecord(type: KSClassDeclaration, qualified: String, name: String): RecordValue? {
+    if (type.classKind != ClassKind.CLASS || Modifier.ABSTRACT in type.modifiers || Modifier.INNER in type.modifiers ||
+      type.typeParameters.isNotEmpty() || !type.packageName.asString().startsWith("androidx.compose.")) return null
+    // State holders keep state in mutable properties and would be rebuilt on every recomposition.
+    if (type.getAllProperties().any { it.isMutable && it.getVisibility() == Visibility.PUBLIC }) return null
+    val constructors = type.getConstructors().filter { it.getVisibility() == Visibility.PUBLIC }.toList()
+    // A constructor without arguments makes an object whose identity matters (`SelectionState()`,
+    // `NestedScrollDispatcher()`), which a fresh value on every recomposition would break.
+    val candidates = constructors.filter { it.parameters.isNotEmpty() && hasBridgeVisibility(it) }.mapNotNull { fn ->
+      val fields = decodeFields(fn)?.takeIf { it.isNotEmpty() } ?: return@mapNotNull null
+      val types = fn.parameters.associate { it.name!!.asString() to it.type.resolve() }
+      val required = fn.parameters.filterNot { it.hasDefault }.associate { it.name!!.asString() to it.type.resolve() }
+      val optional = fields.filter { it.optional }
+      val resolved = (0 until (1 shl optional.size)).all { mask ->
+        val passed = required + optional.filterIndexed { index, _ -> mask and (1 shl index) != 0 }
+          .associate { it.name to types.getValue(it.name) }
+        val applicable = constructors.filter { accepts(it, passed) }
+        val fewest = applicable.minOfOrNull { it.parameters.size } ?: return@all false
+        applicable.count { it.parameters.size == fewest } == 1
+      }
+      if (resolved) RecordValue(name, qualified, fields, markers(optIns(type) + optIns(fn))) else null
+    }
+    val widest = candidates.maxOfOrNull { it.fields.size } ?: return null
+    return candidates.singleOrNull { it.fields.size == widest }
+  }
+
+  // Values made by members of a scope (`SharedTransitionScope.OverlayClip(clipShape)`) for APIs declared on that scope.
+  fun scopeFactoryKind(type: KSType, scope: String): String? {
+    val declaration = type.declaration as? KSClassDeclaration ?: return null
+    val qualified = declaration.qualifiedName?.asString() ?: return null
+    if (type.arguments.isNotEmpty() || !hasBridgeVisibility(declaration)) return null
+    val key = "$qualified@$scope"
+    records[key]?.let { return "record:" + it.name }
+    if (key in rejectedBlocks) return null
+    val owner = resolver.getClassDeclarationByName(resolver.getKSNameFromString(scope))
+    val functions = owner?.getAllFunctions().orEmpty().filter { fn ->
+      fn.extensionReceiver == null && fn.typeParameters.isEmpty() && hasBridgeVisibility(fn) &&
+        fn.returnType?.resolve()?.let { !it.isMarkedNullable && it.declaration == declaration } == true &&
+        fn.annotations.none { it.annotationType.resolve().declaration.qualifiedName?.asString() == "androidx.compose.runtime.Composable" }
+    }.toList()
+    val factories = functions.mapNotNull { fn ->
+      decodeFields(fn)?.let { RecordFactory(fn.simpleName.asString(), fn.simpleName.asString(), it, false) to fn }
+    }
+    val name = "Compose" + qualified.removePrefix(declaration.packageName.asString() + ".").replace(".", "") + "Value"
+    if (factories.isEmpty() || typeNames[name]?.let { it != key } == true) {
+      rejectedBlocks += key
+      return null
+    }
+    val record = RecordValue(name, qualified, emptyList(), markers(optIns(declaration) + factories.flatMap { (_, fn) -> optIns(fn) }),
+      distinguishable(factories.map { (factory, fn) -> fn to factory.fields }).map { (fn, fields) ->
+        RecordFactory(fn.simpleName.asString(), fn.simpleName.asString(), fields, false)
+      }, scope = scope)
+    records[key] = record
+    typeNames[name] = key
+    return "record:$name"
   }
 
   // A wide value type such as TextStyle (25 parameters) is built as `T()` followed by one `copy(field = ...)`
@@ -339,7 +410,8 @@ internal class StructuredValueResolver(
     val name = "Compose" + qualified.removePrefix(declaration.packageName.asString() + ".").replace(".", "") + "Value"
     if (typeNames[name]?.let { it != qualified } == true || !visiting.add(qualified)) return null
     try {
-      val record = recordValue(declaration, qualified, name) ?: copyRecord(declaration, qualified, name)
+      val record = recordValue(declaration, qualified, name) ?: recordValue(declaration, qualified, name, secondary = true)
+        ?: copyRecord(declaration, qualified, name)
         ?: factoryRecord(declaration, qualified, name, factoryPackages[qualified] ?: listOf(declaration.packageName.asString()))
         ?: return defaultsKind(declaration.asStarProjectedType(), allowComposable = false, forced = true)
           ?.let { records[qualified] }
@@ -377,14 +449,23 @@ internal class StructuredValueResolver(
       markers(optIns(type) + factories.flatMap { (_, fn) -> optIns(fn) }), factories.map { it.first })
   }
 
-  private fun publicValueConstructor(type: KSClassDeclaration): KSFunctionDeclaration? {
-    if (type.classKind != ClassKind.CLASS || Modifier.ABSTRACT in type.modifiers) return null
+  private fun publicValueConstructor(type: KSClassDeclaration): KSFunctionDeclaration? = valueConstructors(type, false).singleOrNull()
+
+  // Constructors whose parameters are the type's public immutable properties. The primary constructor is used when
+  // it is visible. Otherwise a public secondary constructor can be (`ThreePaneScaffoldValue(primary, secondary,
+  // tertiary)` beside an internal primary constructor that also takes internal state).
+  @OptIn(KspExperimental::class)
+  private fun valueConstructors(type: KSClassDeclaration, secondary: Boolean): List<KSFunctionDeclaration> {
+    if (type.classKind != ClassKind.CLASS || Modifier.ABSTRACT in type.modifiers) return emptyList()
     val immutableFields = type.getAllProperties()
       .filter { it.getVisibility() == Visibility.PUBLIC && !it.isMutable }
       .map { it.simpleName.asString() }.toSet()
-    return type.primaryConstructor?.takeIf { constructor ->
+    fun matches(constructor: KSFunctionDeclaration) =
       constructor.parameters.all { parameter -> parameter.name?.asString() in immutableFields }
-    }
+    val primary = type.primaryConstructor
+    if (!secondary) return listOfNotNull(primary?.takeIf(::matches))
+    if (primary != null && matches(primary) && hasBridgeVisibility(primary)) return emptyList()
+    return type.getConstructors().filter { it != type.primaryConstructor && hasBridgeVisibility(it) && matches(it) }.toList()
   }
 
   private fun decodeFields(fn: KSFunctionDeclaration, maxDefaults: Int = 5): List<Parameter>? {
@@ -419,10 +500,11 @@ internal class StructuredValueResolver(
   fun recordsFor(kinds: Set<String>): List<RecordValue> {
     val byKind = records.values.associateBy { "record:" + it.name }
     val used = mutableSetOf<RecordValue>()
+    // Kinds can wrap a record (`list:record:X`, `constant:record:X`, `producer:record:X`).
     fun include(kind: String) {
-      val record = byKind[kind] ?: return
-      if (used.add(record)) {
-        (record.fields + record.factories.flatMap { it.fields }).forEach { include(it.kind.removePrefix("list:")) }
+      for (match in recordReference.findAll(kind)) {
+        val record = byKind["record:" + match.groupValues[1]] ?: continue
+        if (used.add(record)) (record.fields + record.factories.flatMap { it.fields }).forEach { include(it.kind) }
       }
     }
     kinds.forEach(::include)
@@ -434,15 +516,19 @@ internal class StructuredValueResolver(
     return name in typeNames && name !in legacyNames.values
   }
 
-  fun enumsFor(kinds: Set<String>): List<ValueType> =
-    enums.values.filter { it.name in kinds }.sortedBy { it.kotlinType }
+  fun enumsFor(kinds: Set<String>): List<ValueType> {
+    val names = kinds.flatMap { kind -> valueReference.findAll(kind).map { it.value }.toList() }.toSet()
+    return enums.values.filter { it.name in names }.sortedBy { it.kotlinType }
+  }
 
   private companion object {
+    val recordReference = Regex("record:([A-Za-z0-9_]+)")
+    val valueReference = Regex("Compose[A-Za-z0-9_]+")
     // Where a type's factory functions live when it is not their package (Shape's are in foundation.shape).
     val factoryPackages = mapOf("androidx.compose.ui.graphics.Shape" to listOf("androidx.compose.foundation.shape"))
     val drawingFieldKinds = setOf("shape", "brush")
     val fieldAdapters = setOf("string", "char", "boolean", "int", "long", "float", "double", "dp", "sp", "color",
-      "shape", "brush", "textStyle")
+      "shape", "brush", "textStyle", "dpSize", "paddingValues", "windowInsets")
     // Kinds a list field can hold. Records and named values decode from each array element.
     val listElementKinds = setOf("string", "boolean", "int", "long", "float", "double", "dp", "sp", "color")
     // These names were exported before value discovery became transitive.
