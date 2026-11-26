@@ -4,11 +4,12 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
-import androidx.compose.material3.NavigationBarItem as composeScoped1
-import androidx.compose.material3.PlainTooltip as composeScoped2
-import androidx.compose.material3.RichTooltip as composeScoped3
-import androidx.compose.material3.SegmentedButton as composeScoped4
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
+import androidx.compose.material3.NavigationBarItem as composeScoped2
+import androidx.compose.material3.PlainTooltip as composeScoped3
+import androidx.compose.material3.RichTooltip as composeScoped4
+import androidx.compose.material3.SegmentedButton as composeScoped5
 
 // androidx.compose.material3.ElevatedFilterChip(selected: kotlin.Boolean, onClick: kotlin.Function0<kotlin.Unit>, label: kotlin.Function0<kotlin.Unit>, shapes: androidx.compose.material3.ChipShapes, modifier: androidx.compose.ui.Modifier, enabled: kotlin.Boolean, leadingIcon: kotlin.Function0<kotlin.Unit>?, trailingIcon: kotlin.Function0<kotlin.Unit>?, colors: androidx.compose.material3.SelectableChipColors, elevation: androidx.compose.material3.SelectableChipElevation?, border: androidx.compose.foundation.BorderStroke?, horizontalArrangement: androidx.compose.foundation.layout.Arrangement.Horizontal, contentPadding: androidx.compose.foundation.layout.PaddingValues, interactionSource: androidx.compose.foundation.interaction.MutableInteractionSource?)
 internal object RendererElevatedFilterChip_1 {
