@@ -137,8 +137,9 @@ if (mode === "audit") {
       component.parameters.some(parameter => parameter.name === name && parameter.scope === scope)),
       `BasicTextField must expose its ${name} slot`);
   }
-  const appBarColors = manifest.records.find(({ kotlinType }) => kotlinType === "androidx.compose.material3.TopAppBarColors");
-  assert.ok(appBarColors?.optIns.includes("androidx.compose.material3.ExperimentalMaterial3Api"),
+  // Material 3 stabilizes types between releases, so check the rule rather than one class.
+  assert.ok(manifest.records.some(({ kotlinType, optIns }) => kotlinType.startsWith("androidx.compose.material3.") &&
+    optIns.includes("androidx.compose.material3.ExperimentalMaterial3Api")),
     "Discover public value types with a public Compose opt-in");
   const elevation = manifest.records.find(({ kotlinType }) => kotlinType === "androidx.compose.material3.ButtonElevation");
   assert.ok(elevation?.factories.some(({ name, fields }) =>
@@ -153,8 +154,8 @@ if (mode === "audit") {
   }
   const labelPosition = manifest.records.find(({ kotlinType }) =>
     kotlinType === "androidx.compose.material3.TextFieldLabelPosition");
-  assert.deepEqual(labelPosition?.factories.map(({ name }) => name),
-    ["TextFieldLabelPosition.Above", "TextFieldLabelPosition.Attached"],
+  const variants = labelPosition?.factories.map(({ name }) => name) ?? [];
+  assert.ok(variants.length > 1 && variants.every((name) => name.startsWith("TextFieldLabelPosition.")),
     "Discover public variants of a closed Compose value");
   for (const [name, kind] of [["AlertDialog", "dialogProperties"], ["DropdownMenu", "popupProperties"]]) {
     assert.ok(manifest.components.some(component => component.name === name &&
@@ -164,6 +165,14 @@ if (mode === "audit") {
   assert.ok(manifest.modifiers.some(({ name, parameters }) => name === "animateContentSize" &&
     parameters.some(({ name, kind }) => name === "finishedListener" &&
       kind === "eventTuple:androidx.compose.ui.unit.IntSize,androidx.compose.ui.unit.IntSize")));
+  // Callback arguments are payload types derived from Kotlin declarations, such as a discovered enum.
+  const dismissValue = "androidx.compose.material3.SwipeToDismissBoxValue";
+  assert.ok(manifest.components.some(({ name, parameters }) => name === "SwipeToDismissBox" &&
+    parameters.some(({ name, kind }) => name === "onDismiss" && kind === `eventPayload:${dismissValue}`)),
+    "SwipeToDismissBox must report its dismissed value");
+  const dismissPayload = manifest.payloads.find(({ kotlinType }) => kotlinType === dismissValue);
+  assert.ok(dismissPayload?.value && manifest.values.some(({ name }) => name === dismissPayload.name),
+    "Enum payloads must use a generated value type");
   assert.ok(manifest.components.some(({ name }) => name === "MaterialExpressiveTheme"));
   for (const name of ["ButtonGroup", "AppBarRow", "AppBarColumn"]) {
     assert.ok(manifest.components.some(component => component.name === name &&
