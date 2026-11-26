@@ -4,11 +4,12 @@ package com.jetpackcomposereactnative.generated
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped0
-import androidx.compose.material3.NavigationBarItem as composeScoped1
-import androidx.compose.material3.PlainTooltip as composeScoped2
-import androidx.compose.material3.RichTooltip as composeScoped3
-import androidx.compose.material3.SegmentedButton as composeScoped4
+import androidx.compose.material3.ExposedDropdownMenu as composeScoped0
+import androidx.compose.material3.FloatingActionButtonMenuItem as composeScoped1
+import androidx.compose.material3.NavigationBarItem as composeScoped2
+import androidx.compose.material3.PlainTooltip as composeScoped3
+import androidx.compose.material3.RichTooltip as composeScoped4
+import androidx.compose.material3.SegmentedButton as composeScoped5
 
 // androidx.compose.foundation.text.BasicText(text: androidx.compose.ui.text.AnnotatedString, modifier: androidx.compose.ui.Modifier, style: androidx.compose.ui.text.TextStyle, onTextLayout: kotlin.Function1<androidx.compose.ui.text.TextLayoutResult, kotlin.Unit>?, overflow: androidx.compose.ui.text.style.TextOverflow, softWrap: kotlin.Boolean, maxLines: kotlin.Int, minLines: kotlin.Int, inlineContent: kotlin.collections.Map<kotlin.String, androidx.compose.foundation.text.InlineTextContent>, color: androidx.compose.ui.graphics.ColorProducer?, autoSize: androidx.compose.foundation.text.TextAutoSize?)
 internal object RendererBasicText_1 {
