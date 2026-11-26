@@ -6,9 +6,10 @@ import { valueOutputs } from "./values.mjs";
 import { factoryOutputs } from "./factories.mjs";
 import { recordOutputs } from "./records.mjs";
 import { scalarKinds } from "./scalars.mjs";
-import { mappingDescriptor, payloadCodec, payloadEventDescriptor, payloadOutputs } from "./payloads.mjs";
+import { mappingDescriptor, parsePayloads, payloadCodec, payloadEventDescriptor, payloadOutputs } from "./payloads.mjs";
 import { styleOutputs } from "./styles.mjs";
 import { iconOutputs } from "./icons.mjs";
+import { localOutputs } from "./locals.mjs";
 import { verifyInventory } from "./inventory.mjs";
 
 const repo = fileURLToPath(new URL("../../", import.meta.url));
@@ -20,6 +21,7 @@ const check = process.argv.includes("--check");
 const candidateDir = process.env.COMPOSE_KOTLIN_CANDIDATES;
 const approvedDir = process.env.COMPOSE_APPROVED_KOTLIN;
 const quote = JSON.stringify;
+const banner = "// Generated from Compose declarations by generate.mjs.";
 
 const sharedTypes = {
   indication: ["ComposeIndication", "toComposeIndication"],
@@ -206,6 +208,19 @@ const kinds = {
   ...scalarKinds,
   colorScheme: { type: "ColorScheme", input: "object", expression: (key) => `node.jsonObject(${key}).toColorScheme()` },
   windowInsetsProducer: { type: "ComposeWindowInsets", input: "object", module: "../utils/composeValues", expression: (key) => `{ node.jsonObject(${key}).toWindowInsets() }` },
+  providedValue: { type: "ComposeProvidedValue", input: "object", module: "./locals",
+    expression: (key) => `node.jsonObject(${key}).toComposeProvidedValue()` },
+  // A vararg parameter: the generated call spreads the decoded array.
+  providedValues: { type: "readonly ComposeProvidedValue[]", input: "tuple", module: "./locals", imports: ["ComposeProvidedValue"],
+    expression: (key) => `*node.arguments().jsonArray(${key}).toComposeProvidedValues()` },
+  // The scroll indicator of the scroll state that a handle controls in the same Compose host.
+  scrollIndicatorState: { type: "ComposeScrollStateHandle | ComposeLazyStateHandle", input: "object", module: "../utils/nativeHandles",
+    imports: ["ComposeScrollStateHandle", "ComposeLazyStateHandle"],
+    modifierExpression: () => "scrollIndicatorState",
+    composition: { value: "scrollIndicatorState", factory: "rememberComposeScrollIndicatorState" } },
+  imageVector: { type: "ComposeMaterialIcon", input: "object", module: "./icons",
+    expression: (key) => `node.jsonObject(${key}).toComposeMaterialIcon()`,
+    modifierExpression: (key) => `args.jsonObject(${key}).toComposeMaterialIcon()` },
   painter: { type: "ComposePainter", input: "object", module: "../utils/composeValues",
     expression: (key) => `node.jsonObject(${key}).rememberComposePainter()`,
     modifierExpression: () => "painter",
@@ -243,9 +258,9 @@ const kinds = {
   slot: { type: "ReactNode", expression: (key) => `{ RenderComposeChildren(node.slot(${key})) }` },
 };
 
-for (const { name } of manifest.records ?? []) {
+for (const { name, scope } of manifest.records ?? []) {
   kinds["record:" + name] = { type: name, input: "object", module: "./records",
-    expression: (key) => "node.jsonObject(" + key + ").decode" + name + "()" };
+    expression: (key) => "node.jsonObject(" + key + ").decode" + name + (scope ? "(scope)" : "()") };
 }
 
 for (const { name } of manifest.values ?? []) {
@@ -269,6 +284,52 @@ for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap((
     expression: (key) => `{ ${inner.expression(key)} }`,
     modifierExpression: (key) => `{ ${(inner.modifierExpression ?? inner.expression)(key).replaceAll("node.", "args.")} }`,
   };
+}
+
+// Element decoders of `list:<kind>`, reading `items` (a JSONArray) at `index`.
+function listElement(kind) {
+  const scalars = {
+    string: "items.getString(index)", boolean: "items.getBoolean(index)", int: "items.getInt(index)",
+    long: "items.getLong(index)", float: "items.getDouble(index).toFloat()", double: "items.getDouble(index)",
+    dp: "androidx.compose.ui.unit.Dp(items.getDouble(index).toFloat())",
+    sp: "androidx.compose.ui.unit.TextUnit(items.getDouble(index).toFloat(), androidx.compose.ui.unit.TextUnitType.Sp)",
+    color: "com.jetpackcomposereactnative.common.parseComposeColor(items.getString(index))",
+  };
+  if (Object.hasOwn(scalars, kind)) return { decode: scalars[kind], type: kinds[kind].type };
+  if (kind.startsWith("record:")) {
+    const name = kind.slice("record:".length);
+    return { decode: `items.getJSONObject(index).decode${name}()`, type: name, typeImports: [{ type: name, module: "./records" }] };
+  }
+  if (kind.startsWith("Compose")) {
+    return { decode: `to${kind}(items.getString(index))`, type: kind, typeImports: [{ type: kind, module: "./values" }] };
+  }
+  throw Error(`Unknown list element kind: ${kind}`);
+}
+
+for (const { kind } of [...manifest.components, ...manifest.modifiers].flatMap(({ parameters }) => parameters)) {
+  if (Object.hasOwn(kinds, kind)) continue;
+  // `list:<kind>`: a JSON array of values.
+  if (kind.startsWith("list:")) {
+    const element = listElement(kind.slice("list:".length));
+    const decode = (source) => `${source}.let { items -> List(items.length()) { index -> ${element.decode} } }`;
+    kinds[kind] = { type: `readonly ${element.type}[]`, input: "tuple", typeImports: element.typeImports ?? [],
+      expression: (key) => decode(`node.arguments().jsonArray(${key})`), modifierExpression: (key) => decode(`args.jsonArray(${key})`) };
+  }
+  // `constant:<kind>`: a mapping that returns the prop's value for every input.
+  if (kind.startsWith("constant:")) {
+    const inner = kinds[kind.slice("constant:".length)];
+    if (!inner || inner.composition) throw Error(`Unknown constant kind: ${kind}`);
+    kinds[kind] = { ...inner, expression: (key) => `{ _ -> ${inner.expression(key)} }`,
+      modifierExpression: (key) => `{ _ -> ${(inner.modifierExpression ?? inner.expression)(key).replaceAll("node.", "args.")} }` };
+  }
+  // `handle:<type>`: a payload snapshot that React received from Compose, resolved to the same native object.
+  if (kind.startsWith("handle:")) {
+    const type = kind.slice("handle:".length);
+    const { type: tsType, imports } = payloads.typeOf(parsePayloads(type)[0]);
+    kinds[kind] = { type: tsType, input: "object", typeImports: imports,
+      expression: (key) => `node.jsonObject(${key}).toComposePayloadValue<${type}>()`,
+      modifierExpression: (key) => `args.jsonObject(${key}).toComposePayloadValue<${type}>()` };
+  }
 }
 
 // `interpolation:<kind>` and `lookup:<kind>`: a pure mapping described as data (payloads.mjs).
@@ -330,8 +391,8 @@ function passedParameters({ parameters }, mask) {
   return parameters.filter(({ optional, kind }) => !optional || kind === "modifier" || (mask & (1 << bit++)));
 }
 
-function fieldType({ kind, nullable }) {
-  const type = kinds[kind].type;
+function fieldType({ kind, nullable, scope }) {
+  const type = kind === "slot" ? slotType({ scope }).type : kinds[kind].type;
   const value = nullable && kind.startsWith("event") ? `(${type})` : type;
   return `${value}${nullable && kind !== "slot" ? " | null" : ""}`;
 }
@@ -412,10 +473,10 @@ function controlledText({ kotlinFunction, parameters }) {
   return null;
 }
 
-function typeScript({ components, values, factories }) {
-  const usedKinds = new Set(components.flatMap(({ parameters }) => parameters.map(({ kind }) => kind)));
-  const types = values.map(({ name }) => name).filter((name) => usedKinds.has(name));
-  const declarations = [...Map.groupBy(components, ({ name }) => name)].map(([name, overloads]) => {
+// One file per component under generated/components, with the props types and runtime description of its overloads.
+function componentFiles({ components, values, factories }) {
+  const valueNames = new Set(values.map(({ name }) => name));
+  const files = [...Map.groupBy(components, ({ name }) => name)].map(([name, overloads]) => {
     const first = overloads[0];
     const exhaustive = ({ parameters, masks }) =>
       masks.length === (1 << parameters.filter(({ optional, kind }) => optional && kind !== "modifier").length);
@@ -441,13 +502,15 @@ function typeScript({ components, values, factories }) {
     const objectProps = namesOf(({ kind }) => ["object", "tuple", "shape", "brush"].includes(kinds[kind].input));
     const events = namesOf(({ kind }) => kind.startsWith("event"));
     const slots = namesOf(({ kind }) => kind === "slot");
-    return [
+    const renderSlots = namesOf(({ kind, scope }) => kind === "slot" && scope?.startsWith("arguments:"));
+    const declaration = [
       ...fields,
       `export const ${name} = createComposableComponent<${name}Props>({`,
       `  name: ${quote(name)},`,
       `  props: ${quote(props)},`,
       ...(objectProps.length ? [`  objectProps: ${quote(objectProps)},`] : []),
       ...(slots.length ? [`  slots: ${quote(slots)},`] : []),
+      ...(renderSlots.length ? [`  renderSlots: ${quote(renderSlots)},`] : []),
       ...(events.length ? [`  events: ${quote(events)},`] : []),
       ...(simple && animationTarget(first, "targetState") ? ["  keyedChildren: true,"] : []),
       ...(simple && controlledText(first) ? ["  controlledText: true,"] : []),
@@ -467,35 +530,58 @@ function typeScript({ components, values, factories }) {
       ] : []),
       "});",
     ].join("\n");
+    const usedKinds = new Set(overloads.flatMap(({ parameters }) => parameters.map(({ kind }) => kind)));
+    const types = [...usedKinds].filter((kind) => valueNames.has(kind)).sort();
+    const runtime = ["createComposableComponent", ...(/\bComposeModifier\b/.test(declaration) ? ["type ComposeModifier"] : [])];
+    const imports = [
+      ...(/\bReactNode\b/.test(declaration) ? ['import type { ReactNode } from "react";'] : []),
+      `import { ${runtime.join(", ")} } from "./runtime/createComposableComponent";`,
+      ...(usedKinds.has("colorScheme") && factories.length ? ['import type { ColorScheme } from "./factories";'] : []),
+      ...(usedKinds.has("shape") || usedKinds.has("brush") ? [
+        `import type { ${[usedKinds.has("shape") && "ComposeShape", usedKinds.has("brush") && "ComposeBrush"].filter(Boolean).join(", ")} } from "../utils/modifier";`,
+      ] : []),
+      // Value types can be props and payload elements, so their imports share one statement.
+      ...typeImports([
+        ...[...usedKinds].map((kind) => kinds[kind]),
+        ...(types.length ? [{ module: "./values", imports: types }] : []),
+        { typeImports: overloads.flatMap(({ parameters }) => parameters.flatMap((parameter) => slotType(parameter).imports)) },
+      ]),
+    ];
+    return [`generated/components/${name}.tsx`, [banner, ...imports, "", declaration, ""].join("\n")];
   });
-  return [
-    "// Generated from Compose declarations by generate.mjs.",
-    'import type { ReactNode } from "react";',
-    'import { createComposableComponent, type ComposeModifier } from "./runtime/createComposableComponent";',
-    ...(usedKinds.has("colorScheme") && factories.length ? ['import type { ColorScheme } from "./factories";'] : []),
-    ...(usedKinds.has("shape") || usedKinds.has("brush") ? [
-      `import type { ${[usedKinds.has("shape") && "ComposeShape", usedKinds.has("brush") && "ComposeBrush"].filter(Boolean).join(", ")} } from "../utils/modifier";`,
-    ] : []),
-    ...(usedKinds.has("floatRange") || usedKinds.has("eventFloatRange") ? [
-      "export type ComposeFloatRange = readonly [start: number, endInclusive: number];",
-    ] : []),
-    // Value types can be props and payload elements, so their imports share one statement.
-    ...typeImports([...[...usedKinds].map((kind) => kinds[kind]), ...(types.length ? [{ module: "./values", imports: types }] : [])],
-      "./components"),
-    'export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";',
-    ...(usedKinds.has("sheetState") ? [
-      'import type { ComposeModalSheetState } from "../utils/composeValues";',
-      "export type ComposeSheetState = ComposeModalSheetState;",
-    ] : []),
+  const names = files.map(([file]) => path.posix.basename(file, ".tsx"));
+  const folded = Map.groupBy(names, (name) => name.toLowerCase());
+  for (const [, same] of folded) if (same.length > 1) throw Error(`Component files differ only by case: ${same.join(", ")}`);
+  const shared = [
+    banner,
+    'import type { ComposeModalSheetState } from "../utils/composeValues";',
     "",
-    ...declarations.flatMap((declaration) => [declaration, ""]),
+    'export type { ComposePaddingValues, ComposeWindowInsets } from "../utils/composeValues";',
+    "export type ComposeFloatRange = readonly [start: number, endInclusive: number];",
+    "export type ComposeSheetState = ComposeModalSheetState;",
+    "",
   ].join("\n");
+  const index = [
+    banner,
+    'export type * from "./shared";',
+    ...names.map((name) => `export { ${name}, type ${name}Props } from "./${name}";`),
+    "",
+  ].join("\n");
+  return [...files, ["generated/components/shared.ts", shared], ["generated/components/index.ts", index, { final: true }]];
 }
 
-const indexedSlotScopes = new Set([
-  "androidx.compose.foundation.pager.PagerScope",
-  "androidx.compose.material3.carousel.CarouselItemScope",
-]);
+// `arguments:<receiver>:<payload kinds>`: a slot that Compose calls with values (extractor `argumentSlotScope`).
+function slotArguments(scope) {
+  const [, receiver, kinds] = /^arguments:([^:]*):(.+)$/.exec(scope);
+  return { receiver, types: parsePayloads(kinds) };
+}
+
+function slotType({ scope }) {
+  if (!scope?.startsWith("arguments:")) return { type: "ReactNode", imports: [] };
+  const described = slotArguments(scope).types.map((type) => payloads.typeOf(type));
+  const values = described.map(({ type }, index) => `value${index + 1}: ${type}`).join(", ");
+  return { type: `ReactNode | ((${values}) => ReactNode)`, imports: described.flatMap(({ imports }) => imports) };
+}
 const lazyBuilderScopes = new Set([
   "androidx.compose.foundation.lazy.LazyListScope",
   "androidx.compose.foundation.lazy.grid.LazyGridScope",
@@ -507,7 +593,16 @@ const overflowMenuScopes = new Set([
   "androidx.compose.material3.AppBarMenuState",
 ]);
 
-function renderSlot(children, scope) {
+function renderSlot(children, scope, name) {
+  if (scope?.startsWith("arguments:")) {
+    const { receiver, types } = slotArguments(scope);
+    const declarations = types.map((type, index) => `value${index + 1}: ${payloads.kotlinType(type)}`).join(", ");
+    const encoded = types.map((type, index) => `.put(${payloads.encode(type, `value${index + 1}`)})`).join("");
+    return `{ ${declarations} -> RenderComposeArgumentSlot(node, ${quote(name)}, org.json.JSONArray()${encoded}${receiver ? ", this" : ""}) }`;
+  }
+  if (scope?.startsWith("items:")) {
+    return `{ index -> ${children}.getOrNull(index)?.let { RenderComposeChild(it, this) } }`;
+  }
   if (scope === "decoration:textField") {
     return `androidx.compose.foundation.text.input.TextFieldDecorator { inner -> RenderComposeDecoration(${children}, inner) }`;
   }
@@ -517,9 +612,6 @@ function renderSlot(children, scope) {
   if (lazyBuilderScopes.has(scope)) return `{ renderLazyComposeChildren(${children}) }`;
   if (scope?.startsWith("indexed:")) {
     return `{ state -> RenderComposeAnimationChild(node, state${scope === "indexed:" ? "" : ", this"}) }`;
-  }
-  if (indexedSlotScopes.has(scope)) {
-    return `{ index -> ${children}.getOrNull(index)?.let { RenderComposeChild(it, this) } }`;
   }
   if (scope === "androidx.compose.foundation.layout.PaddingValues") {
     return `{ padding -> RenderPaddedComposeChildren(${children}, padding) }`;
@@ -544,7 +636,7 @@ function kotlin({ components }) {
     }
   }
   const ownerOptIns = [...new Set(components.filter(({ ownerScope }) => ownerScope).flatMap(({ optIns }) => optIns))].sort();
-  const functions = components.map(({ signature, renderer, kotlinFunction, parameters, children, childrenScope, childrenParameter, optIns, masks, ownerScope, scopedExtension }) => {
+  const functions = components.map(({ signature, renderer, kotlinFunction, parameters, children, childrenScope, childrenParameter, childKeys, optIns, masks, ownerScope, scopedExtension }) => {
     const modifierScope = ownerScope ? `, scope: ${ownerScope}` : parameters.some(({ kind }) => kind === "modifier") ? ", scope: Any?" : "";
     const nativeFunction = ownerScope
       ? `scope.${scopedExtension ? extensionImports.get(kotlinFunction) : kotlinFunction.split(".").at(-1)}`
@@ -564,7 +656,7 @@ function kotlin({ components }) {
       const key = quote(name);
       const value = animationTarget({ childrenScope }, name) ? `node.arguments().animationTarget(${key})`
         : Object.hasOwn(stateKinds, kind) ? `requireNotNull(${name}Value)`
-        : kind === "slot" && scope ? renderSlot(`node.slot(${key})`, scope)
+        : kind === "slot" && scope ? renderSlot(`node.slot(${key})`, scope, name)
         : kinds[kind].expression(key);
       return nullable ? `if (node.isNull(${key})) null else (${value})` : value;
     };
@@ -583,6 +675,7 @@ function kotlin({ components }) {
           : shared.has(name) ? `decode_${name}(node)` : parameterValue(parameter);
         return `\`${nativeName}\` = ${value}`;
       });
+      if (childKeys) args.push(`\`${childKeys}\` = { index -> node.children[index].composeChildId }`);
       if (children) {
         const argument = childrenParameter ?? "content";
         const content = shareChildren ? "renderChildren" : renderSlot("node.children", childrenScope);
@@ -742,11 +835,13 @@ const [recordTypeScript, recordKotlin] = recordOutputs(manifest.records ?? [], k
 const [payloadTypeScript, payloadKotlin] = payloadOutputs(manifest.payloads ?? [], payloads);
 const [styleTypeScript, styleKotlin] = styleOutputs(manifest.styleProperties ?? [], { ...kinds, ...modifierKinds });
 const [iconTypeScript, iconKotlin] = iconOutputs(manifest.icons);
+const [localTypeScript, localKotlin] = localOutputs(manifest.compositionLocals ?? [], kinds);
 const android = "android/src/main/java/com/jetpackcomposereactnative/generated";
 const nativeFiles = [
   [`${android}/ComposeMaterialIcons.kt`, iconKotlin],
   [`${android}/ComposeStyleValues.kt`, styleKotlin],
   [`${android}/ComposeRecords.kt`, recordKotlin],
+  [`${android}/ComposeLocals.kt`, localKotlin],
   [`${android}/ComposePayloads.kt`, payloadKotlin],
   [`${android}/ComposeFactories.kt`, factoryKotlin],
   ...kotlin(manifest).map(([file, content]) => [`${android}/${file}`, content]),
@@ -771,34 +866,90 @@ const surface = {
   modifiers: manifest.modifiers.map(({ name, signature, parameters, scope, masks }) =>
     ({ name, signature, parameters, scope, masks })),
 };
+// Old flat-layout specifiers that the sub-generators write, mapped to their files under src/.
+const generatedModules = {
+  "./components": "generated/components/shared",
+  "./modifiers": "generated/modifiers",
+  "./modifiers/chain": "generated/modifiers/chain",
+  "./values": "generated/values/enums",
+  "./records": "generated/values/records",
+  "./payloads": "generated/values/payloads",
+  "./styles": "generated/values/styles",
+  "./icons": "generated/values/icons",
+  "./locals": "generated/values/locals",
+  "./factories": "generated/values/factories",
+  "./runtime/createComposableComponent": "runtime/createComposableComponent",
+  "../utils/composeValues": "utils/composeValues",
+  "../utils/nativeHandles": "utils/nativeHandles",
+  "../utils/modifier": "utils/modifier",
+};
+
+// Rewrites each relative import of `content` for the file's place under src/.
+function relocate(file, content) {
+  return content.replace(/(from |import\()(["'])(\.\.?\/[^"']+)\2/g, (_, prefix, quoteMark, specifier) => {
+    const target = generatedModules[specifier];
+    if (!target) throw Error(`Unmapped import ${specifier} in ${file}`);
+    const relative = path.posix.relative(path.posix.dirname(file), target);
+    return `${prefix}"${relative.startsWith(".") ? relative : `./${relative}`}"`;
+  });
+}
+
+const typeScriptFiles = [
+  ...componentFiles(manifest),
+  ["generated/modifiers/chain.ts", modifierTypeScript.chain],
+  ["generated/modifiers/index.ts", modifierTypeScript.index],
+  ["generated/values/enums.ts", valueTypeScript],
+  ["generated/values/records.ts", recordTypeScript],
+  ["generated/values/payloads.ts", payloadTypeScript],
+  ["generated/values/styles.ts", styleTypeScript],
+  ["generated/values/icons.ts", iconTypeScript],
+  ["generated/values/locals.ts", localTypeScript],
+  ["generated/values/factories.ts", factoryTypeScript],
+  ["generated/values/index.ts", [
+    banner,
+    ...["enums", "records", "payloads", "styles", "icons", "locals"].map((name) => `export type * from "./${name}";`),
+    'export * from "./factories";',
+    "",
+  ].join("\n"), { final: true }],
+  ["generated/index.ts", [
+    banner,
+    'export * from "./components";',
+    'export { Modifier, type ComposeChain } from "./modifiers";',
+    'export * from "./values";',
+    "",
+  ].join("\n"), { final: true }],
+].map(([file, content, options]) => [`src/${file}`, options?.final ? content : relocate(file, content)]);
+
 const files = [
   ...nativeFiles,
-  ["src/generated/components.tsx", typeScript(manifest)],
-  ["src/generated/modifiers.ts", modifierTypeScript],
-  ["src/generated/values.ts", valueTypeScript],
-  ["src/generated/records.ts", recordTypeScript],
-  ["src/generated/payloads.ts", payloadTypeScript],
-  ["src/generated/styles.ts", styleTypeScript],
-  ["src/generated/icons.ts", iconTypeScript],
-  ["src/generated/factories.ts", factoryTypeScript],
+  ...typeScriptFiles,
   ["tools/compose-codegen/api-surface.json", `{\n${Object.entries(surface).map(([kind, entries]) =>
     `  "${kind}": [\n${entries.map((entry) => `    ${JSON.stringify(entry)}`).join(",\n")}\n  ]`).join(",\n")}\n}\n`],
   ["tools/compose-codegen/coverage.json", `${JSON.stringify(manifest.coverage, null, 2)}\n`],
 ];
+const root = output ?? repo;
 for (const [relative, content] of files) {
-  const destination = output ? path.join(output, path.basename(relative)) : path.join(repo, relative);
+  const destination = path.join(root, relative);
   if (check) {
-    if (fs.readFileSync(destination, "utf8") !== content) throw Error(`Stale generated file: ${destination}`);
+    if (!fs.existsSync(destination) || fs.readFileSync(destination, "utf8") !== content) {
+      throw Error(`Stale generated file: ${destination}`);
+    }
   } else {
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     fs.writeFileSync(destination, content);
   }
 }
-const nativeOutput = output ?? path.join(repo, android);
-const expectedShards = new Set(nativeFiles.map(([relative]) => path.basename(relative)));
-for (const file of fs.readdirSync(nativeOutput)) {
-  if (!/^ComposableRenderers[0-9]+\.kt$/.test(file) || expectedShards.has(file)) continue;
-  if (check) throw Error(`Stale generated file: ${path.join(nativeOutput, file)}`);
-  fs.rmSync(path.join(nativeOutput, file));
+// generate.mjs owns src/generated and the renderer shards, so files it no longer writes are stale.
+const written = new Set(files.map(([relative]) => path.join(root, relative)));
+const owned = [
+  ...(fs.existsSync(path.join(root, "src/generated"))
+    ? fs.readdirSync(path.join(root, "src/generated"), { recursive: true }).map((file) => path.join(root, "src/generated", file))
+    : []),
+  ...fs.readdirSync(path.join(root, android)).filter((file) => /^ComposableRenderers[0-9]+\.kt$/.test(file))
+    .map((file) => path.join(root, android, file)),
+].filter((file) => fs.statSync(file).isFile() && !written.has(file));
+for (const file of owned) {
+  if (check) throw Error(`Stale generated file: ${file}`);
+  fs.rmSync(file);
 }
 console.log(`${check ? "Verified" : "Generated"} TypeScript and Kotlin for ${manifest.components.length} composable overloads and ${manifest.modifiers.length} modifier overloads`);
