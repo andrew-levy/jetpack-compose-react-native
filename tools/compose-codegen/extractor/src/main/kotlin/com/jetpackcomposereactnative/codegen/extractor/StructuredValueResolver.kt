@@ -406,7 +406,7 @@ internal class StructuredValueResolver(
     return fields.takeIf { it.isNotEmpty() || parameters.isEmpty() }
   }
 
-  private fun hasBridgeVisibility(declaration: KSDeclaration): Boolean =
+  fun hasBridgeVisibility(declaration: KSDeclaration): Boolean =
     generateSequence(declaration) { it.parentDeclaration }.all {
       // An enum entry has its enum's visibility. KSP2 cannot read an entry's modifiers from binaries.
       (it.isEnumEntry() || it.getVisibility() == Visibility.PUBLIC) && !isDeprecated(it) &&
