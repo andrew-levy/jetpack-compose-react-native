@@ -34,6 +34,15 @@
       "parent": null
     },
     {
+      "name": "AnimatedPane",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "AnimatedVisibility",
       "overload": null,
       "props": {
@@ -404,7 +413,7 @@
     },
     {
       "name": "CompositionLocalProvider",
-      "overload": null,
+      "overload": "CompositionLocalProvider",
       "props": {},
       "slots": [],
       "children": true,
@@ -888,6 +897,18 @@
       "parent": null
     },
     {
+      "name": "ExposedDropdownMenu",
+      "overload": null,
+      "props": {
+        "expanded": true,
+        "onDismissRequest": "$fn"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": "ExposedDropdownMenuBox"
+    },
+    {
       "name": "ExposedDropdownMenuBox",
       "overload": null,
       "props": {
@@ -1161,7 +1182,7 @@
     },
     {
       "name": "Icon",
-      "overload": "Icon#2",
+      "overload": "Icon#3",
       "props": {
         "active": true
       },
@@ -1433,6 +1454,15 @@
       "parent": null
     },
     {
+      "name": "LevitatedPaneScrim",
+      "overload": null,
+      "props": {},
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "LinearProgressIndicator",
       "overload": "LinearProgressIndicator",
       "props": {},
@@ -1446,6 +1476,21 @@
       "overload": "LinearWavyProgressIndicator",
       "props": {},
       "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "ListDetailPaneScaffold",
+      "overload": null,
+      "props": {
+        "directive": {},
+        "value": {}
+      },
+      "slots": [
+        "listPane",
+        "detailPane"
+      ],
       "children": false,
       "keyedChildren": false,
       "parent": null
@@ -1550,7 +1595,7 @@
     },
     {
       "name": "ModalBottomSheet",
-      "overload": null,
+      "overload": "ModalBottomSheet",
       "props": {
         "onDismissRequest": "$fn"
       },
@@ -1670,6 +1715,54 @@
         "icon"
       ],
       "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationSuite",
+      "overload": null,
+      "props": {
+        "navigationSuiteType": "Sample"
+      },
+      "slots": [],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationSuiteItem",
+      "overload": null,
+      "props": {
+        "selected": true,
+        "onClick": "$fn"
+      },
+      "slots": [
+        "icon",
+        "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationSuiteScaffold",
+      "overload": null,
+      "props": {},
+      "slots": [
+        "navigationItems"
+      ],
+      "children": true,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "NavigationSuiteScaffoldLayout",
+      "overload": "NavigationSuiteScaffoldLayout",
+      "props": {},
+      "slots": [
+        "navigationSuite"
+      ],
+      "children": true,
       "keyedChildren": false,
       "parent": null
     },
@@ -1974,6 +2067,20 @@
       "parent": null
     },
     {
+      "name": "ScrollField",
+      "overload": null,
+      "props": {
+        "state": {
+          "initialText": "Hello"
+        },
+        "contentDescription": "Sample"
+      },
+      "slots": [],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "SearchBar",
       "overload": "SearchBar",
       "props": {
@@ -2105,7 +2212,7 @@
     },
     {
       "name": "SelectionContainer",
-      "overload": null,
+      "overload": "SelectionContainer",
       "props": {},
       "slots": [],
       "children": true,
@@ -2190,7 +2297,7 @@
     },
     {
       "name": "Snackbar",
-      "overload": null,
+      "overload": "Snackbar",
       "props": {},
       "slots": [],
       "children": true,
@@ -2259,6 +2366,21 @@
       },
       "slots": [
         "label"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
+      "name": "SupportingPaneScaffold",
+      "overload": null,
+      "props": {
+        "directive": {},
+        "value": {}
+      },
+      "slots": [
+        "mainPane",
+        "supportingPane"
       ],
       "children": false,
       "keyedChildren": false,
@@ -2578,6 +2700,17 @@
       "parent": null
     },
     {
+      "name": "TwoRowsTopAppBar",
+      "overload": "TwoRowsTopAppBar",
+      "props": {},
+      "slots": [
+        "title"
+      ],
+      "children": false,
+      "keyedChildren": false,
+      "parent": null
+    },
+    {
       "name": "VerticalDivider",
       "overload": null,
       "props": {},
@@ -2702,7 +2835,7 @@
     {
       "name": "alignBy",
       "args": {
-        "alignmentLine": "firstBaseline"
+        "alignmentLineBlock": 8
       },
       "scope": "row"
     },
@@ -3073,6 +3206,13 @@
       "scope": "lazy"
     },
     {
+      "name": "filterTextContextMenuComponents",
+      "args": {
+        "filter": true
+      },
+      "scope": null
+    },
+    {
       "name": "fitInside",
       "args": {
         "rulers": {
@@ -3331,6 +3471,14 @@
       "scope": null
     },
     {
+      "name": "nonInteractiveScrollbar",
+      "args": {
+        "state": {},
+        "orientation": "horizontal"
+      },
+      "scope": null
+    },
+    {
       "name": "offset",
       "args": {},
       "scope": null
@@ -3492,6 +3640,20 @@
       "scope": null
     },
     {
+      "name": "paneExpansionDraggable",
+      "args": {
+        "state": {},
+        "minTouchTargetSize": 8,
+        "interactionSource": "$interactionSource"
+      },
+      "scope": "PaneScaffoldScope"
+    },
+    {
+      "name": "paneMargins",
+      "args": {},
+      "scope": "PaneScaffoldScope"
+    },
+    {
       "name": "placement",
       "args": {
         "block": {}
@@ -3536,6 +3698,20 @@
         "frameRate": 8
       },
       "scope": null
+    },
+    {
+      "name": "preferredHeight",
+      "args": {
+        "height": 8
+      },
+      "scope": "PaneScaffoldScope"
+    },
+    {
+      "name": "preferredWidth",
+      "args": {
+        "proportion": 8
+      },
+      "scope": "PaneScaffoldScope"
     },
     {
       "name": "progressSemantics",
