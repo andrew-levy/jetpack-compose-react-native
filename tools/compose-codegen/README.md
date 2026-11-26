@@ -33,6 +33,22 @@ otherwise flatten the group.
 The [root README](../../README.md#run-the-example) shows how to build and
 verify the demo from a fresh checkout.
 
+## Output
+
+`generate.mjs` owns `src/generated` and removes the files it no longer writes:
+
+| Path | Contents |
+| --- | --- |
+| `src/generated/components/<Name>.tsx` | Props types and runtime description of one component's overloads |
+| `src/generated/components/shared.ts` | Types shared by component props |
+| `src/generated/modifiers/chain.ts` | The `Modifier` chain's method signatures |
+| `src/generated/modifiers/index.ts` | `Modifier` and the overload table it selects calls from |
+| `src/generated/values/` | Enums, records, payload snapshots, styles, icon styles, and value factories |
+| `android/.../generated/*.kt` | Kotlin renderers, decoders, and registries |
+
+The hand-written runtime lives in `src/runtime`, and `src/utils` holds the shared bridge types.
+When `COMPOSE_GENERATED_OUTPUT` is set, the same tree is written under that directory.
+
 ## Generate
 
 With Android SDK 37.1, JDK 17, Gradle 9.4 (set `COMPOSE_GRADLE` to its `gradle` when it is not on
@@ -81,9 +97,13 @@ Structured props such as `contentPadding` and `windowInsets` take numbers in dp.
 `Image`, `Icon`, and `Modifier.paint` accept a built-in Material icon, a plain color,
 or an Android drawable. Use `painter={{ icon: "Edit", style: "outlined" }}` for a
 built-in icon or `painter={{ drawable: "hero" }}` for `res/drawable/hero.xml`.
-The generator reads icon names and styles from the AndroidX Material Icons Core
-dependency. Omit `style` for filled icons, or use a style such as
-`autoMirroredOutlined` for directional icons that mirror in right-to-left layouts.
+`Icon` and `Image` also take `imageVector={{ icon: "Edit" }}`. Every icon in
+Material Icons Core and Extended works by its Kotlin name, such as `Edit` or
+`_3dRotation`. Native code looks icons up by name, so the TypeScript types list
+only the styles, not the icon names. Omit `style` for filled icons, or use a style
+such as `autoMirroredOutlined` for directional icons that mirror in right-to-left
+layouts. The library's consumer ProGuard rules keep the icon getters, so release
+builds include all Material icons.
 
 Lazy lists and grids treat each direct child as an item, and pagers treat each
 direct child as a page. Use React keys for stable item identity and give scrolling
@@ -200,6 +220,50 @@ For example, `SwipeToDismissBox`'s `onDismiss` receives a
 `Modifier.animateContentSize` receives `readonly [ComposeLayoutSize, ComposeLayoutSize]`
 with the start and end sizes in physical pixels. To support a new type with its own
 encoder, add a `toComposeSnapshot()` extension and list the type in snapshots.json.
+
+The same payload types cross into slots that Compose calls with values. Pass React
+content, or a function of the values. React renders the function once for each argument
+list that Compose is composing:
+
+```tsx
+<TwoRowsTopAppBar title={(expanded) => <Text text={expanded ? "Inbox" : "In"} />} />
+<TabRow selectedTabIndex={0} indicator={(positions) => <Box modifiers={Modifier.width(positions[0].width)} />} />
+```
+
+The function's content appears after React receives the arguments, one frame after
+Compose first calls the slot.
+
+Other declarations the generator follows:
+
+- A scope is any receiver of a composable content lambda, such as
+  `ExposedDropdownMenuBoxScope`. Composables and modifiers declared on it render inside
+  that parent.
+- A composable `Scope.(index: Int) -> Unit` slot renders children by position. When the
+  same component takes `key: (Int) -> Any`, the keys come from the children's React keys.
+- A value made by a public `remember*` function in the type's package uses the same
+  `factory` form as `*Defaults` values. For example, pass
+  `state={{ factory: "rememberScrollFieldState", itemCount: 24 }}` to `ScrollField`.
+- A lambda or `fun interface` that only returns a value, such as `ColorProducer` or
+  `@Composable () -> WindowInsets`, takes that value as the prop.
+- A pure `(Float) -> Float | Dp | Color` mapping takes stops `[[at, value], ...]` that
+  native code interpolates. Values before the first stop or after the last one are clamped.
+  An `(Int) -> T` mapping takes the values by index. Any other pure mapping takes one value
+  that it returns for every input, such as `systemGestureExclusion({ left: 0, top: 0, right: 48, bottom: 800 })`.
+- A snapshot object carries a `$handle`. A prop of the same type takes the snapshot back, and
+  native code passes the original object:
+  `snackbar={(data) => <Snackbar snackbarData={data} />}`.
+- `CompositionLocalProvider` provides any public `Local*` whose value crosses the bridge, by
+  name: `value={{ local: "LocalContentColor", value: "#6750a4" }}`, or `values={[...]}`.
+- `List<T>` props take arrays, such as `polygons={["cookie9Sided", "pentagon"]}` on `LoadingIndicator`.
+- Supertypes of a scope are scopes, so `PaneScaffoldScope` modifiers work inside pane scaffolds.
+  A generic receiver (`ExtendedPaneScaffoldPaneScope<R, V>.AnimatedPane`) resolves to the scope
+  that implements it.
+- Values made by a scope's own members, such as `OverlayClip(clipShape)` in a shared
+  transition, take the same `factory` form.
+- `Modifier.nonInteractiveScrollbar` takes the `useScrollState` or `useLazyListState` handle of a
+  container in the same Compose host and follows that container's scroll state.
+- When no other construction path works, an immutable Compose class takes the public
+  constructor that Kotlin resolves for the supplied fields (`ModalBottomSheetProperties`).
 
 APIs that accept the same native handle or value type share a decoder. Requesters
 and interaction sources retain their identity within a Compose host. Animation
