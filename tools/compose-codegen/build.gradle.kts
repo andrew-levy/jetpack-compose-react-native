@@ -63,9 +63,12 @@ val inventoryTool by configurations.creating {
 }
 val inventoryOutput = layout.buildDirectory.file("compose-binary-inventory.json")
 val publishedSurface = layout.projectDirectory.file("api-surface.json").asFile
+// Types with a hand-written JSON encoder. The extractor and generate.mjs read the same table.
+val snapshotTypes = layout.projectDirectory.file("snapshots.json").asFile
 
 ksp {
   arg("inventoryPath", inventoryOutput.get().asFile.absolutePath)
+  arg("snapshotsPath", snapshotTypes.absolutePath)
   if (publishedSurface.isFile) arg("publishedSurface", publishedSurface.absolutePath)
 }
 
@@ -92,6 +95,7 @@ tasks.register<JavaExec>("composeBinaryInventory") {
 tasks.matching { it.name == "kspDebugKotlin" }.configureEach {
   dependsOn("composeBinaryInventory")
   inputs.file(inventoryOutput)
+  inputs.file(snapshotTypes)
   if (publishedSurface.isFile) inputs.file(publishedSurface)
 }
 
