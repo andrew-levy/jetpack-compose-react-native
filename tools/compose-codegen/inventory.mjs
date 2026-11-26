@@ -49,6 +49,8 @@ export function verifyInventory({ discovered, coverage, components, modifiers },
     if (exported) {
       const names = new Set(exported.parameters.map(({ name, nativeName }) => nativeName ?? name));
       if (exported.children) names.add(exported.childrenParameter ?? "content");
+      // Generated from the children's React keys (extractor `childKeys`).
+      if (exported.childKeys) names.add(exported.childKeys);
       for (const { name } of parameters) {
         if (!names.has(name) && !omitted.has(name)) errors.push(`Unaccounted prop ${name} in ${signature}`);
       }
