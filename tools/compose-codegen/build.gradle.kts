@@ -107,4 +107,8 @@ dependencies {
   implementation("androidx.compose.material:material-icons-core:1.7.8")
   val material3Version = providers.gradleProperty("composeMaterial3Version").getOrElse("1.5.0")
   implementation("androidx.compose.material3:material3:$material3Version")
+  // Adaptive scaffolds (list-detail and supporting panes) and the navigation suite scaffold.
+  implementation("androidx.compose.material3:material3-adaptive-navigation-suite:$material3Version")
+  implementation("androidx.compose.material3.adaptive:adaptive-layout:1.3.0")
+  implementation("androidx.compose.material3.adaptive:adaptive-navigation:1.3.0")
 }
